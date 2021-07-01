@@ -1,1 +1,29 @@
-<p>logs works!</p>
+<h1>Logs</h1>
+<table class="table mT-30 table-striped">
+    <thead class="table-white">
+        <tr>
+            <th scope="col">Fullname</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Latitutde</th>
+            <th scope="col">Longititude</th>
+            <th scope="col">Device</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Date of Activity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+            <td>Jamel Eid Yassin</td>
+            <td>192.168.200.01</td>
+            <td>10.34243</td>
+            <td>10.34243</td>
+            <td>Mobile</td>
+            <td>Created a User</td>
+            <td>11/14/1994</td>
+            <td>
+                <button class="btn btn-dark">View coordinates in google maps</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
