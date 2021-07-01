@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms'
+import { IvyCarouselModule } from 'angular-responsive-carousel'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -45,7 +46,7 @@ import { RecordIndexComponent } from './records/record-index/record-index.compon
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
-import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component';
+import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/shared/footers/footers.component'
 
 @NgModule({
@@ -93,9 +94,9 @@ import { FootersComponent } from './components/shared/footers/footers.component'
 		MarriageRecordsComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
-  FootersComponent,
+		FootersComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })

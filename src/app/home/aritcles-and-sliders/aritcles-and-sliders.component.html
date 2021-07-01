@@ -1,1 +1,67 @@
-<p>aritcles-and-sliders works!</p>
+<button class="btn btn-dark mB-10">
+	<i class="ti-pencil-alt"></i>
+	Add media
+</button>
+
+<carousel [images]="images" [cellsToShow]="2.3" [height]="400" [dots]="true" [autoplay]="true" [autoplayInterval]="3000" [transitionDuration]="300" [borderRadius]="5" [loop]="true" [lightDOM]="true">
+</carousel>
+
+<div class="row d-flex jcc bg-light">
+    <div class="col-md-8">
+        <ul class="nav nav-tabs mT-50 bg-white">
+            <li class="nav-item">
+                <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> All </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Today </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> This Week </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> This Month </a>
+            </li>
+        </ul>
+
+        <div class="m-0" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+            <div class="card-header bg-white d-flex aic">
+                <div>
+                    <div class="h1 m-0 card-title text-dark">Bootstrap Icons</div>
+                </div>
+                <div class="ml-auto">
+                    <button class="btn btn-outline-danger btn-sm">Remove</button>
+                </div>
+            </div>
+            <div class="card-header bg-white">
+                <span class="m-0"><i class="ti-alarm-clock"></i> Created at: April 04, 2021 - 7:29PM</span>
+            </div>
+            <div class="card-body bg-white">
+                <div class="d-flex">
+                    <p class="pX-20">
+                        Free, high quality, open source icon library with over 1,300 icons. Include them anyway you like—SVGs, SVG sprite, or web fonts. Use them with or without Bootstrap in any project.
+                    </p>
+                    <div>
+                        <img class="article-image" [src]="images[0].path" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 p-0 m-0 w-100">
+        <div class="bg-white mT-50">
+            <div class="card-header bg-info">
+                <div class="text-center text-white">Quick links</div>
+            </div>
+            <div style="overflow: auto">
+                <div class="card-body d-flex aic" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+                    <div class="p-10">
+                        <i class="ti-folder text-info" style="font-size: 2rem"></i>
+                    </div>
+                    <div class="p-10">
+                        <span>21 Iloilo Center to rise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
