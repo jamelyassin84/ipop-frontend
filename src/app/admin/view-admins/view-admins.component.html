@@ -1,1 +1,32 @@
-<p>view-admins works!</p>
+<table class="table mT-30">
+    <thead class="table-white">
+        <tr>
+            <th><i class="ti-user"></i></th>
+            <th scope="col">Fullname</th>
+            <th scope="col">Role</th>
+            <th scope="col">Status</th>
+            <th scope="col">District</th>
+            <th scope="col">Municipality</th>
+            <th scope="col">Barangay</th>
+            <th scope="col">Date Registered</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+            <td>
+                <img src="../../../assets/ipop/avatars/girl-black.png" alt="" />
+            </td>
+            <td>Jamel Eid Yassin</td>
+            <td>Super Admin</td>
+            <td><span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500">Blocked</span></td>
+            <td>District 4</td>
+            <td>Barotac Nuevo</td>
+            <td>Barangay</td>
+            <td>11/14/1994</td>
+            <td>
+                <button class="btn btn-sm btn-info">View Admin</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
