@@ -11,25 +11,34 @@
     <div class="nav">
         <div class="nav-list">
             <div *ngFor="let nav of navs" class="Item">
-                {{ nav.name }}
-                <div class="drop-down-container shadow" style="position: relative">
-                    <div class="drop-down bg-white">
-                        <div (click)="setTitle(child.name)" *ngFor="let child of nav.children" class="drop-down-container animated fadeIn fast" [routerLink]="nav.route + child.route" class="drop-down-item">
-                            <i class="ti-folder c-orange-500"></i>
-                            <p style="flex: 3">{{ child.name }}</p>
-                            <i class="bi bi-chevron-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <span *ngIf="nav.name !== 'Iloilo.gov'"> {{ nav.name }}</span>
+                <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">
+					{{ nav.name }}</a
+				>
+				<div *ngIf="nav.name !== 'Iloilo.gov'" class="drop-down-container shadow" style="position: relative">
+					<div class="drop-down bg-white">
+						<div
+							(click)="setTitle(child.name)"
+							*ngFor="let child of nav.children"
+							class="drop-down-container animated fadeIn fast"
+							[routerLink]="nav.route + child.route"
+							class="drop-down-item"
+						>
+							<i class="ti-folder c-orange-500"></i>
+							<p style="flex: 3">{{ child.name }}</p>
+							<i class="bi bi-chevron-right"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h1>{{ title }}</h1>
-            <hr />
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h1>{{ title }}</h1>
+			<hr />
+			<router-outlet></router-outlet>
+		</div>
+	</div>
 </div>
