@@ -1,1 +1,124 @@
-<p>add-admin works!</p>
+<div class="card card-body">
+    <br />
+    <div class="inputs">
+        <div class="row">
+            <div class="col-md-4 mb-3" style="position: relative">
+                <img [src]="image" alt="" />
+                <div class="icon-container">
+                    <i style="font-size: 25px" class="bi bi-camera-fill"></i>
+                    <input accept="image/*" type="file" class="hidden" id="profile-picture" />
+                </div>
+                <br /><br />
+                <div class="clickable">Click here for random avatar</div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="inputs">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="username">Username</label>
+                    <input [(ngModel)]="data.username" type="text" class="form-control" id="username" [class.is-invalid]="invalidData.username" required />
+                    <div class="invalid-feedback">Username is required</div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="password">Password </label>
+                    <input [(ngModel)]="data.password" type="password" class="form-control" id="password" [class.is-invalid]="invalidData.password" required />
+                    <div class="invalid-feedback">Password is requred</div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="confrim-password">Confirm Password</label>
+                    <input [(ngModel)]="data.confirmPassword" type="password" class="form-control" id="confrim-password" [class.is-invalid]="data.confirmPassword != data.password || invalidData.confirmPassword" required />
+                    <div class="invalid-feedback" *ngIf="data.confirmPassword != data.password">
+                        Password should match
+                    </div>
+                    <div *ngIf="invalidData.confirmPassword" class="invalid-feedback">Password is required</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="fullname">Fullname </label>
+                    <input [(ngModel)]="data.fullname" type="text" class="form-control" id="fullname" [class.is-invalid]="invalidData.fullname" required />
+                    <div class="invalid-feedback">Fullname is required</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role">Role</label>
+                    <select [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+						<option selected disabled value="">Choose...</option>
+						<option>PPOI</option>
+						<option>PPOII</option>
+						<option>FOD</option>
+						<option>TRD</option>
+						<option>Super Admin</option>
+					</select>
+                    <div class="invalid-feedback">Role is required</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role">Municipality Assigned</label>
+                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+						<option>Barotac Nuevo</option>
+						<option>Anilao</option>
+						<option>Dumangas</option>
+					</select>
+                    <div class="invalid-feedback">Role is required</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role">Barangay Assigned</label>
+                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+						<option>Lagubang</option>
+						<option>Lico-an</option>
+						<option>Cruz</option>
+					</select>
+                    <div class="invalid-feedback">Role is required</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="district">District</label>
+                    <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
+						<option selected disabled value="">Choose...</option>
+						<option *ngFor="let number of [1, 2, 3, 4, 5]">{{ number }}</option>
+					</select>
+                    <div class="invalid-feedback">District is required</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="municipality">Municipality </label>
+                    <select class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
+						<option selected disabled value="">Choose...</option>
+						<option
+							style="text-transform: capitalize"
+							*ngFor="let municipality of municipalities"
+							[value]="municipality.code"
+						>
+							{{ municipality.name }}
+						</option>
+					</select>
+                    <div class="invalid-feedback">Municipality is required</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="barangay"> Barangay </label>
+                    <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" [class.is-invalid]="invalidData.barangay" required>
+						<option selected disabled value="">Choose...</option>
+						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+					</select>
+                    <div class="invalid-feedback">Barangay is required</div>
+                </div>
+            </div>
+
+            <div class="d-flex aic jcc mT-50">
+                <button *ngIf="!isSubmitting" (click)="register()" class="btn btn-dark">Create Admin</button>
+                <button *ngIf="isSubmitting" class="btn button" type="btn btn-primary" disabled>
+					<span
+						class="spinner-border spinner-border-sm text-light fast"
+						role="status"
+						aria-hidden="true"
+					></span>
+					Loading...
+				</button>
+            </div>
+        </div>
+    </div>
+</div>
