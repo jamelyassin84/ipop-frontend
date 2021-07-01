@@ -122,16 +122,12 @@
                 <div class="invalid-feedback">Registered LCR is required</div>
             </div>
         </div>
-
-        <br />
-        <div class="button-container">
-            <button *ngIf="!isLoading" (click)="save()" class="btn btn-primary">Submit Record</button>
+        <div class="d-flex aic jcc mT-30">
+            <button *ngIf="!isLoading" (click)="save()" class="btn btn-primary">Submit Death Record</button>
             <button *ngIf="isLoading" class="btn button" type="btn btn-primary" disabled>
 				<span class="spinner-border spinner-border-sm text-light fast" role="status" aria-hidden="true"></span>
 				Loading...
 			</button>
         </div>
-        <br />
-        <br />
     </div>
 </div>
