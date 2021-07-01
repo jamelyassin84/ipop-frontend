@@ -1,1 +1,65 @@
-<p>population works!</p>
+<div class="d-flex">
+    <button class="btn btn-sm btn-dark">Add top populated municipality</button>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="h5 text-dark">Top Populated Municipalities</div>
+    </div>
+    <div class="col-md-2" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]">
+        <div class="p-20">
+            <div class="layer w-100 mB-10">
+                <h6 class="lh-1">Barotac Nuevo</h6>
+            </div>
+            <div class="layer w-100">
+                <div class="peers ai-sb fxw-nw">
+                    <div class="peer">
+                        <span class="h5 d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">-7%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Province </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Municipality </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Barangay </a>
+    </li>
+</ul>
+<br />
+<div class="d-flex">
+    <button class="btn btn-sm btn-dark mR-10">Add population profile</button>
+    <button class="btn btn-sm btn-outline-dark mR-10">Add/Edit population pyramid</button>
+    <button class="btn btn-sm btn-outline-danger">View Provincial Officials</button>
+</div>
+<br />
+<div class="row bg-light">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white">
+                <div class="card-title h5">Population Pyramid</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white">
+                <div class="card-title h5">Population Profile</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mT-50 bg-white">
+        <div class="card">
+            <div class="card-header bg-light">
+                <button class="btn btn-dark">Edit Technical Notes</button>
+            </div>
+        </div>
+    </div>
+</div>
