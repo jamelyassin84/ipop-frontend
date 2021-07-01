@@ -17,7 +17,10 @@ export class RecordIndexComponent implements OnInit {
 
 	navs: RecordNavType[] = recordNavs
 
-	handleChangeTab() {
+	title: String = 'Upload a File'
+
+	handleChangeTab(title: String) {
+		this.title = title
 		setTimeout(() => {
 			this.url = this.router.url
 		}, 100)

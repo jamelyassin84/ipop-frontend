@@ -1,11 +1,15 @@
 <div class="layers bd bgc-white">
     <ul class="nav nav-tabs">
         <li *ngFor="let nav of navs" class="nav-item">
-            <a (click)="handleChangeTab()" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
+            <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
                 <i [class]="nav.icon"></i> {{ nav.name }}
+                <span class="small d-ib lh-0 va-m fw-600 bdrs-10em p-10 bgc-blue-50 c-blue-500">0</span>
             </a>
         </li>
     </ul>
 </div>
 <br />
+<h1 class="m-0">{{ title }}</h1>
+<span *ngIf="title !== 'Upload a File'" class="m-0 h6 text-info fw-400">Showing bulk uploads from the department lower than you</span
+>
 <router-outlet></router-outlet>
