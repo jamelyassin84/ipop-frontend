@@ -5,7 +5,7 @@ export const TRD = []
 export const ADMIN = [
 	{
 		name: 'Home',
-		route: 'index',
+		route: 'index/news',
 		color: 'c-blue-700',
 		icon: 'ti-home',
 	},

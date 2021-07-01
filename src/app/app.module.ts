@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -39,11 +40,11 @@ import { DeathFormComponent } from './forms/death-form/death-form.component'
 import { BirthFormComponent } from './forms/birth-form/birth-form.component'
 import { InMigrationFormComponent } from './forms/in-migration-form/in-migration-form.component'
 import { OutMigrationFormComponent } from './forms/out-migration-form/out-migration-form.component'
-import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.component';
-import { RecordIndexComponent } from './records/record-index/record-index.component';
-import { AdminIndexComponent } from './admin/admin-index/admin-index.component';
-import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component';
-import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component';
+import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.component'
+import { RecordIndexComponent } from './records/record-index/record-index.component'
+import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
+import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
+import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 
 @NgModule({
@@ -86,13 +87,13 @@ import { OrganizationalChartComponent } from './home/about/organizational-chart/
 		InMigrationFormComponent,
 		OutMigrationFormComponent,
 		MarriagesFormComponent,
-  RecordIndexComponent,
-  AdminIndexComponent,
-  MarriageRecordsComponent,
-  AritclesAndSlidersComponent,
-  OrganizationalChartComponent,
+		RecordIndexComponent,
+		AdminIndexComponent,
+		MarriageRecordsComponent,
+		AritclesAndSlidersComponent,
+		OrganizationalChartComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
