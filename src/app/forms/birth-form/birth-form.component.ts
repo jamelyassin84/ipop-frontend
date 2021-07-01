@@ -20,10 +20,11 @@ import {
 	styleUrls: ['./birth-form.component.scss'],
 })
 export class BirthFormComponent implements OnInit {
-	barangayIsLoading = false
-	isLoading = false
 	municipalities: MunicipalityType[] = []
 	barangays: BarangayType[] = []
+	fields: BirthType | any = {}
+	barangayIsLoading: Boolean = false
+	isLoading: Boolean = false
 	months = months
 	sexs = sexs
 	ageBrackets = ageBrackets
@@ -33,7 +34,6 @@ export class BirthFormComponent implements OnInit {
 	occupations = occupations
 	religions = religions
 	maritalStatuses = maritalStatuses
-	fields: BirthType | any = {}
 	invalid: any = {}
 
 	constructor() {}
