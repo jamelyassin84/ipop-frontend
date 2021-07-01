@@ -13,4 +13,10 @@ export class HomePageComponent implements OnInit {
 	ngOnInit(): void {}
 
 	navs = homeNavs
+
+	title: String = 'News'
+
+	setTitle(title: String) {
+		this.title = title
+	}
 }

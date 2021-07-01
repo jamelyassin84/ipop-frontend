@@ -14,8 +14,8 @@
                 {{ nav.name }}
                 <div class="drop-down-container shadow" style="position: relative">
                     <div class="drop-down bg-white">
-                        <div *ngFor="let child of nav.children" class="drop-down-container animated fadeIn fast" [routerLink]="nav.route + child.route" class="drop-down-item">
-                            <i class="ti-folder"></i>
+                        <div (click)="setTitle(child.name)" *ngFor="let child of nav.children" class="drop-down-container animated fadeIn fast" [routerLink]="nav.route + child.route" class="drop-down-item">
+                            <i class="ti-folder c-orange-500"></i>
                             <p style="flex: 3">{{ child.name }}</p>
                             <i class="bi bi-chevron-right"></i>
                         </div>
@@ -24,9 +24,14 @@
             </div>
         </div>
     </div>
+
     <div class="card">
         <div class="card-body">
+            <h1>{{ title }}</h1>
+            <hr />
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
+
+<Footers></Footers>

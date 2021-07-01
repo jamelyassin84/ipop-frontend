@@ -45,7 +45,8 @@ import { RecordIndexComponent } from './records/record-index/record-index.compon
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
-import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
+import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component';
+import { FootersComponent } from './components/shared/footers/footers.component'
 
 @NgModule({
 	declarations: [
@@ -92,6 +93,7 @@ import { OrganizationalChartComponent } from './home/about/organizational-chart/
 		MarriageRecordsComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
+  FootersComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule],
 	providers: [],
