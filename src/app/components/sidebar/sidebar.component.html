@@ -1,0 +1,39 @@
+<div class="sidebar">
+    <div class="sidebar-inner">
+        <!-- ### $Sidebar Header ### -->
+        <div class="sidebar-logo">
+            <div class="peers ai-c fxw-nw">
+                <div class="peer peer-greed">
+                    <a class="sidebar-link td-n" href="index.html">
+                        <div class="peers ai-c fxw-nw">
+                            <div class="peer">
+                                <div class="logo pX-30 pY-30">
+                                    <img src="../../../assets/ipop/logos/logo.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="peer">
+                    <div class="mobile-toggle sidebar-toggle">
+                        <a href="" class="td-n">
+                            <i class="ti-arrow-circle-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- actived -->
+        <ul class="sidebar-menu scrollable pos-r">
+            <li *ngFor="let item of sidebar; let i = index" class="nav-item" [ngClass]="{ 'mT-30': i === 0 }" [class.active]="url.includes(item.route)">
+                <a (click)="handleChangeTab()" role="button" class="sidebar-link" [routerLink]="item.route">
+                    <span class="icon-holder">
+						<i [class]="item.icon + ' ' + item.color"></i>
+					</span>
+                    <span class="title">{{ item.name }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

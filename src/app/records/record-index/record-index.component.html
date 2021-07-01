@@ -1,0 +1,11 @@
+<div class="layers bd bgc-white">
+    <ul class="nav nav-tabs">
+        <li *ngFor="let nav of navs" class="nav-item">
+            <a (click)="handleChangeTab()" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
+                <i [class]="nav.icon"></i> {{ nav.name }}
+            </a>
+        </li>
+    </ul>
+</div>
+<br />
+<router-outlet></router-outlet>
