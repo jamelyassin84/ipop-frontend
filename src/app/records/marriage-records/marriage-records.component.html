@@ -1,1 +1,26 @@
-<p>marriage-records works!</p>
+<br />
+<table class="table mT-50">
+    <thead class="table-info">
+        <tr>
+            <th scope="col">From</th>
+            <th scope="col">Uploaded Last</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+            <td>District 4</td>
+            <td>11/14/1994</td>
+            <td>
+                <span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-green-50 c-green-500">Approved</span>
+            </td>
+            <td>
+                <button class="mR-10 btn btn-sm btn-success">Download in excel format</button>
+                <button class="mR-10 btn btn-sm btn-primary">Approve</button>
+                <button class="mR-10 btn btn-sm btn-info">View Comments</button>
+                <button class="mR-10 btn btn-sm btn-danger">Reject</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
