@@ -41,6 +41,7 @@ import { OutMigrationFormComponent } from './forms/out-migration-form/out-migrat
 import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
+import { ApprovalsComponent } from './approvals/approvals.component'
 
 const routes: Routes = [
 	{
@@ -121,6 +122,10 @@ const routes: Routes = [
 							{ path: 'view', component: ViewAdminsComponent },
 							{ path: 'add', component: AddAdminComponent },
 						],
+					},
+					{
+						path: 'approvals',
+						component: ApprovalsComponent,
 					},
 					{
 						path: 'logs',

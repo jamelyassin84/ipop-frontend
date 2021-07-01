@@ -17,7 +17,10 @@ export class AdminIndexComponent implements OnInit {
 
 	navs: RecordNavType[] = AdminNav
 
-	handleChangeTab() {
+	title: String = 'View Administrators'
+
+	handleChangeTab(title: String) {
+		this.title = title
 		setTimeout(() => {
 			this.url = this.router.url
 		}, 100)

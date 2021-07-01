@@ -28,6 +28,12 @@ export const ADMIN = [
 		icon: 'ti-harddrive',
 	},
 	{
+		name: 'Approvals',
+		route: 'approvals',
+		color: 'c-red-300',
+		icon: 'ti-marker-alt',
+	},
+	{
 		name: 'CPDB',
 		route: 'cpdb',
 		color: 'c-blue-500',

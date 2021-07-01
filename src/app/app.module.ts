@@ -47,7 +47,8 @@ import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
-import { FootersComponent } from './components/shared/footers/footers.component'
+import { FootersComponent } from './components/shared/footers/footers.component';
+import { ApprovalsComponent } from './approvals/approvals.component'
 
 @NgModule({
 	declarations: [
@@ -95,6 +96,7 @@ import { FootersComponent } from './components/shared/footers/footers.component'
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
+  ApprovalsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],
