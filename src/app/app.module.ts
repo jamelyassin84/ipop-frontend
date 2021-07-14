@@ -58,7 +58,8 @@ import { AddPopulationProfileComponent } from './home-components/population/add-
 import { CustomizePyramidComponent } from './home-components/population/customize-pyramid/customize-pyramid.component';
 import { AddOfficialsComponent } from './home-components/population/add-officials/add-officials.component';
 import { ViewOfficialsComponent } from './home-components/population/view-officials/view-officials.component';
-import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component'
+import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component';
+import { TechnicalNotesComponent } from './home-components/technical-notes/technical-notes.component'
 
 @NgModule({
 	declarations: [
@@ -117,6 +118,7 @@ import { CustomizeTechnicalNotesComponent } from './home-components/population/c
   AddOfficialsComponent,
   ViewOfficialsComponent,
   CustomizeTechnicalNotesComponent,
+  TechnicalNotesComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],
