@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-import { HomeNavType } from 'src/app/Types/navs/HomeNav.type'
+import { RouterOutlet } from '@angular/router'
+import { fader } from 'src/app/route-animation'
 import { homeNavs } from '../homeNav'
 
 @Component({
 	selector: 'app-home-page',
 	templateUrl: './home-page.component.html',
 	styleUrls: ['./home-page.component.scss'],
+	animations: [fader],
 })
 export class HomePageComponent implements OnInit {
 	constructor() {}
@@ -18,5 +20,9 @@ export class HomePageComponent implements OnInit {
 
 	setTitle(title: String) {
 		this.title = title
+	}
+
+	prepareRoute(outlet: RouterOutlet) {
+		return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
 	}
 }

@@ -47,6 +47,7 @@ const routes: Routes = [
 	{
 		path: '',
 		component: LoginComponent,
+		data: { animation: 'isRight' },
 	},
 	{
 		path: 'home',
@@ -54,21 +55,41 @@ const routes: Routes = [
 			{
 				path: '',
 				component: HomeComponent,
+				data: { animation: 'isRight' },
+
 				children: [
 					{
 						path: 'index',
 						component: HomePageComponent,
 						children: [
-							{ path: 'news', component: AritclesAndSlidersComponent },
+							{
+								path: 'news',
+								component: AritclesAndSlidersComponent,
+							},
 							{ path: 'population', component: PopulationComponent },
 							{
 								path: 'about',
 								children: [
-									{ path: 'ppo-mandate', component: MandateComponent },
-									{ path: 'mission-values-and-goals', component: VmgComponent },
-									{ path: 'core-values', component: CoreValuesComponent },
-									{ path: 'organizational-structure', component: OrganizationalChartComponent },
-									{ path: 'personnel-directory', component: PersonnelDirectoryComponent },
+									{
+										path: 'ppo-mandate',
+										component: MandateComponent,
+									},
+									{
+										path: 'mission-values-and-goals',
+										component: VmgComponent,
+									},
+									{
+										path: 'core-values',
+										component: CoreValuesComponent,
+									},
+									{
+										path: 'organizational-structure',
+										component: OrganizationalChartComponent,
+									},
+									{
+										path: 'personnel-directory',
+										component: PersonnelDirectoryComponent,
+									},
 									{ path: 'awards', component: AwardsComponent },
 								],
 							},
@@ -77,10 +98,22 @@ const routes: Routes = [
 							{
 								path: 'demographic',
 								children: [
-									{ path: 'deaths', component: DeathDemographicComponent },
-									{ path: 'births', component: BirthDemographicComponent },
-									{ path: 'migrations', component: MigrationsDemographicComponent },
-									{ path: 'marriages', component: MarriageDemographicComponent },
+									{
+										path: 'deaths',
+										component: DeathDemographicComponent,
+									},
+									{
+										path: 'births',
+										component: BirthDemographicComponent,
+									},
+									{
+										path: 'migrations',
+										component: MigrationsDemographicComponent,
+									},
+									{
+										path: 'marriages',
+										component: MarriageDemographicComponent,
+									},
 								],
 							},
 							{
@@ -93,8 +126,14 @@ const routes: Routes = [
 							{
 								path: 'ahyd',
 								children: [
-									{ path: 'teen-centers', component: TeenCentersComponent },
-									{ path: 'issues-and-concerns', component: IssuesAndConcernsComponent },
+									{
+										path: 'teen-centers',
+										component: TeenCentersComponent,
+									},
+									{
+										path: 'issues-and-concerns',
+										component: IssuesAndConcernsComponent,
+									},
 								],
 							},
 							{ path: 'others', component: OthersComponent },

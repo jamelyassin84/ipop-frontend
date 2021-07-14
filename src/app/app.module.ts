@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms'
 import { IvyCarouselModule } from 'angular-responsive-carousel'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -47,20 +48,20 @@ import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
-import { FootersComponent } from './components/shared/footers/footers.component';
-import { ApprovalsComponent } from './approvals/approvals.component';
-import { SmallComponent } from './components/modal/small/small.component';
-import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component';
-import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component';
-import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component';
-import { TopPopulatedComponent } from './home-components/population/top-populated/top-populated.component';
-import { AddPopulationProfileComponent } from './home-components/population/add-population-profile/add-population-profile.component';
-import { CustomizePyramidComponent } from './home-components/population/customize-pyramid/customize-pyramid.component';
-import { AddOfficialsComponent } from './home-components/population/add-officials/add-officials.component';
-import { ViewOfficialsComponent } from './home-components/population/view-officials/view-officials.component';
-import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component';
-import { TechnicalNotesComponent } from './home-components/technical-notes/technical-notes.component';
-import { AddPersonnelDirectoryComponent } from './home-components/about/add-personnel-directory/add-personnel-directory.component';
+import { FootersComponent } from './components/shared/footers/footers.component'
+import { ApprovalsComponent } from './approvals/approvals.component'
+import { SmallComponent } from './components/modal/small/small.component'
+import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
+import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component'
+import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component'
+import { TopPopulatedComponent } from './home-components/population/top-populated/top-populated.component'
+import { AddPopulationProfileComponent } from './home-components/population/add-population-profile/add-population-profile.component'
+import { CustomizePyramidComponent } from './home-components/population/customize-pyramid/customize-pyramid.component'
+import { AddOfficialsComponent } from './home-components/population/add-officials/add-officials.component'
+import { ViewOfficialsComponent } from './home-components/population/view-officials/view-officials.component'
+import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component'
+import { TechnicalNotesComponent } from './home-components/technical-notes/technical-notes.component'
+import { AddPersonnelDirectoryComponent } from './home-components/about/add-personnel-directory/add-personnel-directory.component'
 import { AddAwardsComponent } from './home-components/about/add-awards/add-awards.component'
 
 @NgModule({
@@ -109,22 +110,22 @@ import { AddAwardsComponent } from './home-components/about/add-awards/add-award
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
-  ApprovalsComponent,
-  SmallComponent,
-  EditSliderImageComponent,
-  AddArticleComponent,
-  AddQuickLinksComponent,
-  TopPopulatedComponent,
-  AddPopulationProfileComponent,
-  CustomizePyramidComponent,
-  AddOfficialsComponent,
-  ViewOfficialsComponent,
-  CustomizeTechnicalNotesComponent,
-  TechnicalNotesComponent,
-  AddPersonnelDirectoryComponent,
-  AddAwardsComponent,
+		ApprovalsComponent,
+		SmallComponent,
+		EditSliderImageComponent,
+		AddArticleComponent,
+		AddQuickLinksComponent,
+		TopPopulatedComponent,
+		AddPopulationProfileComponent,
+		CustomizePyramidComponent,
+		AddOfficialsComponent,
+		ViewOfficialsComponent,
+		CustomizeTechnicalNotesComponent,
+		TechnicalNotesComponent,
+		AddPersonnelDirectoryComponent,
+		AddAwardsComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
