@@ -1,7 +1,8 @@
-<button class="btn btn-dark">
-	<i class="ti-pencil-alt"></i>
-	Add an award
-</button>
+<ng-template #addAwards>
+    <AddAwards></AddAwards>
+</ng-template>
+
+<Modal size="lg" title="Add an Award" btnTitle="Add an award" btnClass="btn btn-sm btn-dark mr-2" [template]="addAwards" icon="ti-plus"></Modal>
 
 <div class="card mT-50">
     <div class="card-header bg-light">

@@ -60,7 +60,8 @@ import { AddOfficialsComponent } from './home-components/population/add-official
 import { ViewOfficialsComponent } from './home-components/population/view-officials/view-officials.component';
 import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component';
 import { TechnicalNotesComponent } from './home-components/technical-notes/technical-notes.component';
-import { AddPersonnelDirectoryComponent } from './home-components/about/add-personnel-directory/add-personnel-directory.component'
+import { AddPersonnelDirectoryComponent } from './home-components/about/add-personnel-directory/add-personnel-directory.component';
+import { AddAwardsComponent } from './home-components/about/add-awards/add-awards.component'
 
 @NgModule({
 	declarations: [
@@ -121,6 +122,7 @@ import { AddPersonnelDirectoryComponent } from './home-components/about/add-pers
   CustomizeTechnicalNotesComponent,
   TechnicalNotesComponent,
   AddPersonnelDirectoryComponent,
+  AddAwardsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],
