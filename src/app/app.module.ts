@@ -52,7 +52,13 @@ import { ApprovalsComponent } from './approvals/approvals.component';
 import { SmallComponent } from './components/modal/small/small.component';
 import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component';
 import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component';
-import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component'
+import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component';
+import { TopPopulatedComponent } from './home-components/population/top-populated/top-populated.component';
+import { AddPopulationProfileComponent } from './home-components/population/add-population-profile/add-population-profile.component';
+import { CustomizePyramidComponent } from './home-components/population/customize-pyramid/customize-pyramid.component';
+import { AddOfficialsComponent } from './home-components/population/add-officials/add-officials.component';
+import { ViewOfficialsComponent } from './home-components/population/view-officials/view-officials.component';
+import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component'
 
 @NgModule({
 	declarations: [
@@ -105,6 +111,12 @@ import { AddQuickLinksComponent } from './home-components/articles-and-sliders/a
   EditSliderImageComponent,
   AddArticleComponent,
   AddQuickLinksComponent,
+  TopPopulatedComponent,
+  AddPopulationProfileComponent,
+  CustomizePyramidComponent,
+  AddOfficialsComponent,
+  ViewOfficialsComponent,
+  CustomizeTechnicalNotesComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],

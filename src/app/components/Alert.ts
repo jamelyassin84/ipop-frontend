@@ -16,7 +16,7 @@ export function Fire(title: any, text: any, type: any, callback: Function) {
 		type = 'warning'
 	}
 	const audio = new Audio(`../../assets/ipop/audio/${type}.mp3`)
-	audio.volume = 0.1
+	audio.volume = 0.5
 	audio.play()
 }
 
@@ -26,13 +26,13 @@ export function Alert(title: any, text: any, type: any) {
 		type = 'warning'
 	}
 	const audio = new Audio(`../../assets/ipop/audio/${type}.mp3`)
-	audio.volume = 0.1
+	audio.volume = 0.5
 	audio.play()
 }
 
 export function noData() {
 	const audio = new Audio(`../../assets/ipop/audio/pop.mp3`)
-	audio.volume = 0.1
+	audio.volume = 0.5
 	audio.play()
 	setTimeout(() => {
 		audio.pause()
