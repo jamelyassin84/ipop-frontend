@@ -1,11 +1,12 @@
 img {
     max-height: 150px;
     max-width: 150px;
+    border-radius: 5px;
 }
 
 .btn-minus {
     margin-bottom: -45px;
     position: relative;
     z-index: 9;
-    transform: translateX(125px);
+    transform: translateX(120px);
 }

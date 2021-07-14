@@ -50,7 +50,9 @@ import { OrganizationalChartComponent } from './home/about/organizational-chart/
 import { FootersComponent } from './components/shared/footers/footers.component';
 import { ApprovalsComponent } from './approvals/approvals.component';
 import { SmallComponent } from './components/modal/small/small.component';
-import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
+import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component';
+import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component';
+import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component'
 
 @NgModule({
 	declarations: [
@@ -101,6 +103,8 @@ import { EditSliderImageComponent } from './home-components/articles-and-sliders
   ApprovalsComponent,
   SmallComponent,
   EditSliderImageComponent,
+  AddArticleComponent,
+  AddQuickLinksComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],

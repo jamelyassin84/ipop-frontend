@@ -1,10 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "./assets/styles/index.scss";
+@import './assets/styles/index.scss';
 .aic {
     align-items: center;
 }
 
 .jcc {
     justify-content: center;
+}
+
+.circle {
+    border-radius: 50% !important;
+}
+
+.rounded {
+    border-radius: 30px !important;
 }
