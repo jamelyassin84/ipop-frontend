@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ViewOfficialsComponent implements OnInit {
 	constructor() {}
+	types = ['Provincial', 'Muncipality', 'Barangay']
 
 	ngOnInit(): void {}
 }
