@@ -49,7 +49,8 @@ import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcle
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/shared/footers/footers.component';
 import { ApprovalsComponent } from './approvals/approvals.component';
-import { SmallComponent } from './components/modal/small/small.component'
+import { SmallComponent } from './components/modal/small/small.component';
+import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
 
 @NgModule({
 	declarations: [
@@ -99,6 +100,7 @@ import { SmallComponent } from './components/modal/small/small.component'
 		FootersComponent,
   ApprovalsComponent,
   SmallComponent,
+  EditSliderImageComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule],
 	providers: [],

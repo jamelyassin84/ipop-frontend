@@ -1,7 +1,8 @@
-<button class="btn btn-dark mB-10">
-	<i class="ti-pencil-alt"></i>
-	Add media
-</button>
+<ng-template #customizeSlider>
+    <EditSliderImage></EditSliderImage>
+</ng-template>
+
+<Modal icon="ti-pencil-alt" size="lg" title="Customize Slider" btnSize="sm" btnTitle="Customize Slider" btnClass="btn btn-dark mB-10" [template]="customizeSlider"></Modal>
 
 <div style="position: relative; z-index: 0">
     <carousel [images]="images" [cellsToShow]="2.3" [height]="400" [dots]="true" [autoplay]="true" [autoplayInterval]="3000" [transitionDuration]="300" [borderRadius]="5" [loop]="true" [lightDOM]="true">
