@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms'
 import { IvyCarouselModule } from 'angular-responsive-carousel'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ChartsModule } from 'ng2-charts'
+import { GoogleChartsModule } from 'angular-google-charts'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -62,13 +64,13 @@ import { ViewOfficialsComponent } from './home-components/population/view-offici
 import { CustomizeTechnicalNotesComponent } from './home-components/population/customize-technical-notes/customize-technical-notes.component'
 import { TechnicalNotesComponent } from './home-components/technical-notes/technical-notes.component'
 import { AddPersonnelDirectoryComponent } from './home-components/about/add-personnel-directory/add-personnel-directory.component'
-import { AddAwardsComponent } from './home-components/about/add-awards/add-awards.component';
-import { AddProgramComponent } from './home-components/program/add-program/add-program.component';
-import { AddServicesComponent } from './home-components/services/add-services/add-services.component';
-import { AddBirthDataComponent } from './home-components/demographic/births/add-birth-data/add-birth-data.component';
-import { MonthChartDataComponent } from './home-components/demographic/births/month-chart-data/month-chart-data.component';
-import { CustomizeBirthDataComponent } from './home-components/demographic/births/customize-birth-data/customize-birth-data.component';
-import { CustomizeTeenageComponent } from './home-components/demographic/births/customize-teenage/customize-teenage.component';
+import { AddAwardsComponent } from './home-components/about/add-awards/add-awards.component'
+import { AddProgramComponent } from './home-components/program/add-program/add-program.component'
+import { AddServicesComponent } from './home-components/services/add-services/add-services.component'
+import { AddBirthDataComponent } from './home-components/demographic/births/add-birth-data/add-birth-data.component'
+import { MonthChartDataComponent } from './home-components/demographic/births/month-chart-data/month-chart-data.component'
+import { CustomizeBirthDataComponent } from './home-components/demographic/births/customize-birth-data/customize-birth-data.component'
+import { CustomizeTeenageComponent } from './home-components/demographic/births/customize-teenage/customize-teenage.component'
 import { CustomizeIllegitimateComponent } from './home-components/demographic/births/customize-illegitimate/customize-illegitimate.component'
 
 @NgModule({
@@ -131,15 +133,23 @@ import { CustomizeIllegitimateComponent } from './home-components/demographic/bi
 		TechnicalNotesComponent,
 		AddPersonnelDirectoryComponent,
 		AddAwardsComponent,
-  AddProgramComponent,
-  AddServicesComponent,
-  AddBirthDataComponent,
-  MonthChartDataComponent,
-  CustomizeBirthDataComponent,
-  CustomizeTeenageComponent,
-  CustomizeIllegitimateComponent,
+		AddProgramComponent,
+		AddServicesComponent,
+		AddBirthDataComponent,
+		MonthChartDataComponent,
+		CustomizeBirthDataComponent,
+		CustomizeTeenageComponent,
+		CustomizeIllegitimateComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		IvyCarouselModule,
+		BrowserAnimationsModule,
+		ChartsModule,
+		GoogleChartsModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
