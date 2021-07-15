@@ -102,7 +102,7 @@
 				<div class="h5 mr-auto">Migration Statistics</div>
 				<Modal
 					size="lg"
-					title="Customize Migration Death Data"
+					title="Customize Migration  Data"
 					btnTitle="Customize statistical data"
 					btnClass="btn btn-sm btn-dark mr-2"
 					[template]="customizeMonthChart"
@@ -130,7 +130,14 @@
 			<div class="card">
 				<div class="card-header bg-white d-flex">
 					<div class="h5 mr-auto">Local Migration Data</div>
-					<button class="btn btn-dark">Edit local igration data</button>
+					<Modal
+						size="lg"
+						title="Customize Local Migration  Data"
+						btnTitle="Customize local migration data"
+						btnClass="btn btn-sm btn-dark mr-2"
+						[template]="addLocalMigrationData"
+						icon="ti-pencil-alt"
+					></Modal>
 				</div>
 				<div class="layer w-100 card-body">
 					<h5 class="mB-5">200</h5>

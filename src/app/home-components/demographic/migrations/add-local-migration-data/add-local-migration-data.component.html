@@ -1,1 +1,23 @@
-<p>add-local-migration-data works!</p>
+<div class="card-body">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for=""> In Migrations</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label for=""> Out Migrations</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label for=""> Net Migrations</label>
+            <input type="text" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="d-flex aic jcc mr-5">
+    <button (click)="save()" class="btn btn-success">
+		<i class="ti-check mr-1"></i> Add this local migration Data
+	</button>
+</div>
