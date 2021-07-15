@@ -1,6 +1,6 @@
 UI
 Paganahon tanan nga buttons
-interceptor
+interceptor / refresh on save
 component directive
 
 backend
@@ -14,3 +14,35 @@ user UI
 btn disabled every save
 
 
+Approvals
+
+Activity
+Award
+Chart
+Service
+ServiceOffer
+BirthStatistic
+DeathStatistic
+MigrationRate
+MigrationStatistic
+Profile
+TeenageBirthIncidenceGraph
+AgeDistribution
+Article
+Incidence
+MonthChart
+MPCFDC
+MPCFDCPersonnel
+MPCFDCTeam
+MTCMMember
+MunicipalOfficial
+PMOC
+PMOCTeam
+ProvincialOfficial
+SBMember
+SBMPTC
+SBMPTCFocalPerson
+SBMPTCPersonnel
+SBMPTCTeam
+Slider
+TopPopulation

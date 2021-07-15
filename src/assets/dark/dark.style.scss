@@ -11,6 +11,13 @@
     background: #24344d !important;
 }
 
+.modal-content {
+    background: #24344d !important;
+    * {
+        color: white;
+    }
+}
+
 .main-content {
     background: #192231 !important;
 }
@@ -101,4 +108,8 @@ select,
     border: 1px solid #324462 !important;
     background: #24344d !important;
     color: white;
+}
+
+.btn-dark {
+    background: black;
 }
