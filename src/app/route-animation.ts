@@ -10,6 +10,6 @@ export const fader = trigger('routeAnimations', [
 				opacity: 0,
 			}),
 		]),
-		query(':enter', [animate('500ms ease', style({ opacity: 1 }))]),
+		query(':enter', [animate('1500ms ease', style({ opacity: 1 }))]),
 	]),
 ])

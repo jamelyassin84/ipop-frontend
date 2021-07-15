@@ -71,10 +71,13 @@ import { AddBirthDataComponent } from './home-components/demographic/births/add-
 import { MonthChartDataComponent } from './home-components/demographic/births/month-chart-data/month-chart-data.component'
 import { CustomizeBirthDataComponent } from './home-components/demographic/births/customize-birth-data/customize-birth-data.component'
 import { CustomizeTeenageComponent } from './home-components/demographic/births/customize-teenage/customize-teenage.component'
-import { CustomizeIllegitimateComponent } from './home-components/demographic/births/customize-illegitimate/customize-illegitimate.component';
-import { AddDeathDataComponent } from './home-components/demographic/deaths/add-death-data/add-death-data.component';
-import { AddLocalDeathDataComponent } from './home-components/demographic/deaths/add-local-death-data/add-local-death-data.component';
+import { CustomizeIllegitimateComponent } from './home-components/demographic/births/customize-illegitimate/customize-illegitimate.component'
+import { AddDeathDataComponent } from './home-components/demographic/deaths/add-death-data/add-death-data.component'
+import { AddLocalDeathDataComponent } from './home-components/demographic/deaths/add-local-death-data/add-local-death-data.component'
 import { AddCrudeDeathRateComponent } from './home-components/demographic/deaths/add-crude-death-rate/add-crude-death-rate.component'
+import { AddMigrationDataComponent } from './home-components/demographic/migrations/add-migration-data/add-migration-data.component'
+import { AddLocalMigrationDataComponent } from './home-components/demographic/migrations/add-local-migration-data/add-local-migration-data.component'
+import { CustomizeMigrationChartComponent } from './home-components/demographic/migrations/customize-migration-chart/customize-migration-chart.component'
 
 @NgModule({
 	declarations: [
@@ -143,9 +146,12 @@ import { AddCrudeDeathRateComponent } from './home-components/demographic/deaths
 		CustomizeBirthDataComponent,
 		CustomizeTeenageComponent,
 		CustomizeIllegitimateComponent,
-  AddDeathDataComponent,
-  AddLocalDeathDataComponent,
-  AddCrudeDeathRateComponent,
+		AddDeathDataComponent,
+		AddLocalDeathDataComponent,
+		AddCrudeDeathRateComponent,
+		AddMigrationDataComponent,
+		AddLocalMigrationDataComponent,
+		CustomizeMigrationChartComponent,
 	],
 	imports: [
 		BrowserModule,

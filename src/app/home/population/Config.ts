@@ -5,7 +5,7 @@ export const ChartOptions = {
 			opacity: 0,
 		},
 		titleTextStyle: { color: 'gray', fontSize: 30, align: 'center', bold: true },
-		colors: ['#FD582C', '#0D6EFD'],
+		colors: ['#D1546F', '#3087C1'],
 		chartArea: { backgroundColor: 'transparent', height: '100%', top: '%' },
 		isStacked: true,
 		hAxis: {
