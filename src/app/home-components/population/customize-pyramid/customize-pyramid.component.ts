@@ -31,7 +31,6 @@ export class CustomizePyramidComponent implements OnInit {
 	}
 
 	save() {
-		console.log(this.males)
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
 	}
 }
