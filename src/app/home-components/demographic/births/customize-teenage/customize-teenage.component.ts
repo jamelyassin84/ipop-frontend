@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Fire } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'CustomizeTeenage',
@@ -7,6 +8,14 @@ import { Component, OnInit } from '@angular/core'
 })
 export class CustomizeTeenageComponent implements OnInit {
 	constructor() {}
+	years: number[] = []
+	ngOnInit(): void {
+		for (let year = 2021; year < 2101; year++) {
+			this.years.push(year)
+		}
+	}
 
-	ngOnInit(): void {}
+	save() {
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+	}
 }

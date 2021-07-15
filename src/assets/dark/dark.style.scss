@@ -2,24 +2,24 @@
     * {
         color: rgba(225, 235, 245, 0.7);
     }
-    background: #192231 !important;
+    background: #202020 !important;
 }
 
 .bg-light,
 .bgc-white,
 .bg-white {
-    background: #24344d !important;
+    background: #181818 !important;
 }
 
 .modal-content {
-    background: #24344d !important;
+    background: #181818 !important;
     * {
         color: white;
     }
 }
 
 .main-content {
-    background: #192231 !important;
+    background: #181818 !important;
 }
 
 .text-muted {
@@ -32,7 +32,7 @@ hr,
 }
 
 .card {
-    background: #24344d !important;
+    background: #181818 !important;
     color: rgba(225, 235, 245, 0.7);
     border: 1px solid rgba(225, 235, 245, 0.1);
 }
@@ -70,7 +70,7 @@ table * {
 }
 
 ul {
-    background: #192231;
+    background: #202020;
     * {
         color: rgba(225, 235, 245, 0.7);
     }
@@ -94,7 +94,7 @@ ul {
         color: white !important;
     }
     ul {
-        background: #131c29 !important;
+        background: #202020 !important;
     }
 }
 
@@ -105,9 +105,27 @@ label {
 .form-control,
 select,
 .custom-select {
-    border: 1px solid #324462 !important;
-    background: #24344d !important;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-left: 4px;
+    max-width: 100%;
+    outline: none;
+    width: 100%;
+    -ms-flex: 1 1 0.000000001px;
+    -webkit-flex: 1;
+    flex: 1;
+    -webkit-flex-basis: 0.000000001px;
+    flex-basis: 0.000000001px;
     color: white;
+    border: 1px solid hsl(0, 0%, 18.82%);
 }
 
 .btn-dark {
