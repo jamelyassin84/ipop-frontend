@@ -1,0 +1,104 @@
+.navbar {
+    * {
+        color: rgba(225, 235, 245, 0.7);
+    }
+    background: #192231 !important;
+}
+
+.bg-light,
+.bgc-white,
+.bg-white {
+    background: #24344d !important;
+}
+
+.main-content {
+    background: #192231 !important;
+}
+
+.text-muted {
+    color: rgba(225, 235, 245, 0.7);
+}
+
+hr,
+.card-header {
+    border: 1px solid rgba(225, 235, 245, 0.1);
+}
+
+.card {
+    background: #24344d !important;
+    color: rgba(225, 235, 245, 0.7);
+    border: 1px solid rgba(225, 235, 245, 0.1);
+}
+
+.dw {
+    color: white;
+}
+
+h5,
+.h5,
+h1,
+.h1 {
+    color: white;
+}
+
+table * {
+    color: rgba(225, 235, 245, 0.7);
+}
+
+.bb {
+    border-bottom: 1px solid rgba(225, 235, 245, 0.1);
+}
+
+.bl {
+    border-left: 1px solid rgba(225, 235, 245, 0.1);
+}
+
+.br {
+    border-right: 1px solid rgba(225, 235, 245, 0.1);
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    border-color: transparent;
+}
+
+ul {
+    background: #192231;
+    * {
+        color: rgba(225, 235, 245, 0.7);
+    }
+}
+
+.nav-tabs {
+    border: none !important;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link .active {
+    background: #131c29;
+}
+
+.sidebar {
+    background: #131c29 !important;
+    span {
+        color: rgba(225, 235, 245, 0.7);
+    }
+    h5 {
+        color: white !important;
+    }
+    ul {
+        background: #131c29 !important;
+    }
+}
+
+label {
+    color: rgba(225, 235, 245, 0.9);
+}
+
+.form-control,
+select,
+.custom-select {
+    border: 1px solid #324462 !important;
+    background: #24344d !important;
+    color: white;
+}

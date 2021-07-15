@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" theme="light" lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -12,6 +12,18 @@
 
 <body>
     <app-root></app-root>
+    <script type="text/javascript">
+        function setTheme() {
+            if (localStorage.getItem('theme') === undefined) {
+                document.getElementById('html').setAttribute('theme', 'light')
+            } else {
+                document.getElementById('html').setAttribute('theme', localStorage.getItem('theme'))
+            }
+        }
+        setInterval(() => {
+            setTheme()
+        }, 100)
+    </script>
 </body>
 
 </html>
