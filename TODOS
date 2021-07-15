@@ -47,3 +47,11 @@ SBMPTCPersonnel
 SBMPTCTeam
 Slider
 TopPopulation
+
+
+Technical Notes Types
+BirthStatistic
+DeathStatistic
+TopPopulation
+MigrationStatistic
+Marriagges

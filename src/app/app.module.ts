@@ -71,7 +71,10 @@ import { AddBirthDataComponent } from './home-components/demographic/births/add-
 import { MonthChartDataComponent } from './home-components/demographic/births/month-chart-data/month-chart-data.component'
 import { CustomizeBirthDataComponent } from './home-components/demographic/births/customize-birth-data/customize-birth-data.component'
 import { CustomizeTeenageComponent } from './home-components/demographic/births/customize-teenage/customize-teenage.component'
-import { CustomizeIllegitimateComponent } from './home-components/demographic/births/customize-illegitimate/customize-illegitimate.component'
+import { CustomizeIllegitimateComponent } from './home-components/demographic/births/customize-illegitimate/customize-illegitimate.component';
+import { AddDeathDataComponent } from './home-components/demographic/deaths/add-death-data/add-death-data.component';
+import { AddLocalDeathDataComponent } from './home-components/demographic/deaths/add-local-death-data/add-local-death-data.component';
+import { AddCrudeDeathRateComponent } from './home-components/demographic/deaths/add-crude-death-rate/add-crude-death-rate.component'
 
 @NgModule({
 	declarations: [
@@ -140,6 +143,9 @@ import { CustomizeIllegitimateComponent } from './home-components/demographic/bi
 		CustomizeBirthDataComponent,
 		CustomizeTeenageComponent,
 		CustomizeIllegitimateComponent,
+  AddDeathDataComponent,
+  AddLocalDeathDataComponent,
+  AddCrudeDeathRateComponent,
 	],
 	imports: [
 		BrowserModule,

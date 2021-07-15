@@ -82,11 +82,11 @@ ul {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link .active {
-    background: #131c29;
+    background: #181818;
 }
 
 .sidebar {
-    background: #131c29 !important;
+    background: #202020 !important;
     span {
         color: rgba(225, 235, 245, 0.7);
     }
@@ -102,9 +102,14 @@ label {
     color: rgba(225, 235, 245, 0.9);
 }
 
+option {
+    background: #202020 !important;
+}
+
 .form-control,
 select,
-.custom-select {
+.custom-select,
+option {
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
     background-color: transparent;
