@@ -1,7 +1,8 @@
-<button class="btn btn-dark">
-	<i class="ti-pencil-alt"></i>
-	New
-</button>
+<ng-template #addServices>
+    <AddServices></AddServices>
+</ng-template>
+
+<Modal size="lg" title="Add a Services" btnTitle="Add services" btnClass="btn btn-sm btn-dark mr-2" [template]="addServices" icon="ti-plus"></Modal>
 
 <div class="card mT-50">
     <div class="card-header bg-light">
