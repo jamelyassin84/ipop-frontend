@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Fire } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'AddTeenCenter',
@@ -8,5 +9,10 @@ import { Component, OnInit } from '@angular/core'
 export class AddTeenCenterComponent implements OnInit {
 	constructor() {}
 
+	districts = ['I', 'II', 'III', 'IV', 'V']
 	ngOnInit(): void {}
+
+	save() {
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+	}
 }
