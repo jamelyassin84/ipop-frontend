@@ -86,7 +86,14 @@ import { CustomizeByAgeEmploymentStatusChartComponent } from './home-components/
 import { CustomizeByKnowledgeOnFpChartComponent } from './home-components/rpfp/pmoc/customize-by-knowledge-on-fp-chart/customize-by-knowledge-on-fp-chart.component';
 import { CustomizeByCivilStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-civil-status-chart/customize-by-civil-status-chart.component';
 import { CustomizeByMonthlyIncomeChartComponent } from './home-components/rpfp/pmoc/customize-by-monthly-income-chart/customize-by-monthly-income-chart.component';
-import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customize-pmoc-team/customize-pmoc-team.component'
+import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customize-pmoc-team/customize-pmoc-team.component';
+import { AddMpcFdcDataComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-data/add-mpc-fdc-data.component';
+import { AddMpcImagesComponent } from './home-components/rpfp/mpc-fdc/add-mpc-images/add-mpc-images.component';
+import { AddMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-team/add-mpc-fdc-team.component';
+import { AddPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/add-personnel-incharge/add-personnel-incharge.component';
+import { ViewPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/view-personnel-incharge/view-personnel-incharge.component';
+import { ViewMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-team/view-mpc-fdc-team.component';
+import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-images/view-mpc-fdc-images.component'
 
 @NgModule({
 	declarations: [
@@ -170,6 +177,13 @@ import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customiz
   CustomizeByCivilStatusChartComponent,
   CustomizeByMonthlyIncomeChartComponent,
   CustomizePMOCTeamComponent,
+  AddMpcFdcDataComponent,
+  AddMpcImagesComponent,
+  AddMpcFdcTeamComponent,
+  AddPersonnelInchargeComponent,
+  ViewPersonnelInchargeComponent,
+  ViewMpcFdcTeamComponent,
+  ViewMpcFdcImagesComponent,
 	],
 	imports: [
 		BrowserModule,

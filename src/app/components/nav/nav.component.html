@@ -1,37 +1,36 @@
-<div class="header navbar">
-    <div class="header-container">
-        <ul class="nav-left">
-            <li>
-                <a id="sidebar-toggle" class="sidebar-toggle">
-                    <i class="ti-menu"></i>
-                </a>
-            </li>
-            <li class="search-box">
-                <a class="search-toggle no-pdd-right">
-                    <i class="search-icon ti-search pdd-right-10"></i>
-                    <i class="search-icon-close ti-close pdd-right-10"></i>
-                </a>
-            </li>
-            <li class="search-input">
-                <input class="form-control" type="text" placeholder="Search..." />
-            </li>
-        </ul>
-        <ul class="nav-right">
-            <li class="dropdown">
-                <a role="button" class="no-after peers fxw-nw ai-c lh-1" data-bs-toggle="dropdown">
-                    <div class="peer mR-10">
-                        <img class="w-2r bdrs-50p" src="../../../assets/avatars/face-7.jpg" alt="" />
-                    </div>
-                    <div class="peer">
-                        <span class="fsz-sm">IPOP ILOILO</span>
-                    </div>
-                </a>
-            </li>
-            <li class="notifications dropdown mr-5">
-                <a role="button" class="no-after" data-bs-toggle="dropdown">
-                    <i class="ti-angle-down"></i>
-                </a>
-            </li>
-        </ul>
+<div class="header navbar" [class.fix]="!hideNav">
+    <div class="d-flex p-20 aic card-body" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
+        <img src="../../../assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
+        <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="../../../assets/ipop/logos/ipo-logo.png" />
+        <div class="p-20">
+            <P class="m-0">Republic of the Philippines </P>
+            <p class="m-0">Province of Iloilo</p>
+            <h1 class="m-0">PROVINCIAL POPULATION OFFICE</h1>
+        </div>
     </div>
+    <div class="nav">
+        <div class="nav-list">
+            <div *ngFor="let nav of navs" class="Item">
+                <span *ngIf="nav.name !== 'Iloilo.gov'"> {{ nav.name }}</span>
+                <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">
+					{{ nav.name }}</a
+				>
+				<div *ngIf="nav.name !== 'Iloilo.gov'" class="drop-down-container shadow" style="position: relative">
+					<div class="drop-down bg-white">
+						<a
+							(click)="setTitle(child.name)"
+							*ngFor="let child of nav.children"
+							class="drop-down-container animated fadeIn fast"
+							[routerLink]="'/home/index/' + nav.route + child.route"
+							class="drop-down-item"
+						>
+							<i class="ti-folder c-orange-500"></i>
+							<p style="flex: 3">{{ child.name }}</p>
+							<i class="bi bi-chevron-right"></i>
+						</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </div>

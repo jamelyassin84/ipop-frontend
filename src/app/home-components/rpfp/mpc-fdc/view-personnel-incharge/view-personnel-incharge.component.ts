@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { Fire } from 'src/app/components/Alert'
 
 @Component({
-	selector: 'app-mpc-fdc',
-	templateUrl: './mpc-fdc.component.html',
-	styleUrls: ['./mpc-fdc.component.scss'],
+	selector: 'ViewMPCFDCPersonnelIncharge',
+	templateUrl: './view-personnel-incharge.component.html',
+	styleUrls: ['./view-personnel-incharge.component.scss'],
 })
-export class MpcFdcComponent implements OnInit {
+export class ViewPersonnelInchargeComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}

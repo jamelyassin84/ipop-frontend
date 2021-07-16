@@ -1,44 +1,7 @@
-<div class="card">
-    <div class="d-flex p-20 aic card-body">
-        <img src="../../../assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
-        <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="../../../assets/ipop/logos/ipo-logo.png" />
-        <div class="p-20">
-            <P class="m-0">Republic of the Philippines </P>
-            <p class="m-0">Province of Iloilo</p>
-            <h1 class="m-0">PROVINCIAL POPULATION OFFICE</h1>
-        </div>
+<div class="bg-light pt-5">
+    <div class="mb-5 mt-5">.</div>
+    <div class="card-body mt-5 pt-5">
+        <!-- <h1 class="text-center ">{{ title }}</h1> -->
+        <router-outlet #outlet="outlet"></router-outlet>
     </div>
-    <div class="nav">
-        <div class="nav-list">
-            <div *ngFor="let nav of navs" class="Item">
-                <span *ngIf="nav.name !== 'Iloilo.gov'"> {{ nav.name }}</span>
-                <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">
-					{{ nav.name }}</a
-				>
-				<div *ngIf="nav.name !== 'Iloilo.gov'" class="drop-down-container shadow" style="position: relative">
-					<div class="drop-down bg-white">
-						<div
-							(click)="setTitle(child.name)"
-							*ngFor="let child of nav.children"
-							class="drop-down-container animated fadeIn fast"
-							[routerLink]="nav.route + child.route"
-							class="drop-down-item"
-						>
-							<i class="ti-folder c-orange-500"></i>
-							<p style="flex: 3">{{ child.name }}</p>
-							<i class="bi bi-chevron-right"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="card bg-light">
-		<div class="card-body">
-			<h1>{{ title }}</h1>
-			<hr />
-			<router-outlet #outlet="outlet"></router-outlet>
-		</div>
-	</div>
 </div>

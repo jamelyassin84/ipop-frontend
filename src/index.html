@@ -6,13 +6,20 @@
     <title>Iloilo Population Office</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/jpeg" href="./assets/ipop/logos/ipo-logo.png" />
+    <link rel="icon" type="image/jpeg" href="./assets/ipop/logos/logo.png" />
     <script src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
-<body>
+<body onscroll="onScroll()">
     <app-root></app-root>
     <script type="text/javascript">
+        var scrollTop = 0
+
+        function onScroll() {
+            localStorage.setItem('hideNav', scrollTop <= window.scrollY.toString())
+            this.scrollTop = window.scrollY
+        }
+
         function setTheme() {
             if (localStorage.getItem('theme') === undefined) {
                 document.getElementById('html').setAttribute('theme', 'light')

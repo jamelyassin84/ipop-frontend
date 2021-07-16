@@ -47,11 +47,15 @@ SBMPTCPersonnel
 SBMPTCTeam
 Slider
 TopPopulation
-
+technical notes
+personnel incharge
 
 Technical Notes Types
 BirthStatistic
 DeathStatistic
 TopPopulation
 MigrationStatistic
-Marriagges
+MarriaggesStatistic
+PMOC
+MPCFDC
+TENcenters
