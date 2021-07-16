@@ -67,10 +67,11 @@ table * {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
     border-color: transparent;
+    background: #202020;
 }
 
 ul {
-    background: #202020;
+    background: #181818;
     * {
         color: rgba(225, 235, 245, 0.7);
     }
@@ -82,7 +83,7 @@ ul {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link .active {
-    background: #181818;
+    background: #202020;
 }
 
 .sidebar {
@@ -131,6 +132,11 @@ option {
     flex-basis: 0.000000001px;
     color: white;
     border: 1px solid hsl(0, 0%, 18.82%);
+}
+
+.border,
+.bordered {
+    border: 1px solid rgba(225, 235, 245, 0.1) !important;
 }
 
 .btn-dark {
