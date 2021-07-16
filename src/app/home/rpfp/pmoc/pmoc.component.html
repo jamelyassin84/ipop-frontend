@@ -61,7 +61,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Number of Couples</div>
-                    <Modal size="lg" title="Customize Number of Couple Chart" btnTitle="customize number of couple chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeCoupleChart" icon="ti-pencil-alt"></Modal>
+                    <Modal size="lg" title="Customize Number of Couple Chart" btnTitle="Customize number of couple chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeCoupleChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="numberOfCouplesChart.colors" [datasets]="numberOfCouplesChart.datasets" [labels]="numberOfCouplesChart.labels" [options]="numberOfCouplesChart.options" [legend]="numberOfCouplesChart.legend" chartType="line">
@@ -77,7 +77,8 @@
                 </div>
                 <div class="layer w-100 card-body">
                     <h5 class="mB-5">200</h5>
-                    <small class="fw-600 c-grey-700">Edit Number of Sessions Conducted <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
+                    <small class="fw-600 c-grey-700">
+						Number of Sessions Conducted <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
 					>
 					<span class="pull-right c-grey-600 fsz-sm">80%</span>
 					<div class="progress mT-10">
@@ -110,7 +111,7 @@
 					<div class="layer w-100 mT-15">
 						<h5 class="mB-5">200</h5>
 						<small class="fw-600 c-grey-700"
-							>Number of Individual Interview
+							>Number of Individual Interviewed
 							<span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
 						>
 						<span class="pull-right c-grey-600 fsz-sm">90%</span>
@@ -256,7 +257,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 mT-50">
+		<div class="col-md-8 mT-50">
 			<div class="card">
 				<div class="card-header bg-white d-flex aic">
 					<div class="card-title h5 mr-auto">PMC Applicants by Average Monthly Income and Sex</div>
@@ -283,7 +284,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<div class="card">
 				<div class="card-header bg-white bg-white d-flex aic">
 					<div class="card-title h5 mr-auto mt-2">Technical Notes</div>
