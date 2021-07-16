@@ -1,5 +1,37 @@
-<Modal size="lg" title="Ari na" btnTitle="test" btnClass="btn btn-primary" [template]="content"></Modal>
+<div class="main-content bgc-grey-100 mt-p pt-5">
+    <div id="mainContent mt-p pt-5">
+        <div class="full-container mt-p pt-5">
+            <div class="peers fxw-nw pos-r mt-p pt-5">
+                <!-- Sidebar -->
+                <div class="peer bdR" id="chat-sidebar">
+                    <div class="layers h-100">
+                        <!-- Search -->
+                        <div class="bdB layer w-100"></div>
 
-<ng-template #content>
-    <div>Nice on hahaha</div>
-</ng-template>
+                        <!-- List -->
+                        <div class="layer w-100 fxg-1 scrollable pos-r">
+                            <div *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 7, 8, 7, 87, 88, 67, 567, 67, 56, 75]" class="peers fxw-nw ai-c p-20 bdB bg-white bgcH-grey-50 cur-p border">
+                                <div class="peer">
+                                    <img src="../../assets/avatars/face-7.jpg" alt="" class="w-3r h-3r bdrs-50p" />
+                                </div>
+                                <div class="peer peer-greed pL-20">
+                                    <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
+                                    <small class="lh-1 c-green-500">wants to add Article</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Box -->
+                <div class="peer peer-greed d-flex aic jcc" id="chat-box" style="flex-direction: column">
+                    Test Approval
+                    <div class="d-flex" style="align-self: flex-end">
+                        <button class="btn btn-sm btn-outline-danger mr-1">Reject</button>
+                        <button class="btn btn-sm btn-success mr-1">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
