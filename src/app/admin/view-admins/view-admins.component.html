@@ -1,5 +1,9 @@
-<div class="card mt-5 pt-5">
-    <div class="card-body mt-5 pt-5">
+<ng-template #viewAdmin>
+    <ViewAdmin></ViewAdmin>
+</ng-template>
+
+<div class="card">
+    <div class="card-body">
         <table class="table mT-30">
             <thead class="table-dark">
                 <tr>
@@ -30,7 +34,14 @@
 					<td>Barangay</td>
 					<td>11/14/1994</td>
 					<td>
-						<button class="btn btn-sm btn-info">View Admin</button>
+						<Modal
+							size="xl"
+							title="View Admin"
+							btnTitle="View admin"
+							btnClass="btn btn-sm btn-outline-info mr-2"
+							[template]="viewAdmin"
+							icon="ti-eye"
+						></Modal>
 					</td>
 				</tr>
 			</tbody>

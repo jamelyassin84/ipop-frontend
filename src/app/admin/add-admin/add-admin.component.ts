@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 import { BarangayOfficialType } from 'src/app/Types/officials/BarangayOfficials.types'
-
 @Component({
 	selector: 'app-add-admin',
 	templateUrl: './add-admin.component.html',
@@ -17,10 +16,10 @@ export class AddAdminComponent implements OnInit {
 	invalidData: any = {}
 	data: any = {}
 	randomImages = [
-		'/assets/ipop/avatars/boy-blue.png',
-		'/assets/ipop/avatars/boyorange.png',
-		'assets/ipop/avatars/girl-black.png',
-		'/assets/ipop/avatars/girl-orange.png',
+		'/assets/avatars/face-7.jpg',
+		'/assets/avatars/face-7.jpg',
+		'/assets/avatars/face-7.jpg',
+		'/assets/avatars/face-7.jpg',
 	]
 
 	constructor() {}
