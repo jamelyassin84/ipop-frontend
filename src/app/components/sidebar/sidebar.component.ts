@@ -13,8 +13,11 @@ export class SidebarComponent implements OnInit {
 	constructor(private router: Router) {}
 
 	url = this.router.url
-
-	ngOnInit(): void {}
+	mode = ''
+	ngOnInit(): void {
+		this.setMode()
+		this.setMode()
+	}
 
 	sidebar: SidebarType[] = ADMIN
 
@@ -22,6 +25,13 @@ export class SidebarComponent implements OnInit {
 		setTimeout(() => {
 			this.url = this.router.url
 		}, 100)
+	}
+
+	setMode() {
+		localStorage.getItem('theme') === 'dark'
+			? localStorage.setItem('theme', 'light')
+			: localStorage.setItem('theme', 'dark')
+		localStorage.getItem('theme') === 'dark' ? (this.mode = 'Light') : (this.mode = 'Dark')
 	}
 
 	logout() {
