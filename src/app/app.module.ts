@@ -77,31 +77,31 @@ import { AddLocalDeathDataComponent } from './home-components/demographic/deaths
 import { AddCrudeDeathRateComponent } from './home-components/demographic/deaths/add-crude-death-rate/add-crude-death-rate.component'
 import { AddMigrationDataComponent } from './home-components/demographic/migrations/add-migration-data/add-migration-data.component'
 import { AddLocalMigrationDataComponent } from './home-components/demographic/migrations/add-local-migration-data/add-local-migration-data.component'
-import { CustomizeMigrationChartComponent } from './home-components/demographic/migrations/customize-migration-chart/customize-migration-chart.component';
-import { AddPmocDataComponent } from './home-components/rpfp/pmoc/add-pmoc-data/add-pmoc-data.component';
-import { EditPmocDataComponent } from './home-components/rpfp/pmoc/edit-pmoc-data/edit-pmoc-data.component';
-import { CustomizeCoupleChartComponent } from './home-components/rpfp/pmoc/customize-couple-chart/customize-couple-chart.component';
-import { CustomizeByAgeGroupChartComponent } from './home-components/rpfp/pmoc/customize-by-age-group-chart/customize-by-age-group-chart.component';
-import { CustomizeByAgeEmploymentStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-age-employment-status-chart/customize-by-age-employment-status-chart.component';
-import { CustomizeByKnowledgeOnFpChartComponent } from './home-components/rpfp/pmoc/customize-by-knowledge-on-fp-chart/customize-by-knowledge-on-fp-chart.component';
-import { CustomizeByCivilStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-civil-status-chart/customize-by-civil-status-chart.component';
-import { CustomizeByMonthlyIncomeChartComponent } from './home-components/rpfp/pmoc/customize-by-monthly-income-chart/customize-by-monthly-income-chart.component';
-import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customize-pmoc-team/customize-pmoc-team.component';
-import { AddMpcFdcDataComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-data/add-mpc-fdc-data.component';
-import { AddMpcImagesComponent } from './home-components/rpfp/mpc-fdc/add-mpc-images/add-mpc-images.component';
-import { AddMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-team/add-mpc-fdc-team.component';
-import { AddPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/add-personnel-incharge/add-personnel-incharge.component';
-import { ViewPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/view-personnel-incharge/view-personnel-incharge.component';
-import { ViewMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-team/view-mpc-fdc-team.component';
-import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-images/view-mpc-fdc-images.component';
-import { AddTeenCenterComponent } from './home-components/ahyd/teen-centers/add-teen-center/add-teen-center.component';
-import { AddFocalPersonComponent } from './home-components/ahyd/teen-centers/add-focal-person/add-focal-person.component';
-import { AddFocalAhydTeamComponent } from './home-components/ahyd/teen-centers/add-focal-ahyd-team/add-focal-ahyd-team.component';
-import { AddTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/add-tc-personnel-incharge/add-tc-personnel-incharge.component';
-import { ViewTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/view-tc-personnel-incharge/view-tc-personnel-incharge.component';
-import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-ahyd-team/view-ahyd-team.component';
-import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component';
-import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component';
+import { CustomizeMigrationChartComponent } from './home-components/demographic/migrations/customize-migration-chart/customize-migration-chart.component'
+import { AddPmocDataComponent } from './home-components/rpfp/pmoc/add-pmoc-data/add-pmoc-data.component'
+import { EditPmocDataComponent } from './home-components/rpfp/pmoc/edit-pmoc-data/edit-pmoc-data.component'
+import { CustomizeCoupleChartComponent } from './home-components/rpfp/pmoc/customize-couple-chart/customize-couple-chart.component'
+import { CustomizeByAgeGroupChartComponent } from './home-components/rpfp/pmoc/customize-by-age-group-chart/customize-by-age-group-chart.component'
+import { CustomizeByAgeEmploymentStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-age-employment-status-chart/customize-by-age-employment-status-chart.component'
+import { CustomizeByKnowledgeOnFpChartComponent } from './home-components/rpfp/pmoc/customize-by-knowledge-on-fp-chart/customize-by-knowledge-on-fp-chart.component'
+import { CustomizeByCivilStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-civil-status-chart/customize-by-civil-status-chart.component'
+import { CustomizeByMonthlyIncomeChartComponent } from './home-components/rpfp/pmoc/customize-by-monthly-income-chart/customize-by-monthly-income-chart.component'
+import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customize-pmoc-team/customize-pmoc-team.component'
+import { AddMpcFdcDataComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-data/add-mpc-fdc-data.component'
+import { AddMpcImagesComponent } from './home-components/rpfp/mpc-fdc/add-mpc-images/add-mpc-images.component'
+import { AddMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/add-mpc-fdc-team/add-mpc-fdc-team.component'
+import { AddPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/add-personnel-incharge/add-personnel-incharge.component'
+import { ViewPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/view-personnel-incharge/view-personnel-incharge.component'
+import { ViewMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-team/view-mpc-fdc-team.component'
+import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-images/view-mpc-fdc-images.component'
+import { AddTeenCenterComponent } from './home-components/ahyd/teen-centers/add-teen-center/add-teen-center.component'
+import { AddFocalPersonComponent } from './home-components/ahyd/teen-centers/add-focal-person/add-focal-person.component'
+import { AddFocalAhydTeamComponent } from './home-components/ahyd/teen-centers/add-focal-ahyd-team/add-focal-ahyd-team.component'
+import { AddTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/add-tc-personnel-incharge/add-tc-personnel-incharge.component'
+import { ViewTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/view-tc-personnel-incharge/view-tc-personnel-incharge.component'
+import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-ahyd-team/view-ahyd-team.component'
+import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
+import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
 
 @NgModule({
@@ -177,31 +177,31 @@ import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc
 		AddMigrationDataComponent,
 		AddLocalMigrationDataComponent,
 		CustomizeMigrationChartComponent,
-  AddPmocDataComponent,
-  EditPmocDataComponent,
-  CustomizeCoupleChartComponent,
-  CustomizeByAgeGroupChartComponent,
-  CustomizeByAgeEmploymentStatusChartComponent,
-  CustomizeByKnowledgeOnFpChartComponent,
-  CustomizeByCivilStatusChartComponent,
-  CustomizeByMonthlyIncomeChartComponent,
-  CustomizePMOCTeamComponent,
-  AddMpcFdcDataComponent,
-  AddMpcImagesComponent,
-  AddMpcFdcTeamComponent,
-  AddPersonnelInchargeComponent,
-  ViewPersonnelInchargeComponent,
-  ViewMpcFdcTeamComponent,
-  ViewMpcFdcImagesComponent,
-  AddTeenCenterComponent,
-  AddFocalPersonComponent,
-  AddFocalAhydTeamComponent,
-  AddTcPersonnelInchargeComponent,
-  ViewTcPersonnelInchargeComponent,
-  ViewAhydTeamComponent,
-  ViewFocalPersonsComponent,
-  ViewTcImagesComponent,
-  AddTcImagesComponent,
+		AddPmocDataComponent,
+		EditPmocDataComponent,
+		CustomizeCoupleChartComponent,
+		CustomizeByAgeGroupChartComponent,
+		CustomizeByAgeEmploymentStatusChartComponent,
+		CustomizeByKnowledgeOnFpChartComponent,
+		CustomizeByCivilStatusChartComponent,
+		CustomizeByMonthlyIncomeChartComponent,
+		CustomizePMOCTeamComponent,
+		AddMpcFdcDataComponent,
+		AddMpcImagesComponent,
+		AddMpcFdcTeamComponent,
+		AddPersonnelInchargeComponent,
+		ViewPersonnelInchargeComponent,
+		ViewMpcFdcTeamComponent,
+		ViewMpcFdcImagesComponent,
+		AddTeenCenterComponent,
+		AddFocalPersonComponent,
+		AddFocalAhydTeamComponent,
+		AddTcPersonnelInchargeComponent,
+		ViewTcPersonnelInchargeComponent,
+		ViewAhydTeamComponent,
+		ViewFocalPersonsComponent,
+		ViewTcImagesComponent,
+		AddTcImagesComponent,
 	],
 	imports: [
 		BrowserModule,

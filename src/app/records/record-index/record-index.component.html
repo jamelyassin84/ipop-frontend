@@ -1,5 +1,5 @@
-<div class="layers bd bgc-white">
-    <ul class="nav nav-tabs">
+<div class="layers bd bgc-white mt-5 pt-5">
+    <ul class="nav nav-tabs mt-5">
         <li *ngFor="let nav of navs" class="nav-item">
             <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
                 <i [class]="nav.icon"></i> {{ nav.name }}
