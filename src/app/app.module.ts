@@ -93,7 +93,16 @@ import { AddMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/add-mpc-f
 import { AddPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/add-personnel-incharge/add-personnel-incharge.component';
 import { ViewPersonnelInchargeComponent } from './home-components/rpfp/mpc-fdc/view-personnel-incharge/view-personnel-incharge.component';
 import { ViewMpcFdcTeamComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-team/view-mpc-fdc-team.component';
-import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-images/view-mpc-fdc-images.component'
+import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-mpc-fdc-images/view-mpc-fdc-images.component';
+import { AddTeenCenterComponent } from './home-components/ahyd/teen-centers/add-teen-center/add-teen-center.component';
+import { AddFocalPersonComponent } from './home-components/ahyd/teen-centers/add-focal-person/add-focal-person.component';
+import { AddFocalAhydTeamComponent } from './home-components/ahyd/teen-centers/add-focal-ahyd-team/add-focal-ahyd-team.component';
+import { AddTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/add-tc-personnel-incharge/add-tc-personnel-incharge.component';
+import { ViewTcPersonnelInchargeComponent } from './home-components/ahyd/teen-centers/view-tc-personnel-incharge/view-tc-personnel-incharge.component';
+import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-ahyd-team/view-ahyd-team.component';
+import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component';
+import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component';
+import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
 
 @NgModule({
 	declarations: [
@@ -184,6 +193,15 @@ import { ViewMpcFdcImagesComponent } from './home-components/rpfp/mpc-fdc/view-m
   ViewPersonnelInchargeComponent,
   ViewMpcFdcTeamComponent,
   ViewMpcFdcImagesComponent,
+  AddTeenCenterComponent,
+  AddFocalPersonComponent,
+  AddFocalAhydTeamComponent,
+  AddTcPersonnelInchargeComponent,
+  ViewTcPersonnelInchargeComponent,
+  ViewAhydTeamComponent,
+  ViewFocalPersonsComponent,
+  ViewTcImagesComponent,
+  AddTcImagesComponent,
 	],
 	imports: [
 		BrowserModule,
