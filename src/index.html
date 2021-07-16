@@ -16,7 +16,7 @@
         var scrollTop = 0
 
         function onScroll() {
-            localStorage.setItem('hideNav', scrollTop <= window.scrollY.toString())
+            localStorage.setItem('hideNav', scrollTop >= 10)
             this.scrollTop = window.scrollY
         }
 

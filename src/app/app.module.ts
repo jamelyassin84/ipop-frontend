@@ -103,7 +103,8 @@ import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-
 import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component';
-import { ViewAdminComponent } from './admin-component/view-admin/view-admin.component'
+import { ViewAdminComponent } from './admin-component/view-admin/view-admin.component';
+import { CommentsComponent } from './record-components/comments/comments.component'
 
 @NgModule({
 	declarations: [
@@ -204,6 +205,7 @@ import { ViewAdminComponent } from './admin-component/view-admin/view-admin.comp
 		ViewTcImagesComponent,
 		AddTcImagesComponent,
   ViewAdminComponent,
+  CommentsComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -1,3 +1,6 @@
+<ng-template #comments>
+    <Comments></Comments>
+</ng-template>
 <ul class="nav nav-tabs mT-50">
     <li class="nav-item">
         <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Uploaded </a>
@@ -27,7 +30,7 @@
             <td>
                 <button class="mR-10 btn btn-sm btn-success">Download in excel format</button>
                 <button class="mR-10 btn btn-sm btn-primary">Approve</button>
-                <button class="mR-10 btn btn-sm btn-info">View Comments</button>
+                <Modal size="xl" title="Comments" btnTitle="Comments" btnClass="btn btn-sm btn-warning mr-2" [template]="comments" icon="ti-comment-alt"></Modal>
                 <button class="mR-10 btn btn-sm btn-danger">Reject</button>
             </td>
         </tr>
