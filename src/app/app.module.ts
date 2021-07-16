@@ -77,7 +77,16 @@ import { AddLocalDeathDataComponent } from './home-components/demographic/deaths
 import { AddCrudeDeathRateComponent } from './home-components/demographic/deaths/add-crude-death-rate/add-crude-death-rate.component'
 import { AddMigrationDataComponent } from './home-components/demographic/migrations/add-migration-data/add-migration-data.component'
 import { AddLocalMigrationDataComponent } from './home-components/demographic/migrations/add-local-migration-data/add-local-migration-data.component'
-import { CustomizeMigrationChartComponent } from './home-components/demographic/migrations/customize-migration-chart/customize-migration-chart.component'
+import { CustomizeMigrationChartComponent } from './home-components/demographic/migrations/customize-migration-chart/customize-migration-chart.component';
+import { AddPmocDataComponent } from './home-components/rpfp/pmoc/add-pmoc-data/add-pmoc-data.component';
+import { EditPmocDataComponent } from './home-components/rpfp/pmoc/edit-pmoc-data/edit-pmoc-data.component';
+import { CustomizeCoupleChartComponent } from './home-components/rpfp/pmoc/customize-couple-chart/customize-couple-chart.component';
+import { CustomizeByAgeGroupChartComponent } from './home-components/rpfp/pmoc/customize-by-age-group-chart/customize-by-age-group-chart.component';
+import { CustomizeByAgeEmploymentStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-age-employment-status-chart/customize-by-age-employment-status-chart.component';
+import { CustomizeByKnowledgeOnFpChartComponent } from './home-components/rpfp/pmoc/customize-by-knowledge-on-fp-chart/customize-by-knowledge-on-fp-chart.component';
+import { CustomizeByCivilStatusChartComponent } from './home-components/rpfp/pmoc/customize-by-civil-status-chart/customize-by-civil-status-chart.component';
+import { CustomizeByMonthlyIncomeChartComponent } from './home-components/rpfp/pmoc/customize-by-monthly-income-chart/customize-by-monthly-income-chart.component';
+import { CustomizePMOCTeamComponent } from './home-components/rpfp/pmoc/customize-pmoc-team/customize-pmoc-team.component'
 
 @NgModule({
 	declarations: [
@@ -152,6 +161,15 @@ import { CustomizeMigrationChartComponent } from './home-components/demographic/
 		AddMigrationDataComponent,
 		AddLocalMigrationDataComponent,
 		CustomizeMigrationChartComponent,
+  AddPmocDataComponent,
+  EditPmocDataComponent,
+  CustomizeCoupleChartComponent,
+  CustomizeByAgeGroupChartComponent,
+  CustomizeByAgeEmploymentStatusChartComponent,
+  CustomizeByKnowledgeOnFpChartComponent,
+  CustomizeByCivilStatusChartComponent,
+  CustomizeByMonthlyIncomeChartComponent,
+  CustomizePMOCTeamComponent,
 	],
 	imports: [
 		BrowserModule,
