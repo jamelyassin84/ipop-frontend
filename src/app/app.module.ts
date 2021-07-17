@@ -138,6 +138,8 @@ import { ApprovalTopPopulationComponent } from './approval-component/population/
 import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
 import { ApprovalPersonnelInchargeComponent } from './approval-component/officials/approval-personnel-incharge/approval-personnel-incharge.component'
 import { IndexComponent } from './approval-component/index/index.component'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { MainInterceptor } from './Interceptors/main.interceptor'
 
 @NgModule({
 	declarations: [
@@ -282,7 +284,13 @@ import { IndexComponent } from './approval-component/index/index.component'
 		ChartsModule,
 		GoogleChartsModule,
 	],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: MainInterceptor,
+			multi: true,
+		},
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
