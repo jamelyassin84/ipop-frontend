@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { BaseService } from '../../base.service'
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
-export class MunicipalService {
-
-  constructor() { }
+export class MunicipalService extends BaseService {
+	constructor(private _http: HttpClient) {
+		super(_http, '', '')
+	}
 }
