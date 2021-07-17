@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { MonthChartConfig } from 'src/app/home/demographic/MonthChart'
 
 @Component({
 	selector: 'MonthChart',
@@ -8,5 +9,6 @@ import { Component, OnInit } from '@angular/core'
 export class ApprovalMonthChartComponent implements OnInit {
 	constructor() {}
 
+	statisticalChart = MonthChartConfig
 	ngOnInit(): void {}
 }
