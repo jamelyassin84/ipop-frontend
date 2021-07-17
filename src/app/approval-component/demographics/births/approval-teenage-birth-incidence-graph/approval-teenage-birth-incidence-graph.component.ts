@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { IncidenceChartConfig } from 'src/app/home/demographic/Incidence.Chart'
 
 @Component({
 	selector: 'Teenage-Incidence-Graph',
@@ -7,6 +8,6 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ApprovalTeenageBirthIncidenceGraphComponent implements OnInit {
 	constructor() {}
-
+	teenageChart = IncidenceChartConfig
 	ngOnInit(): void {}
 }
