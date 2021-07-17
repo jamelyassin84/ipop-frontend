@@ -138,7 +138,7 @@ import { ApprovalTopPopulationComponent } from './approval-component/population/
 import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
 import { ApprovalPersonnelInchargeComponent } from './approval-component/officials/approval-personnel-incharge/approval-personnel-incharge.component'
 import { IndexComponent } from './approval-component/index/index.component'
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
 
 @NgModule({
@@ -283,6 +283,7 @@ import { MainInterceptor } from './Interceptors/main.interceptor'
 		BrowserAnimationsModule,
 		ChartsModule,
 		GoogleChartsModule,
+		HttpClientModule,
 	],
 	providers: [
 		{

@@ -49,26 +49,6 @@
                     <div class="invalid-feedback">Role is required</div>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label for="role">Municipality Assigned</label>
-                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option>Barotac Nuevo</option>
-						<option>Anilao</option>
-						<option>Dumangas</option>
-					</select>
-                    <div class="invalid-feedback">Role is required</div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="role">Barangay Assigned</label>
-                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option>Lagubang</option>
-						<option>Lico-an</option>
-						<option>Cruz</option>
-					</select>
-                    <div class="invalid-feedback">Role is required</div>
-                </div>
-
                 <div class="col-md-4">
                     <label for="district">District</label>
                     <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
@@ -78,28 +58,42 @@
                     <div class="invalid-feedback">District is required</div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <label for="municipality">Municipality </label>
                     <select class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
 						<option selected disabled value="">Choose...</option>
-						<option
-							style="text-transform: capitalize"
-							*ngFor="let municipality of municipalities"
-							[value]="municipality.code"
-						>
+						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
 							{{ municipality.name }}
 						</option>
 					</select>
                     <div class="invalid-feedback">Municipality is required</div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <label for="barangay"> Barangay </label>
                     <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" [class.is-invalid]="invalidData.barangay" required>
 						<option selected disabled value="">Choose...</option>
 						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
 					</select>
                     <div class="invalid-feedback">Barangay is required</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role">Municipality Assigned</label>
+                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+							{{ municipality.name }}
+						</option>
+					</select>
+                    <div class="invalid-feedback">Role is required</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role">Barangay Assigned</label>
+                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+					</select>
+                    <div class="invalid-feedback">Role is required</div>
                 </div>
             </div>
 
