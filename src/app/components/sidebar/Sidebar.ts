@@ -10,6 +10,12 @@ export const ADMIN = [
 		icon: 'ti-home',
 	},
 	{
+		name: 'Approvals',
+		route: 'approvals',
+		color: 'c-red-300',
+		icon: 'ti-marker-alt',
+	},
+	{
 		name: 'Bulk Records',
 		route: 'bulk-records/upload',
 		color: 'c-orange-600',
@@ -27,12 +33,7 @@ export const ADMIN = [
 		color: 'c-orange-300',
 		icon: 'ti-harddrive',
 	},
-	{
-		name: 'Approvals',
-		route: 'approvals',
-		color: 'c-red-300',
-		icon: 'ti-marker-alt',
-	},
+
 	// {
 	// 	name: 'CPDB',
 	// 	route: 'cpdb',

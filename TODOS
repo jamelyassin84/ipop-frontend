@@ -1,8 +1,5 @@
-UI
-interceptor / refresh on save
 component directive
 button dropdowns
-
 
 backend
 technical notes crud
@@ -13,6 +10,7 @@ user UI
 Article Images
 
 btn disabled every save
+No internet Page
 
 Technical Notes Types
 BirthStatistic

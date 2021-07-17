@@ -1,5 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core'
-
+import { Component, Input } from '@angular/core'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
@@ -8,17 +7,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 	styleUrls: ['./small.component.scss'],
 })
 export class SmallComponent implements ModalComponent {
-	closeResult = ''
+	constructor(private modalService: NgbModal) {}
 
-	@Input() size: any
+	closeResult = ''
+	@Input() size: any = 'lg'
 	@Input() title: String = ''
 	@Input() btnSize: String = ''
 	@Input() btnTitle: String = ''
 	@Input() btnClass: String = ''
 	@Input() icon: String = ''
 	@Input() template: any
-
-	constructor(private modalService: NgbModal) {}
 
 	open(content: any) {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: this.size }).result.then(

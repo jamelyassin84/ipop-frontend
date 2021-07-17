@@ -7,7 +7,7 @@ import {
 	HttpResponse,
 	HttpErrorResponse,
 } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
+import { Observable, Subject, throwError } from 'rxjs'
 import { retry, catchError } from 'rxjs/operators'
 import { Alert } from '../components/Alert'
 
@@ -15,20 +15,29 @@ import { Alert } from '../components/Alert'
 export class MainInterceptor implements HttpInterceptor {
 	constructor() {}
 
+	private reload = new Subject()
+
+	reloadListener() {
+		return this.reload.asObservable()
+	}
+
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		if (request.method == 'GET') {
 		}
 		if (request.method == 'POST') {
+			this.reload.next()
 		}
 		if (request.method == 'PATCH') {
+			this.reload.next()
 		}
 		if (request.method == 'DELETE') {
+			this.reload.next()
 		}
 		console.log(request)
-		return next.handle(request).pipe(retry(2), catchError(this.handleError))
+		return next.handle(request).pipe(retry(0), catchError(this.errorMessage))
 	}
 
-	handleError(response: HttpErrorResponse) {
+	errorMessage(response: HttpErrorResponse) {
 		console.log(response)
 		if (response.status == 404) {
 			Alert('HTTP Error', `The requested URL was ${response.statusText}`, 'error')
