@@ -5,6 +5,10 @@ html[theme='dark'] {
     @import './assets/dark/dark.style.scss';
 }
 
+label {
+    margin-left: 2px;
+}
+
 .aic {
     align-items: center;
 }

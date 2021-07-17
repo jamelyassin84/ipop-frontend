@@ -1,12 +1,19 @@
 export type UserType = {
-	username: String
-	password: String
-	fullname: String
-	barangay: String
-	municipality: String
-	pin: String
-	question: String
-	answer: String
-	district: String
-	iterations: String
+	assigned_barangay: [] | null
+	assigned_municipality: [] | null
+	barangay: string
+	blocked: boolean
+	created_at: string
+	district: string
+	fullname: string
+	id: number
+	iterations: number
+	municipality: string
+	permissions: [] | any
+	profile_picture: string
+	profile_picture_id: string
+	question: string
+	roles: [] | any
+	updated_at: string
+	username: string
 }

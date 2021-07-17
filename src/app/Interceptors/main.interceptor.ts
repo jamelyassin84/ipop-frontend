@@ -21,7 +21,7 @@ export class MainInterceptor implements HttpInterceptor {
 		return this.reload.asObservable()
 	}
 
-	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+	intercept<T>(request: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
 		if (request.method == 'GET') {
 		}
 		if (request.method == 'POST') {
@@ -33,21 +33,24 @@ export class MainInterceptor implements HttpInterceptor {
 		if (request.method == 'DELETE') {
 			this.reload.next()
 		}
-		console.log(request)
 		return next.handle(request).pipe(retry(0), catchError(this.errorMessage))
 	}
 
 	errorMessage(response: HttpErrorResponse) {
-		console.log(response)
 		if (response.status == 404) {
 			Alert('HTTP Error', `The requested URL was ${response.statusText}`, 'error')
 		}
 		if (response.status == 401) {
-			Alert('HTTP Error', `You are accunt was not authenticated`, 'error')
+			Alert('HTTP Error', `You are account was not authenticated`, 'error')
 		}
 		if (response.status == 500) {
 			Alert('HTTP Error', `Internal Server Error Contact Developers`, 'error')
 		}
+		for (let message in response.error.errors) {
+			Alert(`Error!`, JSON.stringify(response.error.errors[message]), 'error')
+			break
+		}
+
 		return throwError(response)
 	}
 }

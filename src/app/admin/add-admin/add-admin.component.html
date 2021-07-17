@@ -3,8 +3,8 @@
     <div class="inputs">
         <div class="row">
             <div class="col-md-4 mb-3" style="position: relative">
-                <img [src]="image" alt="" />
-                <input accept="image/*" type="file" class="hidden" id="profile-picture" />
+                <img [src]="image" alt="" style="max-width: 20vh" />
+                <input (change)="readURL($event)" accept="image/*" type="file" class="hidden" id="profile-picture" />
             </div>
         </div>
         <br /><br />
@@ -38,7 +38,7 @@
 
                 <div class="col-md-6 mb-3">
                     <label for="role">Role</label>
-                    <select [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+                    <select (change)="handleRoleChange()" [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
 						<option selected disabled value="">Choose...</option>
 						<option>PPOI</option>
 						<option>PPOII</option>
@@ -53,15 +53,15 @@
                     <label for="district">District</label>
                     <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
 						<option selected disabled value="">Choose...</option>
-						<option *ngFor="let number of [1, 2, 3, 4, 5]">{{ number }}</option>
+						<option *ngFor="let number of districts">{{ number }}</option>
 					</select>
                     <div class="invalid-feedback">District is required</div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="municipality">Municipality </label>
-                    <select class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
-						<option selected disabled value="">Choose...</option>
+                    <select (change)="getBarangays($event)" class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
+						<option selected disabled>Choose...</option>
 						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
 							{{ municipality.name }}
 						</option>
@@ -78,9 +78,9 @@
                     <div class="invalid-feedback">Barangay is required</div>
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <div *ngIf="data.role === 'PPOII'" class="col-md-6 mb-3">
                     <label for="role">Municipality Assigned</label>
-                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+                    <select multiple [(ngModel)]="data.assigned_municipality" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
 						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
 							{{ municipality.name }}
 						</option>
@@ -88,9 +88,9 @@
                     <div class="invalid-feedback">Role is required</div>
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <div *ngIf="data.role === 'PPOI' && data.barangay !== undefined" class="col-md-6 mb-3">
                     <label for="role">Barangay Assigned</label>
-                    <select multiple [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
+                    <select multiple [(ngModel)]="data.assigned_barangay" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
 						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
 					</select>
                     <div class="invalid-feedback">Role is required</div>

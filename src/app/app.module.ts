@@ -140,6 +140,7 @@ import { ApprovalPersonnelInchargeComponent } from './approval-component/officia
 import { IndexComponent } from './approval-component/index/index.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
+import { ButtonPreloaderComponent } from './extras/button-preloader/button-preloader.component'
 
 @NgModule({
 	declarations: [
@@ -274,6 +275,7 @@ import { MainInterceptor } from './Interceptors/main.interceptor'
 		ApprovalTechnicalNotesComponent,
 		ApprovalPersonnelInchargeComponent,
 		IndexComponent,
+		ButtonPreloaderComponent,
 	],
 	imports: [
 		BrowserModule,
