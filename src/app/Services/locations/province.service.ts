@@ -6,16 +6,16 @@ import { BaseService } from '../base.service'
 @Injectable({
 	providedIn: 'root',
 })
-export class ProvinceService extends BaseService {
+export class LocationService extends BaseService {
 	constructor(private _http: HttpClient) {
 		super(_http, '', '')
 	}
 
-	getMunicipalities(): any {
+	municipalities(): any {
 		const url = `${environment.api}location/municipalities?province_code=0630`
 		return this.http.get<any>(url)
 	}
-	getBarangays(municipality_code: String) {
+	barangays(municipality_code: String) {
 		const url = `${environment.api}location/barangays?municipality_code=${municipality_code}`
 		return this.http.get<any>(url)
 	}
