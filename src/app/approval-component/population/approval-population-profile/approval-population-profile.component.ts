@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { PopProfileDummy } from 'src/app/home/population/PopProfileDummy'
 
 @Component({
 	selector: 'PopulationProfile',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ApprovalPopulationProfileComponent implements OnInit {
 	constructor() {}
+	populationProfile = PopProfileDummy
 
 	ngOnInit(): void {}
 }

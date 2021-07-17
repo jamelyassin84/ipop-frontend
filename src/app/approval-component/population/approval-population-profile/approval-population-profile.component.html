@@ -1,1 +1,8 @@
-<p>approval-population-profile works!</p>
+<div class="card-body">
+    <div class="w-100 row">
+        <div *ngFor="let object of populationProfile | keyvalue" class="col-md-6 mb-2 bb">
+            <h5 class="text-info mb-1">{{ object.value }}</h5>
+            <div class="fw-400 c-grey-700">{{ object.key }}</div>
+        </div>
+    </div>
+</div>
