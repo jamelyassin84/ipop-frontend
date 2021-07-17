@@ -1,3 +1,4 @@
+import { keyframes } from '@angular/animations'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Inject, Injectable, Optional } from '@angular/core'
 import { environment } from 'src/environments/environment'
@@ -13,7 +14,10 @@ export class BaseService {
 	) {}
 
 	headers() {
-		const token = localStorage.getItem('token')
+		let token = localStorage.getItem('token')
+		if (token === undefined) {
+			token = ''
+		}
 		return {
 			headers: new HttpHeaders({
 				Accept: 'application/json',
@@ -24,20 +28,20 @@ export class BaseService {
 
 	index() {
 		const url = `${environment.api}${this.url}${this.params}`
-		return this.http.get<any>(url)
+		return this.http.get<any>(url, this.headers())
 	}
 
 	show(id: Number) {
 		const url = `${environment.api}${this.url}/${id}`
-		return this.http.get<any>(url)
+		return this.http.get<any>(url, this.headers())
 	}
 
-	create(data: JSON) {
+	create(data: any) {
 		const url = `${environment.api}${this.url}`
 		return this.http.post<any>(url, data, this.headers())
 	}
 
-	update(id: Number, data: JSON) {
+	update(id: Number, data: any) {
 		const url = `${environment.api}${this.url}/${id}`
 		return this.http.patch<any>(url, data, this.headers())
 	}

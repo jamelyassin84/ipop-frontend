@@ -2,21 +2,21 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body text-center">
-                <img style="max-width: 100%" src="../../../assets/avatars/face-7.jpg" alt="" />
-                <h3>Jamel Eid Yassin</h3>
-                <h6>Super Admin</h6>
+                <img style="max-width: 100%" [src]="admin.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
+                <h3>{{ admin.fullname }}</h3>
+                <h6>{{ admin.roles[0].name }}</h6>
                 <br />
                 <div class="d-flex">
                     <span>District</span>
-                    <div class="ml-auto text-primary">I</div>
+                    <div class="ml-auto text-primary">{{ admin.district }}</div>
                 </div>
                 <div class="d-flex">
                     <span>Municipality</span>
-                    <div class="ml-auto text-primary">Barotac Nuevo</div>
+                    <div class="ml-auto text-primary">{{ admin.municipality }}</div>
                 </div>
                 <div class="d-flex">
                     <span>Barangay</span>
-                    <div class="ml-auto text-primary">Lagubang</div>
+                    <div class="ml-auto text-primary">{{ admin.barangay }}</div>
                 </div>
             </div>
         </div>
@@ -27,21 +27,29 @@
                 <h5>Settings</h5>
                 <br />
                 <div class="d-flex">
-                    <button style="flex: 1" class="btn btn-md btn-outline-secondary mb-1 mr-5">
-						<i class="mr-1 ti-na"></i> Block
+                    <button (click)="remove()" style="flex: 1" class="btn btn-md btn-outline-danger mb-1 mr-5">
+						<i class="mr-1 ti-cut"></i> Remove Administrator
 					</button>
-                    <button style="flex: 1" class="btn btn-md btn-outline-danger mb-1 mr-5">
-						<i class="mr-1 ti-cut"></i> Delete
+
+                    <button *ngIf="admin.iterations === 5" (click)="reactivate()" style="flex: 1" class="btn btn-md btn-outline-success mb-1 mr-5">
+						<i class="mr-1 ti-unlock"></i> Activate Account
 					</button>
-                    <button style="flex: 1" class="btn btn-md btn-outline-success mb-1 mr-5">
-						<i class="mr-1 ti-unlock"></i> Activate
+                    <button *ngIf="admin.iterations !== 5" (click)="block()" style="flex: 1" class="btn btn-md btn-outline-secondary mb-1 mr-5">
+						<i class="mr-1 ti-na"></i> Block Account
 					</button>
                 </div>
                 <br />
+                <h5>Status</h5>
+                <span *ngIf="admin.iterations === 5" class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500">
+					Blocked
+				</span>
+                <span *ngIf="admin.iterations !== 5" class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-green-50 c-green-500">
+					Active
+				</span>
                 <br />
                 <br />
                 <h5>Change Role</h5>
-                <select class="form-control">
+                <select [(ngModel)]="role" [ngModelOptions]="{ standalone: true }" class="form-control">
 					<option selected disabled value="">Choose...</option>
 					<option>PPOI</option>
 					<option>PPOII</option>
@@ -51,7 +59,10 @@
 				</select>
                 <br />
                 <br />
-                <button class="btn btn-lg btn-dark w-100 mb-1"><i class="mr-1 ti-block"></i> Save</button>
+                <button *ngIf="role != ''" [disabled]="isLoading" (click)="changeRole()" class="btn btn-lg btn-dark w-100 mb-1">
+					<span *ngIf="!isLoading">Save</span>
+					<Loader *ngIf="isLoading"></Loader>
+				</button>
                 <br />
             </div>
         </div>

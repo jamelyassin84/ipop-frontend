@@ -1,5 +1,5 @@
 <ng-template #viewAdmin>
-    <ViewAdmin></ViewAdmin>
+    <ViewAdmin [admin]="currentAdmin"></ViewAdmin>
 </ng-template>
 
 <div class="card">
@@ -19,32 +19,31 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                <tr *ngFor="let admin of admins">
                     <td>
-                        <img src="../../../assets/avatars/face-7.jpg" alt="" />
+                        <img [src]="admin.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
                     </td>
-                    <td>Jamel Eid Yassin</td>
-                    <td>Super Admin</td>
+                    <td>{{ admin.fullname }}</td>
+                    <td>{{ admin.roles[0]?.name || 'N/A' }}</td>
+                    <td *ngIf="admin.iterations === 5">
+                        <span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500">
+							Blocked
+						</span>
+                    </td>
+                    <td *ngIf="admin.iterations !== 5">
+                        <span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-green-50 c-green-500">
+							Active
+						</span>
+                    </td>
+                    <td>{{ admin.district }}</td>
+                    <td>{{ admin.municipality }}</td>
+                    <td>{{ admin.barangay }}</td>
+                    <td>{{ admin.created_at | date: 'MMMM dd, yyyy - ha' }}</td>
                     <td>
-                        <span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500">Blocked</span
-						>
-					</td>
-					<td>District 4</td>
-					<td>Barotac Nuevo</td>
-					<td>Barangay</td>
-					<td>11/14/1994</td>
-					<td>
-						<Modal
-							size="xl"
-							title="View Admin"
-							btnTitle="View admin"
-							btnClass="btn btn-sm btn-outline-info mr-2"
-							[template]="viewAdmin"
-							icon="ti-eye"
-						></Modal>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+                        <Modal (click)="currentAdmin = admin" size="xl" title="View Admin" btnTitle="View admin" btnClass="btn btn-sm btn-outline-info mr-2" [template]="viewAdmin" icon="ti-eye"></Modal>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

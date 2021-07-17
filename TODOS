@@ -1,7 +1,8 @@
-component directive
 button dropdowns
+interceptor reload
 
-backend
+backend bug
+roles doesnt change
 technical notes crud
 personnel directory crud
 quick links crud
@@ -9,7 +10,6 @@ quick links crud
 user UI
 Article Images
 
-btn disabled every save
 No internet Page
 
 Technical Notes Types

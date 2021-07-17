@@ -64,7 +64,7 @@ export class AddAdminComponent implements OnInit {
 		this.data.assigned_barangay = undefined
 		this.data.assigned_municipality = undefined
 	}
-
+	isLoading = false
 	register() {
 		console.log(this.data)
 		for (let key in this.data) {
@@ -74,6 +74,7 @@ export class AddAdminComponent implements OnInit {
 			}
 		}
 		Fire('Add as Administrator?', `Are you sure want as administrator`, 'info', () => {
+			this.isLoading = true
 			const formData = new FormData()
 			if (this.file != null) {
 				formData.append('profile_picture', this.file, this.file.name)
@@ -83,6 +84,7 @@ export class AddAdminComponent implements OnInit {
 			}
 			this.auth.cache = ''
 			this.auth.register(formData)?.subscribe(() => {
+				this.isLoading = false
 				Created()
 				for (let key in this.data) {
 					this.data[key] = ''

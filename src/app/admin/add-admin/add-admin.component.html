@@ -98,14 +98,9 @@
             </div>
 
             <div class="d-flex aic jcc mT-50">
-                <button *ngIf="!isSubmitting" (click)="register()" class="btn btn-dark">Create Admin</button>
-                <button *ngIf="isSubmitting" class="btn button" type="btn btn-primary" disabled>
-					<span
-						class="spinner-border spinner-border-sm text-light fast"
-						role="status"
-						aria-hidden="true"
-					></span>
-					Loading...
+                <button [disabled]="isLoading" (click)="register()" class="btn btn-dark w-25">
+					<span *ngIf="!isLoading">Create Admin</span>
+					<Loader *ngIf="isLoading"></Loader>
 				</button>
             </div>
         </div>
