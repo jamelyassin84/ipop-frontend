@@ -102,9 +102,41 @@ import { ViewTcPersonnelInchargeComponent } from './home-components/ahyd/teen-ce
 import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-ahyd-team/view-ahyd-team.component'
 import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
-import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component';
-import { ViewAdminComponent } from './admin-component/view-admin/view-admin.component';
+import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
+import { ViewAdminComponent } from './admin-component/view-admin/view-admin.component'
 import { CommentsComponent } from './record-components/comments/comments.component'
+import { ApprovalActivityComponent } from './approval-component/program-areas/approval-activity/approval-activity.component'
+import { ApprovalAwardComponent } from './approval-component/about/approval-award/approval-award.component'
+import { ApprovalOrganizationalChartComponent } from './approval-component/about/approval-organizational-chart/approval-organizational-chart.component'
+import { ApprovalServiceComponent } from './approval-component/services/approval-service/approval-service.component'
+import { ApprovalServicesOfferedComponent } from './approval-component/services/approval-services-offered/approval-services-offered.component'
+import { ApprovalBirthStatisticComponent } from './approval-component/demographics/births/approval-birth-statistic/approval-birth-statistic.component'
+import { ApprovalDeathStatisticComponent } from './approval-component/demographics/births/approval-teenage-birth-incidence-graph/approval-death-statistic/approval-death-statistic.component'
+import { ApprovalMigrationStatisticComponent } from './approval-component/demographics/migrations/approval-migration-statistic/approval-migration-statistic.component'
+import { ApprovalMigrationRateComponent } from './approval-component/demographics/migrations/approval-migration-rate/approval-migration-rate.component'
+import { ApprovalPopulationProfileComponent } from './approval-component/population/approval-population-profile/approval-population-profile.component'
+import { ApprovalTeenageBirthIncidenceGraphComponent } from './approval-component/demographics/births/approval-teenage-birth-incidence-graph/approval-teenage-birth-incidence-graph.component'
+import { ApprovalAgeDistributionComponent } from './approval-component/population/approval-age-distribution/approval-age-distribution.component'
+import { ApprovalArticleComponent } from './approval-component/news/approval-article/approval-article.component'
+import { ApprovalIncidenceComponent } from './approval-component/demographics/approval-incidence/approval-incidence.component'
+import { ApprovalMonthChartComponent } from './approval-component/demographics/approval-month-chart/approval-month-chart.component'
+import { ApprovalMPCFDCComponent } from './approval-component/rpfp/mpc-fdc/approval-mpcfdc/approval-mpcfdc.component'
+import { ApprovalMPCFDCPersonnelComponent } from './approval-component/officials/approval-mpcfdcpersonnel/approval-mpcfdcpersonnel.component'
+import { ApprovalMPCFDCTeamComponent } from './approval-component/officials/approval-mpcfdcteam/approval-mpcfdcteam.component'
+import { ApprovalMTCMMemberComponent } from './approval-component/officials/approval-mtcmmember/approval-mtcmmember.component'
+import { ApprovalMunicipalOfficialComponent } from './approval-component/officials/approval-municipal-official/approval-municipal-official.component'
+import { ApprovalPMOCComponent } from './approval-component/rpfp/pmoc/approval-pmoc/approval-pmoc.component'
+import { ApprovalPMOCTeamComponent } from './approval-component/officials/approval-pmocteam/approval-pmocteam.component'
+import { ApprovalProvincialOfficialComponent } from './approval-component/officials/approval-provincial-official/approval-provincial-official.component'
+import { ApprovalSPMemberComponent } from './approval-component/officials/approval-spmember/approval-spmember.component'
+import { ApprovalSBMPTCComponent } from './approval-component/ahyd/teen-center/approval-sbmptc/approval-sbmptc.component'
+import { ApprovalSBMPTCFocalPersonComponent } from './approval-component/officials/approval-sbmptcfocal-person/approval-sbmptcfocal-person.component'
+import { ApprovalSBMPTCPersonnelComponent } from './approval-component/officials/approval-sbmptcpersonnel/approval-sbmptcpersonnel.component'
+import { ApprovalSBMPTCTeamComponent } from './approval-component/officials/approval-sbmptcteam/approval-sbmptcteam.component'
+import { ApprovalSliderComponent } from './approval-component/news/approval-slider/approval-slider.component'
+import { ApprovalTopPopulationComponent } from './approval-component/population/approval-top-population/approval-top-population.component'
+import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
+import { ApprovalPersonnelInchargeComponent } from './approval-component/officials/approval-personnel-incharge/approval-personnel-incharge.component'
 
 @NgModule({
 	declarations: [
@@ -204,8 +236,40 @@ import { CommentsComponent } from './record-components/comments/comments.compone
 		ViewFocalPersonsComponent,
 		ViewTcImagesComponent,
 		AddTcImagesComponent,
-  ViewAdminComponent,
-  CommentsComponent,
+		ViewAdminComponent,
+		CommentsComponent,
+		ApprovalActivityComponent,
+		ApprovalAwardComponent,
+		ApprovalOrganizationalChartComponent,
+		ApprovalServiceComponent,
+		ApprovalServicesOfferedComponent,
+		ApprovalBirthStatisticComponent,
+		ApprovalDeathStatisticComponent,
+		ApprovalMigrationStatisticComponent,
+		ApprovalMigrationRateComponent,
+		ApprovalPopulationProfileComponent,
+		ApprovalTeenageBirthIncidenceGraphComponent,
+		ApprovalAgeDistributionComponent,
+		ApprovalArticleComponent,
+		ApprovalIncidenceComponent,
+		ApprovalMonthChartComponent,
+		ApprovalMPCFDCComponent,
+		ApprovalMPCFDCPersonnelComponent,
+		ApprovalMPCFDCTeamComponent,
+		ApprovalMTCMMemberComponent,
+		ApprovalMunicipalOfficialComponent,
+		ApprovalPMOCComponent,
+		ApprovalPMOCTeamComponent,
+		ApprovalProvincialOfficialComponent,
+		ApprovalSPMemberComponent,
+		ApprovalSBMPTCComponent,
+		ApprovalSBMPTCFocalPersonComponent,
+		ApprovalSBMPTCPersonnelComponent,
+		ApprovalSBMPTCTeamComponent,
+		ApprovalSliderComponent,
+		ApprovalTopPopulationComponent,
+		ApprovalTechnicalNotesComponent,
+		ApprovalPersonnelInchargeComponent,
 	],
 	imports: [
 		BrowserModule,
