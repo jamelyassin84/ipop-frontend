@@ -42,6 +42,8 @@ import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.co
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { ApprovalsComponent } from './approvals/approvals.component'
+import { NotFoundComponent } from './pages/not-found/not-found.component'
+import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 
 const routes: Routes = [
 	{
@@ -198,6 +200,8 @@ const routes: Routes = [
 			},
 		],
 	},
+	{ path: 'no-internet', component: NoInternetComponent },
+	{ path: '**', component: NotFoundComponent },
 ]
 
 @NgModule({

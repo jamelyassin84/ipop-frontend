@@ -141,6 +141,9 @@ import { IndexComponent } from './approval-component/index/index.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { ButtonPreloaderComponent } from './extras/button-preloader/button-preloader.component'
+import { ImageViewerComponent } from './extras/image-viewer/image-viewer.component'
+import { NotFoundComponent } from './pages/not-found/not-found.component'
+import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 
 @NgModule({
 	declarations: [
@@ -276,6 +279,9 @@ import { ButtonPreloaderComponent } from './extras/button-preloader/button-prelo
 		ApprovalPersonnelInchargeComponent,
 		IndexComponent,
 		ButtonPreloaderComponent,
+		ImageViewerComponent,
+		NotFoundComponent,
+		NoInternetComponent,
 	],
 	imports: [
 		BrowserModule,
