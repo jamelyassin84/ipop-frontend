@@ -111,7 +111,7 @@ import { ApprovalOrganizationalChartComponent } from './approval-component/about
 import { ApprovalServiceComponent } from './approval-component/services/approval-service/approval-service.component'
 import { ApprovalServicesOfferedComponent } from './approval-component/services/approval-services-offered/approval-services-offered.component'
 import { ApprovalBirthStatisticComponent } from './approval-component/demographics/births/approval-birth-statistic/approval-birth-statistic.component'
-import { ApprovalDeathStatisticComponent } from './approval-component/demographics/births/approval-teenage-birth-incidence-graph/approval-death-statistic/approval-death-statistic.component'
+import { ApprovalDeathStatisticComponent } from './approval-component/demographics/deaths/approval-death-statistic/approval-death-statistic.component'
 import { ApprovalMigrationStatisticComponent } from './approval-component/demographics/migrations/approval-migration-statistic/approval-migration-statistic.component'
 import { ApprovalMigrationRateComponent } from './approval-component/demographics/migrations/approval-migration-rate/approval-migration-rate.component'
 import { ApprovalPopulationProfileComponent } from './approval-component/population/approval-population-profile/approval-population-profile.component'
@@ -137,6 +137,7 @@ import { ApprovalSliderComponent } from './approval-component/news/approval-slid
 import { ApprovalTopPopulationComponent } from './approval-component/population/approval-top-population/approval-top-population.component'
 import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
 import { ApprovalPersonnelInchargeComponent } from './approval-component/officials/approval-personnel-incharge/approval-personnel-incharge.component'
+import { IndexComponent } from './approval-component/index/index.component'
 
 @NgModule({
 	declarations: [
@@ -270,6 +271,7 @@ import { ApprovalPersonnelInchargeComponent } from './approval-component/officia
 		ApprovalTopPopulationComponent,
 		ApprovalTechnicalNotesComponent,
 		ApprovalPersonnelInchargeComponent,
+		IndexComponent,
 	],
 	imports: [
 		BrowserModule,

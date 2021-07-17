@@ -15,7 +15,7 @@ export const homeNavs = [
 		],
 	},
 	{
-		name: 'Population',
+		name: 'Population ',
 		route: '',
 		children: [
 			{
@@ -55,7 +55,7 @@ export const homeNavs = [
 		],
 	},
 	{
-		name: 'Programs',
+		name: 'Programs Areas',
 		route: 'programs/',
 		children: [
 			{
@@ -77,7 +77,7 @@ export const homeNavs = [
 		],
 	},
 	{
-		name: 'Services',
+		name: 'Services Offered',
 		route: 'services/',
 		children: [
 			{
