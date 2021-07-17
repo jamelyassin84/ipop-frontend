@@ -3,6 +3,7 @@ Paganahon tanan nga buttons
 polish design
 interceptor / refresh on save
 component directive
+All Services
 
 backend
 technical notes crud
@@ -13,41 +14,6 @@ user UI
 Article Images
 
 btn disabled every save
-
-Approvals
-
-Activity
-Award
-Chart
-Service
-ServiceOffer
-BirthStatistic
-DeathStatistic
-MigrationRate
-MigrationStatistic
-Profile
-TeenageBirthIncidenceGraph
-AgeDistribution
-Article
-Incidence
-MonthChart
-MPCFDC
-MPCFDCPersonnel
-MPCFDCTeam
-MTCMMember
-MunicipalOfficial
-PMOC
-PMOCTeam
-ProvincialOfficial
-SBMember
-SBMPTC
-SBMPTCFocalPerson
-SBMPTCPersonnel
-SBMPTCTeam
-Slider
-TopPopulation
-technical notes
-personnel incharge
 
 Technical Notes Types
 BirthStatistic
