@@ -63,7 +63,7 @@ export class PopulationComponent implements OnInit {
 		)
 		service.index().subscribe((data: any) => {
 			let ageDistribution: any = [['Age', 'Female', 'Male']]
-			if (data.length !== 0 || data != null) {
+			if (data.length !== 0) {
 				data = data.reverse()
 				const male = data[0]['data']['male']
 				const female = data[0]['data']['female']
@@ -81,8 +81,10 @@ export class PopulationComponent implements OnInit {
 						parseInt(male[key]),
 					])
 				}
-				drawChart('population-pyramid', ageDistribution)
+			} else {
+				ageDistribution = DummyData
 			}
+			drawChart('population-pyramid', ageDistribution)
 		})
 	}
 
