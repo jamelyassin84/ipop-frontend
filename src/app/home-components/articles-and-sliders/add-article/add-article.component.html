@@ -1,24 +1,28 @@
 <div class="card-body">
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-sm btn-dark"><i class="ti-plus mr-1"></i> Add an image</button>
+            <button (click)="trigger()" class="btn btn-sm btn-dark"><i class="ti-plus mr-1"></i> Add an image</button>
+            <input (change)="readURL($event)" type="file" style="display: none" multiple accept="image/*" id="file" />
         </div>
     </div>
     <br />
     <div class="row">
-        <div class="col-md-3 mb-5" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
-            <img src="../../../../assets/ipop/home/1.jpg" alt="" />
+        <div class="col-md-3" *ngFor="let slide of photos; let i = index">
+            <button (click)="deleteTemporaryImage(i)" class="btn-minus btn btn-sm btn-light" style="opacity: 0.7">
+				<i class="ti-minus"></i>
+			</button>
+            <img [src]="slide" alt="" />
         </div>
     </div>
     <br />
     <br />
     <div class="form-group">
         <label for="">Article Title</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="article.title" type="text" class="form-control" />
     </div>
     <div class="form-group">
         <label for="">Body</label>
-        <textarea type="text" class="form-control"></textarea>
+        <textarea [(ngModel)]="article.body" type="text" class="form-control"></textarea>
     </div>
 </div>
 

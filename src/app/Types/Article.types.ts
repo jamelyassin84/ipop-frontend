@@ -1,5 +1,7 @@
 export type ArticleType = {
+	id: number
 	title: String
 	body: String
-	photo: any
+	photos: any
+	created_at: any
 }

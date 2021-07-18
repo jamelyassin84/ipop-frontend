@@ -40,46 +40,56 @@
             </li>
         </ul>
 
-        <div class="m-0 bl br" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+        <div class="m-0 bl br" *ngFor="let article of articles">
             <div class="card-header bg-white d-flex aic">
                 <div>
-                    <div class="h1 m-0 card-title dw">Bootstrap Icons</div>
+                    <div class="h1 m-0 card-title dw">{{ article.title }}</div>
                 </div>
                 <div class="ml-auto">
-                    <button class="btn btn-outline-danger btn-sm">Remove</button>
+                    <button (click)="removeArticle(article.id)" class="btn btn-outline-danger btn-sm">Remove</button>
                 </div>
             </div>
             <div class="card-header bg-white">
-                <span class="m-0 text-info"><i class="ti-alarm-clock"></i> Created : April 04, 2021 - 7:29PM</span>
-            </div>
-            <div class="card-body bg-white">
-                <div class="d-flex">
-                    <p class="pX-20">
-                        Free, high quality, open source icon library with over 1,300 icons. Include them anyway you like—SVGs, SVG sprite, or web fonts. Use them with or without Bootstrap in any project.
-                    </p>
-                    <div>
-                        <img class="article-image" src="../../../assets/ipop/home/1.jpg " alt="" />
-                    </div>
-                </div>
+                <span class="m-0 text-info"><i class="ti-alarm-clock"></i> Created :
+					{{ article.created_at | date: 'MMMM dd, yyy - hh:mm A' }}</span
+				>
+			</div>
+			<div class="card-body bg-white">
+				<div class="d-flex">
+					<p class="pX-20">
+						{{ article.title }}
+					</p>
+					<div *ngIf="article.photos.length !== 0" class="ml-auto mr-2">
+						<img class="article-image" [src]="article.photos[0].file.uri" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 p-0 m-0 w-100">
+		<div class="bg-white mT-50">
+			<div class="card-header bg-info d-flex h4 aic">
+				<div class="text-white mr-auto">Quick links</div>
+				<Modal
+					icon="ti-plus"
+					size="lg"
+					title="Add Quick Link"
+					btnSize="sm"
+					btnTitle="Add a quick link"
+					btnClass="btn btn-info ml-auto"
+					[template]="addQuickLinks"
+				></Modal>
+			</div>
+			<div style="overflow: auto">
+				<div class="card-body d-flex aic" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+					<div class="p-10">
+						<i class="ti-folder text-info" style="font-size: 2rem"></i>
+					</div>
+					<div class="p-10">
+						<span>21 Iloilo Center to rise</span>
             </div>
         </div>
     </div>
-    <div class="col-md-3 p-0 m-0 w-100">
-        <div class="bg-white mT-50">
-            <div class="card-header bg-info d-flex h4 aic">
-                <div class="text-white mr-auto">Quick links</div>
-                <Modal icon="ti-plus" size="lg" title="Add Quick Link" btnSize="sm" btnTitle="Add a quick link" btnClass="btn btn-info ml-auto" [template]="addQuickLinks"></Modal>
-            </div>
-            <div style="overflow: auto">
-                <div class="card-body d-flex aic" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
-                    <div class="p-10">
-                        <i class="ti-folder text-info" style="font-size: 2rem"></i>
-                    </div>
-                    <div class="p-10">
-                        <span>21 Iloilo Center to rise</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
 </div>
