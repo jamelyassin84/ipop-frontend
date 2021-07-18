@@ -20,9 +20,36 @@ export class AritclesAndSlidersComponent implements OnInit {
 			this.ngOnInit()
 		})
 	}
+
 	ngOnInit(): void {
 		this.getSliders()
 		this.getArticles()
+	}
+
+	tabs: any = {
+		all: true,
+		today: false,
+		week: false,
+		month: false,
+	}
+
+	setTab(tab: string) {
+		for (let key in this.tabs) {
+			this.tabs[key] = false
+		}
+		this.tabs[tab] = true
+		if (tab === 'all') {
+			this.getArticles()
+		}
+		if (tab === 'today') {
+			this.today()
+		}
+		if (tab === 'week') {
+			this.week()
+		}
+		if (tab === 'month') {
+			this.month()
+		}
 	}
 
 	images: string[] = []
@@ -44,8 +71,27 @@ export class AritclesAndSlidersComponent implements OnInit {
 			this.currentImages.push(photo.file.uri)
 		})
 	}
+
 	getArticles() {
 		this.articleService.index().subscribe((articles: ArticleType[]) => {
+			this.articles = articles
+		})
+	}
+
+	today() {
+		this.articleService.today().subscribe((articles: ArticleType[]) => {
+			this.articles = articles
+		})
+	}
+
+	week() {
+		this.articleService.week().subscribe((articles: ArticleType[]) => {
+			this.articles = articles
+		})
+	}
+
+	month() {
+		this.articleService.month().subscribe((articles: ArticleType[]) => {
 			this.articles = articles
 		})
 	}

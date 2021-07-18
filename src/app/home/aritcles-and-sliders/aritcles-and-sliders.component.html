@@ -24,19 +24,30 @@
     <div class="col-md-8">
         <ul class="nav nav-tabs mT-50 bg-white d-flex">
             <li class="nav-item">
-                <a class="nav-link text-muted active"> <i class="ti-timer"></i> All </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('all')" [class.active]="tabs.all === true">
+                    <i class="ti-timer"></i> All
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-muted"> <i class="ti-timer"></i> Today </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('today')" [class.active]="tabs.today === true">
+                    <i class="ti-timer"></i> Today
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-muted"> <i class="ti-timer"></i> This Week </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('week')" [class.active]="tabs.week === true">
+                    <i class="ti-timer"></i> This Week
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-muted"> <i class="ti-timer"></i> This Month </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('month')" [class.active]="tabs.month === true">
+                    <i class="ti-timer"></i> This Month
+                </a>
             </li>
             <li class="ml-auto mr-2">
-                <Modal icon="ti-plus" size="lg" title="Add Article" btnSize="sm" btnTitle="Add an article" btnClass="btn btn-dark  " [template]="addArticle"></Modal>
+                <DropDown [buttons]="nav"></DropDown>
+                <ng-template #nav>
+                    <Modal size="lg" title="Add Article" btnSize="sm" btnTitle="Add an article" btnClass="dropdown-item text-secondary" [template]="addArticle"></Modal>
+                </ng-template>
             </li>
         </ul>
 
@@ -46,7 +57,10 @@
                     <div class="h1 m-0 card-title dw">{{ article.title }}</div>
                 </div>
                 <div class="ml-auto">
-                    <button (click)="removeArticle(article.id)" class="btn btn-outline-danger btn-sm">Remove</button>
+                    <DropDown [buttons]="dropdown"></DropDown>
+                    <ng-template #dropdown>
+                        <button (click)="removeArticle(article.id)" class="dropdown-item">Remove Article</button>
+                    </ng-template>
                 </div>
             </div>
             <div class="card-header bg-white">
