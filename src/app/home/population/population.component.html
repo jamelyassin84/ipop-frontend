@@ -62,7 +62,8 @@
 		</div>
 	</div>
 
-	<AddressPicker (data)="onFectch($event)"></AddressPicker>
+	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
 	<div class="d-flex">
 		<Modal
 			size="lg"
