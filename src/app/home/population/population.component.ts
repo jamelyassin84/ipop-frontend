@@ -61,9 +61,27 @@ export class PopulationComponent implements OnInit {
 			'population-pyramid',
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
-		service.index().subscribe((populationPyramid: any) => {
-			if (populationPyramid.length !== 0 || populationPyramid != null) {
-				drawChart('population-pyramid', populationPyramid)
+		service.index().subscribe((data: any) => {
+			let ageDistribution: any = [['Age', 'Female', 'Male']]
+			if (data.length !== 0 || data != null) {
+				data = data.reverse()
+				const male = data[0]['data']['male']
+				const female = data[0]['data']['female']
+				for (let key in female) {
+					let newText = ''
+					if (key == 'below_1_year_old') {
+						newText = 'Below 1 Year Old'
+					}
+					if (key == 'eighty_and_above') {
+						newText = '80 and Above'
+					}
+					ageDistribution.push([
+						key == 'below_1_year_old' || key == 'eighty_and_above' ? newText : key,
+						-Math.abs(parseInt(female[key])),
+						parseInt(male[key]),
+					])
+				}
+				drawChart('population-pyramid', ageDistribution)
 			}
 		})
 	}
@@ -76,6 +94,7 @@ export class PopulationComponent implements OnInit {
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((populationProfile: any) => {
+			this.populationProfile = {}
 			if (populationProfile.length !== 0) {
 				this.populationProfile = populationProfile[0]
 			}
