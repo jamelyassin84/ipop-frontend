@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core'
+import { BarangayService } from 'src/app/Services/home/officials/barangay.service'
+import { MunicipalService } from 'src/app/Services/home/officials/municipal.service'
+import { ProvincialService } from 'src/app/Services/home/officials/provincial.service'
+import { SpMemberService } from 'src/app/Services/home/officials/sp-member.service'
+import { LocationService } from 'src/app/Services/locations/province.service'
+import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
+import { BarangayOfficialType } from 'src/app/Types/officials/BarangayOfficials.types'
 
 @Component({
 	selector: 'ViewOfficials',
@@ -6,8 +13,81 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./view-officials.component.scss'],
 })
 export class ViewOfficialsComponent implements OnInit {
-	constructor() {}
-	types = ['Provincial', 'Muncipality', 'Barangay']
+	constructor(
+		private provincialOfficial: ProvincialService,
+		private SPMember: SpMemberService,
+		private municipalOfficial: MunicipalService,
+		private barangayOfficial: BarangayService,
+		private location: LocationService
+	) {}
 
-	ngOnInit(): void {}
+	types = ['Provincial Official', 'Sanguniang Panlalawigan Member', 'Municipal Official', 'Barangay Official']
+	type: string = 'Provincial Official'
+
+	reset() {
+		this.data = {
+			municipality: null,
+			barangay: null,
+		}
+	}
+
+	fetch() {
+		if (this.type === 'Provincial Official') {
+			this.viewProvincialOfficial()
+		}
+		if (this.type === 'Sanguniang Panlalawigan Member') {
+			this.viewSPMember()
+		}
+		if (this.type === 'Municipal Official') {
+			this.viewMunicipalOfficial()
+		}
+		if (this.type === 'Barangay Official') {
+			this.viewBarangayOfficial()
+		}
+	}
+
+	data: any = {}
+	officials: any[] = []
+	viewProvincialOfficial() {
+		this.provincialOfficial.index().subscribe((officials: any) => {
+			this.officials = officials.data
+		})
+	}
+
+	viewSPMember() {
+		this.SPMember.index().subscribe((officials: any) => {
+			this.officials = officials.data
+		})
+	}
+
+	viewMunicipalOfficial() {
+		this.municipalOfficial.index(`municipality=${this.data.municipality}`).subscribe((officials: any) => {
+			this.officials = officials
+		})
+	}
+
+	viewBarangayOfficial() {
+		this.barangayOfficial.index(`barangay=${this.data.barangay}`).subscribe((officials: any) => {
+			this.officials = officials
+		})
+	}
+
+	ngOnInit(): void {
+		this.getMuncipalities()
+	}
+
+	municipalities: MunicipalityType[] = []
+	getMuncipalities() {
+		this.location.municipalities().subscribe((data: any) => {
+			this.municipalities = data
+		})
+	}
+
+	barangays: BarangayOfficialType[] = []
+	getBarangays(event: any) {
+		this.data.municipality = event.target.options[event.target.options.selectedIndex].text
+		this.location.barangays(event.target.value).subscribe((data: any) => {
+			this.barangays = data
+		})
+	}
 }

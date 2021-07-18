@@ -26,8 +26,8 @@ export class BaseService {
 		}
 	}
 
-	index() {
-		const url = `${environment.api}${this.url}?${this.params}`
+	index(overload: any = '') {
+		const url = `${environment.api}${this.url}?${this.params}${overload}`
 		return this.http.get<any>(url, this.headers())
 	}
 

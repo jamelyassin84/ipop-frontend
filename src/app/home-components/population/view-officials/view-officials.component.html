@@ -1,18 +1,27 @@
 <div class="card-body">
     <div class="form-group">
-        <label for="">Choose Official Type</label>
-        <select type="text" class="form-control">
+        <label for="">Choose Type of Official</label>
+        <select (change)="reset()" [(ngModel)]="type" type="text" class="form-control">
 			<option *ngFor="let type of types">{{ type }}</option>
 		</select>
     </div>
-    <div class="form-group">
+    <div *ngIf="type === 'Municipal Official' || type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Municipality</label>
-        <select type="text" class="form-control"></select>
+        <select (change)="getBarangays($event)" class="custom-select" id="municipality" required>
+			<option selected disabled>Choose...</option>
+			<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+				{{ municipality.name }}
+			</option>
+		</select>
     </div>
-    <div class="form-group">
+    <div *ngIf="type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Barangay</label>
-        <select type="text" class="form-control"></select>
+        <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" required>
+			<option selected disabled value="">Choose...</option>
+			<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+		</select>
     </div>
+    <button (click)="fetch()" class="w-100 btn btn-sm btn-dark">See Officials</button>
     <table class="table mt-5">
         <thead class="table-white">
             <tr>
@@ -23,10 +32,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+            <tr *ngFor="let official of officials">
                 <td><i class="ti-user"></i></td>
-                <td>Jamel Eid Yassin</td>
-                <td>Governor</td>
+                <td>{{ official.name }}</td>
+                <td>{{ official.position || 'Sanguniang Panlalawigan Member' }}</td>
                 <td>
                     <button class="btn btn-sm btn-danger">Remove</button>
                 </td>
