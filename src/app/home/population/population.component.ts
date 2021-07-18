@@ -18,8 +18,8 @@ export class PopulationComponent implements OnInit {
 		})
 	}
 	populationProfile = PopProfileDummy
-
 	topPopulated: any[] = []
+
 	ngOnInit(): void {
 		this.getTopPopulated()
 		drawChart('population-pyramid', DummyData)
@@ -36,5 +36,9 @@ export class PopulationComponent implements OnInit {
 		Fire('Remove Municipality?', 'Are you sure you want to remove this data?', 'info', () => {
 			this.topPopulatedService.destroy(id).subscribe()
 		})
+	}
+
+	onFectch(event: any) {
+		console.log(event)
 	}
 }
