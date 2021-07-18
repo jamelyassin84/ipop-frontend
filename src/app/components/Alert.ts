@@ -50,12 +50,8 @@ export function Welcome(name: String) {
 	Alert('Success', `Welcome Back! ${name}`, 'success')
 }
 
-export function noData() {
-	const audio = new Audio(`../../assets/ipop/audio/pop.mp3`)
-	audio.volume = 0.5
+export function pop() {
+	const audio = new Audio(`../../assets/ipop/audio/pop1.mp3`)
+	audio.volume = 0.1
 	audio.play()
-	setTimeout(() => {
-		audio.pause()
-		audio.currentTime = 0
-	}, 120)
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { pop } from 'src/app/components/Alert'
+import { SliderService } from 'src/app/Services/home/news/slider.service'
 
 @Component({
 	selector: 'app-aritcles-and-sliders',
@@ -6,14 +8,19 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./aritcles-and-sliders.component.scss'],
 })
 export class AritclesAndSlidersComponent implements OnInit {
-	images = [
-		{ path: '../../../assets/ipop/home/1.jpg' },
-		{ path: '../../../assets/ipop/home/2.jpg' },
-		{ path: '../../../assets/ipop/home/3.jpg' },
-		{ path: '../../../assets/ipop/home/4.jpg' },
-	]
+	constructor(private slideService: SliderService) {}
+	ngOnInit(): void {
+		this.getSliders()
+	}
 
-	constructor() {}
+	images: any[] = []
 
-	ngOnInit(): void {}
+	getSliders() {
+		this.slideService.index().subscribe((sliders: []) => {
+			sliders.forEach((slide: any) => {
+				this.images.push(slide.photo.uri)
+			})
+			sliders.length !== 0 ? pop() : ''
+		})
+	}
 }
