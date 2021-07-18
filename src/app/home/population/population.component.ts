@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Fire, pop } from 'src/app/components/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { TopPopulatedService } from 'src/app/Services/home/population/top-populated.service'
 import { ReloadService } from 'src/app/Services/reload.service'
@@ -34,6 +34,7 @@ export class PopulationComponent implements OnInit {
 	getTopPopulated() {
 		this.topPopulatedService.index().subscribe((data: any[]) => {
 			this.topPopulated = data
+			pop()
 		})
 	}
 
