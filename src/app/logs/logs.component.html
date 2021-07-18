@@ -5,6 +5,7 @@
                 <tr>
                     <th><i class="ti-user"></i></th>
                     <th scope="col">Fullname</th>
+                    <th scope="col">Location</th>
                     <th scope="col">IP Address</th>
                     <th scope="col">Latitutde</th>
                     <th scope="col">Longititude</th>
@@ -15,22 +16,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                <tr *ngFor="let log of logs">
                     <td>
-                        <img src="../../../assets/avatars/face-7.jpg" alt="" />
+                        <img [src]="log.user?.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
                     </td>
-                    <td>Jamel Eid Yassin</td>
-                    <td>192.168.200.01</td>
-                    <td>10.34243</td>
-                    <td>10.34243</td>
-                    <td>Mobile</td>
-                    <td>Created a User</td>
-                    <td>11/14/1994</td>
+                    <td>{{ log.user?.fullname || 'Visitor' }}</td>
+                    <td>{{ log.info.city }}, {{ log.info.country }}</td>
+                    <td>{{ log.ip_address }}</td>
+                    <td>{{ log.info.lat }}</td>
+                    <td>{{ log.info.lon }}</td>
+                    <td>{{ log.user_agent }}</td>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.created_at | date: 'MMMM dd, yyyy - hh:mm a' }}</td>
                     <td>
-                        <button class="btn btn-sm btn-info">View coordinates in google maps</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        <DropDown [buttons]="dropdown"></DropDown>
+                        <ng-template #dropdown>
+                            <a target="_blank" [href]="'https://www.google.com/maps/place' + '/@' + log.info.lat + ',' + log.info.lon" class="dropdown-item">View coordinates in google maps</a
+							>
+						</ng-template>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
