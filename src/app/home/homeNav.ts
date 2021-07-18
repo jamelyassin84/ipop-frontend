@@ -15,16 +15,6 @@ export const homeNavs = [
 		],
 	},
 	{
-		name: 'Population ',
-		route: '',
-		children: [
-			{
-				name: 'Population Data',
-				route: 'population',
-			},
-		],
-	},
-	{
 		name: 'About',
 		route: 'about/',
 		children: [
@@ -51,6 +41,16 @@ export const homeNavs = [
 			{
 				name: 'Awards',
 				route: 'awards',
+			},
+		],
+	},
+	{
+		name: 'Population ',
+		route: '',
+		children: [
+			{
+				name: 'Population Data',
+				route: 'population',
 			},
 		],
 	},
