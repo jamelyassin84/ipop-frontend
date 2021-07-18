@@ -2,6 +2,7 @@ import { UserType } from 'src/app/Types/User.types'
 import { Component, Input, OnInit } from '@angular/core'
 import { Alert, Fire } from 'src/app/components/Alert'
 import { UserService } from 'src/app/Services/Independent/user.service'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'ViewAdmin',
@@ -9,7 +10,11 @@ import { UserService } from 'src/app/Services/Independent/user.service'
 	styleUrls: ['./view-admin.component.scss'],
 })
 export class ViewAdminComponent implements OnInit {
-	constructor(private user: UserService) {}
+	constructor(private user: UserService, private component: ReloadService) {
+		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
+		})
+	}
 
 	@Input() admin: any = {}
 

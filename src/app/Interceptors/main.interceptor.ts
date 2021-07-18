@@ -1,3 +1,4 @@
+import { ReloadService } from './../Services/reload.service'
 import { Injectable } from '@angular/core'
 import {
 	HttpEvent,
@@ -8,32 +9,23 @@ import {
 	HttpErrorResponse,
 } from '@angular/common/http'
 import { Observable, Subject, throwError } from 'rxjs'
-import { retry, catchError } from 'rxjs/operators'
+import { retry, catchError, tap } from 'rxjs/operators'
 import { Alert } from '../components/Alert'
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
-	constructor() {}
-
-	private reload = new Subject()
-
-	reloadListener() {
-		return this.reload.asObservable()
-	}
+	constructor(private component: ReloadService) {}
 
 	intercept<T>(request: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
-		if (request.method == 'GET') {
-		}
-		if (request.method == 'POST') {
-			this.reload.next()
-		}
-		if (request.method == 'PATCH') {
-			this.reload.next()
-		}
-		if (request.method == 'DELETE') {
-			this.reload.next()
-		}
-		return next.handle(request).pipe(retry(0), catchError(this.errorMessage))
+		return next.handle(request).pipe(
+			retry(0),
+			tap(() => {
+				if (request.method !== 'GET') {
+					this.component.willReload()
+				}
+			}),
+			catchError(this.errorMessage)
+		)
 	}
 
 	errorMessage(response: HttpErrorResponse) {

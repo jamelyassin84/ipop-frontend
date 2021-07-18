@@ -1,6 +1,7 @@
 import { UserType } from './../../Types/User.types'
 import { Component, OnInit } from '@angular/core'
 import { UserService } from 'src/app/Services/Independent/user.service'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'app-view-admins',
@@ -8,7 +9,11 @@ import { UserService } from 'src/app/Services/Independent/user.service'
 	styleUrls: ['./view-admins.component.scss'],
 })
 export class ViewAdminsComponent implements OnInit {
-	constructor(private user: UserService) {}
+	constructor(private user: UserService, private component: ReloadService) {
+		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
+		})
+	}
 
 	admins: UserType[] = []
 	currentAdmin: UserType | any = {}
