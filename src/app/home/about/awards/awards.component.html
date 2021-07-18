@@ -2,11 +2,62 @@
     <AddAwards></AddAwards>
 </ng-template>
 
-<Modal size="lg" title="Add an Award" btnTitle="Add an award" btnClass="btn btn-sm btn-dark mr-2" [template]="addAwards" icon="ti-plus"></Modal>
-
-<div class="card mT-50">
-    <div class="card-header bg-light">
-        <h5 class="m-0 card-title text-center">Awards</h5>
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="m-0 card-title text-center d-flex">
+            <span style="align-self: center">Awards</span>
+            <span class="ml-auto">
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<Modal
+						size="lg"
+						title="Add an Award"
+						btnTitle="Add an award"
+						btnClass="dropdown-item"
+						[template]="addAwards"
+					></Modal>
+				</ng-template>
+			</span>
+        </h5>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+        <div class="m-0 bl br card mb-5" *ngFor="let award of awards">
+            <div class="card-header bg-white d-flex aic">
+                <div>
+                    <div class="h3 m-0 card-title text-danger dw"><i class="ti-medall"></i> {{ award.title }}</div>
+                    <span class="m-0 text-muted">Awarded : {{ award.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+					>
+				</div>
+				<div class="ml-auto">
+					<DropDown [buttons]="dropdown"></DropDown>
+					<ng-template #dropdown>
+						<button (click)="removeAward(award.id)" class="dropdown-item">Remove Award</button>
+					</ng-template>
+				</div>
+			</div>
+			<div class="card-body bg-white">
+				<div class="d-flex aic">
+					<div *ngIf="award.medias.length !== 0" class="mr-auto">
+						<img class="article-image" [src]="award.medias[0].file.uri" alt="" />
+						<Modal
+							size="xl"
+							[title]="'Images of ' + award.title"
+							btnTitle="View Images"
+							[template]="imageViewer"
+							btnClass="btn btn-link "
+							(click)="transformImages(award.medias)"
+						>
+						</Modal>
+					</div>
+					<p>
+						<a target="_blank" [href]="award.url">{{ award.url }}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<ng-template #imageViewer>
+	<ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>
