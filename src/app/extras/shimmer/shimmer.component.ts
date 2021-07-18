@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-shimmer',
-  templateUrl: './shimmer.component.html',
-  styleUrls: ['./shimmer.component.scss']
+	selector: 'Shimmer',
+	templateUrl: './shimmer.component.html',
+	styleUrls: ['./shimmer.component.scss'],
 })
 export class ShimmerComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
+	@Input() type = 'line'
 
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

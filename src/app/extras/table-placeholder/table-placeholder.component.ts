@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-table-placeholder',
-  templateUrl: './table-placeholder.component.html',
-  styleUrls: ['./table-placeholder.component.scss']
+	selector: 'TablePlaceholder',
+	templateUrl: './table-placeholder.component.html',
+	styleUrls: ['./table-placeholder.component.scss'],
 })
 export class TablePlaceholderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	constructor() {}
+	@Input() columns = [1, 2, 4, 5, 6, 7, 8, 9]
+	@Input() rows = [1, 2, 3, 5]
+	ngOnInit(): void {}
 }
