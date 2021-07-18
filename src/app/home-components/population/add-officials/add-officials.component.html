@@ -1,25 +1,33 @@
 <div class="card-body">
     <div class="form-group">
         <label for="">Choose Type of Official</label>
-        <select type="text" class="form-control">
+        <select (change)="reset()" [(ngModel)]="type" type="text" class="form-control">
 			<option *ngFor="let type of types">{{ type }}</option>
 		</select>
     </div>
-    <div class="form-group">
+    <div *ngIf="type === 'Municipal Official' || type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Municipality</label>
-        <select type="text" class="form-control"></select>
+        <select (change)="getBarangays($event)" class="custom-select" id="municipality" required>
+			<option selected disabled>Choose...</option>
+			<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+				{{ municipality.name }}
+			</option>
+		</select>
     </div>
-    <div class="form-group">
+    <div *ngIf="type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Barangay</label>
-        <select type="text" class="form-control"></select>
+        <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" required>
+			<option selected disabled value="">Choose...</option>
+			<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+		</select>
     </div>
     <div class="form-group">
         <label for="">Name of the Official</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.name" type="text" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="type !== 'Sanguniang Panlalawigan Member'">
         <label for="">Position</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.position" type="text" class="form-control" />
     </div>
 </div>
 

@@ -7,6 +7,6 @@ import { BaseService } from '../../base.service'
 })
 export class ProvincialService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'provincial-officials', '')
 	}
 }
