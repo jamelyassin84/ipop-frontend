@@ -24,6 +24,7 @@
     "angular-responsive-carousel": "^2.1.1",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
+    "dayjs": "^1.10.6",
     "network-status-angular": "^1.0.4",
     "ng2-charts": "^2.2.3",
     "rxjs": "~6.6.0",

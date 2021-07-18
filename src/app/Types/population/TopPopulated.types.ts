@@ -1,1 +1,5 @@
-export type TopPopulatedType = {}
+export type TopPopulatedType = {
+	name: String
+	total: number
+	percent: number
+}
