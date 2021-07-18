@@ -1,11 +1,16 @@
-directive for province municipality
 shimmer placeholder
 button dropdowns
-interceptor reload
 paginations component
+directive for province municipality
+interceptor reload
 route state ngrx
 use reactive formss
 fix padding
+autosize textarea
+login if has token
+kung makadto sya sa home nga wala token redirect sa home ka user
+tooltip
+search bar component
 
 backend bug
 roles doesnt change
@@ -15,7 +20,6 @@ quick links crud
 
 user UI
 
-No internet Page
 
 Technical Notes Types
 BirthStatistic
@@ -26,7 +30,6 @@ MarriaggesStatistic
 PMOC
 MPCFDC
 TENcenters
-
 
 Paganahon tanan nga buttons
 polish design

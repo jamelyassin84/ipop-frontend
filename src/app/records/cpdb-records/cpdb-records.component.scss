@@ -1,3 +1,11 @@
 tr {
     text-align: center;
 }
+
+.active * {
+    color: orange;
+}
+
+.active {
+    color: orange !important;
+}

@@ -144,6 +144,12 @@ import { ButtonPreloaderComponent } from './extras/button-preloader/button-prelo
 import { ImageViewerComponent } from './extras/image-viewer/image-viewer.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
+import { ShimmerComponent } from './extras/shimmer/shimmer.component'
+import { DropdownComponent } from './components/dropdown/dropdown.component'
+import { PaginationComponent } from './components/pagination/pagination.component'
+import { AddressPickerComponent } from './components/address-picker/address-picker.component'
+import { TablePlaceholderComponent } from './extras/table-placeholder/table-placeholder.component'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
 	declarations: [
@@ -282,6 +288,11 @@ import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 		ImageViewerComponent,
 		NotFoundComponent,
 		NoInternetComponent,
+		ShimmerComponent,
+		DropdownComponent,
+		PaginationComponent,
+		AddressPickerComponent,
+		TablePlaceholderComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -292,6 +303,7 @@ import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 		ChartsModule,
 		GoogleChartsModule,
 		HttpClientModule,
+		NgbModule,
 	],
 	providers: [
 		{

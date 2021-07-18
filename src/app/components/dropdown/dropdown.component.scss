@@ -1,0 +1,11 @@
+.dropdown-container {
+    * {
+        padding: 1rem !important;
+    }
+}
+
+.dropdown-toggle::after,
+.dropdown-toggle::before {
+    content: '';
+    color: transparent !important;
+}
