@@ -27,13 +27,13 @@ export class PopulationComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getTopPopulated()
+		drawChart('population-pyramid', this.populationPyramid)
 	}
 
 	topPopulated: any[] = []
 	getTopPopulated() {
 		this.topPopulatedService.index().subscribe((data: any[]) => {
 			this.topPopulated = data
-			console.log(data)
 		})
 	}
 
@@ -53,7 +53,7 @@ export class PopulationComponent implements OnInit {
 		this.getPopulationData()
 	}
 
-	populationPyramid: any = []
+	populationPyramid: any = DummyData
 	getPopulationPyramid() {
 		const service = new BaseService(
 			this._http,
@@ -61,11 +61,13 @@ export class PopulationComponent implements OnInit {
 			`municipality=${this.location.municipality}&barangay=${this.location.barangay}`
 		)
 		service.index().subscribe((populationPyramid: any) => {
-			drawChart('population-pyramid', populationPyramid)
+			if (populationPyramid.length !== 0 || populationPyramid != null) {
+				drawChart('population-pyramid', populationPyramid)
+			}
 		})
 	}
 
-	populationProfile = {}
+	populationProfile: any = PopProfileDummy
 	getPopulationData() {
 		const service = new BaseService(
 			this._http,
@@ -73,7 +75,9 @@ export class PopulationComponent implements OnInit {
 			`municipality=${this.location.municipality}&barangay=${this.location.barangay}`
 		)
 		service.index().subscribe((populationProfile: any) => {
-			this.populationProfile = populationProfile
+			if (populationProfile.coverage !== undefined) {
+				this.populationProfile = populationProfile
+			}
 		})
 	}
 }

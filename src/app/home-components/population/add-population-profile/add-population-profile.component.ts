@@ -9,10 +9,15 @@ import { Fire } from 'src/app/components/Alert'
 export class AddPopulationProfileComponent implements OnInit {
 	constructor() {}
 
-	types = ['Provincial', 'Muncipality', 'Barangay']
-
 	ngOnInit(): void {}
 
+	location: any = {
+		barangay: null,
+		municipality: null,
+	}
+	fetch(event: any) {
+		this.location = event
+	}
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
 	}
