@@ -1,11 +1,19 @@
-<button class="btn btn-dark">
-	<i class="ti-pencil-alt"></i>
-	Add/ Change Organizational Structure
-</button>
-
-<div class="card mT-50">
-    <div class="card-header bg-light">
-        <h5 class="m-0 card-title text-center">Organizational Chart</h5>
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="m-0 card-title text-center d-flex">
+            <span style="align-self: center">Organizational Structure</span>
+            <span class="ml-auto">
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<button (click)="triggerInputTypeFile()" ngbDropdownItem>
+						Add/ Change Organizational Structure
+					</button>
+				</ng-template>
+			</span>
+        </h5>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+        <img style="width: 100%" [src]="img" alt="" />
+    </div>
 </div>
+<input type="file" (change)="readUrl($event)" accept="image/*" style="display: none" id="input-type-file" />

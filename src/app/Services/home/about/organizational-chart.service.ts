@@ -7,6 +7,6 @@ import { BaseService } from '../../base.service'
 })
 export class OrganizationalChartService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'charts', '')
 	}
 }
