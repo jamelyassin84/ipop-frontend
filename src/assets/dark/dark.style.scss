@@ -146,3 +146,12 @@ option {
 .btn-dark {
     background: black;
 }
+
+.navbar {
+    border-bottom: 2px solid black;
+    box-shadow: 1px 1px 50px rgba($color: #1d83a7, $alpha: 0.5);
+}
+
+.text-dark {
+    color: white !important;
+}

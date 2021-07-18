@@ -24,20 +24,27 @@
             <br />
             <br />
             <br />
+            <h1 style="font-weight: 900">Welcome Back!</h1>
             <p class="h6 fw-300 text-muted mB-40">
-                Login with your username and password given by the administrator
+                Sign-in with your username and password given by the administrator
             </p>
             <form (submit)="login()">
-                <div class="mb-3">
-                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.username" type="email" class="form-control" placeholder="Username" />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend bg-white">
+                        <span class="input-group-text ti-user bg-white text-primary"></span>
+                    </div>
+                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.username" type="email" class="form-control form-control-lg" placeholder="Username" />
                 </div>
-                <div class="mb-3">
-                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.password" type="password" class="form-control" placeholder="Password" />
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend bg-white">
+                        <span class="input-group-text ti-lock bg-white text-primary"></span>
+                    </div>
+                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.password" type="password" class="form-control form-control-lg" placeholder="Password" />
                 </div>
-                <br />
-                <button [disabled]="isLoading" class="btn btn-dark w-100">
-						<span *ngIf="!isLoading">Login</span>
 
+                <br />
+                <button [disabled]="isLoading" class="btn btn-primary w-100 btn-lg">
+						<span *ngIf="!isLoading">Sign-in</span>
 						<Loader *ngIf="isLoading"></Loader>
 					</button>
             </form>
