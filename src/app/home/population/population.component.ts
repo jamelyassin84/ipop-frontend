@@ -46,6 +46,7 @@ export class PopulationComponent implements OnInit {
 	location: any = {
 		barangay: null,
 		municipality: null,
+		year: null,
 	}
 	fetch(event: any) {
 		this.location = event
@@ -58,7 +59,7 @@ export class PopulationComponent implements OnInit {
 		const service = new BaseService(
 			this._http,
 			'population-pyramid',
-			`municipality=${this.location.municipality}&barangay=${this.location.barangay}`
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((populationPyramid: any) => {
 			if (populationPyramid.length !== 0 || populationPyramid != null) {
@@ -67,16 +68,16 @@ export class PopulationComponent implements OnInit {
 		})
 	}
 
-	populationProfile: any = PopProfileDummy
+	populationProfile: any = {}
 	getPopulationData() {
 		const service = new BaseService(
 			this._http,
 			'statistic-profiles',
-			`municipality=${this.location.municipality}&barangay=${this.location.barangay}`
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((populationProfile: any) => {
-			if (populationProfile.coverage !== undefined) {
-				this.populationProfile = populationProfile
+			if (populationProfile.length !== 0) {
+				this.populationProfile = populationProfile[0]
 			}
 		})
 	}

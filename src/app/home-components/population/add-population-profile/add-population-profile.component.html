@@ -2,64 +2,64 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
     <div class="row">
         <div class="form-group col-md-4">
-            <label for="">Year</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
             <label for="">Number of Barangay</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.barangays" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Land Area</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.land_area" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Household Population</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.household_population" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Males</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.males" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Females</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.females" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Sex Ratio</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.sex_ratio" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Median Age</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.median_age" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Doubling time/year</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.doubling" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Growth Rate</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.growth_rate" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Households</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.households" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Average Household Size</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.average_household_size" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Density</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.density" type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label for="">Age Dependency Ratio</label>
+            <input [(ngModel)]="data.age_dependency_ratio" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Child Dependency Ration</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.child_dependency_ratio" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">Old Age Dependency Ratio</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.old_age_dependency_ratio" type="text" class="form-control" />
         </div>
     </div>
 </div>

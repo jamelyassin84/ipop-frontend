@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Created, Fire } from 'src/app/components/Alert'
+import { PopulationProfileService } from 'src/app/Services/home/population/population-profile.service'
 
 @Component({
 	selector: 'AddPopulationProfile',
@@ -7,18 +8,27 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./add-population-profile.component.scss'],
 })
 export class AddPopulationProfileComponent implements OnInit {
-	constructor() {}
+	constructor(private service: PopulationProfileService) {}
 
 	ngOnInit(): void {}
 
-	location: any = {
+	data: any = {
 		barangay: null,
 		municipality: null,
+		year: null,
 	}
+
 	fetch(event: any) {
-		this.location = event
+		this.data.barangay = event.barangay
+		this.data.municipality = event.municipality
+		this.data.year = event.year
 	}
+
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.service.create(this.data).subscribe(() => {
+				Created()
+			})
+		})
 	}
 }

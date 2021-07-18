@@ -112,32 +112,104 @@
 					<hr />
 					<div class="card-body">
 						<div class="w-100 row">
-							<div *ngFor="let object of populationProfile | keyvalue" class="col-md-6 mb-2 bb">
-								<h5 class="text-info mb-1">{{ object.value }}</h5>
-								<div class="fw-400 c-grey-700">{{ object.key }}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 mT-50 bg-white">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-					<Modal
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+							<div class="col-md-6 mb-2 bb">
+								<h5 class="text-info mb-1">Coverage</h5>
+								<div class="fw-400 c-grey-700">
+									<span class="mr-2" *ngIf="location.municipality != 0">{{
+										location.municipality
+									}}</span>
+                            <span class="mr-2" *ngIf="location.barangay != 0">{{ location.barangay }}</span>
+                            <span class="mr-2" *ngIf="location.barangay == 0 && location.municipality == 0">Province</span
+									>
+									<span class="mr-2">{{ location.year }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Total No. of Barangays</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.barangays || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Total Land Area</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.land_area || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Total Household Population</h5>
+                        <div class="fw-400 c-grey-700">
+                            {{ populationProfile.household_population || 'N/A' }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Males</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.males || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Females</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.females || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Sex Ratio</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.sex_ratio || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Median Age</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.median_age || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Doubling Time/Year</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.doubling || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Population Growth Rate</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.growth_rate || 'N/A' }}</div>
+                    </div>
+
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">No. of Households</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.households || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Average Household Size</h5>
+                        <div class="fw-400 c-grey-700">
+                            {{ populationProfile.average_household_size || 'N/A' }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Population Density</h5>
+                        <div class="fw-400 c-grey-700">{{ populationProfile.density || 'N/A' }}</div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Age Dependency Ratio</h5>
+                        <div class="fw-400 c-grey-700">
+                            {{ populationProfile.age_dependency_ratio || 'N/A' }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Child Dependency Ratio</h5>
+                        <div class="fw-400 c-grey-700">
+                            {{ populationProfile.child_dependency_ratio || 'N/A' }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 bb">
+                        <h5 class="text-info mb-1">Old-Age Dependency Ratio</h5>
+                        <div class="fw-400 c-grey-700">
+                            {{ populationProfile.old_age_dependency_ratio || 'N/A' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 mT-50 bg-white">
+    <div class="card">
+        <div class="card-header bg-white d-flex aic">
+            <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
+            <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+        </div>
+        <div class="card-body">
+            <TechnicalNotes></TechnicalNotes>
+        </div>
+    </div>
+</div>
+</div>
 </div>
