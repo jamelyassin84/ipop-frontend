@@ -1,12 +1,3 @@
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.extend(relativeTime)
-
-export function fromNow(date: any) {
-	return dayjs(date).fromNow()
-}
-
 export function toBool(data: any) {
 	return data ? true : false
 }
@@ -62,13 +53,4 @@ export function only<T, K extends keyof T>(data: T, keys: Array<K>) {
 		result[key] = data[key]
 	}
 	return result
-}
-
-const formatter = new Intl.NumberFormat('en-PH', {
-	style: 'currency',
-	currency: 'PHP',
-})
-
-export function formatCurrency(value: number) {
-	return formatter.format(value).replace(/\D00(?=\D*$)/, '') + '.00'
 }

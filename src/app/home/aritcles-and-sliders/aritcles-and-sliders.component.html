@@ -64,8 +64,8 @@
                 </div>
             </div>
             <div class="card-header bg-white">
-                <span class="m-0 text-info"><i class="ti-alarm-clock"></i> Created :
-					{{ article.created_at | date: 'MMMM dd, yyy - hh:mm A' }}</span
+                <span class="m-0 text-danger"><i class="ti-alarm-clock"></i> Created :
+					{{ article.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
 				>
 			</div>
 			<div class="card-body bg-white">
@@ -90,8 +90,8 @@
 		</div>
 	</div>
 	<div class="col-md-3 p-0 m-0 w-100">
-		<div class="bg-white mT-50">
-			<div class="card-header bg-info d-flex h4 aic">
+		<div class="bg-white mT-50 card">
+			<div class="card-header bg-danger d-flex h4 aic">
 				<div class="text-white mr-auto">Quick links</div>
 				<Modal
 					icon="ti-plus"
@@ -99,14 +99,14 @@
 					title="Add Quick Link"
 					btnSize="sm"
 					btnTitle="Add a quick link"
-					btnClass="btn btn-info ml-auto"
+					btnClass="btn btn-danger ml-auto"
 					[template]="addQuickLinks"
 				></Modal>
 			</div>
 			<div style="overflow: auto">
 				<div class="card-body d-flex aic" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
 					<div class="p-10">
-						<i class="ti-folder text-info" style="font-size: 2rem"></i>
+						<i class="ti-control-shuffle text-danger" style="font-size: 2rem"></i>
 					</div>
 					<div class="p-10">
 						<span>21 Iloilo Center to rise</span>
