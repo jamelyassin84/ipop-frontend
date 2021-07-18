@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire, pop } from 'src/app/components/Alert'
+import { Alert, Fire, pop } from 'src/app/components/Alert'
 import { ArticleService } from 'src/app/Services/home/news/article.service'
 import { SliderService } from 'src/app/Services/home/news/slider.service'
 import { ReloadService } from 'src/app/Services/reload.service'
@@ -25,7 +25,7 @@ export class AritclesAndSlidersComponent implements OnInit {
 		this.getArticles()
 	}
 
-	images: any[] = []
+	images: string[] = []
 	getSliders() {
 		this.slideService.index().subscribe((sliders: []) => {
 			sliders.forEach((slide: any) => {
@@ -36,16 +36,25 @@ export class AritclesAndSlidersComponent implements OnInit {
 	}
 
 	articles: ArticleType[] = []
+	currentImages: any = []
+
+	transformImages(photos: any) {
+		this.currentImages = []
+		photos.forEach((photo: any) => {
+			this.currentImages.push(photo.file.uri)
+		})
+	}
 	getArticles() {
 		this.articleService.index().subscribe((articles: ArticleType[]) => {
 			this.articles = articles
-			console.log(articles)
 		})
 	}
 
 	removeArticle(id: number) {
 		Fire('Delete Article?', 'Are you sure you want to permanently delete this data?', 'info', () => {
-			this.articleService.destroy(id).subscribe()
+			this.articleService.destroy(id).subscribe(() => {
+				Alert('Success', 'Article has been removed', 'success')
+			})
 		})
 	}
 }

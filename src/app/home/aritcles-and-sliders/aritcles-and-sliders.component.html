@@ -57,10 +57,19 @@
 			<div class="card-body bg-white">
 				<div class="d-flex">
 					<p class="pX-20">
-						{{ article.title }}
+						{{ article.body }}
 					</p>
 					<div *ngIf="article.photos.length !== 0" class="ml-auto mr-2">
 						<img class="article-image" [src]="article.photos[0].file.uri" alt="" />
+						<Modal
+							size="xl"
+							[title]="'Images of ' + article.title"
+							btnTitle="View Images"
+							[template]="imageViewer"
+							btnClass="btn btn-link w-100 text-center"
+							(click)="transformImages(article.photos)"
+						>
+						</Modal>
 					</div>
 				</div>
 			</div>
@@ -93,3 +102,7 @@
 </div>
 </div>
 </div>
+
+<ng-template #imageViewer>
+    <ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>
