@@ -37,7 +37,7 @@
                 <td>{{ official.name }}</td>
                 <td>{{ official.position || 'Sanguniang Panlalawigan Member' }}</td>
                 <td>
-                    <button class="btn btn-sm btn-danger">Remove</button>
+                    <button (click)="removeOfficial(official.id)" class="btn btn-sm btn-danger">Remove</button>
                 </td>
             </tr>
         </tbody>
