@@ -110,6 +110,24 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
+        <div class="col-md-12 mt-1">
+            <div class="alert alert-danger">
+                <span>Showing:</span>
+                <i class="ti-location-pin"></i>
+                <span class="mr-2" *ngIf="location.barangay !== null">
+					{{ location.barangay }}
+				</span>
+                <span class="mr-2" *ngIf="location.municipality !== null">
+					{{ location.municipality }}
+				</span>
+                <span class="mr-2" *ngIf="location.barangay === null && location.municipality === null">
+					Province
+				</span>
+                <span class="mr-2">
+					{{ location.year }}
+				</span>
+            </div>
+        </div>
         <div class="col-md-8 m-0">
             <div class="card">
                 <div class="card-header bg-white d-flex">
@@ -256,8 +274,9 @@
 				</div>
 			</div>
 			<div class="col-md-12 mt-1">
-				<div class="alert alert-danger">
-					Note: Incidence of Illegitimate and Teenage Charts should be filled up to avoid process leaks.
+				<div class="alert alert-info">
+					Note: Customizing Incidence of Illegitimate and Teenage Birth Charts requires barangay, municipality
+					and year to minimize the time given of content editors in updating the data.
 				</div>
 			</div>
 			<div class="col-md-12 mt-2">
