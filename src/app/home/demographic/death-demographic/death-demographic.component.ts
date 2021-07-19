@@ -33,9 +33,19 @@ export class DeathDemographicComponent implements OnInit {
 	getSummary() {
 		this.summary.deaths().subscribe((summaries: Summary) => {
 			this.summaries = summaries
-			console.log(summaries)
-			// this.distribute(groupBy(summaries.incidences, 'title'))
+			// this.clearChart()
+			// for (let index in summaries.incidences) {
+			// 	if (!this.crudeDeathRate.labels.includes(summaries.incidences[index].year)) {
+			// 		this.crudeDeathRate.labels.push(summaries.incidences[index].year)
+			// 	}
+			// 	this.crudeDeathRate.datasets[0].data.push(summaries.incidences[index].value)
+			// }
 		})
+	}
+
+	clearChart() {
+		this.crudeDeathRate.labels = []
+		this.crudeDeathRate.datasets[0].data = []
 	}
 
 	location: any = {
@@ -54,7 +64,7 @@ export class DeathDemographicComponent implements OnInit {
 		const service = new BaseService(
 			this.service.http,
 			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Death`
 		)
 		service.index().subscribe((months: any) => {
 			this.processStatisticalChart(months)
@@ -74,7 +84,13 @@ export class DeathDemographicComponent implements OnInit {
 		)
 		service.index().subscribe((summaries: Summary) => {
 			this.localData = summaries?.data || {}
-			console.log('localData', summaries)
+			this.clearChart()
+			for (let index in summaries.incidence) {
+				if (!this.crudeDeathRate.labels.includes(summaries.incidence[index].year)) {
+					this.crudeDeathRate.labels.push(summaries.incidence[index].year)
+				}
+				this.crudeDeathRate.datasets[0].data.push(summaries.incidence[index].value)
+			}
 		})
 	}
 
@@ -86,7 +102,6 @@ export class DeathDemographicComponent implements OnInit {
 		if (months.length === 0) {
 			return
 		}
-		console.log(months)
 		let labels: any = []
 		let males: any = []
 		let females: any = []

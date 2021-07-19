@@ -35,7 +35,7 @@ export class BirthDemographicComponent implements OnInit {
 	getSummary() {
 		this.summary.births().subscribe((summaries: Summary) => {
 			this.summaries = summaries
-			this.distribute(groupBy(summaries.incidences, 'title'))
+			// this.distribute(groupBy(summaries.incidences, 'title'))
 		})
 	}
 
@@ -112,7 +112,6 @@ export class BirthDemographicComponent implements OnInit {
 		if (months.length === 0) {
 			return
 		}
-		console.log(months)
 		let labels: any = []
 		let males: any = []
 		let females: any = []
