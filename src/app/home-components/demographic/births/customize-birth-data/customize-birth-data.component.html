@@ -1,16 +1,16 @@
 <div class="card-body">
     <div class="row">
         <div class="form-group col-md-4">
-            <label for="">Total Live Births</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
             <label for="">Crude Birth Rate</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.crude_birth_rate" type="text" class="form-control" />
         </div>
         <div class="form-group col-md-4">
             <label for="">General Fertility Rate</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.general_fertility_rate" type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label for="">Total Live Births</label>
+            <input [(ngModel)]="data.total_live_births" type="text" class="form-control" />
         </div>
     </div>
 </div>

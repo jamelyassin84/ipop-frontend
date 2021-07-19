@@ -40,7 +40,6 @@ export class BirthDemographicComponent implements OnInit {
 	incidenceChart: any = IllegitimateIncidenceChartConfig
 	teenageChart: any = TeenageIncidenceChartConfig
 	distribute(incidences: any) {
-		console.log(incidences)
 		this.clearChart()
 		let illegitimateBirth = incidences[0]
 		let teenageBirth = incidences[1]
@@ -77,6 +76,7 @@ export class BirthDemographicComponent implements OnInit {
 
 	getChart() {}
 
+	localData: Summary | any = {}
 	getLocalData() {
 		const service = new BaseService(
 			this.service.http,
@@ -85,7 +85,8 @@ export class BirthDemographicComponent implements OnInit {
 		)
 		service.index().subscribe((summaries: Summary) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
-			console.log(summaries)
+			this.localData = summaries.data
+			console.log(summaries.data)
 		})
 	}
 
@@ -108,4 +109,5 @@ type Summary = {
 	incidence: any
 	total: number
 	total_live_births: number
+	data: any
 }
