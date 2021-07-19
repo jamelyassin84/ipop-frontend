@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { IncidenceChartConfig } from '../Incidence.Chart'
+import { CrudeDeathRateIncidenceChartConfig } from '../CrudeDeathRate'
 import { MonthChartConfig } from '../MonthChart'
 
 @Component({
@@ -10,7 +10,7 @@ import { MonthChartConfig } from '../MonthChart'
 export class DeathDemographicComponent implements OnInit {
 	constructor() {}
 	statisticalChart = MonthChartConfig
-	crudeDeathRate = IncidenceChartConfig
+	crudeDeathRate = CrudeDeathRateIncidenceChartConfig
 
 	ngOnInit(): void {}
 }

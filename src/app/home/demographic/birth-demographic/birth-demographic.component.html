@@ -199,7 +199,12 @@
         <div class="card">
             <div class="card-header bg-white d-flex">
                 <div class="h5 mr-auto">Incidence of Teenage Births</div>
-                <Modal size="lg" title="Customize Incidence of Teenage Birth Chart" btnTitle="Customize incidence of teenage birth chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeTeenage" icon="ti-pencil-alt"></Modal>
+                <div class="ml-auto">
+                    <DropDown [buttons]="Teenage"></DropDown>
+                    <ng-template #Teenage>
+                        <Modal size="lg" title="Customize Incidence of Teenage Birth Chart" btnTitle="Customize incidence of teenage birth chart" btnClass="dropdown-item" [template]="customizeTeenage"></Modal>
+                    </ng-template>
+                </div>
             </div>
             <div class="card-body">
                 <canvas baseChart [datasets]="teenageChart.datasets" [labels]="teenageChart.labels" [options]="teenageChart.options" [legend]="teenageChart.legend" chartType="line">
@@ -211,7 +216,12 @@
         <div class="card">
             <div class="card-header bg-white d-flex">
                 <div class="h5 mr-auto">Incidence of Illegitimate Births</div>
-                <Modal size="lg" title="Customize Incidence of Illigetimate Birth Chart" btnTitle="Customize incidence of Illigetimate birth chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeIllegitimate" icon="ti-pencil-alt"></Modal>
+                <div class="ml-auto">
+                    <DropDown [buttons]="Illegitimate"></DropDown>
+                    <ng-template #Illegitimate>
+                        <Modal size="lg" title="Customize Incidence of Illigetimate Birth Chart" btnTitle="Customize incidence of Illigetimate birth chart" btnClass="dropdown-item" [template]="customizeIllegitimate"></Modal>
+                    </ng-template>
+                </div>
             </div>
             <div class="card-body">
                 <canvas baseChart [datasets]="incidenceChart.datasets" [labels]="incidenceChart.labels" [options]="incidenceChart.options" [legend]="incidenceChart.legend" chartType="line">
@@ -223,6 +233,7 @@
         <div class="card">
             <div class="card-header bg-white d-flex aic">
                 <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
+
                 <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
             </div>
             <div class="card-body">
