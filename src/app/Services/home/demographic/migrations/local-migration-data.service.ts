@@ -7,6 +7,6 @@ import { BaseService } from 'src/app/Services/base.service'
 })
 export class LocalMigrationDataService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'migration-statistics', '')
 	}
 }
