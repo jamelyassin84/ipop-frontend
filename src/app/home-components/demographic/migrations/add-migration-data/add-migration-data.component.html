@@ -1,34 +1,18 @@
 <div class="card-body">
-    <div class="form-group">
-        <label for="">Choose Type</label>
-        <select type="text" class="form-control">
-			<option *ngFor="let type of types">{{ type }}</option>
-		</select>
-    </div>
-    <div class="form-group">
-        <label for="">Choose a Municipality</label>
-        <select type="text" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label for="">Choose a Barangay</label>
-        <select type="text" class="form-control"></select>
-    </div>
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
     <div class="row">
-        <div class="form-group col-md-3">
-            <label for="">Year</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="">Total In Migrations</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.total_in_migrations" type="text" class="form-control" />
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="">Total Out Migrations</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.total_out_migrations" type="text" class="form-control" />
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-4">
             <label for="">Total Net Migrations</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.net_migrations" type="text" class="form-control" />
         </div>
     </div>
 </div>
