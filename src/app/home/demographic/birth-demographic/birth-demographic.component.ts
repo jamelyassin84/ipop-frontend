@@ -22,6 +22,7 @@ export class BirthDemographicComponent implements OnInit {
 		private monthChartService: MonthChartService
 	) {
 		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
 			this.fetch(this.location)
 		})
 	}
@@ -89,6 +90,11 @@ export class BirthDemographicComponent implements OnInit {
 
 	localData: Summary | any = {}
 	getLocalData() {
+		this.localData = {
+			crude_birth_rate: 0,
+			general_fertility_rate: 0,
+			total_live_births: 0,
+		}
 		const service = new BaseService(
 			this.service.http,
 			this.service.url,
@@ -96,7 +102,7 @@ export class BirthDemographicComponent implements OnInit {
 		)
 		service.index().subscribe((summaries: Summary) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
-			this.localData = summaries.data
+			this.localData = summaries?.data || {}
 		})
 	}
 

@@ -129,7 +129,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="h5 mr-auto">Local Birth Data</div>
-                        <div class="ml-auto" *ngIf="localData?.id !== undefined || localData?.id !== null">
+                        <div class="ml-auto" *ngIf="localData.id != null">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
                                 <Modal size="lg" title="Customize Birth Data" btnTitle="Customize birth data" btnClass="dropdown-item" [template]="customizeBirthData"></Modal>
@@ -183,7 +183,7 @@
 							</div>
 							<div class="layer w-100 mT-15">
 								<small class="fw-600 c-grey-700">Total Population</small>
-								<h5 class="mB-5 c-purple-500">
+								<h5 class="mB-5 text-primary">
 									<i class="ti-user mr-2"></i>{{ summaries.total | number }}
 								</h5>
 							</div>
