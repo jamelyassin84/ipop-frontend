@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Created, Fire } from 'src/app/components/Alert'
+import { KnowledgeOnFpService } from 'src/app/Services/home/rpfp/pmoc/knowledge-on-fp.service'
 
 @Component({
 	selector: 'CustomizeByKnowledgeOnFPChart',
@@ -7,11 +8,28 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./customize-by-knowledge-on-fp-chart.component.scss'],
 })
 export class CustomizeByKnowledgeOnFpChartComponent implements OnInit {
-	constructor() {}
+	constructor(private service: KnowledgeOnFpService) {}
 
 	ngOnInit(): void {}
 
+	data: any = {
+		barangay: null,
+		municipality: null,
+		year: null,
+		gender: 'male',
+	}
+
+	fetch(event: any) {
+		this.data.barangay = event.barangay
+		this.data.municipality = event.municipality
+		this.data.year = event.year
+	}
+
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.service.create(this.data).subscribe(() => {
+				Created()
+			})
+		})
 	}
 }

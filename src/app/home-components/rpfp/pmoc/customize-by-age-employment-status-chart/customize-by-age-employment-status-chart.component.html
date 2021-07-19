@@ -1,4 +1,6 @@
 <div class="card-body">
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
     <div class="row">
         <div class="col-md-12">
             <div class="h5">Males</div>
@@ -34,8 +36,6 @@
 
     <hr />
     <div class="d-flex aic jcc mr-5">
-        <button (click)="save()" class="btn btn-success">
-			<i class="ti-check mr-1"></i> Update this PMC Applicants by Employment Status and Sex
-		</button>
+        <button (click)="save()" class="btn btn-success"><i class="ti-check mr-1"></i> Update this PMC Applicants by Employment Status and Sex</button>
     </div>
 </div>
