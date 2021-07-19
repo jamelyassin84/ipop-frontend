@@ -1,3 +1,4 @@
+import { LocalBirthDataService } from './../../../Services/home/demographic/births/local-birth-data.service'
 import { SummaryService } from './../../../Services/home/demographic/summary.service'
 import { Component, OnInit } from '@angular/core'
 import { ReloadService } from 'src/app/Services/reload.service'
@@ -5,6 +6,7 @@ import { MonthChartConfig } from '../MonthChart'
 import { groupBy } from 'src/app/constants/helpers'
 import { IllegitimateIncidenceChartConfig } from '../illegitamate'
 import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
+import { BaseService } from 'src/app/Services/base.service'
 
 @Component({
 	selector: 'app-birth-demographic',
@@ -12,9 +14,13 @@ import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
 	styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
-	constructor(private component: ReloadService, private summary: SummaryService) {
+	constructor(
+		private component: ReloadService,
+		private summary: SummaryService,
+		private service: LocalBirthDataService
+	) {
 		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
+			this.fetch(this.location)
 		})
 	}
 
@@ -34,12 +40,14 @@ export class BirthDemographicComponent implements OnInit {
 	incidenceChart: any = IllegitimateIncidenceChartConfig
 	teenageChart: any = TeenageIncidenceChartConfig
 	distribute(incidences: any) {
-		let teenageBirth = incidences[1]
+		console.log(incidences)
+		this.clearChart()
 		let illegitimateBirth = incidences[0]
-		this.teenageChart.labels = []
-		this.incidenceChart.labels = []
-		this.teenageChart.datasets[0].data = []
-		this.incidenceChart.datasets[0].data = []
+		let teenageBirth = incidences[1]
+		if (incidences.length !== 0 && incidences[0][0].title !== 'Incidence of Illegitimate Birth') {
+			teenageBirth = incidences[0]
+			illegitimateBirth = incidences[1]
+		}
 		for (let index in teenageBirth) {
 			if (!this.teenageChart.labels.includes(teenageBirth[index].year)) {
 				this.teenageChart.labels.push(teenageBirth[index].year)
@@ -52,8 +60,6 @@ export class BirthDemographicComponent implements OnInit {
 			}
 			this.incidenceChart.datasets[0].data.push(illegitimateBirth[index].value)
 		}
-		console.log('teenageBirth', teenageBirth)
-		console.log('illegitimateBirth', illegitimateBirth)
 	}
 
 	location: any = {
@@ -71,17 +77,35 @@ export class BirthDemographicComponent implements OnInit {
 
 	getChart() {}
 
-	getLocalData() {}
+	getLocalData() {
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
+		service.index().subscribe((summaries: Summary) => {
+			this.distribute(groupBy(summaries.incidence, 'title'))
+			console.log(summaries)
+		})
+	}
 
 	getIncidences() {}
 
 	statisticalChart: any = MonthChartConfig
+
+	clearChart() {
+		this.teenageChart.labels = []
+		this.incidenceChart.labels = []
+		this.teenageChart.datasets[0].data = []
+		this.incidenceChart.datasets[0].data = []
+	}
 }
 
 type Summary = {
 	crude_birth_rate: number
 	general_fertility_rate: number
 	incidences: any
+	incidence: any
 	total: number
 	total_live_births: number
 }
