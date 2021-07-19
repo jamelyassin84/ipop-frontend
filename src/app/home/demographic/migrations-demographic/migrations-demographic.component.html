@@ -39,7 +39,10 @@
         <div class="col-md-4">
             <div class="p-20 bg-white border">
                 <div class="layer w-100 mB-10">
-                    <h6 class="lh-1">Total In Migration <span class="c-grey-500 fw-400">(Province)</span></h6>
+                    <h6 class="lh-1">
+                        Total In Migration
+                        <span class="c-grey-500 fw-400">(Province)</span>
+                    </h6>
                 </div>
                 <div class="layer w-100">
                     <div class="peers ai-sb fxw-nw">
@@ -49,199 +52,153 @@
                             </div>
                         </div>
                         <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-			<div class="p-20 bg-white border">
-				<div class="layer w-100 mB-10">
-					<h6 class="lh-1">Total Out Migration <span class="c-grey-500 fw-400">(Province)</span></h6>
-                        </div>
-                        <div class="layer w-100">
-                            <div class="peers ai-sb fxw-nw">
-                                <div class="peer peer-greed">
-                                    <div class="progress mt-1 w-75">
-                                        <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
-                                    </div>
-                                </div>
-                                <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">+10%</span>
-                                </div>
-                            </div>
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-4">
-                    <div class="p-20 bg-white border">
-                        <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Net Migration <span class="c-grey-500 fw-400">(Province)</span></h6>
+        <div class="col-md-4">
+            <div class="p-20 bg-white border">
+                <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">
+                        Total Out Migration
+                        <span class="c-grey-500 fw-400">(Province)</span>
+                    </h6>
+                </div>
+                <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                            <div class="progress mt-1 w-75">
+                                <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                            </div>
                         </div>
-                        <div class="layer w-100">
-                            <div class="peers ai-sb fxw-nw">
-                                <div class="peer peer-greed">
-                                    <div class="progress mt-1 w-75">
-                                        <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
-                                    </div>
-                                </div>
-                                <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">+10%</span>
-                                </div>
+                        <div class="peer">
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">+10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-20 bg-white border">
+                <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">
+                        Net Migration
+                        <span class="c-grey-500 fw-400">(Province)</span>
+                    </h6>
+                </div>
+                <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                            <div class="progress mt-1 w-75">
+                                <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="peer">
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">+10%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Province </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Municipality </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Barangay </a>
+        </li>
+    </ul>
+    <br />
+
+    <div class="row">
+        <div class="col-md-8 m-0">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="h5 mr-auto">Migration Statistics</div>
+                    <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar"> </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layers col-md-4">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="card-header bg-white d-flex">
+                        <div class="h5 mr-auto">Local Migration Data</div>
+                        <Modal size="lg" title="Customize Local Migration  Data" btnTitle="Customize local migration data" btnClass="btn btn-sm btn-dark mr-2" [template]="addLocalMigrationData" icon="ti-pencil-alt"></Modal>
+                    </div>
+                    <div class="layer w-100 card-body">
+                        <h5 class="mB-5">200</h5>
+                        <small class="fw-600 c-grey-700">In Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
+                        <span class="pull-right c-grey-600 fsz-sm">80%</span>
+                        <div class="progress mT-10">
+                            <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                        </div>
+                        <div class="layer w-100 mT-15">
+                            <h5 class="mB-5">200</h5>
+                            <small class="fw-600 c-grey-700">Out Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
+                            <span class="pull-right c-grey-600 fsz-sm">40%</span>
+                            <div class="progress mT-10">
+                                <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="layer w-100 mT-15">
+                            <h5 class="mB-5">200</h5>
+                            <small class="fw-600 c-grey-700">Net Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
+                            <span class="pull-right c-grey-600 fsz-sm">90%</span>
+                            <div class="progress mT-10">
+                                <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="layer w-100 mT-15">
+                            <h5 class="mB-5">150</h5>
+                            <small class="fw-600 c-grey-700">Total Population <span class="c-grey-500 fw-400">(Province)</span></small>
+                            <span class="pull-right c-grey-600 fsz-sm">90%</span>
+                            <div class="progress mT-10">
+                                <div class="progress-bar bgc-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Province </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Municipality </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Barangay </a>
-                </li>
-            </ul>
-            <br />
-
-            <div class="row">
-                <div class="col-md-8 m-0">
-                    <div class="card">
-                        <div class="card-header bg-white d-flex">
-                            <div class="h5 mr-auto">Migration Statistics</div>
-                            <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
-						</canvas>
-                            </div>
-                        </div>
-                    </div>
+    <div class="row mT-50">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto mt-2">Migration Chart</div>
                 </div>
-                <div class="layers col-md-4">
-                    <div class="layer w-100">
-                        <div class="card">
-                            <div class="card-header bg-white d-flex">
-                                <div class="h5 mr-auto">Local Migration Data</div>
-                                <Modal size="lg" title="Customize Local Migration  Data" btnTitle="Customize local migration data" btnClass="btn btn-sm btn-dark mr-2" [template]="addLocalMigrationData" icon="ti-pencil-alt"></Modal>
-                            </div>
-                            <div class="layer w-100 card-body">
-                                <h5 class="mB-5">200</h5>
-                                <small class="fw-600 c-grey-700">In Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
-						>
-						<span class="pull-right c-grey-600 fsz-sm">80%</span>
-						<div class="progress mT-10">
-							<div
-								class="progress-bar bgc-green-500"
-								role="progressbar"
-								aria-valuenow="50"
-								aria-valuemin="0"
-								aria-valuemax="100"
-								style="width: 80%"
-							></div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<h5 class="mB-5">200</h5>
-							<small class="fw-600 c-grey-700"
-								>Out Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
-							>
-							<span class="pull-right c-grey-600 fsz-sm">40%</span>
-							<div class="progress mT-10">
-								<div
-									class="progress-bar bgc-red-500"
-									role="progressbar"
-									aria-valuenow="50"
-									aria-valuemin="0"
-									aria-valuemax="100"
-									style="width: 40%"
-								></div>
-							</div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<h5 class="mB-5">200</h5>
-							<small class="fw-600 c-grey-700"
-								>Net Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small
-							>
-							<span class="pull-right c-grey-600 fsz-sm">90%</span>
-							<div class="progress mT-10">
-								<div
-									class="progress-bar bgc-orange-500"
-									role="progressbar"
-									aria-valuenow="50"
-									aria-valuemin="0"
-									aria-valuemax="100"
-									style="width: 90%"
-								></div>
-							</div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<h5 class="mB-5">150</h5>
-							<small class="fw-600 c-grey-700"
-								>Total Population <span class="c-grey-500 fw-400">(Province)</span></small
-							>
-							<span class="pull-right c-grey-600 fsz-sm">90%</span>
-							<div class="progress mT-10">
-								<div
-									class="progress-bar bgc-blue-500"
-									role="progressbar"
-									aria-valuenow="50"
-									aria-valuemin="0"
-									aria-valuemax="100"
-									style="width: 90%"
-								></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="card-body">
+                    <canvas baseChart [datasets]="migrationChart.datasets" [labels]="migrationChart.labels" [options]="migrationChart.options" [legend]="migrationChart.legend" chartType="bar"> </canvas>
+                </div>
+            </div>
+        </div>
 
-	<div class="row mT-50">
-		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">Migration Chart</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						baseChart
-						[datasets]="migrationChart.datasets"
-						[labels]="migrationChart.labels"
-						[options]="migrationChart.options"
-						[legend]="migrationChart.legend"
-						chartType="bar"
-					>
-					</canvas>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-					<Modal
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
+                    <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
