@@ -9,13 +9,7 @@
             <span class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
-					<Modal
-						size="lg"
-						[title]="'Add a Program for ' + programArea.title"
-						btnTitle="Add programs"
-						btnClass="dropdown-item"
-						[template]="addProgram"
-					></Modal>
+					<Modal size="lg" [title]="'Add a Program for ' + programArea.title" btnTitle="Add programs" btnClass="dropdown-item" [template]="addProgram"></Modal>
 				</ng-template>
 			</span>
         </h5>
@@ -23,36 +17,25 @@
     <div class="card-body">
         <h6 class="">{{ programArea.description }}</h6>
         <div class="card-body">
-            <div class="m-0 bl br card mb-5" *ngFor="let activity of programArea.activities">
+            <div class="bl br card mb-5" *ngFor="let activity of programArea.activities">
                 <div class="card-header bg-white d-flex aic">
                     <div>
-                        <div class="h3 m-0 card-title text-success dw">
-                            <i class="ti-pin-alt"></i> {{ activity.title }}
-                        </div>
-                        <span class="m-0 text-muted">Created : {{ activity.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
-						>
-					</div>
-					<div class="ml-auto">
-						<DropDown [buttons]="dropdown"></DropDown>
-						<ng-template #dropdown>
-							<button (click)="removeActivity(activity.id)" class="dropdown-item">Remove Activity</button>
-						</ng-template>
-					</div>
-				</div>
-				<div class="card-body bg-white">
-					<div class="aic">
-						<p class="p-20">
-							{{ activity.description }}
-							<span *ngIf="activity.files.length !== 0" class="mr-auto">
-								<Modal
-									size="xl"
-									[title]="'Images of ' + activity.title"
-									btnTitle="View Images"
-									[template]="imageViewer"
-									btnClass="btn btn-link "
-									(click)="transformImages(activity.files)"
-								>
-								</Modal>
+                        <div class="h3 m-0 card-title text-success dw"><i class="ti-pin-alt"></i> {{ activity.title }}</div>
+                        <span class="m-0 text-muted">Created : {{ activity.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span>
+                    </div>
+                    <div class="ml-auto">
+                        <DropDown [buttons]="dropdown"></DropDown>
+                        <ng-template #dropdown>
+                            <button (click)="removeActivity(activity.id)" class="dropdown-item">Remove Activity</button>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="card-body bg-white">
+                    <div class="aic">
+                        <p class="p-20">
+                            {{ activity.description }}
+                            <span *ngIf="activity.files.length !== 0" class="mr-auto">
+								<Modal size="xl" [title]="'Images of ' + activity.title" btnTitle="View Images" [template]="imageViewer" btnClass="btn btn-link " (click)="transformImages(activity.files)"> </Modal>
 							</span>
                         </p>
                     </div>

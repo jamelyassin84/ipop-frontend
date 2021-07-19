@@ -150,20 +150,20 @@
                         <small class="fw-600 c-grey-700">In Migrations </small>
                         <span class="pull-right c-grey-600 fsz-sm">{{ localData?.total_in_migrations || 0 | number }}%</span>
                         <div class="progress mT-10">
-                            <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_in_migrations + '%'"></div>
+                            <div class="progress-bar bgc-green-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_in_migrations + '%'"></div>
                         </div>
                         <div class="layer w-100 mT-15">
                             <small class="fw-600 c-grey-700">Out Migrations </small>
                             <span class="pull-right c-grey-600 fsz-sm">{{ localData?.total_out_migrations || 0 | number }}%</span>
                             <div class="progress mT-10">
-                                <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_out_migrations + '%'"></div>
+                                <div class="progress-bar bgc-orange-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_out_migrations + '%'"></div>
                             </div>
                         </div>
                         <div class="layer w-100 mT-15">
                             <small class="fw-600 c-grey-700">Net Migrations </small>
                             <span class="pull-right c-grey-600 fsz-sm">{{ localData?.net_migrations || 0 | number }}%</span>
                             <div class="progress mT-10">
-                                <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.net_migrations + '%'"></div>
+                                <div class="progress-bar bgc-orange-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.net_migrations + '%'"></div>
                             </div>
                         </div>
                     </div>
