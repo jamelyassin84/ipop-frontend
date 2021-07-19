@@ -19,7 +19,6 @@ export class AddressPickerComponent implements OnInit {
 		}
 		this.getMuncipalities()
 		this.currentData = { municipality: null, barangay: null, year: new Date().getFullYear() }
-		this.onEmit.emit(this.currentData)
 	}
 
 	municipalities: MunicipalityType[] = []
@@ -32,21 +31,22 @@ export class AddressPickerComponent implements OnInit {
 	barangays: BarangayOfficialType[] = []
 	getBarangays(event: any) {
 		this.currentData.municipality = event.target.options[event.target.options.selectedIndex].text
-		this.onEmit.emit(this.currentData)
 		this.location.barangays(event.target.value).subscribe((barangays: BarangayOfficialType[]) => {
 			this.barangays = barangays
 		})
 	}
 
+	emit() {
+		this.onEmit.emit(this.currentData)
+	}
+
 	setBarangay(event: any) {
 		this.currentData.barangay = event.target.value
-		this.onEmit.emit(this.currentData)
 	}
 
 	years: number[] = []
 	setYear(event: any) {
 		this.currentData.year = event.target.value
-		this.onEmit.emit(this.currentData)
 	}
 
 	tabs: any = {
@@ -63,8 +63,5 @@ export class AddressPickerComponent implements OnInit {
 		}
 		this.ngOnInit()
 		this.tabs[tab] = true
-		if (tab === 'province') {
-			this.onEmit.emit(this.currentData)
-		}
 	}
 }

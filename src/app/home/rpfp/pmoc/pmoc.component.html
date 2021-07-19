@@ -39,102 +39,91 @@
         <CustomizeTechnicalNotes></CustomizeTechnicalNotes>
     </ng-template>
 
-    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1; margin-bottom: -2rem">
+    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
         <Modal size="lg" title="Add Pre-Marriage Orrientation and Counseling Data" btnTitle="Add pre-marriage orrientation and counselling data" btnClass="btn btn-sm btn-dark mr-2" [template]="addPMOCData" icon="ti-plus"></Modal>
     </div>
 
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Number of Couples</div>
-                    <Modal size="lg" title="Customize Number of Couple Chart" btnTitle="Customize number of couple chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeCoupleChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="NCDD"></DropDown>
+                    <ng-template #NCDD>
+                        <Modal size="lg" title="Customize Number of Couple Chart" btnTitle="Customize number of couple chart" btnClass="dropdown-item" [template]="customizeCoupleChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="numberOfCouplesChart.colors" [datasets]="numberOfCouplesChart.datasets" [labels]="numberOfCouplesChart.labels" [options]="numberOfCouplesChart.options" [legend]="numberOfCouplesChart.legend" chartType="line"> </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-5">
+        <div class="col-md-6 mt-4 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Local PMOC Data</div>
-                    <Modal size="lg" title="Edit Local PMOC Data" btnTitle="Edit local pmoc" btnClass="btn btn-sm btn-dark mr-2" [template]="editPMOCData" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="LocalPMOC"></DropDown>
+                    <ng-template #LocalPMOC>
+                        <Modal size="lg" title="Edit Local PMOC Data" btnTitle="Edit local pmoc" btnClass="dropdown-item" [template]="editPMOCData"></Modal>
+                    </ng-template>
                 </div>
                 <div class="layer w-100 card-body">
-                    <h5 class="mB-5">200</h5>
-                    <small class="fw-600 c-grey-700"> Number of Sessions Conducted <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                    <span class="pull-right c-grey-600 fsz-sm">80%</span>
-                    <div class="progress mT-10">
-                        <div class="progress-bar bgc-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                    <div class="layer w-100 mT-15">
+                        <h5 class="text-primary"><i class="ti-user mr-2"></i>{{ localData?.sessions || 0 }}</h5>
+                        <small class="fw-600 c-grey-700"> Number of Sessions Conducted </small>
                     </div>
                     <div class="layer w-100 mT-15">
-                        <h5 class="mB-5">200</h5>
-                        <small class="fw-600 c-grey-700">Number of Couples Orriented <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                        <span class="pull-right c-grey-600 fsz-sm">40%</span>
-                        <div class="progress mT-10">
-                            <div class="progress-bar bgc-light-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
-                        </div>
+                        <h5 class="text-success"><i class="ti-user mr-2"></i>{{ localData?.oriented_couples || 0 }}</h5>
+                        <small class="fw-600 c-grey-700">Number of Couples Orriented </small>
                     </div>
                     <div class="layer w-100 mT-15">
-                        <h5 class="mB-5">200</h5>
-                        <small class="fw-600 c-grey-700">Number of Individual Interviewed <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                        <span class="pull-right c-grey-600 fsz-sm">90%</span>
-                        <div class="progress mT-10">
-                            <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-                        </div>
+                        <h5 class="text-warning"><i class="ti-user mr-2"></i>{{ localData?.individuals_interviewed || 0 }}</h5>
+                        <small class="fw-600 c-grey-700">Number of Individual Interviewed </small>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="col-md-6 mt-5">
-		<div class="card">
-			<div class="card-header bg-white d-flex aic">
-				<div class="card-title h5 mr-auto">PMOC Team</div>
-				<Modal
-					size="lg"
-					title="Edit PMOC Team"
-					btnTitle="Edit  pmoc team"
-					btnClass="btn btn-sm btn-dark mr-2"
-					[template]="customizePMOCTeam"
-					icon="ti-pencil-alt"
-				></Modal>
-			</div>
-			<div class="layer w-100 card-body"></div>
-		</div>
-	</div> -->
     </div>
 
     <div class="row">
-        <div class="col-md-6 mT-50">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
                     <div class="card-title h5 mr-auto">PMC Couple Applicants by Age Group</div>
-                    <Modal size="lg" title="Edit PMC Couple Applicants by Age Group" btnTitle="Edit  chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeByAgeGroupChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="ApplicantsByAgeGroupDD"></DropDown>
+                    <ng-template #ApplicantsByAgeGroupDD>
+                        <Modal size="lg" title="Edit PMC Couple Applicants by Age Group" btnTitle="Edit  chart" btnClass="dropdown-item" [template]="customizeByAgeGroupChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="ByAgeGroup.colors" [datasets]="ByAgeGroup.datasets" [labels]="ByAgeGroup.labels" [options]="ByAgeGroup.options" [legend]="ByAgeGroup.legend" chartType="bar"> </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
                     <div class="card-title h5 mr-auto">PMC Applicants by Employment Status and Sex</div>
-                    <Modal size="lg" title="Edit PMC Applicants by Employment Status and Sex" btnTitle="Edit  chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeByEmploymentStatusChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="ESDD"></DropDown>
+                    <ng-template #ESDD>
+                        <Modal size="lg" title="Edit PMC Applicants by Employment Status and Sex" btnTitle="Edit  chart" btnClass="dropdown-item" [template]="customizeByEmploymentStatusChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="ByEmploymentStatus.colors" [datasets]="ByEmploymentStatus.datasets" [labels]="ByEmploymentStatus.labels" [options]="ByEmploymentStatus.options" [legend]="ByEmploymentStatus.legend" chartType="bar"> </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mT-50">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
                     <div class="card-title h5 mr-auto">Knowledge on Family Planning among PMC Applicants</div>
-                    <Modal size="lg" title="Edit Knowledge on Family Planning among PMC Applicants" btnTitle="Edit  chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeByKnowledgeOnFPChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="KFDD"></DropDown>
+                    <ng-template #KFDD>
+                        <Modal size="lg" title="Edit Knowledge on Family Planning among PMC Applicants" btnTitle="Edit  chart" btnClass="dropdown-item" [template]="customizeByKnowledgeOnFPChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="ByKnowledgeOnFP.colors" [datasets]="ByKnowledgeOnFP.datasets" [labels]="ByKnowledgeOnFP.labels" [options]="ByKnowledgeOnFP.options" [legend]="ByKnowledgeOnFP.legend" chartType="bar"> </canvas>
@@ -142,30 +131,47 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
                     <div class="card-title h5 mr-auto">Percentage Distribution of PMC Applicants by Civil Status</div>
-                    <Modal size="lg" title="Edit Percentage Distribution of PMC Applicants by Civil Status" btnTitle="Edit  chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeByCivilStatusChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="CSDD"></DropDown>
+                    <ng-template #CSDD>
+                        <Modal size="lg" title="Edit Percentage Distribution of PMC Applicants by Civil Status" btnTitle="Edit  chart" btnClass="dropdown-item" [template]="customizeByCivilStatusChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="ByCIvilStatus.colors" [datasets]="ByCIvilStatus.datasets" [labels]="ByCIvilStatus.labels" [options]="ByCIvilStatus.options" [legend]="ByCIvilStatus.legend" chartType="bar"> </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 mT-50">
+        <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
                     <div class="card-title h5 mr-auto">PMC Applicants by Average Monthly Income and Sex</div>
-                    <Modal size="lg" title="Edit PMC Applicants by Average Monthly Income and Sex" btnTitle="Edit  chart" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeByMonthlyIncomeChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="AMDD"></DropDown>
+                    <ng-template #AMDD>
+                        <Modal size="lg" title="Edit PMC Applicants by Average Monthly Income and Sex" btnTitle="Edit  chart" btnClass="dropdown-item" [template]="customizeByMonthlyIncomeChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="byMonthlyIncome.colors" [datasets]="byMonthlyIncome.datasets" [labels]="byMonthlyIncome.labels" [options]="byMonthlyIncome.options" [legend]="byMonthlyIncome.legend" chartType="bar"> </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6 mt-4 mt-4">
             <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto">PMOC Team</div>
+                    <DropDown [buttons]="PMOCTEAMDD"></DropDown>
+                    <ng-template #PMOCTEAMDD>
+                        <Modal size="lg" title="Edit PMOC Team" btnTitle="Edit  pmoc team" btnClass="dropdown-item" [template]="customizePMOCTeam"></Modal>
+                    </ng-template>
+                </div>
+                <div class="layer w-100 card-body"></div>
+            </div>
+
+            <div class="card mt-5">
                 <div class="card-header bg-white bg-white d-flex aic">
                     <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
                     <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
