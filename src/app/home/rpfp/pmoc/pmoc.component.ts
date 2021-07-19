@@ -14,6 +14,15 @@ import { PMOCMonthChartConfig } from './PMOCMonthChart'
 export class PmocComponent implements OnInit {
 	constructor() {}
 
+	location: any = {
+		barangay: null,
+		municipality: null,
+		year: null,
+	}
+	fetch(event: any) {
+		this.location = event
+	}
+
 	numberOfCouplesChart = PMOCMonthChartConfig
 	ByAgeGroup = ByAgeGroupConfig
 	ByCIvilStatus = ByCIvilStatusConfig

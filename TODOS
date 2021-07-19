@@ -1,46 +1,42 @@
-birth
-death
-marraiges
 PMOC
 MPCFDC
 Teen Centers
 File Uploads    
+
 chart color
 change pass
+
+technical notes Crud
+personnel  directory Crud
+quick links Crud
+file Uploads Crud
+
+Bulk Records
+Approvals
+
+
+disable all buttons on click
+preloaders all
+
 polish news
 reactive form validation
-article pagination
-quick link pagination
-preloaders all
-shimmer placeholder
+
 route state ngrx
 fix padding
 autosize textarea
 login if has token
 kung makadto sya sa home nga wala token redirect sa home ka user
-tooltip
-disable all buttons on click
+
 remove all errors
 responsive nav
 Edit All (Optional)
-new data
 
 backend bug
 roles doesnt change
 technical notes crud
 personnel directory crud
-quick links crud
 
 user UI
 
 
-Technical Notes Types
-BirthStatistic
-DeathStatistic
-TopPopulation
-MigrationStatistic
-MarriaggesStatistic
-PMOC
-MPCFDC
-TENcenters
 

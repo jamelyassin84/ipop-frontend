@@ -7,6 +7,6 @@ import { BaseService } from 'src/app/Services/base.service'
 })
 export class KnowledgeOnFpService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'pmc-kfp', '')
 	}
 }
