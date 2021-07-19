@@ -2,11 +2,67 @@
     <AddProgram></AddProgram>
 </ng-template>
 
-<Modal size="lg" title="Add a Program" btnTitle="Add programs" btnClass="btn btn-sm btn-dark mr-2" [template]="addProgram" icon="ti-plus"></Modal>
-
-<div class="card mT-50">
-    <div class="card-header bg-light">
-        <h5 class="m-0 card-title text-center">Responsible Parenthood and Family Planning Program</h5>
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="m-0 card-title text-center d-flex">
+            <span style="align-self: center">{{ programArea.title }}</span>
+            <span class="ml-auto">
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<Modal
+						size="lg"
+						title="Add a Program"
+						btnTitle="Add programs"
+						btnClass="dropdown-item"
+						[template]="addProgram"
+					></Modal>
+				</ng-template>
+			</span>
+        </h5>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+        <h6 class="">{{ programArea.description }}</h6>
+        <div class="card-body">
+            <div class="m-0 bl br card mb-5" *ngFor="let activity of programArea.activities">
+                <div class="card-header bg-white d-flex aic">
+                    <div>
+                        <div class="h3 m-0 card-title text-success dw">
+                            <i class="ti-pin-alt"></i> {{ activity.title }}
+                        </div>
+                        <span class="m-0 text-muted">Created : {{ activity.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+						>
+					</div>
+					<div class="ml-auto">
+						<DropDown [buttons]="dropdown"></DropDown>
+						<ng-template #dropdown>
+							<button (click)="removeActivity(activity.id)" class="dropdown-item">Remove Activity</button>
+						</ng-template>
+					</div>
+				</div>
+				<div class="card-body bg-white">
+					<div class="d-flex aic">
+						<div *ngIf="activity.files.length !== 0" class="mr-auto">
+							<img class="article-image" [src]="activity.files[0].file.uri" alt="" />
+							<Modal
+								size="xl"
+								[title]="'Images of ' + activity.title"
+								btnTitle="View Images"
+								[template]="imageViewer"
+								btnClass="btn btn-link "
+								(click)="transformImages(activity.files)"
+							>
+							</Modal>
+						</div>
+						<p>
+							{{ activity.description }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<ng-template #imageViewer>
+	<ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>
