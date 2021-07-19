@@ -1,5 +1,5 @@
 <ng-template #addProgram>
-    <AddProgram></AddProgram>
+    <AddProgram [program_area_id]="programArea.id"></AddProgram>
 </ng-template>
 
 <div class="card">
@@ -11,7 +11,7 @@
 				<ng-template #dropdown>
 					<Modal
 						size="lg"
-						title="Add a Program"
+						[title]="'Add a Program for ' + programArea.title"
 						btnTitle="Add programs"
 						btnClass="dropdown-item"
 						[template]="addProgram"
@@ -40,29 +40,28 @@
 					</div>
 				</div>
 				<div class="card-body bg-white">
-					<div class="d-flex aic">
-						<div *ngIf="activity.files.length !== 0" class="mr-auto">
-							<img class="article-image" [src]="activity.files[0].file.uri" alt="" />
-							<Modal
-								size="xl"
-								[title]="'Images of ' + activity.title"
-								btnTitle="View Images"
-								[template]="imageViewer"
-								btnClass="btn btn-link "
-								(click)="transformImages(activity.files)"
-							>
-							</Modal>
-						</div>
-						<p>
+					<div class="aic">
+						<p class="p-20">
 							{{ activity.description }}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+							<span *ngIf="activity.files.length !== 0" class="mr-auto">
+								<Modal
+									size="xl"
+									[title]="'Images of ' + activity.title"
+									btnTitle="View Images"
+									[template]="imageViewer"
+									btnClass="btn btn-link "
+									(click)="transformImages(activity.files)"
+								>
+								</Modal>
+							</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <ng-template #imageViewer>
-	<ImageViewer [images]="currentImages"></ImageViewer>
+    <ImageViewer [images]="currentImages"></ImageViewer>
 </ng-template>
