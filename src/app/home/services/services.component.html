@@ -1,12 +1,42 @@
 <ng-template #addServices>
-    <AddServices></AddServices>
+    <AddServices [service_id]="serviceOffered.id"></AddServices>
 </ng-template>
 
-<Modal size="lg" title="Add a Services" btnTitle="Add services" btnClass="btn btn-sm btn-dark mr-2" [template]="addServices" icon="ti-plus"></Modal>
-
-<div class="card mT-50">
-    <div class="card-header bg-light">
-        <h5 class="m-0 card-title text-center">Responsible Parenthood and Family Planning Program</h5>
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="m-0 card-title text-center d-flex">
+            <span style="align-self: center">{{ serviceOffered.title }}</span>
+            <span class="ml-auto">
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<Modal
+						size="lg"
+						[title]="'Add a service for ' + serviceOffered.title"
+						btnTitle="Add services"
+						btnClass="dropdown-item"
+						[template]="addServices"
+					></Modal>
+				</ng-template>
+			</span>
+        </h5>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+        <div class="m-0 bl br card mb-5" *ngFor="let service of serviceOffered.offers">
+            <div class="card-header bg-white d-flex aic">
+                <div>
+                    <div class="h5 m-0 card-title c-purple-500 dw">
+                        <i class="ti-microphone"></i> {{ service.title }}
+                    </div>
+                    <span class="m-0 text-muted pl-4">Created : {{ service.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+					>
+				</div>
+				<div class="ml-auto">
+					<DropDown [buttons]="dropdown"></DropDown>
+					<ng-template #dropdown>
+						<button (click)="removeService(service.id)" class="dropdown-item">Remove services</button>
+					</ng-template>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
