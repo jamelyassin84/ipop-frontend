@@ -4,7 +4,7 @@
     </ng-template>
 
     <ng-template #addLocalMigrationData>
-        <AddLocalMigrationData></AddLocalMigrationData>
+        <AddLocalMigrationData [data]="localData"></AddLocalMigrationData>
     </ng-template>
 
     <ng-template #customizeMonthChart>
@@ -48,11 +48,11 @@
                     <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed">
                             <div class="progress mt-1 w-75">
-                                <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                                <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="summaries.total_in_migrations + '%'"></div>
                             </div>
                         </div>
                         <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span>
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ summaries.total_in_migrations }}%</span>
                         </div>
                     </div>
                 </div>
@@ -71,11 +71,11 @@
                     <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed">
                             <div class="progress mt-1 w-75">
-                                <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                                <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="summaries.total_out_migrations + '%'"></div>
                             </div>
                         </div>
                         <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">+10%</span>
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{ summaries.total_out_migrations }}%</span>
                         </div>
                     </div>
                 </div>
@@ -94,11 +94,11 @@
                     <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed">
                             <div class="progress mt-1 w-75">
-                                <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                                <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="summaries.net_migrations + '%'"></div>
                             </div>
                         </div>
                         <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">+10%</span>
+                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{ summaries.net_migrations }}%</span>
                         </div>
                     </div>
                 </div>
@@ -106,20 +106,18 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Province </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Municipality </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Barangay </a>
-        </li>
-    </ul>
-    <br />
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
+        <div class="col-md-12 mt-1">
+            <div class="alert alert-dark">
+                <span>Showing:</span>
+                <span class="mr-2" *ngIf="location.barangay !== null">{{ location.barangay }}</span>
+                <span class="mr-2" *ngIf="location.municipality !== null">{{ location.municipality }}</span>
+                <span class="mr-2" *ngIf="location.barangay === null && location.municipality === null">Province</span>
+                <span class="mr-2">{{ location.year }}</span>
+            </div>
+        </div>
         <div class="col-md-8 m-0">
             <div class="card">
                 <div class="card-header bg-white d-flex">
@@ -138,37 +136,31 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="h5 mr-auto">Local Migration Data</div>
-                        <Modal size="lg" title="Customize Local Migration  Data" btnTitle="Customize local migration data" btnClass="btn btn-sm btn-dark mr-2" [template]="addLocalMigrationData" icon="ti-pencil-alt"></Modal>
+                        <div class="ml-auto" *ngIf="localData.id != null">
+                            <DropDown [buttons]="MigrationData"></DropDown>
+                            <ng-template #MigrationData>
+                                <Modal size="lg" title="Customize Local Migration  Data" btnTitle="Customize local migration data" btnClass="dropdown-item" [template]="addLocalMigrationData"></Modal>
+                            </ng-template>
+                        </div>
                     </div>
                     <div class="layer w-100 card-body">
-                        <h5 class="mB-5">200</h5>
-                        <small class="fw-600 c-grey-700">In Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                        <span class="pull-right c-grey-600 fsz-sm">80%</span>
+                        <small class="fw-600 c-grey-700">In Migrations </small>
+                        <span class="pull-right c-grey-600 fsz-sm">{{ localData?.total_in_migrations || 0 | number }}%</span>
                         <div class="progress mT-10">
-                            <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                            <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_in_migrations + '%'"></div>
                         </div>
                         <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">200</h5>
-                            <small class="fw-600 c-grey-700">Out Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                            <span class="pull-right c-grey-600 fsz-sm">40%</span>
+                            <small class="fw-600 c-grey-700">Out Migrations </small>
+                            <span class="pull-right c-grey-600 fsz-sm">{{ localData?.total_out_migrations || 0 | number }}%</span>
                             <div class="progress mT-10">
-                                <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                                <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.total_out_migrations + '%'"></div>
                             </div>
                         </div>
                         <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">200</h5>
-                            <small class="fw-600 c-grey-700">Net Migrations <span class="c-grey-500 fw-400">(Barotac Nuevo)</span></small>
-                            <span class="pull-right c-grey-600 fsz-sm">90%</span>
+                            <small class="fw-600 c-grey-700">Net Migrations </small>
+                            <span class="pull-right c-grey-600 fsz-sm">{{ localData?.net_migrations || 0 | number }}%</span>
                             <div class="progress mT-10">
-                                <div class="progress-bar bgc-orange-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="layer w-100 mT-15">
-                            <h5 class="mB-5">150</h5>
-                            <small class="fw-600 c-grey-700">Total Population <span class="c-grey-500 fw-400">(Province)</span></small>
-                            <span class="pull-right c-grey-600 fsz-sm">90%</span>
-                            <div class="progress mT-10">
-                                <div class="progress-bar bgc-blue-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+                                <div class="progress-bar bgc-red-500" style="height: 30px" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="localData?.net_migrations + '%'"></div>
                             </div>
                         </div>
                     </div>

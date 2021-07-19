@@ -3,21 +3,13 @@ export const MigrationChartConfig = {
 		scaleShowVerticalLines: false,
 		responsive: true,
 	},
-	labels: ['2018', '2019', '2020'],
+	labels: ['Out Migrations', 'In Migrations', 'Net Migrations'],
 	legend: true,
 	colors: [],
 	datasets: [
 		{
-			data: [Math.random(), Math.random(), Math.random()],
-			label: 'Out Migrations',
-		},
-		{
-			data: [Math.random(), Math.random(), Math.random()],
-			label: 'In Migrations',
-		},
-		{
-			data: [Math.random(), Math.random(), Math.random()],
-			label: 'Net Migrations',
+			data: [0, 0, 0],
+			label: 'Data',
 		},
 	],
 }
