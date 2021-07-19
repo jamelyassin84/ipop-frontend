@@ -36,8 +36,8 @@
 			<option *ngFor="let year of years">{{ year }}</option>
 		</select>
     </div>
-    <div class="col-md-3" style="align-self: flex-end">
-        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn btn-outline-primary pl-3 pr-3">Select</button>
+    <div class="col-md-3 mb-1" style="align-self: flex-end">
+        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn btn-outline-dark pl-3 pr-3 btn-sm"><i class="ti-lock"></i> Lock</button>
     </div>
 </div>
 <br />
