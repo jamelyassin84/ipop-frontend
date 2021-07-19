@@ -7,6 +7,7 @@ import { groupBy } from 'src/app/constants/helpers'
 import { IllegitimateIncidenceChartConfig } from '../illegitamate'
 import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
 import { BaseService } from 'src/app/Services/base.service'
+import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 
 @Component({
 	selector: 'app-birth-demographic',
@@ -17,7 +18,8 @@ export class BirthDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private summary: SummaryService,
-		private service: LocalBirthDataService
+		private service: LocalBirthDataService,
+		private monthChartService: MonthChartService
 	) {
 		this.component.shouldReload().subscribe(() => {
 			this.fetch(this.location)
@@ -74,7 +76,16 @@ export class BirthDemographicComponent implements OnInit {
 		this.getIncidences()
 	}
 
-	getChart() {}
+	getChart() {
+		const service = new BaseService(
+			this.service.http,
+			this.monthChartService.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
+		service.index().subscribe((months: any) => {
+			this.processStatisticalChart(months)
+		})
+	}
 
 	localData: Summary | any = {}
 	getLocalData() {
@@ -86,8 +97,34 @@ export class BirthDemographicComponent implements OnInit {
 		service.index().subscribe((summaries: Summary) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries.data
-			console.log(summaries.data)
 		})
+	}
+
+	processStatisticalChart(months: Array<Statistic>) {
+		this.statisticalChart.labels = []
+		this.statisticalChart.datasets[0].data = []
+		this.statisticalChart.datasets[1].data = []
+		this.statisticalChart.datasets[2].data = []
+		if (months.length === 0) {
+			return
+		}
+		console.log(months)
+		let labels: any = []
+		let males: any = []
+		let females: any = []
+		let total: any = []
+		months.forEach((data: Statistic) => {
+			if (!labels.includes(data.month)) {
+				labels.push(data.month)
+			}
+			males.push(data.males)
+			females.push(data.females)
+			total.push(data.total)
+		})
+		this.statisticalChart.labels = labels
+		this.statisticalChart.datasets[0].data = females
+		this.statisticalChart.datasets[1].data = males
+		this.statisticalChart.datasets[2].data = total
 	}
 
 	getIncidences() {}
@@ -110,4 +147,11 @@ type Summary = {
 	total: number
 	total_live_births: number
 	data: any
+}
+
+type Statistic = {
+	males: number
+	females: number
+	total: number
+	month: number
 }

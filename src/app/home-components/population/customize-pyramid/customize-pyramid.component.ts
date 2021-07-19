@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Created, Fire } from 'src/app/components/Alert'
 import { PopulationPyramidService } from 'src/app/Services/home/population/population-pyramid.service'
-import { PyramidType } from 'src/app/Types/population/Pyramid.type'
-import { PyramidInputs } from './Pyramid.input'
 
 @Component({
 	selector: 'CustomizePyramid',
@@ -15,9 +13,6 @@ export class CustomizePyramidComponent implements OnInit {
 	types = ['Provincial', 'Muncipality', 'Barangay']
 
 	ngOnInit(): void {}
-
-	males: PyramidType = PyramidInputs.males
-	females: PyramidType = PyramidInputs.females
 
 	tabs: any = {
 		males: true,

@@ -39,7 +39,7 @@ export class MainInterceptor implements HttpInterceptor {
 			Alert('HTTP Error', `Internal Server Error Contact Developers`, 'error')
 		}
 		for (let message in response.error.errors) {
-			Alert(`Error!`, JSON.stringify(response.error.errors[message]), 'error')
+			Alert(`Error!`, response.error.errors[message][0], 'error')
 			break
 		}
 

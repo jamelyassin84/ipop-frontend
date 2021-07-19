@@ -1,19 +1,4 @@
 <div class="card-body">
-    <div class="form-group">
-        <label for="">Choose Type</label>
-        <select type="text" class="form-control">
-			<option *ngFor="let type of types">{{ type }}</option>
-		</select>
-    </div>
-    <div class="form-group">
-        <label for="">Choose a Municipality</label>
-        <select type="text" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label for="">Choose a Barangay</label>
-        <select type="text" class="form-control"></select>
-    </div>
-
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a role="button" (click)="changeTab('males')" class="nav-link text-muted" [class.active]="tabs.males">
@@ -29,15 +14,103 @@
     </ul>
     <br />
     <div class="row" *ngIf="tabs.males">
-        <div *ngFor="let object of males | keyvalue" class="form-group col-md-3">
-            <label for="">{{ object.key }}</label>
-            <input [(ngModel)]="object.value" type="text" class="form-control" />
+        <div class="form-group col-md-3">
+            <label for="January">January</label>
+            <input [(ngModel)]="data['males'].January" type="number" class="form-control" id="January" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="February">February</label>
+            <input [(ngModel)]="data['males'].February" type="number" class="form-control" id="February" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="March">March</label>
+            <input [(ngModel)]="data['males'].March" type="number" class="form-control" id="March" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="April">April</label>
+            <input [(ngModel)]="data['males'].April" type="number" class="form-control" id="April" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="May">May</label>
+            <input [(ngModel)]="data['males'].May" type="number" class="form-control" id="May" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="June">June</label>
+            <input [(ngModel)]="data['males'].June" type="number" class="form-control" id="June" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="July">July</label>
+            <input [(ngModel)]="data['males'].July" type="number" class="form-control" id="July" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="August">August</label>
+            <input [(ngModel)]="data['males'].August" type="number" class="form-control" id="August" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="September">September</label>
+            <input [(ngModel)]="data['males'].September" type="number" class="form-control" id="September" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="October">October</label>
+            <input [(ngModel)]="data['males'].October" type="number" class="form-control" id="October" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="November">November</label>
+            <input [(ngModel)]="data['males'].November" type="number" class="form-control" id="November" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="December">December</label>
+            <input [(ngModel)]="data['males'].December" type="number" class="form-control" id="December" />
         </div>
     </div>
     <div class="row" *ngIf="tabs.females">
-        <div *ngFor="let object of females | keyvalue" class="form-group col-md-3">
-            <label for="">{{ object.key }}</label>
-            <input [(ngModel)]="object.value" type="text" class="form-control" />
+        <div class="form-group col-md-3">
+            <label for="January">January</label>
+            <input [(ngModel)]="data['females'].January" type="number" class="form-control" id="January" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="February">February</label>
+            <input [(ngModel)]="data['females'].February" type="number" class="form-control" id="February" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="March">March</label>
+            <input [(ngModel)]="data['females'].March" type="number" class="form-control" id="March" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="April">April</label>
+            <input [(ngModel)]="data['females'].April" type="number" class="form-control" id="April" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="May">May</label>
+            <input [(ngModel)]="data['females'].May" type="number" class="form-control" id="May" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="June">June</label>
+            <input [(ngModel)]="data['females'].June" type="number" class="form-control" id="June" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="July">July</label>
+            <input [(ngModel)]="data['females'].July" type="number" class="form-control" id="July" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="August">August</label>
+            <input [(ngModel)]="data['females'].August" type="number" class="form-control" id="August" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="September">September</label>
+            <input [(ngModel)]="data['females'].September" type="number" class="form-control" id="September" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="October">October</label>
+            <input [(ngModel)]="data['females'].October" type="number" class="form-control" id="October" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="November">November</label>
+            <input [(ngModel)]="data['females'].November" type="number" class="form-control" id="November" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="December">December</label>
+            <input [(ngModel)]="data['females'].December" type="number" class="form-control" id="December" />
         </div>
     </div>
 </div>

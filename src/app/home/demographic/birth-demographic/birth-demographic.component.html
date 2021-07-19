@@ -16,7 +16,7 @@
     </ng-template>
 
     <ng-template #customizeMonthChart>
-        <CustomizeMonthChart></CustomizeMonthChart>
+        <CustomizeMonthChart [location]="location"></CustomizeMonthChart>
     </ng-template>
 
     <ng-template #customizeTechnicalNotes>
@@ -129,7 +129,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="h5 mr-auto">Local Birth Data</div>
-                        <div class="ml-auto" *ngIf="localData?.id !== undefined">
+                        <div class="ml-auto" *ngIf="localData?.id !== undefined || localData?.id !== null">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
                                 <Modal size="lg" title="Customize Birth Data" btnTitle="Customize birth data" btnClass="dropdown-item" [template]="customizeBirthData"></Modal>

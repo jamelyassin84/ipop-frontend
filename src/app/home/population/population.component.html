@@ -103,13 +103,13 @@
                                 <div class="col-md-6 mb-2 bb">
                                     <h5 class="text-secondary mb-1 h6 fw-300">Coverage</h5>
                                     <span class="fw-400 c-red-700 h4">
-									<span class="mr-2" *ngIf="location.barangay != 0">
+									<span class="mr-2" *ngIf="location.barangay !== null">
 										{{ location.barangay }}
 									</span>
-                                    <span class="mr-2" *ngIf="location.municipality != 0">
+                                    <span class="mr-2" *ngIf="location.municipality !== null">
 										{{ location.municipality }}
 									</span>
-                                    <span class="mr-2" *ngIf="location.barangay == 0 && location.municipality == 0">
+                                    <span class="mr-2" *ngIf="location.barangay === null && location.municipality === null">
 										Province
 									</span>
                                     <span class="mr-2">

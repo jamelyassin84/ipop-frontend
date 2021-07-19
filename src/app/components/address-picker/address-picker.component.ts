@@ -18,7 +18,7 @@ export class AddressPickerComponent implements OnInit {
 			this.years.push(year)
 		}
 		this.getMuncipalities()
-		this.currentData = { municipality: 0, barangay: 0, year: new Date().getFullYear() }
+		this.currentData = { municipality: null, barangay: null, year: new Date().getFullYear() }
 		this.onEmit.emit(this.currentData)
 	}
 
@@ -57,7 +57,7 @@ export class AddressPickerComponent implements OnInit {
 
 	currentData: any
 	changeTab(tab: string) {
-		this.currentData = { municipality: 0, barangay: 0 }
+		this.currentData = { municipality: null, barangay: null }
 		for (let key in this.tabs) {
 			this.tabs[key] = false
 		}
