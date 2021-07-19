@@ -24,12 +24,12 @@ export class ServicesComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.servicesOffered()
-		pop()
 	}
 
 	serviceOffered: any = {}
 	servicesOffered() {
 		this.route.params.subscribe((params) => {
+			pop()
 			this.service.show(params['id']).subscribe((service: any) => {
 				this.serviceOffered = service
 				console.log(service)

@@ -24,9 +24,7 @@
         <div class="m-0 bl br card mb-5" *ngFor="let service of serviceOffered.offers">
             <div class="card-header bg-white d-flex aic">
                 <div>
-                    <div class="h5 m-0 card-title c-purple-500 dw">
-                        <i class="ti-microphone"></i> {{ service.title }}
-                    </div>
+                    <div class="h5 m-0 card-title c-blue-300 dw"><i class="ti-microphone"></i> {{ service.title }}</div>
                     <span class="m-0 text-muted pl-4">Created : {{ service.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
 					>
 				</div>

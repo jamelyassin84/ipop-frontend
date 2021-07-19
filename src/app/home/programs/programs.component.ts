@@ -24,11 +24,11 @@ export class ProgramsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getProgramArea()
-		pop()
 	}
 	programArea: ProgramArea | any = {}
 	getProgramArea() {
 		this.route.params.subscribe((params) => {
+			pop()
 			this.service.show(params['id']).subscribe((programArea: ProgramArea) => {
 				this.programArea = programArea
 			})
