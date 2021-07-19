@@ -27,6 +27,7 @@ export class MonthChartDataComponent implements OnInit {
 	}
 
 	@Input() location: any = {}
+	@Input() type: any = ''
 	data: any = {
 		males: {
 			January: 0,
@@ -56,10 +57,10 @@ export class MonthChartDataComponent implements OnInit {
 			November: 0,
 			December: 0,
 		},
-		type: 'Birth',
 	}
 
 	save() {
+		this.data.type = this.type
 		this.data.municipality = this.location.municipality
 		this.data.barangay = this.location.barangay
 		this.data.year = parseInt(this.location.year)
