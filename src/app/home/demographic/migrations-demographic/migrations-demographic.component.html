@@ -8,7 +8,7 @@
     </ng-template>
 
     <ng-template #customizeMonthChart>
-        <CustomizeMonthChart></CustomizeMonthChart>
+        <CustomizeMonthChart type="Migration" [location]="location"></CustomizeMonthChart>
     </ng-template>
 
     <ng-template #customizeMigrationChart>
@@ -122,7 +122,10 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="h5 mr-auto">Migration Statistics</div>
-                    <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                    <DropDown [buttons]="DeathStatistics"></DropDown>
+                    <ng-template #DeathStatistics>
+                        <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <div class="chart">
