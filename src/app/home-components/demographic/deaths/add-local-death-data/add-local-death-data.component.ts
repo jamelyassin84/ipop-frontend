@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { LocalDeathDataService } from './../../../../Services/home/demographic/deaths/local-death-data.service'
+import { Component, Input, OnInit } from '@angular/core'
+import { Fire, Updated } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'AddLocalDeathData',
@@ -7,11 +8,16 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./add-local-death-data.component.scss'],
 })
 export class AddLocalDeathDataComponent implements OnInit {
-	constructor() {}
+	constructor(private service: LocalDeathDataService) {}
 
+	@Input() data: any = {}
 	ngOnInit(): void {}
 
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.service.update(this.data.id, this.data).subscribe(() => {
+				Updated()
+			})
+		})
 	}
 }

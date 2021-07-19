@@ -30,7 +30,6 @@ export class BirthDemographicComponent implements OnInit {
 	summaries: Summary | any = {}
 	ngOnInit(): void {
 		this.getSummary()
-		this.getIncidences()
 	}
 
 	getSummary() {
@@ -74,7 +73,6 @@ export class BirthDemographicComponent implements OnInit {
 		this.location = event
 		this.getChart()
 		this.getLocalData()
-		this.getIncidences()
 	}
 
 	getChart() {
@@ -132,8 +130,6 @@ export class BirthDemographicComponent implements OnInit {
 		this.statisticalChart.datasets[1].data = males
 		this.statisticalChart.datasets[2].data = total
 	}
-
-	getIncidences() {}
 
 	statisticalChart: any = MonthChartConfig
 
