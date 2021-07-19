@@ -1,5 +1,11 @@
-programs crud
-services crud
+birth
+death
+marraiges
+PMOC
+MPCFDC
+Teen Centers
+File Uploads    
+
 change pass
 polish news
 reactive form validation
@@ -17,7 +23,7 @@ disable all buttons on click
 remove all errors
 responsive nav
 Edit All (Optional)
-
+new data
 
 backend bug
 roles doesnt change
