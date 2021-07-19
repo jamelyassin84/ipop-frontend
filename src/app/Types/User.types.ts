@@ -23,5 +23,5 @@ interface ProfilePicture {
 }
 
 interface Roles {
-	name: String
+	name: string
 }

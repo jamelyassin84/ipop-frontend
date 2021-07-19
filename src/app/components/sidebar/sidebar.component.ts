@@ -11,7 +11,7 @@ import { ADMIN } from './Sidebar'
 })
 export class SidebarComponent implements OnInit {
 	constructor(private router: Router) {}
-
+	avatar = localStorage.getItem('avatar')
 	url = this.router.url
 	mode = ''
 	ngOnInit(): void {

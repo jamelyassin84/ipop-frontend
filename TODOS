@@ -1,4 +1,3 @@
-remove officials
 on log-in fetch profile picture
 programs crud
 services crud
@@ -16,7 +15,8 @@ login if has token
 kung makadto sya sa home nga wala token redirect sa home ka user
 tooltip
 disable all buttons on click
-
+remove all errors
+responsive nav
 
 backend bug
 roles doesnt change

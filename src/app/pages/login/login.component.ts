@@ -23,16 +23,20 @@ export class LoginComponent implements OnInit {
 	login() {
 		this.isLoading = true
 		this.auth.cache = ''
-		this.auth.login(this.data)?.subscribe((data: Login) => {
-			localStorage.setItem('token', data.token)
-			const user: UserType = data.user
-			console.log(user.roles[0].name)
-			localStorage.setItem('isUser', stringify(user.roles[0].name))
-			localStorage.setItem('user', stringify(user))
-			this.isLoading = false
-			Welcome(user.fullname)
-			this.router.navigate(['home/index/news'])
-		})
+		this.auth.login(this.data)?.subscribe(
+			(data: Login) => {
+				localStorage.setItem('token', data.token)
+				const user: UserType = data.user
+				console.log(user.roles[0].name)
+				localStorage.setItem('role', user.roles[0].name)
+				localStorage.setItem('avatar', user.profile_picture?.uri || 'null')
+				localStorage.setItem('user', stringify(user))
+				this.isLoading = false
+				Welcome(user.fullname)
+				this.router.navigate(['home/index/news'])
+			},
+			() => (this.isLoading = false)
+		)
 	}
 }
 interface Login {

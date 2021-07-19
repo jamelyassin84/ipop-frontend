@@ -40,7 +40,11 @@
             <li class="nav-item mt-5">
                 <a (click)="logout()" role="button" class="sidebar-link">
                     <span class="icon-holder">
-						<img class="avatar" src="../../../assets/avatars/face-7.jpg" alt="" />
+						<img
+							class="avatar"
+							[src]="avatar === 'null' ? '../../../assets/avatars/face-7.jpg' : avatar"
+							alt=""
+						/>
 					</span>
                     <span class="title">Sign-Out</span>
                 </a>
