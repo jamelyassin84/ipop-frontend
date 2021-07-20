@@ -19,6 +19,7 @@ export class AddressPickerComponent implements OnInit {
 		}
 		this.getMuncipalities()
 		this.currentData = { municipality: null, barangay: null, year: new Date().getFullYear() }
+		this.onEmit.emit(this.currentData)
 	}
 
 	municipalities: MunicipalityType[] = []

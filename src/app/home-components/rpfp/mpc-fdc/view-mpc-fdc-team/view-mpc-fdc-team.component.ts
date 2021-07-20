@@ -1,6 +1,7 @@
 import { Deleted, Fire } from 'src/app/components/Alert'
 import { Component, OnInit } from '@angular/core'
 import { MpcFdcTeamService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'ViewMPCFDCTeam',
@@ -8,7 +9,11 @@ import { MpcFdcTeamService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-te
 	styleUrls: ['./view-mpc-fdc-team.component.scss'],
 })
 export class ViewMpcFdcTeamComponent implements OnInit {
-	constructor(private service: MpcFdcTeamService) {}
+	constructor(private service: MpcFdcTeamService, private component: ReloadService) {
+		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
+		})
+	}
 
 	teams: any = []
 	ngOnInit(): void {

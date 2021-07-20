@@ -1,6 +1,12 @@
-MPCFDC
 Teen Centers
-File Uploads    
+optimize data leaks
+DELETE ADD UPDATE SUBJECT FOR APPROVALS CALLBACK BUTTON
+disable all buttons on click
+reactive form validation
+autosize textarea
+
+
+File Uploads CRUD   
 
 chart color
 change pass
@@ -9,20 +15,14 @@ Approvals
 Bulk Records
 
 
-DELETE ADD UPDATE SUBJECT FOR APPROVALS CALLBACK BUTTON
+Test all user
 
-optimize data leaks
 
-disable all buttons on click
 preloaders all
 
-polish news
-reactive form validation
 
 route state ngrx
 fix padding
-autosize textarea
-login if has token
 kung makadto sya sa home nga wala token redirect sa home ka user
 
 remove all errors

@@ -13,7 +13,11 @@ import { UserType } from 'src/app/Types/User.types'
 export class LoginComponent implements OnInit {
 	constructor(private router: Router, private auth: AuthService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		if (localStorage.getItem('token') !== undefined) {
+			this.router.navigate(['home/index/news'])
+		}
+	}
 
 	data: any = {
 		username: '',
