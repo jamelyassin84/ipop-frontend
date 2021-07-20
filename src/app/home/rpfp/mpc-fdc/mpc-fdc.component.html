@@ -23,7 +23,7 @@
 </ng-template>
 
 <ng-template #viewMPCFDCPersonnelIncharge>
-    <ViewMPCFDCPersonnelIncharge></ViewMPCFDCPersonnelIncharge>
+    <ViewMPCFDCPersonnelIncharge [mpcfdc_id]="mpcfdc_id"></ViewMPCFDCPersonnelIncharge>
 </ng-template>
 
 <ng-template #customizeTechnicalNotes>
@@ -85,7 +85,7 @@
 
                                 <Modal (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
 
-                                <Modal size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
+                                <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
                                 <button (click)="remove(unit.id)" class="dropdown-item">Remove</button>
                             </ng-template>

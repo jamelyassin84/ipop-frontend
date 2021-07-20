@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { BaseService } from './../../../../Services/base.service'
+import { MpcFdcPersonnelInchargeService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-personnel-incharge.service'
+import { Component, Input, OnInit } from '@angular/core'
+import { Deleted, Fire } from 'src/app/components/Alert'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'ViewMPCFDCPersonnelIncharge',
@@ -7,11 +10,28 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./view-personnel-incharge.component.scss'],
 })
 export class ViewPersonnelInchargeComponent implements OnInit {
-	constructor() {}
+	constructor(private service: MpcFdcPersonnelInchargeService, private component: ReloadService) {
+		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
+		})
+	}
 
-	ngOnInit(): void {}
+	personnels: any = []
 
-	remove() {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {})
+	@Input() mpcfdc_id: any
+	ngOnInit(): void {
+		setTimeout(() => {
+			new BaseService(this.service.http, this.service.url, `mpcfdc_id=${this.mpcfdc_id}`).index().subscribe((data: any) => {
+				this.personnels = data
+			})
+		}, 300)
+	}
+
+	remove(id: number) {
+		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
+			this.service.destroy(id).subscribe(() => {
+				Deleted()
+			})
+		})
 	}
 }
