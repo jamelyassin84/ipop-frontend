@@ -32,7 +32,7 @@
     </ng-template>
 
     <ng-template #editPMOCData>
-        <EditPMOCData></EditPMOCData>
+        <EditPMOCData [data]="localData"></EditPMOCData>
     </ng-template>
 
     <ng-template #customizeTechnicalNotes>
@@ -64,7 +64,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Local PMOC Data</div>
-                    <DropDown [buttons]="LocalPMOC"></DropDown>
+                    <DropDown *ngIf="localData.id != null" [buttons]="LocalPMOC"></DropDown>
                     <ng-template #LocalPMOC>
                         <Modal size="lg" title="Edit Local PMOC Data" btnTitle="Edit local pmoc" btnClass="dropdown-item" [template]="editPMOCData"></Modal>
                     </ng-template>

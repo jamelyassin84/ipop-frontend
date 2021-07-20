@@ -20,6 +20,7 @@ import { EmploymentStatusService } from 'src/app/Services/home/rpfp/pmoc/employm
 import { BaseService } from 'src/app/Services/base.service'
 import { NumberOfCouplesFPType } from 'src/app/Types/charts/pmoc/NumberOfCouples.types'
 import { AgeGroupType } from 'src/app/Types/charts/pmoc/AgeGroup.types'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'app-pmoc',
@@ -34,8 +35,14 @@ export class PmocComponent implements OnInit {
 		private ByCIvilStatusService: CivilStatusService,
 		private ByEmploymentStatusService: EmploymentStatusService,
 		private ByKnowledgeOnFPService: KnowledgeOnFpService,
-		private byMonthlyIncomeService: AverageMonthlyIncomeService
-	) {}
+		private byMonthlyIncomeService: AverageMonthlyIncomeService,
+		private component: ReloadService
+	) {
+		this.component.shouldReload().subscribe(() => {
+			this.ngOnInit()
+			this.fetch(this.location)
+		})
+	}
 
 	location: any = {
 		municipality: null,
@@ -46,7 +53,6 @@ export class PmocComponent implements OnInit {
 		this.location.municipality = event.municipality
 		this.location.year = event.year
 		this.getLocalData()
-		this.getNumberOfCouplesChart()
 		this.getByAgeGroup()
 		this.getByCIvilStatus()
 		this.getByEmploymentStatus()
@@ -54,31 +60,35 @@ export class PmocComponent implements OnInit {
 		this.getbyMonthlyIncome()
 	}
 
-	localData: PMOCType | any = {}
+	localData: any = {}
 	getLocalData() {
 		for (let key in this.localData) {
 			this.localData[key] = 0
 		}
 		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((pmc: any) => {
-			this.localData = pmc.data[0]
+			if (pmc.data.id === undefined) {
+				this.localData = { id: null }
+			}
+			this.localData = pmc.data
+			this.renderNumberOfCouplesChart(pmc.month)
 		})
 	}
 
-	getNumberOfCouplesChart() {
-		const service = new BaseService(this.numberOfCouplesChartService.http, this.numberOfCouplesChartService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}&type=PMOC`)
-		service.index().subscribe((data: NumberOfCouplesFPType) => {
-			// console.log('NumberOfCouplesFPType', data)
-		})
+	renderNumberOfCouplesChart(data: any) {
+		this.numberOfCouplesChart.datasets[0].data = []
+		for (let index in data) {
+			this.numberOfCouplesChart.datasets[0].data.push(data[index].males)
+		}
 	}
 
 	getByAgeGroup() {
 		const service = new BaseService(this.ByAgeGroupService.http, this.ByAgeGroupService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((data: AgeGroupType[] | any) => {
+			data = data[0]
 			if (data.length === 0) {
 				return
 			}
-			data = data[0]
 			this.ByAgeGroup.datasets[0].data = [
 				parseInt(data['15_to_19_female']),
 				parseInt(data['20_to_24_female']),
@@ -104,10 +114,10 @@ export class PmocComponent implements OnInit {
 	getByCIvilStatus() {
 		const service = new BaseService(this.ByCIvilStatusService.http, this.ByCIvilStatusService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((data: ByCivilStatusType[] | any) => {
+			data = data[0]
 			if (data.length === 0) {
 				return
 			}
-			data = data[0]
 			this.ByCIvilStatus.datasets[0].data = [parseInt(data.single_female), parseInt(data.live_in_female), parseInt(data.widow_female), parseInt(data['separated_female'])]
 			this.ByCIvilStatus.datasets[1].data = [parseInt(data.single_male), parseInt(data.live_in_male), parseInt(data.widow_male), parseInt(data['separated_male'])]
 			this.ByCIvilStatus.datasets[2].data = [
@@ -123,10 +133,10 @@ export class PmocComponent implements OnInit {
 	getByEmploymentStatus() {
 		const service = new BaseService(this.ByEmploymentStatusService.http, this.ByEmploymentStatusService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((data: EmployemntStatusType[] | any) => {
+			data = data[0]
 			if (data.length === 0) {
 				return
 			}
-			data = data[0]
 			this.ByEmploymentStatus.datasets[0].data = [data.student_female, data.employed_female, data.not_employed_female]
 			this.ByEmploymentStatus.datasets[1].data = [data.student_male, data.employed_male, data.not_employed_male]
 			this.ByEmploymentStatus.datasets[2].data = [parseInt(data.student_female) + parseInt(data.student_male), parseInt(data.not_employed_female) + parseInt(data.not_employed_male), parseInt(data.employed_male) + parseInt(data.employed_female)]
@@ -136,10 +146,10 @@ export class PmocComponent implements OnInit {
 	getByKnowledgeOnFP() {
 		const service = new BaseService(this.ByKnowledgeOnFPService.http, this.ByKnowledgeOnFPService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((data: KnowledgeOnFPType[] | any) => {
+			data = data[0]
 			if (data.length === 0) {
 				return
 			}
-			data = data[0]
 			this.ByKnowledgeOnFP.datasets[0].data = [data.females]
 			this.ByKnowledgeOnFP.datasets[1].data = [data.males]
 			this.ByKnowledgeOnFP.datasets[2].data = [parseInt(data.males) + parseInt(data.females)]
@@ -149,10 +159,10 @@ export class PmocComponent implements OnInit {
 	getbyMonthlyIncome() {
 		const service = new BaseService(this.byMonthlyIncomeService.http, this.byMonthlyIncomeService.url, `municipality=${this.location['municipality']}&year=${this.location['year']}`)
 		service.index().subscribe((data: AverageMonthlyIncomeType[] | any) => {
+			data = data[0]
 			if (data.length === 0) {
 				return
 			}
-			data = data[0]
 			this.byMonthlyIncome.datasets[0].data = [
 				parseInt(data.no_income_male),
 				parseInt(data.under_5k_male),

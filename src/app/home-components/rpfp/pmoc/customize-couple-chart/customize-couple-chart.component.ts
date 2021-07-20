@@ -41,6 +41,7 @@ export class CustomizeCoupleChartComponent implements OnInit {
 			November: 0,
 			December: 0,
 		},
+		type: 'PMOC',
 	}
 
 	fetch(event: any) {
@@ -51,6 +52,7 @@ export class CustomizeCoupleChartComponent implements OnInit {
 
 	save() {
 		this.data.months = this.data.males
+		console.log('data ni', this.data)
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
 			this.service.create(this.data).subscribe(() => {
 				Created()
