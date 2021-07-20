@@ -7,7 +7,7 @@
 </ng-template>
 
 <ng-template #addMPCFDCImages>
-    <AddMPCFDCImages></AddMPCFDCImages>
+    <AddMPCFDCImages [data]="currenData"></AddMPCFDCImages>
 </ng-template>
 
 <ng-template #addMPCFDCPersonnelIncharge>
@@ -34,81 +34,67 @@
     <Modal size="lg" title="Add MPC-FDC Data" btnTitle="Add MPC-FDC Data" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCData" icon="ti-plus"></Modal>
 </div>
 
-<ul class="nav nav-tabs mT-50">
-    <li class="nav-item">
-        <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Province </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Municipality </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> Barangay </a>
-    </li>
-</ul>
-<br />
-
 <div class="row">
-    <div class="col-md-5">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th><i class="ti-ticket c-red-500"></i></th>
-                    <td>Mark</td>
-                    <td>Konoha</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-info mR-10">View</button>
-                        <button (click)="remove()" class="btn btn-sm btn-outline-danger">Remove</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-md-4">
+        <label TeenCenter>District</label>
+        <select class="form-control">
+			<option selected disabled>Choose...</option>
+			<option *ngFor="let district of districts">{{ district }}</option>
+		</select>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-4">
+        <label>Municipality </label>
+        <select class="form-control">
+			<option selected disabled>Choose...</option>
+			<option *ngFor="let municipality of municipalities">{{ municipality.name }}</option>
+		</select>
+    </div>
+    <div class="col-md-4 mb-1" style="align-self: flex-end">
+        <button (click)="getMPCFDC()" class="btn btn-outline-dark pl-3 pr-3 btn-sm"><i class="ti-lock"></i> Lock</button>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
         <div class="card">
-            <div class="card-body">
-                <div class="card-title d-flex">
-                    <span> 1 MPC-FDC of BAROTAC NUEVO </span>
-                    <div class="ml-auto">
-                        <Modal size="lg" title="View MPC FDC Team" btnTitle="View MPC FDC Team" btnClass="btn btn-sm btn-outline-info mr-2" [template]="viewMPCFDCTeam" icon="ti-eye"></Modal>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Services</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unit of MPCFDCs">
+                        <td>
+                            <h1 class="ti-home text-danger"></h1>
+                        </td>
+                        <td>{{ unit.name }}</td>
+                        <td>{{ unit.services }}</td>
+                        <td>
+                            <DropDown [buttons]="dropdown"></DropDown>
+                            <ng-template #dropdown>
+                                <Modal (click)="currenData = unit" size="lg" title="MPC Images" btnTitle="MPC Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
 
-                        <Modal size="lg" title="Add MPC FDC Team" btnTitle="Add MPC FDC Team" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCTeam" icon="ti-pencil alt"></Modal>
-                    </div>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Services Offered</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th><i class="ti-id-badge c-orange-500"></i></th>
-                            <td>Mark</td>
-                            <td>Konoha</td>
-                            <td>
-                                <Modal size="lg" title=" MPC Images" btnTitle=" MPC Images" btnClass="btn btn-sm btn-outline-warning mr-2" [template]="addMPCFDCImages" icon="ti-eye"></Modal>
+                                <Modal size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
-                                <Modal size="lg" title="View Personnel Incharge" btnTitle=" Personnel Incharge" btnClass="btn btn-sm btn-outline-info mr-2" [template]="viewMPCFDCPersonnelIncharge" icon="ti-eye"></Modal>
+                                <Modal size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
 
-                                <Modal size="lg" title="Add Personnel Incharge" btnTitle=" Personnel Incharge" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCPersonnelIncharge" icon="ti-pencil-alt"></Modal>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                <Modal size="lg" title="View MPC FDC Team" btnTitle="View MPC FDC Team" btnClass="dropdown-item" [template]="viewMPCFDCTeam"></Modal>
+
+                                <Modal size="lg" title="Add MPC FDC Team" btnTitle="Add MPC FDC Team" btnClass="dropdown-item" [template]="addMPCFDCTeam"></Modal>
+
+                                <button (click)="remove(unit.id)" class="dropdown-item">Remove</button>
+                            </ng-template>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
     <div class="col-md-12 mT-50">
         <div class="card">
             <div class="card-header bg-white d-flex aic">

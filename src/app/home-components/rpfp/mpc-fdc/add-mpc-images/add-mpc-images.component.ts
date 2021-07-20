@@ -1,5 +1,7 @@
-import { Fire } from 'src/app/components/Alert'
-import { Component, OnInit } from '@angular/core'
+import { Alert, Deleted, Fire, pop } from 'src/app/components/Alert'
+import { Component, Input, OnInit } from '@angular/core'
+import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
+import { BaseService } from 'src/app/Services/base.service'
 
 @Component({
 	selector: 'AddMPCFDCImages',
@@ -7,20 +9,42 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./add-mpc-images.component.scss'],
 })
 export class AddMpcImagesComponent implements OnInit {
-	constructor() {}
+	constructor(private service: MpcFdcDataService) {}
 
-	ngOnInit(): void {}
+	sliders: any[] = []
+	photos: any[] = []
+	@Input() data: any = {}
 
-	deleteImage() {
-		Fire(
-			'Delete Image?',
-			'Are you sure you want to delete this image? The image will be permanently deleted',
-			'info',
-			() => {}
-		)
+	ngOnInit(): void {
+		console.log(this.data)
+	}
+
+	trigger() {
+		document.getElementById('file')?.click()
+	}
+
+	readURL(event: any) {
+		if (event.target.files && event.target.files[0]) {
+			this.photos = []
+			Object.keys(event.target.files).forEach((i: any) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(event.target.files[i])
+				reader.onload = (event: any) => {
+					this.photos.push((<FileReader>event.target).result)
+				}
+			})
+		}
+	}
+
+	deleteTemporaryImage(index: number) {
+		this.photos.splice(index, 1)
 	}
 
 	saveImages() {
-		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {})
+		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
+			this.service.update(this.data.id, { files: this.photos }).subscribe(() => {
+				Alert('Success', 'New Images Added', 'success')
+			})
+		})
 	}
 }
