@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { TechnicalNotesDummy } from 'src/app/home-components/technical-notes/TechnicalNotesDummy'
 
 @Component({
 	selector: 'Technical-Notes',
@@ -8,6 +7,6 @@ import { TechnicalNotesDummy } from 'src/app/home-components/technical-notes/Tec
 })
 export class ApprovalTechnicalNotesComponent implements OnInit {
 	constructor() {}
-	TechnicalNotes = TechnicalNotesDummy
+	TechnicalNotes: any = []
 	ngOnInit(): void {}
 }

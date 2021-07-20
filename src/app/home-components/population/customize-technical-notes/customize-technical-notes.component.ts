@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { TechnicalNotesService } from './../../../Services/home/others/technical-notes.service'
+import { Component, Input, OnInit } from '@angular/core'
+import { Created, Fire } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'CustomizeTechnicalNotes',
@@ -7,11 +8,17 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./customize-technical-notes.component.scss'],
 })
 export class CustomizeTechnicalNotesComponent implements OnInit {
-	constructor() {}
+	constructor(private service: TechnicalNotesService) {}
 
 	ngOnInit(): void {}
-
+	@Input() type = ''
+	data: any = {}
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+		this.data.type = this.type
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.service.create(this.data).subscribe((data) => {
+				Created()
+			})
+		})
 	}
 }
