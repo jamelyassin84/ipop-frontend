@@ -1,16 +1,16 @@
 <div class="card-body">
-    <img src="../../../../../assets/avatars/face-7.jpg" alt="" />
-    <input accept="image/*" type="file" class="hidden" id="profile-picture" />
+    <img [src]="image" alt="" />
+    <input (change)="readURL($event)" accept="image/*" type="file" class="hidden" />
     <div class="row">
         <div class="col-md-12 mt-4">
             <label for="">Name</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.name" type="text" class="form-control" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-4">
             <label for="">Position</label>
-            <input type="text" class="form-control" />
+            <input [(ngModel)]="data.position" type="text" class="form-control" />
         </div>
     </div>
 </div>

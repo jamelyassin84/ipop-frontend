@@ -12,6 +12,7 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 	styleUrls: ['./mpc-fdc.component.scss'],
 })
 export class MpcFdcComponent implements OnInit {
+	mpcfdc_id = 0
 	constructor(private location: LocationService, private service: MpcFdcDataService, private component: ReloadService) {
 		this.component.shouldReload().subscribe(() => {
 			this.ngOnInit()

@@ -7,6 +7,6 @@ import { BaseService } from 'src/app/Services/base.service'
 })
 export class MpcFdcTeamService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, 'pmc-personel', '')
+		super(_http, 'mpcfdc-teams', '')
 	}
 }

@@ -1,4 +1,5 @@
-import { Fire } from 'src/app/components/Alert'
+import { MpcFdcTeamService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
+import { Created, Fire } from 'src/app/components/Alert'
 import { Component, OnInit } from '@angular/core'
 
 @Component({
@@ -7,11 +8,30 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./add-mpc-fdc-team.component.scss'],
 })
 export class AddMpcFdcTeamComponent implements OnInit {
-	constructor() {}
+	constructor(private service: MpcFdcTeamService) {}
 
 	ngOnInit(): void {}
 
+	data: any = {}
+
+	image: any = '../../../../../assets/avatars/face-7.jpg'
+
+	readURL(event: any) {
+		if (event.target.files && event.target.files[0]) {
+			const reader = new FileReader()
+			reader.readAsDataURL(event.target.files[0])
+			reader.onload = (event: any) => {
+				this.data.photo = event.target.result
+				this.image = event.target.result
+			}
+		}
+	}
+
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {})
+		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.service.create(this.data).subscribe(() => {
+				Created()
+			})
+		})
 	}
 }
