@@ -1,25 +1,25 @@
 <div class="card-body">
     <div class="form-group">
         <label for="">Choose Type of Official</label>
-        <select type="text" class="form-control">
+        <select [(ngModel)]="data.type" type="text" class="form-control">
 			<option *ngFor="let type of types">{{ type }}</option>
 		</select>
     </div>
     <div class="form-group">
         <label for="">Name </label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.name" type="text" class="form-control" />
     </div>
     <div class="form-group">
         <label for="">Position</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.position" type="text" class="form-control" />
     </div>
     <div class="form-group">
         <label for="">Phone</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.phone" type="text" class="form-control" />
     </div>
     <div class="form-group">
         <label for="">Email</label>
-        <input type="text" class="form-control" />
+        <input [(ngModel)]="data.email" type="text" class="form-control" />
     </div>
 </div>
 
