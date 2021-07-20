@@ -5,8 +5,8 @@ import { BaseService } from 'src/app/Services/base.service'
 @Injectable({
 	providedIn: 'root',
 })
-export class MpcFdcTeamService extends BaseService {
+export class PmocTeamsService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, 'pmc-personel', '')
+		super(_http, 'pmocc-teams', '')
 	}
 }
