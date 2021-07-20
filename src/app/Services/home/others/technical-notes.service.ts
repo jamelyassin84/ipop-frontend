@@ -7,6 +7,6 @@ import { BaseService } from '../../base.service'
 })
 export class TechnicalNotesService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'technical-notes', '')
 	}
 }

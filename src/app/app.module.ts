@@ -294,17 +294,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		AddressPickerComponent,
 		TablePlaceholderComponent,
 	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		FormsModule,
-		IvyCarouselModule,
-		BrowserAnimationsModule,
-		ChartsModule,
-		GoogleChartsModule,
-		HttpClientModule,
-		NgbModule,
-	],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,

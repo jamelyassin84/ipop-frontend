@@ -7,6 +7,6 @@ import { BaseService } from '../../base.service'
 })
 export class QuickLinksService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, '', '')
+		super(_http, 'quick-links', '')
 	}
 }
