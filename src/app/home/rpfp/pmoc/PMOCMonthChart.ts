@@ -8,20 +8,7 @@ export const PMOCMonthChartConfig = {
 	colors: [],
 	datasets: [
 		{
-			data: [
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-				Math.random(),
-			],
+			data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			label: 'Females',
 		},
 	],
