@@ -1,13 +1,6 @@
 import { ReloadService } from './../Services/reload.service'
 import { Injectable } from '@angular/core'
-import {
-	HttpEvent,
-	HttpInterceptor,
-	HttpHandler,
-	HttpRequest,
-	HttpResponse,
-	HttpErrorResponse,
-} from '@angular/common/http'
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http'
 import { Observable, Subject, throwError } from 'rxjs'
 import { retry, catchError, tap } from 'rxjs/operators'
 import { Alert } from '../components/Alert'

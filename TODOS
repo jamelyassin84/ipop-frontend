@@ -14,6 +14,7 @@ file Uploads Crud
 Bulk Records
 Approvals
 
+optimize data leaks
 
 disable all buttons on click
 preloaders all
@@ -33,8 +34,6 @@ Edit All (Optional)
 
 backend bug
 roles doesnt change
-technical notes crud
-personnel directory crud
 
 user UI
 service worker

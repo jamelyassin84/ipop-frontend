@@ -16,7 +16,6 @@ export class CustomizeByKnowledgeOnFpChartComponent implements OnInit {
 		barangay: null,
 		municipality: null,
 		year: null,
-		gender: 'male',
 	}
 
 	fetch(event: any) {

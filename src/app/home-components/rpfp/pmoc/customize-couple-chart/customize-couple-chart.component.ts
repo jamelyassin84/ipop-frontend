@@ -13,10 +13,34 @@ export class CustomizeCoupleChartComponent implements OnInit {
 	ngOnInit(): void {}
 
 	data: any = {
-		barangay: null,
-		municipality: null,
-		year: null,
-		gender: 'male',
+		males: {
+			January: 0,
+			February: 0,
+			March: 0,
+			April: 0,
+			May: 0,
+			June: 0,
+			July: 0,
+			August: 0,
+			September: 0,
+			October: 0,
+			November: 0,
+			December: 0,
+		},
+		females: {
+			January: 0,
+			February: 0,
+			March: 0,
+			April: 0,
+			May: 0,
+			June: 0,
+			July: 0,
+			August: 0,
+			September: 0,
+			October: 0,
+			November: 0,
+			December: 0,
+		},
 	}
 
 	fetch(event: any) {
@@ -26,6 +50,7 @@ export class CustomizeCoupleChartComponent implements OnInit {
 	}
 
 	save() {
+		this.data.months = this.data.males
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
 			this.service.create(this.data).subscribe(() => {
 				Created()
