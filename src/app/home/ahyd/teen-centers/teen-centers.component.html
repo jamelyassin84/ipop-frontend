@@ -39,7 +39,15 @@
 </ng-template>
 
 <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-    <Modal size="lg" title="Add a Teen Center" btnTitle="Add teen center" btnClass="btn btn-sm btn-dark" [template]="addTeenCenter" icon="ti-plus"></Modal>
+    <Modal size="lg" title="Add a Teen Center" btnTitle="Add teen center" btnClass="btn btn-sm btn-dark mr-1" [template]="addTeenCenter" icon="ti-plus"></Modal>
+
+    <Modal size="lg" title="Add Focal Persons" btnTitle="Add focal persons" btnClass="btn btn-sm btn-primary mr-1" [template]="addFocalPersons" icon="ti-plus"></Modal>
+
+    <Modal size="lg" title="View Focal Persons" btnTitle="View focal persons" btnClass="btn btn-sm btn-outline-primary mr-1" [template]="viewFocalPersons" icon="ti-eye"></Modal>
+
+    <Modal size="lg" title="Add AHYD Team" btnTitle="Add AHYD team" btnClass="btn btn-sm btn-danger mr-1" [template]="addAHYDTeam" icon="ti-plus"></Modal>
+
+    <Modal size="lg" title="View  AHYD Team" btnTitle="View  AHYD team" btnClass="btn btn-sm btn-outline-danger mr-1" [template]="viewHAYDTeam" icon="ti-eye"></Modal>
 </div>
 
 <ul class="nav nav-tabs mT-50">
@@ -90,15 +98,7 @@
         <div class="card-body">
             <div class="card-title d-flex">
                 <span> Konoha Teen Center of BAROTAC NUEVO </span>
-                <div class="ml-auto">
-                    <Modal size="lg" title="View Focal Persons" btnTitle="View focal persons" btnClass="btn btn-sm btn-outline-info mr-1" [template]="viewFocalPersons" icon="ti-eye"></Modal>
-
-                    <Modal size="lg" title="Add Focal Persons" btnTitle="Add focal persons" btnClass="btn btn-sm btn-dark mr-1" [template]="addFocalPersons" icon="ti-plus"></Modal>
-
-                    <Modal size="lg" title="View  AHYD Team" btnTitle="View  AHYD team" btnClass="btn btn-sm btn-outline-info mr-1" [template]="viewHAYDTeam" icon="ti-eye"></Modal>
-
-                    <Modal size="lg" title="Add AHYD Team" btnTitle="Add AHYD team" btnClass="btn btn-sm btn-dark mr-1" [template]="addAHYDTeam" icon="ti-plus"></Modal>
-                </div>
+                <div class="ml-auto"></div>
             </div>
             <table class="table">
                 <thead>
