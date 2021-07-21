@@ -11,7 +11,7 @@
 </ng-template>
 
 <ng-template #addTCPersonnelIncharge>
-    <AddTCPersonnelIncharge></AddTCPersonnelIncharge>
+    <AddTCPersonnelIncharge [teen_center_id]="teen_center_id"></AddTCPersonnelIncharge>
 </ng-template>
 
 <ng-template #addTeenCenter>
@@ -31,7 +31,7 @@
 </ng-template>
 
 <ng-template #viewPersonnelIncharge>
-    <ViewPersonnelIncharge></ViewPersonnelIncharge>
+    <ViewPersonnelIncharge [teen_center_id]="teen_center_id"></ViewPersonnelIncharge>
 </ng-template>
 
 <ng-template #customizeTechnicalNotes>
@@ -96,9 +96,9 @@
                             <ng-template #dropdown>
                                 <Modal size="lg " title="View Teen Center Images " btnTitle="Images " btnClass="dropdown-item" [template]="addTCImages"></Modal>
 
-                                <Modal size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
+                                <Modal (click)="teen_center_id = tc.id" size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
 
-                                <Modal size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
+                                <Modal (click)="teen_center_id = tc.id" size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
 
                                 <button (click)="remove(tc.id)" class="dropdown-item">Remove</button>
                             </ng-template>

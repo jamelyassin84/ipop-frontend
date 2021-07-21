@@ -78,4 +78,6 @@ export class TeenCentersComponent implements OnInit {
 			})
 		})
 	}
+
+	teen_center_id: number = 0
 }
