@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { AhydTeamService } from 'src/app/Services/home/ahyd/teen-center/ahyd-team.service'
 
 @Component({
@@ -14,10 +14,13 @@ export class AddFocalAhydTeamComponent implements OnInit {
 
 	data: any = {}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

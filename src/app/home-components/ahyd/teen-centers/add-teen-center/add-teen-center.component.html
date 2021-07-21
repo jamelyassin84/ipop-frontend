@@ -31,5 +31,8 @@
 
 <hr />
 <div class="d-flex aic jcc mr-5">
-    <button (click)="save()" class="btn btn-success"><i class="ti-check mr-1"></i> Add this Teen Center Data</button>
+    <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
+		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Add this Teen Center Data</span>
+		<Loader *ngIf="isLoading"></Loader>
+	</button>
 </div>

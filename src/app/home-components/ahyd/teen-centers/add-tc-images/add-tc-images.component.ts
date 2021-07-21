@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { TeenCenterDataService } from 'src/app/Services/home/ahyd/teen-center/teen-center-data.service'
 
 @Component({
@@ -37,10 +37,13 @@ export class AddTcImagesComponent implements OnInit {
 		this.photos.splice(index, 1)
 	}
 
+	isLoading: boolean = false
 	saveImages() {
 		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
+			this.isLoading = true
 			this.service.update(this.data.id, { photos: this.photos }).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

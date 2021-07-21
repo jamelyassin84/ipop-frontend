@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { PersonnelInchargeOfTeenCenterService } from 'src/app/Services/home/ahyd/teen-center/personnel-incharge-of-teen-center.service'
 
 @Component({
@@ -27,11 +27,14 @@ export class AddTcPersonnelInchargeComponent implements OnInit {
 		}
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
 			this.data.sbmptc_id = this.teen_center_id
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}
