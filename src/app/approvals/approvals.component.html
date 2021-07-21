@@ -5,13 +5,13 @@
                 <div class="peer bdR" id="chat-sidebar">
                     <div class="layers h-100">
                         <div class="layer w-100 fxg-1 scrollable pos-r">
-                            <div *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 7, 8, 7, 87, 88, 67, 567, 67, 56, 75]" class="peers fxw-nw ai-c p-20 bdB bg-white bgcH-grey-50 cur-p border">
+                            <div (click)="type = approval.approvable_type; data = approval.approvable" *ngFor="let approval of approvals" class="peers fxw-nw ai-c p-20 bdB bg-white bgcH-grey-50 cur-p border">
                                 <div class="peer">
-                                    <img src="../../assets/avatars/face-7.jpg" alt="" class="w-3r h-3r bdrs-50p" />
+                                    <img [src]="approval.requester.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
                                 </div>
                                 <div class="peer peer-greed pL-20">
-                                    <h6 class="mB-0 lh-1 fw-400">John Doe</h6>
-                                    <small class="lh-1 c-green-500">wants to add Article</small>
+                                    <h6 class="mB-0 lh-1 fw-400">{{ approval.requester.fullname }}</h6>
+                                    <small class="lh-1 text-muted">{{ approval.message }}</small>
                                 </div>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="peer peer-greed d-flex aic jcc" id="chat-box" style="flex-direction: column">
-                    <ApprovalIndex></ApprovalIndex>
+                    <ApprovalIndex [type]="type" [data]="data"></ApprovalIndex>
                     <div class="d-flex mt-5">
                         <button class="btn btn-lg btn-outline-dark mr-1">
 							<i class="ti-na"></i>

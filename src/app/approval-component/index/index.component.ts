@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
 	selector: 'ApprovalIndex',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class IndexComponent implements OnInit {
 	constructor() {}
-
+	@Input() type: any = ''
+	@Input() data: any = ''
 	ngOnInit(): void {}
 }

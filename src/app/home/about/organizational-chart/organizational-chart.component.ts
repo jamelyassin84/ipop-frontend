@@ -1,6 +1,6 @@
 import { OrganizationalChartService } from './../../../Services/home/about/organizational-chart.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert } from 'src/app/components/Alert'
+import { Alert, HasApprovals } from 'src/app/components/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
 
@@ -50,7 +50,7 @@ export class OrganizationalChartComponent implements OnInit {
 		let data: any = {}
 		data['photo'] = file
 		this.service.create(data).subscribe((data) => {
-			Alert('Success', 'Oranizational Structure has been changed', 'success')
+			HasApprovals('Created')
 		})
 	}
 }

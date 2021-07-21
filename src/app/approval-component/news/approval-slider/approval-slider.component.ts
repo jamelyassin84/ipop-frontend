@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
 	selector: 'SliderImages',
@@ -6,14 +6,15 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./approval-slider.component.scss'],
 })
 export class ApprovalSliderComponent implements OnInit {
-	images = [
-		{ path: '../../../assets/ipop/home/1.jpg' },
-		{ path: '../../../assets/ipop/home/2.jpg' },
-		{ path: '../../../assets/ipop/home/3.jpg' },
-		{ path: '../../../assets/ipop/home/4.jpg' },
-	]
+	@Input() data: any = ''
 
 	constructor() {}
 
-	ngOnInit(): void {}
+	images: any = []
+
+	ngOnInit(): void {
+		setTimeout(() => {
+			this.images.push(this.data.photo.uri)
+		}, 300)
+	}
 }

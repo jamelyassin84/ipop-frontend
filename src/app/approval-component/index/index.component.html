@@ -1,6 +1,12 @@
 <!-- News  -->
+<!-- <pre>
+    {{ data | json }}
+</pre>
+<pre>
+    {{ type | json }}
+</pre> -->
 <Articles *ngIf="false"></Articles>
-<SliderImages *ngIf="true"></SliderImages>
+<SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
 
 <!-- Population  -->
 <Top-Population *ngIf="false"></Top-Population>
