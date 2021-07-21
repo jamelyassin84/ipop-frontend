@@ -1,6 +1,6 @@
 import { LocalMigrationDataService } from './../../../../Services/home/demographic/migrations/local-migration-data.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Fire, Updated } from 'src/app/components/Alert'
+import { Fire, HasApprovals, Updated } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'AddLocalMigrationData',
@@ -12,10 +12,13 @@ export class AddLocalMigrationDataComponent implements OnInit {
 	@Input() data: any = {}
 	ngOnInit(): void {}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.update(this.data.id, this.data).subscribe(() => {
-				Updated()
+				HasApprovals('Updated')
+				this.isLoading = false
 			})
 		})
 	}
