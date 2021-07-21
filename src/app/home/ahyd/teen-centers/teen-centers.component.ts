@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { Fire } from 'src/app/components/Alert'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'app-teen-centers',
@@ -7,7 +9,19 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./teen-centers.component.scss'],
 })
 export class TeenCentersComponent implements OnInit {
-	constructor() {}
+	constructor(private component: ReloadService) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
 
 	ngOnInit(): void {}
 
