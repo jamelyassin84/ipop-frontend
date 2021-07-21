@@ -1,4 +1,4 @@
-import { Alert, Deleted, Fire, pop } from 'src/app/components/Alert'
+import { Alert, Deleted, Fire, HasApprovals, pop } from 'src/app/components/Alert'
 import { Component, Input, OnInit } from '@angular/core'
 import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
 import { BaseService } from 'src/app/Services/base.service'
@@ -40,10 +40,13 @@ export class AddMpcImagesComponent implements OnInit {
 		this.photos.splice(index, 1)
 	}
 
-	saveImages() {
+	isLoading: boolean = false
+	save() {
 		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
+			this.isLoading = true
 			this.service.update(this.data.id, { files: this.photos }).subscribe(() => {
-				Alert('Success', 'New Images Added', 'success')
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

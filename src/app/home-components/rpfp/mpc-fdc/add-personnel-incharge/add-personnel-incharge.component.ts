@@ -1,5 +1,5 @@
 import { MpcFdcPersonnelInchargeService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-personnel-incharge.service'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
@@ -28,11 +28,14 @@ export class AddPersonnelInchargeComponent implements OnInit {
 		}
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
 			this.data.mpcfdc_id = this.mpcfdc_id
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

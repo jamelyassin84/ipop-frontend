@@ -1,5 +1,5 @@
 import { MpcFdcTeamService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { Component, OnInit } from '@angular/core'
 
 @Component({
@@ -27,10 +27,13 @@ export class AddMpcFdcTeamComponent implements OnInit {
 		}
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}
