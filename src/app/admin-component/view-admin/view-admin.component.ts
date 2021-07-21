@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Alert, Fire } from 'src/app/components/Alert'
 import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'ViewAdmin',
@@ -11,11 +12,18 @@ import { ReloadService } from 'src/app/Services/reload.service'
 })
 export class ViewAdminComponent implements OnInit {
 	constructor(private user: UserService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
 	}
 
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
 	@Input() admin: any = {}
 
 	ngOnInit(): void {}
