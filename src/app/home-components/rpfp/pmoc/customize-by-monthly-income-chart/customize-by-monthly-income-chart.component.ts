@@ -1,6 +1,6 @@
 import { AverageMonthlyIncomeService } from './../../../../Services/home/rpfp/pmoc/average-monthly-income.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'CustomizeByMonthlyIncomeChart',
@@ -25,10 +25,13 @@ export class CustomizeByMonthlyIncomeChartComponent implements OnInit {
 		this.data.year = event.year
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

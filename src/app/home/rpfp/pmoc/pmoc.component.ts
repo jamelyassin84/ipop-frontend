@@ -41,7 +41,6 @@ export class PmocComponent implements OnInit {
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
-				this.ngOnInit()
 				this.fetch(this.location)
 			})
 		)
@@ -148,7 +147,7 @@ export class PmocComponent implements OnInit {
 			}
 			this.ByEmploymentStatus.datasets[0].data = [data.student_female, data.employed_female, data.not_employed_female]
 			this.ByEmploymentStatus.datasets[1].data = [data.student_male, data.employed_male, data.not_employed_male]
-			this.ByEmploymentStatus.datasets[2].data = [parseInt(data.student_female) + parseInt(data.student_male), parseInt(data.not_employed_female) + parseInt(data.not_employed_male), parseInt(data.employed_male) + parseInt(data.employed_female)]
+			this.ByEmploymentStatus.datasets[2].data = [parseInt(data.student_female) + parseInt(data.student_male), parseInt(data.employed_female) + parseInt(data.employed_male), parseInt(data.not_employed_female) + parseInt(data.not_employed_male)]
 		})
 	}
 

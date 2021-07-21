@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { PmocDataService } from 'src/app/Services/home/rpfp/pmoc/pmoc-data.service'
 
 @Component({
@@ -12,10 +12,14 @@ export class EditPmocDataComponent implements OnInit {
 
 	ngOnInit(): void {}
 	@Input() data: any = {}
+
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.update(this.data.id, this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

@@ -14,6 +14,9 @@
 
     <hr />
     <div class="d-flex aic jcc mr-5">
-        <button (click)="save()" class="btn btn-success"><i class="ti-check mr-1"></i> Update this Knowledge on Family Planning among PMC Applicants</button>
+        <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
+			<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Update this Knowledge on Family Planning among PMC Applicants</span>
+			<Loader *ngIf="isLoading"></Loader>
+		</button>
     </div>
 </div>
