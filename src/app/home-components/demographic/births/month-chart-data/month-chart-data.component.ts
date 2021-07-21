@@ -1,6 +1,6 @@
 import { MonthChartService } from './../../../../Services/home/demographic/month-chart.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'CustomizeMonthChart',
@@ -59,6 +59,7 @@ export class MonthChartDataComponent implements OnInit {
 		},
 	}
 
+	isLoading: boolean = false
 	save() {
 		this.data.type = this.type
 		this.data.municipality = this.location.municipality
@@ -67,8 +68,10 @@ export class MonthChartDataComponent implements OnInit {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
 			this.data['months'] = this.data.males
 			this.data['gender'] = 'male'
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

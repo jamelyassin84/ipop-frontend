@@ -42,7 +42,7 @@ export class AddAwardsComponent implements OnInit {
 	}
 
 	isLoading: boolean = false
-	saveAritcle() {
+	save() {
 		this.award.files = this.photos
 		Fire('Save Changes?', 'Are you sure you want to add this article?', 'info', () => {
 			this.isLoading = true

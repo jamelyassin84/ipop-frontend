@@ -1,39 +1,28 @@
-DELETE ADD UPDATE SUBJECT FOR APPROVALS CALLBACK BUTTON
-disable all buttons on click
-reactive form validation
-autosize textarea
 
+Approvals
+Bulk Records
+change pass
+Test all user
 
 File Uploads CRUD   
 
 chart color
-change pass
-
-Approvals
-Bulk Records
-
-
-Test all user
-
-
 preloaders all
+reactive form validation
 
 remove scrap components
 route state ngrx
 fix padding
 kung makadto sya sa home nga wala token redirect sa home ka user
+user UI
+polish design white space margin padding and colors and allignments for user perspecitve
 
 remove all errors
 responsive nav
 Edit All (Optional)
 
+service worker (Optional)
+
 backend bug
 roles doesnt change
-polish design white space margin padding and colors and allignments for user perspecitve
-
-
-user UI
-service worker
-
-
 

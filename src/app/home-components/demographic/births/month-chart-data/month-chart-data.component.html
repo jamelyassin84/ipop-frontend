@@ -1,14 +1,10 @@
 <div class="card-body">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a role="button" (click)="changeTab('males')" class="nav-link text-muted" [class.active]="tabs.males">
-                <i class="ti-user"></i> Males
-            </a>
+            <a role="button" (click)="changeTab('males')" class="nav-link text-muted" [class.active]="tabs.males"> <i class="ti-user"></i> Males </a>
         </li>
         <li class="nav-item">
-            <a role="button" (click)="changeTab('females')" class="nav-link text-muted" [class.active]="tabs.females">
-                <i class="ti-user"></i> Females
-            </a>
+            <a role="button" (click)="changeTab('females')" class="nav-link text-muted" [class.active]="tabs.females"> <i class="ti-user"></i> Females </a>
         </li>
         <li class="nav-item"></li>
     </ul>
@@ -117,5 +113,8 @@
 
 <hr />
 <div class="d-flex aic jcc mr-5">
-    <button (click)="save()" class="btn btn-success"><i class="ti-check mr-1"></i> Add this Statistical Data</button>
+    <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
+		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save</span>
+		<Loader *ngIf="isLoading"></Loader>
+	</button>
 </div>
