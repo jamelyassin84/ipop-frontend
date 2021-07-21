@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Alert, Fire } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
 
 @Component({
@@ -45,11 +45,14 @@ export class AddProgramComponent implements OnInit {
 		this.photos.splice(index, 1)
 	}
 
+	isLoading: boolean = false
 	save() {
 		this.activity.files = this.photos
 		Fire('Save Changes?', 'Are you sure you want to add this article?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.activity).subscribe(() => {
-				Alert('Success', 'New Activity Added', 'success')
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

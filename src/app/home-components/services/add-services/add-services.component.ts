@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Alert, Created, Fire } from 'src/app/components/Alert'
+import { Alert, Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { ServiceOffersService } from 'src/app/Services/services-offered/service-offers.service'
 
 @Component({
@@ -21,10 +21,13 @@ export class AddServicesComponent implements OnInit {
 		service_id: '',
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.offers.create(this.offer).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

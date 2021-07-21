@@ -22,11 +22,15 @@
     </div>
     <div class="form-group">
         <label for="">Description</label>
-        <textarea [(ngModel)]="activity.description" type="text" class="form-control"></textarea>
+        <textarea autosize [(ngModel)]="activity.description" type="text" class="form-control"></textarea>
     </div>
 </div>
 
 <hr />
+
 <div class="d-flex aic jcc mr-5">
-    <button (click)="save()" class="btn btn-success"><i class="ti-check mr-1"></i> Add this program</button>
+    <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
+		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i> Add this program</span>
+		<Loader *ngIf="isLoading"></Loader>
+	</button>
 </div>
