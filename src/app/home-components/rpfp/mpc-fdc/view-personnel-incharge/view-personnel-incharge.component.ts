@@ -3,6 +3,7 @@ import { MpcFdcPersonnelInchargeService } from './../../../../Services/home/rpfp
 import { Component, Input, OnInit } from '@angular/core'
 import { Deleted, Fire } from 'src/app/components/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'ViewMPCFDCPersonnelIncharge',
@@ -11,9 +12,17 @@ import { ReloadService } from 'src/app/Services/reload.service'
 })
 export class ViewPersonnelInchargeComponent implements OnInit {
 	constructor(private service: MpcFdcPersonnelInchargeService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	personnels: any = []

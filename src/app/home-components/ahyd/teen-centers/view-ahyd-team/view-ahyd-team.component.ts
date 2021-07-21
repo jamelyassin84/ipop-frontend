@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Subscription } from 'rxjs'
+import { Deleted, Fire } from 'src/app/components/Alert'
+import { AhydTeamService } from 'src/app/Services/home/ahyd/teen-center/ahyd-team.service'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'ViewHAYDTeam',
@@ -7,11 +10,32 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./view-ahyd-team.component.scss'],
 })
 export class ViewAhydTeamComponent implements OnInit {
-	constructor() {}
+	constructor(private service: AhydTeamService, private component: ReloadService) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
 
-	ngOnInit(): void {}
+	private subscriptions = new Subscription()
 
-	remove() {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {})
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
+
+	AHYDTeam: any = []
+	ngOnInit(): void {
+		this.service.index().subscribe((data: any) => {
+			this.AHYDTeam = data
+		})
+	}
+
+	remove(id: number) {
+		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
+			this.service.destroy(id).subscribe(() => {
+				Deleted()
+			})
+		})
 	}
 }

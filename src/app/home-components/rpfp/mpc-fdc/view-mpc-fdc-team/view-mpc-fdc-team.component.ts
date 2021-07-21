@@ -2,6 +2,7 @@ import { Deleted, Fire } from 'src/app/components/Alert'
 import { Component, OnInit } from '@angular/core'
 import { MpcFdcTeamService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'ViewMPCFDCTeam',
@@ -10,11 +11,18 @@ import { ReloadService } from 'src/app/Services/reload.service'
 })
 export class ViewMpcFdcTeamComponent implements OnInit {
 	constructor(private service: MpcFdcTeamService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
 	}
 
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
 	teams: any = []
 	ngOnInit(): void {
 		this.service.index().subscribe((data: any) => {
