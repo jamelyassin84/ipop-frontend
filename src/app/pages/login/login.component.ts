@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 	constructor(private router: Router, private auth: AuthService) {}
 
 	ngOnInit(): void {
-		if (localStorage.getItem('token') !== undefined) {
+		if (localStorage.getItem('token') != undefined) {
 			this.router.navigate(['home/index/news'])
 		}
 	}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { SidebarType } from 'src/app/Types/navs/Sidebar.types'
 import { Alert, Fire } from '../Alert'
-import { ADMIN } from './Sidebar'
+import { ADMIN, normal } from './Sidebar'
 
 @Component({
 	selector: 'Sidebar',
@@ -10,7 +11,8 @@ import { ADMIN } from './Sidebar'
 	styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-	constructor(private router: Router) {}
+	constructor(private router: Router, private user: UserService) {}
+	name = this.user.name()
 	avatar = localStorage.getItem('avatar')
 	url = this.router.url
 	mode = ''
@@ -19,7 +21,7 @@ export class SidebarComponent implements OnInit {
 		this.setMode()
 	}
 
-	sidebar: SidebarType[] = ADMIN
+	sidebar: SidebarType[] = localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
 
 	handleChangeTab() {
 		setTimeout(() => {
@@ -28,9 +30,7 @@ export class SidebarComponent implements OnInit {
 	}
 
 	setMode() {
-		localStorage.getItem('theme') === 'dark'
-			? localStorage.setItem('theme', 'light')
-			: localStorage.setItem('theme', 'dark')
+		localStorage.getItem('theme') === 'dark' ? localStorage.setItem('theme', 'light') : localStorage.setItem('theme', 'dark')
 		localStorage.getItem('theme') === 'dark' ? (this.mode = 'Light') : (this.mode = 'Dark')
 	}
 

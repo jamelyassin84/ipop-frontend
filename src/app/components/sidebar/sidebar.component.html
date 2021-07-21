@@ -38,15 +38,11 @@
                 </a>
             </li>
             <li class="nav-item mt-5">
-                <a (click)="logout()" role="button" class="sidebar-link">
+                <a role="button" class="sidebar-link">
                     <span class="icon-holder">
-						<img
-							class="avatar"
-							[src]="avatar === 'null' ? '../../../assets/avatars/face-7.jpg' : avatar"
-							alt=""
-						/>
+						<img class="avatar" [src]="avatar === 'null' ? '../../../assets/avatars/face-7.jpg' : avatar" alt="" />
 					</span>
-                    <span class="title">Sign-Out</span>
+                    <span class="title">{{ name }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -57,9 +53,14 @@
                     <span class="title">Change to {{ mode }} Mode</span>
                 </a>
             </li>
-            <br />
-            <br />
-            <br />
+            <li class="nav-item">
+                <a (click)="logout()" role="button" class="sidebar-link">
+                    <span class="icon-holder">
+						<i class="ti-back-left text-danger"></i>
+					</span>
+                    <span class="title">Sign-Out</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

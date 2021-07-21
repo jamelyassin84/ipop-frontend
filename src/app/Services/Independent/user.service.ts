@@ -9,4 +9,9 @@ export class UserService extends BaseService {
 	constructor(private _http: HttpClient) {
 		super(_http, 'users', '')
 	}
+
+	name() {
+		const user: any = localStorage.getItem('user')
+		return JSON.parse(user)?.fullname
+	}
 }
