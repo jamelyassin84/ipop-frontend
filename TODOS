@@ -11,7 +11,6 @@ preloaders all
 reactive form validation
 polish chart
 
-remove scrap components
 route state ngrx
 fix padding
 kung makadto sya sa home nga wala token redirect sa home ka user

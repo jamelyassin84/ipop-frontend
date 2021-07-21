@@ -33,12 +33,6 @@ import { MarriageRecordsComponent } from './records/marriage-records/marriage-re
 import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
 import { AddAdminComponent } from './admin/add-admin/add-admin.component'
 import { LogsComponent } from './logs/logs.component'
-import { CpdbFormComponent } from './forms/cpdb-form/cpdb-form.component'
-import { DeathFormComponent } from './forms/death-form/death-form.component'
-import { BirthFormComponent } from './forms/birth-form/birth-form.component'
-import { InMigrationFormComponent } from './forms/in-migration-form/in-migration-form.component'
-import { OutMigrationFormComponent } from './forms/out-migration-form/out-migration-form.component'
-import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { ApprovalsComponent } from './approvals/approvals.component'
@@ -171,30 +165,6 @@ const routes: Routes = [
 					{
 						path: 'logs',
 						component: LogsComponent,
-					},
-					{
-						path: 'cpdb',
-						component: CpdbFormComponent,
-					},
-					{
-						path: 'birth',
-						component: BirthFormComponent,
-					},
-					{
-						path: 'death',
-						component: DeathFormComponent,
-					},
-					{
-						path: 'in-migration',
-						component: InMigrationFormComponent,
-					},
-					{
-						path: 'out-migration',
-						component: OutMigrationFormComponent,
-					},
-					{
-						path: 'marriage',
-						component: MarriagesFormComponent,
 					},
 				],
 			},

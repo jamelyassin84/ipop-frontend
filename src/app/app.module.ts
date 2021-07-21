@@ -40,12 +40,6 @@ import { RecordUploadComponent } from './records/record-upload/record-upload.com
 import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
 import { AddAdminComponent } from './admin/add-admin/add-admin.component'
 import { LogsComponent } from './logs/logs.component'
-import { CpdbFormComponent } from './forms/cpdb-form/cpdb-form.component'
-import { DeathFormComponent } from './forms/death-form/death-form.component'
-import { BirthFormComponent } from './forms/birth-form/birth-form.component'
-import { InMigrationFormComponent } from './forms/in-migration-form/in-migration-form.component'
-import { OutMigrationFormComponent } from './forms/out-migration-form/out-migration-form.component'
-import { MarriagesFormComponent } from './forms/marriages-form/marriages-form.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
@@ -145,11 +139,8 @@ import { ButtonPreloaderComponent } from './extras/button-preloader/button-prelo
 import { ImageViewerComponent } from './extras/image-viewer/image-viewer.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
-import { ShimmerComponent } from './extras/shimmer/shimmer.component'
 import { DropdownComponent } from './components/dropdown/dropdown.component'
-import { PaginationComponent } from './components/pagination/pagination.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
-import { TablePlaceholderComponent } from './extras/table-placeholder/table-placeholder.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
@@ -186,12 +177,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		ViewAdminsComponent,
 		AddAdminComponent,
 		LogsComponent,
-		CpdbFormComponent,
-		DeathFormComponent,
-		BirthFormComponent,
-		InMigrationFormComponent,
-		OutMigrationFormComponent,
-		MarriagesFormComponent,
 		RecordIndexComponent,
 		AdminIndexComponent,
 		MarriageRecordsComponent,
@@ -289,11 +274,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		ImageViewerComponent,
 		NotFoundComponent,
 		NoInternetComponent,
-		ShimmerComponent,
 		DropdownComponent,
-		PaginationComponent,
 		AddressPickerComponent,
-		TablePlaceholderComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule, TextareaAutosizeModule],
 	providers: [
