@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { Alert, Deleted, Fire, pop } from 'src/app/components/Alert'
 import { ArticleService } from 'src/app/Services/home/news/article.service'
 import { QuickLinksService } from 'src/app/Services/home/news/quick-links.service'
@@ -13,9 +14,17 @@ import { ArticleType } from 'src/app/Types/Article.types'
 })
 export class AritclesAndSlidersComponent implements OnInit {
 	constructor(private slideService: SliderService, private component: ReloadService, private articleService: ArticleService, private service: QuickLinksService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	ngOnInit(): void {

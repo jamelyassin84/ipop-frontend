@@ -14,7 +14,7 @@ export class MainInterceptor implements HttpInterceptor {
 			retry(0),
 			tap(() => {
 				if (request.method !== 'GET') {
-					// this.component.willReload()
+					this.component.willReload()
 				}
 			}),
 			catchError(this.errorMessage)

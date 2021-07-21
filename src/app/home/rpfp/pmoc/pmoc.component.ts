@@ -21,6 +21,7 @@ import { BaseService } from 'src/app/Services/base.service'
 import { NumberOfCouplesFPType } from 'src/app/Types/charts/pmoc/NumberOfCouples.types'
 import { AgeGroupType } from 'src/app/Types/charts/pmoc/AgeGroup.types'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-pmoc',
@@ -38,10 +39,18 @@ export class PmocComponent implements OnInit {
 		private byMonthlyIncomeService: AverageMonthlyIncomeService,
 		private component: ReloadService
 	) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-			this.fetch(this.location)
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+				this.fetch(this.location)
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	location: any = {

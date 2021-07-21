@@ -8,6 +8,7 @@ import { IllegitimateIncidenceChartConfig } from '../illegitamate'
 import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
 import { BaseService } from 'src/app/Services/base.service'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-birth-demographic',
@@ -15,16 +16,19 @@ import { MonthChartService } from 'src/app/Services/home/demographic/month-chart
 	styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
-	constructor(
-		private component: ReloadService,
-		private summary: SummaryService,
-		private service: LocalBirthDataService,
-		private monthChartService: MonthChartService
-	) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-			this.fetch(this.location)
-		})
+	constructor(private component: ReloadService, private summary: SummaryService, private service: LocalBirthDataService, private monthChartService: MonthChartService) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+				this.fetch(this.location)
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	summaries: Summary | any = {}
@@ -76,11 +80,7 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	getChart() {
-		const service = new BaseService(
-			this.service.http,
-			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
-		)
+		const service = new BaseService(this.service.http, this.monthChartService.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
 		service.index().subscribe((months: any) => {
 			this.processStatisticalChart(months)
 		})
@@ -93,11 +93,7 @@ export class BirthDemographicComponent implements OnInit {
 			general_fertility_rate: 0,
 			total_live_births: 0,
 		}
-		const service = new BaseService(
-			this.service.http,
-			this.service.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
-		)
+		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
 		service.index().subscribe((summaries: Summary) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries?.data || {}

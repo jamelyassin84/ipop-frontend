@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { Alert, Fire } from 'src/app/components/Alert'
 import { AwardsService } from 'src/app/Services/home/about/awards.service'
 import { ReloadService } from 'src/app/Services/reload.service'
@@ -10,9 +11,17 @@ import { ReloadService } from 'src/app/Services/reload.service'
 })
 export class AwardsComponent implements OnInit {
 	constructor(private service: AwardsService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	awards: any[] = []

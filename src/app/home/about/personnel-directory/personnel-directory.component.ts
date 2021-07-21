@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { PersonnelDirectoryService } from 'src/app/Services/home/about/personnel-directory.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { PersonnelTypes } from './PersonnelTypes'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-personnel-directory',
@@ -11,9 +12,17 @@ import { PersonnelTypes } from './PersonnelTypes'
 })
 export class PersonnelDirectoryComponent implements OnInit {
 	constructor(private service: PersonnelDirectoryService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	types = PersonnelTypes

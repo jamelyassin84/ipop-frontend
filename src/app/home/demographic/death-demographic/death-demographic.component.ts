@@ -6,6 +6,7 @@ import { CrudeDeathRateIncidenceChartConfig } from '../CrudeDeathRate'
 import { MonthChartConfig } from '../MonthChart'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { BaseService } from 'src/app/Services/base.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-death-demographic',
@@ -14,10 +15,18 @@ import { BaseService } from 'src/app/Services/base.service'
 })
 export class DeathDemographicComponent implements OnInit {
 	constructor(private component: ReloadService, private summary: SummaryService, private service: LocalDeathDataService, private monthChartService: MonthChartService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-			this.fetch(this.location)
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+				this.fetch(this.location)
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	ngOnInit(): void {

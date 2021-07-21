@@ -4,6 +4,7 @@ import { Alert, Fire, pop } from 'src/app/components/Alert'
 import { ServicesOfferedService } from 'src/app/Services/services-offered/services-offered.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { ServiceOffersService } from 'src/app/Services/services-offered/service-offers.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-services',
@@ -11,17 +12,19 @@ import { ServiceOffersService } from 'src/app/Services/services-offered/service-
 	styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent implements OnInit {
-	constructor(
-		private route: ActivatedRoute,
-		private service: ServicesOfferedService,
-		private offers: ServiceOffersService,
-		private component: ReloadService
-	) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+	constructor(private route: ActivatedRoute, private service: ServicesOfferedService, private offers: ServiceOffersService, private component: ReloadService) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
 	}
 
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
 	ngOnInit(): void {
 		this.servicesOffered()
 	}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
 import { Deleted, Fire } from 'src/app/components/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
@@ -14,10 +15,18 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 export class MpcFdcComponent implements OnInit {
 	mpcfdc_id = 0
 	constructor(private location: LocationService, private service: MpcFdcDataService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-			this.getMPCFDC()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+				this.getMPCFDC
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	districts = ['I', 'II', 'III', 'IV', 'V']

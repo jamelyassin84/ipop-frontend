@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router'
 import { Alert, Fire, pop } from 'src/app/components/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-programs',
@@ -11,15 +12,18 @@ import { ActivityService } from 'src/app/Services/home/program-areas/activity.se
 	styleUrls: ['./programs.component.scss'],
 })
 export class ProgramsComponent implements OnInit {
-	constructor(
-		private route: ActivatedRoute,
-		private service: ProgramAreasService,
-		private component: ReloadService,
-		private activityService: ActivityService
-	) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+	constructor(private route: ActivatedRoute, private service: ProgramAreasService, private component: ReloadService, private activityService: ActivityService) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	ngOnInit(): void {

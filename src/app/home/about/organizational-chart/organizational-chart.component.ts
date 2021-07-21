@@ -2,6 +2,7 @@ import { OrganizationalChartService } from './../../../Services/home/about/organ
 import { Component, OnInit } from '@angular/core'
 import { Alert } from 'src/app/components/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'app-organizational-chart',
@@ -10,9 +11,17 @@ import { ReloadService } from 'src/app/Services/reload.service'
 })
 export class OrganizationalChartComponent implements OnInit {
 	constructor(private service: OrganizationalChartService, private component: ReloadService) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	ngOnInit(): void {
