@@ -1,5 +1,8 @@
 <!-- News  -->
-<Articles *ngIf="false" [data]="data"></Articles>
+<pre>
+    {{ data | json }}
+</pre>
+<Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
 <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
 
 <!-- Population  -->

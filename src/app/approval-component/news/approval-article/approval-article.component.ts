@@ -10,4 +10,13 @@ export class ApprovalArticleComponent implements OnInit {
 	@Input() data: any = ''
 
 	ngOnInit(): void {}
+
+	currentImages: any = []
+
+	transformImages(photos: any) {
+		this.currentImages = []
+		photos.forEach((photo: any) => {
+			this.currentImages.push(photo.file.uri)
+		})
+	}
 }
