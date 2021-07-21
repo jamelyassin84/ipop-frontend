@@ -7,7 +7,7 @@
 </ng-template>
 
 <ng-template #addTCImages>
-    <AddTCImages></AddTCImages>
+    <AddTCImages [data]="currenData"></AddTCImages>
 </ng-template>
 
 <ng-template #addTCPersonnelIncharge>
@@ -94,7 +94,9 @@
                         <td>
                             <DropDown [buttons]="dropdown"></DropDown>
                             <ng-template #dropdown>
-                                <Modal size="lg " title="View Teen Center Images " btnTitle="Images " btnClass="dropdown-item" [template]="addTCImages"></Modal>
+                                <Modal (click)="currenData = tc" size="lg " title="Add Teen Center New Images " btnTitle="Customize Images " btnClass="dropdown-item" [template]="addTCImages"></Modal>
+
+                                <Modal (click)="transformImages(tc.photos)" size="lg" title="Teen Center Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
 
                                 <Modal (click)="teen_center_id = tc.id" size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
 
@@ -120,3 +122,7 @@
         </div>
     </div>
 </div>
+
+<ng-template #imageViewer>
+    <ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>

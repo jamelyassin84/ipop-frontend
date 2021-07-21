@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Component, Input, OnInit } from '@angular/core'
+import { Created, Fire } from 'src/app/components/Alert'
+import { TeenCenterDataService } from 'src/app/Services/home/ahyd/teen-center/teen-center-data.service'
 
 @Component({
 	selector: 'AddTCImages',
@@ -7,19 +8,40 @@ import { Fire } from 'src/app/components/Alert'
 	styleUrls: ['./add-tc-images.component.scss'],
 })
 export class AddTcImagesComponent implements OnInit {
-	constructor() {}
+	constructor(private service: TeenCenterDataService) {}
+
+	sliders: any[] = []
+	photos: any[] = []
+	@Input() data: any = {}
 
 	ngOnInit(): void {}
-	deleteImage() {
-		Fire(
-			'Delete Image?',
-			'Are you sure you want to delete this image? The image will be permanently deleted',
-			'info',
-			() => {}
-		)
+
+	trigger() {
+		document.getElementById('file')?.click()
+	}
+
+	readURL(event: any) {
+		if (event.target.files && event.target.files[0]) {
+			this.photos = []
+			Object.keys(event.target.files).forEach((i: any) => {
+				const reader = new FileReader()
+				reader.readAsDataURL(event.target.files[i])
+				reader.onload = (event: any) => {
+					this.photos.push((<FileReader>event.target).result)
+				}
+			})
+		}
+	}
+
+	deleteTemporaryImage(index: number) {
+		this.photos.splice(index, 1)
 	}
 
 	saveImages() {
-		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {})
+		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
+			this.service.update(this.data.id, { photos: this.photos }).subscribe(() => {
+				Created()
+			})
+		})
 	}
 }

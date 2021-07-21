@@ -52,6 +52,7 @@ export class TeenCentersComponent implements OnInit {
 	getTeenCenters() {
 		new BaseService(this.service.http, this.service.url, `district=${this.transformDistrict(this.district)}`).index().subscribe((data: any) => {
 			this.teenCenters = data
+			console.log(data)
 		})
 	}
 
@@ -80,4 +81,14 @@ export class TeenCentersComponent implements OnInit {
 	}
 
 	teen_center_id: number = 0
+	currenData: any = {}
+
+	currentImages: any = []
+	transformImages(photos: any) {
+		console.log(photos)
+		this.currentImages = []
+		photos.forEach((photo: any) => {
+			this.currentImages.push(photo.file.uri)
+		})
+	}
 }
