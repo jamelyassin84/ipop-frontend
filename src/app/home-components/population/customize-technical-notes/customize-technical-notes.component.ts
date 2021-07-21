@@ -1,6 +1,6 @@
 import { TechnicalNotesService } from './../../../Services/home/others/technical-notes.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'CustomizeTechnicalNotes',
@@ -13,11 +13,15 @@ export class CustomizeTechnicalNotesComponent implements OnInit {
 	ngOnInit(): void {}
 	@Input() type = ''
 	data: any = {}
+
+	isLoading: boolean = false
 	save() {
 		this.data.type = this.type
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe((data) => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

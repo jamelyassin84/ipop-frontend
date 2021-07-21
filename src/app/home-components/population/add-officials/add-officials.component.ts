@@ -1,7 +1,7 @@
 import { MunicipalService } from './../../../Services/home/officials/municipal.service'
 import { ProvincialService } from './../../../Services/home/officials/provincial.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
 import { SpMemberService } from 'src/app/Services/home/officials/sp-member.service'
 import { BarangayService } from 'src/app/Services/home/officials/barangay.service'
 import { LocationService } from 'src/app/Services/locations/province.service'
@@ -14,19 +14,15 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 	styleUrls: ['./add-officials.component.scss'],
 })
 export class AddOfficialsComponent implements OnInit {
-	constructor(
-		private provincialOfficial: ProvincialService,
-		private SPMember: SpMemberService,
-		private municipalOfficial: MunicipalService,
-		private barangayOfficial: BarangayService,
-		private location: LocationService
-	) {}
+	constructor(private provincialOfficial: ProvincialService, private SPMember: SpMemberService, private municipalOfficial: MunicipalService, private barangayOfficial: BarangayService, private location: LocationService) {}
 
 	types = ['Provincial Official', 'Sanguniang Panlalawigan Member', 'Municipal Official', 'Barangay Official']
 	type: string = 'Provincial Official'
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			if (this.type === 'Provincial Official') {
 				this.addProvincialOfficial()
 			}
@@ -53,25 +49,29 @@ export class AddOfficialsComponent implements OnInit {
 
 	addProvincialOfficial() {
 		this.provincialOfficial.create(this.data).subscribe(() => {
-			Alert('Success', 'New Official Added', 'success')
+			HasApprovals('Created')
+			this.isLoading = false
 		})
 	}
 
 	addSPMember() {
 		this.SPMember.create(this.data).subscribe(() => {
-			Alert('Success', 'New Official Added', 'success')
+			HasApprovals('Created')
+			this.isLoading = false
 		})
 	}
 
 	addMunicipalOfficial() {
 		this.municipalOfficial.create(this.data).subscribe(() => {
-			Alert('Success', 'New Official Added', 'success')
+			HasApprovals('Created')
+			this.isLoading = false
 		})
 	}
 
 	addBarangayOfficial() {
 		this.barangayOfficial.create(this.data).subscribe(() => {
-			Alert('Success', 'New Official Added', 'success')
+			HasApprovals('Created')
+			this.isLoading = false
 		})
 	}
 

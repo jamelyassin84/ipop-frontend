@@ -1,6 +1,6 @@
 import { LocationService } from './../../../Services/locations/province.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 import { TopPopulatedService } from 'src/app/Services/home/population/top-populated.service'
 
@@ -34,10 +34,13 @@ export class TopPopulatedComponent implements OnInit {
 		},
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.topPopulated).subscribe(() => {
-				Alert('Success', 'New Top Populated Municipality Added', 'success')
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

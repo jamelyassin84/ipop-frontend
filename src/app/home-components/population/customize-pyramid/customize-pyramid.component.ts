@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { PopulationPyramidService } from 'src/app/Services/home/population/population-pyramid.service'
 
 @Component({
@@ -42,10 +42,13 @@ export class CustomizePyramidComponent implements OnInit {
 		this.populationPyramid.year = event.year
 	}
 
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.populationPyramid).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}
