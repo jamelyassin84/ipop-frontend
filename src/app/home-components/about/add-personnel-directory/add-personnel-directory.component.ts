@@ -1,6 +1,6 @@
 import { PersonnelDirectoryService } from './../../../Services/home/about/personnel-directory.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { PersonnelTypes } from 'src/app/home/about/personnel-directory/PersonnelTypes'
 
 @Component({
@@ -14,11 +14,16 @@ export class AddPersonnelDirectoryComponent implements OnInit {
 	types = PersonnelTypes
 
 	ngOnInit(): void {}
+
 	data: any = {}
+
+	isLoading: boolean = false
 	save() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}
