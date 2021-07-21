@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, pop } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals, pop } from 'src/app/components/Alert'
 import { SliderService } from 'src/app/Services/home/news/slider.service'
 
 @Component({
@@ -47,22 +47,22 @@ export class EditSliderImageComponent implements OnInit {
 	}
 
 	deleteImage(id: number) {
-		Fire(
-			'Delete Image?',
-			'Are you sure you want to delete this image? The image will be permanently deleted',
-			'info',
-			() => {
-				this.slideService.destroy(id).subscribe(() => {
-					this.ngOnInit()
-				})
-			}
-		)
+		Fire('Delete Image?', 'Are you sure you want to delete this image? The image will be permanently deleted', 'info', () => {
+			this.isLoading = true
+			this.slideService.destroy(id).subscribe(() => {
+				this.isLoading = false
+				this.ngOnInit()
+			})
+		})
 	}
 
+	isLoading: boolean = false
 	saveImages() {
 		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
+			this.isLoading = true
 			this.slideService.create({ photos: this.photos }).subscribe(() => {
-				Alert('Success', 'New Images Added', 'success')
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

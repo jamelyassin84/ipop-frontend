@@ -6,6 +6,15 @@ import { Subject } from 'rxjs'
 })
 export class ReloadService {
 	private reload = new Subject()
+	private load = new Subject<boolean>()
+
+	willLoad(mode: boolean) {
+		this.load.next(mode)
+	}
+
+	isLoading() {
+		return this.load.asObservable()
+	}
 
 	willReload() {
 		this.reload.next()

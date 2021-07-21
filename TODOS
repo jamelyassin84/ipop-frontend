@@ -1,4 +1,3 @@
-Teen Centers
 DELETE ADD UPDATE SUBJECT FOR APPROVALS CALLBACK BUTTON
 disable all buttons on click
 reactive form validation
@@ -19,7 +18,7 @@ Test all user
 
 preloaders all
 
-
+remove scrap components
 route state ngrx
 fix padding
 kung makadto sya sa home nga wala token redirect sa home ka user

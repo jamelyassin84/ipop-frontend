@@ -46,6 +46,19 @@ export function Deleted() {
 	Alert('Success', 'Data has been Successfully Deleted', 'success')
 }
 
+export function HasApprovals(mode: string) {
+	if (localStorage.getItem('role') !== 'Super Admin') {
+		return Alert('Data has been posted for Approvals', 'please wait for your content to be approved', 'success')
+	}
+	if (mode === 'Created') {
+		return Created()
+	}
+	if (mode === 'Updated') {
+		return Updated()
+	}
+	return Deleted()
+}
+
 export function Welcome(name: String) {
 	Alert('Success', `Welcome Back! ${name}`, 'success')
 }

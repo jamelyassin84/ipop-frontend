@@ -1,6 +1,7 @@
 import { ArticleService } from './../../../Services/home/news/article.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
 	selector: 'AddArticle',
@@ -40,11 +41,14 @@ export class AddArticleComponent implements OnInit {
 		this.photos.splice(index, 1)
 	}
 
+	isLoading: boolean = false
 	saveAritcle() {
 		this.article.files = this.photos
 		Fire('Save Changes?', 'Are you sure you want to add this article?', 'info', () => {
+			this.isLoading = true
 			this.articleService.create(this.article).subscribe(() => {
-				Alert('Success', 'New Article Added', 'success')
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}

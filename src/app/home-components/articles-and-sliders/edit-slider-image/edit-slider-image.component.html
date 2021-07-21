@@ -21,5 +21,8 @@
 
 <hr />
 <div class="d-flex aic jcc mr-5">
-    <button (click)="saveImages()" class="btn btn-success"><i class="ti-check mr-1"></i> Save added images</button>
+    <button (click)="saveImages()" [disabled]="isLoading" class="btn btn-success">
+		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save added images</span>
+		<Loader *ngIf="isLoading"></Loader>
+	</button>
 </div>

@@ -35,7 +35,6 @@ export class MainInterceptor implements HttpInterceptor {
 			Alert(`Error!`, JSON.stringify(response.error.errors[message]), 'error')
 			break
 		}
-
 		return throwError(response)
 	}
 }

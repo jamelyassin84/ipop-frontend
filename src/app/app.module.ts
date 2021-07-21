@@ -6,6 +6,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -294,7 +295,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		AddressPickerComponent,
 		TablePlaceholderComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule, TextareaAutosizeModule],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,

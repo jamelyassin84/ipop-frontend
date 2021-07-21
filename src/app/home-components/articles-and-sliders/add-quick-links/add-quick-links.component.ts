@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
 import { QuickLinksService } from 'src/app/Services/home/news/quick-links.service'
 
 @Component({
@@ -17,10 +17,13 @@ export class AddQuickLinksComponent implements OnInit {
 		url: '',
 	}
 
+	isLoading: boolean = false
 	saveQuickLink() {
 		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
+			this.isLoading = true
 			this.service.create(this.data).subscribe(() => {
-				Created()
+				HasApprovals('Created')
+				this.isLoading = false
 			})
 		})
 	}
