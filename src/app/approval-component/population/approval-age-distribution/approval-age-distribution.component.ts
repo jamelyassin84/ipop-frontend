@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { drawChart } from 'src/app/home/population/Config'
 import { DummyData } from 'src/app/home/population/Dummy'
 
@@ -9,6 +9,7 @@ import { DummyData } from 'src/app/home/population/Dummy'
 })
 export class ApprovalAgeDistributionComponent implements OnInit {
 	constructor() {}
+	@Input() data: any = ''
 
 	ngOnInit(): void {
 		drawChart('population-pyramid', DummyData)

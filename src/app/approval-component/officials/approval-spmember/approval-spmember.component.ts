@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
 	selector: 'SP-Member',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ApprovalSPMemberComponent implements OnInit {
 	constructor() {}
+	@Input() data: any = ''
 
 	ngOnInit(): void {}
 }

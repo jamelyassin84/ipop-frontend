@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
 	selector: 'TeenCenter',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ApprovalSBMPTCComponent implements OnInit {
 	constructor() {}
+	@Input() data: any = ''
 
 	ngOnInit(): void {}
 }

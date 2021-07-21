@@ -1,66 +1,60 @@
 <!-- News  -->
-<!-- <pre>
-    {{ data | json }}
-</pre>
-<pre>
-    {{ type | json }}
-</pre> -->
-<Articles *ngIf="false"></Articles>
+<Articles *ngIf="false" [data]="data"></Articles>
 <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
 
 <!-- Population  -->
-<Top-Population *ngIf="false"></Top-Population>
-<PopulationProfile *ngIf="false"></PopulationProfile>
-<PopulationPyramid *ngIf="false"></PopulationPyramid>
+<Top-Population *ngIf="false" [data]="data"></Top-Population>
+<PopulationProfile *ngIf="false" [data]="data"></PopulationProfile>
+<PopulationPyramid *ngIf="false" [data]="data"></PopulationPyramid>
 
 <!-- About  -->
-<Award *ngIf="false"></Award>
-<OrganizationalChart *ngIf="false"></OrganizationalChart>
+<Award *ngIf="false" [data]="data"></Award>
+<OrganizationalChart *ngIf="false" [data]="data"></OrganizationalChart>
 
 <!-- Program Areas  -->
-<ProgramAreas *ngIf="false"></ProgramAreas>
+<ProgramAreas *ngIf="false" [data]="data"></ProgramAreas>
 
 <!-- Services  -->
-<Services *ngIf="false"></Services>
-<ServicesOffered *ngIf="false"></ServicesOffered>
+<Services *ngIf="false" [data]="data"></Services>
+<ServicesOffered *ngIf="false" [data]="data"></ServicesOffered>
 
 <!-- Demographics  -->
-<IncidenceChart *ngIf="false"></IncidenceChart>
-<MonthChart *ngIf="false"></MonthChart>
+<IncidenceChart *ngIf="false" [data]="data"></IncidenceChart>
+<MonthChart *ngIf="false" [data]="data"></MonthChart>
 
 <!-- Births   -->
-<BirthStatistics *ngIf="false"></BirthStatistics>
-<Teenage-Incidence-Graph *ngIf="false"></Teenage-Incidence-Graph>
+<BirthStatistics *ngIf="false" [data]="data"></BirthStatistics>
+<Teenage-Incidence-Graph *ngIf="false" [data]="data"></Teenage-Incidence-Graph>
 
 <!-- Deaths   -->
-<DeathStatistics *ngIf="false"></DeathStatistics>
+<DeathStatistics *ngIf="false" [data]="data"></DeathStatistics>
 
 <!-- Migrations   -->
-<MigrationStatistic *ngIf="false"></MigrationStatistic>
+<MigrationStatistic *ngIf="false" [data]="data"></MigrationStatistic>
 
 <!-- Marriages   -->
 
 <!-- RPFP  -->
-<MPC-FDC *ngIf="false"></MPC-FDC>
-<PMOC *ngIf="false"></PMOC>
+<MPC-FDC *ngIf="false" [data]="data"></MPC-FDC>
+<PMOC *ngIf="false" [data]="data"></PMOC>
 
 <!-- TeenCenters   -->
-<TeenCenter *ngIf="false"></TeenCenter>
+<TeenCenter *ngIf="false" [data]="data"></TeenCenter>
 
 <!-- Others   -->
-<Technical-Notes *ngIf="false"></Technical-Notes>
+<Technical-Notes *ngIf="false" [data]="data"></Technical-Notes>
 
 <!-- Officials   -->
-<ProvincialOfficials *ngIf="false"></ProvincialOfficials>
-<SP-Member *ngIf="false"></SP-Member>
-<MunicipalOfficials *ngIf="false"></MunicipalOfficials>
+<ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
+<SP-Member *ngIf="false" [data]="data"></SP-Member>
+<MunicipalOfficials *ngIf="false" [data]="data"></MunicipalOfficials>
 
-<MPC-FDC-Personnel *ngIf="false"></MPC-FDC-Personnel>
-<MPC-FDC-Team *ngIf="false"></MPC-FDC-Team>
-<PMOC-Team *ngIf="false"></PMOC-Team>
+<MPC-FDC-Personnel *ngIf="false" [data]="data"></MPC-FDC-Personnel>
+<MPC-FDC-Team *ngIf="false" [data]="data"></MPC-FDC-Team>
+<PMOC-Team *ngIf="false" [data]="data"></PMOC-Team>
 
-<Teen-Center-Focal-Persons *ngIf="false"></Teen-Center-Focal-Persons>
-<Teen-Center-Personnel-Incharge *ngIf="false"></Teen-Center-Personnel-Incharge>
-<Teen-Center-AHYD-Team *ngIf="false"></Teen-Center-AHYD-Team>
-<AHYD-Team *ngIf="false"></AHYD-Team>
-<PersonnelIncharge *ngIf="false"></PersonnelIncharge>
+<Teen-Center-Focal-Persons *ngIf="false" [data]="data"></Teen-Center-Focal-Persons>
+<Teen-Center-Personnel-Incharge *ngIf="false" [data]="data"></Teen-Center-Personnel-Incharge>
+<Teen-Center-AHYD-Team *ngIf="false" [data]="data"></Teen-Center-AHYD-Team>
+<AHYD-Team *ngIf="false" [data]="data"></AHYD-Team>
+<PersonnelIncharge *ngIf="false" [data]="data"></PersonnelIncharge>

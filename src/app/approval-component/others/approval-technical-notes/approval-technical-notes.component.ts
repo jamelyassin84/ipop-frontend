@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
 	selector: 'Technical-Notes',
@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core'
 export class ApprovalTechnicalNotesComponent implements OnInit {
 	constructor() {}
 	TechnicalNotes: any = []
+	@Input() data: any = ''
+
 	ngOnInit(): void {}
 }

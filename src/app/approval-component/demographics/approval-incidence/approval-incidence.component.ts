@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { IncidenceChartConfig } from 'src/app/home/demographic/Incidence.Chart'
 
 @Component({
@@ -9,6 +9,7 @@ import { IncidenceChartConfig } from 'src/app/home/demographic/Incidence.Chart'
 export class ApprovalIncidenceComponent implements OnInit {
 	constructor() {}
 	incidenceChart = IncidenceChartConfig
+	@Input() data: any = ''
 
 	ngOnInit(): void {}
 }
