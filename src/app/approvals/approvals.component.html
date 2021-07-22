@@ -5,7 +5,7 @@
                 <div class="peer bdR" id="chat-sidebar">
                     <div class="layers h-100">
                         <div class="layer w-100 fxg-1 scrollable pos-r">
-                            <div (click)="type = approval.approvable_type; data = approval.approvable" *ngFor="let approval of approvals" class="peers fxw-nw ai-c p-20 bdB bg-white bgcH-grey-50 cur-p border">
+                            <div (click)="type = approval.approvable_type; data = approval.approvable; id = approval.id" *ngFor="let approval of approvals" class="peers fxw-nw ai-c p-20 bdB bg-white bgcH-grey-50 cur-p border">
                                 <div class="peer">
                                     <img [src]="approval.requester.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
                                 </div>

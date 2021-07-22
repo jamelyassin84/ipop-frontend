@@ -25,26 +25,28 @@ export class ApprovalsComponent implements OnInit {
 	}
 
 	approve(mode: boolean) {
-		const approval = mode === true ? 'Approve' : 'Discard'
-		if (mode === true) {
-			Fire(`${approval} content?`, `Are you sure you want to ${approval} this content?`, 'info', () => {
-				this.service.update(this.data.id, { approved: mode }).subscribe(() => {
-					Alert('Horay!', 'Content has beeen succesfully posted', 'success')
-					this.ngOnInit()
-					this.type = ''
+		setTimeout(() => {
+			const approval = mode === true ? 'Approve' : 'Discard'
+			if (mode === true) {
+				Fire(`${approval} content?`, `Are you sure you want to ${approval} this content?`, 'info', () => {
+					this.service.update(this.id, { approved: mode }).subscribe(() => {
+						Alert('Horay!', 'Content has beeen succesfully posted', 'success')
+						this.ngOnInit()
+						this.type = ''
+					})
 				})
-			})
-		} else {
-			Fire(`${approval} content?`, `Are you sure you want to ${approval} this content?`, 'info', () => {
-				this.service.destroy(this.data.id).subscribe(() => {
-					Alert('Content Discarded', 'Content has beeen  discarded', 'warning')
-					this.ngOnInit()
-					this.type = ''
+			} else {
+				Fire(`${approval} content?`, `Are you sure you want to ${approval} this content?`, 'info', () => {
+					this.service.destroy(this.id).subscribe(() => {
+						Alert('Content Discarded', 'Content has beeen  discarded', 'warning')
+						this.ngOnInit()
+						this.type = ''
+					})
 				})
-			})
-		}
+			}
+		}, 300)
 	}
-
+	id: number = 0
 	type: string = ''
 	data: any = {}
 	types = ['App\\Models\\Slider', 'AppModelsQuickLinks', 'AppModelsArticle', 'AppModelsCMSChart', 'AppModelsCMSChart']
