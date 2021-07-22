@@ -62,7 +62,10 @@ const routes: Routes = [
 								path: 'news',
 								component: AritclesAndSlidersComponent,
 							},
-							{ path: 'population', component: PopulationComponent },
+							{
+								path: 'population',
+								component: PopulationComponent,
+							},
 							{
 								path: 'about',
 								children: [
@@ -86,11 +89,20 @@ const routes: Routes = [
 										path: 'personnel-directory',
 										component: PersonnelDirectoryComponent,
 									},
-									{ path: 'awards', component: AwardsComponent },
+									{
+										path: 'awards',
+										component: AwardsComponent,
+									},
 								],
 							},
-							{ path: 'programs/:id', component: ProgramsComponent },
-							{ path: 'services/:id', component: ServicesComponent },
+							{
+								path: 'programs/:id',
+								component: ProgramsComponent,
+							},
+							{
+								path: 'services/:id',
+								component: ServicesComponent,
+							},
 							{
 								path: 'demographic',
 								children: [
@@ -104,7 +116,8 @@ const routes: Routes = [
 									},
 									{
 										path: 'migrations',
-										component: MigrationsDemographicComponent,
+										component:
+											MigrationsDemographicComponent,
 									},
 									{
 										path: 'marriages',
@@ -116,7 +129,10 @@ const routes: Routes = [
 								path: 'rpfp',
 								children: [
 									{ path: 'pmoc', component: PmocComponent },
-									{ path: 'mpcfdc', component: MpcFdcComponent },
+									{
+										path: 'mpcfdc',
+										component: MpcFdcComponent,
+									},
 								],
 							},
 							{
@@ -140,13 +156,25 @@ const routes: Routes = [
 						component: RecordIndexComponent,
 						children: [
 							{ path: '', component: RecordUploadComponent },
-							{ path: 'upload', component: RecordUploadComponent },
+							{
+								path: 'upload',
+								component: RecordUploadComponent,
+							},
 							{ path: 'cpdb', component: CpdbRecordsComponent },
 							{ path: 'birth', component: BirthRecordsComponent },
 							{ path: 'death', component: DeathRecordsComponent },
-							{ path: 'in-mmigration', component: InMigrationRecordsComponent },
-							{ path: 'out-migration', component: OutMigrationRecordsComponent },
-							{ path: 'marriages', component: MarriageRecordsComponent },
+							{
+								path: 'in-mmigration',
+								component: InMigrationRecordsComponent,
+							},
+							{
+								path: 'out-migration',
+								component: OutMigrationRecordsComponent,
+							},
+							{
+								path: 'marriages',
+								component: MarriageRecordsComponent,
+							},
 						],
 					},
 					{

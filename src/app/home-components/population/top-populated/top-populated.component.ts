@@ -10,12 +10,16 @@ import { TopPopulatedService } from 'src/app/Services/home/population/top-popula
 	styleUrls: ['./top-populated.component.scss'],
 })
 export class TopPopulatedComponent implements OnInit {
-	constructor(private location: LocationService, private service: TopPopulatedService) {}
-	municipalities: MunicipalityType[] = []
+	constructor(
+		private location: LocationService,
+		private service: TopPopulatedService
+	) {}
+
 	ngOnInit(): void {
 		this.getMuncipalities()
 	}
 
+	municipalities: MunicipalityType[] = []
 	getMuncipalities() {
 		this.location.municipalities().subscribe((data: any) => {
 			this.municipalities = data
@@ -23,7 +27,8 @@ export class TopPopulatedComponent implements OnInit {
 	}
 
 	changeHandler(event: any) {
-		this.topPopulated.data.name = event.target.options[event.target.options.selectedIndex].text
+		this.topPopulated.data.name =
+			event.target.options[event.target.options.selectedIndex].text
 	}
 
 	topPopulated = {
@@ -36,12 +41,17 @@ export class TopPopulatedComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.topPopulated).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.topPopulated).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

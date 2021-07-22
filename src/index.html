@@ -22,9 +22,13 @@
 
         function setTheme() {
             if (localStorage.getItem('theme') === undefined) {
-                document.getElementById('html').setAttribute('theme', 'light')
+                document
+                    .getElementById('html')
+                    .setAttribute('theme', 'light')
             } else {
-                document.getElementById('html').setAttribute('theme', localStorage.getItem('theme'))
+                document
+                    .getElementById('html')
+                    .setAttribute('theme', localStorage.getItem('theme'))
             }
         }
         setInterval(() => {

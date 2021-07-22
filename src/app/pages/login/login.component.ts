@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 		username: '',
 		password: '',
 	}
+
 	isLoading = false
 	login() {
 		this.isLoading = true
@@ -33,7 +34,10 @@ export class LoginComponent implements OnInit {
 				const user: UserType = data.user
 				console.log(user.roles[0].name)
 				localStorage.setItem('role', user.roles[0].name)
-				localStorage.setItem('avatar', user.profile_picture?.uri || 'null')
+				localStorage.setItem(
+					'avatar',
+					user.profile_picture?.uri || 'null'
+				)
 				localStorage.setItem('user', stringify(user))
 				this.isLoading = false
 				Welcome(user.fullname)
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit {
 		)
 	}
 }
+
 interface Login {
 	token: string
 	user: UserType

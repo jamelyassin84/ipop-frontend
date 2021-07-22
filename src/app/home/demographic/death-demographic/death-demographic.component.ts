@@ -14,7 +14,12 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./death-demographic.component.scss'],
 })
 export class DeathDemographicComponent implements OnInit {
-	constructor(private component: ReloadService, private summary: SummaryService, private service: LocalDeathDataService, private monthChartService: MonthChartService) {
+	constructor(
+		private component: ReloadService,
+		private summary: SummaryService,
+		private service: LocalDeathDataService,
+		private monthChartService: MonthChartService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -37,19 +42,7 @@ export class DeathDemographicComponent implements OnInit {
 	getSummary() {
 		this.summary.deaths().subscribe((summaries: Summary) => {
 			this.summaries = summaries
-			// this.clearChart()
-			// for (let index in summaries.incidences) {
-			// 	if (!this.crudeDeathRate.labels.includes(summaries.incidences[index].year)) {
-			// 		this.crudeDeathRate.labels.push(summaries.incidences[index].year)
-			// 	}
-			// 	this.crudeDeathRate.datasets[0].data.push(summaries.incidences[index].value)
-			// }
 		})
-	}
-
-	clearChart() {
-		this.crudeDeathRate.labels = []
-		this.crudeDeathRate.datasets[0].data = []
 	}
 
 	location: any = {
@@ -65,10 +58,19 @@ export class DeathDemographicComponent implements OnInit {
 	}
 
 	getChart() {
-		const service = new BaseService(this.service.http, this.monthChartService.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Death`)
+		const service = new BaseService(
+			this.service.http,
+			this.monthChartService.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Death`
+		)
 		service.index().subscribe((months: any) => {
 			this.processStatisticalChart(months)
 		})
+	}
+
+	clearChart() {
+		this.crudeDeathRate.labels = []
+		this.crudeDeathRate.datasets[0].data = []
 	}
 
 	localData: Summary | any = {}
@@ -77,15 +79,27 @@ export class DeathDemographicComponent implements OnInit {
 			total: 0,
 			crude_death_rate: 0,
 		}
-		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
 		service.index().subscribe((summaries: Summary) => {
 			this.localData = summaries?.data || {}
 			this.clearChart()
 			for (let index in summaries.incidence) {
-				if (!this.crudeDeathRate.labels.includes(summaries.incidence[index].year)) {
-					this.crudeDeathRate.labels.push(summaries.incidence[index].year)
+				if (
+					!this.crudeDeathRate.labels.includes(
+						summaries.incidence[index].year
+					)
+				) {
+					this.crudeDeathRate.labels.push(
+						summaries.incidence[index].year
+					)
 				}
-				this.crudeDeathRate.datasets[0].data.push(summaries.incidence[index].value)
+				this.crudeDeathRate.datasets[0].data.push(
+					summaries.incidence[index].value
+				)
 			}
 		})
 	}

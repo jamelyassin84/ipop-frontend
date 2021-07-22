@@ -1,12 +1,18 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a (click)="changeTab('province')" role="button" class="nav-link text-muted" [class.active]="tabs.province === true"> <i class="ti-direction-alt"></i> Province </a>
+        <a (click)="changeTab('province')" role="button" class="nav-link text-muted" [class.active]="tabs.province === true">
+            <i class="ti-direction-alt"></i> Province
+        </a>
     </li>
     <li class="nav-item">
-        <a (click)="changeTab('municipality')" role="button" class="nav-link text-muted" [class.active]="tabs.municipality === true"> <i class="ti-direction-alt"></i> Municipality </a>
+        <a (click)="changeTab('municipality')" role="button" class="nav-link text-muted" [class.active]="tabs.municipality === true">
+            <i class="ti-direction-alt"></i> Municipality
+        </a>
     </li>
     <li class="nav-item">
-        <a (click)="changeTab('barangay')" role="button" class="nav-link text-muted" [class.active]="tabs.barangay === true"> <i class="ti-direction-alt"></i> Barangay </a>
+        <a (click)="changeTab('barangay')" role="button" class="nav-link text-muted" [class.active]="tabs.barangay === true">
+            <i class="ti-direction-alt"></i> Barangay
+        </a>
     </li>
 </ul>
 
@@ -15,7 +21,10 @@
         <label for="municipality">Municipality </label>
         <select (input)="getBarangays($event)" class="custom-select" id="municipality" required>
 			<option selected disabled>Choose...</option>
-			<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+			<option
+				*ngFor="let municipality of municipalities"
+				[value]="municipality.code"
+			>
 				{{ municipality.name }}
 			</option>
 		</select>
@@ -25,7 +34,9 @@
         <label for="barangay"> Barangay </label>
         <select (input)="setBarangay($event)" class="custom-select" id="barangay" required>
 			<option selected disabled value="">Choose ...</option>
-			<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+			<option *ngFor="let barangay of barangays">
+				{{ barangay.name }}
+			</option>
 		</select>
     </div>
 
@@ -37,7 +48,9 @@
 		</select>
     </div>
     <div class="col-md-3 mb-1" style="align-self: flex-end">
-        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn btn-outline-dark pl-3 pr-3 btn-sm"><i class="ti-lock"></i> Lock</button>
+        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn btn-outline-dark pl-3 pr-3 btn-sm">
+			<i class="ti-lock"></i> Lock
+		</button>
     </div>
 </div>
 <br />

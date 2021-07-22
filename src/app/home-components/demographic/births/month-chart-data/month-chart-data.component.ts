@@ -65,14 +65,19 @@ export class MonthChartDataComponent implements OnInit {
 		this.data.municipality = this.location.municipality
 		this.data.barangay = this.location.barangay
 		this.data.year = parseInt(this.location.year)
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.data['months'] = this.data.males
-			this.data['gender'] = 'male'
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.data['months'] = this.data.males
+				this.data['gender'] = 'male'
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

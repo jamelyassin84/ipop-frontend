@@ -6,21 +6,35 @@
             </div>
         </div>
         <div class="card-header bg-white">
-            <span class="m-0 text-danger"><i class="ti-alarm-clock"></i> Created : {{ data.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span>
-        </div>
-        <div class="card-body bg-white">
-            <div class="d-flex">
-                <p class="pX-20">
-                    {{ data.body }}
-                </p>
-                <div *ngIf="data.photos.length !== 0" class="ml-auto mr-2">
-                    <img class="article-image" [src]="data.photos[0].file.uri" alt="" />
-                    <Modal size="xl" [title]="'Images of ' + data.title" btnTitle="View Images" [template]="imageViewer" btnClass="btn btn-link w-100 text-center" (click)="transformImages(data.photos)"> </Modal>
-                </div>
-            </div>
-        </div>
-    </div>
+            <span class="m-0 text-danger"><i class="ti-alarm-clock"></i> Created :
+				{{ data.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+			>
+		</div>
+		<div class="card-body bg-white">
+			<div class="d-flex">
+				<p class="pX-20">
+					{{ data.body }}
+				</p>
+				<div *ngIf="data.photos.length !== 0" class="ml-auto mr-2">
+					<img
+						class="article-image"
+						[src]="data.photos[0].file.uri"
+						alt=""
+					/>
+					<Modal
+						size="xl"
+						[title]="'Images of ' + data.title"
+						btnTitle="View Images"
+						[template]="imageViewer"
+						btnClass="btn btn-link w-100 text-center"
+						(click)="transformImages(data.photos)"
+					>
+					</Modal>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <ng-template #imageViewer>
-    <ImageViewer [images]="currentImages"></ImageViewer>
+	<ImageViewer [images]="currentImages"></ImageViewer>
 </ng-template>

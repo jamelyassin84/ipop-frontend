@@ -7,8 +7,10 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class IndexComponent implements OnInit {
 	constructor() {}
+
 	@Input() type: any = ''
 	@Input() data: any = ''
+
 	ngOnInit(): void {
 		setInterval(() => {
 			console.log(this.type)

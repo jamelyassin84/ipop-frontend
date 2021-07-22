@@ -12,16 +12,19 @@ import { ADMIN, normal } from './Sidebar'
 })
 export class SidebarComponent implements OnInit {
 	constructor(private router: Router, private user: UserService) {}
+
 	name = this.user.name()
 	avatar = localStorage.getItem('avatar')
 	url = this.router.url
 	mode = ''
+
 	ngOnInit(): void {
 		this.setMode()
 		this.setMode()
 	}
 
-	sidebar: SidebarType[] = localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
+	sidebar: SidebarType[] =
+		localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
 
 	handleChangeTab() {
 		setTimeout(() => {
@@ -30,15 +33,23 @@ export class SidebarComponent implements OnInit {
 	}
 
 	setMode() {
-		localStorage.getItem('theme') === 'dark' ? localStorage.setItem('theme', 'light') : localStorage.setItem('theme', 'dark')
-		localStorage.getItem('theme') === 'dark' ? (this.mode = 'Light') : (this.mode = 'Dark')
+		localStorage.getItem('theme') === 'dark'
+			? localStorage.setItem('theme', 'light')
+			: localStorage.setItem('theme', 'dark')
+		localStorage.getItem('theme') === 'dark'
+			? (this.mode = 'Light')
+			: (this.mode = 'Dark')
 	}
 
 	logout() {
 		Fire('Sign-Out?', 'Are you sure you want to Sign-Out?', 'info', () => {
 			localStorage.clear()
 			this.router.navigate([''])
-			Alert('Thank you', `For using Iloilo Provincial Office's Automated System`, 'success')
+			Alert(
+				'Thank you',
+				`For using Iloilo Provincial Office's Automated System`,
+				'success'
+			)
 		})
 	}
 }

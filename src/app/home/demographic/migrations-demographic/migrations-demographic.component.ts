@@ -14,7 +14,12 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./migrations-demographic.component.scss'],
 })
 export class MigrationsDemographicComponent implements OnInit {
-	constructor(private component: ReloadService, private summary: SummaryService, private service: LocalMigrationDataService, private monthChartService: MonthChartService) {
+	constructor(
+		private component: ReloadService,
+		private summary: SummaryService,
+		private service: LocalMigrationDataService,
+		private monthChartService: MonthChartService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -45,7 +50,6 @@ export class MigrationsDemographicComponent implements OnInit {
 		municipality: null,
 		year: null,
 	}
-
 	fetch(event: any) {
 		this.location = event
 		this.getChart()
@@ -53,25 +57,13 @@ export class MigrationsDemographicComponent implements OnInit {
 	}
 
 	getChart() {
-		const service = new BaseService(this.service.http, this.monthChartService.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Migration`)
+		const service = new BaseService(
+			this.service.http,
+			this.monthChartService.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Migration`
+		)
 		service.index().subscribe((months: any) => {
 			this.processStatisticalChart(months)
-		})
-	}
-
-	localData: Summary | any = {}
-	getLocalData() {
-		this.localData = {
-			total_in_migrations: 0,
-			total_out_migrations: 0,
-			net_migrations: 0,
-		}
-		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
-		service.index().subscribe((summaries: Summary) => {
-			this.localData = summaries?.data || {}
-			if (summaries != null) {
-				this.migrationChart.datasets[0].data = [summaries.data.total_in_migrations, summaries.data.total_out_migrations, summaries.data.net_migrations]
-			}
 		})
 	}
 
@@ -99,6 +91,30 @@ export class MigrationsDemographicComponent implements OnInit {
 		this.statisticalChart.datasets[0].data = females
 		this.statisticalChart.datasets[1].data = males
 		this.statisticalChart.datasets[2].data = total
+	}
+
+	localData: Summary | any = {}
+	getLocalData() {
+		this.localData = {
+			total_in_migrations: 0,
+			total_out_migrations: 0,
+			net_migrations: 0,
+		}
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
+		service.index().subscribe((summaries: Summary) => {
+			this.localData = summaries?.data || {}
+			if (summaries != null) {
+				this.migrationChart.datasets[0].data = [
+					summaries.data.total_in_migrations,
+					summaries.data.total_out_migrations,
+					summaries.data.net_migrations,
+				]
+			}
+		})
 	}
 
 	statisticalChart = MonthChartConfig

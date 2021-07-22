@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-cpdb-records',
-  templateUrl: './cpdb-records.component.html',
-  styleUrls: ['./cpdb-records.component.scss']
+	selector: 'app-cpdb-records',
+	templateUrl: './cpdb-records.component.html',
+	styleUrls: ['./cpdb-records.component.scss'],
 })
 export class CpdbRecordsComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

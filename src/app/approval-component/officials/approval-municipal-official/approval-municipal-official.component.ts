@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class ApprovalMunicipalOfficialComponent implements OnInit {
 	constructor() {}
+
 	@Input() data: any = ''
 
 	ngOnInit(): void {}

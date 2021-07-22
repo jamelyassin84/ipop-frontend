@@ -7,7 +7,6 @@ import { TopPopulatedService } from 'src/app/Services/home/population/top-popula
 import { ReloadService } from 'src/app/Services/reload.service'
 import { drawChart } from './Config'
 import { DummyData } from './Dummy'
-import { PopProfileDummy } from './PopProfileDummy'
 
 @Component({
 	selector: 'app-population',
@@ -15,7 +14,11 @@ import { PopProfileDummy } from './PopProfileDummy'
 	styleUrls: ['./population.component.scss'],
 })
 export class PopulationComponent implements OnInit {
-	constructor(private topPopulatedService: TopPopulatedService, private component: ReloadService, private _http: HttpClient) {
+	constructor(
+		private topPopulatedService: TopPopulatedService,
+		private component: ReloadService,
+		private _http: HttpClient
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -43,9 +46,14 @@ export class PopulationComponent implements OnInit {
 	}
 
 	deleteTopPopulated(id: number) {
-		Fire('Remove Municipality?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.topPopulatedService.destroy(id).subscribe()
-		})
+		Fire(
+			'Remove Municipality?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.topPopulatedService.destroy(id).subscribe()
+			}
+		)
 	}
 
 	location: any = {
@@ -61,7 +69,11 @@ export class PopulationComponent implements OnInit {
 
 	populationPyramid: any = DummyData
 	getPopulationPyramid() {
-		const service = new BaseService(this._http, 'population-pyramid', `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
+		const service = new BaseService(
+			this._http,
+			'population-pyramid',
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
 		service.index().subscribe((data: any) => {
 			let ageDistribution: any = [['Age', 'Female', 'Male']]
 			if (data.length !== 0) {
@@ -76,7 +88,13 @@ export class PopulationComponent implements OnInit {
 					if (key == 'eighty_and_above') {
 						newText = '80 and Above'
 					}
-					ageDistribution.push([key == 'below_1_year_old' || key == 'eighty_and_above' ? newText : key, -Math.abs(parseInt(female[key])), parseInt(male[key])])
+					ageDistribution.push([
+						key == 'below_1_year_old' || key == 'eighty_and_above'
+							? newText
+							: key,
+						-Math.abs(parseInt(female[key])),
+						parseInt(male[key]),
+					])
 				}
 			} else {
 				ageDistribution = DummyData
@@ -87,7 +105,11 @@ export class PopulationComponent implements OnInit {
 
 	populationProfile: any = {}
 	getPopulationData() {
-		const service = new BaseService(this._http, 'statistic-profiles', `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
+		const service = new BaseService(
+			this._http,
+			'statistic-profiles',
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
 		service.index().subscribe((populationProfile: any) => {
 			this.populationProfile = {}
 			if (populationProfile.length !== 0) {

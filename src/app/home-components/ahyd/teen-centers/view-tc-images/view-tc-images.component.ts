@@ -10,6 +10,7 @@ export class ViewTcImagesComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
 	deleteImage() {
 		Fire(
 			'Delete Image?',
@@ -20,6 +21,11 @@ export class ViewTcImagesComponent implements OnInit {
 	}
 
 	saveImages() {
-		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {})
+		Fire(
+			'Save Changes?',
+			'This will save all added images. Continue?',
+			'info',
+			() => {}
+		)
 	}
 }

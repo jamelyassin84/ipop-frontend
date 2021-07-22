@@ -24,11 +24,16 @@
 
                 <div class="col-md-4 mb-3">
                     <label for="confrim-password">Confirm Password</label>
-                    <input [(ngModel)]="data.confirmPassword" type="password" class="form-control" id="confrim-password" [class.is-invalid]="data.confirmPassword != data.password || invalidData.confirmPassword" required />
+                    <input [(ngModel)]="data.confirmPassword" type="password" class="form-control" id="confrim-password" [class.is-invalid]="
+							data.confirmPassword != data.password ||
+							invalidData.confirmPassword
+						" required />
                     <div class="invalid-feedback" *ngIf="data.confirmPassword != data.password">
                         Password should match
                     </div>
-                    <div *ngIf="invalidData.confirmPassword" class="invalid-feedback">Password is required</div>
+                    <div *ngIf="invalidData.confirmPassword" class="invalid-feedback">
+                        Password is required
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="fullname">Fullname </label>
@@ -53,7 +58,9 @@
                     <label for="district">District</label>
                     <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
 						<option selected disabled value="">Choose...</option>
-						<option *ngFor="let number of districts">{{ number }}</option>
+						<option *ngFor="let number of districts">
+							{{ number }}
+						</option>
 					</select>
                     <div class="invalid-feedback">District is required</div>
                 </div>
@@ -62,7 +69,10 @@
                     <label for="municipality">Municipality </label>
                     <select (change)="getBarangays($event)" class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
 						<option selected disabled>Choose...</option>
-						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+						<option
+							*ngFor="let municipality of municipalities"
+							[value]="municipality.code"
+						>
 							{{ municipality.name }}
 						</option>
 					</select>
@@ -73,7 +83,9 @@
                     <label for="barangay"> Barangay </label>
                     <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" [class.is-invalid]="invalidData.barangay" required>
 						<option selected disabled value="">Choose...</option>
-						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+						<option *ngFor="let barangay of barangays">
+							{{ barangay.name }}
+						</option>
 					</select>
                     <div class="invalid-feedback">Barangay is required</div>
                 </div>
@@ -81,7 +93,10 @@
                 <div *ngIf="data.role === 'PPOII'" class="col-md-6 mb-3">
                     <label for="role">Municipality Assigned</label>
                     <select multiple [(ngModel)]="data.assigned_municipality" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+						<option
+							*ngFor="let municipality of municipalities"
+							[value]="municipality.code"
+						>
 							{{ municipality.name }}
 						</option>
 					</select>
@@ -91,7 +106,9 @@
                 <div *ngIf="data.role === 'PPOI' && data.barangay !== undefined" class="col-md-6 mb-3">
                     <label for="role">Barangay Assigned</label>
                     <select multiple [(ngModel)]="data.assigned_barangay" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option *ngFor="let barangay of barangays">{{ barangay.name }}</option>
+						<option *ngFor="let barangay of barangays">
+							{{ barangay.name }}
+						</option>
 					</select>
                     <div class="invalid-feedback">Role is required</div>
                 </div>

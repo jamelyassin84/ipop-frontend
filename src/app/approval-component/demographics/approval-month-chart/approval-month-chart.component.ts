@@ -8,8 +8,10 @@ import { MonthChartConfig } from 'src/app/home/demographic/MonthChart'
 })
 export class ApprovalMonthChartComponent implements OnInit {
 	constructor() {}
+
 	@Input() data: any = ''
 
 	statisticalChart = MonthChartConfig
+
 	ngOnInit(): void {}
 }

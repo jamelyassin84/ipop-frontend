@@ -4,14 +4,18 @@
             <label TeenCenter>District</label>
             <select [(ngModel)]="data.district" class="form-control">
 				<option selected disabled>Choose...</option>
-				<option *ngFor="let district of districts">{{ district }}</option>
+				<option *ngFor="let district of districts">
+					{{ district }}
+				</option>
 			</select>
         </div>
         <div class="col-md-6">
             <label>Municipality </label>
             <select [(ngModel)]="data.municipality" class="form-control">
 				<option selected disabled>Choose...</option>
-				<option *ngFor="let municipality of municipalities">{{ municipality.name }}</option>
+				<option *ngFor="let municipality of municipalities">
+					{{ municipality.name }}
+				</option>
 			</select>
         </div>
         <div class="col-md-12 mt-4">
@@ -28,7 +32,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i> Add this MPC-FDC Data</span>
+		<span *ngIf="!isLoading"
+			><i class="ti-check mr-1"></i> Add this MPC-FDC Data</span
+		>
 		<Loader *ngIf="isLoading"></Loader>
 	</button>
 </div>

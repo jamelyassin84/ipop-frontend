@@ -48,12 +48,17 @@ export class AddProgramComponent implements OnInit {
 	isLoading: boolean = false
 	save() {
 		this.activity.files = this.photos
-		Fire('Save Changes?', 'Are you sure you want to add this article?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.activity).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this article?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.activity).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

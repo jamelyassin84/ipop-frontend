@@ -24,21 +24,35 @@
         <div class="m-0 bl br card mb-5" *ngFor="let award of awards">
             <div class="card-header bg-white d-flex aic">
                 <div>
-                    <div class="h3 m-0 card-title text-danger dw"><i class="ti-medall"></i> {{ award.title }}</div>
-                    <span class="m-0 text-muted">Awarded : {{ award.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+                    <div class="h3 m-0 card-title text-danger dw">
+                        <i class="ti-medall"></i> {{ award.title }}
+                    </div>
+                    <span class="m-0 text-muted">Awarded :
+						{{
+							award.created_at | date: 'MMMM dd, yyy - hh:mm a'
+						}}</span
 					>
 				</div>
 				<div class="ml-auto">
 					<DropDown [buttons]="dropdown"></DropDown>
 					<ng-template #dropdown>
-						<button (click)="removeAward(award.id)" class="dropdown-item">Remove Award</button>
+						<button
+							(click)="removeAward(award.id)"
+							class="dropdown-item"
+						>
+							Remove Award
+						</button>
 					</ng-template>
 				</div>
 			</div>
 			<div class="card-body bg-white">
 				<div class="d-flex aic">
 					<div *ngIf="award.medias.length !== 0" class="mr-auto">
-						<img class="article-image" [src]="award.medias[0].file.uri" alt="" />
+						<img
+							class="article-image"
+							[src]="award.medias[0].file.uri"
+							alt=""
+						/>
 						<Modal
 							size="xl"
 							[title]="'Images of ' + award.title"
@@ -50,7 +64,9 @@
 						</Modal>
 					</div>
 					<p>
-						<a target="_blank" [href]="award.url">{{ award.url }}</a>
+						<a target="_blank" [href]="award.url">{{
+							award.url
+						}}</a>
 					</p>
 				</div>
 			</div>

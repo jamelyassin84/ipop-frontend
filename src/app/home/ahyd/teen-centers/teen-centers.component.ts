@@ -11,7 +11,10 @@ import { ReloadService } from 'src/app/Services/reload.service'
 	styleUrls: ['./teen-centers.component.scss'],
 })
 export class TeenCentersComponent implements OnInit {
-	constructor(private component: ReloadService, private service: TeenCenterDataService) {
+	constructor(
+		private component: ReloadService,
+		private service: TeenCenterDataService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.setTab(this.district)
@@ -50,10 +53,16 @@ export class TeenCentersComponent implements OnInit {
 
 	teenCenters: any = []
 	getTeenCenters() {
-		new BaseService(this.service.http, this.service.url, `district=${this.transformDistrict(this.district)}`).index().subscribe((data: any) => {
-			this.teenCenters = data
-			console.log(data)
-		})
+		new BaseService(
+			this.service.http,
+			this.service.url,
+			`district=${this.transformDistrict(this.district)}`
+		)
+			.index()
+			.subscribe((data: any) => {
+				this.teenCenters = data
+				console.log(data)
+			})
 	}
 
 	transformDistrict(district: string) {
@@ -73,11 +82,16 @@ export class TeenCentersComponent implements OnInit {
 	}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 
 	teen_center_id: number = 0

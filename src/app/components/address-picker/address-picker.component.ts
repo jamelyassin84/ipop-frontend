@@ -18,23 +18,32 @@ export class AddressPickerComponent implements OnInit {
 			this.years.push(year)
 		}
 		this.getMuncipalities()
-		this.currentData = { municipality: null, barangay: null, year: new Date().getFullYear() }
+		this.currentData = {
+			municipality: null,
+			barangay: null,
+			year: new Date().getFullYear(),
+		}
 		this.onEmit.emit(this.currentData)
 	}
 
 	municipalities: MunicipalityType[] = []
 	getMuncipalities() {
-		this.location.municipalities().subscribe((municipalities: MunicipalityType[]) => {
-			this.municipalities = municipalities
-		})
+		this.location
+			.municipalities()
+			.subscribe((municipalities: MunicipalityType[]) => {
+				this.municipalities = municipalities
+			})
 	}
 
 	barangays: BarangayOfficialType[] = []
 	getBarangays(event: any) {
-		this.currentData.municipality = event.target.options[event.target.options.selectedIndex].text
-		this.location.barangays(event.target.value).subscribe((barangays: BarangayOfficialType[]) => {
-			this.barangays = barangays
-		})
+		this.currentData.municipality =
+			event.target.options[event.target.options.selectedIndex].text
+		this.location
+			.barangays(event.target.value)
+			.subscribe((barangays: BarangayOfficialType[]) => {
+				this.barangays = barangays
+			})
 	}
 
 	emit() {

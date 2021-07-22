@@ -36,7 +36,8 @@ export class ButtonPreloaderComponent implements OnInit {
 	title = 'hold your horses'
 	ngOnInit(): void {
 		setInterval(() => {
-			this.title = this.synonyms[Math.floor(Math.random() * this.synonyms.length)]
+			this.title =
+				this.synonyms[Math.floor(Math.random() * this.synonyms.length)]
 		}, 1500)
 	}
 }

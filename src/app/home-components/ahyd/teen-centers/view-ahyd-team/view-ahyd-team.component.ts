@@ -10,7 +10,10 @@ import { ReloadService } from 'src/app/Services/reload.service'
 	styleUrls: ['./view-ahyd-team.component.scss'],
 })
 export class ViewAhydTeamComponent implements OnInit {
-	constructor(private service: AhydTeamService, private component: ReloadService) {
+	constructor(
+		private service: AhydTeamService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -32,10 +35,15 @@ export class ViewAhydTeamComponent implements OnInit {
 	}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

@@ -18,7 +18,10 @@
             <tbody>
                 <tr *ngFor="let log of logs">
                     <td>
-                        <img [src]="log.user?.profile_picture?.uri || '../../../assets/avatars/face-7.jpg'" alt="" />
+                        <img [src]="
+								log.user?.profile_picture?.uri ||
+								'../../../assets/avatars/face-7.jpg'
+							" alt="" />
                     </td>
                     <td>{{ log.user?.fullname || 'Visitor' }}</td>
                     <td>{{ log.info.city }}, {{ log.info.country }}</td>
@@ -27,11 +30,19 @@
                     <td>{{ log.info.lon }}</td>
                     <td>{{ log.user_agent }}</td>
                     <td>{{ log.action }}</td>
-                    <td>{{ log.created_at | date: 'MMMM dd, yyyy - hh:mm a' }}</td>
+                    <td>
+                        {{ log.created_at | date: 'MMMM dd, yyyy - hh:mm a' }}
+                    </td>
                     <td>
                         <DropDown [buttons]="dropdown"></DropDown>
                         <ng-template #dropdown>
-                            <a target="_blank" [href]="'https://www.google.com/maps/place' + '/@' + log.info.lat + ',' + log.info.lon" class="dropdown-item">View coordinates in google maps</a
+                            <a target="_blank" [href]="
+									'https://www.google.com/maps/place' +
+									'/@' +
+									log.info.lat +
+									',' +
+									log.info.lon
+								" class="dropdown-item">View coordinates in google maps</a
 							>
 						</ng-template>
 					</td>

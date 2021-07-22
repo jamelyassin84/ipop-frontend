@@ -1,6 +1,6 @@
 import { LocalDeathDataService } from './../../../../Services/home/demographic/deaths/local-death-data.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Fire, HasApprovals, Updated } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/components/Alert'
 
 @Component({
 	selector: 'AddLocalDeathData',
@@ -15,12 +15,17 @@ export class AddLocalDeathDataComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.update(this.data.id, this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.update(this.data.id, this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

@@ -15,13 +15,19 @@
                 <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">
 					{{ nav.name }}</a
 				>
-				<div *ngIf="nav.name !== 'Iloilo.gov'" class="drop-down-container shadow" style="position: relative">
+				<div
+					*ngIf="nav.name !== 'Iloilo.gov'"
+					class="drop-down-container shadow"
+					style="position: relative"
+				>
 					<div class="drop-down bg-white">
 						<a
 							(click)="setTitle(child.name)"
 							*ngFor="let child of nav.children"
 							class="drop-down-container animated fadeIn fast"
-							[routerLink]="'/home/index/' + nav.route + child.route"
+							[routerLink]="
+								'/home/index/' + nav.route + child.route
+							"
 							class="drop-down-item"
 						>
 							<i class="ti-folder c-orange-500"></i>

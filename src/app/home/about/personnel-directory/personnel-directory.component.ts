@@ -11,7 +11,10 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./personnel-directory.component.scss'],
 })
 export class PersonnelDirectoryComponent implements OnInit {
-	constructor(private service: PersonnelDirectoryService, private component: ReloadService) {
+	constructor(
+		private service: PersonnelDirectoryService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -42,6 +45,7 @@ export class PersonnelDirectoryComponent implements OnInit {
 	bspo3: any = []
 	bspo4: any = []
 	bspo5: any = []
+
 	ngOnInit(): void {
 		this.service.index().subscribe((data) => {
 			this.ppo = data.ppo
@@ -61,11 +65,17 @@ export class PersonnelDirectoryComponent implements OnInit {
 			this.bspo5 = data.bspo5
 		})
 	}
+
 	remove(id: number) {
-		Fire('Remove Personnel?', 'Are you sure you want to permanently remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Personnel?',
+			'Are you sure you want to permanently remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

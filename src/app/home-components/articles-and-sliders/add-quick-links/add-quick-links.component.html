@@ -12,7 +12,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="saveQuickLink()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Add this quick link</span>
+		<span *ngIf="!isLoading"
+			><i class="ti-check mr-1"></i>Add this quick link</span
+		>
 		<Loader *ngIf="isLoading"></Loader>
 	</button>
 </div>

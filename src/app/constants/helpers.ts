@@ -4,7 +4,8 @@ export function toBool(data: any) {
 
 export function validURL(url: string) {
 	let valid = false
-	const pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!-/]))?/
+	const pattern =
+		/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!-/]))?/
 	try {
 		new URL(url)
 		valid = true
@@ -42,7 +43,10 @@ export function except<T, K extends keyof T>(data: T, keys: Array<K>) {
 	return copy
 }
 
-export function exceptMany<T, K extends keyof T>(data: Array<T>, keys: Array<K>) {
+export function exceptMany<T, K extends keyof T>(
+	data: Array<T>,
+	keys: Array<K>
+) {
 	return [...data].map((item) => except(item, keys))
 }
 

@@ -52,19 +52,29 @@
 
 <ul class="nav nav-tabs mT-50">
     <li (click)="setTab('district1')" class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district1"> <i class="ti-direction-alt"></i> District 1 </a>
+        <a role="button" class="nav-link text-muted" [class.active]="tabs.district1">
+            <i class="ti-direction-alt"></i> District 1
+        </a>
     </li>
     <li (click)="setTab('district2')" class="nav-item">
-        <a role="button " class="nav-link text-muted" [class.active]="tabs.district2"> <i class="ti-direction-alt"></i> District 2 </a>
+        <a role="button " class="nav-link text-muted" [class.active]="tabs.district2">
+            <i class="ti-direction-alt"></i> District 2
+        </a>
     </li>
     <li class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district3"> <i class="ti-direction-alt"></i> District 3 </a>
+        <a role="button" class="nav-link text-muted" [class.active]="tabs.district3">
+            <i class="ti-direction-alt"></i> District 3
+        </a>
     </li>
     <li (click)="setTab('district4')" class="nav-item">
-        <a role="button " class="nav-link text-muted" [class.active]="tabs.district4"> <i class="ti-direction-alt"></i> District 4 </a>
+        <a role="button " class="nav-link text-muted" [class.active]="tabs.district4">
+            <i class="ti-direction-alt"></i> District 4
+        </a>
     </li>
     <li (click)="setTab('district5')" class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district5"> <i class="ti-direction-alt"></i> District 5 </a>
+        <a role="button" class="nav-link text-muted" [class.active]="tabs.district5">
+            <i class="ti-direction-alt"></i> District 5
+        </a>
     </li>
 </ul>
 
@@ -102,7 +112,9 @@
 
                                 <Modal (click)="teen_center_id = tc.id" size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
 
-                                <button (click)="remove(tc.id)" class="dropdown-item">Remove</button>
+                                <button (click)="remove(tc.id)" class="dropdown-item">
+									Remove
+								</button>
                             </ng-template>
                         </td>
                     </tr>

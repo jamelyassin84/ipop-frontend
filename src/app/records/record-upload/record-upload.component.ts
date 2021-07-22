@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core'
 export class RecordUploadComponent implements OnInit {
 	constructor() {}
 
-	types = ['CPDB', 'Birth', 'Death', 'InMigration', 'OutMigration', 'Marriage']
+	types = [
+		'CPDB',
+		'Birth',
+		'Death',
+		'InMigration',
+		'OutMigration',
+		'Marriage',
+	]
 
 	ngOnInit(): void {}
 }

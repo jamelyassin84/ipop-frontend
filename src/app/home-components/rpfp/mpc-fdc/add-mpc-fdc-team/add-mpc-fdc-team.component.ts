@@ -1,5 +1,5 @@
 import { MpcFdcTeamService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/components/Alert'
 import { Component, OnInit } from '@angular/core'
 
 @Component({
@@ -13,7 +13,6 @@ export class AddMpcFdcTeamComponent implements OnInit {
 	ngOnInit(): void {}
 
 	data: any = {}
-
 	image: any = '../../../../../assets/avatars/face-7.jpg'
 
 	readURL(event: any) {
@@ -29,12 +28,17 @@ export class AddMpcFdcTeamComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

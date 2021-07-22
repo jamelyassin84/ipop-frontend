@@ -2,7 +2,10 @@
     <div class="form-group">
         <label for="">Choose a Municipality</label>
         <select (change)="changeHandler($event)" type="text" class="form-control">
-			<option *ngFor="let municipality of municipalities" [value]="municipality.code">
+			<option
+				*ngFor="let municipality of municipalities"
+				[value]="municipality.code"
+			>
 				{{ municipality.name }}
 			</option>
 		</select>
@@ -20,7 +23,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i> Add this Muncipality</span>
+		<span *ngIf="!isLoading"
+			><i class="ti-check mr-1"></i> Add this Muncipality</span
+		>
 		<Loader *ngIf="isLoading"></Loader>
 	</button>
 </div>

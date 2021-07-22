@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core'
 export class ImageViewerComponent implements OnInit {
 	constructor() {}
 
-	ngOnInit(): void {}
 	@Input() images: any = []
+
+	ngOnInit(): void {}
 }

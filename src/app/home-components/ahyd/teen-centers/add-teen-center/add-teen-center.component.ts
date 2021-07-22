@@ -10,8 +10,13 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 	styleUrls: ['./add-teen-center.component.scss'],
 })
 export class AddTeenCenterComponent implements OnInit {
-	constructor(private location: LocationService, private service: TeenCenterDataService) {}
+	constructor(
+		private location: LocationService,
+		private service: TeenCenterDataService
+	) {}
+
 	districts = ['I', 'II', 'III', 'IV', 'V']
+	data: any = {}
 
 	ngOnInit(): void {
 		this.getMuncipalities()
@@ -19,20 +24,26 @@ export class AddTeenCenterComponent implements OnInit {
 
 	municipalities: MunicipalityType[] = []
 	getMuncipalities() {
-		this.location.municipalities().subscribe((municipalities: MunicipalityType[]) => {
-			this.municipalities = municipalities
-		})
+		this.location
+			.municipalities()
+			.subscribe((municipalities: MunicipalityType[]) => {
+				this.municipalities = municipalities
+			})
 	}
 
-	data: any = {}
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

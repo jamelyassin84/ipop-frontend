@@ -1,6 +1,6 @@
 import { OrganizationalChartService } from './../../../Services/home/about/organizational-chart.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, HasApprovals } from 'src/app/components/Alert'
+import { HasApprovals } from 'src/app/components/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
 
@@ -10,7 +10,10 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./organizational-chart.component.scss'],
 })
 export class OrganizationalChartComponent implements OnInit {
-	constructor(private service: OrganizationalChartService, private component: ReloadService) {
+	constructor(
+		private service: OrganizationalChartService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -41,7 +44,9 @@ export class OrganizationalChartComponent implements OnInit {
 			const reader = new FileReader()
 			reader.readAsDataURL(event.target.files[0])
 			reader.onload = (event) => {
-				this.storeOrganizationalStructure((<FileReader>event.target).result)
+				this.storeOrganizationalStructure(
+					(<FileReader>event.target).result
+				)
 			}
 		}
 	}

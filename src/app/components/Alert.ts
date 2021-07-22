@@ -48,7 +48,11 @@ export function Deleted() {
 
 export function HasApprovals(mode: string) {
 	if (localStorage.getItem('role') !== 'Super Admin') {
-		return Alert('Your content has been sent to admin', 'Please wait for your content to be approved by the administrator', 'success')
+		return Alert(
+			'Your content has been sent to admin',
+			'Please wait for your content to be approved by the administrator',
+			'success'
+		)
 	}
 	if (mode === 'Created') {
 		return Created()

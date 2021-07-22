@@ -28,7 +28,12 @@ export class ViewOfficialsComponent implements OnInit {
 		})
 	}
 
-	types = ['Provincial Official', 'Sanguniang Panlalawigan Member', 'Municipal Official', 'Barangay Official']
+	types = [
+		'Provincial Official',
+		'Sanguniang Panlalawigan Member',
+		'Municipal Official',
+		'Barangay Official',
+	]
 	type: string = 'Provincial Official'
 
 	reset() {
@@ -69,33 +74,42 @@ export class ViewOfficialsComponent implements OnInit {
 	}
 
 	viewMunicipalOfficial() {
-		this.municipalOfficial.index(`municipality=${this.data.municipality}`).subscribe((officials: any) => {
-			this.officials = officials
-		})
+		this.municipalOfficial
+			.index(`municipality=${this.data.municipality}`)
+			.subscribe((officials: any) => {
+				this.officials = officials
+			})
 	}
 
 	viewBarangayOfficial() {
-		this.barangayOfficial.index(`barangay=${this.data.barangay}`).subscribe((officials: any) => {
-			this.officials = officials
-		})
+		this.barangayOfficial
+			.index(`barangay=${this.data.barangay}`)
+			.subscribe((officials: any) => {
+				this.officials = officials
+			})
 	}
 
 	currentOfficial: any = {}
 	removeOfficial(id: number) {
-		Fire('Remove Official?', 'Are you sure you want to remove this data?', 'info', () => {
-			if (this.type === 'Provincial Official') {
-				this.removeProvincialOfficial(id)
+		Fire(
+			'Remove Official?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				if (this.type === 'Provincial Official') {
+					this.removeProvincialOfficial(id)
+				}
+				if (this.type === 'Sanguniang Panlalawigan Member') {
+					this.removeSPMember(id)
+				}
+				if (this.type === 'Municipal Official') {
+					this.removeMunicipalOfficial(id)
+				}
+				if (this.type === 'Barangay Official') {
+					this.removeBarangayOfficial(id)
+				}
 			}
-			if (this.type === 'Sanguniang Panlalawigan Member') {
-				this.removeSPMember(id)
-			}
-			if (this.type === 'Municipal Official') {
-				this.removeMunicipalOfficial(id)
-			}
-			if (this.type === 'Barangay Official') {
-				this.removeBarangayOfficial(id)
-			}
-		})
+		)
 	}
 
 	removeProvincialOfficial(id: number) {
@@ -135,7 +149,8 @@ export class ViewOfficialsComponent implements OnInit {
 
 	barangays: BarangayOfficialType[] = []
 	getBarangays(event: any) {
-		this.data.municipality = event.target.options[event.target.options.selectedIndex].text
+		this.data.municipality =
+			event.target.options[event.target.options.selectedIndex].text
 		this.location.barangays(event.target.value).subscribe((data: any) => {
 			this.barangays = data
 		})

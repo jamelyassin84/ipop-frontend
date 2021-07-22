@@ -12,7 +12,9 @@
                                 </div>
                             </div>
                             <div class="peer peer-greed">
-                                <h5 class="lh-1 mB-0 logo-text">Population Office</h5>
+                                <h5 class="lh-1 mB-0 logo-text">
+                                    Population Office
+                                </h5>
                             </div>
                         </div>
                     </a>
@@ -40,7 +42,15 @@
             <li class="nav-item mt-5">
                 <a role="button" class="sidebar-link">
                     <span class="icon-holder">
-						<img class="avatar" [src]="avatar === 'null' ? '../../../assets/avatars/face-7.jpg' : avatar" alt="" />
+						<img
+							class="avatar"
+							[src]="
+								avatar === 'null'
+									? '../../../assets/avatars/face-7.jpg'
+									: avatar
+							"
+							alt=""
+						/>
 					</span>
                     <span class="title">{{ name }}</span>
                 </a>

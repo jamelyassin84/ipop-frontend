@@ -1,4 +1,3 @@
-import { LogType } from './../Types/Logs.types'
 import { Component, OnInit } from '@angular/core'
 import { LogsService } from '../Services/Independent/logs.service'
 

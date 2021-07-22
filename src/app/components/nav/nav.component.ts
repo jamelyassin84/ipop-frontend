@@ -18,6 +18,7 @@ export class NavComponent implements OnInit {
 			}
 		}, 50)
 	}
+
 	navs = homeNavs
 	title: String = 'News'
 	hideNav = false

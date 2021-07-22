@@ -10,7 +10,10 @@ import { ReloadService } from 'src/app/Services/reload.service'
 	styleUrls: ['./view-focal-persons.component.scss'],
 })
 export class ViewFocalPersonsComponent implements OnInit {
-	constructor(private service: FocalPersonsService, private component: ReloadService) {
+	constructor(
+		private service: FocalPersonsService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -32,10 +35,15 @@ export class ViewFocalPersonsComponent implements OnInit {
 	}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

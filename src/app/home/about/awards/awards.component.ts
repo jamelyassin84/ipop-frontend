@@ -10,7 +10,10 @@ import { ReloadService } from 'src/app/Services/reload.service'
 	styleUrls: ['./awards.component.scss'],
 })
 export class AwardsComponent implements OnInit {
-	constructor(private service: AwardsService, private component: ReloadService) {
+	constructor(
+		private service: AwardsService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -41,10 +44,15 @@ export class AwardsComponent implements OnInit {
 	}
 
 	removeAward(id: number) {
-		Fire('Remove Award?', 'Are you sure you want to permanently remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Alert('Success', 'Award has been removed', 'success')
-			})
-		})
+		Fire(
+			'Remove Award?',
+			'Are you sure you want to permanently remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Alert('Success', 'Award has been removed', 'success')
+				})
+			}
+		)
 	}
 }

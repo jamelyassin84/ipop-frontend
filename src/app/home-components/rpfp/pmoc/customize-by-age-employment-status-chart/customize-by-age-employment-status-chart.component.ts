@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/components/Alert'
 import { EmploymentStatusService } from 'src/app/Services/home/rpfp/pmoc/employment-status.service'
 
 @Component({
@@ -27,12 +27,17 @@ export class CustomizeByAgeEmploymentStatusChartComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

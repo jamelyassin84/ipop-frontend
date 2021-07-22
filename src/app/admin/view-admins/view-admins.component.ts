@@ -23,6 +23,7 @@ export class ViewAdminsComponent implements OnInit {
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
 	}
+
 	admins: UserType[] = []
 	currentAdmin: UserType | any = {}
 

@@ -10,7 +10,10 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./view-mpc-fdc-team.component.scss'],
 })
 export class ViewMpcFdcTeamComponent implements OnInit {
-	constructor(private service: MpcFdcTeamService, private component: ReloadService) {
+	constructor(
+		private service: MpcFdcTeamService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -31,10 +34,15 @@ export class ViewMpcFdcTeamComponent implements OnInit {
 	}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

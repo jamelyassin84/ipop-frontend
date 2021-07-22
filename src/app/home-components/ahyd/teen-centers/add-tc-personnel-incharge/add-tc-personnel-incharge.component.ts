@@ -12,8 +12,8 @@ export class AddTcPersonnelInchargeComponent implements OnInit {
 	ngOnInit(): void {}
 
 	@Input() teen_center_id: number = 0
-	data: any = {}
 
+	data: any = {}
 	image: any = '../../../../../assets/avatars/face-7.jpg'
 
 	readURL(event: any) {
@@ -29,13 +29,18 @@ export class AddTcPersonnelInchargeComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.data.sbmptc_id = this.teen_center_id
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.data.sbmptc_id = this.teen_center_id
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

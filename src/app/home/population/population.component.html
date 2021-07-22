@@ -23,7 +23,12 @@
         <AddOfficials></AddOfficials>
     </ng-template>
 
-    <div class="d-flex" style="justify-content: flex-end; margin-bottom: -2rem; position: relative; z-index: 1">
+    <div class="d-flex" style="
+			justify-content: flex-end;
+			margin-bottom: -2rem;
+			position: relative;
+			z-index: 1;
+		">
         <Modal size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2" [template]="addTopPopulated" icon="ti-plus"></Modal>
 
         <Modal size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
@@ -49,160 +54,241 @@
                     <div class="peers ai-sb fxw-nw">
                         <div class="peer peer-greed">
                             <div class="progress mt-1 w-75">
-                                <div class="progress-bar bgc-blue-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="municipality.data.percent + '%'"></div>
+                                <div class="progress-bar bgc-blue-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="
+										municipality.data.percent + '%'
+									"></div>
                             </div>
-                            <span><i class="ti-user mr-3"></i>{{ municipality.data.total | number }}</span>
+                            <span><i class="ti-user mr-3"></i
+								>{{ municipality.data.total | number }}</span
+							>
+						</div>
+						<div class="peer">
+							<span
+								class="
+									d-ib
+									lh-0
+									va-m
+									fw-600
+									bdrs-10em
+									pX-15
+									pY-15
+									bgc-blue-50
+									c-blue-500
+								"
+								>{{ municipality.data.percent | number }}%</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header bg-white">
+					<div class="card-title h5 d-flex">
+						<span>Population Pyramid</span>
+                            <div class="ml-auto">
+                                <DropDown [buttons]="Pyramid"></DropDown>
+                                <ng-template #Pyramid>
+                                    <Modal size="lg" title="Customize a Population Pyramid" btnTitle="Customize a population pyramid" btnClass="dropdown-item" [template]="customizePyramid"></Modal>
+                                </ng-template>
+                            </div>
                         </div>
-                        <div class="peer">
-                            <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{ municipality.data.percent | number }}%</span>
+                        <hr />
+                        <div class="card-body">
+                            <div id="population-pyramid" class="w-100" style="height: 50vh"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-white">
-                    <div class="card-title h5 d-flex">
-                        <span>Population Pyramid</span>
-                        <div class="ml-auto">
-                            <DropDown [buttons]="Pyramid"></DropDown>
-                            <ng-template #Pyramid>
-                                <Modal size="lg" title="Customize a Population Pyramid" btnTitle="Customize a population pyramid" btnClass="dropdown-item" [template]="customizePyramid"></Modal>
-                            </ng-template>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <div class="card-title h5 d-flex">
+                            <span>Population Profile</span>
+                            <div class="ml-auto">
+                                <DropDown [buttons]="dropdown"></DropDown>
+                                <ng-template #dropdown>
+                                    <Modal size="lg" title="Add a Population Profile" btnTitle="Add population profile" btnClass="dropdown-item" [template]="addPopulationProfile"></Modal>
+                                </ng-template>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="card-body">
-                        <div id="population-pyramid" class="w-100" style="height: 50vh"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-white">
-                    <div class="card-title h5 d-flex">
-                        <span>Population Profile</span>
-                        <div class="ml-auto">
-                            <DropDown [buttons]="dropdown"></DropDown>
-                            <ng-template #dropdown>
-                                <Modal size="lg" title="Add a Population Profile" btnTitle="Add population profile" btnClass="dropdown-item" [template]="addPopulationProfile"></Modal>
-                            </ng-template>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="card-body">
-                        <div class="w-100 row">
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Coverage</h5>
-                                <span class="fw-400 text-danger h4">
-									<span class="mr-2" *ngIf="location.barangay !== null">
+                        <hr />
+                        <div class="card-body">
+                            <div class="w-100 row">
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Coverage
+                                    </h5>
+                                    <span class="fw-400 text-danger h4">
+									<span
+										class="mr-2"
+										*ngIf="location.barangay !== null"
+									>
 										{{ location.barangay }}
 									</span>
-                                <span class="mr-2" *ngIf="location.municipality !== null">
+                                    <span class="mr-2" *ngIf="location.municipality !== null">
 										{{ location.municipality }}
 									</span>
-                                <span class="mr-2" *ngIf="location.barangay === null && location.municipality === null"> Province </span>
-                                <span class="mr-2">
+                                    <span class="mr-2" *ngIf="
+											location.barangay === null &&
+											location.municipality === null
+										">
+										Province
+									</span>
+                                    <span class="mr-2">
 										{{ location.year }}
 									</span>
-                                </span>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Total No. of Barangays</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.barangays || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Total Land Area</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.land_area || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Total Household Population</h5>
-                                <div class="fw-400 c-red-700 h4">
-                                    {{ populationProfile.household_population || '....' }}
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Males</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.males || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Females</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.females || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Sex Ratio</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.sex_ratio || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Median Age</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.median_age || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Doubling Time/Year</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.doubling || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Population Growth Rate</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.growth_rate || '....' }}</div>
-                            </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Total No. of Barangays
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.barangays || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Total Land Area
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.land_area || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Total Household Population
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.household_population || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Males
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.males || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Females
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.females || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Sex Ratio
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.sex_ratio || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Median Age
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.median_age || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Doubling Time/Year
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.doubling || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Population Growth Rate
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.growth_rate || '....' }}
+                                    </div>
+                                </div>
 
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">No. of Households</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.households || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Average Household Size</h5>
-                                <div class="fw-400 c-red-700 h4">
-                                    {{ populationProfile.average_household_size || '....' }}
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        No. of Households
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.households || '....' }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Population Density</h5>
-                                <div class="fw-400 c-red-700 h4">{{ populationProfile.density || '....' }}</div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Age Dependency Ratio</h5>
-                                <div class="fw-400 c-red-700 h4">
-                                    {{ populationProfile.age_dependency_ratio || '....' }}
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Average Household Size
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.average_household_size || '....' }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Child Dependency Ratio</h5>
-                                <div class="fw-400 c-red-700 h4">
-                                    {{ populationProfile.child_dependency_ratio || '....' }}
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Population Density
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.density || '....' }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-1 bb">
-                                <h5 class="text-secondary mb-1 h6 fw-300">Old-Age Dependency Ratio</h5>
-                                <div class="fw-400 c-red-700 h4">
-                                    {{ populationProfile.old_age_dependency_ratio || '....' }}
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Age Dependency Ratio
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.age_dependency_ratio || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Child Dependency Ratio
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.child_dependency_ratio || '....' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 bb">
+                                    <h5 class="text-secondary mb-1 h6 fw-300">
+                                        Old-Age Dependency Ratio
+                                    </h5>
+                                    <div class="fw-400 c-red-700 h4">
+                                        {{ populationProfile.old_age_dependency_ratio || '....' }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="alert alert-info">Note: Customizing Population Pyramid and Profile requires barangay, municipality and year to minimize the time given of content editors in updating the data.</div>
-        </div>
-        <div class="col-md-12 mT-2">
-            <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-                    <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    Note: Customizing Population Pyramid and Profile requires barangay, municipality and year to minimize the time given of content editors in updating the data.
                 </div>
-                <div class="card-body">
-                    <TechnicalNotes type="Population"></TechnicalNotes>
+            </div>
+            <div class="col-md-12 mT-2">
+                <div class="card">
+                    <div class="card-header bg-white d-flex aic">
+                        <div class="card-title h5 mr-auto mt-2">
+                            Technical Notes
+                        </div>
+                        <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                    </div>
+                    <div class="card-body">
+                        <TechnicalNotes type="Population"></TechnicalNotes>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

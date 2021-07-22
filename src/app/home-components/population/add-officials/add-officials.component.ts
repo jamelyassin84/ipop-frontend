@@ -1,7 +1,7 @@
 import { MunicipalService } from './../../../Services/home/officials/municipal.service'
 import { ProvincialService } from './../../../Services/home/officials/provincial.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/components/Alert'
 import { SpMemberService } from 'src/app/Services/home/officials/sp-member.service'
 import { BarangayService } from 'src/app/Services/home/officials/barangay.service'
 import { LocationService } from 'src/app/Services/locations/province.service'
@@ -14,28 +14,44 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 	styleUrls: ['./add-officials.component.scss'],
 })
 export class AddOfficialsComponent implements OnInit {
-	constructor(private provincialOfficial: ProvincialService, private SPMember: SpMemberService, private municipalOfficial: MunicipalService, private barangayOfficial: BarangayService, private location: LocationService) {}
+	constructor(
+		private provincialOfficial: ProvincialService,
+		private SPMember: SpMemberService,
+		private municipalOfficial: MunicipalService,
+		private barangayOfficial: BarangayService,
+		private location: LocationService
+	) {}
 
-	types = ['Provincial Official', 'Sanguniang Panlalawigan Member', 'Municipal Official', 'Barangay Official']
+	types = [
+		'Provincial Official',
+		'Sanguniang Panlalawigan Member',
+		'Municipal Official',
+		'Barangay Official',
+	]
 	type: string = 'Provincial Official'
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			if (this.type === 'Provincial Official') {
-				this.addProvincialOfficial()
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				if (this.type === 'Provincial Official') {
+					this.addProvincialOfficial()
+				}
+				if (this.type === 'Sanguniang Panlalawigan Member') {
+					this.addSPMember()
+				}
+				if (this.type === 'Municipal Official') {
+					this.addMunicipalOfficial()
+				}
+				if (this.type === 'Barangay Official') {
+					this.addBarangayOfficial()
+				}
 			}
-			if (this.type === 'Sanguniang Panlalawigan Member') {
-				this.addSPMember()
-			}
-			if (this.type === 'Municipal Official') {
-				this.addMunicipalOfficial()
-			}
-			if (this.type === 'Barangay Official') {
-				this.addBarangayOfficial()
-			}
-		})
+		)
 	}
 
 	reset() {
@@ -88,7 +104,8 @@ export class AddOfficialsComponent implements OnInit {
 
 	barangays: BarangayOfficialType[] = []
 	getBarangays(event: any) {
-		this.data.municipality = event.target.options[event.target.options.selectedIndex].text
+		this.data.municipality =
+			event.target.options[event.target.options.selectedIndex].text
 		this.location.barangays(event.target.value).subscribe((data: any) => {
 			this.barangays = data
 		})

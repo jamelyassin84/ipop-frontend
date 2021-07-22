@@ -13,7 +13,12 @@ import { ArticleType } from 'src/app/Types/Article.types'
 	styleUrls: ['./aritcles-and-sliders.component.scss'],
 })
 export class AritclesAndSlidersComponent implements OnInit {
-	constructor(private slideService: SliderService, private component: ReloadService, private articleService: ArticleService, private service: QuickLinksService) {
+	constructor(
+		private slideService: SliderService,
+		private component: ReloadService,
+		private articleService: ArticleService,
+		private service: QuickLinksService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -104,11 +109,16 @@ export class AritclesAndSlidersComponent implements OnInit {
 	}
 
 	removeArticle(id: number) {
-		Fire('Delete Article?', 'Are you sure you want to permanently delete this data?', 'info', () => {
-			this.articleService.destroy(id).subscribe(() => {
-				Alert('Success', 'Article has been removed', 'success')
-			})
-		})
+		Fire(
+			'Delete Article?',
+			'Are you sure you want to permanently delete this data?',
+			'info',
+			() => {
+				this.articleService.destroy(id).subscribe(() => {
+					Alert('Success', 'Article has been removed', 'success')
+				})
+			}
+		)
 	}
 
 	quickLinks: any = []
@@ -119,10 +129,15 @@ export class AritclesAndSlidersComponent implements OnInit {
 	}
 
 	removeLink(id: number) {
-		Fire('Delete Link?', 'Are you sure you want to permanently remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Delete Link?',
+			'Are you sure you want to permanently remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

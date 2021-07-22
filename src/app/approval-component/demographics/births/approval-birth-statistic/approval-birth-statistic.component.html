@@ -1,5 +1,7 @@
 <p class="h5">
-    Province: <span class="h4 text-info">Iloilo</span>, Muncipality: <span class="h4 text-info"> {{ data.municipality }}}</span>, Barangay: <span class="h4 text-info">{{ data.barangay }}}</span>
+    Province: <span class="h4 text-info">Iloilo</span>, Muncipality:
+    <span class="h4 text-info"> {{ data.municipality }}}</span>, Barangay:
+    <span class="h4 text-info">{{ data.barangay }}}</span>
 </p>
 <div class="layers row m-0">
     <div class="layer w-100">
@@ -9,25 +11,51 @@
             </div>
             <div class="layer w-100 card-body">
                 <small class="fw-600 c-grey-700">Crude Birth Rate </small>
-                <span class="pull-right c-grey-600 fsz-sm">{{ data?.crude_birth_rate || 0 | number }}%</span>
-                <div class="progress mT-10">
-                    <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="data?.crude_birth_rate + '%'"></div>
-                </div>
-                <div class="layer w-100 mT-15">
-                    <small class="fw-600 c-grey-700">Fertility Rate </small>
-                    <span class="pull-right c-grey-600 fsz-sm">{{ data?.general_fertility_rate || 0 | number }}%</span>
-                    <div class="progress mT-10">
-                        <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="data?.general_fertility_rate + '%'"></div>
-                    </div>
-                    <div class="layer w-100 mT-15">
-                        <small class="fw-600 c-grey-700">Live Births </small>
-                        <span class="pull-right c-grey-600 fsz-sm">{{ data?.total_live_births || 0 | number }}%</span>
-                        <div class="progress mT-10">
-                            <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="data?.total_live_births + '%'"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <span class="pull-right c-grey-600 fsz-sm">{{ data?.crude_birth_rate || 0 | number }}%</span
+				>
+				<div class="progress mT-10">
+					<div
+						class="progress-bar bgc-green-500"
+						role="progressbar"
+						aria-valuenow="50"
+						aria-valuemin="0"
+						aria-valuemax="100"
+						[style.width]="data?.crude_birth_rate + '%'"
+					></div>
+				</div>
+				<div class="layer w-100 mT-15">
+					<small class="fw-600 c-grey-700">Fertility Rate </small>
+					<span class="pull-right c-grey-600 fsz-sm"
+						>{{ data?.general_fertility_rate || 0 | number }}%</span
+					>
+					<div class="progress mT-10">
+						<div
+							class="progress-bar bgc-green-500"
+							role="progressbar"
+							aria-valuenow="50"
+							aria-valuemin="0"
+							aria-valuemax="100"
+							[style.width]="data?.general_fertility_rate + '%'"
+						></div>
+					</div>
+					<div class="layer w-100 mT-15">
+						<small class="fw-600 c-grey-700">Live Births </small>
+						<span class="pull-right c-grey-600 fsz-sm"
+							>{{ data?.total_live_births || 0 | number }}%</span
+						>
+						<div class="progress mT-10">
+							<div
+								class="progress-bar bgc-green-500"
+								role="progressbar"
+								aria-valuenow="50"
+								aria-valuemin="0"
+								aria-valuemax="100"
+								[style.width]="data?.total_live_births + '%'"
+							></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

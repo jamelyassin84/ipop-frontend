@@ -8,7 +8,9 @@ import { IncidenceChartConfig } from 'src/app/home/demographic/Incidence.Chart'
 })
 export class ApprovalTeenageBirthIncidenceGraphComponent implements OnInit {
 	constructor() {}
+
 	teenageChart = IncidenceChartConfig
+
 	@Input() data: any = ''
 
 	ngOnInit(): void {}

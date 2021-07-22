@@ -13,8 +13,11 @@ import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 	styleUrls: ['./mpc-fdc.component.scss'],
 })
 export class MpcFdcComponent implements OnInit {
-	mpcfdc_id = 0
-	constructor(private location: LocationService, private service: MpcFdcDataService, private component: ReloadService) {
+	constructor(
+		private location: LocationService,
+		private service: MpcFdcDataService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -42,14 +45,20 @@ export class MpcFdcComponent implements OnInit {
 
 	municipalities: MunicipalityType[] = []
 	getMuncipalities() {
-		this.location.municipalities().subscribe((municipalities: MunicipalityType[]) => {
-			this.municipalities = municipalities
-		})
+		this.location
+			.municipalities()
+			.subscribe((municipalities: MunicipalityType[]) => {
+				this.municipalities = municipalities
+			})
 	}
 
 	MPCFDCs: any = []
 	getMPCFDC() {
-		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.locations.municipality}&district=${this.locations.district}`)
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`municipality=${this.locations.municipality}&district=${this.locations.district}`
+		)
 		service.index().subscribe((data: any) => {
 			this.MPCFDCs = data
 		})
@@ -58,11 +67,16 @@ export class MpcFdcComponent implements OnInit {
 	currenData: any = {}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 
 	currentImages: any = []
@@ -72,4 +86,6 @@ export class MpcFdcComponent implements OnInit {
 			this.currentImages.push(photo.file.uri)
 		})
 	}
+
+	mpcfdc_id = 0
 }

@@ -1,8 +1,12 @@
 <div class="card">
     <div class="card-header bg-white d-flex aic">
         <div>
-            <div class="h3 m-0 card-title text-danger dw"><i class="ti-medall"></i> {{ data.title }}</div>
-            <span class="m-0 text-muted">Awarded : {{ data.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span>
-        </div>
-    </div>
+            <div class="h3 m-0 card-title text-danger dw">
+                <i class="ti-medall"></i> {{ data.title }}
+            </div>
+            <span class="m-0 text-muted">Awarded :
+				{{ data.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span
+			>
+		</div>
+	</div>
 </div>

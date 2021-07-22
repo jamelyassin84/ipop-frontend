@@ -10,9 +10,10 @@ import { TeenCenterDataService } from 'src/app/Services/home/ahyd/teen-center/te
 export class AddTcImagesComponent implements OnInit {
 	constructor(private service: TeenCenterDataService) {}
 
+	@Input() data: any = {}
+
 	sliders: any[] = []
 	photos: any[] = []
-	@Input() data: any = {}
 
 	ngOnInit(): void {}
 
@@ -39,12 +40,19 @@ export class AddTcImagesComponent implements OnInit {
 
 	isLoading: boolean = false
 	saveImages() {
-		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
-			this.isLoading = true
-			this.service.update(this.data.id, { photos: this.photos }).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'This will save all added images. Continue?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service
+					.update(this.data.id, { photos: this.photos })
+					.subscribe(() => {
+						HasApprovals('Created')
+						this.isLoading = false
+					})
+			}
+		)
 	}
 }

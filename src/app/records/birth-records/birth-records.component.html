@@ -1,10 +1,14 @@
 <div class="bgc-white mb-0">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link text-muted active"> <i class="ti-direction-alt"></i> Uploaded </a>
+            <a class="nav-link text-muted active">
+                <i class="ti-direction-alt"></i> Uploaded
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-muted"> <i class="ti-direction-alt"></i> For your approvals </a>
+            <a class="nav-link text-muted">
+                <i class="ti-direction-alt"></i> For your approvals
+            </a>
         </li>
     </ul>
 </div>
@@ -23,22 +27,41 @@
             <td><i class="ti-folder text-warning"></i></td>
             <td>District 4</td>
             <td>
-                <span class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-green-50 c-green-500">Approved</span>
-            </td>
-            <td>11/14/1994</td>
-            <td>
-                <DropDown [buttons]="dropdown"></DropDown>
-                <ng-template #dropdown>
-                    <button ngbDropdownItem>Download in excel format</button>
-                    <button ngbDropdownItem>Approve</button>
-                    <button ngbDropdownItem>Reject</button>
+                <span class="
+						small
+						d-ib
+						lh-0
+						va-m
+						fw-600
+						bdrs-10em
+						pX-10
+						pY-10
+						bgc-green-50
+						c-green-500
+					">Approved</span
+				>
+			</td>
+			<td>11/14/1994</td>
+			<td>
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<button ngbDropdownItem>Download in excel format</button>
+					<button ngbDropdownItem>Approve</button>
+					<button ngbDropdownItem>Reject</button>
 
-                    <Modal btnClass="dropdown-item" ngbDropdownItem size="xl" title="Comments" btnTitle="Comments" [template]="comments"></Modal>
-                </ng-template>
-            </td>
-        </tr>
-    </tbody>
+					<Modal
+						btnClass="dropdown-item"
+						ngbDropdownItem
+						size="xl"
+						title="Comments"
+						btnTitle="Comments"
+						[template]="comments"
+					></Modal>
+				</ng-template>
+			</td>
+		</tr>
+	</tbody>
 </table>
 <ng-template #comments>
-    <Comments></Comments>
+	<Comments></Comments>
 </ng-template>

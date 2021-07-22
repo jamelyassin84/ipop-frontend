@@ -16,7 +16,12 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
-	constructor(private component: ReloadService, private summary: SummaryService, private service: LocalBirthDataService, private monthChartService: MonthChartService) {
+	constructor(
+		private component: ReloadService,
+		private summary: SummaryService,
+		private service: LocalBirthDataService,
+		private monthChartService: MonthChartService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -39,7 +44,6 @@ export class BirthDemographicComponent implements OnInit {
 	getSummary() {
 		this.summary.births().subscribe((summaries: Summary) => {
 			this.summaries = summaries
-			// this.distribute(groupBy(summaries.incidences, 'title'))
 		})
 	}
 
@@ -49,7 +53,10 @@ export class BirthDemographicComponent implements OnInit {
 		this.clearChart()
 		let illegitimateBirth = incidences[0]
 		let teenageBirth = incidences[1]
-		if (incidences.length !== 0 && incidences[0][0].title !== 'Incidence of Illegitimate Birth') {
+		if (
+			incidences.length !== 0 &&
+			incidences[0][0].title !== 'Incidence of Illegitimate Birth'
+		) {
 			teenageBirth = incidences[0]
 			illegitimateBirth = incidences[1]
 		}
@@ -60,10 +67,16 @@ export class BirthDemographicComponent implements OnInit {
 			this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
 		}
 		for (let index in illegitimateBirth) {
-			if (!this.incidenceChart.labels.includes(illegitimateBirth[index].year)) {
+			if (
+				!this.incidenceChart.labels.includes(
+					illegitimateBirth[index].year
+				)
+			) {
 				this.incidenceChart.labels.push(illegitimateBirth[index].year)
 			}
-			this.incidenceChart.datasets[0].data.push(illegitimateBirth[index].value)
+			this.incidenceChart.datasets[0].data.push(
+				illegitimateBirth[index].value
+			)
 		}
 	}
 
@@ -80,7 +93,11 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	getChart() {
-		const service = new BaseService(this.service.http, this.monthChartService.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
+		const service = new BaseService(
+			this.service.http,
+			this.monthChartService.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
 		service.index().subscribe((months: any) => {
 			this.processStatisticalChart(months)
 		})
@@ -93,7 +110,11 @@ export class BirthDemographicComponent implements OnInit {
 			general_fertility_rate: 0,
 			total_live_births: 0,
 		}
-		const service = new BaseService(this.service.http, this.service.url, `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`)
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+		)
 		service.index().subscribe((summaries: Summary) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries?.data || {}

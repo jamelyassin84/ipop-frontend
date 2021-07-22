@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-        <button (click)="trigger()" class="btn btn-sm btn-dark"><i class="ti-plus mr-1"></i> New Image(s)</button>
+        <button (click)="trigger()" class="btn btn-sm btn-dark">
+			<i class="ti-plus mr-1"></i> New Image(s)
+		</button>
         <input (change)="readURL($event)" type="file" style="display: none" multiple accept="image/*" id="file" />
     </div>
 </div>
@@ -16,7 +18,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i> Save added images</span>
+		<span *ngIf="!isLoading"
+			><i class="ti-check mr-1"></i> Save added images</span
+		>
 		<Loader *ngIf="isLoading"></Loader>
 	</button>
 </div>

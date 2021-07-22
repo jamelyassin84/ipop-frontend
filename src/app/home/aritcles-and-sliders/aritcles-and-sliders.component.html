@@ -24,16 +24,24 @@
     <div class="col-md-8">
         <ul class="nav nav-tabs mT-50 bg-white d-flex">
             <li class="nav-item">
-                <a role="button" class="nav-link text-muted" (click)="setTab('all')" [class.active]="tabs.all === true"> <i class="ti-timer"></i> All </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('all')" [class.active]="tabs.all === true">
+                    <i class="ti-timer"></i> All
+                </a>
             </li>
             <li class="nav-item">
-                <a role="button" class="nav-link text-muted" (click)="setTab('today')" [class.active]="tabs.today === true"> <i class="ti-timer"></i> Today </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('today')" [class.active]="tabs.today === true">
+                    <i class="ti-timer"></i> Today
+                </a>
             </li>
             <li class="nav-item">
-                <a role="button" class="nav-link text-muted" (click)="setTab('week')" [class.active]="tabs.week === true"> <i class="ti-timer"></i> This Week </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('week')" [class.active]="tabs.week === true">
+                    <i class="ti-timer"></i> This Week
+                </a>
             </li>
             <li class="nav-item">
-                <a role="button" class="nav-link text-muted" (click)="setTab('month')" [class.active]="tabs.month === true"> <i class="ti-timer"></i> This Month </a>
+                <a role="button" class="nav-link text-muted" (click)="setTab('month')" [class.active]="tabs.month === true">
+                    <i class="ti-timer"></i> This Month
+                </a>
             </li>
             <li class="ml-auto mr-2">
                 <DropDown [buttons]="nav"></DropDown>
@@ -51,47 +59,87 @@
                 <div class="ml-auto">
                     <DropDown [buttons]="dropdown"></DropDown>
                     <ng-template #dropdown>
-                        <button (click)="removeArticle(article.id)" class="dropdown-item">Remove Article</button>
+                        <button (click)="removeArticle(article.id)" class="dropdown-item">
+							Remove Article
+						</button>
                     </ng-template>
                 </div>
             </div>
             <div class="card-header bg-white">
-                <span class="m-0 text-danger"><i class="ti-alarm-clock"></i> Created : {{ article.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span>
-            </div>
-            <div class="card-body bg-white">
-                <div class="d-flex">
-                    <p class="pX-20">
-                        {{ article.body }}
-                    </p>
-                    <div *ngIf="article.photos.length !== 0" class="ml-auto mr-2">
-                        <img class="article-image" [src]="article.photos[0].file.uri" alt="" />
-                        <Modal size="xl" [title]="'Images of ' + article.title" btnTitle="View Images" [template]="imageViewer" btnClass="btn btn-link w-100 text-center" (click)="transformImages(article.photos)"> </Modal>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 p-0 m-0 w-100">
-        <div class="bg-white mT-50 card">
-            <div class="card-header bg-danger d-flex h4 aic">
-                <div class="text-white mr-auto">Quick links</div>
-                <Modal icon="ti-plus" size="lg" title="Add Quick Link" btnSize="sm" btnTitle="Add a quick link" btnClass="btn btn-danger ml-auto" [template]="addQuickLinks"></Modal>
-            </div>
-            <div style="overflow: auto">
-                <div class="card-body d-flex aic" *ngFor="let link of quickLinks">
-                    <span class="p-10">
-						<i class="ti-control-shuffle text-danger" style="font-size: 2rem"></i>
+                <span class="m-0 text-danger"><i class="ti-alarm-clock"></i> Created :
+					{{
+						article.created_at | date: 'MMMM dd, yyy - hh:mm a'
+					}}</span
+				>
+			</div>
+			<div class="card-body bg-white">
+				<div class="d-flex">
+					<p class="pX-20">
+						{{ article.body }}
+					</p>
+					<div
+						*ngIf="article.photos.length !== 0"
+						class="ml-auto mr-2"
+					>
+						<img
+							class="article-image"
+							[src]="article.photos[0].file.uri"
+							alt=""
+						/>
+						<Modal
+							size="xl"
+							[title]="'Images of ' + article.title"
+							btnTitle="View Images"
+							[template]="imageViewer"
+							btnClass="btn btn-link w-100 text-center"
+							(click)="transformImages(article.photos)"
+						>
+						</Modal>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 p-0 m-0 w-100">
+		<div class="bg-white mT-50 card">
+			<div class="card-header bg-danger d-flex h4 aic">
+				<div class="text-white mr-auto">Quick links</div>
+				<Modal
+					icon="ti-plus"
+					size="lg"
+					title="Add Quick Link"
+					btnSize="sm"
+					btnTitle="Add a quick link"
+					btnClass="btn btn-danger ml-auto"
+					[template]="addQuickLinks"
+				></Modal>
+			</div>
+			<div style="overflow: auto">
+				<div
+					class="card-body d-flex aic"
+					*ngFor="let link of quickLinks"
+				>
+					<span class="p-10">
+						<i
+							class="ti-control-shuffle text-danger"
+							style="font-size: 2rem"
+						></i>
 					</span>
-                    <a role="button" [href]="link.url" target="_blank" class="p-10">
+                <a role="button" [href]="link.url" target="_blank" class="p-10">
 						{{ link.title }}
 					</a>
-                    <span class="ml-auto">
-						<button (click)="removeLink(link.id)" class="btn btn-sm text-danger"><i class="ti-minus"></i></button>
+                <span class="ml-auto">
+						<button
+							(click)="removeLink(link.id)"
+							class="btn btn-sm text-danger"
+						>
+							<i class="ti-minus"></i>
+						</button>
 					</span>
-                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <ng-template #imageViewer>

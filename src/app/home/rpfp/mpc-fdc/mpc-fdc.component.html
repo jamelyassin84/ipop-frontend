@@ -49,11 +49,15 @@
         <label>Municipality </label>
         <select [(ngModel)]="locations.municipality" class="form-control">
 			<option>Choose...</option>
-			<option *ngFor="let municipality of municipalities">{{ municipality.name }}</option>
+			<option *ngFor="let municipality of municipalities">
+				{{ municipality.name }}
+			</option>
 		</select>
     </div>
     <div class="col-md-4 mb-1" style="align-self: flex-end">
-        <button (click)="getMPCFDC()" class="btn btn-outline-dark pl-3 pr-3 btn-sm"><i class="ti-lock"></i> Lock</button>
+        <button (click)="getMPCFDC()" class="btn btn-outline-dark pl-3 pr-3 btn-sm">
+			<i class="ti-lock"></i> Lock
+		</button>
     </div>
 </div>
 
@@ -87,7 +91,9 @@
 
                                 <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
-                                <button (click)="remove(unit.id)" class="dropdown-item">Remove</button>
+                                <button (click)="remove(unit.id)" class="dropdown-item">
+									Remove
+								</button>
                             </ng-template>
                         </td>
                     </tr>

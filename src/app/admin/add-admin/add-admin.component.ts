@@ -37,14 +37,18 @@ export class AddAdminComponent implements OnInit {
 	}
 
 	getBarangays(event: any) {
-		this.data.municipality = event.target.options[event.target.options.selectedIndex].text
+		this.data.municipality =
+			event.target.options[event.target.options.selectedIndex].text
 		this.location.barangays(event.target.value).subscribe((data: any) => {
 			this.barangays = data
 		})
 	}
 
 	setRandomImage() {
-		this.image = this.randomImages[Math.floor(Math.random() * this.randomImages.length)]
+		this.image =
+			this.randomImages[
+				Math.floor(Math.random() * this.randomImages.length)
+			]
 		this.data.profile_picture = this.image
 	}
 
@@ -64,6 +68,7 @@ export class AddAdminComponent implements OnInit {
 		this.data.assigned_barangay = undefined
 		this.data.assigned_municipality = undefined
 	}
+
 	isLoading = false
 	register() {
 		console.log(this.data)
@@ -73,24 +78,33 @@ export class AddAdminComponent implements OnInit {
 				return
 			}
 		}
-		Fire('Add as Administrator?', `Are you sure want as administrator`, 'info', () => {
-			this.isLoading = true
-			const formData = new FormData()
-			if (this.file != null) {
-				formData.append('profile_picture', this.file, this.file.name)
-			}
-			for (let key in this.data) {
-				formData.append(key, this.data[key])
-			}
-			this.auth.cache = ''
-			this.auth.register(formData)?.subscribe(() => {
-				this.isLoading = false
-				Created()
-				for (let key in this.data) {
-					this.data[key] = ''
+		Fire(
+			'Add as Administrator?',
+			`Are you sure want as administrator`,
+			'info',
+			() => {
+				this.isLoading = true
+				const formData = new FormData()
+				if (this.file != null) {
+					formData.append(
+						'profile_picture',
+						this.file,
+						this.file.name
+					)
 				}
-				this.setRandomImage()
-			})
-		})
+				for (let key in this.data) {
+					formData.append(key, this.data[key])
+				}
+				this.auth.cache = ''
+				this.auth.register(formData)?.subscribe(() => {
+					this.isLoading = false
+					Created()
+					for (let key in this.data) {
+						this.data[key] = ''
+					}
+					this.setRandomImage()
+				})
+			}
+		)
 	}
 }

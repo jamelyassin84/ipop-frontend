@@ -11,7 +11,10 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./view-personnel-incharge.component.scss'],
 })
 export class ViewPersonnelInchargeComponent implements OnInit {
-	constructor(private service: MpcFdcPersonnelInchargeService, private component: ReloadService) {
+	constructor(
+		private service: MpcFdcPersonnelInchargeService,
+		private component: ReloadService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -25,22 +28,34 @@ export class ViewPersonnelInchargeComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
+	@Input() mpcfdc_id: any
+
 	personnels: any = []
 
-	@Input() mpcfdc_id: any
 	ngOnInit(): void {
 		setTimeout(() => {
-			new BaseService(this.service.http, this.service.url, `mpcfdc_id=${this.mpcfdc_id}`).index().subscribe((data: any) => {
-				this.personnels = data
-			})
+			new BaseService(
+				this.service.http,
+				this.service.url,
+				`mpcfdc_id=${this.mpcfdc_id}`
+			)
+				.index()
+				.subscribe((data: any) => {
+					this.personnels = data
+				})
 		}, 300)
 	}
 
 	remove(id: number) {
-		Fire('Remove Data?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

@@ -12,7 +12,12 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./programs.component.scss'],
 })
 export class ProgramsComponent implements OnInit {
-	constructor(private route: ActivatedRoute, private service: ProgramAreasService, private component: ReloadService, private activityService: ActivityService) {
+	constructor(
+		private route: ActivatedRoute,
+		private service: ProgramAreasService,
+		private component: ReloadService,
+		private activityService: ActivityService
+	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
 				this.ngOnInit()
@@ -29,22 +34,30 @@ export class ProgramsComponent implements OnInit {
 	ngOnInit(): void {
 		this.getProgramArea()
 	}
+
 	programArea: ProgramArea | any = {}
 	getProgramArea() {
 		this.route.params.subscribe((params) => {
 			pop()
-			this.service.show(params['id']).subscribe((programArea: ProgramArea) => {
-				this.programArea = programArea
-			})
+			this.service
+				.show(params['id'])
+				.subscribe((programArea: ProgramArea) => {
+					this.programArea = programArea
+				})
 		})
 	}
 
 	removeActivity(id: number) {
-		Fire('Remove Activity?', 'Are you sure you want to permanently remove this data?', 'info', () => {
-			this.activityService.destroy(id).subscribe(() => {
-				Alert('Success', 'Activity has been removed', 'success')
-			})
-		})
+		Fire(
+			'Remove Activity?',
+			'Are you sure you want to permanently remove this data?',
+			'info',
+			() => {
+				this.activityService.destroy(id).subscribe(() => {
+					Alert('Success', 'Activity has been removed', 'success')
+				})
+			}
+		)
 	}
 
 	currentImages: any[] = []

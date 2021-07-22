@@ -14,7 +14,6 @@ export class AddArticleComponent implements OnInit {
 	ngOnInit(): void {}
 
 	photos: any[] = []
-
 	article: any = {
 		title: '',
 		body: '',
@@ -44,12 +43,17 @@ export class AddArticleComponent implements OnInit {
 	isLoading: boolean = false
 	saveAritcle() {
 		this.article.files = this.photos
-		Fire('Save Changes?', 'Are you sure you want to add this article?', 'info', () => {
-			this.isLoading = true
-			this.articleService.create(this.article).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this article?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.articleService.create(this.article).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

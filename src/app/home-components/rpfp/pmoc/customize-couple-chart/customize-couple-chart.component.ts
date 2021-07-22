@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/components/Alert'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 
 @Component({
@@ -54,12 +54,17 @@ export class CustomizeCoupleChartComponent implements OnInit {
 	save() {
 		this.data.months = this.data.males
 		console.log('data ni', this.data)
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

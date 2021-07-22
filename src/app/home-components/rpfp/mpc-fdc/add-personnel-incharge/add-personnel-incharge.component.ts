@@ -13,10 +13,10 @@ export class AddPersonnelInchargeComponent implements OnInit {
 	ngOnInit(): void {}
 
 	@Input() mpcfdc_id: any
+
 	data: any = {}
 
 	image: any = '../../../../../assets/avatars/face-7.jpg'
-
 	readURL(event: any) {
 		if (event.target.files && event.target.files[0]) {
 			const reader = new FileReader()
@@ -30,13 +30,18 @@ export class AddPersonnelInchargeComponent implements OnInit {
 
 	isLoading: boolean = false
 	save() {
-		Fire('Save Changes?', 'Are you sure you want to add this data?', 'info', () => {
-			this.data.mpcfdc_id = this.mpcfdc_id
-			this.isLoading = true
-			this.service.create(this.data).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'Are you sure you want to add this data?',
+			'info',
+			() => {
+				this.data.mpcfdc_id = this.mpcfdc_id
+				this.isLoading = true
+				this.service.create(this.data).subscribe(() => {
+					HasApprovals('Created')
+					this.isLoading = false
+				})
+			}
+		)
 	}
 }

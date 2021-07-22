@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class DropdownComponent implements OnInit {
 	constructor() {}
+
 	@Input() buttons: any
 
 	ngOnInit(): void {}
