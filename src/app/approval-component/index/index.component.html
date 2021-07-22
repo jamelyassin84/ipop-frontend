@@ -27,7 +27,7 @@
 <MonthChart *ngIf="false" [data]="data"></MonthChart>
 
 <!-- Births   -->
-<BirthStatistics *ngIf="false" [data]="data"></BirthStatistics>
+<BirthStatistics *ngIf="type === 'App\\Models\\Statistics\\BirthStatistic'" [data]="data"></BirthStatistics>
 <Teenage-Incidence-Graph *ngIf="false" [data]="data"></Teenage-Incidence-Graph>
 
 <!-- Deaths   -->
