@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { ServicesOfferedService } from 'src/app/Services/services-offered/services-offered.service'
 
 @Component({
 	selector: 'ServicesOffered',
@@ -6,8 +7,17 @@ import { Component, Input, OnInit } from '@angular/core'
 	styleUrls: ['./approval-services-offered.component.scss'],
 })
 export class ApprovalServicesOfferedComponent implements OnInit {
-	constructor() {}
+	constructor(private service: ServicesOfferedService) {}
 	@Input() data: any = ''
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.servicesOffered()
+	}
+
+	serviceOffered: any = {}
+	servicesOffered() {
+		this.service.show(this.data['service_id']).subscribe((service: any) => {
+			this.serviceOffered = service
+		})
+	}
 }

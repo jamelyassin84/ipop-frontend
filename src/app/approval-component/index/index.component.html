@@ -20,7 +20,7 @@
 
 <!-- Services  -->
 <Services *ngIf="false" [data]="data"></Services>
-<ServicesOffered *ngIf="false" [data]="data"></ServicesOffered>
+<ServicesOffered *ngIf="type === 'App\\Models\\CMS\\ServiceOffer'" [data]="data"></ServicesOffered>
 
 <!-- Demographics  -->
 <IncidenceChart *ngIf="false" [data]="data"></IncidenceChart>
