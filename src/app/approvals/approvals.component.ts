@@ -20,7 +20,7 @@ export class ApprovalsComponent implements OnInit {
 	ngOnInit(): void {
 		this.approvals = []
 		this.service.index().subscribe((data: any) => {
-			this.approvals = data.data
+			this.approvals = data
 		})
 	}
 

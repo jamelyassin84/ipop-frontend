@@ -11,7 +11,7 @@
 <PopulationProfile *ngIf="type === 'App\\Models\\Statistics\\Profile'" [data]="data"></PopulationProfile>
 
 <!-- About  -->
-<Award *ngIf="false" [data]="data"></Award>
+<Award *ngIf="type === 'App\\Models\\CMS\\Award'" [data]="data"></Award>
 <OrganizationalChart *ngIf="type === 'App\\Models\\CMS\\Chart'" [data]="data"></OrganizationalChart>
 <ApprovalsPersonnelDirectory *ngIf="type === 'App\\Models\\PersonnelDirectory'" [data]="data"></ApprovalsPersonnelDirectory>
 
