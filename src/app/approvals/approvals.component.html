@@ -20,12 +20,12 @@
 
                 <div class="peer peer-greed d-flex aic jcc" id="chat-box" style="flex-direction: column">
                     <ApprovalIndex [type]="type" [data]="data"></ApprovalIndex>
-                    <div class="d-flex mt-5">
-                        <button class="btn btn-lg btn-outline-dark mr-1">
+                    <div class="d-flex mt-5" *ngIf="data.id !== undefined">
+                        <button (click)="approve(false)" class="btn btn-lg btn-outline-dark mr-1">
 							<i class="ti-na"></i>
 							Discard
 						</button>
-                        <button class="btn btn-lg btn-success mr-1">
+                        <button (click)="approve(true)" class="btn btn-lg btn-success mr-1">
 							<i class="ti-check"></i>
 							Approve
 						</button>
