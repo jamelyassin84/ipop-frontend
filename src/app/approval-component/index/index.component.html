@@ -13,7 +13,7 @@
 
 <!-- About  -->
 <Award *ngIf="false" [data]="data"></Award>
-<OrganizationalChart *ngIf="false" [data]="data"></OrganizationalChart>
+<OrganizationalChart *ngIf="type === 'App\\Models\\CMS\\Chart'" [data]="data"></OrganizationalChart>
 
 <!-- Program Areas  -->
 <ProgramAreas *ngIf="false" [data]="data"></ProgramAreas>

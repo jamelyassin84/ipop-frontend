@@ -1,1 +1,2 @@
-<img src="../../../../assets/ipop/home/3.jpg" alt="" />
+<img [src]="data?.photo?.uri" alt="" />
+<p *ngIf="data === null" class="text-danger">This content might be broken, corrupted, moved, or deleted</p>
