@@ -7,7 +7,7 @@
 <QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
 
 <!-- Population  -->
-<Top-Population *ngIf="false" [data]="data"></Top-Population>
+<Top-Population *ngIf="type === 'App\\Models\\TopPopulation'" [data]="data"></Top-Population>
 <PopulationProfile *ngIf="false" [data]="data"></PopulationProfile>
 
 <!-- About  -->

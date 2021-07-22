@@ -1,7 +1,6 @@
-disable nav on approvals
 Approvals
-Bulk Records
 change pass
+Bulk Records
 Test normal user
 
 File Uploads CRUD   
@@ -10,8 +9,11 @@ chart color
 preloaders all
 reactive form validation
 polish chart
+polish approval ui
+
 
 route state ngrx
+route active sidebar
 route do not hardcode
 fix padding
 kung makadto sya sa home nga wala token redirect sa home ka user
@@ -25,13 +27,14 @@ Edit All (Optional)
 service worker (Optional)
 
 backend bug
-roles doesnt change
-org chart is being null on approval request
-personnel directory does not approve
-bulk record file only
+bulk record - file only
+How to update Amin roles
+org chart is sometimes null on approval request
+personnel directory does not add on approvals
 charts not approvable
 mpc fdc ga delete ya image kung di pa approve
 teen center images bug on update
-Approval Slider doesnt push through
+Approval Slider doesnt push through on approve
 Approval not removing when approving
 Approval doesnt delete
+Approval Population Pyramid doesnt show
