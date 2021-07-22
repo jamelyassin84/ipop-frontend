@@ -46,7 +46,7 @@
 <TeenCenter *ngIf="false" [data]="data"></TeenCenter>
 
 <!-- Others   -->
-<Technical-Notes *ngIf="false" [data]="data"></Technical-Notes>
+<Technical-Notes *ngIf="type === 'App\\Models\\TechnicalNotes'" [data]="data"></Technical-Notes>
 
 <!-- Officials   -->
 <ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
