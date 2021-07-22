@@ -1,3 +1,4 @@
+import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
@@ -141,7 +142,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { DropdownComponent } from './components/dropdown/dropdown.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
 
 @NgModule({
@@ -277,7 +278,8 @@ import { QuickLinkComponent } from './approval-component/news/quick-link/quick-l
 		NoInternetComponent,
 		DropdownComponent,
 		AddressPickerComponent,
-  QuickLinkComponent,
+		QuickLinkComponent,
+		ApprovalsPersonnelDirectoryComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule, TextareaAutosizeModule],
 	providers: [

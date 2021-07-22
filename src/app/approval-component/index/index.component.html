@@ -9,11 +9,11 @@
 <!-- Population  -->
 <Top-Population *ngIf="false" [data]="data"></Top-Population>
 <PopulationProfile *ngIf="false" [data]="data"></PopulationProfile>
-<PopulationPyramid *ngIf="false" [data]="data"></PopulationPyramid>
 
 <!-- About  -->
 <Award *ngIf="false" [data]="data"></Award>
 <OrganizationalChart *ngIf="type === 'App\\Models\\CMS\\Chart'" [data]="data"></OrganizationalChart>
+<ApprovalsPersonnelDirectory *ngIf="type === 'App\\Models\\PersonnelDirectory'" [data]="data"></ApprovalsPersonnelDirectory>
 
 <!-- Program Areas  -->
 <ProgramAreas *ngIf="false" [data]="data"></ProgramAreas>
