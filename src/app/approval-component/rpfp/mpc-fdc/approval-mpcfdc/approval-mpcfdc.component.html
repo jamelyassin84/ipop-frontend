@@ -1,13 +1,16 @@
 <div class="card">
     <div class="card-body">
-        <label for="">District</label>
+        <label for="">District {{ data.district }}</label>
         <p class="h4 mb-5">I</p>
         <label for="">Muncipality</label>
-        <p class="h4 mb-5">Barotac Nuevo</p>
+        <p class="h4 mb-5">{{ data.municipality }}</p>
+
+        <label for="">Name</label>
+        <p class="h4 mb-5">{{ data.name }}</p>
 
         <label for="">Services Offered</label>
         <p class="h4 mb-5">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero expedita quas deserunt dolor. Eum dolor quaerat magni molestiae, sint dolore cumque! Laboriosam, veniam qui! Laborum quos eum hic consectetur sit.
+            {{ data.services }}
         </p>
     </div>
 </div>
