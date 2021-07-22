@@ -143,7 +143,8 @@ import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { DropdownComponent } from './components/dropdown/dropdown.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
+import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component';
+import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
 
 @NgModule({
 	declarations: [
@@ -280,6 +281,7 @@ import { QuickLinkComponent } from './approval-component/news/quick-link/quick-l
 		AddressPickerComponent,
 		QuickLinkComponent,
 		ApprovalsPersonnelDirectoryComponent,
+  AwardMediaApprovalsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule, TextareaAutosizeModule],
 	providers: [
