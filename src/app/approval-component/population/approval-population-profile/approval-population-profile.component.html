@@ -1,8 +1,92 @@
 <div class="card-body">
     <div class="w-100 row">
-        <div *ngFor="let object of populationProfile | keyvalue" class="col-md-6 mb-2 bb">
-            <h5 class="text-info mb-1">{{ object.value }}</h5>
-            <div class="fw-400 c-grey-700">{{ object.key }}</div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Coverage</h5>
+            <div class="fw-400 c-red-700 h4">
+                <span class="fw-400 text-danger h4">
+					<span class="mr-2" *ngIf="data.barangay !== null">
+						{{ data.barangay }}
+					</span>
+                <span class="mr-2" *ngIf="data.municipality !== null">
+						{{ data.municipality }}
+					</span>
+                <span class="mr-2" *ngIf="data.barangay === null && data.municipality === null"> Province </span>
+                <span class="mr-2">
+						{{ data.year }}
+					</span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Total No. of Barangays</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.barangays || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Total Land Area</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.land_area || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Total Household Population</h5>
+            <div class="fw-400 c-red-700 h4">
+                {{ data.household_population || '....' }}
+            </div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Males</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.males || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Females</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.females || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Sex Ratio</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.sex_ratio || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Median Age</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.median_age || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Doubling Time/Year</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.doubling || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Population Growth Rate</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.growth_rate || '....' }}</div>
+        </div>
+
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">No. of Households</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.households || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Average Household Size</h5>
+            <div class="fw-400 c-red-700 h4">
+                {{ data.average_household_size || '....' }}
+            </div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Population Density</h5>
+            <div class="fw-400 c-red-700 h4">{{ data.density || '....' }}</div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Age Dependency Ratio</h5>
+            <div class="fw-400 c-red-700 h4">
+                {{ data.age_dependency_ratio || '....' }}
+            </div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Child Dependency Ratio</h5>
+            <div class="fw-400 c-red-700 h4">
+                {{ data.child_dependency_ratio || '....' }}
+            </div>
+        </div>
+        <div class="col-md-6 mb-1 bb">
+            <h5 class="text-secondary mb-1 h6 fw-300">Old-Age Dependency Ratio</h5>
+            <div class="fw-400 c-red-700 h4">
+                {{ data.old_age_dependency_ratio || '....' }}
+            </div>
         </div>
     </div>
 </div>

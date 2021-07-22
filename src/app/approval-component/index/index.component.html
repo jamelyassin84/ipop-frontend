@@ -8,7 +8,7 @@
 
 <!-- Population  -->
 <Top-Population *ngIf="type === 'App\\Models\\TopPopulation'" [data]="data"></Top-Population>
-<PopulationProfile *ngIf="false" [data]="data"></PopulationProfile>
+<PopulationProfile *ngIf="type === 'App\\Models\\Statistics\\Profile'" [data]="data"></PopulationProfile>
 
 <!-- About  -->
 <Award *ngIf="false" [data]="data"></Award>
