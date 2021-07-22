@@ -9,5 +9,9 @@ export class IndexComponent implements OnInit {
 	constructor() {}
 	@Input() type: any = ''
 	@Input() data: any = ''
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		setInterval(() => {
+			console.log(this.type)
+		}, 3000)
+	}
 }

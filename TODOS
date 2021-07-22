@@ -1,8 +1,8 @@
-
+disable nav on approvals
 Approvals
 Bulk Records
 change pass
-Test all user
+Test normal user
 
 File Uploads CRUD   
 
@@ -12,6 +12,7 @@ reactive form validation
 polish chart
 
 route state ngrx
+route do not hardcode
 fix padding
 kung makadto sya sa home nga wala token redirect sa home ka user
 user UI
@@ -25,9 +26,10 @@ service worker (Optional)
 
 backend bug
 roles doesnt change
-org chart null on approval
+org chart is being null on approval request
 personnel directory does not approve
 bulk record file only
 charts not approvable
 mpc fdc ga delete ya image kung di pa approve
+teen center images bug on update
 

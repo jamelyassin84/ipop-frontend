@@ -141,7 +141,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { DropdownComponent } from './components/dropdown/dropdown.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
 
 @NgModule({
 	declarations: [
@@ -276,6 +277,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		NoInternetComponent,
 		DropdownComponent,
 		AddressPickerComponent,
+  QuickLinkComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, IvyCarouselModule, BrowserAnimationsModule, ChartsModule, GoogleChartsModule, HttpClientModule, NgbModule, TextareaAutosizeModule],
 	providers: [

@@ -1,9 +1,10 @@
 <!-- News  -->
-<pre>
+<pre style="color: gray">
     {{ data | json }}
 </pre>
 <Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
 <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
+<QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
 
 <!-- Population  -->
 <Top-Population *ngIf="false" [data]="data"></Top-Population>
