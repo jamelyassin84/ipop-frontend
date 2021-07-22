@@ -1,7 +1,7 @@
 <!-- News  -->
-<pre style="color: gray">
+<!-- <pre style="color: gray">
     {{ data | json }}
-</pre>
+</pre> -->
 <Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
 <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
 <QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
@@ -16,7 +16,7 @@
 <ApprovalsPersonnelDirectory *ngIf="type === 'App\\Models\\PersonnelDirectory'" [data]="data"></ApprovalsPersonnelDirectory>
 
 <!-- Program Areas  -->
-<ProgramAreas *ngIf="false" [data]="data"></ProgramAreas>
+<ProgramAreas *ngIf="type === 'App\\Models\\CMS\\Activity'" [data]="data"></ProgramAreas>
 
 <!-- Services  -->
 <Services *ngIf="false" [data]="data"></Services>
