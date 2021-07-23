@@ -1,4 +1,4 @@
-import { UserType } from './../../Types/User.types'
+import { UserType } from '../../../../Types/User.types'
 import { Component, OnInit } from '@angular/core'
 import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'

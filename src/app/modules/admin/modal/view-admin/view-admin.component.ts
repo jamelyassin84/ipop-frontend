@@ -1,4 +1,3 @@
-import { UserType } from 'src/app/Types/User.types'
 import { Component, Input, OnInit } from '@angular/core'
 import { Alert, Fire } from 'src/app/components/Alert'
 import { UserService } from 'src/app/Services/Independent/user.service'
@@ -10,7 +9,7 @@ import { Subscription } from 'rxjs'
 	templateUrl: './view-admin.component.html',
 	styleUrls: ['./view-admin.component.scss'],
 })
-export class ViewAdminComponent implements OnInit {
+export class ViewAdminModalComponent implements OnInit {
 	constructor(private user: UserService, private component: ReloadService) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -24,6 +23,7 @@ export class ViewAdminComponent implements OnInit {
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
 	}
+
 	@Input() admin: any = {}
 
 	ngOnInit(): void {}

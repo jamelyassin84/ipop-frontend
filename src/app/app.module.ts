@@ -42,10 +42,7 @@ import { TeenCentersComponent } from './home/ahyd/teen-centers/teen-centers.comp
 import { IssuesAndConcernsComponent } from './home/ahyd/issues-and-concerns/issues-and-concerns.component'
 import { OthersComponent } from './home/others/others.component'
 import { RecordUploadComponent } from './records/record-upload/record-upload.component'
-import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
-import { AddAdminComponent } from './admin/add-admin/add-admin.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
-import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/shared/footers/footers.component'
@@ -100,7 +97,7 @@ import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-
 import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
-import { ViewAdminComponent } from './admin-component/view-admin/view-admin.component'
+
 import { CommentsComponent } from './record-components/comments/comments.component'
 import { ApprovalActivityComponent } from './approval-component/program-areas/approval-activity/approval-activity.component'
 import { ApprovalAwardComponent } from './approval-component/about/approval-award/approval-award.component'
@@ -144,6 +141,7 @@ import { ForApprovalRecordsComponent } from './records/for-approval-records/for-
 import { RecordsModule } from './modules/records/records.module'
 import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
 import { ExtrasModule } from './modules/extras/extras.module'
+import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admins.component'
 
 @NgModule({
 	declarations: [
@@ -171,10 +169,7 @@ import { ExtrasModule } from './modules/extras/extras.module'
 		IssuesAndConcernsComponent,
 		OthersComponent,
 		RecordUploadComponent,
-		ViewAdminsComponent,
-		AddAdminComponent,
 		RecordIndexComponent,
-		AdminIndexComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
@@ -229,7 +224,7 @@ import { ExtrasModule } from './modules/extras/extras.module'
 		ViewFocalPersonsComponent,
 		ViewTcImagesComponent,
 		AddTcImagesComponent,
-		ViewAdminComponent,
+
 		CommentsComponent,
 		ApprovalActivityComponent,
 		ApprovalAwardComponent,
@@ -268,6 +263,7 @@ import { ExtrasModule } from './modules/extras/extras.module'
 		AddFilesComponent,
 		UploadedRecordsComponent,
 		ForApprovalRecordsComponent,
+		ViewAdminsComponent,
 	],
 	imports: [
 		BrowserModule,

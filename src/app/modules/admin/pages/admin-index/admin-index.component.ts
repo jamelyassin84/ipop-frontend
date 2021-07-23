@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { RecordNavType } from 'src/app/Types/navs/RecordNav.types'
-import { AdminNav } from '../AdminNav'
+import { AdminNav } from '../../AdminNav'
 
 @Component({
 	selector: 'app-admin-index',
