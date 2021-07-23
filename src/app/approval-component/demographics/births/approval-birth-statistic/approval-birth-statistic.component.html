@@ -1,8 +1,19 @@
-<p class="h5">
-    Province: <span class="h4 text-info">Iloilo</span>, Muncipality:
-    <span class="h4 text-info"> {{ data.municipality }}}</span>, Barangay:
-    <span class="h4 text-info">{{ data.barangay }}}</span>
-</p>
+<span>{{ data.title }}</span>
+<span class="fw-400 text-danger h4">
+	<span class="mr-2" *ngIf="data.barangay !== null">
+		{{ data.barangay }}
+	</span>
+<span class="mr-2" *ngIf="data.municipality !== null">
+		{{ data.municipality }}
+	</span>
+<span class="mr-2" *ngIf="data.barangay === null && data.municipality === null">
+		Province
+	</span>
+<span class="mr-2">
+		{{ data.year }}
+	</span>
+</span>
+<br />
 <div class="layers row m-0">
     <div class="layer w-100">
         <div class="card">

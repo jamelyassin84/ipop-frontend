@@ -33,7 +33,7 @@
 <Teenage-Incidence-Graph *ngIf="false" [data]="data"></Teenage-Incidence-Graph>
 
 <!-- Deaths   -->
-<DeathStatistics *ngIf="false" [data]="data"></DeathStatistics>
+<DeathStatistics *ngIf="type === 'App\\Models\\Statistics\\DeathStatistic'" [data]="data"></DeathStatistics>
 
 <!-- Migrations   -->
 <MigrationStatistic *ngIf="false" [data]="data"></MigrationStatistic>
