@@ -19,4 +19,8 @@ export class UserService extends BaseService {
 	id() {
 		return JSON.parse(this.user)?.id
 	}
+
+	role() {
+		return localStorage.getItem('role')
+	}
 }

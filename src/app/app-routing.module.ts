@@ -36,6 +36,7 @@ import { UploadedRecordsComponent } from './modules/records/pages/uploaded-recor
 import { ForApprovalRecordsComponent } from './modules/records/pages/for-approval-records/for-approval-records.component'
 import { UpdateAccountComponent } from './modules/admin/pages/update-account/update-account.component'
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component'
+import { AuthGuard } from './guards/auth.guard'
 
 const routes: Routes = [
 	{
@@ -171,6 +172,7 @@ const routes: Routes = [
 					{
 						path: 'admins',
 						component: AdminIndexComponent,
+						canActivate: [AuthGuard],
 						children: [
 							{ path: '', component: ViewAdminsComponent },
 							{ path: 'view', component: ViewAdminsComponent },
@@ -180,10 +182,12 @@ const routes: Routes = [
 					{
 						path: 'approvals',
 						component: ApprovalsComponent,
+						canActivate: [AuthGuard],
 					},
 					{
 						path: 'logs',
 						component: LogsComponent,
+						canActivate: [AuthGuard],
 					},
 					{
 						path: 'account/:id',

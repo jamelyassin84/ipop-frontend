@@ -107,6 +107,7 @@ import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
+import { AuthGuard } from './guards/auth.guard'
 
 @NgModule({
 	declarations: [
@@ -217,6 +218,7 @@ import { AddFilesComponent } from './home-components/others/add-files/add-files.
 			useClass: MainInterceptor,
 			multi: true,
 		},
+		AuthGuard,
 	],
 	bootstrap: [AppComponent],
 	exports: [],
