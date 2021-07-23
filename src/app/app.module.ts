@@ -108,6 +108,9 @@ import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { AuthGuard } from './guards/auth.guard'
+import { ContentWidthDirective } from './directives/content-width.directive'
+
+// Directives
 
 @NgModule({
 	declarations: [
@@ -192,6 +195,7 @@ import { AuthGuard } from './guards/auth.guard'
 		AddFilesComponent,
 		ViewAdminsComponent,
 		UnauthorizedComponent,
+		ContentWidthDirective,
 	],
 	imports: [
 		BrowserModule,

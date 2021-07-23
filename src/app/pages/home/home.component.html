@@ -1,7 +1,7 @@
 <div>
-    <Sidebar></Sidebar>
+    <Sidebar *ngIf="!isUser"></Sidebar>
     <!-- style="width: 115vw; margin-left: -300px" -->
-    <div class="page-container">
+    <div [class.isUser]="isUser" class="page-container">
         <Navbar></Navbar>
         <main class="main-content bgc-grey-100">
             <div id="mainContent">

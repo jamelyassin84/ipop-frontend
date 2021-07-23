@@ -23,4 +23,8 @@ export class UserService extends BaseService {
 	role() {
 		return localStorage.getItem('role') || ''
 	}
+
+	isAdmin() {
+		return localStorage.getItem('role') === null ? false : true
+	}
 }
