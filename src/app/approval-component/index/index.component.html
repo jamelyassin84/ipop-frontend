@@ -21,7 +21,6 @@
 <ProgramAreas *ngIf="type === 'App\\Models\\CMS\\Activity'" [data]="data"></ProgramAreas>
 
 <!-- Services  -->
-<Services *ngIf="false" [data]="data"></Services>
 <ServicesOffered *ngIf="type === 'App\\Models\\CMS\\ServiceOffer'" [data]="data"></ServicesOffered>
 
 <!-- Demographics  -->
@@ -30,7 +29,6 @@
 
 <!-- Births   -->
 <BirthStatistics *ngIf="type === 'App\\Models\\Statistics\\BirthStatistic'" [data]="data"></BirthStatistics>
-<Teenage-Incidence-Graph *ngIf="false" [data]="data"></Teenage-Incidence-Graph>
 
 <!-- Deaths   -->
 <DeathStatistics *ngIf="type === 'App\\Models\\Statistics\\DeathStatistic'" [data]="data"></DeathStatistics>
@@ -42,7 +40,7 @@
 
 <!-- RPFP  -->
 <MPC-FDC *ngIf="type === 'App\\Models\\MPCFDC'" [data]="data"></MPC-FDC>
-<PMOC *ngIf="false" [data]="data"></PMOC>
+<PMOC *ngIf="type === 'App\\Models\\PMOC'" [data]="data"></PMOC>
 
 <!-- TeenCenters   -->
 <TeenCenter *ngIf="false" [data]="data"></TeenCenter>

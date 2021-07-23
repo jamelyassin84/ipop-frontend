@@ -18,53 +18,55 @@ export class ApprovalsComponent implements OnInit {
 
 	approvals: Approval[] = []
 	ngOnInit(): void {
-		this.approvals = []
 		this.service.index().subscribe((data: any) => {
 			this.approvals = data
 		})
 	}
 
+	isLoading = false
 	approve(mode: boolean) {
-		setTimeout(() => {
-			const approval = mode === true ? 'Approve' : 'Discard'
-			if (mode === true) {
-				Fire(
-					`${approval} content?`,
-					`Are you sure you want to ${approval} this content?`,
-					'info',
-					() => {
-						this.service
-							.update(this.id, { approved: mode })
-							.subscribe(() => {
-								Alert(
-									'Horay!',
-									'Content has been succesfully posted',
-									'success'
-								)
-								this.ngOnInit()
-								this.type = ''
-							})
-					}
-				)
-			} else {
-				Fire(
-					`${approval} content?`,
-					`Are you sure you want to ${approval} this content?`,
-					'info',
-					() => {
-						this.service.destroy(this.id).subscribe(() => {
+		const approval = mode === true ? 'Approve' : 'Discard'
+		if (mode === true) {
+			Fire(
+				`${approval} content?`,
+				`Are you sure you want to ${approval} this content?`,
+				'info',
+				() => {
+					this.isLoading = true
+					this.service
+						.update(this.id, { approved: mode })
+						.subscribe(() => {
 							Alert(
-								'Discarded',
-								'Content has been discarded,rejected and removed',
-								'warning'
+								'Horay!',
+								'Content has been succesfully posted',
+								'success'
 							)
 							this.ngOnInit()
 							this.type = ''
+							this.isLoading = false
 						})
-					}
-				)
-			}
-		}, 300)
+				}
+			)
+		} else {
+			Fire(
+				`${approval} content?`,
+				`Are you sure you want to ${approval} this content?`,
+				'info',
+				() => {
+					this.isLoading = true
+					this.service.destroy(this.id).subscribe(() => {
+						Alert(
+							'Discarded',
+							'Content has been discarded,rejected and removed',
+							'warning'
+						)
+						this.ngOnInit()
+						this.type = ''
+						this.isLoading = false
+					})
+				}
+			)
+		}
 	}
 
 	id: number = 0

@@ -8,7 +8,7 @@
     <div *ngIf="type === 'Municipal Official' || type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Municipality</label>
         <select (change)="getBarangays($event)" class="custom-select" id="municipality" required>
-			<option selected disabled>Choose...</option>
+			<option>Choose...</option>
 			<option
 				*ngFor="let municipality of municipalities"
 				[value]="municipality.code"
@@ -20,7 +20,7 @@
     <div *ngIf="type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Barangay</label>
         <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" required>
-			<option selected disabled value="">Choose...</option>
+			<option value="">Choose...</option>
 			<option *ngFor="let barangay of barangays">
 				{{ barangay.name }}
 			</option>

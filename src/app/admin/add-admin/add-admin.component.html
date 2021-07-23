@@ -44,7 +44,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="role">Role</label>
                     <select (change)="handleRoleChange()" [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option selected disabled value="">Choose...</option>
+						<option value="">Choose...</option>
 						<option>PPOI</option>
 						<option>PPOII</option>
 						<option>FOD</option>
@@ -57,7 +57,7 @@
                 <div class="col-md-4">
                     <label for="district">District</label>
                     <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
-						<option selected disabled value="">Choose...</option>
+						<option value="">Choose...</option>
 						<option *ngFor="let number of districts">
 							{{ number }}
 						</option>
@@ -68,7 +68,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="municipality">Municipality </label>
                     <select (change)="getBarangays($event)" class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
-						<option selected disabled>Choose...</option>
+						<option>Choose...</option>
 						<option
 							*ngFor="let municipality of municipalities"
 							[value]="municipality.code"
@@ -82,7 +82,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="barangay"> Barangay </label>
                     <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" [class.is-invalid]="invalidData.barangay" required>
-						<option selected disabled value="">Choose...</option>
+						<option value="">Choose...</option>
 						<option *ngFor="let barangay of barangays">
 							{{ barangay.name }}
 						</option>

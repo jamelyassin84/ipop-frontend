@@ -20,7 +20,7 @@
     <div *ngIf="!tabs.province" class="col-md-3 mt-3">
         <label for="municipality">Municipality </label>
         <select (input)="getBarangays($event)" class="custom-select" id="municipality" required>
-			<option selected disabled>Choose...</option>
+			<option>Choose...</option>
 			<option
 				*ngFor="let municipality of municipalities"
 				[value]="municipality.code"
@@ -33,7 +33,7 @@
     <div *ngIf="tabs.barangay" class="col-md-3 mt-3">
         <label for="barangay"> Barangay </label>
         <select (input)="setBarangay($event)" class="custom-select" id="barangay" required>
-			<option selected disabled value="">Choose ...</option>
+			<option value="">Choose ...</option>
 			<option *ngFor="let barangay of barangays">
 				{{ barangay.name }}
 			</option>
@@ -43,7 +43,7 @@
     <div class="col-md-3 mt-3">
         <label for="barangay"> Year </label>
         <select (input)="setYear($event)" class="custom-select" id="barangay" required>
-			<option selected disabled value="">Choose...</option>
+			<option value="">Choose...</option>
 			<option *ngFor="let year of years">{{ year }}</option>
 		</select>
     </div>

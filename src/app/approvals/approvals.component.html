@@ -40,11 +40,11 @@
                 <div class="peer peer-greed card card-body" id="chat-box" style="flex-direction: column">
                     <div class="card-header bg-dark">
                         <div *ngIf="data.id !== undefined" style="align-self: flex-end">
-                            <button (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
+                            <button [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
 								<i class="ti-na"></i>
 								Discard
 							</button>
-                            <button (click)="approve(true)" class="btn btn-lg btn-success mr-1">
+                            <button [disabled]="isLoading" (click)="approve(true)" class="btn btn-lg btn-success mr-1">
 								<i class="ti-check"></i>
 								Approve
 							</button>

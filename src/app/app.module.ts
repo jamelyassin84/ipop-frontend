@@ -104,14 +104,13 @@ import { CommentsComponent } from './record-components/comments/comments.compone
 import { ApprovalActivityComponent } from './approval-component/program-areas/approval-activity/approval-activity.component'
 import { ApprovalAwardComponent } from './approval-component/about/approval-award/approval-award.component'
 import { ApprovalOrganizationalChartComponent } from './approval-component/about/approval-organizational-chart/approval-organizational-chart.component'
-import { ApprovalServiceComponent } from './approval-component/services/approval-service/approval-service.component'
 import { ApprovalServicesOfferedComponent } from './approval-component/services/approval-services-offered/approval-services-offered.component'
 import { ApprovalBirthStatisticComponent } from './approval-component/demographics/births/approval-birth-statistic/approval-birth-statistic.component'
 import { ApprovalDeathStatisticComponent } from './approval-component/demographics/deaths/approval-death-statistic/approval-death-statistic.component'
 import { ApprovalMigrationStatisticComponent } from './approval-component/demographics/migrations/approval-migration-statistic/approval-migration-statistic.component'
-import { ApprovalMigrationRateComponent } from './approval-component/demographics/migrations/approval-migration-rate/approval-migration-rate.component'
+
 import { ApprovalPopulationProfileComponent } from './approval-component/population/approval-population-profile/approval-population-profile.component'
-import { ApprovalTeenageBirthIncidenceGraphComponent } from './approval-component/demographics/births/approval-teenage-birth-incidence-graph/approval-teenage-birth-incidence-graph.component'
+
 import { ApprovalAgeDistributionComponent } from './approval-component/population/approval-age-distribution/approval-age-distribution.component'
 import { ApprovalArticleComponent } from './approval-component/news/approval-article/approval-article.component'
 import { ApprovalIncidenceComponent } from './approval-component/demographics/approval-incidence/approval-incidence.component'
@@ -144,7 +143,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
-import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component';
+import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
 import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
 
 @NgModule({
@@ -244,14 +243,11 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		ApprovalActivityComponent,
 		ApprovalAwardComponent,
 		ApprovalOrganizationalChartComponent,
-		ApprovalServiceComponent,
 		ApprovalServicesOfferedComponent,
 		ApprovalBirthStatisticComponent,
 		ApprovalDeathStatisticComponent,
 		ApprovalMigrationStatisticComponent,
-		ApprovalMigrationRateComponent,
 		ApprovalPopulationProfileComponent,
-		ApprovalTeenageBirthIncidenceGraphComponent,
 		ApprovalAgeDistributionComponent,
 		ApprovalArticleComponent,
 		ApprovalIncidenceComponent,
@@ -283,7 +279,7 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		QuickLinkComponent,
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
-  ApprovalBarangayOfficialsComponent,
+		ApprovalBarangayOfficialsComponent,
 	],
 	imports: [
 		BrowserModule,
