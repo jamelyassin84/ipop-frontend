@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common'
 import { AddAdminComponent } from './pages/add-admin/add-admin.component'
 import { ExtrasModule } from '../extras/extras.module'
 import { ViewAdminModalComponent } from './modal/view-admin/view-admin.component'
-import { AdminIndexComponent } from './pages/admin-index/admin-index.component'
+import { AdminIndexComponent } from './pages/admin-index/admin-index.component';
+import { UpdateAccountComponent } from './pages/update-account/update-account.component'
 
 @NgModule({
 	declarations: [
 		AddAdminComponent,
 		ViewAdminModalComponent,
 		AdminIndexComponent,
+  UpdateAccountComponent,
 	],
 	imports: [CommonModule, FormsModule, AppRoutingModule, ExtrasModule],
 	exports: [AddAdminComponent, ViewAdminModalComponent, AdminIndexComponent],

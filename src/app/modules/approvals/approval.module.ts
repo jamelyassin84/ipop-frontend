@@ -34,6 +34,8 @@ import { ApprovalSBMPTCPersonnelComponent } from './content/approve-requests/com
 import { ApprovalSBMPTCFocalPersonComponent } from './content/approve-requests/components/officials/approval-sbmptcfocal-person/approval-sbmptcfocal-person.component'
 import { ApprovalSBMPTCComponent } from './content/approve-requests/components/ahyd/teen-center/approval-sbmptc/approval-sbmptc.component'
 import { ApprovalMPCFDCComponent } from './content/approve-requests/components/rpfp/mpc-fdc/approval-mpcfdc/approval-mpcfdc.component'
+import { RequestsComponent } from './content/delete-requests/requests/requests.component'
+import { DeleteRequestIndexComponent } from './content/delete-requests/delete-request-index/delete-request-index.component'
 
 @NgModule({
 	declarations: [
@@ -70,6 +72,8 @@ import { ApprovalMPCFDCComponent } from './content/approve-requests/components/r
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
+		RequestsComponent,
+		DeleteRequestIndexComponent,
 	],
 	imports: [CommonModule, ExtrasModule],
 	exports: [
