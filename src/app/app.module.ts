@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
-import { NgxDropzoneModule } from 'ngx-dropzone'
 
 // Custom Modules
 import { AdminModule } from './modules/admin/admin.module'
@@ -41,11 +40,10 @@ import { MpcFdcComponent } from './home/rpfp/mpc-fdc/mpc-fdc.component'
 import { TeenCentersComponent } from './home/ahyd/teen-centers/teen-centers.component'
 import { IssuesAndConcernsComponent } from './home/ahyd/issues-and-concerns/issues-and-concerns.component'
 import { OthersComponent } from './home/others/others.component'
-import { RecordUploadComponent } from './records/record-upload/record-upload.component'
-import { RecordIndexComponent } from './records/record-index/record-index.component'
+
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
-import { FootersComponent } from './components/shared/footers/footers.component'
+import { FootersComponent } from './components/footers/footers.component'
 import { ApprovalsComponent } from './approvals/approvals.component'
 import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
 import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component'
@@ -98,7 +96,6 @@ import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/v
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
 
-import { CommentsComponent } from './record-components/comments/comments.component'
 import { ApprovalActivityComponent } from './approval-component/program-areas/approval-activity/approval-activity.component'
 import { ApprovalAwardComponent } from './approval-component/about/approval-award/approval-award.component'
 import { ApprovalOrganizationalChartComponent } from './approval-component/about/approval-organizational-chart/approval-organizational-chart.component'
@@ -136,8 +133,6 @@ import { QuickLinkComponent } from './approval-component/news/quick-link/quick-l
 import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
 import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
-import { UploadedRecordsComponent } from './records/uploaded-records/uploaded-records.component'
-import { ForApprovalRecordsComponent } from './records/for-approval-records/for-approval-records.component'
 import { RecordsModule } from './modules/records/records.module'
 import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
 import { ExtrasModule } from './modules/extras/extras.module'
@@ -168,8 +163,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		TeenCentersComponent,
 		IssuesAndConcernsComponent,
 		OthersComponent,
-		RecordUploadComponent,
-		RecordIndexComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
@@ -224,8 +217,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		ViewFocalPersonsComponent,
 		ViewTcImagesComponent,
 		AddTcImagesComponent,
-
-		CommentsComponent,
 		ApprovalActivityComponent,
 		ApprovalAwardComponent,
 		ApprovalOrganizationalChartComponent,
@@ -261,8 +252,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
 		AddFilesComponent,
-		UploadedRecordsComponent,
-		ForApprovalRecordsComponent,
 		ViewAdminsComponent,
 	],
 	imports: [
@@ -277,7 +266,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		HttpClientModule,
 		NgbModule,
 		TextareaAutosizeModule,
-		NgxDropzoneModule,
 		// Custom Modules
 		AdminModule,
 		ApprovalModule,

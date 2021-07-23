@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { RecordNavType } from 'src/app/Types/navs/RecordNav.types'
-import { recordNavs } from '../RecordNav'
-import { recordNavChoices } from '../RecordNavChoices'
+import { recordNavs } from '../../RecordNav'
+import { recordNavChoices } from '../../RecordNavChoices'
 
 @Component({
 	selector: 'app-record-index',

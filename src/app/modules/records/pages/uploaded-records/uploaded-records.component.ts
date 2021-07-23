@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core'
 import { Alert } from 'src/app/components/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { FileUploadsService } from 'src/app/Services/home/others/file-uploads.service'
-import { recordNavs } from '../RecordNav'
+import { recordNavs } from '../../RecordNav'
 
 @Component({
-	selector: 'app-for-approval-records',
-	templateUrl: './for-approval-records.component.html',
-	styleUrls: ['./for-approval-records.component.scss'],
+	selector: 'app-uploaded-records',
+	templateUrl: './uploaded-records.component.html',
+	styleUrls: ['./uploaded-records.component.scss'],
 })
-export class ForApprovalRecordsComponent implements OnInit {
+export class UploadedRecordsComponent implements OnInit {
 	constructor(private service: FileUploadsService) {}
 
 	navs = recordNavs
@@ -26,7 +26,11 @@ export class ForApprovalRecordsComponent implements OnInit {
 
 	files: any = []
 	index() {
-		new BaseService(this.service.http, 'for-approvals', `type=${this.type}`)
+		new BaseService(
+			this.service.http,
+			this.service.url,
+			`type=${this.type}`
+		)
 			.index()
 			.subscribe((data) => {
 				this.files = data
