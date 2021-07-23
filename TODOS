@@ -17,27 +17,24 @@ route state ngrx
 route active sidebar
 route do not hardcode
 fix padding
+fix approval UI
 kung makadto sya sa home nga wala token redirect sa home ka user
 user UI
 polish design white space margin padding and colors and allignments for user perspecitve
+fetch first data
+tr align items center
 
+animations
 remove all errors
 responsive nav
 Edit All (Optional)
-
+kuhaon ang data.data
 service worker (Optional)
 
 backend bug
 How to update Amin roles
 incidence is showing
-org chart is sometimes null on approval request
 charts not approvable
-mpc fdc ga delete ya image kung di pa approve
-teen center images bug on update wala ga delete wala man ga save
-Approval Slider doesnt push through on approve
-Approval not removing when approving
-Approval doesnt delete
-Approval Population Pyramid doesnt show
 Diin gakadto mag delete request
 Service Offered Gapakita wala pa na approve
 personnel directory does not add on approvals
