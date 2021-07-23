@@ -144,7 +144,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component'
 import { AddressPickerComponent } from './components/address-picker/address-picker.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
-import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
+import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component';
+import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
 
 @NgModule({
 	declarations: [
@@ -282,6 +283,7 @@ import { AwardMediaApprovalsComponent } from './approval-component/about/award-m
 		QuickLinkComponent,
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
+  ApprovalBarangayOfficialsComponent,
 	],
 	imports: [
 		BrowserModule,

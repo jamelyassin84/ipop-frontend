@@ -1,7 +1,8 @@
-<!-- News  -->
 <!-- <pre style="color: gray">
     {{ data | json }}
 </pre> -->
+
+<!-- News  -->
 <Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
 <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
 <QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
@@ -53,6 +54,8 @@
 <ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
 <SP-Member *ngIf="false" [data]="data"></SP-Member>
 <MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
+
+<BarangayOfficialApproval *ngIf="type === 'App\\Models\\BarangayOfficial'" [data]="data"></BarangayOfficialApproval>
 
 <MPC-FDC-Personnel *ngIf="false" [data]="data"></MPC-FDC-Personnel>
 <MPC-FDC-Team *ngIf="false" [data]="data"></MPC-FDC-Team>
