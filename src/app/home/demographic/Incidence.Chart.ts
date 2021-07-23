@@ -25,6 +25,7 @@ export const TeenageIncidenceChartConfig = {
 		},
 	],
 }
+
 export const IncidenceChartConfig = {
 	options: {
 		scaleShowVerticalLines: false,

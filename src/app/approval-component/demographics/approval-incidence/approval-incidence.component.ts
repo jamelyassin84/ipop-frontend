@@ -9,8 +9,6 @@ import { IncidenceChartConfig } from 'src/app/home/demographic/Incidence.Chart'
 export class ApprovalIncidenceComponent implements OnInit {
 	constructor() {}
 
-	incidenceChart = IncidenceChartConfig
-
 	@Input() data: any = ''
 
 	ngOnInit(): void {}

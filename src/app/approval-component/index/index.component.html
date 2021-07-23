@@ -25,7 +25,7 @@
 <ServicesOffered *ngIf="type === 'App\\Models\\CMS\\ServiceOffer'" [data]="data"></ServicesOffered>
 
 <!-- Demographics  -->
-<IncidenceChart *ngIf="false" [data]="data"></IncidenceChart>
+<IncidenceChart *ngIf="type === 'App\\Models\\Incidence'" [data]="data"></IncidenceChart>
 <MonthChart *ngIf="false" [data]="data"></MonthChart>
 
 <!-- Births   -->
