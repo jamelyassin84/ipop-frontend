@@ -31,6 +31,7 @@ import { NavComponent } from './components/nav/nav.component'
 import { SidebarComponent } from './components/sidebar/sidebar.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component'
 
 // Home Components
 import { HomePageComponent } from './home/home-page/home-page.component'
@@ -189,6 +190,7 @@ import { AddFilesComponent } from './home-components/others/add-files/add-files.
 		NoInternetComponent,
 		AddFilesComponent,
 		ViewAdminsComponent,
+		UnauthorizedComponent,
 	],
 	imports: [
 		BrowserModule,
