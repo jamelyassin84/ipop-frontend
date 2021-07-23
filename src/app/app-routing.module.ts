@@ -34,6 +34,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { UploadedRecordsComponent } from './modules/records/pages/uploaded-records/uploaded-records.component'
 import { ForApprovalRecordsComponent } from './modules/records/pages/for-approval-records/for-approval-records.component'
+import { UpdateAccountComponent } from './modules/admin/pages/update-account/update-account.component'
 
 const routes: Routes = [
 	{
@@ -182,6 +183,10 @@ const routes: Routes = [
 					{
 						path: 'logs',
 						component: LogsComponent,
+					},
+					{
+						path: 'account/:id',
+						component: UpdateAccountComponent,
 					},
 				],
 			},

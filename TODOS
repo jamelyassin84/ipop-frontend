@@ -1,7 +1,8 @@
 change pass
 
-
 Test normal user ( Directive )
+user UI
+auth guards
 File Uploads CRUD   
 
 chart color
@@ -10,20 +11,15 @@ reactive form validation
 polish chart
 polish approval ui
 approval approve or reject on bulk
-auth guard
+delete approve or reject on bulk
 route state ngrx
 route active sidebar
-route do not hardcode
+paginations
 fix padding
-fix approval UI
 kung makadto sya sa home nga wala token redirect sa home ka user
-user UI
 polish design white space margin padding and colors and allignments for user perspecitve
 fetch first data
 tr align items center
-cancel time out sa approval
-delete requests
-transfer to different angular module
 logout route
 
 animations

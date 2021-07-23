@@ -1,1 +1,64 @@
-<p>update-account works!</p>
+<div class="row mt-5 pt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <img style="max-width: 100%" [src]="src" alt="" />
+                <br />
+                <input (change)="readURL($event)" type="file" id="file" style="display: none" />
+                <button (click)="triggerFile()" class="btn btn-link">
+					Change Avatar
+				</button>
+                <h3>{{ admin?.fullname }}</h3>
+                <br />
+                <div class="d-flex">
+                    <span>District</span>
+                    <div class="ml-auto text-primary">
+                        {{ admin?.district }}
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <span>Municipality</span>
+                    <div class="ml-auto text-primary">
+                        {{ admin?.municipality }}
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <span>Barangay</span>
+                    <div class="ml-auto text-primary">
+                        {{ admin?.barangay }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>Settings</h5>
+                <div class="form-group">
+                    <label for="">Old Username</label>
+                    <input [(ngModel)]="admin.username" type="text" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Old Password</label>
+                    <input [(ngModel)]="admin.old_password" type="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="">New Password</label>
+                    <input [(ngModel)]="admin.new_password" type="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm New Password</label>
+                    <input [(ngModel)]="admin.confirm_new_password" type="password" class="form-control" />
+                </div>
+                <div class="alert alert-info">All fields are required</div>
+                <button [disabled]="isLoading" (click)="save()" class="btn btn-lg btn-dark w-100 mb-1">
+					<span *ngIf="!isLoading">Save</span>
+					<Loader *ngIf="isLoading"></Loader>
+				</button>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

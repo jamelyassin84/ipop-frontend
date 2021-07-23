@@ -10,8 +10,13 @@ export class UserService extends BaseService {
 		super(_http, 'users', '')
 	}
 
+	user: any = localStorage.getItem('user')
+
 	name() {
-		const user: any = localStorage.getItem('user')
-		return JSON.parse(user)?.fullname
+		return JSON.parse(this.user)?.fullname
+	}
+
+	id() {
+		return JSON.parse(this.user)?.id
 	}
 }

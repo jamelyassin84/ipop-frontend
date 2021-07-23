@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 	constructor(private router: Router, private user: UserService) {}
 
 	name = this.user.name()
+	username = this.usernamify(this.user.name())
 	avatar = localStorage.getItem('avatar')
 	url = this.router.url
 	mode = ''
@@ -25,6 +26,11 @@ export class SidebarComponent implements OnInit {
 
 	sidebar: SidebarType[] =
 		localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
+
+	usernamify(name: string) {
+		let temp = name.split(' ')
+		return `@${temp.join('_').toLowerCase()}`
+	}
 
 	handleChangeTab() {
 		setTimeout(() => {
