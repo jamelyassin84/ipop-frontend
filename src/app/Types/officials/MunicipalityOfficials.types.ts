@@ -1,5 +1,5 @@
 export type MunicipalOfficialType = {
-	name: String
-	position: String
-	municipality: String
+	name: string
+	position: string
+	municipality: string
 }

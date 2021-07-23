@@ -52,7 +52,7 @@
 <!-- Officials   -->
 <ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
 <SP-Member *ngIf="false" [data]="data"></SP-Member>
-<MunicipalOfficials *ngIf="false" [data]="data"></MunicipalOfficials>
+<MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
 
 <MPC-FDC-Personnel *ngIf="false" [data]="data"></MPC-FDC-Personnel>
 <MPC-FDC-Team *ngIf="false" [data]="data"></MPC-FDC-Team>
