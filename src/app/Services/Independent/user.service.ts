@@ -13,14 +13,14 @@ export class UserService extends BaseService {
 	user: any = localStorage.getItem('user')
 
 	name() {
-		return JSON.parse(this.user)?.fullname
+		return JSON.parse(this.user)?.fullname || ''
 	}
 
 	id() {
-		return JSON.parse(this.user)?.id
+		return JSON.parse(this.user)?.id || ''
 	}
 
 	role() {
-		return localStorage.getItem('role')
+		return localStorage.getItem('role') || ''
 	}
 }

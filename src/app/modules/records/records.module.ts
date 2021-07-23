@@ -8,6 +8,7 @@ import { RecordUploadComponent } from './pages/record-upload/record-upload.compo
 import { NgxDropzoneModule } from 'ngx-dropzone'
 import { AppRoutingModule } from 'src/app/app-routing.module'
 import { UploadedRecordsComponent } from './pages/uploaded-records/uploaded-records.component'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
 	declarations: [
@@ -17,7 +18,13 @@ import { UploadedRecordsComponent } from './pages/uploaded-records/uploaded-reco
 		RecordUploadComponent,
 		UploadedRecordsComponent,
 	],
-	imports: [CommonModule, ExtrasModule, NgxDropzoneModule, AppRoutingModule],
+	imports: [
+		CommonModule,
+		ExtrasModule,
+		NgxDropzoneModule,
+		AppRoutingModule,
+		NgbModule,
+	],
 	exports: [
 		CommentsComponent,
 		ForApprovalRecordsComponent,
