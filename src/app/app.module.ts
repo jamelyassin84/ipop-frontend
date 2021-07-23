@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 // Third Party Modules
 import { IvyCarouselModule } from 'angular-responsive-carousel'
@@ -14,14 +15,24 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
 // Custom Modules
 import { AdminModule } from './modules/admin/admin.module'
 import { ApprovalModule } from './modules/approvals/approval.module'
-import { HomeModule } from './modules/home/home.module'
 import { LogsModule } from './modules/logs/logs.module'
+import { RecordsModule } from './modules/records/records.module'
+import { ExtrasModule } from './modules/extras/extras.module'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
+// Shared Component
+import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admins.component'
+
+// App Components
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
 import { HomeComponent } from './pages/home/home.component'
 import { NavComponent } from './components/nav/nav.component'
 import { SidebarComponent } from './components/sidebar/sidebar.component'
+import { NoInternetComponent } from './pages/no-internet/no-internet.component'
+import { NotFoundComponent } from './pages/not-found/not-found.component'
+
+// Home Components
 import { HomePageComponent } from './home/home-page/home-page.component'
 import { PopulationComponent } from './home/population/population.component'
 import { MandateComponent } from './home/about/mandate/mandate.component'
@@ -40,7 +51,6 @@ import { MpcFdcComponent } from './home/rpfp/mpc-fdc/mpc-fdc.component'
 import { TeenCentersComponent } from './home/ahyd/teen-centers/teen-centers.component'
 import { IssuesAndConcernsComponent } from './home/ahyd/issues-and-concerns/issues-and-concerns.component'
 import { OthersComponent } from './home/others/others.component'
-
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/footers/footers.component'
@@ -94,15 +104,8 @@ import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-
 import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
-import { NotFoundComponent } from './pages/not-found/not-found.component'
-import { NoInternetComponent } from './pages/no-internet/no-internet.component'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
-import { RecordsModule } from './modules/records/records.module'
-import { ExtrasModule } from './modules/extras/extras.module'
-import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admins.component'
 
 @NgModule({
 	declarations: [
@@ -202,7 +205,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		// Custom Modules
 		AdminModule,
 		ApprovalModule,
-		HomeModule,
 		LogsModule,
 		RecordsModule,
 		ExtrasModule,
