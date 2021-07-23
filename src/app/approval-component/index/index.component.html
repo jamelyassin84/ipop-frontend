@@ -43,7 +43,7 @@
 <PMOC *ngIf="type === 'App\\Models\\PMOC'" [data]="data"></PMOC>
 
 <!-- TeenCenters   -->
-<TeenCenter *ngIf="false" [data]="data"></TeenCenter>
+<TeenCenter *ngIf="type === 'App\\Models\\SBMPTC'" [data]="data"></TeenCenter>
 
 <!-- Others   -->
 <Technical-Notes *ngIf="type === 'App\\Models\\TechnicalNotes'" [data]="data"></Technical-Notes>
