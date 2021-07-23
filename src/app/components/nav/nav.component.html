@@ -1,5 +1,5 @@
 <div class="header navbar" [class.fix]="!hideNav">
-    <div class="d-flex p-20 aic card-body" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
+    <div class="d-flex p-20 aic card-body header-item" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
         <img src="../../../assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
         <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="../../../assets/ipop/logos/ipo-logo.png" />
         <div class="p-20">
@@ -10,6 +10,7 @@
     </div>
     <div class="nav">
         <div class="nav-list">
+            <!-- <h5 *ngIf="!hideNav" (click)="hideNav = true" class="Item ti-menu"></h5> -->
             <div *ngFor="let nav of navs" class="Item">
                 <span *ngIf="nav.name !== 'Iloilo.gov'"> {{ nav.name }}</span>
                 <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">

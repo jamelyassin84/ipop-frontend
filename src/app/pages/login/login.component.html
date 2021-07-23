@@ -6,13 +6,25 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-4 peer pX-50 pY-100 h-100 bgc-white scrollable pos-r text-center" style="min-width: 320px">
+    <div class="
+			col-12 col-md-4
+			peer
+			pX-50
+			pY-100
+			h-100
+			bgc-white
+			scrollable
+			pos-r
+			text-center
+		" style="min-width: 320px">
         <img class="mY-20" src="../../../assets/ipop/logos/logo.png" alt="" />
         <br />
         <br />
         <br />
         <h1 style="font-weight: 900">Welcome Back!</h1>
-        <p class="h6 fw-300 text-muted mB-40">Sign-in with your username and password given by the administrator</p>
+        <p class="h6 fw-300 text-muted mB-40">
+            Sign-in with your username and password given by the administrator
+        </p>
         <form (submit)="login()">
             <div class="input-group mb-3">
                 <div class="input-group-prepend bg-white">
@@ -31,6 +43,12 @@
             <button [disabled]="isLoading" class="btn btn-primary w-100 btn-lg">
 				<span *ngIf="!isLoading">Sign-in</span>
 				<Loader *ngIf="isLoading"></Loader>
+			</button>
+            <br />
+            <p>or</p>
+
+            <button class="btn btn-light w-100 btn-lg" routerLink="/home/index/news">
+				Visit as IPOP Guest
 			</button>
         </form>
     </div>

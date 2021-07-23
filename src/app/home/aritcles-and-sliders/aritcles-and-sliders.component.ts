@@ -4,6 +4,7 @@ import { Alert, Deleted, Fire, pop } from 'src/app/modules/extras/Alert'
 import { ArticleService } from 'src/app/Services/home/news/article.service'
 import { QuickLinksService } from 'src/app/Services/home/news/quick-links.service'
 import { SliderService } from 'src/app/Services/home/news/slider.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { ArticleType } from 'src/app/Types/Article.types'
 
@@ -17,7 +18,8 @@ export class AritclesAndSlidersComponent implements OnInit {
 		private slideService: SliderService,
 		private component: ReloadService,
 		private articleService: ArticleService,
-		private service: QuickLinksService
+		private service: QuickLinksService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -25,6 +27,7 @@ export class AritclesAndSlidersComponent implements OnInit {
 			})
 		)
 	}
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

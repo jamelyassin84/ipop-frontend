@@ -3,9 +3,13 @@ change pass
 Test normal user ( Directive )
 fix un authenticated
 user UI
+fix nav 
 File Uploads CRUD   
 
 listen theme preference sa settings ka windows
+auth guard pra sa bulk records
+chart approvals
+quick links kitaon wla ga sulod sa approval
 chart color
 preloaders all
 reactive form validation
