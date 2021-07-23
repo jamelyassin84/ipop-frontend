@@ -1,4 +1,32 @@
-<div class="card card-body" style="width: 50vw">
-    <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
-	</canvas>
-</div>
+<span>Type: {{ data.type }} Statistical Data</span><br />
+
+<span class="fw-400 text-danger h4">
+	<span class="mr-2" *ngIf="data.barangay !== null">
+		{{ data.barangay }}
+	</span>
+<span class="mr-2" *ngIf="data.municipality !== null">
+		{{ data.municipality }}
+	</span>
+<span class="mr-2" *ngIf="data.barangay === null && data.municipality === null">
+		Province
+	</span>
+<span class="mr-2">
+		{{ data.year }}
+	</span>
+</span>
+<br />
+
+<span>Month: {{ data.month }}</span
+><br />
+
+<span>Males: {{ data.females }}</span
+><br />
+
+<span>Females: {{ data.females }}</span
+><br />
+
+<span>Males: {{ data.females }}</span
+><br />
+
+<span>Total: {{ data.total }}</span
+><br />

@@ -38,7 +38,7 @@ export class ApprovalsComponent implements OnInit {
 							.subscribe(() => {
 								Alert(
 									'Horay!',
-									'Content has beeen succesfully posted',
+									'Content has been succesfully posted',
 									'success'
 								)
 								this.ngOnInit()
@@ -54,8 +54,8 @@ export class ApprovalsComponent implements OnInit {
 					() => {
 						this.service.destroy(this.id).subscribe(() => {
 							Alert(
-								'Content Discarded',
-								'Content has beeen  discarded',
+								'Discarded',
+								'Content has been discarded,rejected and removed',
 								'warning'
 							)
 							this.ngOnInit()

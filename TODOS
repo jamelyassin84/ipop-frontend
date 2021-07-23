@@ -10,8 +10,9 @@ preloaders all
 reactive form validation
 polish chart
 polish approval ui
+approval approve or reject on bulk
 
-
+auth guard
 route state ngrx
 route active sidebar
 route do not hardcode
