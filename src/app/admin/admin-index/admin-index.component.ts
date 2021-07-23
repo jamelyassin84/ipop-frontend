@@ -15,7 +15,7 @@ export class AdminIndexComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	navs: RecordNavType[] = AdminNav
+	navs: any[] = AdminNav
 
 	title: String = 'View Administrators'
 

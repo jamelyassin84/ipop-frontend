@@ -33,18 +33,12 @@ import { MpcFdcComponent } from './home/rpfp/mpc-fdc/mpc-fdc.component'
 import { TeenCentersComponent } from './home/ahyd/teen-centers/teen-centers.component'
 import { IssuesAndConcernsComponent } from './home/ahyd/issues-and-concerns/issues-and-concerns.component'
 import { OthersComponent } from './home/others/others.component'
-import { CpdbRecordsComponent } from './records/cpdb-records/cpdb-records.component'
-import { DeathRecordsComponent } from './records/death-records/death-records.component'
-import { BirthRecordsComponent } from './records/birth-records/birth-records.component'
-import { InMigrationRecordsComponent } from './records/in-migration-records/in-migration-records.component'
-import { OutMigrationRecordsComponent } from './records/out-migration-records/out-migration-records.component'
 import { RecordUploadComponent } from './records/record-upload/record-upload.component'
 import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
 import { AddAdminComponent } from './admin/add-admin/add-admin.component'
 import { LogsComponent } from './logs/logs.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
-import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/shared/footers/footers.component'
@@ -143,6 +137,8 @@ import { QuickLinkComponent } from './approval-component/news/quick-link/quick-l
 import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
 import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
+import { UploadedRecordsComponent } from './records/uploaded-records/uploaded-records.component'
+import { ForApprovalRecordsComponent } from './records/for-approval-records/for-approval-records.component'
 
 @NgModule({
 	declarations: [
@@ -169,18 +165,12 @@ import { AddFilesComponent } from './home-components/others/add-files/add-files.
 		TeenCentersComponent,
 		IssuesAndConcernsComponent,
 		OthersComponent,
-		CpdbRecordsComponent,
-		DeathRecordsComponent,
-		BirthRecordsComponent,
-		InMigrationRecordsComponent,
-		OutMigrationRecordsComponent,
 		RecordUploadComponent,
 		ViewAdminsComponent,
 		AddAdminComponent,
 		LogsComponent,
 		RecordIndexComponent,
 		AdminIndexComponent,
-		MarriageRecordsComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
@@ -277,6 +267,8 @@ import { AddFilesComponent } from './home-components/others/add-files/add-files.
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
 		AddFilesComponent,
+		UploadedRecordsComponent,
+		ForApprovalRecordsComponent,
 	],
 	imports: [
 		BrowserModule,

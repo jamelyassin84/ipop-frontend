@@ -1,0 +1,93 @@
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th class="text-left">Uploader</th>
+            <th>From</th>
+            <th>Status</th>
+            <th>Uploaded Last</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let file of files">
+            <td>
+                <div class="d-flex">
+                    <img class="mr-2" [src]="
+							file.user.profile_picture?.uri ||
+							'../../../assets/avatars/face-7.jpg'
+						" alt="" />
+                    <h5>{{ file.user.fullname }}</h5>
+                </div>
+            </td>
+            <td>
+                <span>
+					{{ 'District ' + file.user.district }}
+				</span>
+
+                <span>
+					{{ ', Muncipaplity of ' + file.user.municipality }}
+				</span>
+            </td>
+            <td>
+                <span *ngIf="file.approved === true" class="
+						small
+						d-ib
+						lh-0
+						va-m
+						fw-600
+						bdrs-10em
+						pX-10
+						pY-10
+						bgc-green-50
+						c-green-500
+					">Approved</span
+				>
+				<span
+					*ngIf="file.approved === false"
+					class="
+						small
+						d-ib
+						lh-0
+						va-m
+						fw-600
+						bdrs-10em
+						pX-10
+						pY-10
+						bgc-red-50
+						c-red-500
+					"
+					>Pending</span
+				>
+			</td>
+			<td>{{ file.created_at | date: 'MMMM dd,yyyy - hh:mm a' }}</td>
+			<td>
+				<DropDown [buttons]="dropdown"></DropDown>
+				<ng-template #dropdown>
+					<a target="_blank" [href]="file.file.uri" ngbDropdownItem
+						>View File</a
+					>
+
+					<button (click)="approve(file.id)" ngbDropdownItem>
+						Approve
+					</button>
+
+					<button (click)="reject(file.id)" ngbDropdownItem>
+						Reject
+					</button>
+
+					<Modal
+						btnClass="dropdown-item"
+						ngbDropdownItem
+						size="xl"
+						title="Comments"
+						btnTitle="Comments"
+						[template]="comments"
+					></Modal>
+				</ng-template>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<ng-template #comments>
+	<Comments></Comments>
+</ng-template>

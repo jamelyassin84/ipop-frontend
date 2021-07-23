@@ -23,13 +23,7 @@ import { MpcFdcComponent } from './home/rpfp/mpc-fdc/mpc-fdc.component'
 import { TeenCentersComponent } from './home/ahyd/teen-centers/teen-centers.component'
 import { IssuesAndConcernsComponent } from './home/ahyd/issues-and-concerns/issues-and-concerns.component'
 import { OthersComponent } from './home/others/others.component'
-import { CpdbRecordsComponent } from './records/cpdb-records/cpdb-records.component'
-import { DeathRecordsComponent } from './records/death-records/death-records.component'
-import { BirthRecordsComponent } from './records/birth-records/birth-records.component'
-import { InMigrationRecordsComponent } from './records/in-migration-records/in-migration-records.component'
-import { OutMigrationRecordsComponent } from './records/out-migration-records/out-migration-records.component'
 import { RecordUploadComponent } from './records/record-upload/record-upload.component'
-import { MarriageRecordsComponent } from './records/marriage-records/marriage-records.component'
 import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
 import { AddAdminComponent } from './admin/add-admin/add-admin.component'
 import { LogsComponent } from './logs/logs.component'
@@ -38,6 +32,8 @@ import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { ApprovalsComponent } from './approvals/approvals.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
+import { UploadedRecordsComponent } from './records/uploaded-records/uploaded-records.component'
+import { ForApprovalRecordsComponent } from './records/for-approval-records/for-approval-records.component'
 
 const routes: Routes = [
 	{
@@ -160,20 +156,13 @@ const routes: Routes = [
 								path: 'upload',
 								component: RecordUploadComponent,
 							},
-							{ path: 'cpdb', component: CpdbRecordsComponent },
-							{ path: 'birth', component: BirthRecordsComponent },
-							{ path: 'death', component: DeathRecordsComponent },
 							{
-								path: 'in-mmigration',
-								component: InMigrationRecordsComponent,
+								path: 'cloud-files',
+								component: UploadedRecordsComponent,
 							},
 							{
-								path: 'out-migration',
-								component: OutMigrationRecordsComponent,
-							},
-							{
-								path: 'marriages',
-								component: MarriageRecordsComponent,
+								path: 'for-approvals',
+								component: ForApprovalRecordsComponent,
 							},
 						],
 					},

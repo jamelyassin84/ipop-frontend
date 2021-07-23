@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { RecordNavType } from 'src/app/Types/navs/RecordNav.types'
 import { recordNavs } from '../RecordNav'
+import { recordNavChoices } from '../RecordNavChoices'
 
 @Component({
 	selector: 'app-record-index',
@@ -15,7 +16,7 @@ export class RecordIndexComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	navs: RecordNavType[] = recordNavs
+	navs: any[] = recordNavChoices
 
 	title: String = 'Upload a File'
 

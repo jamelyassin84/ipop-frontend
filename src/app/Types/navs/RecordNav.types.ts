@@ -1,5 +1,6 @@
 export type RecordNavType = {
 	route: any
-	icon: String
-	name: String
+	icon: string
+	name: string
+	type: string
 }

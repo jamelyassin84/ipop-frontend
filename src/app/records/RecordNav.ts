@@ -1,37 +1,32 @@
 export const recordNavs = [
 	{
-		route: 'upload',
-		icon: 'ti-archive',
-		name: 'Upload a File',
-	},
-	{
-		route: 'cpdb',
 		icon: 'ti-harddrives',
 		name: 'CPDB',
+		type: 'CPDB',
 	},
 	{
-		route: 'birth',
 		name: 'Births',
+		type: 'Birth',
 		icon: 'ti-pulse',
 	},
 	{
-		route: 'death',
 		icon: 'ti-power-off',
+		type: 'Death',
 		name: 'Deaths',
 	},
 	{
-		route: 'in-mmigration',
 		icon: 'ti-map',
 		name: 'In Migration',
+		type: 'InMigration',
 	},
 	{
-		route: 'out-migration',
 		icon: 'ti-map-alt',
+		type: 'OutMigration',
 		name: 'Out Migration',
 	},
 	{
-		route: 'marriages',
 		icon: 'ti-infinite',
+		type: 'Marriages',
 		name: 'Marriages',
 	},
 ]
