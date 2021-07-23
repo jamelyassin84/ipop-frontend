@@ -1,6 +1,6 @@
 import { PersonnelDirectoryService } from './../../../Services/home/about/personnel-directory.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { PersonnelTypes } from 'src/app/home/about/personnel-directory/PersonnelTypes'
 
 @Component({

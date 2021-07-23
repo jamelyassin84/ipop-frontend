@@ -1,7 +1,7 @@
 import { ProgramAreasService } from '../../Services/home/program-areas/program-areas.service'
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Alert, Fire, pop } from 'src/app/components/Alert'
+import { Alert, Fire, pop } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
 import { Subscription } from 'rxjs'

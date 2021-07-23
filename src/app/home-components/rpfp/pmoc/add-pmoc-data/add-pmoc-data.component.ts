@@ -1,6 +1,6 @@
 import { PmocDataService } from './../../../../Services/home/rpfp/pmoc/pmoc-data.service'
 import { Component, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'AddPMOCData',

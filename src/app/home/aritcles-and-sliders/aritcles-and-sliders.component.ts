@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { Alert, Deleted, Fire, pop } from 'src/app/components/Alert'
+import { Alert, Deleted, Fire, pop } from 'src/app/modules/extras/Alert'
 import { ArticleService } from 'src/app/Services/home/news/article.service'
 import { QuickLinksService } from 'src/app/Services/home/news/quick-links.service'
 import { SliderService } from 'src/app/Services/home/news/slider.service'

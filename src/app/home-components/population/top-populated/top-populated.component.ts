@@ -1,6 +1,6 @@
 import { LocationService } from './../../../Services/locations/province.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 import { TopPopulatedService } from 'src/app/Services/home/population/top-populated.service'
 

@@ -44,7 +44,6 @@ import { OthersComponent } from './home/others/others.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/footers/footers.component'
-import { ApprovalsComponent } from './approvals/approvals.component'
 import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
 import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component'
 import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component'
@@ -95,46 +94,13 @@ import { ViewAhydTeamComponent } from './home-components/ahyd/teen-centers/view-
 import { ViewFocalPersonsComponent } from './home-components/ahyd/teen-centers/view-focal-persons/view-focal-persons.component'
 import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-tc-images/view-tc-images.component'
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
-
-import { ApprovalActivityComponent } from './approval-component/program-areas/approval-activity/approval-activity.component'
-import { ApprovalAwardComponent } from './approval-component/about/approval-award/approval-award.component'
-import { ApprovalOrganizationalChartComponent } from './approval-component/about/approval-organizational-chart/approval-organizational-chart.component'
-import { ApprovalServicesOfferedComponent } from './approval-component/services/approval-services-offered/approval-services-offered.component'
-import { ApprovalBirthStatisticComponent } from './approval-component/demographics/births/approval-birth-statistic/approval-birth-statistic.component'
-import { ApprovalDeathStatisticComponent } from './approval-component/demographics/deaths/approval-death-statistic/approval-death-statistic.component'
-import { ApprovalMigrationStatisticComponent } from './approval-component/demographics/migrations/approval-migration-statistic/approval-migration-statistic.component'
-import { ApprovalPopulationProfileComponent } from './approval-component/population/approval-population-profile/approval-population-profile.component'
-import { ApprovalAgeDistributionComponent } from './approval-component/population/approval-age-distribution/approval-age-distribution.component'
-import { ApprovalArticleComponent } from './approval-component/news/approval-article/approval-article.component'
-import { ApprovalIncidenceComponent } from './approval-component/demographics/approval-incidence/approval-incidence.component'
-import { ApprovalMonthChartComponent } from './approval-component/demographics/approval-month-chart/approval-month-chart.component'
-import { ApprovalMPCFDCComponent } from './approval-component/rpfp/mpc-fdc/approval-mpcfdc/approval-mpcfdc.component'
-import { ApprovalMPCFDCPersonnelComponent } from './approval-component/officials/approval-mpcfdcpersonnel/approval-mpcfdcpersonnel.component'
-import { ApprovalMPCFDCTeamComponent } from './approval-component/officials/approval-mpcfdcteam/approval-mpcfdcteam.component'
-import { ApprovalMunicipalOfficialComponent } from './approval-component/officials/approval-municipal-official/approval-municipal-official.component'
-import { ApprovalPMOCComponent } from './approval-component/rpfp/pmoc/approval-pmoc/approval-pmoc.component'
-import { ApprovalPMOCTeamComponent } from './approval-component/officials/approval-pmocteam/approval-pmocteam.component'
-import { ApprovalProvincialOfficialComponent } from './approval-component/officials/approval-provincial-official/approval-provincial-official.component'
-import { ApprovalSPMemberComponent } from './approval-component/officials/approval-spmember/approval-spmember.component'
-import { ApprovalSBMPTCComponent } from './approval-component/ahyd/teen-center/approval-sbmptc/approval-sbmptc.component'
-import { ApprovalSBMPTCFocalPersonComponent } from './approval-component/officials/approval-sbmptcfocal-person/approval-sbmptcfocal-person.component'
-import { ApprovalSBMPTCPersonnelComponent } from './approval-component/officials/approval-sbmptcpersonnel/approval-sbmptcpersonnel.component'
-import { ApprovalSBMPTCTeamComponent } from './approval-component/officials/approval-sbmptcteam/approval-sbmptcteam.component'
-import { ApprovalSliderComponent } from './approval-component/news/approval-slider/approval-slider.component'
-import { ApprovalTopPopulationComponent } from './approval-component/population/approval-top-population/approval-top-population.component'
-import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
-import { IndexComponent } from './approval-component/index/index.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
-import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
-import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { RecordsModule } from './modules/records/records.module'
-import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
 import { ExtrasModule } from './modules/extras/extras.module'
 import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admins.component'
 
@@ -166,7 +132,6 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
-		ApprovalsComponent,
 		EditSliderImageComponent,
 		AddArticleComponent,
 		AddQuickLinksComponent,
@@ -217,40 +182,8 @@ import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admi
 		ViewFocalPersonsComponent,
 		ViewTcImagesComponent,
 		AddTcImagesComponent,
-		ApprovalActivityComponent,
-		ApprovalAwardComponent,
-		ApprovalOrganizationalChartComponent,
-		ApprovalServicesOfferedComponent,
-		ApprovalBirthStatisticComponent,
-		ApprovalDeathStatisticComponent,
-		ApprovalMigrationStatisticComponent,
-		ApprovalPopulationProfileComponent,
-		ApprovalAgeDistributionComponent,
-		ApprovalArticleComponent,
-		ApprovalIncidenceComponent,
-		ApprovalMonthChartComponent,
-		ApprovalMPCFDCComponent,
-		ApprovalMPCFDCPersonnelComponent,
-		ApprovalMPCFDCTeamComponent,
-		ApprovalMunicipalOfficialComponent,
-		ApprovalPMOCComponent,
-		ApprovalPMOCTeamComponent,
-		ApprovalProvincialOfficialComponent,
-		ApprovalSPMemberComponent,
-		ApprovalSBMPTCComponent,
-		ApprovalSBMPTCFocalPersonComponent,
-		ApprovalSBMPTCPersonnelComponent,
-		ApprovalSBMPTCTeamComponent,
-		ApprovalSliderComponent,
-		ApprovalTopPopulationComponent,
-		ApprovalTechnicalNotesComponent,
-		IndexComponent,
 		NotFoundComponent,
 		NoInternetComponent,
-		QuickLinkComponent,
-		ApprovalsPersonnelDirectoryComponent,
-		AwardMediaApprovalsComponent,
-		ApprovalBarangayOfficialsComponent,
 		AddFilesComponent,
 		ViewAdminsComponent,
 	],

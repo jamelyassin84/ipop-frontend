@@ -1,4 +1,4 @@
-import { BarangayOfficialType } from './../../../Types/officials/BarangayOfficials.types'
+import { BarangayOfficialType } from '../../../../../../../Types/officials/BarangayOfficials.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({

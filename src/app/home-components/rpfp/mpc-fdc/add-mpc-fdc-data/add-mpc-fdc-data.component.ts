@@ -1,6 +1,6 @@
 import { MpcFdcDataService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
 import { Component, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 

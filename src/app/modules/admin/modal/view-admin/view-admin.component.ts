@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Alert, Fire } from 'src/app/components/Alert'
+import { Alert, Fire } from 'src/app/modules/extras/Alert'
 import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'

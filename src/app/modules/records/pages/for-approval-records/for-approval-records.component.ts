@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Alert } from 'src/app/components/Alert'
+import { Alert } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { FileUploadsService } from 'src/app/Services/home/others/file-uploads.service'
 import { recordNavs } from '../../RecordNav'

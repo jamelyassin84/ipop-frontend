@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header bg-white">
+        <h5 class="m-0 card-title text-center d-flex">
+            <span style="align-self: center">{{ programArea.title }}</span>
+        </h5>
+    </div>
+    <div class="card-body">
+        <h6 class="">{{ programArea.description }}</h6>
+        <div class="card-body">
+            <div class="bl br card mb-5">
+                <div class="card-header bg-white d-flex aic">
+                    <div>
+                        <div class="h3 m-0 card-title text-success dw">
+                            <i class="ti-pin-alt"></i> {{ data.title }}
+                        </div>
+                        <span class="m-0 text-muted">Created :
+							{{
+								data.created_at | date: 'MMMM dd, yyy - hh:mm a'
+							}}</span
+						>
+					</div>
+				</div>
+				<div class="card-body bg-white">
+					<div class="aic">
+						<p class="p-20">
+							{{ data.description }}
+							<span
+								*ngIf="data.files.length !== 0"
+								class="mr-auto"
+							>
+								<Modal
+									size="xl"
+									[title]="'Images of ' + data.title"
+									btnTitle="View Images"
+									[template]="imageViewer"
+									btnClass="btn btn-link "
+									(click)="transformImages(data.files)"
+								>
+								</Modal>
+							</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #imageViewer>
+    <ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>

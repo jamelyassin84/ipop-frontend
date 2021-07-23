@@ -1,8 +1,8 @@
-import { Fire } from 'src/app/components/Alert'
+import { Fire } from 'src/app/modules/extras/Alert'
 import { UserType } from 'src/app/Types/User.types'
 import { Component, OnInit } from '@angular/core'
-import { Alert } from '../components/Alert'
-import { ApprovalsService } from '../Services/Independent/approvals.service'
+import { Alert } from '../../../../extras/Alert'
+import { ApprovalsService } from '../../../../../Services/Independent/approvals.service'
 
 @Component({
 	selector: 'app-approvals',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire } from 'src/app/components/Alert'
+import { Fire } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'ViewTCImages',

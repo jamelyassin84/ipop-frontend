@@ -1,5 +1,5 @@
 import { MpcFdcTeamService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { Component, OnInit } from '@angular/core'
 
 @Component({

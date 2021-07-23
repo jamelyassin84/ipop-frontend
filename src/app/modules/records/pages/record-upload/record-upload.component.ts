@@ -1,6 +1,6 @@
 import { FileUploadService } from '../../../../Services/bulk-records/file-upload.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, Alert } from 'src/app/components/Alert'
+import { Created, Fire, Alert } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'app-record-upload',

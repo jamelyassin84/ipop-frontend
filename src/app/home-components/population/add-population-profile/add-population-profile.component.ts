@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { PopulationProfileService } from 'src/app/Services/home/population/population-profile.service'
 
 @Component({

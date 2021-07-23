@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { AgeGroupService } from 'src/app/Services/home/rpfp/pmoc/age-group.service'
 
 @Component({

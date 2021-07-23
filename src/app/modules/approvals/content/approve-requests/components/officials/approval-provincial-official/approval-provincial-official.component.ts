@@ -1,4 +1,4 @@
-import { ProvincialOfficialType } from './../../../Types/officials/ProvincialOfficials.types'
+import { ProvincialOfficialType } from '../../../../../../../Types/officials/ProvincialOfficials.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({

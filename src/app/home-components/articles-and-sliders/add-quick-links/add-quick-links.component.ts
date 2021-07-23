@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { QuickLinksService } from 'src/app/Services/home/news/quick-links.service'
 
 @Component({

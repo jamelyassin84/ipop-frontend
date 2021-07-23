@@ -10,7 +10,7 @@ import {
 } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
 import { retry, catchError, tap } from 'rxjs/operators'
-import { Alert } from '../components/Alert'
+import { Alert } from '../modules/extras/Alert'
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {

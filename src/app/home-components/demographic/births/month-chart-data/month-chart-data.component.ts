@@ -1,6 +1,6 @@
 import { MonthChartService } from './../../../../Services/home/demographic/month-chart.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'CustomizeMonthChart',

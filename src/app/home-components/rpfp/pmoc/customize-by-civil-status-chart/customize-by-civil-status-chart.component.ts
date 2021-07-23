@@ -1,6 +1,6 @@
 import { CivilStatusService } from './../../../../Services/home/rpfp/pmoc/civil-status.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'CustomizeByCivilStatusChart',

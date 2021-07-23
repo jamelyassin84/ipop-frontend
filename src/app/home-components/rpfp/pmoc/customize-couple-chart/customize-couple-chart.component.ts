@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 
 @Component({

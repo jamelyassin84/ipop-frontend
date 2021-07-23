@@ -1,6 +1,6 @@
 import { LocalBirthDataService } from './../../../../Services/home/demographic/births/local-birth-data.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'AddBirthData',

@@ -1,4 +1,4 @@
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { Component, OnInit } from '@angular/core'
 import { MpcFdcTeamService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
 import { ReloadService } from 'src/app/Services/reload.service'

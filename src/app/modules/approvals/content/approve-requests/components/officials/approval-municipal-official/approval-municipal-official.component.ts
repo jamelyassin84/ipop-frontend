@@ -1,4 +1,4 @@
-import { MunicipalOfficialType } from './../../../Types/officials/MunicipalityOfficials.types'
+import { MunicipalOfficialType } from '../../../../../../../Types/officials/MunicipalityOfficials.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({

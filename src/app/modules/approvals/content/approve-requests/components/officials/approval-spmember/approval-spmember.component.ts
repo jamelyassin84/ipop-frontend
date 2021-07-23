@@ -1,4 +1,4 @@
-import { SPMemberType } from './../../../Types/Services.types'
+import { SPMemberType } from '../../../../../../../Types/Services.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({

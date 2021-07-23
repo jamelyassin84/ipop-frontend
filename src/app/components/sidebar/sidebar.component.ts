@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserService } from 'src/app/Services/Independent/user.service'
 import { SidebarType } from 'src/app/Types/navs/Sidebar.types'
-import { Alert, Fire } from '../Alert'
+import { Alert, Fire } from '../../modules/extras/Alert'
 import { ADMIN, normal } from './Sidebar'
 
 @Component({

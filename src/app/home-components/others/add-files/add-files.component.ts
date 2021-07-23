@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire } from 'src/app/components/Alert'
+import { Created, Fire } from 'src/app/modules/extras/Alert'
 import { OthersService } from 'src/app/Services/Independent/other.service'
 
 @Component({

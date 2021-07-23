@@ -29,7 +29,7 @@ import { AddAdminComponent } from './modules/admin/pages/add-admin/add-admin.com
 import { LogsComponent } from './modules/logs/logs.component'
 import { RecordIndexComponent } from './modules/records/pages/record-index/record-index.component'
 import { AdminIndexComponent } from './modules/admin/pages/admin-index/admin-index.component'
-import { ApprovalsComponent } from './approvals/approvals.component'
+import { ApprovalsComponent } from './modules/approvals/content/approve-requests/approvals/approvals.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
 import { UploadedRecordsComponent } from './modules/records/pages/uploaded-records/uploaded-records.component'

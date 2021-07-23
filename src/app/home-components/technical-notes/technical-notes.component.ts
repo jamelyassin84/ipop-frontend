@@ -1,4 +1,4 @@
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { TechnicalNotesService } from './../../Services/home/others/technical-notes.service'
 import { Component, Input, OnInit } from '@angular/core'
 import { BaseService } from 'src/app/Services/base.service'
@@ -10,7 +10,10 @@ import { ReloadService } from 'src/app/Services/reload.service'
 	styleUrls: ['./technical-notes.component.scss'],
 })
 export class TechnicalNotesComponent implements OnInit {
-	constructor(private service: TechnicalNotesService, private component: ReloadService) {
+	constructor(
+		private service: TechnicalNotesService,
+		private component: ReloadService
+	) {
 		this.component.shouldReload().subscribe(() => {
 			this.ngOnInit()
 		})
@@ -25,17 +28,26 @@ export class TechnicalNotesComponent implements OnInit {
 	TechnicalNotes: any = []
 
 	getTechnicalNotes() {
-		const service = new BaseService(this.service.http, this.service.url, `type=${this.type}`)
+		const service = new BaseService(
+			this.service.http,
+			this.service.url,
+			`type=${this.type}`
+		)
 		service.index().subscribe((data: any) => {
 			this.TechnicalNotes = data
 		})
 	}
 
 	removeNote(id: number) {
-		Fire('Remove Note?', 'Are you sure you want to remove this data?', 'info', () => {
-			this.service.destroy(id).subscribe(() => {
-				Deleted()
-			})
-		})
+		Fire(
+			'Remove Note?',
+			'Are you sure you want to remove this data?',
+			'info',
+			() => {
+				this.service.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
 	}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
 import { LocationService } from 'src/app/Services/locations/province.service'

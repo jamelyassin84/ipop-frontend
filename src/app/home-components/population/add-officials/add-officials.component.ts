@@ -1,7 +1,7 @@
 import { MunicipalService } from './../../../Services/home/officials/municipal.service'
 import { ProvincialService } from './../../../Services/home/officials/provincial.service'
 import { Component, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { SpMemberService } from 'src/app/Services/home/officials/sp-member.service'
 import { BarangayService } from 'src/app/Services/home/officials/barangay.service'
 import { LocationService } from 'src/app/Services/locations/province.service'

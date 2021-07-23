@@ -1,6 +1,6 @@
 import { TeenCenterDataService } from './../../../../Services/home/ahyd/teen-center/teen-center-data.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 

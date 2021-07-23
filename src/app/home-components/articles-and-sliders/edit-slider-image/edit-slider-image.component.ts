@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals, pop } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals, pop } from 'src/app/modules/extras/Alert'
 import { SliderService } from 'src/app/Services/home/news/slider.service'
 
 @Component({

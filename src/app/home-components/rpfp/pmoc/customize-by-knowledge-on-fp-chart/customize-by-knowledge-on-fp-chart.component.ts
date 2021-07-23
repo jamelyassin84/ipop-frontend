@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { KnowledgeOnFpService } from 'src/app/Services/home/rpfp/pmoc/knowledge-on-fp.service'
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { BarangayService } from 'src/app/Services/home/officials/barangay.service'
 import { MunicipalService } from 'src/app/Services/home/officials/municipal.service'
 import { ProvincialService } from 'src/app/Services/home/officials/provincial.service'

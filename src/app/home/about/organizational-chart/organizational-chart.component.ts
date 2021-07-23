@@ -1,6 +1,6 @@
 import { OrganizationalChartService } from './../../../Services/home/about/organizational-chart.service'
 import { Component, OnInit } from '@angular/core'
-import { HasApprovals } from 'src/app/components/Alert'
+import { HasApprovals } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
 

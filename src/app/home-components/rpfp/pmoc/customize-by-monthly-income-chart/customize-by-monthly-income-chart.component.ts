@@ -1,6 +1,6 @@
 import { AverageMonthlyIncomeService } from './../../../../Services/home/rpfp/pmoc/average-monthly-income.service'
 import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'CustomizeByMonthlyIncomeChart',

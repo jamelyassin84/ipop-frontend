@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { FocalPersonsService } from 'src/app/Services/home/ahyd/teen-center/focal-persons.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 

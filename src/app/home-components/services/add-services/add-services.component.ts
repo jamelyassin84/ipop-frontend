@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Alert, Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Alert, Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { ServiceOffersService } from 'src/app/Services/services-offered/service-offers.service'
 
 @Component({

@@ -1,6 +1,6 @@
 import { ArticleService } from './../../../Services/home/news/article.service'
 import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({

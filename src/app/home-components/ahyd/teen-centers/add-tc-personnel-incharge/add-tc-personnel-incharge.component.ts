@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { PersonnelInchargeOfTeenCenterService } from 'src/app/Services/home/ahyd/teen-center/personnel-incharge-of-teen-center.service'
 
 @Component({

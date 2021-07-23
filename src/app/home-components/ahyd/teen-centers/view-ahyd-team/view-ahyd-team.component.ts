@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { AhydTeamService } from 'src/app/Services/home/ahyd/teen-center/ahyd-team.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 

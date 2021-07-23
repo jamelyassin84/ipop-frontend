@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { Welcome } from 'src/app/components/Alert'
+import { Welcome } from 'src/app/modules/extras/Alert'
 import { stringify } from 'src/app/constants/Shortcuts'
 import { AuthService } from 'src/app/Services/Independent/auth.service'
 import { UserType } from 'src/app/Types/User.types'

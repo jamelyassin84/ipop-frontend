@@ -1,6 +1,6 @@
 import { LocalMigrationDataService } from './../../../../Services/home/demographic/migrations/local-migration-data.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Fire, HasApprovals } from 'src/app/components/Alert'
+import { Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 
 @Component({
 	selector: 'AddLocalMigrationData',

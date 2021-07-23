@@ -2,7 +2,7 @@ import { BaseService } from 'src/app/Services/base.service'
 import { TeenCenterDataService } from './../../../Services/home/ahyd/teen-center/teen-center-data.service'
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({

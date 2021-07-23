@@ -1,7 +1,7 @@
 import { BaseService } from './../../../../Services/base.service'
 import { MpcFdcPersonnelInchargeService } from './../../../../Services/home/rpfp/mpc-fdc/mpc-fdc-personnel-incharge.service'
 import { Component, Input, OnInit } from '@angular/core'
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
 

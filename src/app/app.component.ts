@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { Router, RouterOutlet } from '@angular/router'
 import { fader } from './route-animation'
 import { NetworkStatusAngularService } from 'network-status-angular'
-import { Alert, Fire } from './components/Alert'
+import { Alert, Fire } from './modules/extras/Alert'
 
 @Component({
 	selector: 'app-root',

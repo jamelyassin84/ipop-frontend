@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals } from 'src/app/components/Alert'
+import { Alert, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
 
 @Component({

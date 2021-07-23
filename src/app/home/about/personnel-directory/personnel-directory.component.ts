@@ -1,4 +1,4 @@
-import { Deleted, Fire } from 'src/app/components/Alert'
+import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { Component, OnInit } from '@angular/core'
 import { PersonnelDirectoryService } from 'src/app/Services/home/about/personnel-directory.service'
 import { ReloadService } from 'src/app/Services/reload.service'
