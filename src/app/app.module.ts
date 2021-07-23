@@ -1,14 +1,22 @@
-import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
+// Buil-in Modules
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms'
+
+// Third Party Modules
 import { IvyCarouselModule } from 'angular-responsive-carousel'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
 import { NgxDropzoneModule } from 'ngx-dropzone'
+
+// Custom Modules
+import { AdminModule } from './modules/admin/admin.module'
+import { ApprovalModule } from './modules/approvals/approval.module'
+import { HomeModule } from './modules/home/home.module'
+import { LogsModule } from './modules/logs/logs.module'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -36,14 +44,12 @@ import { OthersComponent } from './home/others/others.component'
 import { RecordUploadComponent } from './records/record-upload/record-upload.component'
 import { ViewAdminsComponent } from './admin/view-admins/view-admins.component'
 import { AddAdminComponent } from './admin/add-admin/add-admin.component'
-import { LogsComponent } from './logs/logs.component'
 import { RecordIndexComponent } from './records/record-index/record-index.component'
 import { AdminIndexComponent } from './admin/admin-index/admin-index.component'
 import { AritclesAndSlidersComponent } from './home/aritcles-and-sliders/aritcles-and-sliders.component'
 import { OrganizationalChartComponent } from './home/about/organizational-chart/organizational-chart.component'
 import { FootersComponent } from './components/shared/footers/footers.component'
 import { ApprovalsComponent } from './approvals/approvals.component'
-import { SmallComponent } from './components/modal/small/small.component'
 import { EditSliderImageComponent } from './home-components/articles-and-sliders/edit-slider-image/edit-slider-image.component'
 import { AddArticleComponent } from './home-components/articles-and-sliders/add-article/add-article.component'
 import { AddQuickLinksComponent } from './home-components/articles-and-sliders/add-quick-links/add-quick-links.component'
@@ -126,12 +132,8 @@ import { ApprovalTechnicalNotesComponent } from './approval-component/others/app
 import { IndexComponent } from './approval-component/index/index.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
-import { ButtonPreloaderComponent } from './extras/button-preloader/button-preloader.component'
-import { ImageViewerComponent } from './extras/image-viewer/image-viewer.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { NoInternetComponent } from './pages/no-internet/no-internet.component'
-import { DropdownComponent } from './components/dropdown/dropdown.component'
-import { AddressPickerComponent } from './components/address-picker/address-picker.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
 import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
@@ -139,6 +141,9 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { UploadedRecordsComponent } from './records/uploaded-records/uploaded-records.component'
 import { ForApprovalRecordsComponent } from './records/for-approval-records/for-approval-records.component'
+import { RecordsModule } from './modules/records/records.module'
+import { ApprovalsPersonnelDirectoryComponent } from './approval-component/about/personnel-directory/personnel-directory.component'
+import { ExtrasModule } from './modules/extras/extras.module'
 
 @NgModule({
 	declarations: [
@@ -168,14 +173,12 @@ import { ForApprovalRecordsComponent } from './records/for-approval-records/for-
 		RecordUploadComponent,
 		ViewAdminsComponent,
 		AddAdminComponent,
-		LogsComponent,
 		RecordIndexComponent,
 		AdminIndexComponent,
 		AritclesAndSlidersComponent,
 		OrganizationalChartComponent,
 		FootersComponent,
 		ApprovalsComponent,
-		SmallComponent,
 		EditSliderImageComponent,
 		AddArticleComponent,
 		AddQuickLinksComponent,
@@ -256,12 +259,8 @@ import { ForApprovalRecordsComponent } from './records/for-approval-records/for-
 		ApprovalTopPopulationComponent,
 		ApprovalTechnicalNotesComponent,
 		IndexComponent,
-		ButtonPreloaderComponent,
-		ImageViewerComponent,
 		NotFoundComponent,
 		NoInternetComponent,
-		DropdownComponent,
-		AddressPickerComponent,
 		QuickLinkComponent,
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
@@ -276,12 +275,20 @@ import { ForApprovalRecordsComponent } from './records/for-approval-records/for-
 		FormsModule,
 		IvyCarouselModule,
 		BrowserAnimationsModule,
+
 		ChartsModule,
 		GoogleChartsModule,
 		HttpClientModule,
 		NgbModule,
 		TextareaAutosizeModule,
 		NgxDropzoneModule,
+		// Custom Modules
+		AdminModule,
+		ApprovalModule,
+		HomeModule,
+		LogsModule,
+		RecordsModule,
+		ExtrasModule,
 	],
 	providers: [
 		{
@@ -291,5 +298,6 @@ import { ForApprovalRecordsComponent } from './records/for-approval-records/for-
 		},
 	],
 	bootstrap: [AppComponent],
+	exports: [],
 })
 export class AppModule {}

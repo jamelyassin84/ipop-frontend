@@ -26,11 +26,7 @@ export class ForApprovalRecordsComponent implements OnInit {
 
 	files: any = []
 	index() {
-		new BaseService(
-			this.service.http,
-			this.service.url,
-			`type=${this.type}`
-		)
+		new BaseService(this.service.http, 'for-approvals', `type=${this.type}`)
 			.index()
 			.subscribe((data) => {
 				this.files = data
