@@ -1,3 +1,4 @@
+import { SPMemberType } from './../../../Types/Services.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core'
 export class ApprovalSPMemberComponent implements OnInit {
 	constructor() {}
 
-	@Input() data: any = ''
+	@Input() data: SPMemberType | any = ''
 
 	ngOnInit(): void {}
 }

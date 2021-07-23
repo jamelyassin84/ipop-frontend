@@ -52,7 +52,7 @@
 
 <!-- Officials   -->
 <ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
-<SP-Member *ngIf="false" [data]="data"></SP-Member>
+<SP-Member *ngIf="type === 'App\\Models\\SBMember'" [data]="data"></SP-Member>
 <MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
 
 <BarangayOfficialApproval *ngIf="type === 'App\\Models\\BarangayOfficial'" [data]="data"></BarangayOfficialApproval>
