@@ -36,7 +36,7 @@
 <DeathStatistics *ngIf="type === 'App\\Models\\Statistics\\DeathStatistic'" [data]="data"></DeathStatistics>
 
 <!-- Migrations   -->
-<MigrationStatistic *ngIf="false" [data]="data"></MigrationStatistic>
+<MigrationStatistic *ngIf="type === 'App\\Models\\Statistics\\MigrationStatistic'" [data]="data"></MigrationStatistic>
 
 <!-- Marriages   -->
 
