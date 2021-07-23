@@ -108,9 +108,7 @@ import { ApprovalServicesOfferedComponent } from './approval-component/services/
 import { ApprovalBirthStatisticComponent } from './approval-component/demographics/births/approval-birth-statistic/approval-birth-statistic.component'
 import { ApprovalDeathStatisticComponent } from './approval-component/demographics/deaths/approval-death-statistic/approval-death-statistic.component'
 import { ApprovalMigrationStatisticComponent } from './approval-component/demographics/migrations/approval-migration-statistic/approval-migration-statistic.component'
-
 import { ApprovalPopulationProfileComponent } from './approval-component/population/approval-population-profile/approval-population-profile.component'
-
 import { ApprovalAgeDistributionComponent } from './approval-component/population/approval-age-distribution/approval-age-distribution.component'
 import { ApprovalArticleComponent } from './approval-component/news/approval-article/approval-article.component'
 import { ApprovalIncidenceComponent } from './approval-component/demographics/approval-incidence/approval-incidence.component'
@@ -118,7 +116,6 @@ import { ApprovalMonthChartComponent } from './approval-component/demographics/a
 import { ApprovalMPCFDCComponent } from './approval-component/rpfp/mpc-fdc/approval-mpcfdc/approval-mpcfdc.component'
 import { ApprovalMPCFDCPersonnelComponent } from './approval-component/officials/approval-mpcfdcpersonnel/approval-mpcfdcpersonnel.component'
 import { ApprovalMPCFDCTeamComponent } from './approval-component/officials/approval-mpcfdcteam/approval-mpcfdcteam.component'
-import { ApprovalMTCMMemberComponent } from './approval-component/officials/approval-mtcmmember/approval-mtcmmember.component'
 import { ApprovalMunicipalOfficialComponent } from './approval-component/officials/approval-municipal-official/approval-municipal-official.component'
 import { ApprovalPMOCComponent } from './approval-component/rpfp/pmoc/approval-pmoc/approval-pmoc.component'
 import { ApprovalPMOCTeamComponent } from './approval-component/officials/approval-pmocteam/approval-pmocteam.component'
@@ -131,7 +128,6 @@ import { ApprovalSBMPTCTeamComponent } from './approval-component/officials/appr
 import { ApprovalSliderComponent } from './approval-component/news/approval-slider/approval-slider.component'
 import { ApprovalTopPopulationComponent } from './approval-component/population/approval-top-population/approval-top-population.component'
 import { ApprovalTechnicalNotesComponent } from './approval-component/others/approval-technical-notes/approval-technical-notes.component'
-import { ApprovalPersonnelInchargeComponent } from './approval-component/officials/approval-personnel-incharge/approval-personnel-incharge.component'
 import { IndexComponent } from './approval-component/index/index.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { MainInterceptor } from './Interceptors/main.interceptor'
@@ -255,7 +251,6 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		ApprovalMPCFDCComponent,
 		ApprovalMPCFDCPersonnelComponent,
 		ApprovalMPCFDCTeamComponent,
-		ApprovalMTCMMemberComponent,
 		ApprovalMunicipalOfficialComponent,
 		ApprovalPMOCComponent,
 		ApprovalPMOCTeamComponent,
@@ -268,7 +263,6 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		ApprovalSliderComponent,
 		ApprovalTopPopulationComponent,
 		ApprovalTechnicalNotesComponent,
-		ApprovalPersonnelInchargeComponent,
 		IndexComponent,
 		ButtonPreloaderComponent,
 		ImageViewerComponent,
