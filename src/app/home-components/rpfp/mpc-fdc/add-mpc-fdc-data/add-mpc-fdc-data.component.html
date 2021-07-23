@@ -14,7 +14,7 @@
             <select [(ngModel)]="data.municipality" class="form-control">
 				<option selected disabled>Choose...</option>
 				<option *ngFor="let municipality of municipalities">
-					{{ municipality.name }}
+					{{ municipality.name | titlecase }}
 				</option>
 			</select>
         </div>

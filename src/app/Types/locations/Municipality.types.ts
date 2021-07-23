@@ -1,7 +1,7 @@
 export type MunicipalityType = {
-	psgc_code: String
-	name: String
-	region_code: String
-	province_code: String
-	code: String
+	psgc_code: string
+	name: string
+	region_code: string
+	province_code: string
+	code: string
 }

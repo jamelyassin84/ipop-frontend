@@ -73,7 +73,7 @@
 							*ngFor="let municipality of municipalities"
 							[value]="municipality.code"
 						>
-							{{ municipality.name }}
+							{{ municipality.name | titlecase }}
 						</option>
 					</select>
                     <div class="invalid-feedback">Municipality is required</div>
@@ -97,7 +97,7 @@
 							*ngFor="let municipality of municipalities"
 							[value]="municipality.code"
 						>
-							{{ municipality.name }}
+							{{ municipality.name | titlecase }}
 						</option>
 					</select>
                     <div class="invalid-feedback">Role is required</div>

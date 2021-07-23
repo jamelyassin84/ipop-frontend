@@ -9,7 +9,7 @@ export class BaseService {
 	constructor(
 		public http: HttpClient,
 		@Inject('url') public url: String = '',
-		@Inject('params') @Optional() public params: any
+		@Inject('params') @Optional() public params: String
 	) {}
 
 	headers() {
@@ -25,7 +25,7 @@ export class BaseService {
 		}
 	}
 
-	index(overload: any = '') {
+	index(overload: String = '') {
 		const url = `${environment.api}${this.url}?${this.params}${overload}`
 		return this.http.get<any>(url, this.headers())
 	}
@@ -35,12 +35,12 @@ export class BaseService {
 		return this.http.get<any>(url, this.headers())
 	}
 
-	create(data: any) {
+	create(data: Object) {
 		const url = `${environment.api}${this.url}`
 		return this.http.post<any>(url, data, this.headers())
 	}
 
-	update(id: Number, data: any) {
+	update(id: Number, data: Object) {
 		const url = `${environment.api}${this.url}/${id}`
 		return this.http.patch<any>(url, data, this.headers())
 	}

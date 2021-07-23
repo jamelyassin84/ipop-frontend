@@ -13,7 +13,7 @@
 				*ngFor="let municipality of municipalities"
 				[value]="municipality.code"
 			>
-				{{ municipality.name }}
+				{{ municipality.name | titlecase }}
 			</option>
 		</select>
     </div>
