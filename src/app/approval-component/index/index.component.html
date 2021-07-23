@@ -55,12 +55,12 @@
 
 <BarangayOfficialApproval *ngIf="type === 'App\\Models\\BarangayOfficial'" [data]="data"></BarangayOfficialApproval>
 
-<MPC-FDC-Personnel *ngIf="false" [data]="data"></MPC-FDC-Personnel>
+<MPC-FDC-Personnel *ngIf="type === 'App\\Models\\MPCFDCPersonnel'" [data]="data"></MPC-FDC-Personnel>
 <MPC-FDC-Team *ngIf="type === 'App\\Models\\MPCFDCTeam'" [data]="data"></MPC-FDC-Team>
-<PMOC-Team *ngIf="false" [data]="data"></PMOC-Team>
+<!-- <PMOC-Team *ngIf="false" [data]="data"></PMOC-Team> -->
 
 <Teen-Center-Focal-Persons *ngIf="type === 'App\\Models\\SBMPTCFocalPerson'" [data]="data"></Teen-Center-Focal-Persons>
-<Teen-Center-Personnel-Incharge *ngIf="false" [data]="data"></Teen-Center-Personnel-Incharge>
+<Teen-Center-Personnel-Incharge *ngIf="type === 'App\\Models\\SBMPTCPersonnel'" [data]="data"></Teen-Center-Personnel-Incharge>
 <Teen-Center-AHYD-Team *ngIf="type === 'App\\Models\\SBMPTCTeam'" [data]="data"></Teen-Center-AHYD-Team>
 <AHYD-Team *ngIf="false" [data]="data"></AHYD-Team>
 <PersonnelIncharge *ngIf="false" [data]="data"></PersonnelIncharge>
