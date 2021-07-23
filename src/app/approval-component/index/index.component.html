@@ -51,7 +51,7 @@
 <Technical-Notes *ngIf="type === 'App\\Models\\TechnicalNotes'" [data]="data"></Technical-Notes>
 
 <!-- Officials   -->
-<ProvincialOfficials *ngIf="false" [data]="data"></ProvincialOfficials>
+<ProvincialOfficials *ngIf="type === 'App\\Models\\ProvincialOfficial'" [data]="data"></ProvincialOfficials>
 <SP-Member *ngIf="type === 'App\\Models\\SBMember'" [data]="data"></SP-Member>
 <MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
 

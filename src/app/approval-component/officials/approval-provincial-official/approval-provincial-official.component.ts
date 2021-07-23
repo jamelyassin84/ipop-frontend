@@ -1,3 +1,4 @@
+import { ProvincialOfficialType } from './../../../Types/officials/ProvincialOfficials.types'
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core'
 export class ApprovalProvincialOfficialComponent implements OnInit {
 	constructor() {}
 
-	@Input() data: any = ''
+	@Input() data: ProvincialOfficialType | any = {}
 
 	ngOnInit(): void {}
 }
