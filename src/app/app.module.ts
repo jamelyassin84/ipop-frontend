@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
+import { NgxDropzoneModule } from 'ngx-dropzone'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -141,6 +142,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { QuickLinkComponent } from './approval-component/news/quick-link/quick-link.component'
 import { AwardMediaApprovalsComponent } from './approval-component/about/award-media-approvals/award-media-approvals.component'
 import { ApprovalBarangayOfficialsComponent } from './approval-component/officials/approval-barangay-officials/approval-barangay-officials.component'
+import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 
 @NgModule({
 	declarations: [
@@ -274,6 +276,7 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
+		AddFilesComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -286,6 +289,7 @@ import { ApprovalBarangayOfficialsComponent } from './approval-component/officia
 		HttpClientModule,
 		NgbModule,
 		TextareaAutosizeModule,
+		NgxDropzoneModule,
 	],
 	providers: [
 		{

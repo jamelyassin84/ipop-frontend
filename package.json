@@ -27,6 +27,7 @@
     "dayjs": "^1.10.6",
     "network-status-angular": "^1.0.4",
     "ng2-charts": "^2.2.3",
+    "ngx-dropzone": "^3.0.0",
     "ngx-textarea-autosize": "^2.0.3",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.0.18",

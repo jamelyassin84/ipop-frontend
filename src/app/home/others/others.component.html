@@ -1,8 +1,15 @@
-<button class="btn btn-dark">
-	<i class="ti-pencil-alt"></i>
-	Add a File(s)
-</button>
+<ng-template #addFiles>
+    <AddOtherFiles></AddOtherFiles>
+</ng-template>
 
+<div class="d-flex" style="
+		justify-content: flex-end;
+		margin-bottom: -2rem;
+		position: relative;
+		z-index: 1;
+	">
+    <Modal size="md" title="Add File(s)" btnTitle="Add file(s)" btnClass="btn btn-sm btn-dark mr-2" [template]="addFiles" icon="ti-plus"></Modal>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -23,7 +30,6 @@
             <td>11/14/1994</td>
             <td>
                 <button class="btn btn-dark mR-10">Edit</button>
-                <button class="btn btn-outline-dark">Delete</button>
             </td>
         </tr>
     </tbody>

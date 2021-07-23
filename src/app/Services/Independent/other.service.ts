@@ -5,8 +5,8 @@ import { BaseService } from '../base.service'
 @Injectable({
 	providedIn: 'root',
 })
-export class FileUploadService extends BaseService {
+export class OthersService extends BaseService {
 	constructor(private _http: HttpClient) {
-		super(_http, 'uploads', '')
+		super(_http, 'others', '')
 	}
 }

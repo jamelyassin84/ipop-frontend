@@ -21,6 +21,7 @@ export class BaseService {
 			headers: new HttpHeaders({
 				Accept: 'application/json',
 				Authorization: 'Bearer ' + token,
+				'Content-Type': [],
 			}),
 		}
 	}

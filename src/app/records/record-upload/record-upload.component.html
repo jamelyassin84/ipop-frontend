@@ -1,45 +1,49 @@
 <div class="row mT-50">
     <div class="col-md-4">
         <label for="type">Select a target path for your file upload</label>
-        <select id="type" class="form-control">
+        <select (change)="setType($event)" id="type" class="form-control">
+			<option value="">Choose..</option>
 			<option *ngFor="let type of types">{{ type }}</option>
 		</select>
     </div>
 </div>
 <br />
 <div class="card p-40">
-    <div class="upload-container d-flex aic jcc text-center">
-        <div>
-            <i class="ti-upload p-20 text-info" style="font-size: 2rem"></i>
-            <h1>Drag & Drop</h1>
-            <span> your .xls/.xlx file here or click to upload</span>
-        </div>
-    </div>
+    <ngx-dropzone [multiple]="false" (change)="onSelect($event)" class="upload-container d-flex aic jcc text-center" style="flex-direction: column">
+        <i class="ti-upload p-20 text-info" style="font-size: 2rem"></i>
+        <h1>Drag & Drop</h1>
+        <span> your .xls/.xlx file here or click to upload</span>
+    </ngx-dropzone>
 </div>
 <br />
-<table class="table bg-white">
-    <thead class="thead-dark">
-        <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Last Modified</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-
-<div class="progress">
-    <div class="progress-bar" [style.width]="1 + '%'" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="card" *ngIf="file.name !== undefined">
+    <table class="table bg-white">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ file.name }}</td>
+                <td>{{ file.type }}</td>
+                <td>{{ file.size | number }} KB</td>
+                <td>
+                    <button (click)="remove()" class="btn btn-sm btn-danger">
+						Remove
+					</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<br />
-
-<span>
-	Uploading please wait...
-	<span>1%</span>
-</span>
 <br />
 <div class="d-flex aic jcc">
-    <button class="btn btn-sm btn-outliin-dark mR-10">Clear files</button>
-    <button class="btn btn-sm btn-dark">Upload to database</button>
+    <button [disabled]="isLoading" (click)="save()" class="btn btn-dark w-25">
+		<span *ngIf="!isLoading">Upload to database</span>
+		<Loader *ngIf="isLoading"></Loader>
+	</button>
 </div>

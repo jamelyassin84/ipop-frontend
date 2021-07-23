@@ -10,7 +10,6 @@ reactive form validation
 polish chart
 polish approval ui
 approval approve or reject on bulk
-
 auth guard
 route state ngrx
 route active sidebar
@@ -24,6 +23,8 @@ fetch first data
 tr align items center
 cancel time out sa approval
 copy avatar style sa hr- cloud
+delete requests
+transfer to different angular module
 
 animations
 remove all errors
@@ -32,10 +33,3 @@ Edit All (Optional)
 kuhaon ang data.data
 service worker (Optional)
 
-backend bug
-How to update Amin roles
-incidence is showing
-charts not approvable Important
-Diin gakadto mag delete request
-Service Offered Gapakita wala pa na approve
-personnel directory does not add on approvals
