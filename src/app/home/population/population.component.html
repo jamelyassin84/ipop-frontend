@@ -109,8 +109,8 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-white">
-                        <div class="card-title h5 d-flex">
-                            <span>Population Profile</span>
+                        <div class="card-title h5 d-flex aic">
+                            <span>Population Profile </span>
                             <div class="ml-auto">
                                 <DropDown [buttons]="dropdown"></DropDown>
                                 <ng-template #dropdown>
@@ -121,134 +121,138 @@
                         <hr />
                         <div class="card-body">
                             <div class="w-100 row">
-                                <div class="col-md-6 mb-1 bb">
-                                    <h5 class="text-secondary mb-2 h6 fw-300">
+                                <div class="col-md-6 mb-2 bb pt-1">
+                                    <h5 class="text-secondary mb-2 h5 fw-300">
                                         Coverage
                                     </h5>
-                                    <span class="fw-400 text-danger h4">
-									<span
-										class="mr-2"
-										*ngIf="location.barangay !== null"
-									>
-										{{ location.barangay }}
-									</span>
-                                    <span class="mr-2" *ngIf="location.municipality !== null">
-										{{ location.municipality }}
-									</span>
-                                    <span class="mr-2" *ngIf="
-											location.barangay === null &&
-											location.municipality === null
-										">
-										Province
-									</span>
-                                    <span class="mr-2">
-										{{ location.year }}
-									</span>
-                                    </span>
+                                    <div class="fw-600 h6">
+                                        <span class="fw-600 h6">
+										<span
+											class="mr-2"
+											*ngIf="location.barangay !== null"
+										>
+											{{ location.barangay }}
+										</span>
+                                        <span class="mr-2" *ngIf="
+												location.municipality !== null
+											">
+											{{ location.municipality }}
+										</span>
+                                        <span class="mr-2" *ngIf="
+												location.barangay === null &&
+												location.municipality === null
+											">
+											42 Municipalities + 1 Component City
+										</span>
+                                        <span class="mr-2">
+											{{ location.year }}
+										</span>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total No. of Barangays
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.barangays || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.barangays || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total Land Area
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.land_area || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.land_area || 0 | number }} sq.km
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total Household Population
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.household_population || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.household_population || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
-                                        Males
+                                        Male
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.males || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.males || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
-                                        Females
+                                        Female
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.females || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.females || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
-                                        Sex Ratio
+                                        Sex Ratio (males:females)
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.sex_ratio || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.sex_ratio || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Median Age
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.median_age || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.median_age || 0 | number }} years old
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         No. of Households
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.households || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.households || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Average Household Size
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.average_household_size || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.average_household_size || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Population Density
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.density || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.density || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Age Dependency Ratio
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.age_dependency_ratio || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.age_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Child Dependency Ratio
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.child_dependency_ratio || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.child_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-1 bb">
+                                <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Old-Age Dependency Ratio
                                     </h5>
-                                    <div class="fw-400 c-red-700 h4">
-                                        {{ populationProfile.old_age_dependency_ratio || '....' }}
+                                    <div class="fw-600 h4">
+                                        {{ populationProfile.old_age_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
                             </div>
