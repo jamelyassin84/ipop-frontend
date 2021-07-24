@@ -131,12 +131,15 @@
 											class="mr-2"
 											*ngIf="location.barangay !== null"
 										>
-											{{ location.barangay }}
+											{{ location.barangay | titlecase }}
 										</span>
                                         <span class="mr-2" *ngIf="
 												location.municipality !== null
 											">
-											{{ location.municipality }}
+											{{
+												location.municipality
+													| titlecase
+											}}
 										</span>
                                         <span class="mr-2" *ngIf="
 												location.barangay === null &&
@@ -163,7 +166,8 @@
                                         Total Land Area
                                     </h5>
                                     <div class="fw-600 h4">
-                                        {{ populationProfile.land_area || 0 | number }} sq.km
+                                        {{ populationProfile.land_area || 0 | number }}
+                                        <small>sq.km</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 bb pt-1">
@@ -203,7 +207,8 @@
                                         Median Age
                                     </h5>
                                     <div class="fw-600 h4">
-                                        {{ populationProfile.median_age || 0 | number }} years old
+                                        {{ populationProfile.median_age || 0 | number }}
+                                        <small>year(s) old</small>
                                     </div>
                                 </div>
 
@@ -295,10 +300,11 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th class="ppbm border" rowspan="2">
+                                    <th rowspan="2">#</th>
+                                    <th class="ppbm border text-left" rowspan="2">
                                         Muncipality
                                     </th>
                                     <th class="ppbm border" rowspan="2">
@@ -329,7 +335,44 @@
                                     <th>Total</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                <tr *ngFor="
+									let data of populationByMuncipality;
+									let i = index
+								">
+                                    <td>{{ i + 1 }}</td>
+                                    <td class="border">
+                                        {{ data.municipality | titlecase }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.barangays | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.land_area | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.density | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.males | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.females | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ total(data.males, data.females) | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.sex_ratio | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.household_population | number }}
+                                    </td>
+                                    <td class="text-center border">
+                                        {{ data.average_household_size | number }}
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

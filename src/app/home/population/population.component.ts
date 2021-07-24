@@ -65,6 +65,7 @@ export class PopulationComponent implements OnInit {
 		this.location = event
 		this.getPopulationPyramid()
 		this.getPopulationData()
+		this.getPopulationByMuncipality()
 	}
 
 	populationPyramid: any = DummyData
@@ -81,21 +82,26 @@ export class PopulationComponent implements OnInit {
 				const male = data[0]['data']['male']
 				const female = data[0]['data']['female']
 				for (let key in female) {
-					let newText = ''
-					if (key == 'below_1_year_old') {
-						newText = 'Below 1 Year Old'
+					if (key !== 'below_1_year_old') {
+						let newText = ''
+						if (key == 'eighty_and_above') {
+							newText = '80 and above'
+						}
+						ageDistribution.push([
+							key == 'below_1_year_old' ||
+							key == 'eighty_and_above'
+								? newText
+								: key,
+							-Math.abs(parseInt(male[key])),
+							parseInt(female[key]),
+						])
 					}
-					if (key == 'eighty_and_above') {
-						newText = '80 and above'
-					}
-					ageDistribution.push([
-						key == 'below_1_year_old' || key == 'eighty_and_above'
-							? newText
-							: key,
-						-Math.abs(parseInt(male[key])),
-						parseInt(female[key]),
-					])
 				}
+				ageDistribution.push([
+					'Below 1 Year Old',
+					-Math.abs(parseInt(male['below_1_year_old'])),
+					female['below_1_year_old'],
+				])
 			} else {
 				ageDistribution = DummyData
 			}
@@ -116,5 +122,22 @@ export class PopulationComponent implements OnInit {
 				this.populationProfile = populationProfile[0]
 			}
 		})
+	}
+
+	populationByMuncipality: any[] = []
+	getPopulationByMuncipality() {
+		new BaseService(
+			this.topPopulatedService.http,
+			'statistic-profiles/by-municipality',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data: any) => {
+				this.populationByMuncipality = data
+			})
+	}
+
+	total(x: string | any, y: string | any) {
+		return parseInt(x) + parseInt(y)
 	}
 }

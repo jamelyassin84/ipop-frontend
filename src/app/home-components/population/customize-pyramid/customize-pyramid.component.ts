@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
+import { BaseService } from 'src/app/Services/base.service'
 import { PopulationPyramidService } from 'src/app/Services/home/population/population-pyramid.service'
 
 @Component({
