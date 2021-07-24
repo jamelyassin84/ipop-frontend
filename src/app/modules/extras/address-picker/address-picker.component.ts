@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { years } from 'src/app/constants/AppConstants'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
 import { BarangayOfficialType } from 'src/app/Types/officials/BarangayOfficials.types'
@@ -14,9 +15,6 @@ export class AddressPickerComponent implements OnInit {
 	@Output() onEmit = new EventEmitter()
 
 	ngOnInit(): void {
-		for (let year = 2015; year < 2101; year++) {
-			this.years.push(year)
-		}
 		this.getMuncipalities()
 		this.currentData = {
 			municipality: null,
@@ -54,7 +52,7 @@ export class AddressPickerComponent implements OnInit {
 		this.currentData.barangay = event.target.value
 	}
 
-	years: number[] = []
+	years: number[] = years()
 	setYear(event: any) {
 		this.currentData.year = event.target.value
 	}
