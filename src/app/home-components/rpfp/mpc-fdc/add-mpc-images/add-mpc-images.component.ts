@@ -14,9 +14,7 @@ export class AddMpcImagesComponent implements OnInit {
 	photos: any[] = []
 	@Input() data: any = {}
 
-	ngOnInit(): void {
-		console.log(this.data)
-	}
+	ngOnInit(): void {}
 
 	trigger() {
 		document.getElementById('file')?.click()

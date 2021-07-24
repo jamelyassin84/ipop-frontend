@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
 			(data: Login) => {
 				localStorage.setItem('token', data.token)
 				const user: UserType = data.user
-				console.log(user.roles[0].name)
 				localStorage.setItem('role', user.roles[0].name)
 				localStorage.setItem(
 					'avatar',

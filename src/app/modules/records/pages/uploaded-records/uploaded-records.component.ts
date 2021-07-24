@@ -34,7 +34,6 @@ export class UploadedRecordsComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.files = data
-				console.log(data)
 			})
 	}
 

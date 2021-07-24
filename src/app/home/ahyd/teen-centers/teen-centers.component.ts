@@ -61,7 +61,6 @@ export class TeenCentersComponent implements OnInit {
 			.index()
 			.subscribe((data: any) => {
 				this.teenCenters = data
-				console.log(data)
 			})
 	}
 
@@ -99,7 +98,6 @@ export class TeenCentersComponent implements OnInit {
 
 	currentImages: any = []
 	transformImages(photos: any) {
-		console.log(photos)
 		this.currentImages = []
 		photos.forEach((photo: any) => {
 			this.currentImages.push(photo.file.uri)

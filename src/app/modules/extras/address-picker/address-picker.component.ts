@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { years } from 'src/app/constants/AppConstants'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
@@ -11,7 +11,7 @@ import { BarangayOfficialType } from 'src/app/Types/officials/BarangayOfficials.
 })
 export class AddressPickerComponent implements OnInit {
 	constructor(private location: LocationService) {}
-
+	@Input() showBarangay = true
 	@Output() onEmit = new EventEmitter()
 
 	ngOnInit(): void {

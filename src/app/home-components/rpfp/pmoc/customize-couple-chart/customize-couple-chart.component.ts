@@ -53,7 +53,6 @@ export class CustomizeCoupleChartComponent implements OnInit {
 	isLoading: boolean = false
 	save() {
 		this.data.months = this.data.males
-		console.log('data ni', this.data)
 		Fire(
 			'Save Changes?',
 			'Are you sure you want to add this data?',

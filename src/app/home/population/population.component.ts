@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { getPercent } from 'src/app/constants/Shortcuts'
-import { Fire, pop } from 'src/app/modules/extras/Alert'
+import { Deleted, Fire, pop } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
+import { AgeDistributionAndAgeDependecyRatioService } from 'src/app/Services/home/population/age-distribution-and-age-dependecy-ratio.service'
 import { TopPopulatedService } from 'src/app/Services/home/population/top-populated.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { drawChart } from './Config'
@@ -18,7 +19,8 @@ export class PopulationComponent implements OnInit {
 	constructor(
 		private topPopulatedService: TopPopulatedService,
 		private component: ReloadService,
-		private _http: HttpClient
+		private _http: HttpClient,
+		private adaadr: AgeDistributionAndAgeDependecyRatioService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -67,6 +69,8 @@ export class PopulationComponent implements OnInit {
 		this.getPopulationPyramid()
 		this.getPopulationData()
 		this.getPopulationByMuncipality()
+		this.getAgeDistributionAndAgeDependecyRatio()
+		this.getAgeDistributionAndAgeDependecyRatioByMunicipality()
 	}
 
 	populationPyramid: any = DummyData
@@ -237,7 +241,44 @@ export class PopulationComponent implements OnInit {
 			})
 	}
 
+	AgeDistributionAndAgeDependecyRatio: any = []
+	getAgeDistributionAndAgeDependecyRatio() {
+		this.adaadr.index(`year=${this.location['year']}`).subscribe((data) => {
+			this.AgeDistributionAndAgeDependecyRatio = data
+		})
+	}
+
+	AgeDistributionAndAgeDependecyRatioByMunicipality: any = []
+	getAgeDistributionAndAgeDependecyRatioByMunicipality() {
+		new BaseService(
+			this.adaadr.http,
+			`${this.adaadr.url}/by-municipality`,
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.AgeDistributionAndAgeDependecyRatioByMunicipality = data
+			})
+	}
+
+	removeDependency(id: number) {
+		Fire(
+			'Remove Data?',
+			'Are you sure you want to permanently remove this data?',
+			'info',
+			() => {
+				this.adaadr.destroy(id).subscribe(() => {
+					Deleted()
+				})
+			}
+		)
+	}
+
 	total(x: string | any, y: string | any) {
 		return parseFloat(x) + parseFloat(y)
+	}
+
+	getPercentage(value: number, basis: number) {
+		return (value * 100) / basis
 	}
 }

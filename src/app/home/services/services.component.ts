@@ -40,7 +40,6 @@ export class ServicesComponent implements OnInit {
 			pop()
 			this.service.show(params['id']).subscribe((service: any) => {
 				this.serviceOffered = service
-				console.log(service)
 			})
 		})
 	}

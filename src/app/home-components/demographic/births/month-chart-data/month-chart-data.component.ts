@@ -10,9 +10,7 @@ import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 export class MonthChartDataComponent implements OnInit {
 	constructor(private service: MonthChartService) {}
 
-	ngOnInit(): void {
-		console.log(this.location)
-	}
+	ngOnInit(): void {}
 
 	tabs: any = {
 		males: true,

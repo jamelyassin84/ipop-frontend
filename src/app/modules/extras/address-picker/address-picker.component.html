@@ -9,7 +9,7 @@
             <i class="ti-direction-alt"></i> Municipality
         </a>
     </li>
-    <li class="nav-item">
+    <li *ngIf="showBarangay" class="nav-item">
         <a (click)="changeTab('barangay')" role="button" class="nav-link text-muted" [class.active]="tabs.barangay === true">
             <i class="ti-direction-alt"></i> Barangay
         </a>

@@ -71,7 +71,6 @@ export class AddAdminComponent implements OnInit {
 
 	isLoading = false
 	register() {
-		console.log(this.data)
 		for (let key in this.data) {
 			if (this.data[key] === '') {
 				ValidationError()

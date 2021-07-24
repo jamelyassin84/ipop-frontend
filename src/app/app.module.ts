@@ -108,7 +108,8 @@ import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { AuthGuard } from './guards/auth.guard'
-import { ContentWidthDirective } from './directives/content-width.directive'
+import { ContentWidthDirective } from './directives/content-width.directive';
+import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component'
 
 // Directives
 
@@ -196,6 +197,7 @@ import { ContentWidthDirective } from './directives/content-width.directive'
 		ViewAdminsComponent,
 		UnauthorizedComponent,
 		ContentWidthDirective,
+  AddAgeDistributionAndDependencyRatioComponent,
 	],
 	imports: [
 		BrowserModule,
