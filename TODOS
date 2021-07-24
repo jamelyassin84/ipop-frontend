@@ -1,12 +1,11 @@
 change pass
 
-Test normal user ( Directive )
-fix un authenticated
 user UI
 fix nav 
+fix un authenticated
+listen theme preference sa settings ka windows
 File Uploads CRUD   
 
-listen theme preference sa settings ka windows
 auth guard pra sa bulk records
 chart approvals
 quick links kitaon wla ga sulod sa approval
@@ -26,6 +25,8 @@ polish design white space margin padding and colors and allignments for user per
 fetch first data
 tr align items center
 logout route
+user ni  teddy
+
 
 animations
 remove all errors
