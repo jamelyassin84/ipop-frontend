@@ -4,3 +4,7 @@ export function parse(data: any) {
 export function stringify(data: any) {
 	return JSON.stringify(data)
 }
+
+export function getPercent(value: number, basis: number) {
+	return (value * 100) / basis
+}

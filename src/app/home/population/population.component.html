@@ -275,19 +275,66 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Age Group</th>
-                                    <th>Male</th>
-                                    <th>%</th>
-                                    <th>Female</th>
-                                    <th>%</th>
-                                    <th>Total</th>
-                                    <th>%</th>
+                                    <th class="ppbm border">Age Group</th>
+                                    <th class="ppbm border">Male</th>
+                                    <th class="ppbm border">%</th>
+                                    <th class="ppbm border">Female</th>
+                                    <th class="ppbm border">%</th>
+                                    <th class="ppbm border">Total</th>
+                                    <th class="ppbm border">%</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                <tr *ngFor="let item of populationbyAgeGroupandSex">
+                                    <td class="ppbm border">
+                                        {{ item.ageGroup }}
+                                    </td>
+                                    <td class="ppbm border">
+                                        {{ item.male | number }}
+                                    </td>
+                                    <td class="ppbm border">
+                                        {{ item.percent_male | number: '1.2-2' }}
+                                    </td>
+                                    <td class="ppbm border">
+                                        {{ item.female | number }}
+                                    </td>
+                                    <td class="ppbm border">
+                                        {{ item.percent_female | number: '1.2-2' }}
+                                    </td>
+                                    <td class="border ppbm">
+                                        {{ item.total | number }}
+                                    </td>
+                                    <td class="ppbm border">
+                                        {{ item.percent_total | number: '1.2-2' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.ageGroup }}
+                                    </td>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.male | number }}
+                                    </td>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.percent_male | number: '1.2-2' }}
+                                    </td>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.female | number }}
+                                    </td>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.percent_female | number: '1.2-2' }}
+                                    </td>
+                                    <td class="border ppbm fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.total | number }}
+                                    </td>
+                                    <td class="ppbm border fw-900">
+                                        {{ populationbyAgeGroupandSexTotal.percent_total | number: '1.2-2' }}
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
