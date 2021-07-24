@@ -1,6 +1,7 @@
 export const DummyData = [
-	['Age', 'Female', 'Male'],
+	['Age', 'Male', 'Female'],
 	['Below 1 Year Old', -0, 0],
+	['0-4', -0, 0],
 	['5-9', -0, 0],
 	['10-14', -0, 0],
 	['15-19', -0, 0],

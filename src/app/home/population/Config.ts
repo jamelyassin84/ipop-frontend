@@ -10,7 +10,7 @@ export const ChartOptions = {
 			align: 'center',
 			bold: true,
 		},
-		colors: ['#D1546F', '#3087C1'],
+		colors: ['#3087C1', '#D1546F'],
 		chartArea: { backgroundColor: 'transparent', height: '100%', top: '%' },
 		isStacked: true,
 		hAxis: {

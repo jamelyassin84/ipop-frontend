@@ -75,7 +75,7 @@ export class PopulationComponent implements OnInit {
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any) => {
-			let ageDistribution: any = [['Age', 'Female', 'Male']]
+			let ageDistribution: any = [['Age', 'Male', 'Female']]
 			if (data.length !== 0) {
 				data = data.reverse()
 				const male = data[0]['data']['male']
@@ -86,14 +86,14 @@ export class PopulationComponent implements OnInit {
 						newText = 'Below 1 Year Old'
 					}
 					if (key == 'eighty_and_above') {
-						newText = '80 and Above'
+						newText = '80 and above'
 					}
 					ageDistribution.push([
 						key == 'below_1_year_old' || key == 'eighty_and_above'
 							? newText
 							: key,
-						-Math.abs(parseInt(female[key])),
-						parseInt(male[key]),
+						-Math.abs(parseInt(male[key])),
+						parseInt(female[key]),
 					])
 				}
 			} else {
