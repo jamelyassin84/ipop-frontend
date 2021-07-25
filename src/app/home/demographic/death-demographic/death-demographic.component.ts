@@ -1,5 +1,5 @@
 import { LocalDeathDataService } from './../../../Services/home/demographic/deaths/local-death-data.service'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { SummaryService } from 'src/app/Services/home/demographic/summary.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { CrudeDeathRateIncidenceChartConfig } from '../CrudeDeathRate'
@@ -7,6 +7,7 @@ import { MonthChartConfig } from '../MonthChart'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { BaseService } from 'src/app/Services/base.service'
 import { Subscription } from 'rxjs'
+import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
 
 @Component({
 	selector: 'app-death-demographic',
@@ -14,6 +15,8 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./death-demographic.component.scss'],
 })
 export class DeathDemographicComponent implements OnInit {
+	@ViewChild(PopulationPyramidComponent) pyramid: any
+
 	constructor(
 		private component: ReloadService,
 		private summary: SummaryService,
@@ -55,6 +58,7 @@ export class DeathDemographicComponent implements OnInit {
 		this.location = event
 		this.getChart()
 		this.getLocalData()
+		this.pyramid.ngOnint()
 	}
 
 	getChart() {

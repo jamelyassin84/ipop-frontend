@@ -108,7 +108,16 @@
 
 	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-	<div class="row">
+	<PyramidChart-and-AgeGroup
+		[location]="location"
+		type="Death"
+		pyramidtitle="Death Pyramid"
+		ageGroupTitle="Deaths by Age Group and Sex"
+		[colors]="['black', '#CD1125']"
+		ageGroupColor="#CD1125"
+	></PyramidChart-and-AgeGroup>
+
+	<div class="row mt-3">
 		<div class="col-md-8 m-0">
 			<div class="card">
 				<div class="card-header bg-white d-flex">

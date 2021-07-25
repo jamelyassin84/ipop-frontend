@@ -15,6 +15,7 @@ export class PopulationPyramidComponent implements OnInit {
 
 	@Input() location: any = {}
 	@Input() type: string = ''
+	@Input() ageGroupColor: string = ''
 	@Input() pyramidtitle: string = 'Pyramid'
 	@Input() ageGroupTitle: string = 'Age Group and Sex'
 	@Input() colors: Array<string> = []
@@ -151,7 +152,7 @@ export class PopulationPyramidComponent implements OnInit {
 		this.populationbyAgeGroupandSexTotal.percent_male = 0
 		this.populationbyAgeGroupandSexTotal.percent_female = 0
 		this.populationbyAgeGroupandSexTotal.percent_total = 0
-		const disregards = ['ageGroup', 'male', 'female']
+		const disregards = ['ageGroup', 'male', 'female', 'total']
 		for (let index of temp) {
 			for (let key in index) {
 				if (!disregards.includes(key)) {
