@@ -55,6 +55,17 @@
             <input [(ngModel)]="data.old_age_dependency_ratio" type="number" class="form-control" />
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <div class="alert alert-primary">
+                Enter the URL on the field below the population profile saved on your online storage ( eg., Google Drive )
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label for="">Downloadable Link</label>
+            <textarea autosize [(ngModel)]="data.dowloadable_link" class="form-control"></textarea>
+        </div>
+    </div>
 </div>
 
 <hr />

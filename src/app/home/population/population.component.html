@@ -267,350 +267,422 @@
                                         {{ populationProfile.old_age_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <div *ngIf="
+									populationProfile.dowloadable_link !== null
+								" class="col-md-12 mt-2">
+                                    <label for="">Download this data Population Profile on
+									this link</label
+								>
+								<a
+									target="_blank"
+									[href]="populationProfile.dowloadable_link"
+									>{{ populationProfile.dowloadable_link }}</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-12 mt-3">
-                <div class="card">
-                    <div class="card-header bg-white d-flex aic">
-                        <div class="card-title h5 mr-auto mt-2">
-                            Population by Age Group and Sex
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="ppbm border">Age Group</th>
-                                    <th class="ppbm border">Male</th>
-                                    <th class="ppbm border">%</th>
-                                    <th class="ppbm border">Female</th>
-                                    <th class="ppbm border">%</th>
-                                    <th class="ppbm border">Total</th>
-                                    <th class="ppbm border">%</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of populationbyAgeGroupandSex">
-                                    <td class="ppbm border">
-                                        {{ item.ageGroup }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.male | number }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.percent_male | number: '1.2-2' }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.female | number }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.percent_female | number: '1.2-2' }}
-                                    </td>
-                                    <td class="border ppbm">
-                                        {{ item.total | number }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.percent_total | number: '1.2-2' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.ageGroup }}
-                                    </td>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.male | number }}
-                                    </td>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.percent_male | number: '1.2-2' }}
-                                    </td>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.female | number }}
-                                    </td>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.percent_female | number: '1.2-2' }}
-                                    </td>
-                                    <td class="border ppbm fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.total | number }}
-                                    </td>
-                                    <td class="ppbm border fw-900">
-                                        {{ populationbyAgeGroupandSexTotal.percent_total | number: '1.2-2' }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+		<div class="col-md-12 mt-3">
+			<div class="card">
+				<div class="card-header bg-white d-flex aic">
+					<div class="card-title h5 mr-auto mt-2">
+						Population by Age Group and Sex
+					</div>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="ppbm border">Age Group</th>
+								<th class="ppbm border">Male</th>
+								<th class="ppbm border">%</th>
+								<th class="ppbm border">Female</th>
+								<th class="ppbm border">%</th>
+								<th class="ppbm border">Total</th>
+								<th class="ppbm border">%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of populationbyAgeGroupandSex">
+								<td class="ppbm border">
+									{{ item.ageGroup }}
+								</td>
+								<td class="ppbm border">
+									{{ item.male | number }}
+								</td>
+								<td class="ppbm border">
+									{{ item.percent_male | number: '1.2-2' }}
+								</td>
+								<td class="ppbm border">
+									{{ item.female | number }}
+								</td>
+								<td class="ppbm border">
+									{{ item.percent_female | number: '1.2-2' }}
+								</td>
+								<td class="border ppbm">
+									{{ item.total | number }}
+								</td>
+								<td class="ppbm border">
+									{{ item.percent_total | number: '1.2-2' }}
+								</td>
+							</tr>
+							<tr>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.ageGroup
+									}}
+								</td>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.male
+											| number
+									}}
+								</td>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.percent_male
+											| number: '1.2-2'
+									}}
+								</td>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.female
+											| number
+									}}
+								</td>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.percent_female
+											| number: '1.2-2'
+									}}
+								</td>
+								<td class="border ppbm fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.total
+											| number
+									}}
+								</td>
+								<td class="ppbm border fw-900">
+									{{
+										populationbyAgeGroupandSexTotal.percent_total
+											| number: '1.2-2'
+									}}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-12 mt-3">
-                <div class="card">
-                    <div class="card-header bg-white d-flex aic">
-                        <div class="card-title h5 mr-auto mt-2">
-                            Population Profile By Municipality
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th rowspan="2">#</th>
-                                    <th class="ppbm border text-left" rowspan="2">
-                                        Muncipality
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        No of Barangays
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        Land Area (sq.km)
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        Population Density (person/sq.km)
-                                    </th>
-                                    <th colspan="3" class="text-center">
-                                        Population
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        Sex Ratio
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        No. of HHs
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        Ave HH Size
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th class="ppbm border">Male</th>
-                                    <th class="ppbm border">Female</th>
-                                    <th class="ppbm border">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="
+		<div class="col-md-12 mt-3">
+			<div class="card">
+				<div class="card-header bg-white d-flex aic">
+					<div class="card-title h5 mr-auto mt-2">
+						Population Profile By Municipality
+					</div>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th rowspan="2">#</th>
+								<th class="ppbm border text-left" rowspan="2">
+									Muncipality
+								</th>
+								<th class="ppbm border" rowspan="2">
+									No of Barangays
+								</th>
+								<th class="ppbm border" rowspan="2">
+									Land Area (sq.km)
+								</th>
+								<th class="ppbm border" rowspan="2">
+									Population Density (person/sq.km)
+								</th>
+								<th colspan="3" class="text-center">
+									Population
+								</th>
+								<th class="ppbm border" rowspan="2">
+									Sex Ratio
+								</th>
+								<th class="ppbm border" rowspan="2">
+									No. of HHs
+								</th>
+								<th class="ppbm border" rowspan="2">
+									Ave HH Size
+								</th>
+							</tr>
+							<tr>
+								<th class="ppbm border">Male</th>
+								<th class="ppbm border">Female</th>
+								<th class="ppbm border">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								*ngFor="
 									let data of populationByMuncipality;
 									let i = index
-								">
-                                    <td>{{ i + 1 }}</td>
-                                    <td class="border">
-                                        {{ data.municipality | titlecase }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.barangays | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.land_area | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.density | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.males | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.females | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ total(data.males, data.females) | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.sex_ratio | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.household_population | number }}
-                                    </td>
-                                    <td class="text-center border">
-                                        {{ data.average_household_size | number }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+								"
+							>
+								<td>{{ i + 1 }}</td>
+								<td class="border">
+									{{ data.municipality | titlecase }}
+								</td>
+								<td class="text-center border">
+									{{ data.barangays | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.land_area | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.density | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.males | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.females | number }}
+								</td>
+								<td class="text-center border">
+									{{
+										total(data.males, data.females) | number
+									}}
+								</td>
+								<td class="text-center border">
+									{{ data.sex_ratio | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.household_population | number }}
+								</td>
+								<td class="text-center border">
+									{{ data.average_household_size | number }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header bgc-blue-900 d-flex aic">
-                        <div class="card-title text-white h5 mr-auto mt-2">
-                            Age Distribution (PROVINCE OF ILOILO)
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="ppbm border">0-14</th>
-                                    <th class="ppbm border">%</th>
-                                    <th class="ppbm border">15-64</th>
-                                    <th class="ppbm border">%</th>
-                                    <th class="ppbm border">54 & Over</th>
-                                    <th class="ppbm border">%</th>
-                                    <th class="ppbm border">Total HH Population</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="
+		<div class="col-md-6 mt-3">
+			<div class="card">
+				<div class="card-header bgc-blue-900 d-flex aic">
+					<div class="card-title text-white h5 mr-auto mt-2">
+						Age Distribution (PROVINCE OF ILOILO)
+					</div>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="ppbm border">0-14</th>
+								<th class="ppbm border">%</th>
+								<th class="ppbm border">15-64</th>
+								<th class="ppbm border">%</th>
+								<th class="ppbm border">54 & Over</th>
+								<th class="ppbm border">%</th>
+								<th class="ppbm border">Total HH Population</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								*ngFor="
 									let item of AgeDistributionAndAgeDependecyRatio
-								">
-                                    <td lass="ppbm border">
-                                        {{ item['0-14'] }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ getPercentage( item['0-14'], item.hh_population ) }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item['15-64'] }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ getPercentage( item['15-64'], item.hh_population ) }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item['65_and_over'] }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ getPercentage( item['65_and_over'], item.hh_population ) }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.hh_population }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+								"
+							>
+								<td lass="ppbm border">
+									{{ item['0-14'] }}
+								</td>
+								<td class="ppbm border">
+									{{
+										getPercentage(
+											item['0-14'],
+											item.hh_population
+										)
+									}}
+								</td>
+								<td class="ppbm border">
+									{{ item['15-64'] }}
+								</td>
+								<td class="ppbm border">
+									{{
+										getPercentage(
+											item['15-64'],
+											item.hh_population
+										)
+									}}
+								</td>
+								<td class="ppbm border">
+									{{ item['65_and_over'] }}
+								</td>
+								<td class="ppbm border">
+									{{
+										getPercentage(
+											item['65_and_over'],
+											item.hh_population
+										)
+									}}
+								</td>
+								<td class="ppbm border">
+									{{ item.hh_population }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-6 mt-3">
-                <div class="card">
-                    <div class="card-header bgc-blue-900 d-flex aic">
-                        <div class="card-title text-white h5 mr-auto mt-2">
-                            Age Dependency Ratio (PROVINCE OF ILOILO)
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="ppbm border">Young Dependency</th>
-                                    <th class="ppbm border">Old Dependency</th>
-                                    <th class="ppbm border">Dependency</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="
+		<div class="col-md-6 mt-3">
+			<div class="card">
+				<div class="card-header bgc-blue-900 d-flex aic">
+					<div class="card-title text-white h5 mr-auto mt-2">
+						Age Dependency Ratio (PROVINCE OF ILOILO)
+					</div>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="ppbm border">Young Dependency</th>
+								<th class="ppbm border">Old Dependency</th>
+								<th class="ppbm border">Dependency</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								*ngFor="
 									let item of AgeDistributionAndAgeDependecyRatio
-								">
-                                    <td class="ppbm border">
-                                        {{ item['young_dependency'] }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.old_dependency }}
-                                    </td>
-                                    <td class="ppbm border">
-                                        {{ item.dependency }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+								"
+							>
+								<td class="ppbm border">
+									{{ item['young_dependency'] }}
+								</td>
+								<td class="ppbm border">
+									{{ item.old_dependency }}
+								</td>
+								<td class="ppbm border">
+									{{ item.dependency }}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-12 mt-3">
-                <div class="card-body d-flex aic jcc">
-                    <img class="w-50" src="../../../assets/ipop/population/dependency.png" alt="" />
-                </div>
-            </div>
+		<div class="col-md-12 mt-3">
+			<div class="card-body d-flex aic jcc">
+				<img
+					class="w-50"
+					src="../../../assets/ipop/population/dependency.png"
+					alt=""
+				/>
+			</div>
+		</div>
 
-            <div class="col-md-12 mt-3">
-                <div class="card">
-                    <div class="card-header bg-white d-flex aic">
-                        <div class="card-title h5 mr-auto mt-2">
-                            Age Distribution and Age Dependency Ratio by Municipality
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="ppbm border text-left" rowspan="2">
-                                        Muncipality
-                                    </th>
-                                    <th class="ppbm border" rowspan="2">
-                                        HH Population
-                                    </th>
-                                    <th colspan="3" class="text-center border">
-                                        Age Distribution
-                                    </th>
-                                    <th colspan="3" class="text-center border">
-                                        Dependency Ratio
-                                    </th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th class="border ppbm">0-14</th>
-                                    <th class="border ppbm">15-64</th>
-                                    <th class="border ppbm">65 and Over</th>
-                                    <th class="border ppbm">Young Dependecy</th>
-                                    <th class="border ppbm">Old Dependecy</th>
-                                    <th class="border ppbm">Dependecy</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="
+		<div class="col-md-12 mt-3">
+			<div class="card">
+				<div class="card-header bg-white d-flex aic">
+					<div class="card-title h5 mr-auto mt-2">
+						Age Distribution and Age Dependency Ratio by
+						Municipality
+					</div>
+				</div>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="ppbm border text-left" rowspan="2">
+									Muncipality
+								</th>
+								<th class="ppbm border" rowspan="2">
+									HH Population
+								</th>
+								<th colspan="3" class="text-center border">
+									Age Distribution
+								</th>
+								<th colspan="3" class="text-center border">
+									Dependency Ratio
+								</th>
+								<th></th>
+							</tr>
+							<tr>
+								<th class="border ppbm">0-14</th>
+								<th class="border ppbm">15-64</th>
+								<th class="border ppbm">65 and Over</th>
+								<th class="border ppbm">Young Dependecy</th>
+								<th class="border ppbm">Old Dependecy</th>
+								<th class="border ppbm">Dependecy</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								*ngFor="
 									let item of AgeDistributionAndAgeDependecyRatioByMunicipality
-								">
-                                    <td class="border ppbm">
-                                        {{ item.municipality }}
-                                    </td>
-                                    <td class="border ppbm">
-                                        {{ item.hh_population }}
-                                    </td>
-                                    <td class="border ppbm">{{ item['0-14'] }}</td>
-                                    <td class="border ppbm">{{ item['15-64'] }}</td>
-                                    <td class="border ppbm">
-                                        {{ item['65_and_over'] }}
-                                    </td>
-                                    <td class="border ppbm">
-                                        {{ item.young_dependency }}
-                                    </td>
-                                    <td class="border ppbm">
-                                        {{ item.old_dependency }}
-                                    </td>
-                                    <td class="border ppbm">
-                                        {{ item.dependency }}
-                                    </td>
-                                    <td>
-                                        <DropDown [buttons]="aadrDD"></DropDown>
-                                        <ng-template #aadrDD>
-                                            <button (click)="removeDependency(item.id)" class="dropdown-item">
+								"
+							>
+								<td class="border ppbm">
+									{{ item.municipality }}
+								</td>
+								<td class="border ppbm">
+									{{ item.hh_population }}
+								</td>
+								<td class="border ppbm">{{ item['0-14'] }}</td>
+								<td class="border ppbm">{{ item['15-64'] }}</td>
+								<td class="border ppbm">
+									{{ item['65_and_over'] }}
+								</td>
+								<td class="border ppbm">
+									{{ item.young_dependency }}
+								</td>
+								<td class="border ppbm">
+									{{ item.old_dependency }}
+								</td>
+								<td class="border ppbm">
+									{{ item.dependency }}
+								</td>
+								<td>
+									<DropDown [buttons]="aadrDD"></DropDown>
+									<ng-template #aadrDD>
+										<button
+											(click)="removeDependency(item.id)"
+											class="dropdown-item"
+										>
 											Remove
 										</button>
-                                        </ng-template>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+									</ng-template>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
-            <div class="col-md-12 mt-3">
-                <div class="card">
-                    <div class="card-header bg-white d-flex aic">
-                        <div class="card-title h5 mr-auto mt-2">
-                            Technical Notes
-                        </div>
-                        <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
-                    </div>
-                    <div class="card-body">
-                        <TechnicalNotes type="Population"></TechnicalNotes>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="col-md-12 mt-3">
+			<div class="card">
+				<div class="card-header bg-white d-flex aic">
+					<div class="card-title h5 mr-auto mt-2">
+						Technical Notes
+					</div>
+					<Modal
+						size="lg"
+						title="Customize Technical Notes"
+						btnTitle="Customize technical notes"
+						btnClass="btn btn-sm btn-dark"
+						[template]="customizeTechnicalNotes"
+						icon="ti-notepad"
+					></Modal>
+				</div>
+				<div class="card-body">
+					<TechnicalNotes type="Population"></TechnicalNotes>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
