@@ -495,25 +495,25 @@
 								"
 							>
 								<td lass="ppbm border">
-									{{ item['0-14'] }}
+									{{ item['0-14'] | number }}
 								</td>
 								<td class="ppbm border">
 									{{
 										getPercentage(
 											item['0-14'],
 											item.hh_population
-										)
+										) | number: '1.2-2'
 									}}
 								</td>
 								<td class="ppbm border">
-									{{ item['15-64'] }}
+									{{ item['15-64'] | number }}
 								</td>
 								<td class="ppbm border">
 									{{
 										getPercentage(
 											item['15-64'],
 											item.hh_population
-										)
+										) | number: '1.2-2'
 									}}
 								</td>
 								<td class="ppbm border">
@@ -524,11 +524,11 @@
 										getPercentage(
 											item['65_and_over'],
 											item.hh_population
-										)
+										) | number: '1.2-2'
 									}}
 								</td>
 								<td class="ppbm border">
-									{{ item.hh_population }}
+									{{ item.hh_population | number }}
 								</td>
 							</tr>
 						</tbody>
@@ -560,13 +560,16 @@
 								"
 							>
 								<td class="ppbm border">
-									{{ item['young_dependency'] }}
+									{{
+										item['young_dependency']
+											| number: '1.2-2'
+									}}
 								</td>
 								<td class="ppbm border">
-									{{ item.old_dependency }}
+									{{ item.old_dependency | number: '1.2-2' }}
 								</td>
 								<td class="ppbm border">
-									{{ item.dependency }}
+									{{ item.dependency | number: '1.2-2' }}
 								</td>
 							</tr>
 						</tbody>
