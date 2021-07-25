@@ -67,6 +67,10 @@ export class ProgramsComponent implements OnInit {
 			this.currentImages.push(photo.file.uri)
 		})
 	}
+
+	toArray(text: string) {
+		return text.split(', ')
+	}
 }
 interface ProgramArea {
 	title: string

@@ -21,6 +21,8 @@ export class AddProgramComponent implements OnInit {
 	activity: any = {
 		title: '',
 		description: '',
+		MC_links: '',
+		RA_links: '',
 		program_area_id: '',
 	}
 
