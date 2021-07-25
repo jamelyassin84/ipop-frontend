@@ -19,7 +19,6 @@ export class DeathDemographicComponent implements OnInit {
 
 	constructor(
 		private component: ReloadService,
-		private summary: SummaryService,
 		private service: LocalDeathDataService,
 		private monthChartService: MonthChartService
 	) {
@@ -37,28 +36,30 @@ export class DeathDemographicComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
-	ngOnInit(): void {
-		this.getSummary()
-	}
-
-	summaries: Summary | any = {}
-	getSummary() {
-		this.summary.deaths().subscribe((summaries: Summary) => {
-			this.summaries = summaries
-		})
-	}
-
 	location: any = {
 		barangay: null,
 		municipality: null,
 		year: null,
 	}
-
 	fetch(event: any) {
 		this.location = event
+		this.getSummary()
 		this.getChart()
 		this.getLocalData()
-		this.pyramid.ngOnint()
+		this.getDeathssByMunicipality()
+	}
+
+	summaries: any = {}
+	getSummary() {
+		new BaseService(
+			this.service.http,
+			'death-statistics/summary',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.summaries = data
+			})
 	}
 
 	getChart() {
@@ -136,6 +137,22 @@ export class DeathDemographicComponent implements OnInit {
 
 	statisticalChart = MonthChartConfig
 	crudeDeathRate = CrudeDeathRateIncidenceChartConfig
+
+	deathssByMunicipality: any = []
+	getDeathssByMunicipality() {
+		new BaseService(
+			this.service.http,
+			'death-statistics-by-municipality',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.deathssByMunicipality = data
+				this.pyramid.fetch()
+			})
+	}
+
+	ngOnInit(): void {}
 }
 
 type Summary = {

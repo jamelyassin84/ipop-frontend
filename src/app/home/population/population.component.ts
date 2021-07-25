@@ -72,7 +72,6 @@ export class PopulationComponent implements OnInit {
 		this.getPopulationByMuncipality()
 		this.getAgeDistributionAndAgeDependecyRatio()
 		this.getAgeDistributionAndAgeDependecyRatioByMunicipality()
-		this.pyramid.ngOnInit()
 	}
 
 	populationProfile: any = {}
@@ -120,6 +119,7 @@ export class PopulationComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.AgeDistributionAndAgeDependecyRatioByMunicipality = data
+				this.pyramid.fetch()
 			})
 	}
 

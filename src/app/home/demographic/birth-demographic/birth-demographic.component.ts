@@ -83,7 +83,6 @@ export class BirthDemographicComponent implements OnInit {
 		this.getChart()
 		this.getLocalData()
 		this.getBIrthsByMunicipality()
-		this.pyramid.ngOnint()
 	}
 
 	summaries: any = {}
@@ -160,6 +159,7 @@ export class BirthDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.birthsByMunicipality = data
+				this.pyramid.fetch()
 			})
 	}
 

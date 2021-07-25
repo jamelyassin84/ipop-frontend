@@ -20,7 +20,9 @@ export class PopulationPyramidComponent implements OnInit {
 	@Input() ageGroupTitle: string = 'Age Group and Sex'
 	@Input() colors: Array<string> = []
 
-	ngOnInit(): void {
+	ngOnInit(): void {}
+
+	fetch() {
 		this.getPopulationPyramid()
 	}
 
