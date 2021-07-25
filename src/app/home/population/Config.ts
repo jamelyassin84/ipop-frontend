@@ -32,10 +32,9 @@ export const ChartOptions = {
 	},
 }
 
-const googleChartOptions = ChartOptions
-
-export function drawChart(chartId: any, chartData: any) {
-	let style = googleChartOptions.pyramidChartOptions
+export function drawChart(chartId: any, chartData: any, colors: any) {
+	ChartOptions.pyramidChartOptions.colors = colors
+	let style = ChartOptions.pyramidChartOptions
 	const chart = () => {
 		var data = google.visualization.arrayToDataTable(chartData)
 		var chart = new google.visualization.BarChart(

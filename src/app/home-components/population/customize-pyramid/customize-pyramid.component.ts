@@ -1,3 +1,4 @@
+import { Input } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
 import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
@@ -10,6 +11,8 @@ import { PopulationPyramidService } from 'src/app/Services/home/population/popul
 })
 export class CustomizePyramidComponent implements OnInit {
 	constructor(private service: PopulationPyramidService) {}
+
+	@Input() type: string = ''
 
 	types = ['Provincial', 'Muncipality', 'Barangay']
 
@@ -51,6 +54,7 @@ export class CustomizePyramidComponent implements OnInit {
 			'info',
 			() => {
 				this.isLoading = true
+				this.populationPyramid.type = this.type
 				this.service.create(this.populationPyramid).subscribe(() => {
 					HasApprovals('Created')
 					this.isLoading = false

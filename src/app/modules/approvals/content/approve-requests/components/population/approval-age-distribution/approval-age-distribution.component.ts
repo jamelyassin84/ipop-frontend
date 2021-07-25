@@ -12,6 +12,6 @@ export class ApprovalAgeDistributionComponent implements OnInit {
 	@Input() data: any = ''
 
 	ngOnInit(): void {
-		drawChart('population-pyramid', DummyData)
+		// drawChart('population-pyramid', DummyData)
 	}
 }

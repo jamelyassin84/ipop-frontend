@@ -92,32 +92,20 @@
 
 	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
+	<PyramidChart
+		[location]="location"
+		type="Population"
+		pyramidtitle="Population Pyramid"
+		ageGroupTitle="Population by Age Group and Sex"
+		[colors]="['#0039A9', '#CD1125']"
+	></PyramidChart>
+
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12 mt-3">
 			<div class="card">
 				<div class="card-header bg-white">
-					<div class="card-title h5 d-flex">
-						<span>Population Pyramid</span>
-                            <div class="ml-auto">
-                                <DropDown [buttons]="Pyramid"></DropDown>
-                                <ng-template #Pyramid>
-                                    <Modal size="lg" title="Customize a Population Pyramid" btnTitle="Customize a population pyramid" btnClass="dropdown-item" [template]="customizePyramid"></Modal>
-                                </ng-template>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="card-body">
-                            <div id="population-pyramid" class="w-100" style="height: 50vh"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-white">
-                        <div class="card-title h5 d-flex aic">
-                            <span>Population Profile </span>
+					<div class="card-title h5 d-flex aic">
+						<span>Population Profile </span>
                             <div class="ml-auto">
                                 <DropDown [buttons]="dropdown"></DropDown>
                                 <ng-template #dropdown>
@@ -281,99 +269,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
-						Population by Age Group and Sex
-					</div>
-				</div>
-				<div class="card-body">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th class="ppbm border">Age Group</th>
-								<th class="ppbm border">Male</th>
-								<th class="ppbm border">%</th>
-								<th class="ppbm border">Female</th>
-								<th class="ppbm border">%</th>
-								<th class="ppbm border">Total</th>
-								<th class="ppbm border">%</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of populationbyAgeGroupandSex">
-								<td class="ppbm border">
-									{{ item.ageGroup }}
-								</td>
-								<td class="ppbm border">
-									{{ item.male | number }}
-								</td>
-								<td class="ppbm border">
-									{{ item.percent_male | number: '1.2-2' }}
-								</td>
-								<td class="ppbm border">
-									{{ item.female | number }}
-								</td>
-								<td class="ppbm border">
-									{{ item.percent_female | number: '1.2-2' }}
-								</td>
-								<td class="border ppbm">
-									{{ item.total | number }}
-								</td>
-								<td class="ppbm border">
-									{{ item.percent_total | number: '1.2-2' }}
-								</td>
-							</tr>
-							<tr>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.ageGroup
-									}}
-								</td>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.male
-											| number
-									}}
-								</td>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.percent_male
-											| number: '1.2-2'
-									}}
-								</td>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.female
-											| number
-									}}
-								</td>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.percent_female
-											| number: '1.2-2'
-									}}
-								</td>
-								<td class="border ppbm fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.total
-											| number
-									}}
-								</td>
-								<td class="ppbm border fw-900">
-									{{
-										populationbyAgeGroupandSexTotal.percent_total
-											| number: '1.2-2'
-									}}
-								</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>

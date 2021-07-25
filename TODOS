@@ -1,8 +1,6 @@
 
 indi mag lock multiple request na lng
-
 fix reload on population
-
 user UI
 fix nav 
 fix un authenticated
@@ -12,12 +10,11 @@ editable charts
 round off pipe
 getPercent pipe
 update all approvals
-
 auth guard pra sa bulk records
 chart approvals
 quick links kitaon wla ga sulod sa approval
 chart color
-preloaders all especiall on charts
+preloaders all especially on charts
 reactive form validation
 polish chart
 polish approval ui
@@ -27,16 +24,13 @@ route state ngrx
 route active sidebar
 paginations
 fix padding
-kung makadto sya sa home nga wala token redirect sa home ka user
 polish design white space margin padding and colors and allignments for user perspecitve
-fetch first data
 tr align items center
 logout route
-
+test with real data fetch provincial data
 
 animations
 remove all errors
-responsive nav
 Edit All (Optional)
 kuhaon ang data.data
 service worker (Optional)

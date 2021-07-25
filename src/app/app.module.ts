@@ -109,7 +109,8 @@ import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { AuthGuard } from './guards/auth.guard'
 import { ContentWidthDirective } from './directives/content-width.directive';
-import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component'
+import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component';
+import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component'
 
 // Directives
 
@@ -198,6 +199,7 @@ import { AddAgeDistributionAndDependencyRatioComponent } from './home-components
 		UnauthorizedComponent,
 		ContentWidthDirective,
   AddAgeDistributionAndDependencyRatioComponent,
+  PopulationPyramidComponent,
 	],
 	imports: [
 		BrowserModule,
