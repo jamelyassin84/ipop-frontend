@@ -63,7 +63,8 @@
 								">
 								<i class="ti-user"></i>
 								{{
-									summaries?.summary?.population || 0 | number
+									summaries?.summary?.total_population || 0
+										| number
 								}}</span
 							>
 						</div>
@@ -98,7 +99,7 @@
 								<i class="ti-pulse"></i>
 
 								{{
-									summaries?.summary?.total_population || 0
+									summaries?.summary?.total_live_births || 0
 										| number
 								}}</span
 							>

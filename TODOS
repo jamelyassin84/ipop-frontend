@@ -30,6 +30,7 @@ logout route
 test with real data fetch provincial data
 odometer (optional)
 delete by municipality
+ngrx location
 
 animations
 remove all errors
