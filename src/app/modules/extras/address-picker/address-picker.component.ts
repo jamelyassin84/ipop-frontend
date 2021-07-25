@@ -14,6 +14,11 @@ export class AddressPickerComponent implements OnInit {
 	@Input() showBarangay = true
 	@Output() onEmit = new EventEmitter()
 
+	years: number[] = years()
+	setYear(event: any) {
+		this.currentData.year = event.target.value
+	}
+
 	ngOnInit(): void {
 		this.getMuncipalities()
 		this.currentData = {
@@ -50,11 +55,6 @@ export class AddressPickerComponent implements OnInit {
 
 	setBarangay(event: any) {
 		this.currentData.barangay = event.target.value
-	}
-
-	years: number[] = years()
-	setYear(event: any) {
-		this.currentData.year = event.target.value
 	}
 
 	tabs: any = {

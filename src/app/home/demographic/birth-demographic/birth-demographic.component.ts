@@ -1,3 +1,4 @@
+import { years } from 'src/app/constants/AppConstants'
 import { LocalBirthDataService } from './../../../Services/home/demographic/births/local-birth-data.service'
 import { SummaryService } from './../../../Services/home/demographic/summary.service'
 import { Component, OnInit } from '@angular/core'
@@ -24,7 +25,6 @@ export class BirthDemographicComponent implements OnInit {
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
-				this.ngOnInit()
 				this.fetch(this.location)
 			})
 		)
@@ -34,17 +34,6 @@ export class BirthDemographicComponent implements OnInit {
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
-	}
-
-	summaries: Summary | any = {}
-	ngOnInit(): void {
-		this.getSummary()
-	}
-
-	getSummary() {
-		this.summary.births().subscribe((summaries: Summary) => {
-			this.summaries = summaries
-		})
 	}
 
 	incidenceChart: any = IllegitimateIncidenceChartConfig
@@ -87,9 +76,24 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	fetch(event: any) {
+		this.getSummary()
 		this.location = event
 		this.getChart()
 		this.getLocalData()
+	}
+
+	summaries: any = {}
+	getSummary() {
+		new BaseService(
+			this.service.http,
+			'birth-statistics/summary',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.summaries = data
+				console.log(data)
+			})
 	}
 
 	getChart() {
@@ -154,6 +158,14 @@ export class BirthDemographicComponent implements OnInit {
 		this.incidenceChart.labels = []
 		this.teenageChart.datasets[0].data = []
 		this.incidenceChart.datasets[0].data = []
+	}
+
+	ngOnInit(): void {
+		this.location.year = new Date().getFullYear()
+	}
+
+	getPercentage(value: number, basis: number) {
+		return (value * 100) / basis
 	}
 }
 

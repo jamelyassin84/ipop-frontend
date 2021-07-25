@@ -1,5 +1,4 @@
-Libro 
-Download Component to pdf with headers
+
 indi mag lock multiple request na lng
 
 fix reload on population
@@ -9,8 +8,10 @@ fix nav
 fix un authenticated
 listen theme preference sa settings ka windows
 File Uploads CRUD   
-
-rout pipe
+editable charts
+round off pipe
+getPercent pipe
+update all approvals
 
 auth guard pra sa bulk records
 chart approvals
@@ -31,7 +32,6 @@ polish design white space margin padding and colors and allignments for user per
 fetch first data
 tr align items center
 logout route
-user ni  teddy
 
 
 animations
