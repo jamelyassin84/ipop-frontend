@@ -272,7 +272,15 @@
 
 	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-	<div class="row">
+	<PyramidChart-and-AgeGroup
+		[location]="location"
+		type="Birth"
+		pyramidtitle="Birth Pyramid"
+		ageGroupTitle="Birth by Age Group and Sex"
+		[colors]="['#3DB98D', '#73B436']"
+	></PyramidChart-and-AgeGroup>
+
+	<div class="row mt-3">
 		<div
 			class="col-md-8 m-0"
 			[ngClass]="{ 'col-md-12': location.municipality === null }"
@@ -446,10 +454,8 @@
 			</div>
 			<div class="col-md-12 mt-1">
 				<div class="alert alert-primary">
-					Note: Customizing Incidence of Illegitimate and Teenage
-					Birth Charts should be year 2019 on the first input if you
-					wish to add the said year in the future. All Data inputted
-					here will reflect on the summary above depending on the year
+					Note: All Data inputted here will reflect on the summary at
+					the top depending on the year chosen
 				</div>
 			</div>
 

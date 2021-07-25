@@ -6,7 +6,7 @@ import { BaseService } from 'src/app/Services/base.service'
 import { getPercent } from 'src/app/constants/Shortcuts'
 
 @Component({
-	selector: 'PyramidChart',
+	selector: 'PyramidChart-and-AgeGroup',
 	templateUrl: './population-pyramid.component.html',
 	styleUrls: ['./population-pyramid.component.scss'],
 })
@@ -27,7 +27,7 @@ export class PopulationPyramidComponent implements OnInit {
 		const service = new BaseService(
 			this._http,
 			'population-pyramid',
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
+			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=${this.type}`
 		)
 		service.index().subscribe((data: any) => {
 			let ageDistribution: any = [['Age', 'Male', 'Female']]

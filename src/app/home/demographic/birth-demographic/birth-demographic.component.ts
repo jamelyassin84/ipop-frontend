@@ -1,7 +1,7 @@
 import { years } from 'src/app/constants/AppConstants'
 import { LocalBirthDataService } from './../../../Services/home/demographic/births/local-birth-data.service'
 import { SummaryService } from './../../../Services/home/demographic/summary.service'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { MonthChartConfig } from '../MonthChart'
 import { groupBy } from 'src/app/constants/helpers'
@@ -10,6 +10,7 @@ import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
 import { BaseService } from 'src/app/Services/base.service'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { Subscription } from 'rxjs'
+import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
 
 @Component({
 	selector: 'app-birth-demographic',
@@ -17,6 +18,8 @@ import { Subscription } from 'rxjs'
 	styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
+	@ViewChild(PopulationPyramidComponent) pyramid: any
+
 	constructor(
 		private component: ReloadService,
 		private service: LocalBirthDataService,
@@ -80,6 +83,7 @@ export class BirthDemographicComponent implements OnInit {
 		this.getChart()
 		this.getLocalData()
 		this.getBIrthsByMunicipality()
+		this.pyramid.ngOnint()
 	}
 
 	summaries: any = {}
