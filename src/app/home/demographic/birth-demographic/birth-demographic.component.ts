@@ -19,7 +19,6 @@ import { Subscription } from 'rxjs'
 export class BirthDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
-		private summary: SummaryService,
 		private service: LocalBirthDataService,
 		private monthChartService: MonthChartService
 	) {
@@ -80,6 +79,7 @@ export class BirthDemographicComponent implements OnInit {
 		this.location = event
 		this.getChart()
 		this.getLocalData()
+		this.getBIrthsByMunicipality()
 	}
 
 	summaries: any = {}
@@ -92,7 +92,6 @@ export class BirthDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
-				console.log(data)
 			})
 	}
 
@@ -107,13 +106,9 @@ export class BirthDemographicComponent implements OnInit {
 		})
 	}
 
-	localData: Summary | any = {}
+	localData: any = {}
 	getLocalData() {
-		this.localData = {
-			crude_birth_rate: 0,
-			general_fertility_rate: 0,
-			total_live_births: 0,
-		}
+		this.localData = {}
 		const service = new BaseService(
 			this.service.http,
 			this.service.url,
@@ -151,8 +146,20 @@ export class BirthDemographicComponent implements OnInit {
 		this.statisticalChart.datasets[2].data = total
 	}
 
-	statisticalChart: any = MonthChartConfig
+	birthsByMunicipality: any = []
+	getBIrthsByMunicipality() {
+		new BaseService(
+			this.service.http,
+			'birth-statistics-by-municipality',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.birthsByMunicipality = data
+			})
+	}
 
+	statisticalChart: any = MonthChartConfig
 	clearChart() {
 		this.teenageChart.labels = []
 		this.incidenceChart.labels = []

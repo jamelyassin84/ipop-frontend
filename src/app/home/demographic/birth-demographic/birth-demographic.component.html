@@ -60,7 +60,9 @@
 									pY-15
 									bgc-blue-50
 									c-blue-500
-								">{{
+								">
+								<i class="ti-user"></i>
+								{{
 									summaries?.summary?.total_population || 0
 										| number
 								}}</span
@@ -95,7 +97,10 @@
 									bgc-green-50
 									c-green-500
 								"
-								>{{
+							>
+								<i class="ti-pulse"></i>
+
+								{{
 									summaries?.summary?.total_population || 0
 										| number
 								}}</span
@@ -128,7 +133,10 @@
 									bgc-green-50
 									c-green-500
 								"
-								>{{
+							>
+								<i class="ti-pulse"></i>
+
+								{{
 									summaries?.summary?.crude_birth_rate || 0
 										| number
 								}}</span
@@ -177,6 +185,7 @@
 							<span
 								class="
 									d-ib
+									h4
 									lh-0
 									va-m
 									fw-600
@@ -186,7 +195,10 @@
 									bgc-orange-50
 									c-orange-500
 								"
-								>{{
+							>
+								<i class="ti-pulse"></i>
+
+								{{
 									summaries?.teenage?.value || 0 | number
 								}}</span
 							>
@@ -236,6 +248,7 @@
 									d-ib
 									lh-0
 									va-m
+									h4
 									fw-600
 									bdrs-10em
 									pX-15
@@ -243,7 +256,10 @@
 									bgc-red-50
 									c-red-500
 								"
-								>{{
+							>
+								<i class="ti-pulse"></i>
+
+								{{
 									summaries?.teenage?.value || 0 | number
 								}}</span
 							>
@@ -257,7 +273,10 @@
 	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
 	<div class="row">
-		<div class="col-md-8 m-0">
+		<div
+			class="col-md-8 m-0"
+			[ngClass]="{ 'col-md-12': location.municipality === null }"
+		>
 			<div class="card">
 				<div class="card-header bg-white d-flex">
 					<div class="h5 mr-auto">Birth Statistics</div>
@@ -286,12 +305,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="layers col-md-4 m-0">
+
+		<div class="layers col-md-4 m-0" *ngIf="location.municipality != null">
 			<div class="layer w-100">
 				<div class="card">
 					<div class="card-header bg-white d-flex">
 						<div class="h5 mr-auto">Local Birth Data</div>
-						<div class="ml-auto" *ngIf="localData.id != null">
+						<div class="ml-auto">
 							<DropDown [buttons]="Illegitimate"></DropDown>
 							<ng-template #Illegitimate>
 								<Modal
@@ -307,7 +327,7 @@
 					<div class="layer w-100 card-body">
 						<div>
 							<small class="fw-Birth c-grey-700"
-								>Crude Fertility Rate</small
+								>Crude Birth Rate</small
 							>
 							<h5 class="mB-5 text-primary">
 								<i class="ti-user mr-2"></i>
@@ -330,58 +350,26 @@
 
 							<div class="layer w-100 mT-15">
 								<small class="fw-600 c-grey-700"
-									>Teenage Births
-									<br />
-									<span class="c-orange-500">1000</span>
-                            </small>
-                            <span class="pull-right c-grey-600 fsz-sm">{{
-										localData?.total_live_births || 0
-											| number
-									}}%</span
+									>Teenage Births</small
 								>
-								<div class="progress mT-10">
-									<div
-										class="progress-bar bgc-green-500"
-										role="progressbar"
-										aria-valuenow="50"
-										aria-valuemin="0"
-										aria-valuemax="100"
-										[style.width]="
-											localData?.total_live_births + '%'
-										"
-									></div>
-								</div>
+								<h5 class="mB-5 c-orange-500">
+									<i class="ti-user mr-2"></i>
+									{{
+										localData?.teenage_births || 0 | number
+									}}
+								</h5>
 							</div>
+
 							<div class="layer w-100 mT-15">
 								<small class="fw-600 c-grey-700"
-									>Illegitimate Births
-									<br />
-									<span class="c-red-500">1000</span>
-                            </small>
-                            <span class="pull-right c-grey-600 fsz-sm">{{
-										localData?.total_live_births || 0
+									>Illegitmate Births</small
+								>
+								<h5 class="mB-5 c-red-500">
+									<i class="ti-user mr-2"></i>
+									{{
+										localData?.illegitimate_births || 0
 											| number
-									}}%</span
-								>
-								<div class="progress mT-10">
-									<div
-										class="progress-bar bgc-green-500"
-										role="progressbar"
-										aria-valuenow="50"
-										aria-valuemin="0"
-										aria-valuemax="100"
-										[style.width]="
-											localData?.total_live_births + '%'
-										"
-									></div>
-								</div>
-							</div>
-							<div class="layer w-100 mT-15">
-								<small class="fw-600 c-grey-700"
-									>Total Population</small
-								>
-								<h5 class="mB-5 text-primary">
-									<i class="ti-user mr-2"></i>0
+									}}
 								</h5>
 							</div>
 						</div>
@@ -473,7 +461,7 @@
 						</div>
 					</div>
 					<div class="card-body">
-						<table class="table">
+						<table class="table table-striped">
 							<thead>
 								<tr>
 									<td>Municipality</td>
@@ -503,7 +491,15 @@
 									</td>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								<tr *ngFor="let item of birthsByMunicipality">
+									<td>{{ item.municipality }}</td>
+									<td>{{ item.crude_birth_rate }}</td>
+									<td>{{ item.teenage_births }}</td>
+									<td>{{ item.illegitimate_births }}</td>
+									<td>{{ item.general_fertility_rate }}</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
