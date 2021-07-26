@@ -2,10 +2,8 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="form-group col-md-3">
-            <label>
-				<span *ngIf="data.municipality === null">Total</span> Population
-			</label>
+        <div *ngIf="data.municipality === null" class="form-group col-md-3">
+            <label> Total Population </label>
             <input [(ngModel)]="data.total_population" type="number" class="form-control" />
         </div>
         <div class="form-group col-md-3">

@@ -40,21 +40,21 @@
             <Summary title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="summaries?.summary?.total_population"></Summary>
         </div>
         <div class="col-md-3">
-            <SummaryWithPercent title="Total In Migration" icon="ti-map-alt" spanClass="bgc-blue-50 c-blue-900" progressClass="bgc-blue-900 " [value]="summaries?.summary?.total_in_migrations" [percentValue]="50"></SummaryWithPercent>
+            <Summary title="Total In Migration" icon="ti-map-alt" spanClass="bgc-blue-50 c-blue-900" [value]="summaries?.summary?.total_in_migrations"></Summary>
         </div>
         <div class="col-md-3">
-            <SummaryWithPercent title="Total Out Migration" icon="ti-map-alt" spanClass="bgc-orange-50 c-orange-800" progressClass="bgc-orange-800 " [value]="summaries?.summary?.total_out_migrations" [percentValue]="50"></SummaryWithPercent>
+            <Summary title="Total Out Migration" icon="ti-map-alt" spanClass="bgc-orange-50 c-orange-800" [value]="summaries?.summary?.total_out_migrations"></Summary>
         </div>
 
         <div class="col-md-3">
-            <SummaryWithPercent title="Net Migration" icon="ti-map-alt" spanClass="bgc-yellow-50 c-yellow-800" progressClass="bgc-yellow-800 " [value]="summaries?.summary?.net_migrations" [percentValue]="50"></SummaryWithPercent>
+            <Summary title="Net Migration" icon="ti-map-alt" spanClass="bgc-yellow-50 c-yellow-800" [value]="summaries?.summary?.net_migrations"></Summary>
         </div>
     </div>
 
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="col-md-8 m-0">
+        <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="h5 mr-auto">Migration Statistics</div>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="layers col-md-4">
+        <div class="layers col-md-4" *ngIf="location.municipality != null">
             <div class="layer w-100">
                 <div class="card">
                     <div class="card-header bg-white d-flex">

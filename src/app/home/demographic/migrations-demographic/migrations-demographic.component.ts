@@ -3,7 +3,6 @@ import { MonthChartConfig } from './../MonthChart'
 import { Component, OnInit } from '@angular/core'
 import { MigrationChartConfig } from '../MigrationChart'
 import { ReloadService } from 'src/app/Services/reload.service'
-import { SummaryService } from 'src/app/Services/home/demographic/summary.service'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { BaseService } from 'src/app/Services/base.service'
 import { Subscription } from 'rxjs'
@@ -16,7 +15,6 @@ import { Subscription } from 'rxjs'
 export class MigrationsDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
-		private summary: SummaryService,
 		private service: LocalMigrationDataService,
 		private monthChartService: MonthChartService
 	) {
