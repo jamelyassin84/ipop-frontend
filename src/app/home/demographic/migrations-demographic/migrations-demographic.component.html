@@ -177,7 +177,16 @@
 			</div>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-4 mb-3">
+			<ByMunicipalityTable
+				title="Migration by Municipality"
+				headerClass="bgc-yellow-900"
+				[headers]="migrationByMunicipalityByMunicipalityHeaders"
+				[body]="migrationByMunicipalityByMunicipality"
+			></ByMunicipalityTable>
+		</div>
+
+		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header bg-white d-flex aic">
 					<div class="card-title h5 mr-auto mt-2">

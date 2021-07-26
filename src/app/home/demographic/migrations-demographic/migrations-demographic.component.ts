@@ -46,6 +46,7 @@ export class MigrationsDemographicComponent implements OnInit {
 		this.getChart()
 		this.getLocalData()
 		this.getSummary()
+		this.getMigrationByMunicipality()
 	}
 
 	getSummary() {
@@ -119,6 +120,25 @@ export class MigrationsDemographicComponent implements OnInit {
 				]
 			}
 		})
+	}
+
+	migrationByMunicipalityByMunicipality: any = []
+	migrationByMunicipalityByMunicipalityHeaders = [
+		'Municipality',
+		'In-Migration Rate (per 100 population)',
+		'Out-Migration Rate(per 100 population)',
+		'Net Migration Rate(per 100 population)',
+	]
+	getMigrationByMunicipality() {
+		new BaseService(
+			this.service.http,
+			'migration-statistics-by-municipality',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.migrationByMunicipalityByMunicipality = data
+			})
 	}
 
 	statisticalChart = MonthChartConfig
