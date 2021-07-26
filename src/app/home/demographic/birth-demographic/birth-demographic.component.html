@@ -229,57 +229,12 @@
 			</div>
 
 			<div class="col-md-12 mt-4">
-				<div class="card">
-					<div
-						class="card-header bgc-green-300 text-white d-flex aic"
-					>
-						<div class="card-title h5 mr-auto mt-2">
-							Births by Municipality
-						</div>
-					</div>
-					<div class="card-body">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<td>Municipality</td>
-									<td>
-										Crude Birth Rate
-										<small class="text-muted"
-											>(per 1000 population)</small
-										>
-									</td>
-									<td>
-										Teenage Births
-										<small class="text-muted"
-											>(per 100 Births)</small
-										>
-									</td>
-									<td>
-										Illegitimate Births
-										<small class="text-muted"
-											>(per 100 Births)</small
-										>
-									</td>
-									<td>
-										General Fertility Rate
-										<small class="text-muted"
-											>(per 1000 WRA*)</small
-										>
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr *ngFor="let item of birthsByMunicipality">
-									<td>{{ item.municipality }}</td>
-									<td>{{ item.crude_birth_rate }}</td>
-									<td>{{ item.teenage_births }}</td>
-									<td>{{ item.illegitimate_births }}</td>
-									<td>{{ item.general_fertility_rate }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+				<ByMunicipalityTable
+					title="Births by Municipality"
+					headerClass="bgc-green-300"
+					[headers]="birthsByMunicipalityHeaders"
+					[body]="birthsByMunicipality"
+				></ByMunicipalityTable>
 			</div>
 
 			<div class="col-md-12 mt-2">

@@ -150,6 +150,13 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	birthsByMunicipality: any = []
+	birthsByMunicipalityHeaders = [
+		'Municipality',
+		'Crude Birth Rate',
+		'Teenage Births',
+		'Illegitimate Births',
+		'General Fertility Rate',
+	]
 	getBIrthsByMunicipality() {
 		new BaseService(
 			this.service.http,

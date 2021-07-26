@@ -137,65 +137,21 @@
     </div>
 
     <div class="col-md-6">
+        <ByMunicipalityTable title="Deaths by Municipality" headerClass="bgc-red-900" [headers]="deathssByMunicipalityHeaders" [body]="deathssByMunicipality"></ByMunicipalityTable>
+    </div>
+
+    <div class="col-md-4 mt-3">
         <div class="card">
-            <div class="card-header bgc-red-900 text-white d-flex aic">
+            <div class="card-header bg-white d-flex aic">
                 <div class="card-title h5 mr-auto mt-2">
-                    Deaths by Municipality
+                    Technical Notes
                 </div>
+                <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>Municipality</td>
-                            <td>Population</td>
-                            <td>
-                                Deaths <br />
-                                <small class="text-muted">(per 1000 population)</small
-									>
-								</td>
-								<td>
-									Crude Death Rate <br />
-									<small class="text-muted"
-										>(per 1000 population)</small
-									>
-								</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of deathssByMunicipality">
-								<td>{{ item.municipality }}</td>
-								<td>{{ item.population || 0 | number }}</td>
-								<td>{{ item.total || 0 | number }}</td>
-								<td>
-									{{ item.crude_death_rate || 0 | number }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-4 mt-3">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
-						Technical Notes
-					</div>
-					<Modal
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes type="Death"></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+                <TechnicalNotes type="Death"></TechnicalNotes>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
