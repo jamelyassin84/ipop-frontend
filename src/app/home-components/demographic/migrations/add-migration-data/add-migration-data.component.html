@@ -2,15 +2,21 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
+            <label>
+				<span *ngIf="data.municipality === null">Total</span> Population
+			</label>
+            <input [(ngModel)]="data.total_population" type="number" class="form-control" />
+        </div>
+        <div class="form-group col-md-3">
             <label for="">Total In Migrations</label>
             <input [(ngModel)]="data.total_in_migrations" type="text" class="form-control" />
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             <label for="">Total Out Migrations</label>
             <input [(ngModel)]="data.total_out_migrations" type="text" class="form-control" />
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             <label for="">Total Net Migrations</label>
             <input [(ngModel)]="data.net_migrations" type="text" class="form-control" />
         </div>

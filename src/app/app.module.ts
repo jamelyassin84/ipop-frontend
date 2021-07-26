@@ -110,7 +110,9 @@ import { AddFilesComponent } from './home-components/others/add-files/add-files.
 import { AuthGuard } from './guards/auth.guard'
 import { ContentWidthDirective } from './directives/content-width.directive';
 import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component';
-import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component'
+import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component';
+import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component';
+import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
 
 // Directives
 
@@ -200,6 +202,8 @@ import { PopulationPyramidComponent } from './home/population/population-pyramid
 		ContentWidthDirective,
   AddAgeDistributionAndDependencyRatioComponent,
   PopulationPyramidComponent,
+  SummaryComponentComponent,
+  SummaryWithPercentComponentComponent,
 	],
 	imports: [
 		BrowserModule,

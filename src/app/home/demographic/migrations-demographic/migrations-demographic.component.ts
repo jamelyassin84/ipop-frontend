@@ -34,16 +34,9 @@ export class MigrationsDemographicComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
-	ngOnInit(): void {
-		this.getSummary()
-	}
+	ngOnInit(): void {}
 
-	summaries: Summary | any = {}
-	getSummary() {
-		this.summary.migrations().subscribe((summaries: Summary) => {
-			this.summaries = summaries
-		})
-	}
+	summaries: any = {}
 
 	location: any = {
 		barangay: null,
@@ -54,6 +47,19 @@ export class MigrationsDemographicComponent implements OnInit {
 		this.location = event
 		this.getChart()
 		this.getLocalData()
+		this.getSummary()
+	}
+
+	getSummary() {
+		new BaseService(
+			this.service.http,
+			'migration-statistics/summary',
+			`year=${this.location['year']}`
+		)
+			.index()
+			.subscribe((data) => {
+				this.summaries = data
+			})
 	}
 
 	getChart() {

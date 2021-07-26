@@ -1,0 +1,26 @@
+<div class="p-20 bg-white border">
+    <div class="layer w-100 mB-10">
+        <h6 class="lh-1">
+            {{ title }}
+        </h6>
+    </div>
+    <div class="layer w-100">
+        <div class="peers ai-sb fxw-nw">
+            <div class="peer peer-greed">
+                <div class="progress mt-1 w-75">
+                    <div class="progress-bar" [class]="progressClass" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="percentValue + '%'"></div>
+                </div>
+                <span class="c-gray-500">{{ percentValue || 0 | number: '1.2-2' }}%</span
+				>
+			</div>
+			<div class="peer">
+				<span
+					class="h6 d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15"
+					[class]="spanClass"
+				>
+					<i [class]="icon"></i> {{ value || 0 | number }}</span
+				>
+			</div>
+		</div>
+	</div>
+</div>

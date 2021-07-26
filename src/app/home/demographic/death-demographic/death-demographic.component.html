@@ -36,180 +36,59 @@
     </div>
     <div class="row mt-3 mb-4">
         <div class="col-md-4">
-            <div class="p-20 bg-white border">
-                <div class="layer w-100 mB-10">
-                    <h6 class="lh-1">
-                        Total Population
-                        <span class="c-grey-500 fw-400">(Province)</span>
-                    </h6>
-                </div>
-                <div class="layer w-100">
-                    <div class="peers ai-sb fxw-nw">
-                        <div class="peer peer-greed"></div>
-                        <div class="peer">
-                            <span class="
-									d-ib
-									lh-0
-									va-m
-									fw-600
-									bdrs-10em
-									pX-15
-									pY-15
-									bgc-blue-50
-									c-blue-500
-									h4
-								">
-								<i class="ti-user"></i>
-								{{
-									summaries?.summary?.population || 0 | number
-								}}</span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            <Summary title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="summaries?.summary?.population"></Summary>
+        </div>
 
-		<div class="col-md-4">
-			<div class="p-20 bg-white border">
-				<div class="layer w-100 mB-10">
-					<h6 class="lh-1">
-						Total Deaths
-						<span class="c-grey-500 fw-400">(Province)</span>
-                            </h6>
-                        </div>
-                        <div class="layer w-100">
-                            <div class="peers ai-sb fxw-nw">
-                                <div class="peer peer-greed"></div>
-                                <div class="peer">
-                                    <span class="
-									d-ib
-									lh-0
-									va-m
-									fw-600
-									bdrs-10em
-									pX-15
-									pY-15
-									bgc-red-50
-									c-red-500
-									h4
-								">
-								<i class="ti-power-off"></i>
-								{{ summaries?.summary?.total || 0 | number }}
-							</span>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-md-4">
+            <Summary title="Total Deaths" icon="ti-power-off" spanClass="bgc-red-50 c-red-500" [value]="summaries?.summary?.population"></Summary>
+        </div>
+
+        <div class="col-md-4">
+            <SummaryWithPercent title="Crude Death Rate" icon="ti-power-off" spanClass="bgc-red-50 c-red-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.crude_death_rate" [percentValue]="summaries?.summary?.crude_death_rate"></SummaryWithPercent>
+        </div>
+    </div>
+
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
+    <PyramidChart-and-AgeGroup [location]="location" type="Death" pyramidtitle="Death Pyramid" ageGroupTitle="Deaths by Age Group and Sex" [colors]="['black', '#CD1125']" ageGroupColor="#CD1125"></PyramidChart-and-AgeGroup>
+
+    <div class="row mt-3">
+        <div class="col-md-8 m-0">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="h5 mr-auto">Death Statistics</div>
+                    <div class="ml-auto" *ngIf="localData.id != null">
+                        <DropDown [buttons]="DeathStatistics"></DropDown>
+                        <ng-template #DeathStatistics>
+                            <Modal size="lg" title="Customize Statistical Death Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
+                        </ng-template>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="p-20 bg-white border">
-                        <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">
-                                Crude Death Rate
-                                <span class="c-grey-500 fw-400">(Province)</span>
-                            </h6>
-                        </div>
-                        <div class="layer w-100">
-                            <div class="peers ai-sb fxw-nw">
-                                <div class="peer peer-greed">
-                                    <div class="progress mt-1 w-75">
-                                        <div class="progress-bar bgc-red-500" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="
-										summaries?.summary?.crude_death_rate ||
-										0 + '%'
-									"></div>
-                                    </div>
-                                </div>
-                                <div class="peer">
-                                    <span class="
-									d-ib
-									h4
-									lh-0
-									va-m
-									fw-600
-									bdrs-10em
-									pX-15
-									pY-15
-									bgc-red-50
-									c-red-500
-								">
-								<i class="ti-power-off"></i>
-
-								{{
-									summaries?.summary?.crude_death_rate || 0
-										| number
-								}}</span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-
-	<PyramidChart-and-AgeGroup
-		[location]="location"
-		type="Death"
-		pyramidtitle="Death Pyramid"
-		ageGroupTitle="Deaths by Age Group and Sex"
-		[colors]="['black', '#CD1125']"
-		ageGroupColor="#CD1125"
-	></PyramidChart-and-AgeGroup>
-
-	<div class="row mt-3">
-		<div class="col-md-8 m-0">
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="h5 mr-auto">Death Statistics</div>
-					<div class="ml-auto" *ngIf="localData.id != null">
-						<DropDown [buttons]="DeathStatistics"></DropDown>
-						<ng-template #DeathStatistics>
-							<Modal
-								size="lg"
-								title="Customize Statistical Death Data"
-								btnTitle="Customize statistical data"
-								btnClass="dropdown-item"
-								[template]="customizeMonthChart"
-							></Modal>
-						</ng-template>
-					</div>
-				</div>
-				<div class="card-body">
-					<div class="chart">
-						<canvas
-							baseChart
-							[colors]="statisticalChart.colors"
-							[datasets]="statisticalChart.datasets"
-							[labels]="statisticalChart.labels"
-							[options]="statisticalChart.options"
-							[legend]="statisticalChart.legend"
-							chartType="bar"
-						>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
 						</canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="layers col-md-4">
-			<div class="layer w-100">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<span>Local Death Data</span>
-                                    <div class="ml-auto" *ngIf="localData.id != null">
-                                        <DropDown [buttons]="LocalDeathData"></DropDown>
-                                        <ng-template #LocalDeathData>
-                                            <Modal size="lg" title="Customize Local Death Data" btnTitle="Customize local death data" btnClass="dropdown-item" [template]="addLocalDeathData"></Modal>
-                                        </ng-template>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layers col-md-4">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="card-header bg-white d-flex">
+                        <span>Local Death Data</span>
+                        <div class="ml-auto" *ngIf="localData.id != null">
+                            <DropDown [buttons]="LocalDeathData"></DropDown>
+                            <ng-template #LocalDeathData>
+                                <Modal size="lg" title="Customize Local Death Data" btnTitle="Customize local death data" btnClass="dropdown-item" [template]="addLocalDeathData"></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
 
-                                <div class="layer w-100 card-body">
-                                    <small class="fw-600 c-grey-700">Crude Death Rate
+                    <div class="layer w-100 card-body">
+                        <small class="fw-600 c-grey-700">Crude Death Rate
 						</small>
-                                    <span class="pull-right c-grey-600 fsz-sm">{{
+                        <span class="pull-right c-grey-600 fsz-sm">{{
 								localData?.crude_death_rate || 0 | number
 							}}%</span
 						>
@@ -233,46 +112,46 @@
 							<span class="pull-right c-grey-600 fsz-sm">{{
 								localData?.total || 0 | number
 							}}</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <div class="row mT-50">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bg-white d-flex">
-                            <div class="h5 mr-auto">Crude Death Rate Chart</div>
-                            <DropDown [buttons]="CrudeDeathRateChart"></DropDown>
-                            <ng-template #CrudeDeathRateChart>
-                                <Modal size="lg" title="Customize Crude Death Rate Chart" btnTitle="Customize crude death ratie chart" btnClass="dropdown-item" [template]="addCrudeDeathRate"></Modal>
-                            </ng-template>
-                        </div>
-                        <div class="card-body">
-                            <canvas baseChart [datasets]="crudeDeathRate.datasets" [labels]="crudeDeathRate.labels" [options]="crudeDeathRate.options" [legend]="crudeDeathRate.legend" chartType="bar">
+<div class="row mT-50">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white d-flex">
+                <div class="h5 mr-auto">Crude Death Rate Chart</div>
+                <DropDown [buttons]="CrudeDeathRateChart"></DropDown>
+                <ng-template #CrudeDeathRateChart>
+                    <Modal size="lg" title="Customize Crude Death Rate Chart" btnTitle="Customize crude death ratie chart" btnClass="dropdown-item" [template]="addCrudeDeathRate"></Modal>
+                </ng-template>
+            </div>
+            <div class="card-body">
+                <canvas baseChart [datasets]="crudeDeathRate.datasets" [labels]="crudeDeathRate.labels" [options]="crudeDeathRate.options" [legend]="crudeDeathRate.legend" chartType="bar">
 					</canvas>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bgc-red-900 text-white d-flex aic">
-                            <div class="card-title h5 mr-auto mt-2">
-                                Deaths by Municipality
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <td>Municipality</td>
-                                        <td>Population</td>
-                                        <td>
-                                            Deaths <br />
-                                            <small class="text-muted">(per 1000 population)</small
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bgc-red-900 text-white d-flex aic">
+                <div class="card-title h5 mr-auto mt-2">
+                    Deaths by Municipality
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Municipality</td>
+                            <td>Population</td>
+                            <td>
+                                Deaths <br />
+                                <small class="text-muted">(per 1000 population)</small
 									>
 								</td>
 								<td>
