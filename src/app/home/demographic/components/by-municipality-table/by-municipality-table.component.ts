@@ -14,4 +14,5 @@ export class ByMunicipalityTableComponent implements OnInit {
 	@Input() headerClass: any = ''
 	@Input() headers: Array<string> = []
 	@Input() body: Array<any> = []
+	@Input() keys: Array<any> = []
 }

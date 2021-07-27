@@ -113,7 +113,11 @@ import { AddAgeDistributionAndDependencyRatioComponent } from './home-components
 import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component';
 import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component';
 import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component';
-import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component'
+import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component';
+import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe';
+import { RoundOffPipe } from './pipes/round-off.pipe';
+import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component';
+import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
 
 // Directives
 
@@ -206,6 +210,10 @@ import { ByMunicipalityTableComponent } from './home/demographic/components/by-m
   SummaryComponentComponent,
   SummaryWithPercentComponentComponent,
   ByMunicipalityTableComponent,
+  ArrayToArrayValuesPipe,
+  RoundOffPipe,
+  AddMarriageDataComponent,
+  CustomizeMarriageLocalDataComponent,
 	],
 	imports: [
 		BrowserModule,

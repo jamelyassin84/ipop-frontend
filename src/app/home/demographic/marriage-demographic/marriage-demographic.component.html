@@ -1,1 +1,94 @@
-<div>marriages works!</div>
+<div class="bg-light">
+    <ng-template #addMarriageData>
+        <AddMarriageData></AddMarriageData>
+    </ng-template>
+    <ng-template #name>
+        <CustomizeMarriageLocalData></CustomizeMarriageLocalData>
+    </ng-template>
+
+    <ng-template #customizeMonthChart>
+        <CustomizeMonthChart type="Marriage" [location]="location"></CustomizeMonthChart>
+    </ng-template>
+
+    <ng-template #customizeTechnicalNotes>
+        <CustomizeTechnicalNotes type="Marriages"></CustomizeTechnicalNotes>
+    </ng-template>
+
+    <ng-template #viewOfficials>
+        <ViewOfficials></ViewOfficials>
+    </ng-template>
+
+    <ng-template #addOfficials>
+        <AddOfficials></AddOfficials>
+    </ng-template>
+
+    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
+        <Modal size="lg" title="Add a Marriage Data" btnTitle="Add marriage data" btnClass="btn btn-sm btn-dark mr-2" [template]="addMarriageData" icon="ti-plus"></Modal>
+
+        <Modal size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+
+        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
+    </div>
+
+    <div class="row mt-3 mb-4">
+        <div class="col-md-3">
+            <Summary title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="summaries?.summary?.population"></Summary>
+        </div>
+
+        <div class="col-md-3">
+            <Summary title="Total Marriages" icon="ti-infinite" spanClass="bgc-pink-50 c-pink-500" [value]="summaries?.summary?.total_marriages"></Summary>
+        </div>
+
+        <div class="col-md-2">
+            <SummaryWithPercent title="Church" icon="ti-infinite" spanClass="bgc-green-50 c-green-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.church" [percentValue]="
+					getPercentage(
+						summaries?.summary?.church || 0,
+						summaries?.summary?.total_marriages || 0
+					)
+				"></SummaryWithPercent>
+        </div>
+
+        <div class="col-md-2">
+            <SummaryWithPercent title="Civil" icon="ti-infinite" spanClass="bgc-purple-50 c-purple-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.civil" [percentValue]="
+					getPercentage(
+						summaries?.summary?.civil || 0,
+						summaries?.summary?.total_marriages || 0
+					)
+				"></SummaryWithPercent>
+        </div>
+
+        <div class="col-md-2">
+            <SummaryWithPercent title="Others" icon="ti-infinite" spanClass="bgc-orange-50 c-orange-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.others" [percentValue]="
+					getPercentage(
+						summaries?.summary?.others || 0,
+						summaries?.summary?.total_marriages || 0
+					)
+				"></SummaryWithPercent>
+        </div>
+    </div>
+
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+
+    <PyramidChart-and-AgeGroup [location]="location" type="Marriage" pyramidtitle="Marriage Pyramid" ageGroupTitle="Marriages by Age Group and Sex" [colors]="['#832561', '##AF779B']" ageGroupColor="#832561"></PyramidChart-and-AgeGroup>
+
+    <div class="row mt-3">
+        <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="h5 mr-auto">Marriage by Month of Weddinb</div>
+                    <Modal size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
+						</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <ByMunicipalityTable title="Marriages by Municipality" headerClass="bgc-pink-300" [headers]="marriagesByMuncipalityHeaders" [body]="marriagesByMuncipality" [keys]="marriagesByMuncipalityKeys"></ByMunicipalityTable>
+        </div>
+    </div>
+</div>

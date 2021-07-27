@@ -139,6 +139,12 @@ export class DeathDemographicComponent implements OnInit {
 	crudeDeathRate = CrudeDeathRateIncidenceChartConfig
 
 	deathssByMunicipality: any = []
+	deathssByMunicipalityKeys: any = [
+		'municipality',
+		'population',
+		'total',
+		'crude_death_rate',
+	]
 	deathssByMunicipalityHeaders = [
 		'Municipality',
 		'Population',

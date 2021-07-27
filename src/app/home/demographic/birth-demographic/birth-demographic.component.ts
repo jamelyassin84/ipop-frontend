@@ -150,6 +150,13 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	birthsByMunicipality: any = []
+	birthsByMunicipalityKeys: any = [
+		'municipality',
+		'crude_birth_rate',
+		'teenage_births',
+		'illegitimate_births',
+		'general_fertility_rate',
+	]
 	birthsByMunicipalityHeaders = [
 		'Municipality',
 		'Crude Birth Rate',

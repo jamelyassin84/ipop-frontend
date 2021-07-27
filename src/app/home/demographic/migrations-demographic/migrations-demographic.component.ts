@@ -122,8 +122,14 @@ export class MigrationsDemographicComponent implements OnInit {
 		})
 	}
 
-	migrationByMunicipalityByMunicipality: any = []
-	migrationByMunicipalityByMunicipalityHeaders = [
+	migrationByMunicipality: any = []
+	migrationByMunicipalityKeys: any = [
+		'municipality',
+		'total_in_migrations',
+		'total_out_migrations',
+		'net_migrations',
+	]
+	migrationByMunicipalityHeaders = [
 		'Municipality',
 		'In-Migration Rate (per 100 population)',
 		'Out-Migration Rate(per 100 population)',
@@ -137,7 +143,7 @@ export class MigrationsDemographicComponent implements OnInit {
 		)
 			.index()
 			.subscribe((data) => {
-				this.migrationByMunicipalityByMunicipality = data
+				this.migrationByMunicipality = data
 			})
 	}
 
