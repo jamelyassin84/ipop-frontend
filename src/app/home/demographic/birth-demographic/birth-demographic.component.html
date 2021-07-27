@@ -103,162 +103,80 @@
                         </div>
                     </div>
                     <div class="layer w-100 card-body">
-                        <div>
-                            <small class="fw-Birth c-grey-700">Crude Birth Rate</small
-							>
-							<h5 class="mB-5 text-primary">
-								<i class="ti-user mr-2"></i>
-								{{ localData?.crude_birth_rate || 0 | number }}
-							</h5>
-						</div>
-						<div class="layer w-100 mT-15">
-							<div>
-								<small class="fw-600 c-grey-700"
-									>General Fertility Rate</small
-								>
-								<h5 class="mB-5 c-green-500">
-									<i class="ti-user mr-2"></i>
-									{{
-										localData?.general_fertility_rate || 0
-											| number
-									}}
-								</h5>
-							</div>
+                        <TitleWithIcon title="Crude Birth Rate" icon="ti-user mr-2" color="mB-5 text-primary" [value]="localData?.crude_birth_rate"></TitleWithIcon>
 
-							<div class="layer w-100 mT-15">
-								<small class="fw-600 c-grey-700"
-									>Teenage Births</small
-								>
-								<h5 class="mB-5 c-orange-500">
-									<i class="ti-user mr-2"></i>
-									{{
-										localData?.teenage_births || 0 | number
-									}}
-								</h5>
-							</div>
+                        <TitleWithIcon title="General Fertility Rate" icon="ti-user mr-2" color="mB-5 c-green-500" [value]="localData?.general_fertility_rate"></TitleWithIcon>
 
-							<div class="layer w-100 mT-15">
-								<small class="fw-600 c-grey-700"
-									>Illegitmate Births</small
-								>
-								<h5 class="mB-5 c-red-500">
-									<i class="ti-user mr-2"></i>
-									{{
-										localData?.illegitimate_births || 0
-											| number
-									}}
-								</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        <TitleWithIcon title="Teenage Births" icon="ti-user mr-2" color="mB-5 c-orange-500" [value]="localData?.teenage_births"></TitleWithIcon>
 
-		<div class="row mT-50">
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<div class="h5 mr-auto">
-							Incidence of Teenage Births
-						</div>
-						<div class="ml-auto">
-							<DropDown [buttons]="Teenage"></DropDown>
-							<ng-template #Teenage>
-								<Modal
-									size="lg"
-									title="Customize Incidence of Teenage Birth Chart"
-									btnTitle="Customize incidence of teenage birth chart"
-									btnClass="dropdown-item"
-									[template]="customizeTeenage"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
-					<div class="card-body">
-						<canvas
-							baseChart
-							[datasets]="teenageChart.datasets"
-							[labels]="teenageChart.labels"
-							[options]="teenageChart.options"
-							[legend]="teenageChart.legend"
-							chartType="bar"
-						>
-						</canvas>
-					</div>
-				</div>
-			</div>
+                        <TitleWithIcon title="Illegitmate Births" icon="ti-user mr-2" color="mB-5 c-red-500" [value]="localData?.illegitimate_births"></TitleWithIcon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<div class="h5 mr-auto">
-							Incidence of Illegitimate Births
-						</div>
-						<div class="ml-auto">
-							<DropDown [buttons]="Illegitimate"></DropDown>
-							<ng-template #Illegitimate>
-								<Modal
-									size="lg"
-									title="Customize Incidence of Illigetimate Birth Chart"
-									btnTitle="Customize incidence of Illigetimate birth chart"
-									btnClass="dropdown-item"
-									[template]="customizeIllegitimate"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
-					<div class="card-body">
-						<canvas
-							baseChart
-							[datasets]="incidenceChart.datasets"
-							[labels]="incidenceChart.labels"
-							[options]="incidenceChart.options"
-							[legend]="incidenceChart.legend"
-							chartType="bar"
-						>
-						</canvas>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 mt-1">
-				<div class="alert alert-primary">
-					Note: All Data inputted here will reflect on the summary at
-					the top depending on the year chosen
-				</div>
-			</div>
+    <div class="row mT-50">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="h5 mr-auto">Incidence of Teenage Births</div>
+                    <div class="ml-auto">
+                        <DropDown [buttons]="Teenage"></DropDown>
+                        <ng-template #Teenage>
+                            <Modal size="lg" title="Customize Incidence of Teenage Birth Chart" btnTitle="Customize incidence of teenage birth chart" btnClass="dropdown-item" [template]="customizeTeenage"></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart [datasets]="teenageChart.datasets" [labels]="teenageChart.labels" [options]="teenageChart.options" [legend]="teenageChart.legend" chartType="bar">
+					</canvas>
+                </div>
+            </div>
+        </div>
 
-			<div class="col-md-12 mt-4">
-				<ByMunicipalityTable
-					title="Births by Municipality"
-					headerClass="bgc-green-300"
-					[headers]="birthsByMunicipalityHeaders"
-					[body]="birthsByMunicipality"
-					[keys]="birthsByMunicipalityKeys"
-				></ByMunicipalityTable>
-			</div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="h5 mr-auto">
+                        Incidence of Illegitimate Births
+                    </div>
+                    <div class="ml-auto">
+                        <DropDown [buttons]="Illegitimate"></DropDown>
+                        <ng-template #Illegitimate>
+                            <Modal size="lg" title="Customize Incidence of Illigetimate Birth Chart" btnTitle="Customize incidence of Illigetimate birth chart" btnClass="dropdown-item" [template]="customizeIllegitimate"></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart [datasets]="incidenceChart.datasets" [labels]="incidenceChart.labels" [options]="incidenceChart.options" [legend]="incidenceChart.legend" chartType="bar">
+					</canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-1">
+            <div class="alert alert-primary">
+                Note: All Data inputted here will reflect on the summary at the top depending on the year chosen
+            </div>
+        </div>
 
-			<div class="col-md-12 mt-2">
-				<div class="card">
-					<div class="card-header bg-white d-flex aic">
-						<div class="card-title h5 mr-auto mt-2">
-							Technical Notes
-						</div>
+        <div class="col-md-12 mt-4">
+            <ByMunicipalityTable title="Births by Municipality" headerClass="bgc-green-300" [headers]="birthsByMunicipalityHeaders" [body]="birthsByMunicipality" [keys]="birthsByMunicipalityKeys"></ByMunicipalityTable>
+        </div>
 
-						<Modal
-							size="lg"
-							title="Customize Technical Notes"
-							btnTitle="Customize technical notes"
-							btnClass="btn btn-sm btn-dark"
-							[template]="customizeTechnicalNotes"
-							icon="ti-notepad"
-						></Modal>
-					</div>
-					<div class="card-body">
-						<TechnicalNotes type="Birth"></TechnicalNotes>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto mt-2">
+                        Technical Notes
+                    </div>
+
+                    <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes type="Birth"></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

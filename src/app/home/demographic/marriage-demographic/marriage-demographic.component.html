@@ -2,7 +2,7 @@
     <ng-template #addMarriageData>
         <AddMarriageData></AddMarriageData>
     </ng-template>
-    <ng-template #name>
+    <ng-template #localDataForm>
         <CustomizeMarriageLocalData></CustomizeMarriageLocalData>
     </ng-template>
 
@@ -69,7 +69,7 @@
 
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-    <PyramidChart-and-AgeGroup [location]="location" type="Marriage" pyramidtitle="Marriage Pyramid" ageGroupTitle="Marriages by Age Group and Sex" [colors]="['#832561', '##AF779B']" ageGroupColor="#832561"></PyramidChart-and-AgeGroup>
+    <PyramidChart-and-AgeGroup [location]="location" type="Marriage" pyramidtitle="Marriage Pyramid" ageGroupTitle="Marriages by Age Group and Sex" [colors]="['#832561', '#AF779B']" ageGroupColor="#832561"></PyramidChart-and-AgeGroup>
 
     <div class="row mt-3">
         <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
@@ -82,6 +82,49 @@
                     <div class="chart">
                         <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
 						</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="location.municipality != null">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="card-header bg-white d-flex">
+                        <span>Local Marriage Data</span>
+                        <div class="ml-auto" *ngIf="localData.id != null">
+                            <DropDown [buttons]="LocalMarriageData"></DropDown>
+                            <ng-template #LocalMarriageData>
+                                <Modal size="lg" title="Customize Local Marriage Data" btnTitle="Customize local marriage data" btnClass="dropdown-item" [template]="localDataForm"></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
+
+                    <div class="layer w-100 card-body">
+                        <TitleWithIcon title="Population" icon="ti-user mr-2" color="mB-5 text-primary" [value]="localData?.population"></TitleWithIcon>
+
+                        <TitleWithIcon title="Total Marriages" icon="ti-infinite mr-2" color="mB-5 c-purple-500" [value]="localData?.total_marriages"></TitleWithIcon>
+
+                        <TitleWithPercent title="Church" icon="ti-infinite mr-2" color="mB-5  c-green-500" [value]="localData?.church" [percentValue]="
+								getPercentage(
+									localData?.church || 0,
+									localData?.total_marriages || 0
+								)
+							" progressColor="bgc-green-500"></TitleWithPercent>
+
+                        <TitleWithPercent title="Civil" icon="ti-infinite mr-2" color="mB-5  c-purple-500" [value]="localData?.civil" [percentValue]="
+								getPercentage(
+									localData?.civil || 0,
+									localData?.total_marriages || 0
+								)
+							" progressColor="bgc-purple-500"></TitleWithPercent>
+
+                        <TitleWithPercent title="Others" icon="ti-infinite mr-2" color="mB-5 c-orange-500" [value]="localData?.others" [percentValue]="
+								getPercentage(
+									localData?.others || 0,
+									localData?.total_marriages || 0
+								)
+							" progressColor="bgc-orange-500"></TitleWithPercent>
                     </div>
                 </div>
             </div>

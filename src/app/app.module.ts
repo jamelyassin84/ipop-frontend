@@ -117,7 +117,9 @@ import { ByMunicipalityTableComponent } from './home/demographic/components/by-m
 import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe';
 import { RoundOffPipe } from './pipes/round-off.pipe';
 import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component';
-import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
+import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component';
+import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component';
+import { TitleWithPercentComponent } from './home/demographic/components/title-with-percent/title-with-percent.component'
 
 // Directives
 
@@ -214,6 +216,8 @@ import { CustomizeMarriageLocalDataComponent } from './home-components/demograph
   RoundOffPipe,
   AddMarriageDataComponent,
   CustomizeMarriageLocalDataComponent,
+  TitleWithIconComponent,
+  TitleWithPercentComponent,
 	],
 	imports: [
 		BrowserModule,

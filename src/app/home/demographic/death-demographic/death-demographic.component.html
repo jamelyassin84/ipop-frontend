@@ -72,7 +72,8 @@
                 </div>
             </div>
         </div>
-        <div class="layers col-md-4">
+
+        <div class="col-md-4" *ngIf="location.municipality != null">
             <div class="layer w-100">
                 <div class="card">
                     <div class="card-header bg-white d-flex">
@@ -86,32 +87,11 @@
                     </div>
 
                     <div class="layer w-100 card-body">
-                        <small class="fw-600 c-grey-700">Crude Death Rate
-						</small>
-                        <span class="pull-right c-grey-600 fsz-sm">{{
-								localData?.crude_death_rate || 0 | number
-							}}%</span
-						>
-						<div class="progress mT-10">
-							<div
-								class="progress-bar bgc-red-500"
-								style="height: 30px"
-								role="progressbar"
-								aria-valuenow="50"
-								aria-valuemin="0"
-								aria-valuemax="100"
-								[style.width]="
-									localData?.crude_death_rate + '%'
-								"
-							></div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<small class="fw-600 c-grey-700"
-								>Total Deaths</small
-							>
-							<span class="pull-right c-grey-600 fsz-sm">{{
-								localData?.total || 0 | number
-							}}</span>
+                        <TitleWithIcon title="Population" icon="ti-user mr-2" color="mB-5 text-primary" [value]="localData?.population"></TitleWithIcon>
+
+                        <TitleWithIcon title="Total Deaths" icon="ti-pulse mr-2" color="mB-5 text-danger" [value]="localData?.total"></TitleWithIcon>
+
+                        <TitleWithPercent title="Crude Death Rate" icon="ti-pulse mr-2" color="mB-5 text-danger" [value]="localData?.crude_death_rate" [percentValue]="localData?.crude_death_rate" progressColor="bgc-red-500"></TitleWithPercent>
                     </div>
                 </div>
             </div>
@@ -131,7 +111,7 @@
             </div>
             <div class="card-body">
                 <canvas baseChart [datasets]="crudeDeathRate.datasets" [labels]="crudeDeathRate.labels" [options]="crudeDeathRate.options" [legend]="crudeDeathRate.legend" chartType="bar">
-					</canvas>
+				</canvas>
             </div>
         </div>
     </div>
@@ -143,9 +123,7 @@
     <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header bg-white d-flex aic">
-                <div class="card-title h5 mr-auto mt-2">
-                    Technical Notes
-                </div>
+                <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
                 <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
             </div>
             <div class="card-body">
@@ -153,5 +131,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
