@@ -71,6 +71,7 @@
                 </div>
             </div>
         </div>
+
         <div class="layers col-md-4" *ngIf="location.municipality != null">
             <div class="layer w-100">
                 <div class="card">
@@ -84,128 +85,48 @@
                         </div>
                     </div>
                     <div class="layer w-100 card-body">
-                        <small class="fw-600 c-grey-700">In Migrations </small>
-                        <span class="pull-right c-grey-600 fsz-sm">{{
-								localData?.total_in_migrations || 0 | number
-							}}%</span
-						>
-						<div class="progress mT-10">
-							<div
-								class="progress-bar bgc-green-500"
-								style="height: 30px"
-								role="progressbar"
-								aria-valuenow="50"
-								aria-valuemin="0"
-								aria-valuemax="100"
-								[style.width]="
-									localData?.total_in_migrations + '%'
-								"
-							></div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<small class="fw-600 c-grey-700"
-								>Out Migrations
-							</small>
-							<span class="pull-right c-grey-600 fsz-sm"
-								>{{
-									localData?.total_out_migrations || 0
-										| number
-								}}%</span
-							>
-							<div class="progress mT-10">
-								<div
-									class="progress-bar bgc-orange-500"
-									style="height: 30px"
-									role="progressbar"
-									aria-valuenow="50"
-									aria-valuemin="0"
-									aria-valuemax="100"
-									[style.width]="
-										localData?.total_out_migrations + '%'
-									"
-								></div>
-							</div>
-						</div>
-						<div class="layer w-100 mT-15">
-							<small class="fw-600 c-grey-700"
-								>Net Migrations
-							</small>
-							<span class="pull-right c-grey-600 fsz-sm"
-								>{{
-									localData?.net_migrations || 0 | number
-								}}%</span
-							>
-							<div class="progress mT-10">
-								<div
-									class="progress-bar bgc-orange-500"
-									style="height: 30px"
-									role="progressbar"
-									aria-valuenow="50"
-									aria-valuemin="0"
-									aria-valuemax="100"
-									[style.width]="
-										localData?.net_migrations + '%'
-									"
-								></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <TitleWithIcon title="In Migrations" icon="ti-map-alt mr-2" color="mB-5 c-blue-900" [value]="localData?.total_in_migrations"></TitleWithIcon>
 
-	<div class="row mT-50">
-		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
-						Migration Chart
-					</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						baseChart
-						[datasets]="migrationChart.datasets"
-						[labels]="migrationChart.labels"
-						[options]="migrationChart.options"
-						[legend]="migrationChart.legend"
-						chartType="bar"
-					>
+                        <TitleWithIcon title="Out Migrations" icon="ti-map-alt mr-2" color="mB-5 c-orange-800" [value]="localData?.total_out_migrations"></TitleWithIcon>
+
+                        <TitleWithIcon title="Net Migrations" icon="ti-map-alt mr-2" color="mB-5 c-orange-500" [value]="localData?.net_migrations"></TitleWithIcon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mT-50">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto mt-2">
+                        Migration Chart
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart [datasets]="migrationChart.datasets" [labels]="migrationChart.labels" [options]="migrationChart.options" [legend]="migrationChart.legend" chartType="bar">
 					</canvas>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-4 mb-3">
-			<ByMunicipalityTable
-				title="Migration by Municipality"
-				headerClass="bgc-yellow-900"
-				[headers]="migrationByMunicipalityHeaders"
-				[body]="migrationByMunicipality"
-				[keys]="migrationByMunicipalityKeys"
-			></ByMunicipalityTable>
-		</div>
+        <div class="col-md-4 mb-3">
+            <ByMunicipalityTable title="Migration by Municipality" headerClass="bgc-yellow-900" [headers]="migrationByMunicipalityHeaders" [body]="migrationByMunicipality" [keys]="migrationByMunicipalityKeys"></ByMunicipalityTable>
+        </div>
 
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
-						Technical Notes
-					</div>
-					<Modal
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes type="MIgration"></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title h5 mr-auto mt-2">
+                        Technical Notes
+                    </div>
+                    <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes type="MIgration"></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
