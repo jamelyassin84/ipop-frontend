@@ -1,28 +1,18 @@
 
-addLocalData Component
-Transfer Month Chart Component
-
-indi mag lock multiple request na lng
-pararehos color
-fix reload on population
-user UI
 fix nav 
-fix un authenticated
-top demographic component
+user UI
 listen theme preference sa settings ka windows
 File Uploads CRUD   
 editable charts
-round off pipe
-getPercent pipe
-update all approvals
 auth guard pra sa bulk records
-chart approvals
 quick links kitaon wla ga sulod sa approval
-chart color
 preloaders all especially on charts
+chart color
+chart approvals
+round off pipe
+percent pipe
+update all approvals
 reactive form validation
-polish chart
-polish approval ui
 approval approve or reject on bulk
 delete approve or reject on bulk
 route state ngrx
@@ -36,6 +26,7 @@ test with real data fetch provincial data
 odometer (optional)
 delete by municipality
 ngrx location
+pararehos color
 
 animations
 remove all errors

@@ -8,7 +8,7 @@ import { homeNavs } from 'src/app/home/homeNav'
 })
 export class NavComponent implements OnInit {
 	constructor() {}
-
+	public isMenuCollapsed = true
 	ngOnInit(): void {
 		setInterval(() => {
 			if (localStorage.getItem('hideNav') !== 'true') {

@@ -5,6 +5,13 @@
     background: #202020 !important;
 }
 
+.nav-header {
+    * {
+        color: rgba(225, 235, 245, 0.7);
+    }
+    background: #202020 !important;
+}
+
 .bg-light,
 .bgc-white,
 .bg-white {
@@ -149,7 +156,6 @@ option {
 
 .navbar {
     border-bottom: 2px solid black;
-    box-shadow: 1px 1px 50px rgba($color: #1d83a7, $alpha: 0.5);
 }
 
 .text-dark {
