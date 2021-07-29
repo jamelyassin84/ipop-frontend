@@ -8,6 +8,8 @@ import { MonthChartService } from 'src/app/Services/home/demographic/month-chart
 import { BaseService } from 'src/app/Services/base.service'
 import { Subscription } from 'rxjs'
 import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
+import { Color } from 'ng2-charts'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-death-demographic',
@@ -20,7 +22,8 @@ export class DeathDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalDeathDataService,
-		private monthChartService: MonthChartService
+		private monthChartService: MonthChartService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -30,11 +33,19 @@ export class DeathDemographicComponent implements OnInit {
 		)
 	}
 
+	isUser = !this.user.isAdmin()
+
 	private subscriptions = new Subscription()
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
 	}
+
+	Colors: Color[] = [
+		{ backgroundColor: '#CD1125' },
+		{ backgroundColor: '#000000' },
+		{ backgroundColor: '#A90E1E' },
+	]
 
 	location: any = {
 		barangay: null,

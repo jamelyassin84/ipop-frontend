@@ -28,22 +28,22 @@
     </ng-template>
 
     <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-        <Modal size="lg" title="Add a Death Data" btnTitle="Add death data" btnClass="btn btn-sm btn-dark mr-2" [template]="addDeathData" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add a Death Data" btnTitle="Add death data" btnClass="btn btn-sm btn-dark mr-2" [template]="addDeathData" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
 
         <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
     </div>
     <div class="row mt-3 mb-4">
-        <div class="col-md-4">
+        <div class="col-md-4 p-1">
             <Summary title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="summaries?.summary?.population"></Summary>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 p-1">
             <Summary title="Total Deaths" icon="ti-power-off" spanClass="bgc-red-50 c-red-500" [value]="summaries?.summary?.population"></Summary>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 p-1">
             <SummaryWithPercent title="Crude Death Rate" icon="ti-power-off" spanClass="bgc-red-50 c-red-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.crude_death_rate" [percentValue]="summaries?.summary?.crude_death_rate"></SummaryWithPercent>
         </div>
     </div>
@@ -53,11 +53,11 @@
     <PyramidChart-and-AgeGroup [location]="location" type="Death" pyramidtitle="Death Pyramid" ageGroupTitle="Deaths by Age Group and Sex" [colors]="['black', '#CD1125']" ageGroupColor="#CD1125"></PyramidChart-and-AgeGroup>
 
     <div class="row mt-3">
-        <div class="col-md-8 m-0">
+        <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="h5 mr-auto">Death Statistics</div>
-                    <div class="ml-auto" *ngIf="localData.id != null">
+                    <div class="ml-auto" *ngIf="localData.id != null && !isUser">
                         <DropDown [buttons]="DeathStatistics"></DropDown>
                         <ng-template #DeathStatistics>
                             <Modal size="lg" title="Customize Statistical Death Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
+                        <canvas baseChart [colors]="Colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
 						</canvas>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <span>Local Death Data</span>
-                        <div class="ml-auto" *ngIf="localData.id != null">
+                        <div class="ml-auto" *ngIf="localData.id != null && !isUser">
                             <DropDown [buttons]="LocalDeathData"></DropDown>
                             <ng-template #LocalDeathData>
                                 <Modal size="lg" title="Customize Local Death Data" btnTitle="Customize local death data" btnClass="dropdown-item" [template]="addLocalDeathData"></Modal>
@@ -104,13 +104,13 @@
         <div class="card">
             <div class="card-header bg-white d-flex">
                 <div class="h5 mr-auto">Crude Death Rate Chart</div>
-                <DropDown [buttons]="CrudeDeathRateChart"></DropDown>
+                <DropDown *ngIf="!isUser" [buttons]="CrudeDeathRateChart"></DropDown>
                 <ng-template #CrudeDeathRateChart>
                     <Modal size="lg" title="Customize Crude Death Rate Chart" btnTitle="Customize crude death ratie chart" btnClass="dropdown-item" [template]="addCrudeDeathRate"></Modal>
                 </ng-template>
             </div>
             <div class="card-body">
-                <canvas baseChart [datasets]="crudeDeathRate.datasets" [labels]="crudeDeathRate.labels" [options]="crudeDeathRate.options" [legend]="crudeDeathRate.legend" chartType="bar">
+                <canvas [colors]="[{ backgroundColor: 'red' }]" baseChart [datasets]="crudeDeathRate.datasets" [labels]="crudeDeathRate.labels" [options]="crudeDeathRate.options" [legend]="crudeDeathRate.legend" chartType="bar">
 				</canvas>
             </div>
         </div>
