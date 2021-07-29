@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { Alert, Fire } from 'src/app/modules/extras/Alert'
 import { AwardsService } from 'src/app/Services/home/about/awards.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
@@ -12,7 +13,8 @@ import { ReloadService } from 'src/app/Services/reload.service'
 export class AwardsComponent implements OnInit {
 	constructor(
 		private service: AwardsService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -20,6 +22,8 @@ export class AwardsComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

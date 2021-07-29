@@ -6,7 +6,7 @@
     <div class="card-header bg-light">
         <h5 class="m-0 card-title d-flex">
             <span style="align-self: center">Personnel Directory</span>
-            <span class="ml-auto">
+            <span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
 					<Modal
@@ -48,6 +48,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -81,6 +82,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -114,6 +116,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -147,6 +150,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -180,6 +184,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -213,6 +218,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -246,6 +252,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -279,6 +286,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -312,6 +320,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -344,6 +353,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -377,6 +387,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -410,6 +421,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -443,6 +455,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -476,6 +489,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove
@@ -509,6 +523,7 @@
 						<td>
 							<button
 								(click)="remove(user.id)"
+								*ngIf="!isUser"
 								class="btn btn-sm btn-danger"
 							>
 								Remove

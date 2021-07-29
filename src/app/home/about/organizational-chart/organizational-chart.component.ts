@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { HasApprovals } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-organizational-chart',
@@ -12,7 +13,8 @@ import { Subscription } from 'rxjs'
 export class OrganizationalChartComponent implements OnInit {
 	constructor(
 		private service: OrganizationalChartService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -20,6 +22,7 @@ export class OrganizationalChartComponent implements OnInit {
 			})
 		)
 	}
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

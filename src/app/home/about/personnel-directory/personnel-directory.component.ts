@@ -4,6 +4,7 @@ import { PersonnelDirectoryService } from 'src/app/Services/home/about/personnel
 import { ReloadService } from 'src/app/Services/reload.service'
 import { PersonnelTypes } from './PersonnelTypes'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-personnel-directory',
@@ -13,7 +14,8 @@ import { Subscription } from 'rxjs'
 export class PersonnelDirectoryComponent implements OnInit {
 	constructor(
 		private service: PersonnelDirectoryService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -21,6 +23,8 @@ export class PersonnelDirectoryComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

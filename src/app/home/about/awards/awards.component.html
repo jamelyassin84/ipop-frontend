@@ -6,14 +6,14 @@
     <div class="card-header bg-white">
         <h5 class="m-0 card-title text-center d-flex">
             <span style="align-self: center">Awards</span>
-            <span class="ml-auto">
+            <span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
 					<Modal
-						size="lg"
-						title="Add an Award"
-						btnTitle="Add an award"
-						btnClass="dropdown-item"
+						size="lg "
+						title="Add an Award "
+						btnTitle="Add an award "
+						btnClass="dropdown-item "
 						[template]="addAwards"
 					></Modal>
 				</ng-template>
@@ -33,7 +33,7 @@
 						}}</span
 					>
 				</div>
-				<div class="ml-auto">
+				<div *ngIf="!isUser" class="ml-auto">
 					<DropDown [buttons]="dropdown"></DropDown>
 					<ng-template #dropdown>
 						<button
@@ -51,12 +51,12 @@
 						<img
 							class="article-image"
 							[src]="award.medias[0].file.uri"
-							alt=""
+							alt=" "
 						/>
 						<Modal
-							size="xl"
+							size="xl "
 							[title]="'Images of ' + award.title"
-							btnTitle="View Images"
+							btnTitle="View Images "
 							[template]="imageViewer"
 							btnClass="btn btn-link "
 							(click)="transformImages(award.medias)"
@@ -64,7 +64,7 @@
 						</Modal>
 					</div>
 					<p>
-						<a target="_blank" [href]="award.url">{{
+						<a target="_blank " [href]="award.url">{{
 							award.url
 						}}</a>
 					</p>

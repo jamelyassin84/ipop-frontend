@@ -2,7 +2,7 @@
     <div class="card-header bg-white">
         <h5 class="m-0 card-title text-center d-flex">
             <span style="align-self: center">Organizational Structure</span>
-            <span class="ml-auto">
+            <span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
 					<button (click)="triggerInputTypeFile()" ngbDropdownItem>
