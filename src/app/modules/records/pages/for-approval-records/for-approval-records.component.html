@@ -7,7 +7,7 @@
 </ul>
 
 <table class="table">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th class="text-left">Uploader</th>
             <th>From</th>
@@ -82,20 +82,8 @@
 					<button (click)="reject(file.id)" ngbDropdownItem>
 						Reject
 					</button>
-
-					<Modal
-						btnClass="dropdown-item"
-						ngbDropdownItem
-						size="xl"
-						title="Comments"
-						btnTitle="Comments"
-						[template]="comments"
-					></Modal>
 				</ng-template>
 			</td>
 		</tr>
 	</tbody>
 </table>
-<ng-template #comments>
-	<Comments></Comments>
-</ng-template>

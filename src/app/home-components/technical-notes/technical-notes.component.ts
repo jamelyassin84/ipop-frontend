@@ -3,6 +3,7 @@ import { TechnicalNotesService } from './../../Services/home/others/technical-no
 import { Component, Input, OnInit } from '@angular/core'
 import { BaseService } from 'src/app/Services/base.service'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'TechnicalNotes',
@@ -14,9 +15,17 @@ export class TechnicalNotesComponent implements OnInit {
 		private service: TechnicalNotesService,
 		private component: ReloadService
 	) {
-		this.component.shouldReload().subscribe(() => {
-			this.ngOnInit()
-		})
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.ngOnInit()
+			})
+		)
+	}
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
 	}
 
 	ngOnInit(): void {

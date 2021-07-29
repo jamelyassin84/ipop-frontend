@@ -7,13 +7,12 @@
 </ul>
 
 <table class="table">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th class="text-left">Uploader</th>
             <th>From</th>
             <th>Status</th>
             <th>Uploaded Last</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -68,34 +67,6 @@
 				>
 			</td>
 			<td>{{ file.created_at | date: 'MMMM dd,yyyy - hh:mm a' }}</td>
-			<td>
-				<DropDown [buttons]="dropdown"></DropDown>
-				<ng-template #dropdown>
-					<a target="_blank" [href]="file.file.uri" ngbDropdownItem
-						>View File</a
-					>
-
-					<button (click)="approve(file.id)" ngbDropdownItem>
-						Approve
-					</button>
-
-					<button (click)="reject(file.id)" ngbDropdownItem>
-						Reject
-					</button>
-
-					<Modal
-						btnClass="dropdown-item"
-						ngbDropdownItem
-						size="xl"
-						title="Comments"
-						btnTitle="Comments"
-						[template]="comments"
-					></Modal>
-				</ng-template>
-			</td>
 		</tr>
 	</tbody>
 </table>
-<ng-template #comments>
-	<Comments></Comments>
-</ng-template>

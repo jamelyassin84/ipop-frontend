@@ -1,16 +1,18 @@
-<br />
-<br />
-<br /><br />
-<br />
-<br />
-<br />
-<br />
-<ul class="nav nav-tabs mt-5">
-    <li *ngFor="let nav of navs" class="nav-item">
-        <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
-            <i [class]="nav.icon"></i> {{ nav.name }}
-        </a>
-    </li>
-</ul>
+<div class="card card-body">
+    <br />
+    <br />
+    <br /><br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <ul class="nav nav-tabs mt-5">
+        <li *ngFor="let nav of navs" class="nav-item">
+            <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
+                <i [class]="nav.icon"></i> {{ nav.name }}
+            </a>
+        </li>
+    </ul>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>
