@@ -6,7 +6,7 @@
     <div class="card-header bg-white">
         <h5 class="m-0 card-title text-center d-flex">
             <span style="align-self: center">{{ programArea.title }}</span>
-            <span class="ml-auto">
+            <span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
 					<Modal
@@ -23,10 +23,10 @@
     <div class="card-body">
         <h6 class="">{{ programArea.description }}</h6>
         <div class="card-body">
-            <div class="bl br card mb-5" *ngFor="let activity of programArea.activities">
+            <div class="bl br card" *ngFor="let activity of programArea.activities">
                 <div class="card-header bg-white d-flex aic">
                     <div>
-                        <div class="h3 m-0 card-title text-success dw">
+                        <div class="h3 m-0 card-title text-primary dw">
                             <i class="ti-pin-alt"></i> {{ activity.title }}
                         </div>
                         <span class="m-0 text-muted">Created :
@@ -36,7 +36,7 @@
 							}}</span
 						>
 					</div>
-					<div class="ml-auto">
+					<div *ngIf="!isUser" class="ml-auto">
 						<DropDown [buttons]="dropdown"></DropDown>
 						<ng-template #dropdown>
 							<button

@@ -5,6 +5,7 @@ import { Alert, Fire, pop } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-programs',
@@ -16,7 +17,8 @@ export class ProgramsComponent implements OnInit {
 		private route: ActivatedRoute,
 		private service: ProgramAreasService,
 		private component: ReloadService,
-		private activityService: ActivityService
+		private activityService: ActivityService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -24,6 +26,8 @@ export class ProgramsComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 
