@@ -16,7 +16,6 @@ export class LogsComponent implements OnInit {
 
 	getLogs() {
 		this.LogsService.index().subscribe((logs: any) => {
-			console.log(logs.data)
 			this.logs = logs.data
 		})
 	}

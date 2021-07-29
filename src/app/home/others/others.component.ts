@@ -40,7 +40,6 @@ export class OthersComponent implements OnInit {
 	getOthers() {
 		this.service.index().subscribe((others: any) => {
 			this.others = others
-			console.log(others)
 		})
 	}
 	files = []

@@ -1,5 +1,9 @@
+import { LocalMigrationDataService } from './../../../../Services/home/demographic/migrations/local-migration-data.service'
+import { MarraigesService } from './../../../../Services/home/demographic/marraiges/marraiges.service'
+import { LocalDeathDataService } from './../../../../Services/home/demographic/deaths/local-death-data.service'
 import { Component, Input, OnInit } from '@angular/core'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
+import { LocalBirthDataService } from 'src/app/Services/home/demographic/births/local-birth-data.service'
 import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
@@ -8,7 +12,13 @@ import { UserService } from 'src/app/Services/Independent/user.service'
 	styleUrls: ['./by-municipality-table.component.scss'],
 })
 export class ByMunicipalityTableComponent implements OnInit {
-	constructor(private user: UserService) {}
+	constructor(
+		private user: UserService,
+		private birth: LocalBirthDataService,
+		private death: LocalDeathDataService,
+		private marriage: MarraigesService,
+		private migration: LocalMigrationDataService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -27,7 +37,18 @@ export class ByMunicipalityTableComponent implements OnInit {
 			'Are you sure you want to delete this data?',
 			'info',
 			() => {
-				alert(id)
+				if (this.type === 'Birth') {
+					this.birth.destroy(id).subscribe()
+				}
+				if (this.type === 'Death') {
+					this.death.destroy(id).subscribe()
+				}
+				if (this.type === 'Marriage') {
+					this.marriage.destroy(id).subscribe()
+				}
+				if (this.type === 'Migration') {
+					this.migration.destroy(id).subscribe()
+				}
 				Deleted()
 			}
 		)

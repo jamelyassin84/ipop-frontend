@@ -20,7 +20,6 @@ export class AddBirthDataComponent implements OnInit {
 	}
 
 	fetch(event: any) {
-		console.log(event)
 		this.data.barangay = event.barangay
 		this.data.municipality = event.municipality
 		this.data.year = event.year
