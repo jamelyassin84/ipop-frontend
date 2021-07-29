@@ -1,4 +1,4 @@
-<div class="header nav-header" [class.fix]="!hideNav">
+<div class="header nav-header" [class.fix]="!hideNav" [ngClass]="{ 'w-100': isUser }">
     <div class="d-flex p-20 aic card-body header-item" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
         <img src="../../../assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
         <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="../../../assets/ipop/logos/ipo-logo.png" />

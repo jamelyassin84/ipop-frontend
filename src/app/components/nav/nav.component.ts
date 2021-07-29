@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { homeNavs } from 'src/app/home/homeNav'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'Navbar',
@@ -7,7 +8,7 @@ import { homeNavs } from 'src/app/home/homeNav'
 	styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-	constructor() {}
+	constructor(private user: UserService) {}
 	public isMenuCollapsed = true
 	ngOnInit(): void {
 		setInterval(() => {
@@ -18,6 +19,8 @@ export class NavComponent implements OnInit {
 			}
 		}, 50)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	navs = homeNavs
 	title: String = 'News'

@@ -115,6 +115,7 @@ export class BirthDemographicComponent implements OnInit {
 		service.index().subscribe((summaries: any) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries?.data || {}
+			this.processStatisticalChart(summaries.month)
 		})
 	}
 

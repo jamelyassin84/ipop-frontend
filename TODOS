@@ -1,17 +1,13 @@
-user UI
-non super admin UI
 delete by munciipality
-center modal
-editable charts
-auth guard pra sa bulk records
-quick links kitaon wla ga sulod sa approval
-preloaders all especially on charts
-chart color
+is fetching preloaders
+non super admin UI
 chart approvals
-round off pipe
-percent pipe
+additional routes
+
+back to top
+
 update all approvals
-reactive form validation
+form validation
 approval approve or reject on bulk
 delete approve or reject on bulk
 route state ngrx
@@ -19,9 +15,7 @@ route active sidebar
 paginations
 fix padding
 polish design white space margin padding and colors and allignments for user perspecitve
-tr align items center
 logout route
-test with real data fetch provincial data
 odometer (optional)
 delete by municipality
 ngrx location
@@ -29,10 +23,15 @@ pararehos color
 separate header
 change role
 responsive table
+editable charts
 
 animations
 remove all errors
 Edit All (Optional)
 kuhaon ang data.data
 service worker (Optional)
+test with real data fetch provincial data
 
+round off pipe
+percent pipe
+auth guard pra sa bulk records

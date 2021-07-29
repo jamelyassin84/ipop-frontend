@@ -32,11 +32,11 @@
     </ng-template>
 
     <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-        <Modal size="lg" title="Add a Birth Data" btnTitle="Add birth data" btnClass="btn btn-sm btn-dark mr-2" [template]="addBirthData" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add a Birth Data" btnTitle="Add birth data" btnClass="btn btn-sm btn-dark mr-2" [template]="addBirthData" icon="ti-plus"></Modal>
 
         <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
 
-        <Modal *ngIf="!isUser" size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
+        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
     </div>
 
     <div class="row mt-1 mb-2">

@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <td *ngFor="let header of headers">{{ header }}</td>
-                    <td></td>
+                    <td *ngIf="!isUser"></td>
                 </tr>
             </thead>
             <tbody>
@@ -17,7 +17,7 @@
                     <td *ngFor="let key of keys">
                         {{ item | arrayToValues: key }}
                     </td>
-                    <td>
+                    <td *ngIf="!isUser">
                         <DropDown [buttons]="dd"></DropDown>
                         <ng-template #dd>
                             <button class="dropdown-item" (click)="deleteData(item.id)">

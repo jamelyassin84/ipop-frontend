@@ -35,7 +35,7 @@
                 <th scope="col"></th>
                 <th scope="col">Name</th>
                 <th scope="col">Position</th>
-                <th></th>
+                <th *ngIf="!isUser"></th>
             </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@
                 <td>
                     {{ official.position || 'Sanguniang Panlalawigan Member' }}
                 </td>
-                <td>
+                <td *ngIf="!isUser">
                     <button (click)="removeOfficial(official.id)" class="btn btn-sm btn-danger">
 						Remove
 					</button>

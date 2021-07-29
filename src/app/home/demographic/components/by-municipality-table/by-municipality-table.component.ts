@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'ByMunicipalityTable',
@@ -7,7 +8,7 @@ import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 	styleUrls: ['./by-municipality-table.component.scss'],
 })
 export class ByMunicipalityTableComponent implements OnInit {
-	constructor() {}
+	constructor(private user: UserService) {}
 
 	ngOnInit(): void {}
 
@@ -17,6 +18,8 @@ export class ByMunicipalityTableComponent implements OnInit {
 	@Input() body: Array<any> = []
 	@Input() keys: Array<any> = []
 	@Input() type: string = 'Birth'
+
+	isUser = !this.user.isAdmin()
 
 	deleteData(id: number) {
 		Fire(

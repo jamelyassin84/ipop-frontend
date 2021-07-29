@@ -4,6 +4,7 @@ import { BarangayService } from 'src/app/Services/home/officials/barangay.servic
 import { MunicipalService } from 'src/app/Services/home/officials/municipal.service'
 import { ProvincialService } from 'src/app/Services/home/officials/provincial.service'
 import { SpMemberService } from 'src/app/Services/home/officials/sp-member.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
@@ -21,12 +22,14 @@ export class ViewOfficialsComponent implements OnInit {
 		private municipalOfficial: MunicipalService,
 		private barangayOfficial: BarangayService,
 		private location: LocationService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.component.shouldReload().subscribe(() => {
 			this.fetch()
 		})
 	}
+	isUser = !this.user.isAdmin()
 
 	types = [
 		'Provincial Official',
