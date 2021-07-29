@@ -1,4 +1,4 @@
-<ngx-dropzone (change)="onSelect($event)">
+<ngx-dropzone (change)="onSelect($event)" [expandable]="true">
     <ngx-dropzone-label>Click or Drag & Drop your files here
     </ngx-dropzone-label>
     <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
