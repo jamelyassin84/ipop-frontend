@@ -6,6 +6,8 @@ import { ReloadService } from 'src/app/Services/reload.service'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { BaseService } from 'src/app/Services/base.service'
 import { Subscription } from 'rxjs'
+import { Color } from 'ng2-charts'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-migrations-demographic',
@@ -16,7 +18,8 @@ export class MigrationsDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalMigrationDataService,
-		private monthChartService: MonthChartService
+		private monthChartService: MonthChartService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -26,6 +29,8 @@ export class MigrationsDemographicComponent implements OnInit {
 		)
 	}
 
+	isUser = !this.user.isAdmin()
+
 	private subscriptions = new Subscription()
 
 	ngOnDestroy(): void {
@@ -33,6 +38,12 @@ export class MigrationsDemographicComponent implements OnInit {
 	}
 
 	ngOnInit(): void {}
+
+	Colors: Color[] = [
+		{ backgroundColor: '#EF6C00' },
+		{ backgroundColor: '#0D47AA' },
+		{ backgroundColor: '#FBBB25' },
+	]
 
 	summaries: any = {}
 
@@ -43,8 +54,9 @@ export class MigrationsDemographicComponent implements OnInit {
 	}
 	fetch(event: any) {
 		this.location = event
-		this.getChart()
 		this.getLocalData()
+		this.getChart()
+		this.getMigrationChart()
 		this.getSummary()
 		this.getMigrationByMunicipality()
 	}
@@ -112,14 +124,37 @@ export class MigrationsDemographicComponent implements OnInit {
 		)
 		service.index().subscribe((summaries: Summary) => {
 			this.localData = summaries?.data || {}
-			if (summaries != null) {
-				this.migrationChart.datasets[0].data = [
-					summaries.data.total_in_migrations,
-					summaries.data.total_out_migrations,
-					summaries.data.net_migrations,
-				]
-			}
 		})
+	}
+
+	getMigrationChart() {
+		new BaseService(this.service.http, 'migration-chart', '')
+			.index()
+			.subscribe((data: any) => {
+				let labels: any = []
+				let datasets: any = [
+					{
+						data: [],
+						label: 'In Migration',
+					},
+					{
+						data: [],
+						label: 'Out Migration',
+					},
+					{
+						data: [],
+						label: 'Net Migration',
+					},
+				]
+				for (let index of data) {
+					labels.push(index.year)
+					datasets[0].data.push(index.total_in_migrations)
+					datasets[1].data.push(index.total_out_migrations)
+					datasets[2].data.push(index.net_migrations)
+				}
+				this.migrationChart.labels = labels
+				this.migrationChart.datasets = datasets
+			})
 	}
 
 	migrationByMunicipality: any = []
