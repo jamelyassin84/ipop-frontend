@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <td>Size</td>
+            <td>type</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of files">
+            <td><i class="ti-file h5 text-primary"></i></td>
+            <td>{{ item.file.size }}</td>
+            <td>{{ item.file.type }}</td>
+            <td>
+                <DropDown [buttons]="dd"></DropDown>
+                <ng-template #dd>
+                    <a target="_blank" [href]="item.file.uri" class="dropdown-item">
+						View
+					</a>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,5 +1,11 @@
 import Swal from 'sweetalert2'
-export function Fire(title: any, text: any, type: any, callback: Function) {
+
+export function Fire(
+	title: string,
+	text: string,
+	type: any,
+	callback: Function
+) {
 	Swal.fire({
 		title: title,
 		text: text,
@@ -20,7 +26,7 @@ export function Fire(title: any, text: any, type: any, callback: Function) {
 	audio.play()
 }
 
-export function Alert(title: any, text: any, type: any) {
+export function Alert(title: string, text: string, type: any) {
 	Swal.fire(title, text, type)
 	if (type == 'error') {
 		type = 'warning'

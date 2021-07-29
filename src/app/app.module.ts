@@ -122,7 +122,8 @@ import { CustomizeMarriageLocalDataComponent } from './home-components/demograph
 import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component'
 import { TitleWithPercentComponent } from './home/demographic/components/title-with-percent/title-with-percent.component'
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
-import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component'
+import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component';
+import { OtherFilesComponent } from './home/others/other-files/other-files.component'
 
 // Directives
 
@@ -223,6 +224,7 @@ import { SingleFileUploadComponent } from './components/single-file-upload/singl
 		TitleWithPercentComponent,
 		FileDropzoneComponent,
   SingleFileUploadComponent,
+  OtherFilesComponent,
 	],
 	imports: [
 		BrowserModule,

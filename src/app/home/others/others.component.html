@@ -2,35 +2,38 @@
     <AddOtherFiles></AddOtherFiles>
 </ng-template>
 
-<div class="d-flex" style="
-		justify-content: flex-end;
-		margin-bottom: -2rem;
-		position: relative;
-		z-index: 1;
-	">
+<div class="d-flex mb-3" style="justify-content: flex-end">
     <Modal size="lg" title="Add File(s)" btnTitle="Add file(s)" btnClass="btn btn-sm btn-dark mr-2" [template]="addFiles" icon="ti-plus"></Modal>
 </div>
 <table class="table">
     <thead>
         <tr>
-            <th></th>
-            <th>File Name</th>
+            <th>Thumbnail</th>
+            <th>Name</th>
             <th>Created Last</th>
-            <th>Updated Last</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let item of others">
             <th scope="row">
-                <i class="ti-files c-blue-900"></i>
+                <img [src]="item.thumbnail.uri" alt="" />
             </th>
-            <td>Mark</td>
-            <td>11/14/1994</td>
-            <td>11/14/1994</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.created_at | date: 'MMMM dd, yyyy - hh::mm - a' }}</td>
             <td>
-                <button class="btn btn-dark mR-10">Edit</button>
+                <DropDown [buttons]="dd"></DropDown>
+                <ng-template #dd>
+                    <Modal (click)="setFiles(item.files)" size="lg" title="Files" btnSize="sm" btnTitle="View enclosed files" btnClass="dropdown-item text-secondary" [template]="otherFiles"></Modal>
+                    <button (click)="removeFile(item.id)" class="dropdown-item">
+						Remove
+					</button>
+                </ng-template>
             </td>
         </tr>
     </tbody>
 </table>
+
+<ng-template #otherFiles>
+    <OtherFiles [files]="files"></OtherFiles>
+</ng-template>
