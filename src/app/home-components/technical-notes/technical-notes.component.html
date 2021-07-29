@@ -1,3 +1,7 @@
 <p *ngFor="let note of TechnicalNotes">
-    <span (click)="removeNote(note.id)" role="button" placement="left" ngbTooltip="Click to Remove Technical Note" class="h6 text-primary">{{ note.title }}</span> - {{ note.body }}
+    <span *ngIf="!isUser" (click)="removeNote(note.id)" role="button" placement="left" ngbTooltip="Click to Remove Technical Note" class="h6 text-primary">{{ note.title }}</span
+	>
+	- {{ note.body }}
+
+	<span *ngIf="isUser" class="h6 text-primary">{{ note.title }}</span> - {{ note.body }}
 </p>

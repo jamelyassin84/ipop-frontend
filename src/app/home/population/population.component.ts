@@ -1,14 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { getPercent } from 'src/app/constants/Shortcuts'
 import { Deleted, Fire, pop } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { AgeDistributionAndAgeDependecyRatioService } from 'src/app/Services/home/population/age-distribution-and-age-dependecy-ratio.service'
 import { TopPopulatedService } from 'src/app/Services/home/population/top-populated.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
-import { drawChart } from './Config'
-import { DummyData } from './Dummy'
 import { PopulationPyramidComponent } from './population-pyramid/population-pyramid.component'
 
 @Component({
@@ -23,7 +21,8 @@ export class PopulationComponent implements OnInit {
 		private topPopulatedService: TopPopulatedService,
 		private component: ReloadService,
 		private _http: HttpClient,
-		private adaadr: AgeDistributionAndAgeDependecyRatioService
+		private adaadr: AgeDistributionAndAgeDependecyRatioService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -31,6 +30,8 @@ export class PopulationComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

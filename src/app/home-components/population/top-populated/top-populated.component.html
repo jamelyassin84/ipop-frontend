@@ -2,6 +2,7 @@
     <div class="form-group">
         <label for="">Choose a Municipality</label>
         <select (change)="changeHandler($event)" type="text" class="form-control">
+			<option value="">Choose..</option>
 			<option
 				*ngFor="let municipality of municipalities"
 				[value]="municipality.code"

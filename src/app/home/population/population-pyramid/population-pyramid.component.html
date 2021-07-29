@@ -4,7 +4,7 @@
             <div class="card-header bg-white">
                 <div class="card-title h5 d-flex">
                     <span>{{ pyramidtitle }}</span>
-                    <div class="ml-auto">
+                    <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Pyramid"></DropDown>
                         <ng-template #Pyramid>
                             <Modal size="lg" title="Customize a Population Pyramid" btnTitle="Customize a population pyramid" btnClass="dropdown-item" [template]="customizePyramid"></Modal>

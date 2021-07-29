@@ -4,6 +4,9 @@ import { Component, Input, OnInit, Output } from '@angular/core'
 import { drawChart } from '../Config'
 import { BaseService } from 'src/app/Services/base.service'
 import { getPercent } from 'src/app/constants/Shortcuts'
+import { UserService } from 'src/app/Services/Independent/user.service'
+import { ReloadService } from 'src/app/Services/reload.service'
+import { Subscription } from 'rxjs'
 
 @Component({
 	selector: 'PyramidChart-and-AgeGroup',
@@ -11,7 +14,25 @@ import { getPercent } from 'src/app/constants/Shortcuts'
 	styleUrls: ['./population-pyramid.component.scss'],
 })
 export class PopulationPyramidComponent implements OnInit {
-	constructor(private _http: HttpClient) {}
+	constructor(
+		private _http: HttpClient,
+		private user: UserService,
+		private component: ReloadService
+	) {
+		this.subscriptions.add(
+			this.component.shouldReload().subscribe(() => {
+				this.fetch()
+			})
+		)
+	}
+
+	isUser = !this.user.isAdmin()
+
+	private subscriptions = new Subscription()
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe()
+	}
 
 	@Input() location: any = {}
 	@Input() type: string = ''

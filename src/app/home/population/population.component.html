@@ -33,11 +33,11 @@
 			position: relative;
 			z-index: 1;
 		">
-        <Modal size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2" [template]="addTopPopulated" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2" [template]="addTopPopulated" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="Add Age Distribution and AgeDependency ratio" btnTitle="Add age distribution and age dependency ratio" btnClass="btn btn-sm btn-primary mr-2" [template]="ageDistributionAndDependecyRatio" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Age Distribution and AgeDependency ratio" btnTitle="Add age distribution and age dependency ratio" btnClass="btn btn-sm btn-primary mr-2" [template]="ageDistributionAndDependecyRatio" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
 
         <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
     </div>
@@ -51,7 +51,7 @@
                 <div class="layer w-100 mB-10">
                     <h6 class="lh-1 d-flex">
                         {{ municipality.data.name }}
-                        <span (click)="deleteTopPopulated(municipality.id)" class="ml-auto">
+                        <span role="button" (click)="deleteTopPopulated(municipality.id)" class="ml-auto">
 							<i class="ti-minus"></i>
 						</span>
                     </h6>
@@ -107,7 +107,7 @@
 				<div class="card-header bg-white">
 					<div class="card-title h5 d-flex aic">
 						<span>Population Profile </span>
-                            <div class="ml-auto">
+                            <div *ngIf="!isUser" class="ml-auto">
                                 <DropDown [buttons]="dropdown"></DropDown>
                                 <ng-template #dropdown>
                                     <Modal size="lg" title="Add a Population Profile" btnTitle="Add population profile" btnClass="dropdown-item" [template]="addPopulationProfile"></Modal>
@@ -570,6 +570,7 @@
 						Technical Notes
 					</div>
 					<Modal
+						*ngIf="!isUser"
 						size="lg"
 						title="Customize Technical Notes"
 						btnTitle="Customize technical notes"
