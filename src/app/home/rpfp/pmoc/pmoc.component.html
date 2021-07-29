@@ -40,7 +40,7 @@
     </ng-template>
 
     <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-        <Modal size="lg" title="Add Pre-Marriage Orrientation and Counseling Data" btnTitle="Add pre-marriage orrientation and counselling data" btnClass="btn btn-sm btn-dark mr-2" [template]="addPMOCData" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Pre-Marriage Orrientation and Counseling Data" btnTitle="Add pre-marriage orrientation and counselling data" btnClass="btn btn-sm btn-dark mr-2" [template]="addPMOCData" icon="ti-plus"></Modal>
     </div>
 
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
@@ -50,13 +50,13 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Number of Couples</div>
-                    <DropDown [buttons]="NCDD"></DropDown>
+                    <DropDown *ngIf="!isUser" [buttons]="NCDD"></DropDown>
                     <ng-template #NCDD>
                         <Modal size="lg" title="Customize Number of Couple Chart" btnTitle="Customize number of couple chart" btnClass="dropdown-item" [template]="customizeCoupleChart"></Modal>
                     </ng-template>
                 </div>
                 <div class="card-body">
-                    <canvas baseChart [colors]="numberOfCouplesChart.colors" [datasets]="numberOfCouplesChart.datasets" [labels]="numberOfCouplesChart.labels" [options]="numberOfCouplesChart.options" [legend]="numberOfCouplesChart.legend" chartType="line">
+                    <canvas baseChart [colors]="[{ backgroundColor: '#D7A405' }]" [datasets]="numberOfCouplesChart.datasets" [labels]="numberOfCouplesChart.labels" [options]="numberOfCouplesChart.options" [legend]="numberOfCouplesChart.legend" chartType="line">
 					</canvas>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Local PMOC Data</div>
-                    <DropDown *ngIf="localData.id != null" [buttons]="LocalPMOC"></DropDown>
+                    <DropDown *ngIf="localData.id != null && !isUser" [buttons]="LocalPMOC"></DropDown>
                     <ng-template #LocalPMOC>
                         <Modal size="lg" title="Edit Local PMOC Data" btnTitle="Edit local pmoc" btnClass="dropdown-item" [template]="editPMOCData"></Modal>
                     </ng-template>
@@ -110,7 +110,10 @@
 					<div class="card-title h5 mr-auto">
 						PMC Couple Applicants by Age Group
 					</div>
-					<DropDown [buttons]="ApplicantsByAgeGroupDD"></DropDown>
+					<DropDown
+						*ngIf="!isUser"
+						[buttons]="ApplicantsByAgeGroupDD"
+					></DropDown>
 					<ng-template #ApplicantsByAgeGroupDD>
 						<Modal
 							size="lg"
@@ -124,7 +127,7 @@
 				<div class="card-body">
 					<canvas
 						baseChart
-						[colors]="ByAgeGroup.colors"
+						[colors]="Colors"
 						[datasets]="ByAgeGroup.datasets"
 						[labels]="ByAgeGroup.labels"
 						[options]="ByAgeGroup.options"
@@ -141,7 +144,7 @@
 					<div class="card-title h5 mr-auto">
 						PMC Applicants by Employment Status and Sex
 					</div>
-					<DropDown [buttons]="ESDD"></DropDown>
+					<DropDown *ngIf="!isUser" [buttons]="ESDD"></DropDown>
 					<ng-template #ESDD>
 						<Modal
 							size="lg"
@@ -155,7 +158,7 @@
 				<div class="card-body">
 					<canvas
 						baseChart
-						[colors]="ByEmploymentStatus.colors"
+						[colors]="Colors"
 						[datasets]="ByEmploymentStatus.datasets"
 						[labels]="ByEmploymentStatus.labels"
 						[options]="ByEmploymentStatus.options"
@@ -172,7 +175,7 @@
 					<div class="card-title h5 mr-auto">
 						Knowledge on Family Planning among PMC Applicants
 					</div>
-					<DropDown [buttons]="KFDD"></DropDown>
+					<DropDown *ngIf="!isUser" [buttons]="KFDD"></DropDown>
 					<ng-template #KFDD>
 						<Modal
 							size="lg"
@@ -186,7 +189,7 @@
 				<div class="card-body">
 					<canvas
 						baseChart
-						[colors]="ByKnowledgeOnFP.colors"
+						[colors]="Colors"
 						[datasets]="ByKnowledgeOnFP.datasets"
 						[labels]="ByKnowledgeOnFP.labels"
 						[options]="ByKnowledgeOnFP.options"
@@ -205,7 +208,7 @@
 						Percentage Distribution of PMC Applicants by Civil
 						Status
 					</div>
-					<DropDown [buttons]="CSDD"></DropDown>
+					<DropDown *ngIf="!isUser" [buttons]="CSDD"></DropDown>
 					<ng-template #CSDD>
 						<Modal
 							size="lg"
@@ -219,7 +222,7 @@
 				<div class="card-body">
 					<canvas
 						baseChart
-						[colors]="ByCIvilStatus.colors"
+						[colors]="Colors"
 						[datasets]="ByCIvilStatus.datasets"
 						[labels]="ByCIvilStatus.labels"
 						[options]="ByCIvilStatus.options"
@@ -236,7 +239,7 @@
 					<div class="card-title h5 mr-auto">
 						PMC Applicants by Average Monthly Income and Sex
 					</div>
-					<DropDown [buttons]="AMDD"></DropDown>
+					<DropDown *ngIf="!isUser" [buttons]="AMDD"></DropDown>
 					<ng-template #AMDD>
 						<Modal
 							size="lg"
@@ -250,7 +253,7 @@
 				<div class="card-body">
 					<canvas
 						baseChart
-						[colors]="byMonthlyIncome.colors"
+						[colors]="Colors"
 						[datasets]="byMonthlyIncome.datasets"
 						[labels]="byMonthlyIncome.labels"
 						[options]="byMonthlyIncome.options"
@@ -279,6 +282,7 @@
 						Technical Notes
 					</div>
 					<Modal
+						*ngIf="!isUser"
 						size="lg"
 						title="Customize Technical Notes"
 						btnTitle="Customize technical notes"

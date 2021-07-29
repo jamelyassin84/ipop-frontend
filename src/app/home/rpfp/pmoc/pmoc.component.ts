@@ -16,6 +16,8 @@ import { EmploymentStatusService } from 'src/app/Services/home/rpfp/pmoc/employm
 import { BaseService } from 'src/app/Services/base.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
+import { Color } from 'ng2-charts'
 
 @Component({
 	selector: 'app-pmoc',
@@ -30,7 +32,8 @@ export class PmocComponent implements OnInit {
 		private ByEmploymentStatusService: EmploymentStatusService,
 		private ByKnowledgeOnFPService: KnowledgeOnFpService,
 		private byMonthlyIncomeService: AverageMonthlyIncomeService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -45,11 +48,18 @@ export class PmocComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
+	isUser = !this.user.isAdmin()
+
+	Colors: Color[] = [
+		{ backgroundColor: '#CD1125' },
+		{ backgroundColor: '#0039A9' },
+		{ backgroundColor: '#D7A405' },
+	]
+
 	location: any = {
 		municipality: null,
 		year: null,
 	}
-
 	fetch(event: any) {
 		this.location.municipality = event.municipality
 		this.location.year = event.year
@@ -81,7 +91,7 @@ export class PmocComponent implements OnInit {
 	}
 
 	renderNumberOfCouplesChart(data: any) {
-		this.numberOfCouplesChart.datasets[0].data = []
+		this.numberOfCouplesChart.datasets = [{ data: [0], label: 'Couples' }]
 		for (let index in data) {
 			this.numberOfCouplesChart.datasets[0].data.push(data[index].males)
 		}
