@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { PersonnelInchargeOfTeenCenterService } from 'src/app/Services/home/ahyd/teen-center/personnel-incharge-of-teen-center.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
@@ -13,7 +14,8 @@ import { ReloadService } from 'src/app/Services/reload.service'
 export class ViewTcPersonnelInchargeComponent implements OnInit {
 	constructor(
 		private service: PersonnelInchargeOfTeenCenterService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -21,6 +23,8 @@ export class ViewTcPersonnelInchargeComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

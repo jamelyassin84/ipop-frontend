@@ -3,14 +3,14 @@
         <tr>
             <th></th>
             <th scope="col">Name</th>
-            <th></th>
+            <th *ngIf="!isUser"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let person of focaPersons">
             <th><i class="ti-user h4"></i></th>
             <td>{{ person.name }}</td>
-            <td>
+            <td *ngIf="!isUser">
                 <button (click)="remove(person.id)" class="btn btn-sm btn-outline-danger">
 					Remove
 				</button>

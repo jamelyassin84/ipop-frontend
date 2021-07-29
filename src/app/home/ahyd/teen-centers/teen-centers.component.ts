@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'app-teen-centers',
@@ -13,7 +14,8 @@ import { ReloadService } from 'src/app/Services/reload.service'
 export class TeenCentersComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
-		private service: TeenCenterDataService
+		private service: TeenCenterDataService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -23,6 +25,8 @@ export class TeenCentersComponent implements OnInit {
 	}
 
 	private subscriptions = new Subscription()
+
+	isUser = !this.user.isAdmin()
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
