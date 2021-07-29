@@ -1,4 +1,3 @@
-delete by munciipality
 is fetching preloaders
 non super admin UI
 chart approvals
@@ -32,6 +31,4 @@ kuhaon ang data.data
 service worker (Optional)
 test with real data fetch provincial data
 
-round off pipe
-percent pipe
 auth guard pra sa bulk records

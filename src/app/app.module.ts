@@ -123,7 +123,8 @@ import { TitleWithIconComponent } from './home/demographic/components/title-with
 import { TitleWithPercentComponent } from './home/demographic/components/title-with-percent/title-with-percent.component'
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
 import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component';
-import { OtherFilesComponent } from './home/others/other-files/other-files.component'
+import { OtherFilesComponent } from './home/others/other-files/other-files.component';
+import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 
 // Directives
 
@@ -225,6 +226,7 @@ import { OtherFilesComponent } from './home/others/other-files/other-files.compo
 		FileDropzoneComponent,
   SingleFileUploadComponent,
   OtherFilesComponent,
+  PercentPipePipe,
 	],
 	imports: [
 		BrowserModule,
