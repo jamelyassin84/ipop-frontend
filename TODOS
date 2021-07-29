@@ -1,8 +1,8 @@
 
-fix nav 
-user UI
-listen theme preference sa settings ka windows
 File Uploads CRUD   
+bulk records
+user UI
+center modal
 editable charts
 auth guard pra sa bulk records
 quick links kitaon wla ga sulod sa approval
@@ -27,6 +27,9 @@ odometer (optional)
 delete by municipality
 ngrx location
 pararehos color
+separate header
+
+
 
 animations
 remove all errors

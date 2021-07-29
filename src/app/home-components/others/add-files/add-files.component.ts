@@ -12,19 +12,14 @@ export class AddFilesComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	file: any = []
+	files: any = []
 
-	readURL(event: any) {
-		if (event.target.files && event.target.files[0]) {
-			this.file = []
-			Object.keys(event.target.files).forEach((i: any) => {
-				const reader = new FileReader()
-				reader.readAsDataURL(event.target.files[i])
-				reader.onload = (event: any) => {
-					this.file.push((<FileReader>event.target).result)
-				}
-			})
-		}
+	setFiles(event: any) {
+		this.files = event
+	}
+
+	thumbNailOnChange(event: any) {
+		console.log(event)
 	}
 
 	isLoading = false
@@ -34,8 +29,10 @@ export class AddFilesComponent implements OnInit {
 			'Are you sure you want to add this data?',
 			'info',
 			() => {
+				let formData = new FormData()
+				formData.append('files', this.files)
 				this.isLoading = true
-				this.service.create({ file: this.file }).subscribe(() => {
+				this.service.create(formData).subscribe(() => {
 					this.isLoading = false
 					Created()
 				})

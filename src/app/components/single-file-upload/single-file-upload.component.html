@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-md-6">
+        <img [class]="class" (click)="triggerInput()" [src]="src" alt="" />
+        <br />
+        <small>Click the image above to upload</small>
+        <input accept="image/*" (change)="readUrl($event)" type="file" id="file" style="display: none" />
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
+import { NgxDropzoneModule } from 'ngx-dropzone'
 
 // Custom Modules
 import { AdminModule } from './modules/admin/admin.module'
@@ -108,18 +109,20 @@ import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { AuthGuard } from './guards/auth.guard'
-import { ContentWidthDirective } from './directives/content-width.directive';
-import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component';
-import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component';
-import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component';
-import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component';
-import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component';
-import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe';
-import { RoundOffPipe } from './pipes/round-off.pipe';
-import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component';
-import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component';
-import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component';
+import { ContentWidthDirective } from './directives/content-width.directive'
+import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component'
+import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component'
+import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component'
+import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
+import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component'
+import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe'
+import { RoundOffPipe } from './pipes/round-off.pipe'
+import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component'
+import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
+import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component'
 import { TitleWithPercentComponent } from './home/demographic/components/title-with-percent/title-with-percent.component'
+import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
+import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component'
 
 // Directives
 
@@ -207,17 +210,19 @@ import { TitleWithPercentComponent } from './home/demographic/components/title-w
 		ViewAdminsComponent,
 		UnauthorizedComponent,
 		ContentWidthDirective,
-  AddAgeDistributionAndDependencyRatioComponent,
-  PopulationPyramidComponent,
-  SummaryComponentComponent,
-  SummaryWithPercentComponentComponent,
-  ByMunicipalityTableComponent,
-  ArrayToArrayValuesPipe,
-  RoundOffPipe,
-  AddMarriageDataComponent,
-  CustomizeMarriageLocalDataComponent,
-  TitleWithIconComponent,
-  TitleWithPercentComponent,
+		AddAgeDistributionAndDependencyRatioComponent,
+		PopulationPyramidComponent,
+		SummaryComponentComponent,
+		SummaryWithPercentComponentComponent,
+		ByMunicipalityTableComponent,
+		ArrayToArrayValuesPipe,
+		RoundOffPipe,
+		AddMarriageDataComponent,
+		CustomizeMarriageLocalDataComponent,
+		TitleWithIconComponent,
+		TitleWithPercentComponent,
+		FileDropzoneComponent,
+  SingleFileUploadComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -237,6 +242,7 @@ import { TitleWithPercentComponent } from './home/demographic/components/title-w
 		LogsModule,
 		RecordsModule,
 		ExtrasModule,
+		NgxDropzoneModule,
 	],
 	providers: [
 		{
