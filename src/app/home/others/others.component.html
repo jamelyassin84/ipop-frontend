@@ -2,7 +2,7 @@
     <AddOtherFiles></AddOtherFiles>
 </ng-template>
 
-<div class="d-flex mb-3" style="justify-content: flex-end">
+<div *ngIf="!isUser" class="d-flex mb-3" style="justify-content: flex-end">
     <Modal size="lg" title="Add File(s)" btnTitle="Add file(s)" btnClass="btn btn-sm btn-dark mr-2" [template]="addFiles" icon="ti-plus"></Modal>
 </div>
 <table class="table">
@@ -25,7 +25,7 @@
                 <DropDown [buttons]="dd"></DropDown>
                 <ng-template #dd>
                     <Modal (click)="setFiles(item.files)" size="lg" title="Files" btnSize="sm" btnTitle="View enclosed files" btnClass="dropdown-item text-secondary" [template]="otherFiles"></Modal>
-                    <button (click)="removeFile(item.id)" class="dropdown-item">
+                    <button *ngIf="!isUser" (click)="removeFile(item.id)" class="dropdown-item">
 						Remove
 					</button>
                 </ng-template>
