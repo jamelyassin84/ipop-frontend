@@ -6,10 +6,16 @@
     <div class="card-header bg-white">
         <h5 class="m-0 card-title text-center d-flex">
             <span style="align-self: center">{{ serviceOffered.title }}</span>
-            <span class="ml-auto">
+            <span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
-					<Modal size="lg" [title]="'Add a service for ' + serviceOffered.title" btnTitle="Add services" btnClass="dropdown-item" [template]="addServices"></Modal>
+					<Modal
+						size="lg"
+						[title]="'Add a service for ' + serviceOffered.title"
+						btnTitle="Add services"
+						btnClass="dropdown-item"
+						[template]="addServices"
+					></Modal>
 				</ng-template>
 			</span>
         </h5>
@@ -18,16 +24,27 @@
         <div class="bl br card mb-2" *ngFor="let service of serviceOffered.offers">
             <div class="card-body bg-white d-flex aic">
                 <div>
-                    <div class="h5 m-0 card-title c-blue-300 dw"><i class="ti-microphone"></i> {{ service.title }}</div>
-                    <span class="m-0 text-muted pl-4">Created : {{ service.created_at | date: 'MMMM dd, yyy - hh:mm a' }}</span>
-                </div>
-                <div class="ml-auto">
-                    <DropDown [buttons]="dropdown"></DropDown>
-                    <ng-template #dropdown>
-                        <button (click)="removeService(service.id)" class="dropdown-item">Remove services</button>
-                    </ng-template>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <div class="h5 m-0 card-title c-blue-300 dw">
+                        <i class="ti-microphone"></i> {{ service.title }}
+                    </div>
+                    <span class="m-0 text-muted pl-4">Created :
+						{{
+							service.created_at | date: 'MMMM dd, yyy - hh:mm a'
+						}}</span
+					>
+				</div>
+				<div *ngIf="!isUser" class="ml-auto">
+					<DropDown [buttons]="dropdown"></DropDown>
+					<ng-template #dropdown>
+						<button
+							(click)="removeService(service.id)"
+							class="dropdown-item"
+						>
+							Remove services
+						</button>
+					</ng-template>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
