@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'ViewMPCFDCPersonnelIncharge',
@@ -13,7 +14,8 @@ import { Subscription } from 'rxjs'
 export class ViewPersonnelInchargeComponent implements OnInit {
 	constructor(
 		private service: MpcFdcPersonnelInchargeService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -21,6 +23,8 @@ export class ViewPersonnelInchargeComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

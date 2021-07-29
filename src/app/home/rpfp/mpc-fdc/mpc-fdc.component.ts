@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
 import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 import { LocationService } from 'src/app/Services/locations/province.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
@@ -16,7 +17,8 @@ export class MpcFdcComponent implements OnInit {
 	constructor(
 		private location: LocationService,
 		private service: MpcFdcDataService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -25,6 +27,8 @@ export class MpcFdcComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

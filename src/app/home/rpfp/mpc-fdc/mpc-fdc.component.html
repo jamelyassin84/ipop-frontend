@@ -31,9 +31,9 @@
 </ng-template>
 
 <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-    <Modal size="lg" title="Add MPC-FDC Data" btnTitle="Add MPC-FDC Data" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCData" icon="ti-plus"></Modal>
+    <Modal *ngIf="!isUser" size="lg" title="Add MPC-FDC Data" btnTitle="Add MPC-FDC Data" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCData" icon="ti-plus"></Modal>
 
-    <Modal size="lg" title="Add MPC FDC Team" btnTitle="Add MPC FDC Team" btnClass="btn btn-sm btn-primary mr-2" [template]="addMPCFDCTeam"></Modal>
+    <Modal *ngIf="!isUser" size="lg" title="Add MPC FDC Team" btnTitle="Add MPC FDC Team" btnClass="btn btn-sm btn-primary mr-2" [template]="addMPCFDCTeam"></Modal>
     <Modal size="lg" title="View MPC FDC Team" btnTitle="View MPC FDC Team" btnClass="btn btn-sm btn-outline-primary mr-2" [template]="viewMPCFDCTeam"></Modal>
 </div>
 
@@ -41,7 +41,7 @@
     <div class="col-md-4">
         <label TeenCenter>District</label>
         <select [(ngModel)]="locations.district" class="form-control">
-			<option >Choose...</option>
+			<option>Choose...</option>
 			<option *ngFor="let district of districts">{{ district }}</option>
 		</select>
     </div>
@@ -83,15 +83,15 @@
                         <td>
                             <DropDown [buttons]="dropdown"></DropDown>
                             <ng-template #dropdown>
-                                <Modal (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
+                                <Modal *ngIf="!isUser" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
 
                                 <Modal (click)="transformImages(unit.files)" size="lg" title="View Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
 
-                                <Modal (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
+                                <Modal *ngIf="!isUser" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
 
                                 <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
-                                <button (click)="remove(unit.id)" class="dropdown-item">
+                                <button *ngIf="!isUser" (click)="remove(unit.id)" class="dropdown-item">
 									Remove
 								</button>
                             </ng-template>
@@ -106,7 +106,7 @@
         <div class="card">
             <div class="card-header bg-white d-flex aic">
                 <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-                <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
             </div>
             <div class="card-body">
                 <TechnicalNotes type="MPCFDC"></TechnicalNotes>

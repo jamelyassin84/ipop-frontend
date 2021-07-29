@@ -4,8 +4,7 @@
             <th><i class="ti-user"></i></th>
             <th scope="col">Name</th>
             <th scope="col">Position</th>
-
-            <th></th>
+            <th *ngIf="!isUser"></th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +15,7 @@
             <td>{{ personnel.name }}</td>
             <td>{{ personnel.position }}</td>
             <td>
-                <button (click)="remove(personnel.id)" class="btn btn-sm btn-outline-danger">
+                <button *ngIf="!isUser" (click)="remove(personnel.id)" class="btn btn-sm btn-outline-danger">
 					Remove
 				</button>
             </td>

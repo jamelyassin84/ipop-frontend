@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { MpcFdcTeamService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-team.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'ViewMPCFDCTeam',
@@ -12,7 +13,8 @@ import { Subscription } from 'rxjs'
 export class ViewMpcFdcTeamComponent implements OnInit {
 	constructor(
 		private service: MpcFdcTeamService,
-		private component: ReloadService
+		private component: ReloadService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -20,6 +22,8 @@ export class ViewMpcFdcTeamComponent implements OnInit {
 			})
 		)
 	}
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 
