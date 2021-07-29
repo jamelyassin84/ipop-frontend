@@ -22,7 +22,6 @@ export class DeathDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalDeathDataService,
-		private monthChartService: MonthChartService,
 		private user: UserService
 	) {
 		this.subscriptions.add(
@@ -55,7 +54,6 @@ export class DeathDemographicComponent implements OnInit {
 	fetch(event: any) {
 		this.location = event
 		this.getSummary()
-		this.getChart()
 		this.getLocalData()
 		this.getDeathssByMunicipality()
 	}
@@ -73,23 +71,12 @@ export class DeathDemographicComponent implements OnInit {
 			})
 	}
 
-	getChart() {
-		const service = new BaseService(
-			this.service.http,
-			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Death`
-		)
-		service.index().subscribe((months: any) => {
-			this.processStatisticalChart(months)
-		})
-	}
-
 	clearChart() {
 		this.crudeDeathRate.labels = []
 		this.crudeDeathRate.datasets[0].data = []
 	}
 
-	localData: Summary | any = {}
+	localData: any = {}
 	getLocalData() {
 		this.localData = {
 			total: 0,
@@ -100,7 +87,7 @@ export class DeathDemographicComponent implements OnInit {
 			this.service.url,
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
-		service.index().subscribe((summaries: Summary) => {
+		service.index().subscribe((summaries: any) => {
 			this.localData = summaries?.data || {}
 			this.clearChart()
 			for (let index in summaries.incidence) {
@@ -117,6 +104,7 @@ export class DeathDemographicComponent implements OnInit {
 					summaries.incidence[index].value
 				)
 			}
+			this.processStatisticalChart(summaries.month)
 		})
 	}
 
@@ -176,14 +164,6 @@ export class DeathDemographicComponent implements OnInit {
 	}
 
 	ngOnInit(): void {}
-}
-
-type Summary = {
-	total: number
-	crude_death_rate: number
-	incidences: any
-	incidence: any
-	data: any
 }
 
 type Statistic = {

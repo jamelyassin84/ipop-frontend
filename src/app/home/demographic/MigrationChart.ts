@@ -13,3 +13,19 @@ export const MigrationChartConfig = {
 		},
 	],
 }
+
+export const MarriageChartConfig = {
+	options: {
+		scaleShowVerticalLines: false,
+		responsive: true,
+	},
+	labels: ['', '', ''],
+	legend: true,
+	colors: [],
+	datasets: [
+		{
+			data: [0, 0, 0],
+			label: 'Data',
+		},
+	],
+}

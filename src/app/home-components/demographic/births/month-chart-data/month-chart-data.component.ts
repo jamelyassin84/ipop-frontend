@@ -11,7 +11,7 @@ export class MonthChartDataComponent implements OnInit {
 	constructor(private service: MonthChartService) {}
 
 	ngOnInit(): void {}
-
+	@Input() single: boolean = false
 	tabs: any = {
 		males: true,
 		famales: false,

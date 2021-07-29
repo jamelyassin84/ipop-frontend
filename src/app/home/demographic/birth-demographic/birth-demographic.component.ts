@@ -1,6 +1,4 @@
-import { years } from 'src/app/constants/AppConstants'
 import { LocalBirthDataService } from './../../../Services/home/demographic/births/local-birth-data.service'
-import { SummaryService } from './../../../Services/home/demographic/summary.service'
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { MonthChartConfig } from '../MonthChart'
@@ -8,7 +6,6 @@ import { groupBy } from 'src/app/constants/helpers'
 import { IllegitimateIncidenceChartConfig } from '../illegitamate'
 import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
 import { BaseService } from 'src/app/Services/base.service'
-import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { Subscription } from 'rxjs'
 import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
 import { UserService } from 'src/app/Services/Independent/user.service'
@@ -25,7 +22,6 @@ export class BirthDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalBirthDataService,
-		private monthChartService: MonthChartService,
 		private user: UserService
 	) {
 		this.subscriptions.add(
@@ -91,7 +87,6 @@ export class BirthDemographicComponent implements OnInit {
 	fetch(event: any) {
 		this.getSummary()
 		this.location = event
-		this.getChart()
 		this.getLocalData()
 		this.getBIrthsByMunicipality()
 	}
@@ -109,17 +104,6 @@ export class BirthDemographicComponent implements OnInit {
 			})
 	}
 
-	getChart() {
-		const service = new BaseService(
-			this.service.http,
-			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
-		)
-		service.index().subscribe((months: any) => {
-			this.processStatisticalChart(months)
-		})
-	}
-
 	localData: any = {}
 	getLocalData() {
 		this.localData = {}
@@ -128,7 +112,7 @@ export class BirthDemographicComponent implements OnInit {
 			this.service.url,
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
-		service.index().subscribe((summaries: Summary) => {
+		service.index().subscribe((summaries: any) => {
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries?.data || {}
 		})
@@ -203,16 +187,6 @@ export class BirthDemographicComponent implements OnInit {
 	getPercentage(value: number, basis: number) {
 		return (value * 100) / basis
 	}
-}
-
-type Summary = {
-	crude_birth_rate: number
-	general_fertility_rate: number
-	incidences: any
-	incidence: any
-	total: number
-	total_live_births: number
-	data: any
 }
 
 type Statistic = {

@@ -2,10 +2,12 @@ import { MarraigesService } from './../../../Services/home/demographic/marraiges
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { BaseService } from 'src/app/Services/base.service'
-import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
 import { MonthChartConfig } from '../MonthChart'
+import { UserService } from 'src/app/Services/Independent/user.service'
+import { Color } from 'ng2-charts'
+import { MarriageChartConfig } from '../MigrationChart'
 
 @Component({
 	selector: 'app-marriage-demographic',
@@ -18,7 +20,7 @@ export class MarriageDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: MarraigesService,
-		private monthChartService: MonthChartService
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -28,11 +30,20 @@ export class MarriageDemographicComponent implements OnInit {
 		)
 	}
 
+	isUser = !this.user.isAdmin()
+
 	private subscriptions = new Subscription()
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
 	}
+
+	Colors: Color[] = [
+		{ backgroundColor: '#FDEADB' },
+		{ backgroundColor: '#D4A77D' },
+		{ backgroundColor: '#D7A405' },
+		{ backgroundColor: '#B4833A' },
+	]
 
 	location: any = {
 		barangay: null,
@@ -42,7 +53,6 @@ export class MarriageDemographicComponent implements OnInit {
 	fetch(event: any) {
 		this.location = event
 		this.getSummary()
-		this.getChart()
 		this.getLocalData()
 		this.getMarriagesByMuncipality()
 	}
@@ -57,21 +67,38 @@ export class MarriageDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
+				let labels: any = []
+				let datasets: any = [
+					{
+						data: [],
+						label: 'Church',
+					},
+					{
+						data: [],
+						label: 'Civil',
+					},
+					{
+						data: [],
+						label: 'Others',
+					},
+					{
+						data: [],
+						label: 'Total Weddings',
+					},
+				]
+				for (let index of data.month) {
+					labels.push(index.year)
+					datasets[0].data.push(index.church)
+					datasets[1].data.push(index.civil)
+					datasets[2].data.push(index.others)
+					datasets[3].data.push(index.total_marriages)
+				}
+				this.marriageConfig.labels = labels
+				this.marriageConfig.datasets = datasets
 			})
 	}
 
-	getChart() {
-		const service = new BaseService(
-			this.service.http,
-			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Marriage`
-		)
-		service.index().subscribe((months: any) => {
-			this.processStatisticalChart(months)
-		})
-	}
-
-	localData: Summary | any = {}
+	localData: any = {}
 	getLocalData() {
 		this.localData = {
 			total: 0,
@@ -82,35 +109,28 @@ export class MarriageDemographicComponent implements OnInit {
 			this.service.url,
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
-		service.index().subscribe((summaries: Summary) => {
+		service.index().subscribe((summaries: any) => {
 			this.localData = summaries?.data || {}
+			this.processStatisticalChart(summaries.month)
 		})
 	}
 
 	processStatisticalChart(months: Array<Statistic>) {
 		this.statisticalChart.labels = []
-		this.statisticalChart.datasets[0].data = []
-		this.statisticalChart.datasets[1].data = []
-		this.statisticalChart.datasets[2].data = []
+		this.statisticalChart.datasets = [{ data: [0], label: 'Wedding' }]
 		if (months.length === 0) {
 			return
 		}
 		let labels: any = []
 		let males: any = []
-		let females: any = []
-		let total: any = []
 		months.forEach((data: Statistic) => {
 			if (!labels.includes(data.month)) {
 				labels.push(data.month)
 			}
 			males.push(data.males)
-			females.push(data.females)
-			total.push(data.total)
 		})
 		this.statisticalChart.labels = labels
-		this.statisticalChart.datasets[0].data = females
-		this.statisticalChart.datasets[1].data = males
-		this.statisticalChart.datasets[2].data = total
+		this.statisticalChart.datasets[0].data = males
 	}
 
 	marriagesByMuncipality: any = []
@@ -125,7 +145,7 @@ export class MarriageDemographicComponent implements OnInit {
 	marriagesByMuncipalityHeaders = [
 		'Municipality',
 		'Population',
-		'Totla Marriages',
+		'Total Marriages',
 		'Church',
 		'Civil',
 		'Others',
@@ -149,13 +169,8 @@ export class MarriageDemographicComponent implements OnInit {
 	getPercentage(value: number, basis: number) {
 		return (value * 100) / basis
 	}
-}
-type Summary = {
-	total: number
-	crude_death_rate: number
-	incidences: any
-	incidence: any
-	data: any
+
+	marriageConfig = MarriageChartConfig
 }
 
 type Statistic = {

@@ -18,7 +18,6 @@ export class MigrationsDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalMigrationDataService,
-		private monthChartService: MonthChartService,
 		private user: UserService
 	) {
 		this.subscriptions.add(
@@ -55,7 +54,6 @@ export class MigrationsDemographicComponent implements OnInit {
 	fetch(event: any) {
 		this.location = event
 		this.getLocalData()
-		this.getChart()
 		this.getMigrationChart()
 		this.getSummary()
 		this.getMigrationByMunicipality()
@@ -71,17 +69,6 @@ export class MigrationsDemographicComponent implements OnInit {
 			.subscribe((data) => {
 				this.summaries = data
 			})
-	}
-
-	getChart() {
-		const service = new BaseService(
-			this.service.http,
-			this.monthChartService.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=Migration`
-		)
-		service.index().subscribe((months: any) => {
-			this.processStatisticalChart(months)
-		})
 	}
 
 	processStatisticalChart(months: Array<Statistic>) {
@@ -110,7 +97,7 @@ export class MigrationsDemographicComponent implements OnInit {
 		this.statisticalChart.datasets[2].data = total
 	}
 
-	localData: Summary | any = {}
+	localData: any = {}
 	getLocalData() {
 		this.localData = {
 			total_in_migrations: 0,
@@ -122,8 +109,9 @@ export class MigrationsDemographicComponent implements OnInit {
 			this.service.url,
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
-		service.index().subscribe((summaries: Summary) => {
+		service.index().subscribe((summaries: any) => {
 			this.localData = summaries?.data || {}
+			this.processStatisticalChart(summaries.month)
 		})
 	}
 
@@ -184,16 +172,6 @@ export class MigrationsDemographicComponent implements OnInit {
 
 	statisticalChart = MonthChartConfig
 	migrationChart = MigrationChartConfig
-}
-
-type Summary = {
-	total: number
-	total_in_migrations: number
-	total_out_migrations: number
-	net_migrations: number
-	incidences: any
-	incidence: any
-	data: any
 }
 
 type Statistic = {

@@ -1,5 +1,5 @@
 <div class="card">
-    <div [class]="headerClass" class="card-header text-white d-flex aic">
+    <div [style.background]="headerClass" class="card-header text-white d-flex aic">
         <div class="card-title h5 mr-auto mt-2">
             {{ title }}
         </div>
@@ -9,12 +9,21 @@
             <thead>
                 <tr>
                     <td *ngFor="let header of headers">{{ header }}</td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of body">
                     <td *ngFor="let key of keys">
                         {{ item | arrayToValues: key }}
+                    </td>
+                    <td>
+                        <DropDown [buttons]="dd"></DropDown>
+                        <ng-template #dd>
+                            <button class="dropdown-item" (click)="deleteData(item.id)">
+								Remove
+							</button>
+                        </ng-template>
                     </td>
                 </tr>
             </tbody>
