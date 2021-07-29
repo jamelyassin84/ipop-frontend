@@ -11,6 +11,8 @@ import { BaseService } from 'src/app/Services/base.service'
 import { MonthChartService } from 'src/app/Services/home/demographic/month-chart.service'
 import { Subscription } from 'rxjs'
 import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
+import { UserService } from 'src/app/Services/Independent/user.service'
+import { Color } from 'ng2-charts'
 
 @Component({
 	selector: 'app-birth-demographic',
@@ -23,7 +25,8 @@ export class BirthDemographicComponent implements OnInit {
 	constructor(
 		private component: ReloadService,
 		private service: LocalBirthDataService,
-		private monthChartService: MonthChartService
+		private monthChartService: MonthChartService,
+		private user: UserService
 	) {
 		this.subscriptions.add(
 			this.component.shouldReload().subscribe(() => {
@@ -31,6 +34,14 @@ export class BirthDemographicComponent implements OnInit {
 			})
 		)
 	}
+
+	Colors: Color[] = [
+		{ backgroundColor: '#73B436' },
+		{ backgroundColor: '#3DB98D' },
+		{ backgroundColor: '#2CA763' },
+	]
+
+	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()
 

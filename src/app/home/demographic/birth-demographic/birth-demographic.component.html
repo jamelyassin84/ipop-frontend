@@ -34,24 +34,24 @@
     <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
         <Modal size="lg" title="Add a Birth Data" btnTitle="Add birth data" btnClass="btn btn-sm btn-dark mr-2" [template]="addBirthData" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
     </div>
 
     <div class="row mt-1 mb-2">
-        <div class="col-md-2 col-md-offset-1 mt-3">
+        <div class="col-md-2 col-md-offset-1 mt-3 p-1">
             <Summary title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="summaries?.summary?.total_population"></Summary>
         </div>
-        <div class="col-md-2 mt-3">
+        <div class="col-md-2 mt-3 p-1">
             <Summary title="Total Live Births" icon="ti-pulse" spanClass="bgc-green-50 c-green-500" [value]="summaries?.summary?.total_live_births"></Summary>
         </div>
 
-        <div class="col-md-2 mt-3">
+        <div class="col-md-2 mt-3 p-1">
             <Summary title="Crude Birth Rate" icon="ti-pulse" spanClass="bgc-green-50 c-green-500" [value]="summaries?.summary?.crude_birth_rate"></Summary>
         </div>
 
-        <div class="col-md-3 mt-3">
+        <div class="col-md-3 mt-3 p-1">
             <SummaryWithPercent title="Teenage Births" icon="ti-pulse" spanClass="bgc-orange-50 c-orange-500" progressClass="bgc-orange-500 " [value]="summaries?.summary?.teenage" [percentValue]="
 					getPercentage(
 						summaries?.teenage?.value || 0,
@@ -60,7 +60,7 @@
 				"></SummaryWithPercent>
         </div>
 
-        <div class="col-md-3 mt-3">
+        <div class="col-md-3 mt-3 p-1">
             <SummaryWithPercent title="Illegitimate Births" icon="ti-pulse" spanClass="bgc-red-50 c-red-500" progressClass="bgc-red-500 " [value]="summaries?.summary?.illegitimate" [percentValue]="
 					getPercentage(
 						summaries?.illegitimate?.value || 0,
@@ -79,11 +79,11 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="h5 mr-auto">Birth Statistics</div>
-                    <Modal size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                    <Modal *ngIf="!isUser" size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        <canvas baseChart [colors]="statisticalChart.colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
+                        <canvas baseChart [colors]="Colors" [datasets]="statisticalChart.datasets" [labels]="statisticalChart.labels" [options]="statisticalChart.options" [legend]="statisticalChart.legend" chartType="bar">
 						</canvas>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="h5 mr-auto">Local Birth Data</div>
-                        <div class="ml-auto">
+                        <div *ngIf="!isUser" class="ml-auto">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
                                 <Modal size="lg" title="Customize Birth Data" btnTitle="Customize birth data" btnClass="dropdown-item" [template]="customizeBirthData"></Modal>
@@ -121,7 +121,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="h5 mr-auto">Incidence of Teenage Births</div>
-                    <div class="ml-auto">
+                    <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Teenage"></DropDown>
                         <ng-template #Teenage>
                             <Modal size="lg" title="Customize Incidence of Teenage Birth Chart" btnTitle="Customize incidence of teenage birth chart" btnClass="dropdown-item" [template]="customizeTeenage"></Modal>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <canvas baseChart [datasets]="teenageChart.datasets" [labels]="teenageChart.labels" [options]="teenageChart.options" [legend]="teenageChart.legend" chartType="bar">
+                    <canvas [colors]="[{ backgroundColor: 'orange' }]" baseChart [datasets]="teenageChart.datasets" [labels]="teenageChart.labels" [options]="teenageChart.options" [legend]="teenageChart.legend" chartType="bar">
 					</canvas>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     <div class="h5 mr-auto">
                         Incidence of Illegitimate Births
                     </div>
-                    <div class="ml-auto">
+                    <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Illegitimate"></DropDown>
                         <ng-template #Illegitimate>
                             <Modal size="lg" title="Customize Incidence of Illigetimate Birth Chart" btnTitle="Customize incidence of Illigetimate birth chart" btnClass="dropdown-item" [template]="customizeIllegitimate"></Modal>
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <canvas baseChart [datasets]="incidenceChart.datasets" [labels]="incidenceChart.labels" [options]="incidenceChart.options" [legend]="incidenceChart.legend" chartType="bar">
+                    <canvas baseChart [colors]="[{ backgroundColor: 'red' }]" [datasets]="incidenceChart.datasets" [labels]="incidenceChart.labels" [options]="incidenceChart.options" [legend]="incidenceChart.legend" chartType="bar">
 					</canvas>
                 </div>
             </div>
@@ -171,7 +171,7 @@
                         Technical Notes
                     </div>
 
-                    <Modal size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+                    <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
                 </div>
                 <div class="card-body">
                     <TechnicalNotes type="Birth"></TechnicalNotes>
