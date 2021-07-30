@@ -37,6 +37,7 @@ import { ForApprovalRecordsComponent } from './modules/records/pages/for-approva
 import { UpdateAccountComponent } from './modules/admin/pages/update-account/update-account.component'
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component'
 import { AuthGuard } from './guards/auth.guard'
+import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 
 const routes: Routes = [
 	{
@@ -153,19 +154,27 @@ const routes: Routes = [
 					{
 						path: 'bulk-records',
 						component: RecordIndexComponent,
+						canActivate: [BulkDataGuardGuard],
 						children: [
-							{ path: '', component: RecordUploadComponent },
+							{
+								path: '',
+								component: RecordUploadComponent,
+								canActivate: [BulkDataGuardGuard],
+							},
 							{
 								path: 'upload',
 								component: RecordUploadComponent,
+								canActivate: [BulkDataGuardGuard],
 							},
 							{
 								path: 'cloud-files',
 								component: UploadedRecordsComponent,
+								canActivate: [BulkDataGuardGuard],
 							},
 							{
 								path: 'for-approvals',
 								component: ForApprovalRecordsComponent,
+								canActivate: [BulkDataGuardGuard],
 							},
 						],
 					},

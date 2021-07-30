@@ -121,10 +121,11 @@ import { AddMarriageDataComponent } from './home-components/demographic/marraige
 import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
 import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component'
 import { TitleWithPercentComponent } from './home/demographic/components/title-with-percent/title-with-percent.component'
-import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component';
-import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component';
-import { OtherFilesComponent } from './home/others/other-files/other-files.component';
+import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component'
+import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component'
+import { OtherFilesComponent } from './home/others/other-files/other-files.component'
 import { PercentPipePipe } from './pipes/percent-pipe.pipe'
+import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 
 // Directives
 
@@ -224,9 +225,9 @@ import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 		TitleWithIconComponent,
 		TitleWithPercentComponent,
 		FileDropzoneComponent,
-  SingleFileUploadComponent,
-  OtherFilesComponent,
-  PercentPipePipe,
+		SingleFileUploadComponent,
+		OtherFilesComponent,
+		PercentPipePipe,
 	],
 	imports: [
 		BrowserModule,
@@ -255,6 +256,7 @@ import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 			multi: true,
 		},
 		AuthGuard,
+		BulkDataGuardGuard,
 	],
 	bootstrap: [AppComponent],
 	exports: [],

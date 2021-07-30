@@ -1,10 +1,9 @@
 is fetching preloaders
 non super admin UI
 chart approvals
-additional routes
+additional routes sa home para ka pili
 
 back to top
-
 update all approvals
 form validation
 approval approve or reject on bulk
@@ -16,10 +15,6 @@ fix padding
 polish design white space margin padding and colors and allignments for user perspecitve
 logout route
 odometer (optional)
-delete by municipality
-ngrx location
-pararehos color
-separate header
 change role
 responsive table
 editable charts
@@ -31,4 +26,5 @@ kuhaon ang data.data
 service worker (Optional)
 test with real data fetch provincial data
 
-auth guard pra sa bulk records
+
+ng build --aot --build-optimizer --common-chunk --delete-output-path --extract-licenses --localize --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
