@@ -5,6 +5,9 @@ delete approve or reject on bulk
 chart approvals
 update all approvals
 
+fix nav important bago nga nav component kung e click
+
+
 route state ngrx
 route active sidebar
 paginations
@@ -22,6 +25,5 @@ Edit All (Optional)
 kuhaon ang data.data
 service worker (Optional)
 test with real data fetch provincial data
-
 
 ng build --aot --build-optimizer --common-chunk --delete-output-path --extract-licenses --localize --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
