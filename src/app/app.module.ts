@@ -15,6 +15,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 // Custom Modules
 import { AdminModule } from './modules/admin/admin.module'
@@ -246,16 +247,17 @@ import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spin
 		HttpClientModule,
 		NgbModule,
 		TextareaAutosizeModule,
+		NgxDropzoneModule,
+		MatProgressBarModule,
+		MatProgressSpinnerModule,
+		MatFormFieldModule,
+
 		// Custom Modules
 		AdminModule,
 		ApprovalModule,
 		LogsModule,
 		RecordsModule,
 		ExtrasModule,
-		NgxDropzoneModule,
-
-		MatProgressBarModule,
-		MatProgressSpinnerModule,
 	],
 	providers: [
 		{
