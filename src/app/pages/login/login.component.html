@@ -28,28 +28,29 @@
         <form (submit)="login()">
             <div class="input-group mb-3">
                 <div class="input-group-prepend bg-white">
-                    <span class="input-group-text ti-user bg-white text-primary"></span>
+                    <span class="input-group-text ti-user bg-white c-blue-900"></span>
                 </div>
                 <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.username" type="email" class="form-control form-control-lg" placeholder="Username" />
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend bg-white">
-                    <span class="input-group-text ti-lock bg-white text-primary"></span>
+                    <span class="input-group-text ti-lock bg-white c-blue-900"></span>
                 </div>
                 <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.password" type="password" class="form-control form-control-lg" placeholder="Password" />
             </div>
 
             <br />
-            <button [disabled]="isLoading" class="btn btn-primary w-100 btn-lg">
+            <button [disabled]="isLoading" class="btn bgc-blue-900 text-white w-100 btn-lg">
 				<span *ngIf="!isLoading">Sign-in</span>
 				<Loader *ngIf="isLoading"></Loader>
 			</button>
             <br />
+            <br />
             <p>or</p>
 
-            <button class="btn btn-light w-100 btn-lg" routerLink="/home/index/news">
+            <a class="btn btn-link w-100" routerLink="/home/index/news">
 				Visit as IPOP Guest
-			</button>
+			</a>
         </form>
     </div>
 </div>

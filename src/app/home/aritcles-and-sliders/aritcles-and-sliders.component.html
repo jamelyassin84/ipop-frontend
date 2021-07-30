@@ -10,8 +10,8 @@
     <AddQuickLinks></AddQuickLinks>
 </ng-template>
 
-<div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-    <Modal *ngIf="!isUser" icon="ti-pencil-alt" size="lg" title="Customize Slider" btnSize="sm" btnTitle="Customize Slider" btnClass="btn bgc-blue-900 text-white mB-10" [template]="customizeSlider"></Modal>
+<div *ngIf="!isUser" class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
+    <Modal icon="ti-pencil-alt" size="lg" title="Customize Slider" btnSize="sm" btnTitle="Customize Slider" btnClass="btn bgc-blue-900 text-white mB-10" [template]="customizeSlider"></Modal>
 </div>
 
 <div class="row d-flex aic jcc" style="min-height: 50vh; background-color: rgba(0, 0, 0, 0.1)" *ngIf="images.length === 0">
