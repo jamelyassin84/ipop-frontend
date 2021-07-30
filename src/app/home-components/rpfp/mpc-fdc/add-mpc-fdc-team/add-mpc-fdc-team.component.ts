@@ -13,7 +13,7 @@ export class AddMpcFdcTeamComponent implements OnInit {
 	ngOnInit(): void {}
 
 	data: any = {}
-	image: any = '../../../../../assets/avatars/face-7.jpg'
+	image: any = '/assets/avatars/face-7.jpg'
 
 	readURL(event: any) {
 		if (event.target.files && event.target.files[0]) {

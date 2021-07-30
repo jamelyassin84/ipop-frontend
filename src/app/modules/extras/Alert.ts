@@ -21,7 +21,7 @@ export function Fire(
 	if (type == 'error') {
 		type = 'warning'
 	}
-	const audio = new Audio(`../../assets/ipop/audio/${type}.mp3`)
+	const audio = new Audio(`/assets/ipop/audio/${type}.mp3`)
 	audio.volume = 0.5
 	audio.play()
 }
@@ -31,7 +31,7 @@ export function Alert(title: string, text: string, type: any) {
 	if (type == 'error') {
 		type = 'warning'
 	}
-	const audio = new Audio(`../../assets/ipop/audio/${type}.mp3`)
+	const audio = new Audio(`/assets/ipop/audio/${type}.mp3`)
 	audio.volume = 0.5
 	audio.play()
 }
@@ -74,7 +74,7 @@ export function Welcome(name: String) {
 }
 
 export function pop() {
-	const audio = new Audio(`../../assets/ipop/audio/pop1.mp3`)
+	const audio = new Audio(`/assets/ipop/audio/pop1.mp3`)
 	audio.volume = 0.1
 	audio.play()
 }

@@ -16,7 +16,7 @@ export class AddPersonnelInchargeComponent implements OnInit {
 
 	data: any = {}
 
-	image: any = '../../../../../assets/avatars/face-7.jpg'
+	image: any = '/assets/avatars/face-7.jpg'
 	readURL(event: any) {
 		if (event.target.files && event.target.files[0]) {
 			const reader = new FileReader()

@@ -14,6 +14,8 @@ import { ArticleType } from 'src/app/Types/Article.types'
 	styleUrls: ['./aritcles-and-sliders.component.scss'],
 })
 export class AritclesAndSlidersComponent implements OnInit {
+	public innerWidth: any
+
 	constructor(
 		private slideService: SliderService,
 		private component: ReloadService,
@@ -36,6 +38,8 @@ export class AritclesAndSlidersComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
+
 		this.getSliders()
 		this.getArticles()
 		this.getQuickLinks()
@@ -142,5 +146,10 @@ export class AritclesAndSlidersComponent implements OnInit {
 				})
 			}
 		)
+	}
+
+	onResize() {
+		this.innerWidth = window.innerWidth
+		// 1140
 	}
 }

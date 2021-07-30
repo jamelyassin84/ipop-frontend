@@ -21,8 +21,7 @@ export class UpdateAccountComponent implements OnInit {
 		this.service.show(this.service.id()).subscribe((data: any) => {
 			this.admin = data
 			this.src =
-				this.admin?.profile_picture?.uri ||
-				'../../../assets/avatars/face-7.jpg'
+				this.admin?.profile_picture?.uri || '/assets/avatars/face-7.jpg'
 		})
 	}
 

@@ -9,9 +9,13 @@ import { fader } from 'src/app/route-animation'
 	animations: [fader],
 })
 export class HomePageComponent implements OnInit {
+	public innerWidth: any
+
 	constructor() {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
+	}
 
 	prepareRoute(outlet: RouterOutlet) {
 		return (
@@ -19,5 +23,10 @@ export class HomePageComponent implements OnInit {
 			outlet.activatedRouteData &&
 			outlet.activatedRouteData['animation']
 		)
+	}
+
+	onResize() {
+		this.innerWidth = window.innerWidth
+		// 1140
 	}
 }

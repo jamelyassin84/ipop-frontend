@@ -14,7 +14,7 @@ export class AddTcPersonnelInchargeComponent implements OnInit {
 	@Input() teen_center_id: number = 0
 
 	data: any = {}
-	image: any = '../../../../../assets/avatars/face-7.jpg'
+	image: any = '/assets/avatars/face-7.jpg'
 
 	readURL(event: any) {
 		if (event.target.files && event.target.files[0]) {

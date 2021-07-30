@@ -2,10 +2,10 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~bootstrap/dist/css/bootstrap.css';
-@import './assets/styles/index.scss';
-@import './assets/dark/extras.scss';
+@import 'assets/styles/index.scss';
+@import 'assets/dark/extras.scss';
 html[theme='dark'] {
-    @import './assets/dark/dark.style.scss';
+    @import 'assets/dark/dark.style.scss';
 }
 
 label {
