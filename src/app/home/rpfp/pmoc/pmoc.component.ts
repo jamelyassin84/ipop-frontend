@@ -104,10 +104,10 @@ export class PmocComponent implements OnInit {
 			`municipality=${this.location['municipality']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any[] | any) => {
-			data = data[0]
 			if (data.length === 0) {
 				return
 			}
+			data = data[0]
 			this.ByAgeGroup.datasets[0].data = [
 				parseFloat(data['15_to_19_female']),
 				parseFloat(data['20_to_24_female']),
@@ -152,10 +152,10 @@ export class PmocComponent implements OnInit {
 			`municipality=${this.location['municipality']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any[] | any) => {
-			data = data[0]
 			if (data.length === 0) {
 				return
 			}
+			data = data[0]
 			this.ByCIvilStatus.datasets[0].data = [
 				parseFloat(data.single_female),
 				parseFloat(data.live_in_female),
@@ -192,10 +192,10 @@ export class PmocComponent implements OnInit {
 			`municipality=${this.location['municipality']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any[] | any) => {
-			data = data[0]
 			if (data.length === 0) {
 				return
 			}
+			data = data[0]
 			this.ByEmploymentStatus.datasets[0].data = [
 				data.student_female,
 				data.employed_female,
@@ -223,10 +223,10 @@ export class PmocComponent implements OnInit {
 			`municipality=${this.location['municipality']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any[] | any) => {
-			data = data[0]
 			if (data.length === 0) {
 				return
 			}
+			data = data[0]
 			this.ByKnowledgeOnFP.datasets[0].data = [data.females]
 			this.ByKnowledgeOnFP.datasets[1].data = [data.males]
 			this.ByKnowledgeOnFP.datasets[2].data = [
@@ -242,10 +242,10 @@ export class PmocComponent implements OnInit {
 			`municipality=${this.location['municipality']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((data: any[] | any) => {
-			data = data[0]
 			if (data.length === 0) {
 				return
 			}
+			data = data[0]
 			this.byMonthlyIncome.datasets[0].data = [
 				parseFloat(data.no_income_male),
 				parseFloat(data.under_5k_male),
