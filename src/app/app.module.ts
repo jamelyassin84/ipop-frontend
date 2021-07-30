@@ -12,6 +12,9 @@ import { ChartsModule } from 'ng2-charts'
 import { GoogleChartsModule } from 'angular-google-charts'
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
 import { NgxDropzoneModule } from 'ngx-dropzone'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 // Custom Modules
 import { AdminModule } from './modules/admin/admin.module'
@@ -19,7 +22,6 @@ import { ApprovalModule } from './modules/approvals/approval.module'
 import { LogsModule } from './modules/logs/logs.module'
 import { RecordsModule } from './modules/records/records.module'
 import { ExtrasModule } from './modules/extras/extras.module'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 // Shared Component
 import { ViewAdminsComponent } from './modules/admin/pages/view-admins/view-admins.component'
@@ -126,7 +128,8 @@ import { SingleFileUploadComponent } from './components/single-file-upload/singl
 import { OtherFilesComponent } from './home/others/other-files/other-files.component'
 import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
-
+import { ProgressLoaderComponent } from './components/loaders/progress-loader/progress-loader.component'
+import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component'
 // Directives
 
 @NgModule({
@@ -228,6 +231,8 @@ import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 		SingleFileUploadComponent,
 		OtherFilesComponent,
 		PercentPipePipe,
+		ProgressLoaderComponent,
+		SpinnerLoaderComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -248,6 +253,9 @@ import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 		RecordsModule,
 		ExtrasModule,
 		NgxDropzoneModule,
+
+		MatProgressBarModule,
+		MatProgressSpinnerModule,
 	],
 	providers: [
 		{

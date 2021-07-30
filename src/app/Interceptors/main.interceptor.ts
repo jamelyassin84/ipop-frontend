@@ -5,11 +5,10 @@ import {
 	HttpInterceptor,
 	HttpHandler,
 	HttpRequest,
-	HttpResponse,
 	HttpErrorResponse,
 } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
-import { retry, catchError, tap } from 'rxjs/operators'
+import { retry, catchError, tap, finalize } from 'rxjs/operators'
 import { Alert } from '../modules/extras/Alert'
 
 @Injectable()
@@ -20,12 +19,18 @@ export class MainInterceptor implements HttpInterceptor {
 		request: HttpRequest<T>,
 		next: HttpHandler
 	): Observable<HttpEvent<T>> {
+		if (request.method === 'GET') {
+			this.component.willLoad(true)
+		}
 		return next.handle(request).pipe(
 			retry(0),
 			tap(() => {
 				if (request.method !== 'GET') {
 					this.component.willReload()
 				}
+			}),
+			finalize(() => {
+				this.component.willLoad(false)
 			}),
 			catchError(this.errorMessage)
 		)
