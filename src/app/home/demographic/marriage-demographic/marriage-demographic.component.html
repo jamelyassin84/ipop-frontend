@@ -75,7 +75,7 @@
         <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
             <div class="card">
                 <div class="card-header bg-white d-flex">
-                    <div class="h5 mr-auto">Marriage by Month of Wedding</div>
+                    <div class="mr-auto">Marriage by Month of Wedding</div>
                     <Modal *ngIf="!isUser" size="lg" title="Customize Statistical Wedding Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
@@ -137,9 +137,7 @@
         <div class="col-md-6 mt-4">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
-                        Type of Weddings
-                    </div>
+                    <div class="card-title mr-auto mt-2">Type of Weddings</div>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="Colors" [datasets]="marriageConfig.datasets" [labels]="marriageConfig.labels" [options]="marriageConfig.options" [legend]="marriageConfig.legend" chartType="bar">
@@ -151,9 +149,7 @@
         <div class="col-md-12 mt-3">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
-                        Technical Notes
-                    </div>
+                    <div class="card-title mr-auto mt-2">Technical Notes</div>
                     <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
                 </div>
                 <div class="card-body">

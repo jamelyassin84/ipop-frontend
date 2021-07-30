@@ -57,7 +57,7 @@
         <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
             <div class="card">
                 <div class="card-header bg-white d-flex">
-                    <div class="h5 mr-auto">Migration Statistics</div>
+                    <div class="mr-auto">Migration Statistics</div>
                     <DropDown *ngIf="!isUser" [buttons]="DeathStatistics"></DropDown>
                     <ng-template #DeathStatistics>
                         <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
@@ -76,7 +76,7 @@
             <div class="layer w-100">
                 <div class="card">
                     <div class="card-header bg-white d-flex">
-                        <div class="h5 mr-auto">Local Migration Data</div>
+                        <div class="mr-auto">Local Migration Data</div>
                         <div class="ml-auto" *ngIf="localData.id != null && !isUser">
                             <DropDown [buttons]="MigrationData"></DropDown>
                             <ng-template #MigrationData>
@@ -100,9 +100,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
-                        Migration Chart
-                    </div>
+                    <div class="card-title mr-auto mt-2">Migration Chart</div>
                 </div>
                 <div class="card-body">
                     <canvas baseChart [colors]="Colors" [datasets]="migrationChart.datasets" [labels]="migrationChart.labels" [options]="migrationChart.options" [legend]="migrationChart.legend" chartType="bar">
@@ -118,9 +116,7 @@
         <div class="col-md-12 mt-3">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
-                        Technical Notes
-                    </div>
+                    <div class="card-title mr-auto mt-2">Technical Notes</div>
                     <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
                 </div>
                 <div class="card-body">

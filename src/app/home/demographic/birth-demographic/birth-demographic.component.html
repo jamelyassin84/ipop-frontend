@@ -78,7 +78,7 @@
         <div class="col-md-8 m-0" [ngClass]="{ 'col-md-12': location.municipality === null }">
             <div class="card">
                 <div class="card-header bg-white d-flex">
-                    <div class="h5 mr-auto">Birth Statistics</div>
+                    <div class="0 mr-auto">Birth Statistics</div>
                     <Modal *ngIf="!isUser" size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
@@ -94,7 +94,7 @@
             <div class="layer w-100">
                 <div class="card">
                     <div class="card-header bg-white d-flex">
-                        <div class="h5 mr-auto">Local Birth Data</div>
+                        <div class="0 mr-auto">Local Birth Data</div>
                         <div *ngIf="!isUser" class="ml-auto">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
@@ -120,7 +120,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-white d-flex">
-                    <div class="h5 mr-auto">Incidence of Teenage Births</div>
+                    <div class="0 mr-auto">Incidence of Teenage Births</div>
                     <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Teenage"></DropDown>
                         <ng-template #Teenage>
@@ -138,7 +138,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-white d-flex">
-                    <div class="h5 mr-auto">
+                    <div class="0 mr-auto">
                         Incidence of Illegitimate Births
                     </div>
                     <div *ngIf="!isUser" class="ml-auto">
@@ -154,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mt-1">
+        <div *ngIf="!isUser" class="col-md-12 mt-1">
             <div class="alert alert-primary">
                 Note: All Data inputted here will reflect on the summary at the top depending on the year chosen
             </div>
@@ -167,9 +167,7 @@
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
-                        Technical Notes
-                    </div>
+                    <div class="card-title 0 mr-auto mt-2">Technical Notes</div>
 
                     <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
                 </div>

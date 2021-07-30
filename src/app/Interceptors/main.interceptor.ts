@@ -10,6 +10,7 @@ import {
 import { Observable, throwError } from 'rxjs'
 import { retry, catchError, tap, finalize } from 'rxjs/operators'
 import { Alert } from '../modules/extras/Alert'
+import { environment } from 'src/environments/environment'
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {

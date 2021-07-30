@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { fader } from 'src/app/route-animation'
-import { homeNavs } from '../homeNav'
 
 @Component({
 	selector: 'app-home-page',
@@ -13,14 +12,6 @@ export class HomePageComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
-
-	navs = homeNavs
-
-	title: String = 'News'
-
-	setTitle(title: String) {
-		this.title = title
-	}
 
 	prepareRoute(outlet: RouterOutlet) {
 		return (

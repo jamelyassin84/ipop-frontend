@@ -44,7 +44,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="h5 text-dark mb-4">Top Populated Municipalities</div>
+            <div class="text-dark mb-4">Top Populated Municipalities</div>
         </div>
         <div class="col-md-3 mb-3" *ngFor="let municipality of topPopulated">
             <div class="p-20 bg-white border">
@@ -105,7 +105,7 @@
 		<div class="col-md-12 mt-3">
 			<div class="card">
 				<div class="card-header bg-white">
-					<div class="card-title h5 d-flex aic">
+					<div class="card-title d-flex aic">
 						<span>Population Profile </span>
                             <div *ngIf="!isUser" class="ml-auto">
                                 <DropDown [buttons]="dropdown"></DropDown>
@@ -121,7 +121,7 @@
                                     <h5 class="text-secondary mb-2 h5 fw-300">
                                         Coverage
                                     </h5>
-                                    <div class="fw-600 h6">
+                                    <div class="fw-600 h6 c-red-700">
                                         <span class="fw-600 h6">
 										<span
 											class="mr-2"
@@ -153,7 +153,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total No. of Barangays
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.barangays || 0 | number }}
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total Land Area
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.land_area || 0 | number }}
                                         <small>sq.km</small>
                                     </div>
@@ -170,7 +170,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Total Household Population
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.household_population || 0 | number }}
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Male
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.males || 0 | number }}
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Female
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.females || 0 | number }}
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Sex Ratio (males:females)
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.sex_ratio || 0 | number }}
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Median Age
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.median_age || 0 | number }}
                                         <small>year(s) old</small>
                                     </div>
@@ -212,7 +212,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         No. of Households
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.households || 0 | number }}
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Average Household Size
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.average_household_size || 0 | number }}
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Population Density
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.density || 0 | number }}
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Age Dependency Ratio
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.age_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Child Dependency Ratio
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.child_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                     <h5 class="text-secondary mb-2 h6 fw-300">
                                         Old-Age Dependency Ratio
                                     </h5>
-                                    <div class="fw-600 h4">
+                                    <div class="fw-600 h4 c-blue-900">
                                         {{ populationProfile.old_age_dependency_ratio || 0 | number }}
                                     </div>
                                 </div>
@@ -277,7 +277,7 @@
 		<div class="col-md-12 mt-3">
 			<div class="card">
 				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
+					<div class="card-title mr-auto mt-2">
 						Population Profile By Municipality
 					</div>
 				</div>
@@ -367,7 +367,7 @@
 		<div class="col-md-6 mt-3">
 			<div class="card">
 				<div class="card-header bgc-blue-900 d-flex aic">
-					<div class="card-title text-white h5 mr-auto mt-2">
+					<div class="card-title text-white mr-auto mt-2">
 						Age Distribution (PROVINCE OF ILOILO)
 					</div>
 				</div>
@@ -436,7 +436,7 @@
 		<div class="col-md-6 mt-3">
 			<div class="card">
 				<div class="card-header bgc-blue-900 d-flex aic">
-					<div class="card-title text-white h5 mr-auto mt-2">
+					<div class="card-title text-white mr-auto mt-2">
 						Age Dependency Ratio (PROVINCE OF ILOILO)
 					</div>
 				</div>
@@ -487,7 +487,7 @@
 		<div class="col-md-12 mt-3">
 			<div class="card">
 				<div class="card-header bgc-blue-900 text-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
+					<div class="card-title mr-auto mt-2">
 						Age Distribution and Age Dependency Ratio by
 						Municipality
 					</div>
@@ -566,9 +566,7 @@
 		<div class="col-md-12 mt-3">
 			<div class="card">
 				<div class="card-header bg-white d-flex aic">
-					<div class="card-title h5 mr-auto mt-2">
-						Technical Notes
-					</div>
+					<div class="card-title mr-auto mt-2">Technical Notes</div>
 					<Modal
 						*ngIf="!isUser"
 						size="lg"
