@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { DummyData } from './../Dummy'
-import { Component, Input, OnInit, Output } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { drawChart } from '../Config'
 import { BaseService } from 'src/app/Services/base.service'
 import { getPercent } from 'src/app/constants/Shortcuts'

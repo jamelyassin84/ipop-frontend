@@ -267,6 +267,7 @@ import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spin
 		BulkDataGuardGuard,
 	],
 	bootstrap: [AppComponent],
+
 	exports: [],
 })
 export class AppModule {}

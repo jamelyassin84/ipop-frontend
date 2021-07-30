@@ -68,6 +68,7 @@ export class DeathDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
+				this.pyramid.fetch()
 			})
 	}
 
@@ -159,7 +160,6 @@ export class DeathDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.deathssByMunicipality = data
-				this.pyramid.fetch()
 			})
 	}
 

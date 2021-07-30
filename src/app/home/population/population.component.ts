@@ -84,6 +84,7 @@ export class PopulationComponent implements OnInit {
 		)
 		service.index().subscribe((populationProfile: any) => {
 			this.populationProfile = {}
+			this.pyramid.fetch()
 			if (populationProfile.length !== 0) {
 				this.populationProfile = populationProfile[0]
 			}
@@ -120,7 +121,6 @@ export class PopulationComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.AgeDistributionAndAgeDependecyRatioByMunicipality = data
-				this.pyramid.fetch()
 			})
 	}
 

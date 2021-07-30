@@ -67,6 +67,7 @@ export class MarriageDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
+				this.pyramid.fetch()
 				let labels: any = []
 				let datasets: any = [
 					{
@@ -159,7 +160,6 @@ export class MarriageDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.marriagesByMuncipality = data
-				this.pyramid.fetch()
 			})
 	}
 

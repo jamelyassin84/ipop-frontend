@@ -85,8 +85,8 @@ export class BirthDemographicComponent implements OnInit {
 	}
 
 	fetch(event: any) {
-		this.getSummary()
 		this.location = event
+		this.getSummary()
 		this.getLocalData()
 		this.getBIrthsByMunicipality()
 	}
@@ -101,6 +101,7 @@ export class BirthDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
+				this.pyramid.fetch()
 			})
 	}
 
@@ -169,7 +170,6 @@ export class BirthDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.birthsByMunicipality = data
-				this.pyramid.fetch()
 			})
 	}
 

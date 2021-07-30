@@ -9,9 +9,13 @@ import { ReloadService } from 'src/app/Services/reload.service'
 export class ProgressLoaderComponent implements OnInit {
 	constructor(private component: ReloadService) {
 		this.component.isLoading().subscribe((value: boolean) => {
+			if (value === true) {
+				this.isLoading = value
+				return
+			}
 			setTimeout(() => {
 				this.isLoading = value
-			}, 1500)
+			}, 700)
 		})
 	}
 
