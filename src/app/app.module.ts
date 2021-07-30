@@ -130,7 +130,8 @@ import { OtherFilesComponent } from './home/others/other-files/other-files.compo
 import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 import { ProgressLoaderComponent } from './components/loaders/progress-loader/progress-loader.component'
-import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component'
+import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component';
+import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small-screen-nav.component'
 // Directives
 
 @NgModule({
@@ -234,6 +235,7 @@ import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spin
 		PercentPipePipe,
 		ProgressLoaderComponent,
 		SpinnerLoaderComponent,
+  SmallScreenNavComponent,
 	],
 	imports: [
 		BrowserModule,

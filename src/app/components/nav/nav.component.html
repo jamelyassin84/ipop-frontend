@@ -1,4 +1,4 @@
-<div class="header nav-header" [class.fix]="!hideNav" [ngClass]="{ 'w-100': isUser }">
+<div *ngIf="innerWidth > 1139" class="header nav-header" [class.fix]="!hideNav" [ngClass]="{ 'w-100': isUser }">
     <div class="d-flex p-20 aic card-body header-item" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
         <img src="../../../assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
         <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="../../../assets/ipop/logos/ipo-logo.png" />
@@ -42,5 +42,16 @@
     </div>
 </div>
 </div>
-<ProgressLoader></ProgressLoader>
+</div>
+
+<div *ngIf="innerWidth < 1139">
+    <nav class="nav navbar fixed-top bg-white d-flex">
+        <a class="navbar-brand d-flex aic" style="padding: 20px">
+			Iloilo Population Office
+		</a>
+        <i (click)="setShowSmallNav()" *ngIf="!showSmallNav" role="button" style="font-size: 2rem" class="ti-menu mr-3"></i>
+        <i (click)="setShowSmallNav()" *ngIf="showSmallNav" role="button" style="font-size: 2rem" class="ti-close mr-3"></i>
+    </nav>
+    <ProgressLoader></ProgressLoader>
+    <SmallScreenNav (onClose)="onClose()" [data]="showSmallNav" *ngIf="showSmallNav"></SmallScreenNav>
 </div>

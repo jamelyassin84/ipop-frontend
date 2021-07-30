@@ -1,3 +1,4 @@
+import { HostListener } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
 import { homeNavs } from 'src/app/home/homeNav'
 import { UserService } from 'src/app/Services/Independent/user.service'
@@ -10,7 +11,9 @@ import { UserService } from 'src/app/Services/Independent/user.service'
 export class NavComponent implements OnInit {
 	constructor(private user: UserService) {}
 	public isMenuCollapsed = true
+	public innerWidth: any
 	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
 		setInterval(() => {
 			if (localStorage.getItem('hideNav') !== 'true') {
 				this.hideNav = true
@@ -18,6 +21,12 @@ export class NavComponent implements OnInit {
 				this.hideNav = false
 			}
 		}, 50)
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerWidth = window.innerWidth
+		// 1140
 	}
 
 	isUser = !this.user.isAdmin()
@@ -28,5 +37,14 @@ export class NavComponent implements OnInit {
 
 	setTitle(title: String) {
 		this.title = title
+	}
+
+	showSmallNav = false
+	setShowSmallNav() {
+		this.showSmallNav = this.showSmallNav === false ? true : false
+	}
+
+	onClose() {
+		this.showSmallNav = false
 	}
 }

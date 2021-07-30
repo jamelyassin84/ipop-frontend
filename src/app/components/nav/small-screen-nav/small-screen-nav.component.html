@@ -1,0 +1,32 @@
+<div class="screen-nav bg-white p-5" *ngIf="data">
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-00">
+        <ngb-panel *ngFor="let nav of navs">
+            <ng-template ngbPanelTitle>
+                <a *ngIf="nav.name === 'Iloilo.gov'" routerLink="/https://www.iloilo.gov.ph">Iloilo.gov</a
+				>
+				<div *ngIf="nav.name !== 'Iloilo.gov'" class="w-100 d-flex">
+					<span class="mr-auto">{{ nav.name }}</span>
+					<span class="ml-auto mr-3"
+						><i class="ti-angle-down"></i
+					></span>
+				</div>
+			</ng-template>
+			<ng-template ngbPanelContent *ngIf="nav.name !== 'Iloilo.gov'">
+				<div class="ml-3">
+					<a
+						(click)="setShowSmallNav()"
+						*ngFor="let child of nav.children"
+						[routerLink]="'/home/index/' + nav.route + child.route"
+						class="bb"
+						style="position: relative; z-index: 100"
+					>
+						<p>
+							{{ child.name }}
+						</p>
+						<i class="bi bi-chevron-right"></i>
+					</a>
+</div>
+</ng-template>
+</ngb-panel>
+</ngb-accordion>
+</div>
