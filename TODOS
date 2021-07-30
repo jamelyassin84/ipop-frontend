@@ -1,7 +1,7 @@
 form validation
 editable forms
 no data available
-summary texts
+responsive tables
 
 non super admin UI
 approval approve or reject on bulk
@@ -9,18 +9,14 @@ delete approve or reject on bulk
 chart approvals
 update all approvals
 
-fix nav important bago nga nav component kung e click
-
 route state ngrx
 route active sidebar
 paginations
-fix padding
-polish design white space margin padding and colors and allignments for user perspecitve
 logout route
-odometer (optional)
 change role
 responsive table
 editable charts
+polish design white space margin padding and colors and allignments for user perspecitve
 
 animations
 remove all errors
@@ -29,4 +25,4 @@ kuhaon ang data.data
 service worker (Optional)
 test with real data fetch provincial data
 
-ng build --aot --build-optimizer --common-chunk --delete-output-path --extract-licenses --localize --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
+ng build --aot --build-optimizer --common-chunk --extract-licenses --localize --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk

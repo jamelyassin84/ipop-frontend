@@ -49,12 +49,12 @@
         <div class="col-md-3 mb-3" *ngFor="let municipality of topPopulated">
             <div class="p-20 bg-white border">
                 <div class="layer w-100 mB-10">
-                    <h6 class="lh-1 d-flex">
+                    <h4 class="lh-1 d-flex">
                         {{ municipality.data.name }}
                         <span role="button" (click)="deleteTopPopulated(municipality.id)" class="ml-auto">
 							<i class="ti-minus"></i>
 						</span>
-                    </h6>
+                    </h4>
                 </div>
                 <div class="layer w-100">
                     <div class="peers ai-sb fxw-nw">
