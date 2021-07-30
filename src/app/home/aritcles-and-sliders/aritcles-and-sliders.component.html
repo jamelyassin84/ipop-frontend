@@ -59,7 +59,7 @@
         <div class="m-0 bl br" *ngFor="let article of articles">
             <div class="card-header bg-white d-flex aic">
                 <div>
-                    <div class="h1 m-0 card-title dw">{{ article.title }}</div>
+                    <div class="h3 m-0 card-title dw">{{ article.title }}</div>
                 </div>
                 <div *ngIf="!isUser" class="ml-auto">
                     <DropDown [buttons]="dropdown"></DropDown>

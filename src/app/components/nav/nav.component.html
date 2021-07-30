@@ -42,16 +42,20 @@
     </div>
 </div>
 </div>
+<ProgressLoader></ProgressLoader>
 </div>
 
 <div *ngIf="innerWidth < 1139">
-    <nav class="nav navbar fixed-top bg-white d-flex">
-        <a class="navbar-brand d-flex aic" style="padding: 20px">
-			Iloilo Population Office
-		</a>
-        <i (click)="setShowSmallNav()" *ngIf="!showSmallNav" role="button" style="font-size: 2rem" class="ti-menu mr-3"></i>
-        <i (click)="setShowSmallNav()" *ngIf="showSmallNav" role="button" style="font-size: 2rem" class="ti-close mr-3"></i>
+    <nav class="nav navbar fixed-top bg-white p-0">
+        <div class="d-flex">
+            <a class="navbar-brand d-flex aic" style="padding: 20px">
+				Iloilo Population Office
+			</a>
+            <i (click)="setShowSmallNav()" *ngIf="!showSmallNav" role="button" style="font-size: 2rem" class="ti-menu mr-4 mt-2 pt-1"></i>
+            <i (click)="setShowSmallNav()" *ngIf="showSmallNav" role="button" style="font-size: 2rem" class="ti-close mr-4 mt-2 pt-1"></i>
+        </div>
+        <ProgressLoader></ProgressLoader>
     </nav>
-    <ProgressLoader></ProgressLoader>
+
     <SmallScreenNav (onClose)="onClose()" [data]="showSmallNav" *ngIf="showSmallNav"></SmallScreenNav>
 </div>

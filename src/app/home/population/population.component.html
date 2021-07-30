@@ -27,12 +27,7 @@
         <AgeDistributionAndDependecyRatio></AgeDistributionAndDependecyRatio>
     </ng-template>
 
-    <div class="d-flex" style="
-			justify-content: flex-end;
-			margin-bottom: -2rem;
-			position: relative;
-			z-index: 1;
-		">
+    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
         <Modal *ngIf="!isUser" size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2" [template]="addTopPopulated" icon="ti-plus"></Modal>
 
         <Modal *ngIf="!isUser" size="lg" title="Add Age Distribution and AgeDependency ratio" btnTitle="Add age distribution and age dependency ratio" btnClass="btn btn-sm btn-primary mr-2" [template]="ageDistributionAndDependecyRatio" icon="ti-plus"></Modal>
