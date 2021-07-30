@@ -1,11 +1,10 @@
-back to top
 non super admin UI
-chart approvals
-
-update all approvals
 form validation
 approval approve or reject on bulk
 delete approve or reject on bulk
+chart approvals
+update all approvals
+
 route state ngrx
 route active sidebar
 paginations

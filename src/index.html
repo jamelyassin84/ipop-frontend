@@ -14,8 +14,22 @@
 
 <body onscroll="onScroll()" class="mat-typography">
     <app-root></app-root>
+
+    <div>
+        <button onclick="scrollToTop()" style="position: fixed; bottom: 20px; z-index: 1; right: 20px" class="btn btn-lg c-blue-900 bgc-blue-50 shadow">
+				<i class="ti-arrow-up"></i>
+			</button>
+    </div>
+
     <script type="text/javascript">
         var scrollTop = 0
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            })
+        }
 
         function onScroll() {
             localStorage.setItem('hideNav', scrollTop >= 15)
