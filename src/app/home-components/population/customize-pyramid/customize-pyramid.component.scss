@@ -1,3 +1,7 @@
-.active i {
-    color: orange;
+.active * {
+    color: #0d47a1;
+}
+
+.active {
+    color: #0d47a1 !important;
 }

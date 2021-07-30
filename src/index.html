@@ -39,7 +39,8 @@
         function setTheme() {
             if (
                 window.matchMedia &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches
+                window.matchMedia('(prefers-color-scheme: dark)').matches &&
+                localStorage.getItem('user') === null
             ) {
                 document
                     .getElementById('html')
