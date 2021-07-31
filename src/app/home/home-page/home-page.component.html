@@ -1,4 +1,4 @@
-<div class="bg-light pt-5">
+<div class="bg-light pt-5" [@routeAnimations]="prepareRoute(outlet)">
     <div class="card-body mt-5" [ngClass]="{ 'pt-5': innerWidth > 1139 }">
         <router-outlet #outlet="outlet"></router-outlet>
     </div>

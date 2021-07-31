@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
 		return (
 			outlet &&
 			outlet.activatedRouteData &&
-			outlet.activatedRouteData['animation']
+			outlet.activatedRouteData.animation
 		)
 	}
 

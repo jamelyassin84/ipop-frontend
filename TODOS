@@ -1,5 +1,3 @@
-acitve navbar
-animations
 Global no data available
 form validation
 editable forms
@@ -20,11 +18,9 @@ responsive table
 editable charts
 polish design white space margin padding and colors and allignments for user perspecitve
 
-animations
 remove all errors
 Edit All (Optional)
-kuhaon ang data.data
 service worker (Optional)
 test with real data fetch provincial data
 
-ng build --aot --build-optimizer --common-chunk --extract-licenses --localize --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
+ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk

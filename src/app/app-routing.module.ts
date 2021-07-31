@@ -43,7 +43,7 @@ const routes: Routes = [
 	{
 		path: '',
 		component: LoginComponent,
-		data: { animation: 'isRight' },
+		data: { animation: 'fade' },
 	},
 	{
 		path: 'home',
@@ -51,7 +51,7 @@ const routes: Routes = [
 			{
 				path: '',
 				component: HomeComponent,
-				data: { animation: 'isRight' },
+				data: { animation: 'fade' },
 
 				children: [
 					{
@@ -61,10 +61,12 @@ const routes: Routes = [
 							{
 								path: 'news',
 								component: AritclesAndSlidersComponent,
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'population',
 								component: PopulationComponent,
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'about',
@@ -72,36 +74,44 @@ const routes: Routes = [
 									{
 										path: 'ppo-mandate',
 										component: MandateComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'mission-values-and-goals',
 										component: VmgComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'core-values',
 										component: CoreValuesComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'organizational-structure',
 										component: OrganizationalChartComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'personnel-directory',
 										component: PersonnelDirectoryComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'awards',
 										component: AwardsComponent,
+										data: { animation: 'fade' },
 									},
 								],
 							},
 							{
 								path: 'programs/:id',
 								component: ProgramsComponent,
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'services/:id',
 								component: ServicesComponent,
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'demographic',
@@ -109,29 +119,38 @@ const routes: Routes = [
 									{
 										path: 'deaths',
 										component: DeathDemographicComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'births',
 										component: BirthDemographicComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'migrations',
 										component:
 											MigrationsDemographicComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'marriages',
 										component: MarriageDemographicComponent,
+										data: { animation: 'fade' },
 									},
 								],
 							},
 							{
 								path: 'rpfp',
 								children: [
-									{ path: 'pmoc', component: PmocComponent },
+									{
+										path: 'pmoc',
+										component: PmocComponent,
+										data: { animation: 'fade' },
+									},
 									{
 										path: 'mpcfdc',
 										component: MpcFdcComponent,
+										data: { animation: 'fade' },
 									},
 								],
 							},
@@ -141,40 +160,51 @@ const routes: Routes = [
 									{
 										path: 'teen-centers',
 										component: TeenCentersComponent,
+										data: { animation: 'fade' },
 									},
 									{
 										path: 'issues-and-concerns',
 										component: IssuesAndConcernsComponent,
+										data: { animation: 'fade' },
 									},
 								],
 							},
-							{ path: 'others', component: OthersComponent },
+							{
+								path: 'others',
+								component: OthersComponent,
+								data: { animation: 'fade' },
+							},
 						],
 					},
 					{
 						path: 'bulk-records',
 						component: RecordIndexComponent,
 						canActivate: [BulkDataGuardGuard],
+						data: { animation: 'fade' },
 						children: [
 							{
 								path: '',
 								component: RecordUploadComponent,
 								canActivate: [BulkDataGuardGuard],
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'upload',
 								component: RecordUploadComponent,
 								canActivate: [BulkDataGuardGuard],
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'cloud-files',
 								component: UploadedRecordsComponent,
 								canActivate: [BulkDataGuardGuard],
+								data: { animation: 'fade' },
 							},
 							{
 								path: 'for-approvals',
 								component: ForApprovalRecordsComponent,
 								canActivate: [BulkDataGuardGuard],
+								data: { animation: 'fade' },
 							},
 						],
 					},
@@ -182,25 +212,41 @@ const routes: Routes = [
 						path: 'admins',
 						component: AdminIndexComponent,
 						canActivate: [AuthGuard],
+						data: { animation: 'fade' },
 						children: [
-							{ path: '', component: ViewAdminsComponent },
-							{ path: 'view', component: ViewAdminsComponent },
-							{ path: 'add', component: AddAdminComponent },
+							{
+								path: '',
+								component: ViewAdminsComponent,
+								data: { animation: 'fade' },
+							},
+							{
+								path: 'view',
+								component: ViewAdminsComponent,
+								data: { animation: 'fade' },
+							},
+							{
+								path: 'add',
+								component: AddAdminComponent,
+								data: { animation: 'fade' },
+							},
 						],
 					},
 					{
 						path: 'approvals',
 						component: ApprovalsComponent,
 						canActivate: [AuthGuard],
+						data: { animation: 'fade' },
 					},
 					{
 						path: 'logs',
 						component: LogsComponent,
 						canActivate: [AuthGuard],
+						data: { animation: 'fade' },
 					},
 					{
 						path: 'account/:id',
 						component: UpdateAccountComponent,
+						data: { animation: 'fade' },
 					},
 				],
 			},

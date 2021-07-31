@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <Spinner></Spinner>
-        <img style="width: 100%" [src]="img" alt="" />
+        <img *ngIf="img !== null" style="width: 100%" [src]="img" alt="" />
     </div>
 </div>
 <input type="file" (change)="readUrl($event)" accept="image/*" style="display: none" id="input-type-file" />
