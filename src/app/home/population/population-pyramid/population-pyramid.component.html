@@ -14,8 +14,8 @@
                 <hr />
                 <div class="card-body">
                     <Spinner></Spinner>
-
-                    <div id="population-pyramid" class="w-100" style="height: 50vh"></div>
+                    <NoDataComponent [data]="ageDistribution"></NoDataComponent>
+                    <div *ngIf="ageDistribution.length !== 0" id="population-pyramid" class="w-100" style="height: 50vh"></div>
                 </div>
             </div>
         </div>
@@ -28,7 +28,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-striped" responsiveTable>
+                <NoDataComponent [data]="populationbyAgeGroupandSex"></NoDataComponent>
+
+                <table *ngIf="populationbyAgeGroupandSex.length !== 0" class="table table-striped" responsiveTable>
                     <thead class="text-white" [style.background]="ageGroupColor">
                         <tr>
                             <th class="ppbm border">Age Group</th>

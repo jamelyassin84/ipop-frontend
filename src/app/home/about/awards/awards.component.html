@@ -21,6 +21,8 @@
         </h5>
     </div>
     <div class="card-body">
+        <NoDataComponent [data]="awards"></NoDataComponent>
+
         <div class="m-0 bl br card mb-5" *ngFor="let award of awards">
             <div class="card-header bg-white d-flex aic">
                 <div>

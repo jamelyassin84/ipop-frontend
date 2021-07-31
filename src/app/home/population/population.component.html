@@ -41,6 +41,9 @@
         <div class="col-md-12">
             <div class="text-dark mb-4">Top Populated Municipalities</div>
         </div>
+        <div *ngIf="topPopulated.length === 0" class="col-md-12 mb-4">
+            <NoDataComponent [data]="topPopulated"></NoDataComponent>
+        </div>
         <div class="col-md-3 mb-3" *ngFor="let municipality of topPopulated">
             <div class="p-20 bg-white border">
                 <div class="layer w-100 mB-10">
@@ -111,7 +114,14 @@
                         </div>
                         <hr />
                         <div class="card-body">
-                            <div class="w-100 row">
+                            <NoDataComponent [data]="
+								populationProfile.barangays === undefined
+									? []
+									: [1]
+							"></NoDataComponent>
+                            <Spinner></Spinner>
+
+                            <div *ngIf="populationProfile.barangays !== undefined" class="w-100 row">
                                 <div class="col-md-6 mb-2 bb pt-1">
                                     <h5 class="text-secondary mb-2 h5 fw-300">
                                         Coverage
@@ -277,9 +287,14 @@
 					</div>
 				</div>
 				<div class="card-body">
+					<NoDataComponent
+						[data]="populationByMuncipality"
+					></NoDataComponent>
+					<Spinner></Spinner>
 					<table
-						class="table table-striped table-responsive"
-						responsiveTable
+						*ngIf="populationByMuncipality.length !== 0"
+						class="table table-striped"
+						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
 					>
 						<thead>
 							<tr>
@@ -296,7 +311,7 @@
 								<th class="ppbm border" rowspan="2">
 									Population Density (person/sq.km)
 								</th>
-								<th colspan="3" class="text-center">
+								<th colspan="3" class="text-center border">
 									Population
 								</th>
 								<th class="ppbm border" rowspan="2">
@@ -370,7 +385,15 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped" responsiveTable>
+					<NoDataComponent
+						[data]="AgeDistributionAndAgeDependecyRatio"
+					></NoDataComponent>
+					<Spinner></Spinner>
+					<table
+						*ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+						class="table table-striped"
+						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
+					>
 						<thead>
 							<tr>
 								<th class="ppbm border">0-14</th>
@@ -439,7 +462,15 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped" responsiveTable>
+					<NoDataComponent
+						[data]="AgeDistributionAndAgeDependecyRatio"
+					></NoDataComponent>
+					<Spinner></Spinner>
+					<table
+						*ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+						class="table table-striped"
+						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
+					>
 						<thead>
 							<tr>
 								<th class="ppbm border">Young Dependency</th>
@@ -491,7 +522,17 @@
 					</div>
 				</div>
 				<div class="card-body">
+					<NoDataComponent
+						[data]="
+							AgeDistributionAndAgeDependecyRatioByMunicipality
+						"
+					></NoDataComponent>
+					<Spinner></Spinner>
 					<table
+						*ngIf="
+							AgeDistributionAndAgeDependecyRatioByMunicipality.length !==
+							0
+						"
 						class="table table-striped"
 						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
 					>

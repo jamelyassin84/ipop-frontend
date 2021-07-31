@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
+import { ReloadService } from 'src/app/Services/reload.service'
 
 @Component({
-  selector: 'app-no-data-component',
-  templateUrl: './no-data-component.component.html',
-  styleUrls: ['./no-data-component.component.scss']
+	selector: 'NoDataComponent',
+	templateUrl: './no-data-component.component.html',
+	styleUrls: ['./no-data-component.component.scss'],
 })
 export class NoDataComponentComponent implements OnInit {
+	@Input() data: any[] = []
+	constructor(private component: ReloadService) {
+		this.component.isLoading().subscribe((value: boolean) => {
+			if (value === true) {
+				this.isLoading = value
+				return
+			}
+			setTimeout(() => {
+				this.isLoading = value
+			}, 600)
+		})
+	}
 
-  constructor() { }
+	isLoading: boolean = true
 
-  ngOnInit(): void {
-  }
-
+	ngOnInit() {}
 }

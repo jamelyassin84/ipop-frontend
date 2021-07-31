@@ -14,6 +14,8 @@
     </div>
     <div class="card-body">
         <Spinner></Spinner>
+        <NoDataComponent [data]="img !== null ? [1] : []"></NoDataComponent>
+
         <img *ngIf="img !== null" style="width: 100%" [src]="img" alt="" />
     </div>
 </div>

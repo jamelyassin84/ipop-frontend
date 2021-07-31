@@ -79,11 +79,13 @@ export class PopulationPyramidComponent implements OnInit {
 					female['below_1_year_old'],
 				])
 			} else {
-				ageDistribution = DummyData
+				ageDistribution = []
 			}
 			drawChart('population-pyramid', ageDistribution, this.colors)
+			this.ageDistribution = ageDistribution
 		})
 	}
+	ageDistribution: any = []
 
 	populationbyAgeGroupandSex: Array<any> = []
 	processPopulationbyAgeGroupandSex(data: Array<any>) {

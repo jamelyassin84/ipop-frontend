@@ -1,1 +1,5 @@
-<p>no-data-component works!</p>
+<div *ngIf="!isLoading && data.length === 0" class="d-flex aic jcc text-center p-5" style="flex-direction: column">
+    <i class="ti-harddrive mr-2 mb-2" style="font-size: 4rem"></i> It's empty in here.
+    <br />
+    <br /> Oops! Seems like there's nothing <br /> is posted in here yet.
+</div>
