@@ -47,12 +47,18 @@ img {
 
 .Item,
 a {
-    padding: 10px 25px;
-    padding-top: 5px;
     cursor: pointer;
     flex: 1;
     font-weight: 500;
     text-decoration: none;
+    justify-content: center;
+}
+
+.Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
 }
 
 .Item:hover {
@@ -67,12 +73,11 @@ a {
 
 .drop-down {
     min-width: 250px;
-    margin-top: 10px;
     width: auto;
     position: absolute;
-    border-radius: 2px;
-    left: -100%;
     z-index: 9;
+    left: -150px;
+    margin-top: 20px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -84,7 +89,7 @@ a {
 
 .drop-down-item {
     padding: 10px 20px;
-    border-bottom: 1px solid rgba(150, 150, 150, 0.1);
+    border-bottom: 1px solid rgba(gray, 0.2);
     font-size: 13px;
     font-weight: normal !important;
     font-size: 12px;
@@ -122,7 +127,6 @@ a {
 }
 
 .fixed {
-    transition: 0.4s;
     position: fixed;
     top: 0;
     padding: 0 5vw;
@@ -148,9 +152,12 @@ a {
 
 .fix {
     height: 60px !important;
-    .nav-list {
-        margin-top: 15px;
-    }
+}
+
+.active {
+    border: 1px solid rgba($color: white, $alpha: 0.5);
+    background-color: #0d47a1;
+    color: white;
 }
 
 @media only screen and (max-width: 1368px) {

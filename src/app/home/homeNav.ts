@@ -7,6 +7,7 @@ export const homeNavs = [
 	{
 		name: 'Home',
 		route: '',
+		id: 'news',
 		children: [
 			{
 				name: 'News',
@@ -17,6 +18,7 @@ export const homeNavs = [
 	{
 		name: 'About',
 		route: 'about/',
+		id: 'about',
 		children: [
 			{
 				name: 'PPO Mandate',
@@ -47,6 +49,7 @@ export const homeNavs = [
 	{
 		name: 'Population ',
 		route: '',
+		id: 'population',
 		children: [
 			{
 				name: 'Population Data',
@@ -57,6 +60,7 @@ export const homeNavs = [
 	{
 		name: 'Programs',
 		route: 'programs/',
+		id: 'programs',
 		children: [
 			{
 				name: 'Responsible Parenthood and Family Planning Program',
@@ -79,6 +83,7 @@ export const homeNavs = [
 	{
 		name: 'Services',
 		route: 'services/',
+		id: 'services',
 		children: [
 			{
 				name: 'Responsible Parenthood and Family Planning Program',
@@ -101,6 +106,7 @@ export const homeNavs = [
 	{
 		name: 'Demographics',
 		route: 'demographic/',
+		id: 'demographic',
 		children: [
 			{
 				name: 'Births',
@@ -123,6 +129,7 @@ export const homeNavs = [
 	{
 		name: 'RPFP',
 		route: 'rpfp/',
+		id: 'rpfp',
 		children: [
 			{
 				name: 'Pre-Marriage Orrientation and Counseling',
@@ -137,6 +144,7 @@ export const homeNavs = [
 	{
 		name: 'AHYD',
 		route: 'ahyd/',
+		id: 'ahyd',
 		children: [
 			{
 				name: 'Teen Centers',
@@ -150,6 +158,7 @@ export const homeNavs = [
 	},
 	{
 		route: 'others',
+		id: 'others',
 		name: 'Others',
 		children: [
 			{

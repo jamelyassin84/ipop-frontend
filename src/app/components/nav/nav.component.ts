@@ -1,5 +1,6 @@
 import { HostListener } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { homeNavs } from 'src/app/home/homeNav'
 import { UserService } from 'src/app/Services/Independent/user.service'
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/Services/Independent/user.service'
 	styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-	constructor(private user: UserService) {}
+	constructor(private user: UserService, private router: Router) {}
 	public isMenuCollapsed = true
 	public innerWidth: any
 	ngOnInit(): void {
@@ -46,5 +47,12 @@ export class NavComponent implements OnInit {
 
 	onClose() {
 		this.showSmallNav = false
+	}
+
+	icludesUrl(urL: any) {
+		if (this.router.url.indexOf(urL) > -1) {
+			return true
+		}
+		return false
 	}
 }
