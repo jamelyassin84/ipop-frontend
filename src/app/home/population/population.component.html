@@ -27,17 +27,17 @@
         <AgeDistributionAndDependecyRatio></AgeDistributionAndDependecyRatio>
     </ng-template>
 
-    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-        <Modal *ngIf="!isUser" size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2" [template]="addTopPopulated" icon="ti-plus"></Modal>
+    <div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1" [ngClass]="{ column: innerWidth < 1139 }">
+        <Modal *ngIf="!isUser" size="lg" title="Add Municipality that has a Large Population" btnTitle="Add most populated municipality" btnClass="btn btn-sm btn-dark mr-2 mb-2 w-100" [template]="addTopPopulated" icon="ti-plus"></Modal>
 
-        <Modal *ngIf="!isUser" size="lg" title="Add Age Distribution and AgeDependency ratio" btnTitle="Add age distribution and age dependency ratio" btnClass="btn btn-sm btn-primary mr-2" [template]="ageDistributionAndDependecyRatio" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Age Distribution and AgeDependency ratio" btnTitle="Add age distribution and age dependency ratio" btnClass="btn btn-sm btn-primary mr-2 mb-2 w-100" [template]="ageDistributionAndDependecyRatio" icon="ti-plus"></Modal>
 
-        <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+        <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2 mb-2 w-100" [template]="addOfficials" icon="ti-plus"></Modal>
 
-        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal>
+        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger mb-2 w-100" [template]="viewOfficials" icon="ti-pin"></Modal>
     </div>
 
-    <div class="row">
+    <div class="row" [ngClass]="{ 'mt-3': innerWidth < 1139 }">
         <div class="col-md-12">
             <div class="text-dark mb-4">Top Populated Municipalities</div>
         </div>
@@ -277,7 +277,10 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped">
+					<table
+						class="table table-striped table-responsive"
+						responsiveTable
+					>
 						<thead>
 							<tr>
 								<th rowspan="2">#</th>
@@ -367,7 +370,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped">
+					<table class="table table-striped" responsiveTable>
 						<thead>
 							<tr>
 								<th class="ppbm border">0-14</th>
@@ -436,7 +439,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped">
+					<table class="table table-striped" responsiveTable>
 						<thead>
 							<tr>
 								<th class="ppbm border">Young Dependency</th>
@@ -488,7 +491,10 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<table class="table table-striped">
+					<table
+						class="table table-striped"
+						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
+					>
 						<thead>
 							<tr>
 								<th class="ppbm border text-left" rowspan="2">

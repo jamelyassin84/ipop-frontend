@@ -131,7 +131,9 @@ import { PercentPipePipe } from './pipes/percent-pipe.pipe'
 import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 import { ProgressLoaderComponent } from './components/loaders/progress-loader/progress-loader.component'
 import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component';
-import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small-screen-nav.component'
+import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small-screen-nav.component';
+import { NoDataComponentComponent } from './components/no-data-component/no-data-component.component';
+import { ResponsiveTableDirective } from './directives/responsive-table.directive'
 // Directives
 
 @NgModule({
@@ -236,6 +238,8 @@ import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small
 		ProgressLoaderComponent,
 		SpinnerLoaderComponent,
   SmallScreenNavComponent,
+  NoDataComponentComponent,
+  ResponsiveTableDirective,
 	],
 	imports: [
 		BrowserModule,

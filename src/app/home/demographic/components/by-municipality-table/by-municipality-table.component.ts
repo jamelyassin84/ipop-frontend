@@ -1,7 +1,7 @@
 import { LocalMigrationDataService } from './../../../../Services/home/demographic/migrations/local-migration-data.service'
 import { MarraigesService } from './../../../../Services/home/demographic/marraiges/marraiges.service'
 import { LocalDeathDataService } from './../../../../Services/home/demographic/deaths/local-death-data.service'
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, HostListener, Input, OnInit } from '@angular/core'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { LocalBirthDataService } from 'src/app/Services/home/demographic/births/local-birth-data.service'
 import { UserService } from 'src/app/Services/Independent/user.service'
@@ -20,7 +20,15 @@ export class ByMunicipalityTableComponent implements OnInit {
 		private migration: LocalMigrationDataService
 	) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
+	}
+
+	innerWidth: any
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerWidth = window.innerWidth
+	}
 
 	@Input() title: any = ''
 	@Input() headerClass: any = ''

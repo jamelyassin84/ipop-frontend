@@ -16,8 +16,8 @@
     </li>
 </ul>
 
-<div class="row">
-    <div *ngIf="!tabs.province" class="col-md-3 mt-3">
+<div class="row mt-3">
+    <div *ngIf="!tabs.province" class="col-md-3 mb-3">
         <label for="municipality">Municipality </label>
         <select (input)="getBarangays($event)" class="custom-select" id="municipality" required>
 			<option>Choose...</option>
@@ -30,7 +30,7 @@
 		</select>
     </div>
 
-    <div *ngIf="tabs.barangay" class="col-md-3 mt-3">
+    <div *ngIf="tabs.barangay" class="col-md-3 mb-3">
         <label for="barangay"> Barangay </label>
         <select (input)="setBarangay($event)" class="custom-select" id="barangay" required>
 			<option value="">Choose ...</option>
@@ -40,16 +40,16 @@
 		</select>
     </div>
 
-    <div class="col-md-3 mt-3">
+    <div class="col-md-3 mb-3">
         <label for="barangay"> Year </label>
         <select (input)="setYear($event)" class="custom-select" id="barangay" required>
 			<option value="">Choose...</option>
 			<option *ngFor="let year of years">{{ year }}</option>
 		</select>
     </div>
-    <div class="col-md-3 mb-1" style="align-self: flex-end">
-        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn btn-outline-dark pl-3 pr-3 btn-sm">
-			<i class="ti-lock"></i> Lock
+    <div class="col-md-3 mb-3" style="align-self: flex-end">
+        <button [disabled]="currentData.year === ''" (click)="emit()" class="btn bgc-blue-900 text-white pl-3 pr-3">
+			<i class="ti-filter mr-2"></i> Select Location
 		</button>
     </div>
 </div>

@@ -136,8 +136,10 @@
 					</a>
                 <span *ngIf="!isUser" class="ml-auto">
 						<button
+							placement="right "
+							ngbTooltip="Remove"
 							(click)="removeLink(link.id)"
-							class="btn btn-sm text-danger"
+							class="btn btn-sm text-secondary"
 						>
 							<i class="ti-minus"></i>
 						</button>

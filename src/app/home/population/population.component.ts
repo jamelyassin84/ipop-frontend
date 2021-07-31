@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http'
+import { HostListener } from '@angular/core'
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { Deleted, Fire, pop } from 'src/app/modules/extras/Alert'
@@ -39,7 +40,14 @@ export class PopulationComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
+	innerWidth: any
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerWidth = window.innerWidth
+	}
+
 	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
 		this.getTopPopulated()
 	}
 

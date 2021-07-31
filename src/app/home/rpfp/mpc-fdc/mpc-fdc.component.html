@@ -37,15 +37,15 @@
     <Modal size="lg" title="View MPC FDC Team" btnTitle="View MPC FDC Team" btnClass="btn btn-sm btn-outline-primary mr-2" [template]="viewMPCFDCTeam"></Modal>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row mt-4">
+    <div class="col-md-4 mb-3">
         <label TeenCenter>District</label>
         <select [(ngModel)]="locations.district" class="form-control">
 			<option>Choose...</option>
 			<option *ngFor="let district of districts">{{ district }}</option>
 		</select>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
         <label>Municipality </label>
         <select [(ngModel)]="locations.municipality" class="form-control">
 			<option>Choose...</option>
@@ -54,9 +54,9 @@
 			</option>
 		</select>
     </div>
-    <div class="col-md-4 mb-1" style="align-self: flex-end">
-        <button (click)="getMPCFDC()" class="btn btn-outline-dark pl-3 pr-3 btn-sm">
-			<i class="ti-lock"></i> Lock
+    <div class="col-md-3 mb-3" style="align-self: flex-end">
+        <button (click)="getMPCFDC()" class="btn bgc-blue-900 text-white pl-3 pr-3">
+			<i class="ti-filter mr-2"></i> Select Location
 		</button>
     </div>
 </div>
@@ -64,7 +64,7 @@
 <div class="row mt-5">
     <div class="col-md-12">
         <div class="card">
-            <table class="table">
+            <table class="table" responsiveTable>
                 <thead>
                     <tr>
                         <th></th>

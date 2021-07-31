@@ -83,7 +83,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <table class="table">
+            <table class="table" responsiveTable>
                 <thead>
                     <tr>
                         <th></th>
@@ -122,15 +122,15 @@
             </table>
         </div>
     </div>
-</div>
-<div class="col-md-12 mT-50">
-    <div class="card">
-        <div class="card-header bg-white d-flex aic">
-            <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-            <Modal size="lg " title="Customize Technical Notes " btnTitle="Customize technical notes " btnClass="btn btn-sm btn-dark " [template]="customizeTechnicalNotes" icon="ti-notepad "></Modal>
-        </div>
-        <div class="card-body">
-            <TechnicalNotes type="TeenCenter "></TechnicalNotes>
+    <div class="col-md-12 mt-3">
+        <div class="card">
+            <div class="card-header bg-white d-flex aic">
+                <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
+                <Modal size="lg " title="Customize Technical Notes " btnTitle="Customize technical notes " btnClass="btn btn-sm btn-dark " [template]="customizeTechnicalNotes" icon="ti-notepad "></Modal>
+            </div>
+            <div class="card-body">
+                <TechnicalNotes type="TeenCenter "></TechnicalNotes>
+            </div>
         </div>
     </div>
 </div>
