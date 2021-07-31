@@ -64,41 +64,50 @@
 <div class="row mt-5">
     <div class="col-md-12">
         <div class="card">
-            <table class="table" responsiveTable>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Services</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let unit of MPCFDCs">
-                        <td>
-                            <h1 class="ti-home text-danger h5"></h1>
-                        </td>
-                        <td>{{ unit.name }}</td>
-                        <td>{{ unit.services }}</td>
-                        <td>
-                            <DropDown [buttons]="dropdown"></DropDown>
-                            <ng-template #dropdown>
-                                <Modal *ngIf="!isUser" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
+            <div class="card-header bgc-blue-900 d-flex aic">
+                <div class="card-title text-white mr-auto mt-2">
+                    Multi-purpose Counseling and Family Development Center
+                </div>
+            </div>
+            <div class="card-body">
+                <Spinner></Spinner>
+                <NoDataComponent [data]="MPCFDCs"></NoDataComponent>
+                <table *ngIf="MPCFDCs.length !== 0" class="table" responsiveTable>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Services</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let unit of MPCFDCs">
+                            <td>
+                                <h1 class="ti-home text-danger h5"></h1>
+                            </td>
+                            <td>{{ unit.name }}</td>
+                            <td>{{ unit.services }}</td>
+                            <td>
+                                <DropDown [buttons]="dropdown"></DropDown>
+                                <ng-template #dropdown>
+                                    <Modal *ngIf="!isUser" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
 
-                                <Modal (click)="transformImages(unit.files)" size="lg" title="View Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
+                                    <Modal (click)="transformImages(unit.files)" size="lg" title="View Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
 
-                                <Modal *ngIf="!isUser" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
+                                    <Modal *ngIf="!isUser" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
 
-                                <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
+                                    <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
-                                <button *ngIf="!isUser" (click)="remove(unit.id)" class="dropdown-item">
-									Remove
-								</button>
-                            </ng-template>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                    <button *ngIf="!isUser" (click)="remove(unit.id)" class="dropdown-item">
+										Remove
+									</button>
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

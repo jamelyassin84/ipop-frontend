@@ -83,43 +83,52 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <table class="table" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Municipality</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Services</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let tc of teenCenters">
-                        <th><i class="ti-map-alt c-pink-500 h4"></i></th>
-                        <td>{{ tc.municipality }}</td>
-                        <td>{{ tc.name }}</td>
-                        <td>{{ tc.location }}</td>
-                        <td>{{ tc.services || 'N/A' }}</td>
-                        <td>
-                            <DropDown [buttons]="dropdown"></DropDown>
-                            <ng-template #dropdown>
-                                <Modal (click)="currenData = tc" size="lg " title="Add Teen Center New Images " btnTitle="Customize Images " *ngIf="!isUser" btnClass="dropdown-item" [template]="addTCImages"></Modal>
+            <div class="card-header bgc-blue-900 d-flex aic">
+                <div class="card-title text-white mr-auto mt-2">
+                    Teen Centers
+                </div>
+            </div>
+            <div class="card-body">
+                <Spinner></Spinner>
+                <NoDataComponent [data]="teenCenters"></NoDataComponent>
+                <table *ngIf="teenCenters.length !== 0" class="table" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Municipality</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Services</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tc of teenCenters">
+                            <th><i class="ti-map-alt c-pink-500 h4"></i></th>
+                            <td>{{ tc.municipality }}</td>
+                            <td>{{ tc.name }}</td>
+                            <td>{{ tc.location }}</td>
+                            <td>{{ tc.services || 'N/A' }}</td>
+                            <td>
+                                <DropDown [buttons]="dropdown"></DropDown>
+                                <ng-template #dropdown>
+                                    <Modal (click)="currenData = tc" size="lg " title="Add Teen Center New Images " btnTitle="Customize Images " *ngIf="!isUser" btnClass="dropdown-item" [template]="addTCImages"></Modal>
 
-                                <Modal (click)="transformImages(tc.photos)" size="lg" title="Teen Center Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
+                                    <Modal (click)="transformImages(tc.photos)" size="lg" title="Teen Center Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
 
-                                <Modal (click)="teen_center_id = tc.id" size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
+                                    <Modal (click)="teen_center_id = tc.id" size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
 
-                                <Modal *ngIf="!isUser" (click)="teen_center_id = tc.id" size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
+                                    <Modal *ngIf="!isUser" (click)="teen_center_id = tc.id" size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
 
-                                <button *ngIf="!isUser" (click)="remove(tc.id)" class="dropdown-item">
-									Remove
-								</button>
-                            </ng-template>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                    <button *ngIf="!isUser" (click)="remove(tc.id)" class="dropdown-item">
+										Remove
+									</button>
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="col-md-12 mt-3">

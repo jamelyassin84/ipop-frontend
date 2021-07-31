@@ -5,34 +5,45 @@
 <div *ngIf="!isUser" class="d-flex mb-3" style="justify-content: flex-end">
     <Modal size="lg" title="Add File(s)" btnTitle="Add file(s)" btnClass="btn btn-sm btn-dark mr-2" [template]="addFiles" icon="ti-plus"></Modal>
 </div>
-<table class="table" responsiveTable>
-    <thead>
-        <tr>
-            <th>Thumbnail</th>
-            <th>Name</th>
-            <th>Created Last</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of others">
-            <th scope="row">
-                <img [src]="item.thumbnail.uri" alt="" />
-            </th>
-            <td>{{ item.name }}</td>
-            <td>{{ item.created_at | date: 'MMMM dd, yyyy - hh::mm - a' }}</td>
-            <td>
-                <DropDown [buttons]="dd"></DropDown>
-                <ng-template #dd>
-                    <Modal (click)="setFiles(item.files)" size="lg" title="Files" btnSize="sm" btnTitle="View enclosed files" btnClass="dropdown-item text-secondary" [template]="otherFiles"></Modal>
-                    <button *ngIf="!isUser" (click)="removeFile(item.id)" class="dropdown-item">
-						Remove
-					</button>
-                </ng-template>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-header bgc-blue-900 d-flex aic">
+        <div class="card-title text-white mr-auto mt-2">Others</div>
+    </div>
+    <div class="card-body">
+        <Spinner></Spinner>
+        <NoDataComponent [data]="others"></NoDataComponent>
+        <table *ngIf="others.length !== 0" class="table" responsiveTable>
+            <thead>
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>Name</th>
+                    <th>Created Last</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of others">
+                    <th scope="row">
+                        <img [src]="item.thumbnail.uri" alt="" />
+                    </th>
+                    <td>{{ item.name }}</td>
+                    <td>
+                        {{ item.created_at | date: 'MMMM dd, yyyy - hh::mm - a' }}
+                    </td>
+                    <td>
+                        <DropDown [buttons]="dd"></DropDown>
+                        <ng-template #dd>
+                            <Modal (click)="setFiles(item.files)" size="lg" title="Files" btnSize="sm" btnTitle="View enclosed files" btnClass="dropdown-item text-secondary" [template]="otherFiles"></Modal>
+                            <button *ngIf="!isUser" (click)="removeFile(item.id)" class="dropdown-item">
+								Remove
+							</button>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <ng-template #otherFiles>
     <OtherFiles [files]="files"></OtherFiles>

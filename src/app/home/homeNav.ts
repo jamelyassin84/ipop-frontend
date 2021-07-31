@@ -162,7 +162,7 @@ export const homeNavs = [
 		name: 'Others',
 		children: [
 			{
-				name: 'File Uploads',
+				name: 'Key Files',
 				route: '',
 			},
 		],
