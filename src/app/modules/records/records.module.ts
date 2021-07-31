@@ -1,3 +1,4 @@
+import { NoDataComponentComponent } from './../../components/no-data-component/no-data-component.component'
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ExtrasModule } from '../extras/extras.module'
@@ -17,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		RecordIndexComponent,
 		RecordUploadComponent,
 		UploadedRecordsComponent,
+		NoDataComponentComponent,
 	],
 	imports: [
 		CommonModule,
@@ -31,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 		RecordIndexComponent,
 		RecordUploadComponent,
 		UploadedRecordsComponent,
+		NoDataComponentComponent,
 	],
 })
 export class RecordsModule {}

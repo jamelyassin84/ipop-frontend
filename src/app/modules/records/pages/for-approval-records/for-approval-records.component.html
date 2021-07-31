@@ -6,7 +6,8 @@
     </li>
 </ul>
 
-<table class="table">
+<NoDataComponent [data]="files"></NoDataComponent>
+<table *ngIf="files.length !== 0" class="table">
     <thead>
         <tr>
             <th class="text-left">Uploader</th>

@@ -238,7 +238,6 @@ import { ResponsiveTableDirective } from './directives/responsive-table.directiv
 		ProgressLoaderComponent,
 		SpinnerLoaderComponent,
 		SmallScreenNavComponent,
-		NoDataComponentComponent,
 		ResponsiveTableDirective,
 	],
 	imports: [
