@@ -1,4 +1,4 @@
-<div class="screen-nav bg-white p-5" *ngIf="data">
+<div class="screen-nav bg-white p-5" *ngIf="data" style="overflow: auto !important">
     <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-00">
         <ngb-panel *ngFor="let nav of navs">
             <ng-template ngbPanelTitle>

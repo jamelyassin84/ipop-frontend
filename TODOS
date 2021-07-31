@@ -12,8 +12,6 @@ chart approvals
 update all approvals
 edit teen center
 
-illo.govhref nlng
-
 route state ngrx
 route active sidebar
 editable charts
@@ -24,6 +22,6 @@ Edit All (Optional)
 service worker (Optional)
 test with real data fetch provincial data
 
-ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
+ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false
 
 $PQ$B58e
