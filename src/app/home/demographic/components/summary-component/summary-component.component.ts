@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
-	selector: 'Summary',
+	selector: 'SummaryComponent',
 	templateUrl: './summary-component.component.html',
 	styleUrls: ['./summary-component.component.scss'],
 })

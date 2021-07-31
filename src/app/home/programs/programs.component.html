@@ -21,12 +21,13 @@
         </h5>
     </div>
     <div class="card-body">
-        <h6 class="">{{ programArea.description }}</h6>
+        <h4 class="">{{ programArea.description }}</h4>
         <div class="card-body">
+            <NoDataComponent [data]="programArea.activities"></NoDataComponent>
             <div class="bl br card" *ngFor="let activity of programArea.activities">
                 <div class="card-header bg-white d-flex aic">
                     <div>
-                        <div class="h3 m-0 card-title text-primary dw">
+                        <div class="h3 m-0 card-title c-blue-900 dw">
                             <i class="ti-pin-alt"></i> {{ activity.title }}
                         </div>
                         <span class="m-0 text-muted">Created :

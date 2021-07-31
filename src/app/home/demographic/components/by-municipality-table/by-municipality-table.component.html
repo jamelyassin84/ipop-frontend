@@ -5,7 +5,9 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-striped" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
+        <NoDataComponent [data]="body"></NoDataComponent>
+        <Spinner></Spinner>
+        <table *ngIf="body.length !== 0" class="table table-striped" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
             <thead>
                 <tr>
                     <td *ngFor="let header of headers">{{ header }}</td>
