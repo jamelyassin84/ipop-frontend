@@ -19,7 +19,7 @@
 </div>
 
 <div style="position: relative; z-index: 0" *ngIf="images.length !== 0">
-    <carousel [height]="500" [cellsToShow]="innerWidth > 1139 ? 2.1 : 2" [dots]="true" [autoplay]="true" [autoplayInterval]="2000" [borderRadius]="5" [margin]="0">
+    <carousel [height]="500" [cellsToShow]="innerWidth > 1139 ? 2.3 : 1" [dots]="true" [autoplay]="true" [autoplayInterval]="2000" [borderRadius]="5" [margin]="0">
         <div *ngFor="let image of images" class="carousel-cell" style="background: rgba(0, 0, 0, 0.1)">
             <img style="object-fit: cover" [src]="image" />
         </div>

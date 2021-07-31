@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs'
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { UserService } from 'src/app/Services/Independent/user.service'
+import { HostListener } from '@angular/core'
 
 @Component({
 	selector: 'app-teen-centers',
@@ -30,6 +31,13 @@ export class TeenCentersComponent implements OnInit {
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
+		this.innerWidth = window.innerWidth
+	}
+
+	innerWidth: any
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerWidth = window.innerWidth
 	}
 
 	tabs: any = {

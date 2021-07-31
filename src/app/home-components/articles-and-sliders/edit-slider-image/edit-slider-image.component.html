@@ -1,20 +1,26 @@
 <div class="row">
     <div class="col-md-12">
-        <button (click)="trigger()" class="btn btn-sm btn-dark"><i class="ti-plus mr-1"></i> Add an image</button>
+        <button (click)="trigger()" class="btn btn-sm btn-dark">
+			<i class="ti-plus mr-1"></i> Add an image
+		</button>
         <input (change)="readURL($event)" type="file" style="display: none" multiple accept="image/*" id="file" />
     </div>
 </div>
-<div class="row">
-    <div class="col-md-3" *ngFor="let slide of sliders; let i = index">
-        <button (click)="deleteImage(slide.id)" class="btn-minus btn btn-sm btn-light" style="opacity: 0.7">
-			<i class="ti-minus"></i>
-		</button>
+<div class="row mt-3">
+    <div class="col-sm-3" *ngFor="let slide of sliders; let i = index">
+        <div class="relative">
+            <button (click)="deleteImage(slide.id)" class="btn-minus btn btn-sm btn-light" style="opacity: 0.7">
+				<i class="ti-minus"></i>
+			</button>
+        </div>
         <img [src]="slide.photo.uri" alt="" />
     </div>
-    <div class="col-md-3" *ngFor="let slide of photos; let i = index">
-        <button (click)="deleteTemporaryImage(i)" class="btn-minus btn btn-sm btn-light" style="opacity: 0.7">
-			<i class="ti-minus"></i>
-		</button>
+    <div class="col-sm-3" *ngFor="let slide of photos; let i = index">
+        <div class="relative">
+            <button (click)="deleteTemporaryImage(i)" class="btn-minus btn btn-sm btn-light" style="opacity: 0.7">
+				<i class="ti-minus"></i>
+			</button>
+        </div>
         <img [src]="slide" alt="" />
     </div>
 </div>
@@ -22,7 +28,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="saveImages()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save added images</span>
+		<span *ngIf="!isLoading"
+			><i class="ti-check mr-1"></i>Save added images</span
+		>
 		<Loader *ngIf="isLoading"></Loader>
 	</button>
 </div>

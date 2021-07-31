@@ -24,3 +24,5 @@ service worker (Optional)
 test with real data fetch provincial data
 
 ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks   --subresource-integrity --vendor-chunk
+
+$PQ$B58e
