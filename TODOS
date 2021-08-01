@@ -19,6 +19,9 @@ Edit All (Optional)
 service worker (Optional)
 test with real data fetch provincial data
 
+backend bug
+program areas showing waay pa na approve
+
 ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false
 
 $PQ$B58e

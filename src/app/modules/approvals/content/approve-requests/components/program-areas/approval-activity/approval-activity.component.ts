@@ -15,9 +15,11 @@ export class ApprovalActivityComponent implements OnInit {
 	}
 	programArea: any | any = {}
 	getProgramArea() {
-		this.service.show(this.data['program_area_id']).subscribe((programArea: any) => {
-			this.programArea = programArea
-		})
+		this.service
+			.show(this.data['program_area_id'])
+			.subscribe((programArea: any) => {
+				this.programArea = programArea
+			})
 	}
 
 	currentImages: any[] = []
@@ -26,5 +28,9 @@ export class ApprovalActivityComponent implements OnInit {
 		photos.forEach((photo: any) => {
 			this.currentImages.push(photo.file.uri)
 		})
+	}
+
+	toArray(text: string) {
+		return text.split(', ')
 	}
 }
