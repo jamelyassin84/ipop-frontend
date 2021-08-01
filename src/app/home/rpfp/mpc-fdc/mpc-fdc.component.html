@@ -50,7 +50,7 @@
         <select [(ngModel)]="locations.municipality" class="form-control">
 			<option>Choose...</option>
 			<option *ngFor="let municipality of municipalities">
-				{{ municipality.name }}
+				{{ municipality.name | titlecase }}
 			</option>
 		</select>
     </div>
@@ -91,15 +91,15 @@
                             <td>
                                 <DropDown [buttons]="dropdown"></DropDown>
                                 <ng-template #dropdown>
-                                    <Modal *ngIf="!isUser" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
+                                    <Modal *ngIf="!isSuperAdmin" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
 
                                     <Modal (click)="transformImages(unit.files)" size="lg" title="View Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
 
-                                    <Modal *ngIf="!isUser" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
+                                    <Modal *ngIf="!isSuperAdmin" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
 
                                     <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
 
-                                    <button *ngIf="!isUser" (click)="remove(unit.id)" class="dropdown-item">
+                                    <button *ngIf="!isSuperAdmin" (click)="remove(unit.id)" class="dropdown-item">
 										Remove
 									</button>
                                 </ng-template>

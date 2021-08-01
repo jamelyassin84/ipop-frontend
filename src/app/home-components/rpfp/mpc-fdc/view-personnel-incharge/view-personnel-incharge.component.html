@@ -15,7 +15,7 @@
             <td>{{ personnel.name }}</td>
             <td>{{ personnel.position }}</td>
             <td>
-                <button *ngIf="!isUser" (click)="remove(personnel.id)" class="btn btn-sm btn-outline-danger">
+                <button *ngIf="!isSuperAdmin" (click)="remove(personnel.id)" class="btn btn-sm btn-outline-danger">
 					Remove
 				</button>
             </td>

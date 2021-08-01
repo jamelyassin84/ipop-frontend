@@ -29,6 +29,7 @@ export class MpcFdcComponent implements OnInit {
 	}
 
 	isUser = !this.user.isAdmin()
+	isSuperAdmin = !this.user.isSuperAdmin()
 
 	private subscriptions = new Subscription()
 
