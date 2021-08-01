@@ -12,7 +12,7 @@
             <th><i class="ti-user h4"></i></th>
             <td>{{ person.name }}</td>
             <td>{{ person.position }}</td>
-            <td *ngIf="!isUser">
+            <td *ngIf="!isSuperAdmin">
                 <button (click)="remove(person.id)" class="btn btn-sm btn-outline-danger">
 					Remove
 				</button>

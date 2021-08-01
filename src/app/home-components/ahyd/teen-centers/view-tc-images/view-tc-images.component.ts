@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Fire } from 'src/app/modules/extras/Alert'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'ViewTCImages',
@@ -7,9 +8,11 @@ import { Fire } from 'src/app/modules/extras/Alert'
 	styleUrls: ['./view-tc-images.component.scss'],
 })
 export class ViewTcImagesComponent implements OnInit {
-	constructor() {}
+	constructor(private user: UserService) {}
 
 	ngOnInit(): void {}
+
+	isSuperAdmin = !this.user.isSuperAdmin()
 
 	deleteImage() {
 		Fire(

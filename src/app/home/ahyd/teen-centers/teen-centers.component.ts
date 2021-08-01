@@ -28,6 +28,7 @@ export class TeenCentersComponent implements OnInit {
 	private subscriptions = new Subscription()
 
 	isUser = !this.user.isAdmin()
+	isSuperAdmin = !this.user.isSuperAdmin()
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe()
