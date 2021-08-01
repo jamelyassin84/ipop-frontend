@@ -26,7 +26,7 @@ export class PopulationPyramidComponent implements OnInit {
 		)
 	}
 
-	isUser = !this.user.isAdmin()
+	isUser = !this.user.isSuperAdmin()
 
 	private subscriptions = new Subscription()
 

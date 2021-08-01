@@ -16,7 +16,7 @@ export class NoDataComponentComponent implements OnInit {
 			}
 			setTimeout(() => {
 				this.isLoading = value
-			}, 600)
+			}, 4500)
 		})
 	}
 
