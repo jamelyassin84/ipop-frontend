@@ -1,18 +1,21 @@
 
 non Admin UI
-editable forms
-form validation
 approval approve or reject on bulk
 delete approve or reject on bulk
 chart approvals
 update all approvals
+
 edit teen center
-uniform spacing
+program area description
+editable chart
+form validation
+
 
 route state ngrx
 route active sidebar
 editable charts
 polish design white space margin padding and colors and allignments for user perspecitve
+uniform spacing
 
 remove all errors
 Edit All (Optional)
