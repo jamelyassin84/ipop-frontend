@@ -22,6 +22,9 @@ export class OrganizationalChartComponent implements OnInit {
 			})
 		)
 	}
+
+	isSuperAdmin = this.user.isSuperAdmin()
+
 	isUser = !this.user.isAdmin()
 
 	private subscriptions = new Subscription()

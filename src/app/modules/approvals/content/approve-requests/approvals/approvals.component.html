@@ -47,8 +47,8 @@
                     </div>
                 </div>
 
-                <div class="peer peer-greed card card-body" id="chat-box" style="flex-direction: column">
-                    <div *ngIf="data.id !== undefined" class="card-header bgc-blue-900">
+                <div *ngIf="data.id !== undefined" class="peer peer-greed card card-body" id="chat-box" style="flex-direction: column">
+                    <div class="card-header bgc-blue-900">
                         <div style="align-self: flex-end">
                             <button [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
 								<i class="ti-na"></i>
@@ -60,7 +60,7 @@
 							</button>
                         </div>
                     </div>
-                    <div class="shadow d-flex aic">
+                    <div class="border d-flex aic">
                         <ApprovalIndex [type]="type" [data]="data"></ApprovalIndex>
                     </div>
                 </div>

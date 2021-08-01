@@ -22,7 +22,7 @@
     </div>
     <div class="card-body">
         <div class="mt-3">
-            <table class="table">
+            <table class="table responsive" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
                 <tbody>
                     <tr *ngFor="let user of ppo">
                         <td>{{ user.name }}</td>

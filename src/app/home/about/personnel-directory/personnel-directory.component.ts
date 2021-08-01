@@ -1,5 +1,5 @@
 import { Deleted, Fire } from 'src/app/modules/extras/Alert'
-import { Component, OnInit } from '@angular/core'
+import { Component, HostListener, OnInit } from '@angular/core'
 import { PersonnelDirectoryService } from 'src/app/Services/home/about/personnel-directory.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { PersonnelTypes } from './PersonnelTypes'
@@ -51,6 +51,7 @@ export class PersonnelDirectoryComponent implements OnInit {
 	bspo5: any = []
 
 	ngOnInit(): void {
+		this.innerWidth = window.innerWidth
 		this.service.index().subscribe((data) => {
 			this.ppo = data.ppo
 			this.ad = data.ad
@@ -70,6 +71,11 @@ export class PersonnelDirectoryComponent implements OnInit {
 		})
 	}
 
+	innerWidth: any
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.innerWidth = window.innerWidth
+	}
 	remove(id: number) {
 		Fire(
 			'Remove Personnel?',

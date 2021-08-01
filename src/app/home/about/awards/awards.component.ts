@@ -23,7 +23,7 @@ export class AwardsComponent implements OnInit {
 		)
 	}
 
-	isUser = !this.user.isAdmin()
+	isUser = !this.user.isSuperAdmin()
 
 	private subscriptions = new Subscription()
 
