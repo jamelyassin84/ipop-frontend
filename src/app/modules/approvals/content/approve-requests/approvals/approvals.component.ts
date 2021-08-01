@@ -72,13 +72,55 @@ export class ApprovalsComponent implements OnInit {
 	id: number = 0
 	type: string = ''
 	data: any = {}
-	types = [
-		'App\\Models\\Slider',
-		'AppModelsQuickLinks',
-		'AppModelsArticle',
-		'AppModelsCMSChart',
-		'AppModelsCMSChart',
-	]
+
+	storedApprovalID: number[] = []
+
+	onCheck(id: number, event: any, index: number) {
+		const isChecked = event.currentTarget.checked
+		if (isChecked) {
+			this.storedApprovalID.push(id)
+			return
+		}
+		this.storedApprovalID.splice(index, 1)
+	}
+
+	updateApprovals(mode: boolean) {
+		const approval = mode === true ? 'Approve' : 'Discard'
+		Fire(
+			`${approval} All Content?`,
+			`Are you sure you want to ${approval} this content?`,
+			'info',
+			() => {
+				this.isLoading = true
+				for (let id in this.storedApprovalID) {
+					if (parseInt(id) === this.storedApprovalID.length - 1) {
+						Alert(`${approval} Successfull`, '', 'success')
+
+						break
+					}
+					if (mode === true) {
+						this.service
+							.update(this.storedApprovalID[id], {
+								approved: mode,
+							})
+							.subscribe(() => {
+								this.ngOnInit()
+								this.type = ''
+								this.isLoading = false
+							})
+					} else {
+						this.service
+							.destroy(this.storedApprovalID[id])
+							.subscribe(() => {
+								this.ngOnInit()
+								this.type = ''
+								this.isLoading = false
+							})
+					}
+				}
+			}
+		)
+	}
 }
 
 type Approval = {

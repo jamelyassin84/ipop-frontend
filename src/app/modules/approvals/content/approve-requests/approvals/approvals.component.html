@@ -11,7 +11,10 @@
 									type = approval.approvable_type;
 									data = approval.approvable;
 									id = approval.id
-								" *ngFor="let approval of approvals" class="
+								" *ngFor="
+									let approval of approvals;
+									let i = index
+								" class="
 									peers
 									fxw-nw
 									jcc
@@ -25,7 +28,9 @@
 									d-flex
 								">
                                 <div class="form-check mb-3 mr-4">
-                                    <input class="form-check-input" type="checkbox" value="" />
+                                    <input [id]="'check' + i" (change)="
+											onCheck(approval.id, $event, i)
+										" class="form-check-input" type="checkbox" value="" />
                                 </div>
                                 <div class="peer">
                                     <img [src]="
@@ -50,20 +55,20 @@
                 <div *ngIf="data.id !== undefined" class="peer peer-greed bg-white" id="chat-box" style="flex-direction: column">
                     <div class="card-header bgc-blue-900">
                         <div style="align-self: flex-end">
-                            <button [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
+                            <button *ngIf="storedApprovalID.length === 0" [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
 								<i class="ti-na"></i>
 								Discard
 							</button>
-                            <button [disabled]="isLoading" (click)="approve(true)" class="btn btn-lg btn-success mr-1">
+                            <button *ngIf="storedApprovalID.length === 0" [disabled]="isLoading" (click)="approve(true)" class="btn btn-lg btn-success mr-1">
 								<i class="ti-check"></i>
 								Approve
 							</button>
 
-                            <button *ngIf="false" [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
+                            <button *ngIf="storedApprovalID.length !== 0" [disabled]="isLoading" (click)="updateApprovals(false)" class="btn btn-lg btn-outline-light mr-1">
 								<i class="ti-na"></i>
 								Discard All
 							</button>
-                            <button *ngIf="false" [disabled]="isLoading" (click)="approve(true)" class="btn btn-lg btn-success mr-1">
+                            <button *ngIf="storedApprovalID.length !== 0" [disabled]="isLoading" (click)="updateApprovals(true)" class="btn btn-lg btn-success mr-1">
 								<i class="ti-check"></i>
 								Approve All
 							</button>
