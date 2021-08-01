@@ -21,7 +21,10 @@
         </h5>
     </div>
     <div class="card-body">
-        <h4 class="">{{ programArea.description }}</h4>
+        <h4 class="">
+            {{ programArea.description }}
+            <Modal size="lg" [title]="'Edit ' + programArea.title" btnTitle="Edit" btnClass="btn btn-link" [template]="editProgram"></Modal>
+        </h4>
         <div class="card-body">
             <NoDataComponent [data]="programArea.activities"></NoDataComponent>
             <div class="bl br card" *ngFor="let activity of programArea.activities">
@@ -119,4 +122,8 @@
 
 <ng-template #imageViewer>
     <ImageViewer [images]="currentImages"></ImageViewer>
+</ng-template>
+
+<ng-template #editProgram>
+    <app-edit-program [data]="programArea"></app-edit-program>
 </ng-template>

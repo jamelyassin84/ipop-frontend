@@ -136,7 +136,8 @@ import { RoundOffPipe } from './pipes/round-off.pipe'
 // Guards
 import { AuthGuard } from './guards/auth.guard'
 import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard';
-import { EditTcServicesComponent } from './home-components/ahyd/teen-centers/edit-tc-services/edit-tc-services.component'
+import { EditTcServicesComponent } from './home-components/ahyd/teen-centers/edit-tc-services/edit-tc-services.component';
+import { EditProgramComponent } from './home-components/program/edit-program/edit-program.component'
 
 @NgModule({
 	declarations: [
@@ -239,6 +240,7 @@ import { EditTcServicesComponent } from './home-components/ahyd/teen-centers/edi
 		SmallScreenNavComponent,
 		ResponsiveTableDirective,
   EditTcServicesComponent,
+  EditProgramComponent,
 	],
 	imports: [
 		BrowserModule,
