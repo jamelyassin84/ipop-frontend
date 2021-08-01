@@ -111,15 +111,12 @@ import { ViewTcImagesComponent } from './home-components/ahyd/teen-centers/view-
 import { AddTcImagesComponent } from './home-components/ahyd/teen-centers/add-tc-images/add-tc-images.component'
 import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
-import { AuthGuard } from './guards/auth.guard'
-import { ContentWidthDirective } from './directives/content-width.directive'
 import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component'
 import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component'
 import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component'
 import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
 import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component'
-import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe'
-import { RoundOffPipe } from './pipes/round-off.pipe'
+
 import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component'
 import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
 import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component'
@@ -127,14 +124,22 @@ import { TitleWithPercentComponent } from './home/demographic/components/title-w
 import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.component'
 import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component'
 import { OtherFilesComponent } from './home/others/other-files/other-files.component'
-import { PercentPipePipe } from './pipes/percent-pipe.pipe'
-import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 import { ProgressLoaderComponent } from './components/loaders/progress-loader/progress-loader.component'
 import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component'
 import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small-screen-nav.component'
-import { NoDataComponentComponent } from './components/no-data-component/no-data-component.component'
-import { ResponsiveTableDirective } from './directives/responsive-table.directive'
+
 // Directives
+import { ResponsiveTableDirective } from './directives/responsive-table.directive'
+import { ContentWidthDirective } from './directives/content-width.directive'
+
+//Pipes
+import { PercentPipePipe } from './pipes/percent-pipe.pipe'
+import { ArrayToArrayValuesPipe } from './pipes/array-to-array-values.pipe'
+import { RoundOffPipe } from './pipes/round-off.pipe'
+
+// Guards
+import { AuthGuard } from './guards/auth.guard'
+import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 
 @NgModule({
 	declarations: [

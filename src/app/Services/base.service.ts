@@ -26,6 +26,10 @@ export class BaseService {
 		}
 	}
 
+	paginate(url: string) {
+		return this.http.get<any>(url, this.headers())
+	}
+
 	index(overload: String = '') {
 		const url = `${environment.api}${this.url}?${this.params}${overload}`
 		return this.http.get<any>(url, this.headers())

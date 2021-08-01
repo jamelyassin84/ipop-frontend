@@ -14,9 +14,16 @@ export class LogsComponent implements OnInit {
 		this.getLogs()
 	}
 
+	data: any = { links: [] }
 	getLogs() {
 		this.LogsService.index().subscribe((logs: any) => {
+			this.data = logs
 			this.logs = logs.data
 		})
+	}
+
+	onPageChange(event: any) {
+		this.data = event
+		this.logs = event.data
 	}
 }
