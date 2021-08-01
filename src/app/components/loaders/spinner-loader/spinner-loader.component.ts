@@ -4,7 +4,6 @@ import { ReloadService } from 'src/app/Services/reload.service'
 @Component({
 	selector: 'Spinner',
 	templateUrl: './spinner-loader.component.html',
-	styleUrls: ['./spinner-loader.component.scss'],
 })
 export class SpinnerLoaderComponent implements OnInit {
 	constructor(private component: ReloadService) {

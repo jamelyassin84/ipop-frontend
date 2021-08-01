@@ -3,7 +3,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 @Component({
 	selector: 'FileDropZone',
 	templateUrl: './file-dropzone.component.html',
-	styleUrls: ['./file-dropzone.component.scss'],
 })
 export class FileDropzoneComponent implements OnInit {
 	@Output() onEmit = new EventEmitter()
