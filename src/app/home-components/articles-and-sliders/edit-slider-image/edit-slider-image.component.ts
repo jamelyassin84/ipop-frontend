@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Alert, Fire, HasApprovals, pop } from 'src/app/modules/extras/Alert'
 import { SliderService } from 'src/app/Services/home/news/slider.service'
+import { UserService } from 'src/app/Services/Independent/user.service'
 
 @Component({
 	selector: 'EditSliderImage',
@@ -8,7 +9,12 @@ import { SliderService } from 'src/app/Services/home/news/slider.service'
 	styleUrls: ['./edit-slider-image.component.scss'],
 })
 export class EditSliderImageComponent implements OnInit {
-	constructor(private slideService: SliderService) {}
+	constructor(
+		private slideService: SliderService,
+		private user: UserService
+	) {}
+
+	isSuperAdmin = this.user.isSuperAdmin()
 
 	ngOnInit(): void {
 		this.getSliders()
@@ -47,23 +53,35 @@ export class EditSliderImageComponent implements OnInit {
 	}
 
 	deleteImage(id: number) {
-		Fire('Delete Image?', 'Are you sure you want to delete this image? The image will be permanently deleted', 'info', () => {
-			this.isLoading = true
-			this.slideService.destroy(id).subscribe(() => {
-				this.isLoading = false
-				this.ngOnInit()
-			})
-		})
+		Fire(
+			'Delete Image?',
+			'Are you sure you want to delete this image? The image will be permanently deleted',
+			'info',
+			() => {
+				this.isLoading = true
+				this.slideService.destroy(id).subscribe(() => {
+					this.isLoading = false
+					this.ngOnInit()
+				})
+			}
+		)
 	}
 
 	isLoading: boolean = false
 	saveImages() {
-		Fire('Save Changes?', 'This will save all added images. Continue?', 'info', () => {
-			this.isLoading = true
-			this.slideService.create({ photos: this.photos }).subscribe(() => {
-				HasApprovals('Created')
-				this.isLoading = false
-			})
-		})
+		Fire(
+			'Save Changes?',
+			'This will save all added images. Continue?',
+			'info',
+			() => {
+				this.isLoading = true
+				this.slideService
+					.create({ photos: this.photos })
+					.subscribe(() => {
+						HasApprovals('Created')
+						this.isLoading = false
+					})
+			}
+		)
 	}
 }

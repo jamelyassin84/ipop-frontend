@@ -125,7 +125,6 @@ import { FileDropzoneComponent } from './components/file-dropzone/file-dropzone.
 import { SingleFileUploadComponent } from './components/single-file-upload/single-file-upload.component'
 import { OtherFilesComponent } from './home/others/other-files/other-files.component'
 import { ProgressLoaderComponent } from './components/loaders/progress-loader/progress-loader.component'
-import { SpinnerLoaderComponent } from './components/loaders/spinner-loader/spinner-loader.component'
 import { SmallScreenNavComponent } from './components/nav/small-screen-nav/small-screen-nav.component'
 
 // Directives
@@ -241,7 +240,6 @@ import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 		OtherFilesComponent,
 		PercentPipePipe,
 		ProgressLoaderComponent,
-		SpinnerLoaderComponent,
 		SmallScreenNavComponent,
 		ResponsiveTableDirective,
 	],

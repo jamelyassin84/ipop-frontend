@@ -64,7 +64,7 @@
                 <div>
                     <div class="h3 m-0 card-title dw">{{ article.title }}</div>
                 </div>
-                <div *ngIf="!isUser" class="ml-auto">
+                <div *ngIf="!isUser && isSuperAdmin" class="ml-auto">
                     <DropDown [buttons]="dropdown"></DropDown>
                     <ng-template #dropdown>
                         <button (click)="removeArticle(article.id)" class="dropdown-item">
@@ -139,7 +139,7 @@
                 <a role="button" [href]="link.url" target="_blank" class="p-10">
 						{{ link.title }}
 					</a>
-                <span *ngIf="!isUser" class="ml-auto">
+                <span *ngIf="!isUser && isSuperAdmin" class="ml-auto">
 						<button
 							placement="right "
 							ngbTooltip="Remove"

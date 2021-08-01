@@ -17,8 +17,8 @@ export const fader = trigger('routeAnimations', [
 			query(
 				':enter',
 				[
-					style({ opacity: '0' }),
-					animate('1s ease-in-out', style({ opacity: '1' })),
+					style({ opacity: '.5' }),
+					animate('.5s ease-in-out', style({ opacity: '1' })),
 				],
 				{ optional: true }
 			),
@@ -26,7 +26,7 @@ export const fader = trigger('routeAnimations', [
 				':leave',
 				[
 					style({ opacity: '1' }),
-					animate('1s ease-in-out', style({ opacity: '0' })),
+					animate('.1s ease-in-out', style({ opacity: '0' })),
 				],
 				{ optional: true }
 			),

@@ -1,3 +1,4 @@
+import { RecordsModule } from './../records/records.module'
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ExtrasModule } from '../extras/extras.module'
@@ -36,6 +37,10 @@ import { ApprovalSBMPTCComponent } from './content/approve-requests/components/a
 import { ApprovalMPCFDCComponent } from './content/approve-requests/components/rpfp/mpc-fdc/approval-mpcfdc/approval-mpcfdc.component'
 import { RequestsComponent } from './content/delete-requests/requests/requests.component'
 import { DeleteRequestIndexComponent } from './content/delete-requests/delete-request-index/delete-request-index.component'
+import { SpinnerLoaderComponent } from 'src/app/components/loaders/spinner-loader/spinner-loader.component'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
 	declarations: [
@@ -74,8 +79,16 @@ import { DeleteRequestIndexComponent } from './content/delete-requests/delete-re
 		ApprovalBarangayOfficialsComponent,
 		RequestsComponent,
 		DeleteRequestIndexComponent,
+		SpinnerLoaderComponent,
 	],
-	imports: [CommonModule, ExtrasModule],
+	imports: [
+		CommonModule,
+		ExtrasModule,
+		RecordsModule,
+		MatProgressBarModule,
+		MatProgressSpinnerModule,
+		MatFormFieldModule,
+	],
 	exports: [
 		ApprovalsComponent,
 		IndexComponent,
@@ -110,6 +123,7 @@ import { DeleteRequestIndexComponent } from './content/delete-requests/delete-re
 		ApprovalsPersonnelDirectoryComponent,
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
+		SpinnerLoaderComponent,
 	],
 })
 export class ApprovalModule {}

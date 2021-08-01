@@ -27,4 +27,8 @@ export class UserService extends BaseService {
 	isAdmin() {
 		return localStorage.getItem('role') === null ? false : true
 	}
+
+	isSuperAdmin() {
+		return localStorage.getItem('role') === 'Super Admin' ? true : false
+	}
 }

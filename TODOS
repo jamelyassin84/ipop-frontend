@@ -1,15 +1,13 @@
-paginations
-change role
 
 non Admin UI
 editable forms
 form validation
-uniform spacing
 approval approve or reject on bulk
 delete approve or reject on bulk
 chart approvals
 update all approvals
 edit teen center
+uniform spacing
 
 route state ngrx
 route active sidebar
