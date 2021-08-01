@@ -95,7 +95,6 @@ export class ApprovalsComponent implements OnInit {
 				for (let id in this.storedApprovalID) {
 					if (parseInt(id) === this.storedApprovalID.length - 1) {
 						Alert(`${approval} Successfull`, '', 'success')
-
 						break
 					}
 					if (mode === true) {

@@ -26,7 +26,7 @@
 									cur-p
 									border
 									d-flex
-								">
+								" [class.active]="id === approval.id">
                                 <div class="form-check mb-3 mr-4">
                                     <input [id]="'check' + i" (change)="
 											onCheck(approval.id, $event, i)

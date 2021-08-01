@@ -3,3 +3,7 @@ img {
     width: 60px;
     height: 60px;
 }
+
+.active {
+    background: rgba($color: #15b1d7, $alpha: 0.1) !important;
+}

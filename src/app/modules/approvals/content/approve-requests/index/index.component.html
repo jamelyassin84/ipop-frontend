@@ -61,4 +61,13 @@
     <Teen-Center-Focal-Persons *ngIf="type === 'App\\Models\\SBMPTCFocalPerson'" [data]="data"></Teen-Center-Focal-Persons>
     <Teen-Center-Personnel-Incharge *ngIf="type === 'App\\Models\\SBMPTCPersonnel'" [data]="data"></Teen-Center-Personnel-Incharge>
     <Teen-Center-AHYD-Team *ngIf="type === 'App\\Models\\SBMPTCTeam'" [data]="data"></Teen-Center-AHYD-Team>
+
+    <app-json *ngIf="
+			type === 'App\\Models\\PMCCS' ||
+			type === 'App\\Models\\PMCAMIS' ||
+			type === 'App\\Models\\PMCKFP' ||
+			type === 'App\\Models\\PMCESS' ||
+			type === 'App\\Models\\PMCAgeGroup'
+		" [data]="data">
+    </app-json>
 </div>

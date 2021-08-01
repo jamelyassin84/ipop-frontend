@@ -44,7 +44,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { ApprovalAgeDistributionAndAgeDependencyRatioComponent } from './content/approve-requests/components/population/approval-age-distribution-and-age-dependency-ratio/approval-age-distribution-and-age-dependency-ratio.component'
 import { SummaryWithPercentComponentComponent } from 'src/app/home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
 import { SummaryComponentComponent } from 'src/app/home/demographic/components/summary-component/summary-component.component';
-import { ApprovalMarriagesComponent } from './content/approve-requests/components/demographics/marriages/approval-marriages/approval-marriages.component'
+import { ApprovalMarriagesComponent } from './content/approve-requests/components/demographics/marriages/approval-marriages/approval-marriages.component';
+import { JsonComponent } from './content/approve-requests/components/json/json.component'
 
 @NgModule({
 	declarations: [
@@ -88,6 +89,7 @@ import { ApprovalMarriagesComponent } from './content/approve-requests/component
 		SummaryComponentComponent,
 		SummaryWithPercentComponentComponent,
   ApprovalMarriagesComponent,
+  JsonComponent,
 	],
 	imports: [
 		CommonModule,
