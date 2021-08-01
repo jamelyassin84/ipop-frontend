@@ -1,64 +1,63 @@
-<!-- <pre style="color: gray">
-    {{ data | json }}
-</pre> -->
+<div class="card-body" style="width: 100%">
+    <!-- News  -->
+    <Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
+    <SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
+    <QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
 
-<!-- News  -->
-<Articles *ngIf="type === 'App\\Models\\Article'" [data]="data"></Articles>
-<SliderImages *ngIf="type === 'App\\Models\\Slider'" [data]="data"></SliderImages>
-<QuikLinkApproval *ngIf="type === 'App\\Models\\QuickLinks'" [data]="data"></QuikLinkApproval>
+    <!-- Population  -->
+    <Top-Population *ngIf="type === 'App\\Models\\TopPopulation'" [data]="data"></Top-Population>
+    <PopulationProfile *ngIf="type === 'App\\Models\\Statistics\\Profile'" [data]="data"></PopulationProfile>
+    <app-approval-age-distribution-and-age-dependency-ratio *ngIf="type === 'App\\Models\\AgeDistribution_AgeDependencyRatio'" [data]="data"></app-approval-age-distribution-and-age-dependency-ratio>
 
-<!-- Population  -->
-<Top-Population *ngIf="type === 'App\\Models\\TopPopulation'" [data]="data"></Top-Population>
-<PopulationProfile *ngIf="type === 'App\\Models\\Statistics\\Profile'" [data]="data"></PopulationProfile>
+    <!-- About  -->
+    <Award *ngIf="type === 'App\\Models\\CMS\\Award'" [data]="data"></Award>
+    <OrganizationalChart *ngIf="type === 'App\\Models\\CMS\\Chart'" [data]="data"></OrganizationalChart>
+    <ApprovalsPersonnelDirectory *ngIf="type === 'App\\Models\\PersonnelDirectory'" [data]="data"></ApprovalsPersonnelDirectory>
+    <AwardMediaApprovals *ngIf="type === 'App\\Models\\CMS\\AwardMedia'" [data]="data"></AwardMediaApprovals>
 
-<!-- About  -->
-<Award *ngIf="type === 'App\\Models\\CMS\\Award'" [data]="data"></Award>
-<OrganizationalChart *ngIf="type === 'App\\Models\\CMS\\Chart'" [data]="data"></OrganizationalChart>
-<ApprovalsPersonnelDirectory *ngIf="type === 'App\\Models\\PersonnelDirectory'" [data]="data"></ApprovalsPersonnelDirectory>
-<AwardMediaApprovals *ngIf="type === 'App\\Models\\CMS\\AwardMedia'" [data]="data"></AwardMediaApprovals>
+    <!-- Program Areas  -->
+    <ProgramAreas *ngIf="type === 'App\\Models\\CMS\\Activity'" [data]="data"></ProgramAreas>
 
-<!-- Program Areas  -->
-<ProgramAreas *ngIf="type === 'App\\Models\\CMS\\Activity'" [data]="data"></ProgramAreas>
+    <!-- Services  -->
+    <ServicesOffered *ngIf="type === 'App\\Models\\CMS\\ServiceOffer'" [data]="data"></ServicesOffered>
 
-<!-- Services  -->
-<ServicesOffered *ngIf="type === 'App\\Models\\CMS\\ServiceOffer'" [data]="data"></ServicesOffered>
+    <!-- Demographics  -->
+    <IncidenceChart *ngIf="type === 'App\\Models\\Incidence'" [data]="data"></IncidenceChart>
+    <MonthChart *ngIf="type === 'App\\Models\\MonthChart'" [data]="data"></MonthChart>
 
-<!-- Demographics  -->
-<IncidenceChart *ngIf="type === 'App\\Models\\Incidence'" [data]="data"></IncidenceChart>
-<MonthChart *ngIf="type === 'App\\Models\\MonthChart'" [data]="data"></MonthChart>
+    <!-- Births   -->
+    <BirthStatistics *ngIf="type === 'App\\Models\\Statistics\\BirthStatistic'" [data]="data"></BirthStatistics>
 
-<!-- Births   -->
-<BirthStatistics *ngIf="type === 'App\\Models\\Statistics\\BirthStatistic'" [data]="data"></BirthStatistics>
+    <!-- Deaths   -->
+    <DeathStatistics *ngIf="type === 'App\\Models\\Statistics\\DeathStatistic'" [data]="data"></DeathStatistics>
 
-<!-- Deaths   -->
-<DeathStatistics *ngIf="type === 'App\\Models\\Statistics\\DeathStatistic'" [data]="data"></DeathStatistics>
+    <!-- Migrations   -->
+    <MigrationStatistic *ngIf="type === 'App\\Models\\Statistics\\MigrationStatistic'" [data]="data"></MigrationStatistic>
 
-<!-- Migrations   -->
-<MigrationStatistic *ngIf="type === 'App\\Models\\Statistics\\MigrationStatistic'" [data]="data"></MigrationStatistic>
+    <!-- Marriages   -->
 
-<!-- Marriages   -->
+    <!-- RPFP  -->
+    <MPC-FDC *ngIf="type === 'App\\Models\\MPCFDC'" [data]="data"></MPC-FDC>
+    <PMOC *ngIf="type === 'App\\Models\\PMOC'" [data]="data"></PMOC>
 
-<!-- RPFP  -->
-<MPC-FDC *ngIf="type === 'App\\Models\\MPCFDC'" [data]="data"></MPC-FDC>
-<PMOC *ngIf="type === 'App\\Models\\PMOC'" [data]="data"></PMOC>
+    <!-- TeenCenters   -->
+    <TeenCenter *ngIf="type === 'App\\Models\\SBMPTC'" [data]="data"></TeenCenter>
 
-<!-- TeenCenters   -->
-<TeenCenter *ngIf="type === 'App\\Models\\SBMPTC'" [data]="data"></TeenCenter>
+    <!-- Others   -->
+    <Technical-Notes *ngIf="type === 'App\\Models\\TechnicalNotes'" [data]="data"></Technical-Notes>
 
-<!-- Others   -->
-<Technical-Notes *ngIf="type === 'App\\Models\\TechnicalNotes'" [data]="data"></Technical-Notes>
+    <!-- Officials   -->
+    <ProvincialOfficials *ngIf="type === 'App\\Models\\ProvincialOfficial'" [data]="data"></ProvincialOfficials>
+    <SP-Member *ngIf="type === 'App\\Models\\SBMember'" [data]="data"></SP-Member>
+    <MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
 
-<!-- Officials   -->
-<ProvincialOfficials *ngIf="type === 'App\\Models\\ProvincialOfficial'" [data]="data"></ProvincialOfficials>
-<SP-Member *ngIf="type === 'App\\Models\\SBMember'" [data]="data"></SP-Member>
-<MunicipalOfficials *ngIf="type === 'App\\Models\\MunicipalOfficial'" [data]="data"></MunicipalOfficials>
+    <BarangayOfficialApproval *ngIf="type === 'App\\Models\\BarangayOfficial'" [data]="data"></BarangayOfficialApproval>
 
-<BarangayOfficialApproval *ngIf="type === 'App\\Models\\BarangayOfficial'" [data]="data"></BarangayOfficialApproval>
+    <MPC-FDC-Personnel *ngIf="type === 'App\\Models\\MPCFDCPersonnel'" [data]="data"></MPC-FDC-Personnel>
+    <MPC-FDC-Team *ngIf="type === 'App\\Models\\MPCFDCTeam'" [data]="data"></MPC-FDC-Team>
+    <!-- <PMOC-Team *ngIf="false" [data]="data"></PMOC-Team> -->
 
-<MPC-FDC-Personnel *ngIf="type === 'App\\Models\\MPCFDCPersonnel'" [data]="data"></MPC-FDC-Personnel>
-<MPC-FDC-Team *ngIf="type === 'App\\Models\\MPCFDCTeam'" [data]="data"></MPC-FDC-Team>
-<!-- <PMOC-Team *ngIf="false" [data]="data"></PMOC-Team> -->
-
-<Teen-Center-Focal-Persons *ngIf="type === 'App\\Models\\SBMPTCFocalPerson'" [data]="data"></Teen-Center-Focal-Persons>
-<Teen-Center-Personnel-Incharge *ngIf="type === 'App\\Models\\SBMPTCPersonnel'" [data]="data"></Teen-Center-Personnel-Incharge>
-<Teen-Center-AHYD-Team *ngIf="type === 'App\\Models\\SBMPTCTeam'" [data]="data"></Teen-Center-AHYD-Team>
+    <Teen-Center-Focal-Persons *ngIf="type === 'App\\Models\\SBMPTCFocalPerson'" [data]="data"></Teen-Center-Focal-Persons>
+    <Teen-Center-Personnel-Incharge *ngIf="type === 'App\\Models\\SBMPTCPersonnel'" [data]="data"></Teen-Center-Personnel-Incharge>
+    <Teen-Center-AHYD-Team *ngIf="type === 'App\\Models\\SBMPTCTeam'" [data]="data"></Teen-Center-AHYD-Team>
+</div>

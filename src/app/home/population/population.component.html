@@ -571,21 +571,25 @@
 									{{ item.municipality }}
 								</td>
 								<td class="border ppbm">
-									{{ item.hh_population }}
-								</td>
-								<td class="border ppbm">{{ item['0-14'] }}</td>
-								<td class="border ppbm">{{ item['15-64'] }}</td>
-								<td class="border ppbm">
-									{{ item['65_and_over'] }}
+									{{ item.hh_population | number }}
 								</td>
 								<td class="border ppbm">
-									{{ item.young_dependency }}
+									{{ item['0-14'] | number }}
 								</td>
 								<td class="border ppbm">
-									{{ item.old_dependency }}
+									{{ item['15-64'] | number }}
 								</td>
 								<td class="border ppbm">
-									{{ item.dependency }}
+									{{ item['65_and_over'] | number }}
+								</td>
+								<td class="border ppbm">
+									{{ item.young_dependency | number }}
+								</td>
+								<td class="border ppbm">
+									{{ item.old_dependency | number }}
+								</td>
+								<td class="border ppbm">
+									{{ item.dependency | number }}
 								</td>
 								<td>
 									<DropDown [buttons]="aadrDD"></DropDown>

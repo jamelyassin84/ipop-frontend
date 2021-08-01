@@ -40,7 +40,8 @@ import { DeleteRequestIndexComponent } from './content/delete-requests/delete-re
 import { SpinnerLoaderComponent } from 'src/app/components/loaders/spinner-loader/spinner-loader.component'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ApprovalAgeDistributionAndAgeDependencyRatioComponent } from './content/approve-requests/components/population/approval-age-distribution-and-age-dependency-ratio/approval-age-distribution-and-age-dependency-ratio.component'
 
 @NgModule({
 	declarations: [
@@ -80,6 +81,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 		RequestsComponent,
 		DeleteRequestIndexComponent,
 		SpinnerLoaderComponent,
+  ApprovalAgeDistributionAndAgeDependencyRatioComponent,
 	],
 	imports: [
 		CommonModule,

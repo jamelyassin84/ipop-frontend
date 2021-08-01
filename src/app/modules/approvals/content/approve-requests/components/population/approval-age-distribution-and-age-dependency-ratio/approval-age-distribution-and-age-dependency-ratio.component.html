@@ -1,0 +1,47 @@
+<table>
+    <thead>
+        <tr>
+            <th class="ppbm border text-left" rowspan="2">Data</th>
+            <th class="ppbm border text-left" rowspan="2">Year</th>
+            <th class="ppbm border" rowspan="2">HH Population</th>
+            <th colspan="3" class="text-center border">Age Distribution</th>
+            <th colspan="3" class="text-center border">Dependency Ratio</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th class="border ppbm">0-14</th>
+            <th class="border ppbm">15-64</th>
+            <th class="border ppbm">65 and Over</th>
+            <th class="border ppbm">Young Dependecy</th>
+            <th class="border ppbm">Old Dependecy</th>
+            <th class="border ppbm">Dependecy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="border ppbm">
+                {{ data.municipality || 'Province' }}
+            </td>
+            <td>
+                {{ data.year }}
+            </td>
+            <td class="border ppbm">
+                {{ data.hh_population | number }}
+            </td>
+            <td class="border ppbm">{{ data['0-14'] | number }}</td>
+            <td class="border ppbm">{{ data['15-64'] | number }}</td>
+            <td class="border ppbm">
+                {{ data['65_and_over'] | number }}
+            </td>
+            <td class="border ppbm">
+                {{ data.young_dependency | number }}
+            </td>
+            <td class="border ppbm">
+                {{ data.old_dependency | number }}
+            </td>
+            <td class="border ppbm">
+                {{ data.dependency | number }}
+            </td>
+        </tr>
+    </tbody>
+</table>
