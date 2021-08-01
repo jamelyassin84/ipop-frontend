@@ -40,8 +40,11 @@ import { DeleteRequestIndexComponent } from './content/delete-requests/delete-re
 import { SpinnerLoaderComponent } from 'src/app/components/loaders/spinner-loader/spinner-loader.component'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { ApprovalAgeDistributionAndAgeDependencyRatioComponent } from './content/approve-requests/components/population/approval-age-distribution-and-age-dependency-ratio/approval-age-distribution-and-age-dependency-ratio.component'
+import { SummaryWithPercentComponentComponent } from 'src/app/home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
+import { SummaryComponentComponent } from 'src/app/home/demographic/components/summary-component/summary-component.component';
+import { ApprovalMarriagesComponent } from './content/approve-requests/components/demographics/marriages/approval-marriages/approval-marriages.component'
 
 @NgModule({
 	declarations: [
@@ -81,7 +84,10 @@ import { ApprovalAgeDistributionAndAgeDependencyRatioComponent } from './content
 		RequestsComponent,
 		DeleteRequestIndexComponent,
 		SpinnerLoaderComponent,
-  ApprovalAgeDistributionAndAgeDependencyRatioComponent,
+		ApprovalAgeDistributionAndAgeDependencyRatioComponent,
+		SummaryComponentComponent,
+		SummaryWithPercentComponentComponent,
+  ApprovalMarriagesComponent,
 	],
 	imports: [
 		CommonModule,
@@ -126,6 +132,8 @@ import { ApprovalAgeDistributionAndAgeDependencyRatioComponent } from './content
 		AwardMediaApprovalsComponent,
 		ApprovalBarangayOfficialsComponent,
 		SpinnerLoaderComponent,
+		SummaryComponentComponent,
+		SummaryWithPercentComponentComponent,
 	],
 })
 export class ApprovalModule {}

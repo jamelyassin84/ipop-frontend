@@ -58,7 +58,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="mr-auto">Migration Statistics</div>
-                    <DropDown *ngIf="!isUser" [buttons]="DeathStatistics"></DropDown>
+                    <DropDown *ngIf="!isSuperAdmin" [buttons]="DeathStatistics"></DropDown>
                     <ng-template #DeathStatistics>
                         <Modal size="lg" title="Customize Migration  Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
                     </ng-template>
@@ -77,7 +77,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="mr-auto">Local Migration Data</div>
-                        <div class="ml-auto" *ngIf="localData.id != null && !isUser">
+                        <div class="ml-auto" *ngIf="localData.id != null && !isSuperAdmin">
                             <DropDown [buttons]="MigrationData"></DropDown>
                             <ng-template #MigrationData>
                                 <Modal size="lg" title="Customize Local Migration  Data" btnTitle="Customize local migration data" btnClass="dropdown-item" [template]="addLocalMigrationData"></Modal>

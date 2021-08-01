@@ -1,0 +1,41 @@
+<span>{{ data.title }}</span>
+<span class="fw-400 c-blue-900 h4">
+	<span class="mr-2" *ngIf="data.barangay !== null">
+		{{ data.barangay }}
+	</span>
+<span class="mr-2" *ngIf="data.municipality !== null">
+		{{ data.municipality }}
+	</span>
+<span class="mr-2" *ngIf="data.barangay === null && data.municipality === null">
+		Province
+	</span>
+<span class="mr-2">
+		{{ data.year }}
+	</span>
+</span>
+<br />
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="data.population"></SummaryComponent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Marriages" icon="ti-infinite" spanClass="bgc-pink-50 c-pink-500" [value]="data.total_marriages"></SummaryComponent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryWithPercent title="Church" icon="ti-infinite" spanClass="bgc-green-50 c-green-500" progressClass="bgc-red-500 " [value]="data.church" [percentValue]="
+			getPercentage(data.church || 0, data.total_marriages || 0)
+		"></SummaryWithPercent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryWithPercent title="Civil" icon="ti-infinite" spanClass="bgc-purple-50 c-purple-500" progressClass="bgc-red-500 " [value]="data.civil" [percentValue]="
+			getPercentage(data.civil || 0, data.total_marriages || 0)
+		"></SummaryWithPercent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryWithPercent title="Others" icon="ti-infinite" spanClass="bgc-orange-50 c-orange-500" progressClass="bgc-red-500 " [value]="data.others" [percentValue]="
+			getPercentage(data.others || 0, data.total_marriages || 0)
+		"></SummaryWithPercent>
+</div>

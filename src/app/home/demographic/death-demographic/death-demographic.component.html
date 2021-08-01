@@ -57,7 +57,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="mr-auto">Death Statistics</div>
-                    <div class="ml-auto" *ngIf="localData.id != null && !isUser">
+                    <div class="ml-auto" *ngIf="localData.id != null && !isSuperAdmin">
                         <DropDown [buttons]="DeathStatistics"></DropDown>
                         <ng-template #DeathStatistics>
                             <Modal size="lg" title="Customize Statistical Death Data" btnTitle="Customize statistical data" btnClass="dropdown-item" [template]="customizeMonthChart"></Modal>
@@ -78,7 +78,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <span>Local Death Data</span>
-                        <div class="ml-auto" *ngIf="localData.id != null && !isUser">
+                        <div class="ml-auto" *ngIf="localData.id != null && !isSuperAdmin">
                             <DropDown [buttons]="LocalDeathData"></DropDown>
                             <ng-template #LocalDeathData>
                                 <Modal size="lg" title="Customize Local Death Data" btnTitle="Customize local death data" btnClass="dropdown-item" [template]="addLocalDeathData"></Modal>

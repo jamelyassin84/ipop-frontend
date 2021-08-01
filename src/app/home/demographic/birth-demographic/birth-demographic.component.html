@@ -79,7 +79,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="0 mr-auto">Birth Statistics</div>
-                    <Modal *ngIf="!isUser" size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                    <Modal *ngIf="!isSuperAdmin" size="lg" title="Customize Statistical Birth Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
                     <div class="chart">
@@ -95,7 +95,7 @@
                 <div class="card">
                     <div class="card-header bg-white d-flex">
                         <div class="0 mr-auto">Local Birth Data</div>
-                        <div *ngIf="!isUser" class="ml-auto">
+                        <div *ngIf="!isSuperAdmin" class="ml-auto">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
                                 <Modal size="lg" title="Customize Birth Data" btnTitle="Customize birth data" btnClass="dropdown-item" [template]="customizeBirthData"></Modal>

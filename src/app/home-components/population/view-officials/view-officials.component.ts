@@ -29,7 +29,7 @@ export class ViewOfficialsComponent implements OnInit {
 			this.fetch()
 		})
 	}
-	isUser = !this.user.isAdmin()
+	isUser = !this.user.isSuperAdmin()
 
 	types = [
 		'Provincial Official',

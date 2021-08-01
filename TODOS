@@ -24,6 +24,9 @@ test with real data fetch provincial data
 
 backend bug
 program areas showing waay pa na approve
+natapakan ya approval kung super admin nag create
+population pyramid sa approval change to pyramid data with type
+amo man sa statistics himoun nga demographic with a type of type
 
 ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false
 

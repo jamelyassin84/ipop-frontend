@@ -35,6 +35,7 @@
     <MigrationStatistic *ngIf="type === 'App\\Models\\Statistics\\MigrationStatistic'" [data]="data"></MigrationStatistic>
 
     <!-- Marriages   -->
+    <ApprovalMarriages *ngIf="type === 'App\\Models\\MarraigeStatistics'" [data]="data"></ApprovalMarriages>
 
     <!-- RPFP  -->
     <MPC-FDC *ngIf="type === 'App\\Models\\MPCFDC'" [data]="data"></MPC-FDC>

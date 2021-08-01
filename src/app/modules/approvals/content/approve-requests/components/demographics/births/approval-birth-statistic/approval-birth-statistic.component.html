@@ -1,5 +1,5 @@
 <span>{{ data.title }}</span>
-<span class="fw-400 text-danger h4">
+<span class="fw-400 c-blue-900 h4">
 	<span class="mr-2" *ngIf="data.barangay !== null">
 		{{ data.barangay }}
 	</span>
@@ -14,59 +14,13 @@
 	</span>
 </span>
 <br />
-<div class="layers row m-0">
-    <div class="layer w-100">
-        <div class="card">
-            <div class="card-header bg-white d-flex">
-                <div class="h5 mr-auto">Local Birth Data</div>
-            </div>
-            <div class="layer w-100 card-body">
-                <small class="fw-600 c-grey-700">Crude Birth Rate </small>
-                <span class="pull-right c-grey-600 fsz-sm">{{ data?.crude_birth_rate || 0 | number }}%</span
-				>
-				<div class="progress mT-10">
-					<div
-						class="progress-bar bgc-green-500"
-						role="progressbar"
-						aria-valuenow="50"
-						aria-valuemin="0"
-						aria-valuemax="100"
-						[style.width]="data?.crude_birth_rate + '%'"
-					></div>
-				</div>
-				<div class="layer w-100 mT-15">
-					<small class="fw-600 c-grey-700">Fertility Rate </small>
-					<span class="pull-right c-grey-600 fsz-sm"
-						>{{ data?.general_fertility_rate || 0 | number }}%</span
-					>
-					<div class="progress mT-10">
-						<div
-							class="progress-bar bgc-green-500"
-							role="progressbar"
-							aria-valuenow="50"
-							aria-valuemin="0"
-							aria-valuemax="100"
-							[style.width]="data?.general_fertility_rate + '%'"
-						></div>
-					</div>
-					<div class="layer w-100 mT-15">
-						<small class="fw-600 c-grey-700">Live Births </small>
-						<span class="pull-right c-grey-600 fsz-sm"
-							>{{ data?.total_live_births || 0 | number }}%</span
-						>
-						<div class="progress mT-10">
-							<div
-								class="progress-bar bgc-green-500"
-								role="progressbar"
-								aria-valuenow="50"
-								aria-valuemin="0"
-								aria-valuemax="100"
-								[style.width]="data?.total_live_births + '%'"
-							></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="col-md-offset-1 mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="data.total_population"></SummaryComponent>
+</div>
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Live Births" icon="ti-pulse" spanClass="bgc-green-50 c-green-500" [value]="data.total_live_births"></SummaryComponent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Crude Birth Rate" icon="ti-pulse" spanClass="bgc-green-50 c-green-500" [value]="data.crude_birth_rate"></SummaryComponent>
 </div>

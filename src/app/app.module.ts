@@ -113,10 +113,7 @@ import { MainInterceptor } from './Interceptors/main.interceptor'
 import { AddFilesComponent } from './home-components/others/add-files/add-files.component'
 import { AddAgeDistributionAndDependencyRatioComponent } from './home-components/population/add-age-distribution-and-dependency-ratio/add-age-distribution-and-dependency-ratio.component'
 import { PopulationPyramidComponent } from './home/population/population-pyramid/population-pyramid.component'
-import { SummaryComponentComponent } from './home/demographic/components/summary-component/summary-component.component'
-import { SummaryWithPercentComponentComponent } from './home/demographic/components/summary-with-percent-component/summary-with-percent-component.component'
 import { ByMunicipalityTableComponent } from './home/demographic/components/by-municipality-table/by-municipality-table.component'
-
 import { AddMarriageDataComponent } from './home-components/demographic/marraiges/add-marriage-data/add-marriage-data.component'
 import { CustomizeMarriageLocalDataComponent } from './home-components/demographic/marraiges/customize-marriage-local-data/customize-marriage-local-data.component'
 import { TitleWithIconComponent } from './home/demographic/components/title-with-icon/title-with-icon.component'
@@ -226,8 +223,6 @@ import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 		ContentWidthDirective,
 		AddAgeDistributionAndDependencyRatioComponent,
 		PopulationPyramidComponent,
-		SummaryComponentComponent,
-		SummaryWithPercentComponentComponent,
 		ByMunicipalityTableComponent,
 		ArrayToArrayValuesPipe,
 		RoundOffPipe,

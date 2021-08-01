@@ -76,7 +76,7 @@
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="mr-auto">Marriage by Month of Wedding</div>
-                    <Modal *ngIf="!isUser" size="lg" title="Customize Statistical Wedding Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
+                    <Modal *ngIf="!isSuperAdmin" size="lg" title="Customize Statistical Wedding Data" btnTitle="Customize statistical data" btnClass="btn btn-sm btn-dark mr-2" [template]="customizeMonthChart" icon="ti-pencil-alt"></Modal>
                 </div>
                 <div class="card-body">
                     <div class="chart">

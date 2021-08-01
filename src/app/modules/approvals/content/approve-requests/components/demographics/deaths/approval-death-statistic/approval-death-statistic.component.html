@@ -1,5 +1,5 @@
 <span>{{ data.title }}</span>
-<span class="fw-400 text-danger h4">
+<span class="fw-400 c-blue-900 h4">
 	<span class="mr-2" *ngIf="data.barangay !== null">
 		{{ data.barangay }}
 	</span>
@@ -13,44 +13,14 @@
 		{{ data.year }}
 	</span>
 </span>
-<br />
-<div class="layers row m-0">
-    <div class="layer w-100">
-        <div class="card">
-            <div class="card-header bg-white d-flex">
-                <div class="h5 mr-auto">Local Death Data</div>
-            </div>
-            <div class="layer w-100 card-body">
-                <small class="fw-600 c-grey-700">Crude Death Rate </small>
-                <span class="pull-right c-grey-600 fsz-sm">{{ data?.crude_death_rate || 0 | number }}%</span
-				>
-				<div class="progress mT-10">
-					<div
-						class="progress-bar bgc-green-500"
-						role="progressbar"
-						aria-valuenow="50"
-						aria-valuemin="0"
-						aria-valuemax="100"
-						[style.width]="data?.crude_death_rate + '%'"
-					></div>
-				</div>
-				<div class="layer w-100 mT-15">
-					<small class="fw-600 c-grey-700">Total Deaths </small>
-					<span class="pull-right c-grey-600 fsz-sm"
-						>{{ data?.total || 0 | number }}%</span
-					>
-					<div class="progress mT-10">
-						<div
-							class="progress-bar bgc-green-500"
-							role="progressbar"
-							aria-valuenow="50"
-							aria-valuemin="0"
-							aria-valuemax="100"
-							[style.width]="data?.total + '%'"
-						></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="p-1 mt-3" style="width: 450px">
+    <SummaryComponent title="Total Population " icon="ti-user " spanClass="bgc-blue-50 c-blue-500 " [value]="data.population"></SummaryComponent>
+</div>
+
+<div class="p-1 mt-3" style="width: 450px">
+    <SummaryComponent title="Total Deaths" icon="ti-power-off" spanClass="bgc-red-50 c-red-500" [value]="data.population"></SummaryComponent>
+</div>
+
+<div class="p-1 mt-3" style="width: 450px">
+    <SummaryWithPercent title="Crude Death Rate " icon="ti-power-off " spanClass="bgc-red-50 c-red-500 " progressClass="bgc-red-500 " [value]="data.crude_death_rate" [percentValue]="data.crude_death_rate"></SummaryWithPercent>
 </div>

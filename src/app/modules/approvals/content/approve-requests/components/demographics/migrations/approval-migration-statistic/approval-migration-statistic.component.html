@@ -1,5 +1,5 @@
 <span>{{ data.title }}</span>
-<span class="fw-400 text-danger h4">
+<span class="fw-400 c-blue-900 h4">
 	<span class="mr-2" *ngIf="data.barangay !== null">
 		{{ data.barangay }}
 	</span>
@@ -14,58 +14,16 @@
 	</span>
 </span>
 <br />
-<div class="card">
-    <div class="card-header bg-white d-flex">
-        <div class="h5 mr-auto">Local Migration Data</div>
-    </div>
-    <div class="layer w-100 card-body">
-        <small class="fw-600 c-grey-700">In Migrations </small>
-        <span class="pull-right c-grey-600 fsz-sm">{{ data?.total_in_migrations || 0 | number }}%</span
-		>
-		<div class="progress mT-10">
-			<div
-				class="progress-bar bgc-green-500"
-				style="height: 30px"
-				role="progressbar"
-				aria-valuenow="50"
-				aria-valuemin="0"
-				aria-valuemax="100"
-				[style.width]="data?.total_in_migrations + '%'"
-			></div>
-		</div>
-		<div class="layer w-100 mT-15">
-			<small class="fw-600 c-grey-700">Out Migrations </small>
-			<span class="pull-right c-grey-600 fsz-sm"
-				>{{ data?.total_out_migrations || 0 | number }}%</span
-			>
-			<div class="progress mT-10">
-				<div
-					class="progress-bar bgc-orange-500"
-					style="height: 30px"
-					role="progressbar"
-					aria-valuenow="50"
-					aria-valuemin="0"
-					aria-valuemax="100"
-					[style.width]="data?.total_out_migrations + '%'"
-				></div>
-			</div>
-		</div>
-		<div class="layer w-100 mT-15">
-			<small class="fw-600 c-grey-700">Net Migrations </small>
-			<span class="pull-right c-grey-600 fsz-sm"
-				>{{ data?.net_migrations || 0 | number }}%</span
-			>
-			<div class="progress mT-10">
-				<div
-					class="progress-bar bgc-orange-500"
-					style="height: 30px"
-					role="progressbar"
-					aria-valuenow="50"
-					aria-valuemin="0"
-					aria-valuemax="100"
-					[style.width]="data?.net_migrations + '%'"
-				></div>
-			</div>
-		</div>
-	</div>
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Population" icon="ti-user" spanClass="bgc-blue-50 c-blue-500" [value]="data.total_population"></SummaryComponent>
+</div>
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total In Migration" icon="ti-map-alt" spanClass="bgc-blue-50 c-blue-900" [value]="data.total_in_migrations"></SummaryComponent>
+</div>
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Total Out Migration" icon="ti-map-alt" spanClass="bgc-orange-50 c-orange-800" [value]="data.total_out_migrations"></SummaryComponent>
+</div>
+
+<div class="mt-3 p-1" style="width: 450px">
+    <SummaryComponent title="Net Migration" icon="ti-map-alt" spanClass="bgc-yellow-50 c-yellow-800" [value]="data.net_migrations"></SummaryComponent>
 </div>
