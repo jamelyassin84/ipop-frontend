@@ -1,7 +1,5 @@
 
-
-edit teen center
-edit program area description
+kung ya route static indi mag load
 form validation
 
 route state ngrx
@@ -11,7 +9,6 @@ editable charts
 polish design white space margin padding and colors and allignments for user perspecitve
 uniform spacing
 
-remove all errors
 Edit All (Optional)
 service worker (Optional)
 SEO Friendly SSR(Optional)
@@ -22,6 +19,6 @@ natapakan ya approval kung super admin nag create
 population pyramid sa approval change to pyramid data with type
 amo man sa statistics himoun nga demographic with a type of type
 
-ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false
+ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false --prod
 
 FTP Password $PQ$B58e
