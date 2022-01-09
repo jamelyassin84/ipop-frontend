@@ -1,6 +1,6 @@
 export const environment = {
 	production: true,
-	api: '//ipop-test.tk/api/',
+	api: 'http://ipop-app.com/api/',
 	pin: { 'x-auth-mode': 'pin' },
 	password: { 'x-auth-mode': 'password' },
 }
