@@ -50,7 +50,7 @@ export class SidebarComponent implements OnInit {
 	logout() {
 		Fire('Sign-Out?', 'Are you sure you want to Sign-Out?', 'info', () => {
 			localStorage.clear()
-			this.router.navigate([''])
+			this.router.navigate(['/admin'])
 			Alert(
 				'Thank you',
 				`For using Iloilo Provincial Office's Automated System`,
