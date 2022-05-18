@@ -5,7 +5,7 @@ enum AuthMode {
 
 export const environment = {
 	production: true,
-	api: 'http://api.ipop-app.com/api/',
+	api: 'https://api.ipop-app.com/api/',
 	pin: { 'x-auth-mode': AuthMode.PIN },
 	password: { 'x-auth-mode': AuthMode.PASSWORD },
 }
