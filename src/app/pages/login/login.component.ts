@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit(): void {
 		if (localStorage.getItem('token') != undefined) {
-			this.router.navigate(['home/index/news'])
+			this.router.navigate(['/home/index/news'])
 		}
 	}
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 				localStorage.setItem('user', stringify(user))
 				this.isLoading = false
 				Welcome(user.fullname)
-				this.router.navigate(['home/index/news'])
+				this.router.navigate(['/home/index/news'])
 			},
 			() => (this.isLoading = false)
 		)

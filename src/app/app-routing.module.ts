@@ -42,6 +42,11 @@ import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
 const routes: Routes = [
 	{
 		path: '',
+		redirectTo: 'home',
+		pathMatch: 'full',
+	},
+	{
+		path: 'admin',
 		component: LoginComponent,
 		data: { animation: 'fade' },
 	},
