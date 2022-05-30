@@ -1,76 +1,129 @@
 <div class="card-body">
-    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-    <div class="row">
-        <div class="form-group col-md-4">
-            <label for="">Total No. of Barangays</label>
-            <input [(ngModel)]="data.barangays" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Total Land Area (sq.km)</label>
-            <input [(ngModel)]="data.land_area" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Total Household Population</label>
-            <input [(ngModel)]="data.household_population" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Male</label>
-            <input [(ngModel)]="data.males" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Female</label>
-            <input [(ngModel)]="data.females" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Sex Ratio (Male:Female)</label>
-            <input [(ngModel)]="data.sex_ratio" type="text" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Median Age</label>
-            <input [(ngModel)]="data.median_age" type="number" class="form-control" />
-        </div>
+	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+	<div class="row">
+		<div class="form-group col-md-4">
+			<label for="">Total No. of Barangays</label>
+			<input
+				[(ngModel)]="data.barangays"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Total Land Area (sq.km)</label>
+			<input
+				[(ngModel)]="data.land_area"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Total Household Population</label>
+			<input
+				[(ngModel)]="data.household_population"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Male</label>
+			<input [(ngModel)]="data.males" type="text" class="form-control" />
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Female</label>
+			<input
+				[(ngModel)]="data.females"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Sex Ratio (Male:Female)</label>
+			<input
+				[(ngModel)]="data.sex_ratio"
+				type="text"
+				text="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Median Age</label>
+			<input
+				[(ngModel)]="data.median_age"
+				type="text"
+				class="form-control"
+			/>
+		</div>
 
-        <div class="form-group col-md-4">
-            <label for="">Number of Households</label>
-            <input [(ngModel)]="data.households" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Average Household Size</label>
-            <input [(ngModel)]="data.average_household_size" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Population Density (persons/sq.km)</label>
-            <input [(ngModel)]="data.density" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Age Dependency Ratio</label>
-            <input [(ngModel)]="data.age_dependency_ratio" type="text" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Child Dependency Ration</label>
-            <input [(ngModel)]="data.child_dependency_ratio" type="number" class="form-control" />
-        </div>
-        <div class="form-group col-md-4">
-            <label for="">Old Age Dependency Ratio</label>
-            <input [(ngModel)]="data.old_age_dependency_ratio" type="number" class="form-control" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 mt-2">
-            <div class="alert alert-primary">
-                Enter the URL on the field below the population profile saved on your online storage ( eg., Google Drive )
-            </div>
-        </div>
-        <div class="col-md-12">
-            <label for="">Downloadable Link</label>
-            <textarea autosize [(ngModel)]="data.dowloadable_link" class="form-control"></textarea>
-        </div>
-    </div>
+		<div class="form-group col-md-4">
+			<label for="">Number of Households</label>
+			<input
+				[(ngModel)]="data.households"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Average Household Size</label>
+			<input
+				[(ngModel)]="data.average_household_size"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Population Density (persons/sq.km)</label>
+			<input
+				[(ngModel)]="data.density"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Age Dependency Ratio</label>
+			<input
+				[(ngModel)]="data.age_dependency_ratio"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Child Dependency Ratio</label>
+			<input
+				[(ngModel)]="data.child_dependency_ratio"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="">Old Age Dependency Ratio</label>
+			<input
+				[(ngModel)]="data.old_age_dependency_ratio"
+				type="text"
+				class="form-control"
+			/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 mt-2">
+			<div class="alert alert-primary">
+				Enter the URL on the field below the population profile saved on
+				your online storage ( eg., Google Drive )
+			</div>
+		</div>
+		<div class="col-md-12">
+			<label for="">Downloadable Link</label>
+			<textarea
+				autosize
+				[(ngModel)]="data.dowloadable_link"
+				class="form-control"
+			></textarea>
+		</div>
+	</div>
 </div>
 
 <hr />
 <div class="d-flex aic jcc mr-5">
-    <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
+	<button (click)="save()" [disabled]="isLoading" class="btn btn-success">
 		<span *ngIf="!isLoading"
 			><i class="ti-check mr-1"></i> Add this Population Profile</span
 		>
