@@ -135,13 +135,30 @@ export class MigrationsDemographicComponent implements OnInit {
 						label: 'Net Migration',
 					},
 				]
+
+				let minimum: number[] = []
+
 				for (let index of data) {
+					for (let key in index) {
+						if (index[key] < 0) {
+							minimum.push(index[key])
+						}
+					}
+
 					labels.push(index.year)
+
 					datasets[0].data.push(index.total_in_migrations)
+
 					datasets[1].data.push(index.total_out_migrations)
+
 					datasets[2].data.push(index.net_migrations)
 				}
+
+				this.migrationChart.options.scales.yAxes[0].ticks.min =
+					minimum.sort()[0]
+
 				this.migrationChart.labels = labels
+
 				this.migrationChart.datasets = datasets
 			})
 	}

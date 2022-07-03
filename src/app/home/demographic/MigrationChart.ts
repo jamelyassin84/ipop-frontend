@@ -1,5 +1,12 @@
 export const MigrationChartConfig = {
 	options: {
+		scales: {
+			yAxes: [
+				{
+					ticks: { min: 0, max: 100 },
+				},
+			],
+		},
 		scaleShowVerticalLines: false,
 		responsive: true,
 	},
