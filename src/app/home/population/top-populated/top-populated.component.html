@@ -1,0 +1,13 @@
+<div *ngIf="topPopulated" class="row">
+	<top-populated-list
+		class="row w-100 m-0"
+		[topPopulated]="topPopulated"
+	></top-populated-list>
+</div>
+
+<div *ngIf="topPopulated" class="row w-100 m-0">
+	<top-populated-graph
+		class="row w-100 m-0"
+		[topPopulated]="topPopulated"
+	></top-populated-graph>
+</div>

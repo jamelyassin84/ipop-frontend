@@ -1,12 +1,23 @@
 <div class="peers ai-s fxw-nw h-100vh">
-    <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image: url('/assets/ipop/home/2.jpg')">
-        <div class="pos-a centerXY">
-            <div class="bgc-white bdrs-50p pos-r" style="width: 120px; height: 120px">
-                <img class="pos-a centerXY" src="/assets/ipop/logos/iloilo-seal.png" alt="" />
-            </div>
-        </div>
-    </div>
-    <div class="
+	<div
+		class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv"
+		style="background-image: url('/assets/ipop/home/2.jpg')"
+	>
+		<div class="pos-a centerXY">
+			<div
+				class="bgc-white bdrs-50p pos-r"
+				style="width: 120px; height: 120px"
+			>
+				<img
+					class="pos-a centerXY"
+					src="/assets/ipop/logos/iloilo-seal.png"
+					alt=""
+				/>
+			</div>
+		</div>
+	</div>
+	<div
+		class="
 			col-12 col-md-4
 			peer
 			pX-50
@@ -16,41 +27,61 @@
 			scrollable
 			pos-r
 			text-center
-		" style="min-width: 320px">
-        <img class="mY-20" src="/assets/ipop/logos/logo.png" alt="" />
-        <br />
-        <br />
-        <br />
-        <h1 style="font-weight: 900">Welcome Back!</h1>
-        <p class="h6 fw-300 text-muted mB-40">
-            Sign-in with your username and password given by the administrator
-        </p>
-        <form (submit)="login()">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text ti-user bg-white c-blue-900"></span>
-                </div>
-                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.username" type="email" class="form-control form-control-lg" placeholder="Username" />
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text ti-lock bg-white c-blue-900"></span>
-                </div>
-                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.password" type="password" class="form-control form-control-lg" placeholder="Password" />
-            </div>
+		"
+		style="min-width: 320px"
+	>
+		<img class="mY-20" src="/assets/ipop/logos/logo.png" alt="" />
+		<br />
+		<br />
+		<br />
+		<h1 style="font-weight: 900" class="h1">Welcome Back!</h1>
 
-            <br />
-            <button [disabled]="isLoading" class="btn bgc-blue-900 text-white w-100 btn-lg">
+		<p class="h5 fw-300 text-muted mB-40">
+			Sign-in with your username and password given by the administrator
+		</p>
+
+		<form (submit)="login()">
+			<div class="input-group mb-3">
+				<input
+					style="border-radius: 999px; padding-left: 2rem !important"
+					autocomplete="false"
+					[ngModelOptions]="{ standalone: true }"
+					[(ngModel)]="data.username"
+					type="email"
+					class="form-control form-control-lg"
+					placeholder="Username"
+				/>
+			</div>
+
+			<div class="input-group mb-3">
+				<input
+					style="border-radius: 999px; padding-left: 2rem !important"
+					autocomplete="false"
+					[ngModelOptions]="{ standalone: true }"
+					[(ngModel)]="data.password"
+					type="password"
+					class="form-control form-control-lg"
+					placeholder="Password"
+				/>
+			</div>
+
+			<button
+				style="padding: 0.7rem 0; border-radius: 999px"
+				[disabled]="isLoading"
+				class="btn bgc-blue-900 text-white w-100 btn-lg card-shadow"
+			>
 				<span *ngIf="!isLoading">Sign-in</span>
 				<Loader *ngIf="isLoading"></Loader>
 			</button>
-            <br />
-            <br />
-            <p>or</p>
 
-            <a class="btn btn-link w-100 text-secondary" routerLink="/home/index/news">
+			<p>or</p>
+
+			<a
+				class="btn btn-link w-100 text-secondary"
+				routerLink="/home/index/news"
+			>
 				Visit as IPOP Guest
 			</a>
-        </form>
-    </div>
+		</form>
+	</div>
 </div>

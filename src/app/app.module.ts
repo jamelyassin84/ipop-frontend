@@ -135,9 +135,10 @@ import { RoundOffPipe } from './pipes/round-off.pipe'
 
 // Guards
 import { AuthGuard } from './guards/auth.guard'
-import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard';
-import { EditTcServicesComponent } from './home-components/ahyd/teen-centers/edit-tc-services/edit-tc-services.component';
+import { BulkDataGuardGuard } from './guards/bulk-data-guard.guard'
+import { EditTcServicesComponent } from './home-components/ahyd/teen-centers/edit-tc-services/edit-tc-services.component'
 import { EditProgramComponent } from './home-components/program/edit-program/edit-program.component'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
 	declarations: [
@@ -239,8 +240,8 @@ import { EditProgramComponent } from './home-components/program/edit-program/edi
 		ProgressLoaderComponent,
 		SmallScreenNavComponent,
 		ResponsiveTableDirective,
-  EditTcServicesComponent,
-  EditProgramComponent,
+		EditTcServicesComponent,
+		EditProgramComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -249,8 +250,6 @@ import { EditProgramComponent } from './home-components/program/edit-program/edi
 		IvyCarouselModule,
 		BrowserAnimationsModule,
 
-		ChartsModule,
-		GoogleChartsModule,
 		HttpClientModule,
 		NgbModule,
 		TextareaAutosizeModule,
@@ -265,6 +264,7 @@ import { EditProgramComponent } from './home-components/program/edit-program/edi
 		LogsModule,
 		RecordsModule,
 		ExtrasModule,
+		SharedModule,
 	],
 	providers: [
 		{

@@ -5,52 +5,68 @@
 @import 'assets/styles/index.scss';
 @import 'assets/dark/extras.scss';
 html[theme='dark'] {
-    @import 'assets/dark/dark.style.scss';
+	@import 'assets/dark/dark.style.scss';
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+	font-family: 'Montserrat', sans-serif;
 }
 
 label {
-    margin-left: 2px;
+	margin-left: 2px;
 }
 
 .aic {
-    align-items: center;
+	align-items: center;
 }
 
 .jcc {
-    justify-content: center;
+	justify-content: center;
 }
 
 .circle {
-    border-radius: 50% !important;
+	border-radius: 50% !important;
 }
 
 .rounded {
-    border-radius: 30px !important;
+	border-radius: 30px !important;
 }
 
 .bb {
-    border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+	border-bottom: 1px solid rgba(150, 150, 150, 0.2);
 }
 
 .bl {
-    border-left: 1px solid rgba(150, 150, 150, 0.2);
+	border-left: 1px solid rgba(150, 150, 150, 0.2);
 }
 
 .br {
-    border-right: 1px solid rgba(150, 150, 150, 0.2);
+	border-right: 1px solid rgba(150, 150, 150, 0.2);
 }
 
 #chat-sidebar {
-    width: 550px !important;
+	width: 550px !important;
 }
 
 .table th,
 .table td {
-    vertical-align: middle !important;
-    text-align: center !important;
+	vertical-align: middle !important;
+	text-align: center !important;
 }
 
 .accordion button {
-    width: 100% !important;
-    text-align: left !important;
+	width: 100% !important;
+	text-align: left !important;
+}
+
+.card-shadow {
+	border: none !important;
+	box-shadow: rgba(150, 150, 161, 0.1) 0px 7px 29px 0px;
+}
+
+.card {
+	border: none !important;
+	box-shadow: rgba(150, 150, 161, 0.1) 0px 7px 29px 0px;
 }

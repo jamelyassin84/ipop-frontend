@@ -1,0 +1,22 @@
+<div class="w-100">
+	<div class="card w-100">
+		<div class="card-header bg-white d-flex aic w-100">
+			<div class="card-title mr-auto mt-2 h4">
+				Top Populated Municipality Graph
+			</div>
+		</div>
+
+		<div class="card-body w-100">
+			<canvas
+				baseChart
+				[colors]="Colors"
+				[datasets]="migrationChart.datasets"
+				[labels]="migrationChart.labels"
+				[options]="migrationChart.options"
+				[legend]="migrationChart.legend"
+				chartType="bar"
+			>
+			</canvas>
+		</div>
+	</div>
+</div>

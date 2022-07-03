@@ -34,12 +34,19 @@ export class PopulationPyramidComponent implements OnInit {
 		this.subscriptions.unsubscribe()
 	}
 
+	@Input() showPyramid: boolean = true
+
 	@Input() location: any = {}
+
 	@Input() type: string = ''
+
 	@Input() ageGroupColor: string = ''
+
 	@Input() pyramidtitle: string = 'Pyramid'
+
 	@Input() ageGroupTitle: string = 'Age Group and Sex'
-	@Input() colors: Array<string> = []
+
+	@Input() colors: string[] = []
 
 	ngOnInit(): void {}
 
@@ -53,31 +60,52 @@ export class PopulationPyramidComponent implements OnInit {
 			'population-pyramid',
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=${this.type}`
 		)
+
 		service.index().subscribe((data: any) => {
 			let ageDistribution: any = [['Age', 'Male', 'Female']]
+
 			if (data.length !== 0) {
 				this.processPopulationbyAgeGroupandSex(data)
+
 				data = data.reverse()
+
 				const male = data[0]['data']['male']
+
 				const female = data[0]['data']['female']
+
 				for (let key in female) {
 					if (key !== 'below_1_year_old') {
-						let newText = ''
-						if (key === 'eighty_and_above') {
-							newText = '80 and above'
+						if (key !== '1-4') {
+							let newText = ''
+
+							if (key === 'eighty_and_above') {
+								newText = '80 and above'
+							}
+
+							if (key === '1-4') {
+								ageDistribution.push([
+									key === key,
+									-Math.abs(parseFloat(male[key])) +
+										parseFloat(male['below_1_year_old']),
+									parseFloat(female[key]) +
+										parseFloat(female['below_1_year_old']),
+								])
+							} else {
+								ageDistribution.push([
+									key === 'eighty_and_above' ? newText : key,
+									-Math.abs(parseFloat(male[key])),
+									parseFloat(female[key]),
+								])
+							}
 						}
-						ageDistribution.push([
-							key === 'eighty_and_above' ? newText : key,
-							-Math.abs(parseFloat(male[key])),
-							parseFloat(female[key]),
-						])
 					}
 				}
-				ageDistribution.push([
-					'Below 1 Year Old',
-					-Math.abs(parseFloat(male['below_1_year_old'])),
-					female['below_1_year_old'],
-				])
+
+				// ageDistribution.push([
+				// 	'Below 1 Year Old',
+				// 	-Math.abs(parseFloat(male['below_1_year_old'])),
+				// 	female['below_1_year_old'],
+				// ])
 			} else {
 				ageDistribution = []
 			}
@@ -88,6 +116,7 @@ export class PopulationPyramidComponent implements OnInit {
 	ageDistribution: any = []
 
 	populationbyAgeGroupandSex: Array<any> = []
+
 	processPopulationbyAgeGroupandSex(data: Array<any>) {
 		let temp: any = []
 		const male = data[0]['data']['male']

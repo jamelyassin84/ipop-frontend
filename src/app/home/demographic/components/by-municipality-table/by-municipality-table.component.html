@@ -1,34 +1,44 @@
 <div class="card">
-    <div [style.background]="headerClass" class="card-header text-white d-flex aic">
-        <div class="card-title mr-auto mt-2">
-            {{ title }}
-        </div>
-    </div>
-    <div class="card-body">
-        <NoDataComponent [data]="body"></NoDataComponent>
-        <Spinner></Spinner>
-        <table *ngIf="body.length !== 0" class="table table-striped" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
-            <thead>
-                <tr>
-                    <td *ngFor="let header of headers">{{ header }}</td>
-                    <td *ngIf="!isUser"></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of body">
-                    <td *ngFor="let key of keys">
-                        {{ item | arrayToValues: key }}
-                    </td>
-                    <td *ngIf="!isUser">
-                        <DropDown [buttons]="dd"></DropDown>
-                        <ng-template #dd>
-                            <button class="dropdown-item" (click)="deleteData(item.id)">
+	<div
+		[style.background]="headerClass"
+		class="card-header text-white d-flex aic"
+	>
+		<div class="card-title mr-auto mt-2 h4">
+			{{ title }}
+		</div>
+	</div>
+	<div class="card-body">
+		<NoDataComponent [data]="body"></NoDataComponent>
+		<Spinner></Spinner>
+		<table
+			*ngIf="body.length !== 0"
+			class="table table-striped"
+			[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
+		>
+			<thead>
+				<tr>
+					<td *ngFor="let header of headers">{{ header }}</td>
+					<td *ngIf="!isUser"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of body">
+					<td *ngFor="let key of keys">
+						{{ item | arrayToValues: key }}
+					</td>
+					<td *ngIf="!isUser">
+						<DropDown [buttons]="dd"></DropDown>
+						<ng-template #dd>
+							<button
+								class="dropdown-item"
+								(click)="deleteData(item.id)"
+							>
 								Remove
 							</button>
-                        </ng-template>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+						</ng-template>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
