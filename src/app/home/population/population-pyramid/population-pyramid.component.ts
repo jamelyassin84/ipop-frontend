@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http'
-import { DummyData } from './../Dummy'
 import { Component, Input, OnInit } from '@angular/core'
 import { drawChart } from '../Config'
 import { BaseService } from 'src/app/Services/base.service'
@@ -7,6 +6,7 @@ import { getPercent } from 'src/app/constants/Shortcuts'
 import { UserService } from 'src/app/Services/Independent/user.service'
 import { ReloadService } from 'src/app/Services/reload.service'
 import { Subscription } from 'rxjs'
+import { Location } from 'src/app/home-components/population/customize-pyramid/customize-pyramid.component'
 
 @Component({
 	selector: 'PyramidChart-and-AgeGroup',
@@ -36,7 +36,7 @@ export class PopulationPyramidComponent implements OnInit {
 
 	@Input() showPyramid: boolean = true
 
-	@Input() location: any = {}
+	@Input() location?: Location
 
 	@Input() type: string = ''
 
@@ -48,17 +48,25 @@ export class PopulationPyramidComponent implements OnInit {
 
 	@Input() colors: string[] = []
 
+	isProvincial: boolean = false
+
 	ngOnInit(): void {}
 
 	fetch() {
 		this.getPopulationPyramid()
+
+		if (
+			this.location?.barangay === null &&
+			this.location?.municipality === null
+		) {
+		}
 	}
 
 	getPopulationPyramid() {
 		const service = new BaseService(
 			this._http,
 			'population-pyramid',
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}&type=${this.type}`
+			`municipality=${this.location?.municipality}&barangay=${this.location?.barangay}&year=${this.location?.year}&type=${this.type}`
 		)
 
 		service.index().subscribe((data: any) => {
