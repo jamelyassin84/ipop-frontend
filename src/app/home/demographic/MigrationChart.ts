@@ -3,7 +3,7 @@ export const MigrationChartConfig = {
 		scales: {
 			yAxes: [
 				{
-					ticks: { min: 0, max: 100 },
+					ticks: { min: 0, max: 150000 },
 				},
 			],
 		},

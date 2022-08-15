@@ -21,7 +21,7 @@ export const IllegitimateIncidenceChartConfig = {
 	datasets: [
 		{
 			data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			label: 'Females',
+			label: 'Count',
 		},
 	],
 }

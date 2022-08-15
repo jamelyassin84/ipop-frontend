@@ -16,10 +16,15 @@ export class TopPopulatedGraphComponent implements OnInit {
 
 		let datasets: number[] = []
 
+		let index = 0
+
 		for (let municipality of topPopulated) {
+			// if (index <= 10) {
 			labels.push(municipality.data.name)
 
 			datasets.push(municipality.data.total)
+			// }
+			index++
 		}
 
 		this.migrationChart.labels = labels

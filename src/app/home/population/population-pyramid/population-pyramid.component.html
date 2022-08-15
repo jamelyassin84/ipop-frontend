@@ -35,8 +35,20 @@
 	<div [ngClass]="{ 'col-md-6': showPyramid, 'col-md-12': !showPyramid }">
 		<div class="card">
 			<div class="card-header bg-white d-flex aic">
-				<div class="card-title mr-auto mt-2 h4">
-					{{ ageGroupTitle }}
+				<div class="card-title d-flex aic">
+					<span class="h4 mr-auto">{{ ageGroupTitle }}</span>
+					<div *ngIf="!isUser" class="ml-auto">
+						<DropDown [buttons]="Pyramid"></DropDown>
+						<ng-template #Pyramid>
+							<Modal
+								size="lg"
+								title="Customize a Population Pyramid"
+								[btnTitle]="'Customize' + ageGroupTitle"
+								btnClass="dropdown-item"
+								[template]="customizePyramid"
+							></Modal>
+						</ng-template>
+					</div>
 				</div>
 			</div>
 			<div class="card-body">

@@ -7,6 +7,6 @@ export class SortByMunicipalityPipe implements PipeTransform {
 			.sort((a: any, b: any) => {
 				return b.data.total - a.data.total
 			})
-			.slice(0, 10)
+			.filter((list, index) => index < 10)
 	}
 }

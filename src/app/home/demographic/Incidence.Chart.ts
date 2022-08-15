@@ -49,7 +49,7 @@ export const IncidenceChartConfig = {
 	datasets: [
 		{
 			data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			label: 'Females',
+			label: 'Count',
 		},
 	],
 }
