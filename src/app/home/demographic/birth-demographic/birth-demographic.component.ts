@@ -17,7 +17,7 @@ import { Color } from 'ng2-charts'
 	styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
-	@ViewChild(PopulationPyramidComponent) pyramid: any
+	@ViewChild(PopulationPyramidComponent) pyramid?: any
 
 	constructor(
 		private component: ReloadService,
@@ -64,7 +64,13 @@ export class BirthDemographicComponent implements OnInit {
 				this.teenageChart.labels.push(teenageBirth[index].year)
 			}
 			this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
+
+			if (teenageBirth[index].year === this.location.year) {
+				this.teenageBirths += teenageBirth[index].value
+			}
 		}
+
+		this.illegitimateBirths = 0
 		for (let index in illegitimateBirth) {
 			if (
 				!this.incidenceChart.labels.includes(
@@ -76,8 +82,15 @@ export class BirthDemographicComponent implements OnInit {
 			this.incidenceChart.datasets[0].data.push(
 				illegitimateBirth[index].value
 			)
+
+			if (illegitimateBirth[index].year === this.location.year) {
+				this.illegitimateBirths += illegitimateBirth[index].value
+			}
 		}
 	}
+
+	illegitimateBirths: number = 0
+	teenageBirths: number = 0
 
 	location: any = {
 		barangay: null,
@@ -102,7 +115,10 @@ export class BirthDemographicComponent implements OnInit {
 			.index()
 			.subscribe((data) => {
 				this.summaries = data
-				this.pyramid.fetch()
+
+				if (this.pyramid) {
+					this.pyramid.fetch()
+				}
 			})
 	}
 
@@ -115,7 +131,6 @@ export class BirthDemographicComponent implements OnInit {
 			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
 		)
 		service.index().subscribe((summaries: any) => {
-			console.log(groupBy(summaries.incidence, 'title'))
 			this.distribute(groupBy(summaries.incidence, 'title'))
 			this.localData = summaries?.data || {}
 			this.processStatisticalChart(summaries.month)

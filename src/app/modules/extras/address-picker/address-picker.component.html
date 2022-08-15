@@ -68,13 +68,15 @@
 	<div class="col-md-3 mb-3">
 		<label for="barangay"> Year </label>
 		<select
+			[(ngModel)]="currentData.year"
 			(input)="setYear($event)"
 			class="custom-select"
 			id="barangay"
 			required
 		>
-			<option value="">Choose...</option>
-			<option *ngFor="let year of years">{{ year }}</option>
+			<option [value]="year" *ngFor="let year of years">
+				{{ year }}
+			</option>
 		</select>
 	</div>
 	<div class="col-md-3 mb-3" style="align-self: flex-end">

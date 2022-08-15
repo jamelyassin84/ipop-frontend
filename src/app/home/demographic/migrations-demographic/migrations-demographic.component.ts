@@ -138,8 +138,6 @@ export class MigrationsDemographicComponent implements OnInit {
 
 				let minimum: number[] = []
 
-				console.log(data)
-
 				for (let index of data) {
 					for (let key in index) {
 						if (index[key] < 0) {

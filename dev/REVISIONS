@@ -1,9 +1,5 @@
 Color of the Pyramid
 
-Data in teenage birth is not valid same with illegitimate births
-
-Data in total population, total live births, crude birth rate, teenage birth is fixed regardless of change in municipality.
-
 Edit In Population Pyramid
 
 # Resolved
@@ -31,3 +27,7 @@ Missing Tubungan Municipality
 Edit button... Under program > responsible parenthood Guest mode remove
 
 On ppo-leganes under demographics > births by municipality remove the "remove"
+
+Data in teenage birth is not valid same with illegitimate births
+
+Data in total population, total live births, crude birth rate, teenage birth is fixed regardless of change in municipality.

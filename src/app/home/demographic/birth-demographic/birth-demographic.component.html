@@ -101,11 +101,11 @@
 				icon="ti-pulse"
 				spanClass="bgc-orange-50 c-orange-500"
 				progressClass="bgc-orange-500 "
-				[value]="summaries?.summary?.teenage"
+				[value]="illegitimateBirths"
 				[percentValue]="
 					getPercentage(
-						summaries?.teenage?.value || 0,
-						summaries?.summary?.total_live_births || 0
+						illegitimateBirths,
+						summaries?.summary?.total_population
 					)
 				"
 			></SummaryWithPercent>
@@ -117,11 +117,11 @@
 				icon="ti-pulse"
 				spanClass="bgc-red-50 c-red-500"
 				progressClass="bgc-red-500 "
-				[value]="summaries?.summary?.illegitimate"
+				[value]="teenageBirths"
 				[percentValue]="
 					getPercentage(
-						summaries?.illegitimate?.value || 0,
-						summaries?.summary?.total_live_births || 0
+						teenageBirths,
+						summaries?.summary?.total_population
 					)
 				"
 			></SummaryWithPercent>

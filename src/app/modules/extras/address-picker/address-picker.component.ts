@@ -12,6 +12,7 @@ import { BarangayOfficialType } from 'src/app/Types/officials/BarangayOfficials.
 export class AddressPickerComponent implements OnInit {
 	constructor(private location: LocationService) {}
 	@Input() showBarangay = true
+
 	@Output() onEmit = new EventEmitter()
 
 	years: number[] = years()
@@ -21,12 +22,14 @@ export class AddressPickerComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getMuncipalities()
-		this.currentData = {
+	}
+
+	ngAfterViewInit(): void {
+		this.onEmit.emit({
 			municipality: null,
 			barangay: null,
 			year: new Date().getFullYear(),
-		}
-		this.onEmit.emit(this.currentData)
+		})
 	}
 
 	municipalities: MunicipalityType[] = []
@@ -63,7 +66,11 @@ export class AddressPickerComponent implements OnInit {
 		barangay: false,
 	}
 
-	currentData: any
+	currentData: any = {
+		municipality: null,
+		barangay: null,
+		year: new Date().getFullYear(),
+	}
 	changeTab(tab: string) {
 		this.currentData = { municipality: null, barangay: null }
 		for (let key in this.tabs) {
