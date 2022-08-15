@@ -38,6 +38,7 @@ export class ByMunicipalityTableComponent implements OnInit {
 	@Input() type: string = 'Birth'
 
 	isUser = !this.user.isAdmin()
+	isSuperAdmin = this.user.isSuperAdmin()
 
 	deleteData(id: number) {
 		Fire(

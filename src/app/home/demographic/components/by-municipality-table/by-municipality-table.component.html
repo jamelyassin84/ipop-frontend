@@ -26,7 +26,7 @@
 					<td *ngFor="let key of keys">
 						{{ item | arrayToValues: key }}
 					</td>
-					<td *ngIf="!isUser">
+					<td *ngIf="!isUser && isSuperAdmin">
 						<DropDown [buttons]="dd"></DropDown>
 						<ng-template #dd>
 							<button

@@ -65,7 +65,7 @@ export class PopulationPyramidComponent implements OnInit {
 			let ageDistribution: any = [['Age', 'Male', 'Female']]
 
 			if (data.length !== 0) {
-				this.processPopulationbyAgeGroupandSex(data)
+				this.processPopulationByAgeGroupAndSex(data)
 
 				data = data.reverse()
 
@@ -115,9 +115,17 @@ export class PopulationPyramidComponent implements OnInit {
 	}
 	ageDistribution: any = []
 
-	populationbyAgeGroupandSex: Array<any> = []
+	populationByAgeGroupAndSex: {
+		ageGroup: string
+		male: number
+		percent_male: number
+		female: number
+		percent_female: number
+		total: number
+		percent_total: number
+	}[] = []
 
-	processPopulationbyAgeGroupandSex(data: Array<any>) {
+	processPopulationByAgeGroupAndSex(data: Array<any>) {
 		let temp: any = []
 		const male = data[0]['data']['male']
 		const female = data[0]['data']['female']
@@ -147,11 +155,11 @@ export class PopulationPyramidComponent implements OnInit {
 			})
 		}
 
-		this.populationbyAgeGroupandSex = temp.reverse()
-		this.sumOfRows(this.populationbyAgeGroupandSex, data)
+		this.populationByAgeGroupAndSex = temp.reverse()
+		this.sumOfRows(this.populationByAgeGroupAndSex, data)
 	}
 
-	populationbyAgeGroupandSexTotal: any = {}
+	populationByAgeGroupAndSexTotal: any = {}
 	sumOfRows(data: any, originalData: any) {
 		let object: any = {
 			ageGroup: 'Total',
@@ -169,16 +177,18 @@ export class PopulationPyramidComponent implements OnInit {
 				}
 			}
 		}
-		this.populationbyAgeGroupandSexTotal = object
-		this.reAlterpopulationbyAgeGroupandSexTable(originalData)
+		this.populationByAgeGroupAndSexTotal = object
+		this.reAlterPopulationByAgeGroupAndSexTable(originalData)
 	}
 
-	reAlterpopulationbyAgeGroupandSexTable(data: any) {
-		this.populationbyAgeGroupandSex = []
-		const totalPopulation = this.populationbyAgeGroupandSexTotal.total
+	reAlterPopulationByAgeGroupAndSexTable(data: any) {
+		this.populationByAgeGroupAndSex = []
+		const totalPopulation = this.populationByAgeGroupAndSexTotal.total
 		let temp: any = []
 		const male = data[0]['data']['male']
+
 		const female = data[0]['data']['female']
+
 		for (let key in female) {
 			let newText: string = ''
 			if (key === 'eighty_and_above') {
@@ -188,7 +198,8 @@ export class PopulationPyramidComponent implements OnInit {
 				newText = 'Below 1 Year Old'
 			}
 			let total = parseFloat(male[key]) + parseFloat(female[key])
-			temp.push({
+
+			let data = {
 				ageGroup:
 					key === 'eighty_and_above' || key === 'below_1_year_old'
 						? newText
@@ -201,19 +212,21 @@ export class PopulationPyramidComponent implements OnInit {
 				percent_total:
 					getPercent(female[key], totalPopulation) +
 					getPercent(male[key], totalPopulation),
-			})
+			}
+
+			temp.push(data)
 		}
-		this.populationbyAgeGroupandSexTotal.percent_male = 0
-		this.populationbyAgeGroupandSexTotal.percent_female = 0
-		this.populationbyAgeGroupandSexTotal.percent_total = 0
+		this.populationByAgeGroupAndSexTotal.percent_male = 0
+		this.populationByAgeGroupAndSexTotal.percent_female = 0
+		this.populationByAgeGroupAndSexTotal.percent_total = 0
 		const disregards = ['ageGroup', 'male', 'female', 'total']
 		for (let index of temp) {
 			for (let key in index) {
 				if (!disregards.includes(key)) {
-					this.populationbyAgeGroupandSexTotal[key] += index[key]
+					this.populationByAgeGroupAndSexTotal[key] += index[key]
 				}
 			}
 		}
-		this.populationbyAgeGroupandSex = temp.reverse()
+		this.populationByAgeGroupAndSex = temp.reverse()
 	}
 }

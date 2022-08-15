@@ -53,11 +53,11 @@
 			</div>
 			<div class="card-body">
 				<NoDataComponent
-					[data]="populationbyAgeGroupandSex"
+					[data]="populationByAgeGroupAndSex"
 				></NoDataComponent>
 
 				<table
-					*ngIf="populationbyAgeGroupandSex.length !== 0"
+					*ngIf="populationByAgeGroupAndSex.length !== 0"
 					class="table table-striped"
 					responsiveTable
 				>
@@ -66,7 +66,15 @@
 						[style.background]="ageGroupColor"
 					>
 						<tr>
-							<th class="ppbm border">Age Group</th>
+							<th
+								class="ppbm border"
+								style="
+									text-align: left !important;
+									padding-left: 0.5rem;
+								"
+							>
+								Age Group
+							</th>
 							<th class="ppbm border">Male</th>
 							<th class="ppbm border">%</th>
 							<th class="ppbm border">Female</th>
@@ -76,8 +84,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let item of populationbyAgeGroupandSex">
-							<td class="ppbm border">
+						<tr *ngFor="let item of populationByAgeGroupAndSex">
+							<td
+								class="ppbm border"
+								style="
+									text-align: left !important;
+									padding-left: 0.5rem;
+								"
+							>
 								{{ item.ageGroup }}
 							</td>
 							<td class="ppbm border">
@@ -100,42 +114,48 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="ppbm border fw-900">
-								{{ populationbyAgeGroupandSexTotal.ageGroup }}
+							<td
+								class="ppbm border fw-900"
+								style="
+									text-align: left !important;
+									padding-left: 0.5rem;
+								"
+							>
+								{{ populationByAgeGroupAndSexTotal.ageGroup }}
 							</td>
 							<td class="ppbm border fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.male
+									populationByAgeGroupAndSexTotal.male
 										| number
 								}}
 							</td>
 							<td class="ppbm border fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.percent_male
+									populationByAgeGroupAndSexTotal.percent_male
 										| number: '1.2-2'
 								}}
 							</td>
 							<td class="ppbm border fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.female
+									populationByAgeGroupAndSexTotal.female
 										| number
 								}}
 							</td>
 							<td class="ppbm border fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.percent_female
+									populationByAgeGroupAndSexTotal.percent_female
 										| number: '1.2-2'
 								}}
 							</td>
 							<td class="border ppbm fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.total
+									populationByAgeGroupAndSexTotal.total
 										| number
 								}}
 							</td>
 							<td class="ppbm border fw-900">
 								{{
-									populationbyAgeGroupandSexTotal.percent_total
+									populationByAgeGroupAndSexTotal.percent_total
 										| number: '1.2-2'
 								}}
 							</td>

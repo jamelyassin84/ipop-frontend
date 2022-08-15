@@ -1,12 +1,12 @@
 <ng-template #addProgram>
-    <AddProgram [program_area_id]="programArea.id"></AddProgram>
+	<AddProgram [program_area_id]="programArea.id"></AddProgram>
 </ng-template>
 
 <div class="card">
-    <div class="card-header bg-white">
-        <h5 class="m-0 card-title text-center d-flex">
-            <span style="align-self: center">{{ programArea.title }}</span>
-            <span *ngIf="!isUser" class="ml-auto">
+	<div class="card-header bg-white">
+		<h5 class="m-0 card-title text-center d-flex">
+			<span style="align-self: center">{{ programArea.title }}</span>
+			<span *ngIf="!isUser" class="ml-auto">
 				<DropDown [buttons]="dropdown"></DropDown>
 				<ng-template #dropdown>
 					<Modal
@@ -18,22 +18,33 @@
 					></Modal>
 				</ng-template>
 			</span>
-        </h5>
-    </div>
-    <div class="card-body">
-        <h4 class="">
-            {{ programArea.description }}
-            <Modal size="lg" [title]="'Edit ' + programArea.title" btnTitle="Edit" btnClass="btn btn-link" [template]="editProgram"></Modal>
-        </h4>
-        <div class="card-body">
-            <NoDataComponent [data]="programArea.activities"></NoDataComponent>
-            <div class="bl br card" *ngFor="let activity of programArea.activities">
-                <div class="card-header bg-white d-flex aic">
-                    <div>
-                        <div class="h3 m-0 card-title c-blue-900 dw">
-                            <i class="ti-pin-alt"></i> {{ activity.title }}
-                        </div>
-                        <span class="m-0 text-muted">Created :
+		</h5>
+	</div>
+	<div class="card-body">
+		<h4 class="">
+			{{ programArea.description }}
+			<Modal
+				*ngIf="!isSuperAdmin"
+				size="lg"
+				[title]="'Edit ' + programArea.title"
+				btnTitle="Edit"
+				btnClass="btn btn-link"
+				[template]="editProgram"
+			></Modal>
+		</h4>
+		<div class="card-body">
+			<NoDataComponent [data]="programArea.activities"></NoDataComponent>
+			<div
+				class="bl br card"
+				*ngFor="let activity of programArea.activities"
+			>
+				<div class="card-header bg-white d-flex aic">
+					<div>
+						<div class="h3 m-0 card-title c-blue-900 dw">
+							<i class="ti-pin-alt"></i> {{ activity.title }}
+						</div>
+						<span class="m-0 text-muted"
+							>Created :
 							{{
 								activity.created_at
 									| date: 'MMMM dd, yyy - hh:mm a'
@@ -70,60 +81,76 @@
 								>
 								</Modal>
 							</span>
-                        </p>
-                        <div class="row">
-                            <div *ngIf="activity.RA_links !== null" class="col-md-6">
-                                <ul class="list-group">
-                                    <li class="
+						</p>
+						<div class="row">
+							<div
+								*ngIf="activity.RA_links !== null"
+								class="col-md-6"
+							>
+								<ul class="list-group">
+									<li
+										class="
 											list-group-item
 											active
 											text-white
-										">
-                                        Republic Act Links
-                                    </li>
-                                    <li *ngFor="
+										"
+									>
+										Republic Act Links
+									</li>
+									<li
+										*ngFor="
 											let item of toArray(
 												activity.RA_links
 											)
-										" class="list-group-item">
-                                        <a target="_blank" [href]="item">{{
+										"
+										class="list-group-item"
+									>
+										<a target="_blank" [href]="item">{{
 											item
 										}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div *ngIf="activity.MC_links !== null" class="col-md-6">
-                                <ul class="list-group">
-                                    <li class="
+									</li>
+								</ul>
+							</div>
+							<div
+								*ngIf="activity.MC_links !== null"
+								class="col-md-6"
+							>
+								<ul class="list-group">
+									<li
+										class="
 											list-group-item
 											active
 											text-white
-										">
-                                        Memorandum Circular Links
-                                    </li>
-                                    <li *ngFor="
+										"
+									>
+										Memorandum Circular Links
+									</li>
+									<li
+										*ngFor="
 											let item of toArray(
 												activity.MC_links
 											)
-										" class="list-group-item">
-                                        <a target="_blank" [href]="item">{{
+										"
+										class="list-group-item"
+									>
+										<a target="_blank" [href]="item">{{
 											item
 										}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <ng-template #imageViewer>
-    <ImageViewer [images]="currentImages"></ImageViewer>
+	<ImageViewer [images]="currentImages"></ImageViewer>
 </ng-template>
 
 <ng-template #editProgram>
-    <app-edit-program [data]="programArea"></app-edit-program>
+	<app-edit-program [data]="programArea"></app-edit-program>
 </ng-template>

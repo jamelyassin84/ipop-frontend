@@ -1,28 +1,18 @@
-Population By Age Group sync to pyramid
-
 Color of the Pyramid
-
-Name of Barangays to Purok if Change to Barangay
-
-Missing Tubungan Municipality
-
-Balasan Duplicates
-
-display age distribution by municipality missing: carles,calinog,duenas,maasin,mina,oton,pototan and passi city
-
-Double data for Passi under 2020 Pop Data
-
-Edit button... Under program > responsible parenthood Guest mode remove
 
 Data in teenage birth is not valid same with illegitimate births
 
 Data in total population, total live births, crude birth rate, teenage birth is fixed regardless of change in municipality.
 
-On ppo-leganes under demographics > births by municipality remove the "remove"
-
 Edit In Population Pyramid
 
 # Resolved
+
+Double data for Passi under 2020 Pop Data (Delete the Data) This duplicates are caused by extra spaces when encoding
+
+Balasan Duplicates (Delete the Data) This duplicates are caused by extra spaces when encoding
+
+display age distribution by municipality missing: carles,calinog,duenas,maasin,mina,oton,pototan and passi city (All are present in 2020)
 
 Top 10 populated municipalities
 
@@ -33,3 +23,11 @@ Top populated municipality graph...graph is on max of 100..
 Remove Add Official and View Remove in Demographics
 
 Incidence of Teenage Births Remove the word "female
+
+Name of Barangays to Purok if Change to Barangay
+
+Missing Tubungan Municipality
+
+Edit button... Under program > responsible parenthood Guest mode remove
+
+On ppo-leganes under demographics > births by municipality remove the "remove"

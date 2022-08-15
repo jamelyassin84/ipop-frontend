@@ -160,7 +160,13 @@
 							</div>
 							<div class="col-md-6 mb-2 bb pt-1">
 								<h5 class="text-secondary mb-2 h6 fw-300">
-									Total No. of Barangays
+									Total No. of
+									{{
+										location.barangay === null &&
+										location.municipality === null
+											? 'Barangays'
+											: 'Puroks'
+									}}
 								</h5>
 								<div class="fw-600 h4 c-blue-900">
 									{{ populationProfile.barangays || 0 }}
@@ -182,7 +188,7 @@
 								<div class="fw-600 h4 c-blue-900">
 									{{
 										populationProfile.household_population ||
-											0
+											0 | number
 									}}
 								</div>
 							</div>
