@@ -1,4 +1,5 @@
-import { Input } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { ChangeDetectorRef, Input } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
 import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
 import { BaseService } from 'src/app/Services/base.service'
@@ -10,13 +11,22 @@ import { PopulationPyramidService } from 'src/app/Services/home/population/popul
 	styleUrls: ['./customize-pyramid.component.scss'],
 })
 export class CustomizePyramidComponent implements OnInit {
-	constructor(private service: PopulationPyramidService) {}
+	constructor(
+		private _http: HttpClient,
+		private service: PopulationPyramidService
+	) {}
 
 	@Input() type: string = ''
 
-	types = ['Provincial', 'Muncipality', 'Barangay']
+	@Input('location') set setLocation(location: Location) {
+		console.log(location)
+	}
 
-	ngOnInit(): void {}
+	@Input() types = ['Provincial', 'Muncipality', 'Barangay']
+
+	ngOnInit(): void {
+		console.log('tae')
+	}
 
 	tabs: any = {
 		males: true,
@@ -41,9 +51,25 @@ export class CustomizePyramidComponent implements OnInit {
 	}
 
 	fetch(event: any) {
-		this.populationPyramid.barangay = event.barangay
-		this.populationPyramid.municipality = event.municipality
-		this.populationPyramid.year = event.year
+		const { barangay, municipality, year } = event
+
+		this.populationPyramid.barangay = barangay
+
+		this.populationPyramid.municipality = municipality
+
+		this.populationPyramid.year = year
+
+		const service = new BaseService(
+			this._http,
+			'population-pyramid',
+			`municipality=${municipality}&barangay=${barangay}&year=${year}&type=${this.type}`
+		)
+
+		service.index().subscribe((response: any) => {
+			this.populationPyramid.data.male = response[0].data.male
+
+			this.populationPyramid.data.female = response[0].data.female
+		})
 	}
 
 	isLoading: boolean = false
@@ -62,4 +88,10 @@ export class CustomizePyramidComponent implements OnInit {
 			}
 		)
 	}
+}
+
+export interface Location {
+	barangay: string
+	municipality: string
+	year: string
 }
