@@ -1,54 +1,54 @@
 <div class="bg-light">
-	<ng-template #addBirthData>
-		<AddBirthData></AddBirthData>
-	</ng-template>
+    <ng-template #addBirthData>
+        <AddBirthData></AddBirthData>
+    </ng-template>
 
-	<ng-template #customizeBirthData>
-		<CustomizeBirthData [data]="localData"></CustomizeBirthData>
-	</ng-template>
+    <ng-template #customizeBirthData>
+        <CustomizeBirthData [data]="localData"></CustomizeBirthData>
+    </ng-template>
 
-	<ng-template #customizeIllegitimate>
-		<CustomizeIllegitimate></CustomizeIllegitimate>
-	</ng-template>
+    <ng-template #customizeIllegitimate>
+        <CustomizeIllegitimate></CustomizeIllegitimate>
+    </ng-template>
 
-	<ng-template #customizeTeenage>
-		<CustomizeTeenage></CustomizeTeenage>
-	</ng-template>
+    <ng-template #customizeTeenage>
+        <CustomizeTeenage></CustomizeTeenage>
+    </ng-template>
 
-	<ng-template #customizeMonthChart>
-		<CustomizeMonthChart
-			type="Birth"
-			[location]="location"
-		></CustomizeMonthChart>
-	</ng-template>
+    <ng-template #customizeMonthChart>
+        <CustomizeMonthChart
+            type="Birth"
+            [location]="location"
+        ></CustomizeMonthChart>
+    </ng-template>
 
-	<ng-template #customizeTechnicalNotes>
-		<CustomizeTechnicalNotes type="Birth"></CustomizeTechnicalNotes>
-	</ng-template>
+    <ng-template #customizeTechnicalNotes>
+        <CustomizeTechnicalNotes type="Birth"></CustomizeTechnicalNotes>
+    </ng-template>
 
-	<ng-template #viewOfficials>
-		<ViewOfficials></ViewOfficials>
-	</ng-template>
+    <ng-template #viewOfficials>
+        <ViewOfficials></ViewOfficials>
+    </ng-template>
 
-	<ng-template #addOfficials>
-		<AddOfficials></AddOfficials>
-	</ng-template>
+    <ng-template #addOfficials>
+        <AddOfficials></AddOfficials>
+    </ng-template>
 
-	<div
-		class="d-flex"
-		style="justify-content: flex-end; position: relative; z-index: 1"
-	>
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add a Birth Data"
-			btnTitle="Add birth data"
-			btnClass="btn btn-sm btn-dark mr-2"
-			[template]="addBirthData"
-			icon="ti-plus"
-		></Modal>
+    <div
+        class="d-flex"
+        style="justify-content: flex-end; position: relative; z-index: 1"
+    >
+        <Modal
+            *ngIf="!isUser"
+            size="lg"
+            title="Add a Birth Data"
+            btnTitle="Add birth data"
+            btnClass="btn btn-sm btn-dark mr-2"
+            [template]="addBirthData"
+            icon="ti-plus"
+        ></Modal>
 
-		<!-- <Modal
+        <!-- <Modal
 			*ngIf="!isUser"
 			size="lg"
 			title="Add Officials"
@@ -66,71 +66,71 @@
 			[template]="viewOfficials"
 			icon="ti-pin"
 		></Modal> -->
-	</div>
+    </div>
 
-	<div class="row mt-1 mb-4">
-		<div class="col-md-2 col-md-offset-1 mt-3 p-1">
-			<SummaryComponent
-				title="Total Population"
-				icon="ti-user"
-				spanClass="bgc-blue-50 c-blue-500"
-				[value]="summaries?.summary?.total_population"
-			></SummaryComponent>
-		</div>
-		<div class="col-md-2 mt-3 p-1">
-			<SummaryComponent
-				title="Total Live Births"
-				icon="ti-pulse"
-				spanClass="bgc-green-50 c-green-500"
-				[value]="summaries?.summary?.total_live_births"
-			></SummaryComponent>
-		</div>
+    <div class="row mt-1 mb-4">
+        <div class="col-md-2 col-md-offset-1 mt-3 p-1">
+            <SummaryComponent
+                title="Total Population"
+                icon="ti-user"
+                spanClass="bgc-blue-50 c-blue-500"
+                [value]="summaries?.summary?.total"
+            ></SummaryComponent>
+        </div>
+        <div class="col-md-2 mt-3 p-1">
+            <SummaryComponent
+                title="Total Live Births"
+                icon="ti-pulse"
+                spanClass="bgc-green-50 c-green-500"
+                [value]="summaries?.summary?.total_live_births"
+            ></SummaryComponent>
+        </div>
 
-		<div class="col-md-2 mt-3 p-1">
-			<SummaryComponent
-				title="Crude Birth Rate"
-				icon="ti-pulse"
-				spanClass="bgc-green-50 c-green-500"
-				[value]="summaries?.summary?.crude_birth_rate"
-			></SummaryComponent>
-		</div>
+        <div class="col-md-2 mt-3 p-1">
+            <SummaryComponent
+                title="Crude Birth Rate"
+                icon="ti-pulse"
+                spanClass="bgc-green-50 c-green-500"
+                [value]="summaries?.summary?.crude_birth_rate"
+            ></SummaryComponent>
+        </div>
 
-		<div class="col-md-3 mt-3 p-1">
-			<SummaryWithPercent
-				title="Teenage Births"
-				icon="ti-pulse"
-				spanClass="bgc-orange-50 c-orange-500"
-				progressClass="bgc-orange-500 "
-				[value]="illegitimateBirths"
-				[percentValue]="
-					getPercentage(
-						illegitimateBirths,
-						summaries?.summary?.total_population
-					)
-				"
-			></SummaryWithPercent>
-		</div>
+        <div class="col-md-3 mt-3 p-1">
+            <SummaryWithPercent
+                title="Teenage Births"
+                icon="ti-pulse"
+                spanClass="bgc-orange-50 c-orange-500"
+                progressClass="bgc-orange-500 "
+                [value]="illegitimateBirths"
+                [percentValue]="
+                    getPercentage(
+                        illegitimateBirths,
+                        summaries?.summary?.total_population
+                    )
+                "
+            ></SummaryWithPercent>
+        </div>
 
-		<div class="col-md-3 mt-3 p-1">
-			<SummaryWithPercent
-				title="Illegitimate Births"
-				icon="ti-pulse"
-				spanClass="bgc-red-50 c-red-500"
-				progressClass="bgc-red-500 "
-				[value]="teenageBirths"
-				[percentValue]="
-					getPercentage(
-						teenageBirths,
-						summaries?.summary?.total_population
-					)
-				"
-			></SummaryWithPercent>
-		</div>
-	</div>
+        <div class="col-md-3 mt-3 p-1">
+            <SummaryWithPercent
+                title="Illegitimate Births"
+                icon="ti-pulse"
+                spanClass="bgc-red-50 c-red-500"
+                progressClass="bgc-red-500 "
+                [value]="teenageBirths"
+                [percentValue]="
+                    getPercentage(
+                        teenageBirths,
+                        summaries?.summary?.total_population
+                    )
+                "
+            ></SummaryWithPercent>
+        </div>
+    </div>
 
-	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-	<!-- <PyramidChart-and-AgeGroup
+    <!-- <PyramidChart-and-AgeGroup
 		[showPyramid]="false"
 		[location]="location"
 		type="Birth"
@@ -140,198 +140,198 @@
 		ageGroupColor="#73B436"
 	></PyramidChart-and-AgeGroup> -->
 
-	<div class="row mt-3">
-		<div
-			class="col-md-8 m-0"
-			[ngClass]="{ 'col-md-12': location.municipality === null }"
-		>
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="0 mr-auto h4">Birth Statistics</div>
-					<Modal
-						*ngIf="!isSuperAdmin"
-						size="lg"
-						title="Customize Statistical Birth Data"
-						btnTitle="Customize statistical data"
-						btnClass="btn btn-sm btn-dark mr-2"
-						[template]="customizeMonthChart"
-						icon="ti-pencil-alt"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<div class="chart">
-						<canvas
-							baseChart
-							[colors]="Colors"
-							[datasets]="statisticalChart.datasets"
-							[labels]="statisticalChart.labels"
-							[options]="statisticalChart.options"
-							[legend]="statisticalChart.legend"
-							chartType="bar"
-						>
-						</canvas>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="row mt-3">
+        <div
+            class="col-md-8 m-0"
+            [ngClass]="{'col-md-12': location.municipality === null}"
+        >
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="0 mr-auto h4">Birth Statistics</div>
+                    <Modal
+                        *ngIf="!isSuperAdmin"
+                        size="lg"
+                        title="Customize Statistical Birth Data"
+                        btnTitle="Customize statistical data"
+                        btnClass="btn btn-sm btn-dark mr-2"
+                        [template]="customizeMonthChart"
+                        icon="ti-pencil-alt"
+                    ></Modal>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas
+                            baseChart
+                            [colors]="Colors"
+                            [datasets]="statisticalChart.datasets"
+                            [labels]="statisticalChart.labels"
+                            [options]="statisticalChart.options"
+                            [legend]="statisticalChart.legend"
+                            chartType="bar"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="layers col-md-4 m-0" *ngIf="location.municipality != null">
-			<div class="layer w-100">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<div class="0 mr-auto">Local Birth Data</div>
-						<div *ngIf="!isSuperAdmin" class="ml-auto">
-							<DropDown [buttons]="Illegitimate"></DropDown>
-							<ng-template #Illegitimate>
-								<Modal
-									size="lg"
-									title="Customize Birth Data"
-									btnTitle="Customize birth data"
-									btnClass="dropdown-item"
-									[template]="customizeBirthData"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
-					<div class="layer w-100 card-body">
-						<TitleWithIcon
-							title="Crude Birth Rate"
-							icon="ti-user mr-2"
-							color="mB-5 text-primary"
-							[value]="localData?.crude_birth_rate"
-						></TitleWithIcon>
+        <div class="layers col-md-4 m-0" *ngIf="location.municipality != null">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="card-header bg-white d-flex">
+                        <div class="0 mr-auto">Local Birth Data</div>
+                        <div *ngIf="!isSuperAdmin" class="ml-auto">
+                            <DropDown [buttons]="Illegitimate"></DropDown>
+                            <ng-template #Illegitimate>
+                                <Modal
+                                    size="lg"
+                                    title="Customize Birth Data"
+                                    btnTitle="Customize birth data"
+                                    btnClass="dropdown-item"
+                                    [template]="customizeBirthData"
+                                ></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="layer w-100 card-body">
+                        <TitleWithIcon
+                            title="Crude Birth Rate"
+                            icon="ti-user mr-2"
+                            color="mB-5 text-primary"
+                            [value]="localData?.crude_birth_rate"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="General Fertility Rate"
-							icon="ti-user mr-2"
-							color="mB-5 c-green-500"
-							[value]="localData?.general_fertility_rate"
-						></TitleWithIcon>
+                        <TitleWithIcon
+                            title="General Fertility Rate"
+                            icon="ti-user mr-2"
+                            color="mB-5 c-green-500"
+                            [value]="localData?.general_fertility_rate"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="Teenage Births"
-							icon="ti-user mr-2"
-							color="mB-5 c-orange-500"
-							[value]="localData?.teenage_births"
-						></TitleWithIcon>
+                        <TitleWithIcon
+                            title="Teenage Births"
+                            icon="ti-user mr-2"
+                            color="mB-5 c-orange-500"
+                            [value]="localData?.teenage_births"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="Illegitmate Births"
-							icon="ti-user mr-2"
-							color="mB-5 c-red-500"
-							[value]="localData?.illegitimate_births"
-						></TitleWithIcon>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <TitleWithIcon
+                            title="Illegitmate Births"
+                            icon="ti-user mr-2"
+                            color="mB-5 c-red-500"
+                            [value]="localData?.illegitimate_births"
+                        ></TitleWithIcon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="row mT-50">
-		<div class="col-md-6">
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="0 mr-auto h4">Incidence of Teenage Births</div>
-					<div *ngIf="!isUser" class="ml-auto">
-						<DropDown [buttons]="Teenage"></DropDown>
-						<ng-template #Teenage>
-							<Modal
-								size="lg"
-								title="Customize Incidence of Teenage Birth Chart"
-								btnTitle="Customize incidence of teenage birth chart"
-								btnClass="dropdown-item"
-								[template]="customizeTeenage"
-							></Modal>
-						</ng-template>
-					</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						[colors]="[{ backgroundColor: 'orange' }]"
-						baseChart
-						[datasets]="teenageChart.datasets"
-						[labels]="teenageChart.labels"
-						[options]="teenageChart.options"
-						[legend]="teenageChart.legend"
-						chartType="bar"
-					>
-					</canvas>
-				</div>
-			</div>
-		</div>
+    <div class="row mT-50">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="0 mr-auto h4">Incidence of Teenage Births</div>
+                    <div *ngIf="!isUser" class="ml-auto">
+                        <DropDown [buttons]="Teenage"></DropDown>
+                        <ng-template #Teenage>
+                            <Modal
+                                size="lg"
+                                title="Customize Incidence of Teenage Birth Chart"
+                                btnTitle="Customize incidence of teenage birth chart"
+                                btnClass="dropdown-item"
+                                [template]="customizeTeenage"
+                            ></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas
+                        [colors]="[{backgroundColor: 'orange'}]"
+                        baseChart
+                        [datasets]="teenageChart.datasets"
+                        [labels]="teenageChart.labels"
+                        [options]="teenageChart.options"
+                        [legend]="teenageChart.legend"
+                        chartType="bar"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-6">
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="0 mr-auto h4">
-						Incidence of Illegitimate Births
-					</div>
-					<div *ngIf="!isUser" class="ml-auto">
-						<DropDown [buttons]="Illegitimate"></DropDown>
-						<ng-template #Illegitimate>
-							<Modal
-								size="lg"
-								title="Customize Incidence of Illigetimate Birth Chart"
-								btnTitle="Customize incidence of Illigetimate birth chart"
-								btnClass="dropdown-item"
-								[template]="customizeIllegitimate"
-							></Modal>
-						</ng-template>
-					</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						baseChart
-						[colors]="[{ backgroundColor: 'red' }]"
-						[datasets]="incidenceChart.datasets"
-						[labels]="incidenceChart.labels"
-						[options]="incidenceChart.options"
-						[legend]="incidenceChart.legend"
-						chartType="bar"
-					>
-					</canvas>
-				</div>
-			</div>
-		</div>
-		<div *ngIf="!isUser" class="col-md-12 mt-1">
-			<div class="alert alert-primary">
-				Note: All Data inputted here will reflect on the summary at the
-				top depending on the year chosen
-			</div>
-		</div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="0 mr-auto h4">
+                        Incidence of Illegitimate Births
+                    </div>
+                    <div *ngIf="!isUser" class="ml-auto">
+                        <DropDown [buttons]="Illegitimate"></DropDown>
+                        <ng-template #Illegitimate>
+                            <Modal
+                                size="lg"
+                                title="Customize Incidence of Illigetimate Birth Chart"
+                                btnTitle="Customize incidence of Illigetimate birth chart"
+                                btnClass="dropdown-item"
+                                [template]="customizeIllegitimate"
+                            ></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas
+                        baseChart
+                        [colors]="[{backgroundColor: 'red'}]"
+                        [datasets]="incidenceChart.datasets"
+                        [labels]="incidenceChart.labels"
+                        [options]="incidenceChart.options"
+                        [legend]="incidenceChart.legend"
+                        chartType="bar"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!isUser" class="col-md-12 mt-1">
+            <div class="alert alert-primary">
+                Note: All Data inputted here will reflect on the summary at the
+                top depending on the year chosen
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-4">
-			<ByMunicipalityTable
-				title="Births by Municipality"
-				headerClass="#73B436"
-				[headers]="birthsByMunicipalityHeaders"
-				[body]="birthsByMunicipality"
-				type="Birth"
-				[keys]="birthsByMunicipalityKeys"
-			></ByMunicipalityTable>
-		</div>
+        <div class="col-md-12 mt-4">
+            <ByMunicipalityTable
+                title="Births by Municipality"
+                headerClass="#73B436"
+                [headers]="birthsByMunicipalityHeaders"
+                [body]="birthsByMunicipality"
+                type="Birth"
+                [keys]="birthsByMunicipalityKeys"
+            ></ByMunicipalityTable>
+        </div>
 
-		<div class="col-md-12 mt-2">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title 0 mr-auto mt-2 h4">
-						Technical Notes
-					</div>
+        <div class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title 0 mr-auto mt-2 h4">
+                        Technical Notes
+                    </div>
 
-					<Modal
-						*ngIf="!isUser"
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes type="Birth"></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <Modal
+                        *ngIf="!isUser"
+                        size="lg"
+                        title="Customize Technical Notes"
+                        btnTitle="Customize technical notes"
+                        btnClass="btn btn-sm btn-dark"
+                        [template]="customizeTechnicalNotes"
+                        icon="ti-notepad"
+                    ></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes type="Birth"></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

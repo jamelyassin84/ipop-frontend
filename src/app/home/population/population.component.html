@@ -1,677 +1,680 @@
 <div class="bg-light">
-	<ng-template #addTopPopulated>
-		<AddTopPopulated></AddTopPopulated>
-	</ng-template>
+    <ng-template #addTopPopulated>
+        <AddTopPopulated></AddTopPopulated>
+    </ng-template>
 
-	<ng-template #addPopulationProfile>
-		<AddPopulationProfile></AddPopulationProfile>
-	</ng-template>
+    <ng-template #addPopulationProfile>
+        <AddPopulationProfile></AddPopulationProfile>
+    </ng-template>
 
-	<ng-template #customizePyramid>
-		<CustomizePyramid></CustomizePyramid>
-	</ng-template>
+    <ng-template #customizePyramid>
+        <CustomizePyramid></CustomizePyramid>
+    </ng-template>
 
-	<ng-template #viewOfficials>
-		<ViewOfficials></ViewOfficials>
-	</ng-template>
+    <ng-template #viewOfficials>
+        <ViewOfficials></ViewOfficials>
+    </ng-template>
 
-	<ng-template #customizeTechnicalNotes>
-		<CustomizeTechnicalNotes type="Population"></CustomizeTechnicalNotes>
-	</ng-template>
+    <ng-template #customizeTechnicalNotes>
+        <CustomizeTechnicalNotes type="Population"></CustomizeTechnicalNotes>
+    </ng-template>
 
-	<ng-template #addOfficials>
-		<AddOfficials></AddOfficials>
-	</ng-template>
+    <ng-template #addOfficials>
+        <AddOfficials></AddOfficials>
+    </ng-template>
 
-	<ng-template #ageDistributionAndDependecyRatio>
-		<AgeDistributionAndDependecyRatio></AgeDistributionAndDependecyRatio>
-	</ng-template>
+    <ng-template #ageDistributionAndDependecyRatio>
+        <AgeDistributionAndDependecyRatio></AgeDistributionAndDependecyRatio>
+    </ng-template>
 
-	<div
-		class="d-flex"
-		style="justify-content: flex-end; position: relative; z-index: 1"
-		[ngClass]="{ column: innerWidth < 1139 }"
-	>
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add Municipality that has a Large Population"
-			btnTitle="Add Top 10 Populated Municipalities"
-			btnClass="btn btn-sm btn-dark mr-2 mb-2 w-100"
-			[template]="addTopPopulated"
-			icon="ti-plus"
-		></Modal>
+    <div
+        class="d-flex"
+        style="justify-content: flex-end; position: relative; z-index: 1"
+        [ngClass]="{column: innerWidth < 1139}"
+    >
+        <Modal
+            size="lg"
+            *ngIf="!isUser"
+            class="md:t-mx-1"
+            icon="ti-plus mr-2"
+            [template]="addTopPopulated"
+            btnTitle="Top 10 Populated Municipalities"
+            btnClass="t-px-3 t-bg-black t-text-white  mb-2 w-100 t-py-2 md:t-mr-5"
+            title="Add Municipality that has a Large Population"
+        ></Modal>
 
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add Age Distribution and AgeDependency ratio"
-			btnTitle="Add age distribution and age dependency ratio"
-			btnClass="btn btn-sm btn-primary mr-2 mb-2 w-100"
-			[template]="ageDistributionAndDependecyRatio"
-			icon="ti-plus"
-		></Modal>
+        <Modal
+            size="lg"
+            *ngIf="!isUser"
+            class="md:t-mx-1"
+            icon="ti-plus mr-2"
+            [template]="ageDistributionAndDependecyRatio"
+            btnTitle="Age Distribution & Age Dependency"
+            title="Add Age Distribution and Age Dependency ratio"
+            btnClass="t-px-3 t-bg-blue-800 t-text-white  mb-2 w-100 t-py-2 md:t-mr-5"
+        ></Modal>
 
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add Officials"
-			btnTitle="Add an official"
-			btnClass="btn btn-sm btn-danger mr-2 mb-2 w-100"
-			[template]="addOfficials"
-			icon="ti-plus"
-		></Modal>
+        <Modal
+            size="lg"
+            *ngIf="!isUser"
+            class="md:t-mx-1"
+            icon="ti-plus mr-2"
+            btnTitle="Official"
+            title="Add Officials"
+            [template]="addOfficials"
+            btnClass="t-px-3 t-bg-red-700 t-text-white  mb-2 w-100 t-py-2 md:t-mr-5"
+        ></Modal>
 
-		<Modal
-			size="lg"
-			title="View  Officials"
-			btnTitle="View officials"
-			btnClass="btn btn-sm btn-outline-danger mb-2 w-100"
-			[template]="viewOfficials"
-			icon="ti-pin"
-		></Modal>
-	</div>
+        <Modal
+            size="lg"
+            class="md:t-mx-1"
+            title="View  Officials"
+            btnTitle="View Officials"
+            [template]="viewOfficials"
+            btnClass="t-px-3 t-bg-blue-700 t-text-white  mb-2 w-100 t-py-2 md:t-mr-5"
+        ></Modal>
+    </div>
 
-	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-	<PyramidChart-and-AgeGroup
-		[location]="location"
-		type="Population"
-		pyramidtitle="Population Pyramid"
-		ageGroupTitle="Population by Age Group and Sex"
-		[colors]="['#0039A9', '#CD1125']"
-		ageGroupColor="#0039A9"
-	></PyramidChart-and-AgeGroup>
+    <PyramidChart-and-AgeGroup
+        [location]="location"
+        type="Population"
+        pyramidtitle="Population Pyramid"
+        ageGroupTitle="Population by Age Group and Sex"
+        [colors]="['#0039A9', '#CD1125']"
+        ageGroupColor="#0039A9"
+    ></PyramidChart-and-AgeGroup>
 
-	<div class="row">
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bg-white">
-					<div class="card-title d-flex aic">
-						<span class="h4" style="margin-top: 1rem"
-							>Population Profile
-						</span>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <div class="card-title d-flex aic">
+                        <span class="h4" style="margin-top: 1rem"
+                            >Population Profile
+                        </span>
 
-						<div *ngIf="!isUser" class="ml-auto">
-							<DropDown [buttons]="dropdown"></DropDown>
-							<ng-template #dropdown>
-								<Modal
-									size="lg"
-									title="Add a Population Profile"
-									btnTitle="Add population profile"
-									btnClass="dropdown-item"
-									[template]="addPopulationProfile"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
-					<hr />
-					<div class="card-body">
-						<NoDataComponent
-							[data]="
-								populationProfile.barangays === undefined
-									? []
-									: [1]
-							"
-						></NoDataComponent>
-						<Spinner></Spinner>
+                        <div *ngIf="!isUser" class="ml-auto">
+                            <DropDown [buttons]="dropdown"></DropDown>
+                            <ng-template #dropdown>
+                                <Modal
+                                    size="lg"
+                                    title="Add a Population Profile"
+                                    btnTitle="Add population profile"
+                                    btnClass="dropdown-item"
+                                    [template]="addPopulationProfile"
+                                ></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <NoDataComponent
+                            [data]="
+                                populationProfile.barangays === undefined
+                                    ? []
+                                    : [1]
+                            "
+                        ></NoDataComponent>
+                        <Spinner></Spinner>
 
-						<div
-							*ngIf="populationProfile.barangays !== undefined"
-							class="w-100 row"
-						>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h5 fw-300">
-									Coverage
-								</h5>
-								<div class="fw-600 h6 c-red-700">
-									<span class="fw-600 h6">
-										<span
-											class="mr-2"
-											*ngIf="location.barangay !== null"
-										>
-											{{ location.barangay | titlecase }}
-										</span>
-										<span
-											class="mr-2"
-											*ngIf="
-												location.municipality !== null
-											"
-										>
-											{{
-												location.municipality
-													| titlecase
-											}}
-										</span>
-										<span
-											class="mr-2"
-											*ngIf="
-												location.barangay === null &&
-												location.municipality === null
-											"
-										>
-											42 Municipalities + 1 Component City
-										</span>
-										<span class="mr-2">
-											{{ location.year }}
-										</span>
-									</span>
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Total No. of
-									{{
-										location.barangay === null &&
-										location.municipality === null
-											? 'Barangays'
-											: 'Puroks'
-									}}
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.barangays || 0 }}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Total Land Area
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.land_area || 0 }}
-									<small>sq.km</small>
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Total Household Population
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{
-										populationProfile.household_population ||
-											0 | number
-									}}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Male
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.males || 0 }}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Female
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.females || 0 }}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Sex Ratio (males:females)
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.sex_ratio }}
-								</div>
-							</div>
+                        <div
+                            *ngIf="populationProfile.barangays !== undefined"
+                            class="w-100 row"
+                        >
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h5 fw-300">
+                                    Coverage
+                                </h5>
+                                <div class="fw-600 h6 c-red-700">
+                                    <span class="fw-600 h6">
+                                        <span
+                                            class=""
+                                            *ngIf="location.barangay !== null"
+                                        >
+                                            {{ location.barangay | titlecase }}
+                                        </span>
+                                        <span
+                                            class=""
+                                            *ngIf="
+                                                location.municipality !== null
+                                            "
+                                        >
+                                            {{
+                                                location.municipality
+                                                    | titlecase
+                                            }}
+                                        </span>
+                                        <span
+                                            class=""
+                                            *ngIf="
+                                                location.barangay === null &&
+                                                location.municipality === null
+                                            "
+                                        >
+                                            42 Municipalities + 1 Component City
+                                        </span>
+                                        <span class="">
+                                            {{ location.year }}
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Total No. of
+                                    {{
+                                        location.barangay === null &&
+                                        location.municipality === null
+                                            ? 'Barangays'
+                                            : 'Puroks'
+                                    }}
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.barangays || 0 }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Total Land Area
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.land_area || 0 }}
+                                    <small>sq.km</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Total Household Population
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{
+                                        populationProfile.household_population ||
+                                            0 | number
+                                    }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Male
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.males || 0 }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Female
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.females || 0 }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Sex Ratio (males:females)
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.sex_ratio }}
+                                </div>
+                            </div>
 
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									No. of Households
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.households || 0 }}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Average Household Size
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{
-										populationProfile.average_household_size ||
-											0
-									}}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Population Density
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{ populationProfile.density || 0 }}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Age Dependency Ratio
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{
-										populationProfile.age_dependency_ratio ||
-											0
-									}}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Child Dependency Ratio
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{
-										populationProfile.child_dependency_ratio ||
-											0
-									}}
-								</div>
-							</div>
-							<div class="col-md-6 mb-2 bb pt-1">
-								<h5 class="text-secondary mb-2 h6 fw-300">
-									Old-Age Dependency Ratio
-								</h5>
-								<div class="fw-600 h4 c-blue-900">
-									{{
-										populationProfile.old_age_dependency_ratio ||
-											0
-									}}
-								</div>
-							</div>
-							<div
-								*ngIf="
-									populationProfile.dowloadable_link !== null
-								"
-								class="col-md-12 mt-2"
-							>
-								<label for=""
-									>Download this data Population Profile on
-									this link</label
-								>
-								<a
-									target="_blank"
-									[href]="populationProfile.dowloadable_link"
-									>{{ populationProfile.dowloadable_link }}</a
-								>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    No. of Households
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.households || 0 }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Average Household Size
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{
+                                        populationProfile.average_household_size ||
+                                            0
+                                    }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Population Density
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{ populationProfile.density || 0 }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Age Dependency Ratio
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{
+                                        populationProfile.age_dependency_ratio ||
+                                            0
+                                    }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Child Dependency Ratio
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{
+                                        populationProfile.child_dependency_ratio ||
+                                            0
+                                    }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2 bb pt-1">
+                                <h5 class="text-secondary mb-2 h6 fw-300">
+                                    Old-Age Dependency Ratio
+                                </h5>
+                                <div class="fw-600 h4 c-blue-900">
+                                    {{
+                                        populationProfile.old_age_dependency_ratio ||
+                                            0
+                                    }}
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="
+                                    populationProfile.dowloadable_link !== null
+                                "
+                                class="col-md-12 mt-2"
+                            >
+                                <label for=""
+                                    >Download this data Population Profile on
+                                    this link</label
+                                >
+                                <a
+                                    target="_blank"
+                                    [href]="populationProfile.dowloadable_link"
+                                    >{{ populationProfile.dowloadable_link }}</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div
-						class="card-title mr-auto mt-2 h4"
-						style="margin-top: 1rem"
-					>
-						Population Profile By Municipality
-					</div>
-				</div>
-				<div class="card-body">
-					<NoDataComponent
-						[data]="populationByMuncipality"
-					></NoDataComponent>
-					<Spinner></Spinner>
-					<table
-						*ngIf="populationByMuncipality.length !== 0"
-						class="table table-striped"
-						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
-					>
-						<thead>
-							<tr>
-								<th rowspan="2">#</th>
-								<th class="ppbm border text-left" rowspan="2">
-									Muncipality
-								</th>
-								<th class="ppbm border" rowspan="2">
-									No of Barangays
-								</th>
-								<th class="ppbm border" rowspan="2">
-									Land Area (sq.km)
-								</th>
-								<th class="ppbm border" rowspan="2">
-									Population Density (person/sq.km)
-								</th>
-								<th colspan="3" class="text-center border">
-									Population
-								</th>
-								<th class="ppbm border" rowspan="2">
-									Sex Ratio
-								</th>
-								<th class="ppbm border" rowspan="2">
-									No. of HHs
-								</th>
-								<th class="ppbm border" rowspan="2">
-									Ave HH Size
-								</th>
-							</tr>
-							<tr>
-								<th class="ppbm border">Male</th>
-								<th class="ppbm border">Female</th>
-								<th class="ppbm border">Total</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								*ngFor="
-									let data of populationByMuncipality;
-									let i = index
-								"
-							>
-								<td>{{ i + 1 }}</td>
-								<td class="border">
-									{{ data.municipality | titlecase }}
-								</td>
-								<td class="text-center border">
-									{{ data.barangays }}
-								</td>
-								<td class="text-center border">
-									{{ data.land_area }}
-								</td>
-								<td class="text-center border">
-									{{ data.density }}
-								</td>
-								<td class="text-center border">
-									{{ data.males }}
-								</td>
-								<td class="text-center border">
-									{{ data.females }}
-								</td>
-								<td class="text-center border">
-									{{ total(data.males, data.females) }}
-								</td>
-								<td class="text-center border">
-									{{ data.sex_ratio }}
-								</td>
-								<td class="text-center border">
-									{{ data.household_population }}
-								</td>
-								<td class="text-center border">
-									{{ data.average_household_size }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div
+                        class="card-title mr-auto mt-2 h4"
+                        style="margin-top: 1rem"
+                    >
+                        Population Profile By Municipality
+                    </div>
+                </div>
+                <div class="card-body">
+                    <NoDataComponent
+                        [data]="populationByMuncipality"
+                    ></NoDataComponent>
+                    <Spinner></Spinner>
+                    <table
+                        *ngIf="populationByMuncipality.length !== 0"
+                        class="table table-striped"
+                        [ngClass]="{'table-responsive': innerWidth < 1139}"
+                    >
+                        <thead>
+                            <tr>
+                                <th rowspan="2">#</th>
+                                <th class="ppbm border text-left" rowspan="2">
+                                    Muncipality
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    No of Barangays
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    Land Area (sq.km)
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    Population Density (person/sq.km)
+                                </th>
+                                <th colspan="3" class="text-center border">
+                                    Population
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    Sex Ratio
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    No. of HHs
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    Ave HH Size
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="ppbm border">Male</th>
+                                <th class="ppbm border">Female</th>
+                                <th class="ppbm border">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="
+                                    let data of populationByMuncipality;
+                                    let i = index
+                                "
+                            >
+                                <td>{{ i + 1 }}</td>
+                                <td class="border">
+                                    {{ data.municipality | titlecase }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.barangays }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.land_area }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.density }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.males }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.females }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ total(data.males, data.females) }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.sex_ratio }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.household_population }}
+                                </td>
+                                <td class="text-center border">
+                                    {{ data.average_household_size }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-6 mt-3">
-			<div class="card">
-				<div class="card-header bgc-blue-900 d-flex aic">
-					<div
-						class="card-title text-white mr-auto mt-2 h4"
-						style="margin-top: 1rem"
-					>
-						Age Distribution (PROVINCE OF ILOILO)
-					</div>
-				</div>
-				<div class="card-body">
-					<NoDataComponent
-						[data]="AgeDistributionAndAgeDependecyRatio"
-					></NoDataComponent>
-					<Spinner></Spinner>
-					<table
-						*ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
-						class="table table-striped"
-						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
-					>
-						<thead>
-							<tr>
-								<th class="ppbm border">0-14</th>
-								<th class="ppbm border">%</th>
-								<th class="ppbm border">15-64</th>
-								<th class="ppbm border">%</th>
-								<th class="ppbm border">54 & Over</th>
-								<th class="ppbm border">%</th>
-								<th class="ppbm border">Total HH Population</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								*ngFor="
-									let item of AgeDistributionAndAgeDependecyRatio
-								"
-							>
-								<td lass="ppbm border">
-									{{ item['0-14'] | number }}
-								</td>
-								<td class="ppbm border">
-									{{
-										getPercentage(
-											item['0-14'],
-											item.hh_population
-										) | number: '1.2-2'
-									}}
-								</td>
-								<td class="ppbm border">
-									{{ item['15-64'] | number }}
-								</td>
-								<td class="ppbm border">
-									{{
-										getPercentage(
-											item['15-64'],
-											item.hh_population
-										) | number: '1.2-2'
-									}}
-								</td>
-								<td class="ppbm border">
-									{{ item['65_and_over'] | number }}
-								</td>
-								<td class="ppbm border">
-									{{
-										getPercentage(
-											item['65_and_over'],
-											item.hh_population
-										) | number: '1.2-2'
-									}}
-								</td>
-								<td class="ppbm border">
-									{{ item.hh_population | number }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+        <div class="col-md-6 mt-3">
+            <div class="card">
+                <div class="card-header bgc-blue-900 d-flex aic">
+                    <div
+                        class="card-title text-white mr-auto mt-2 h4"
+                        style="margin-top: 1rem"
+                    >
+                        Age Distribution (PROVINCE OF ILOILO)
+                    </div>
+                </div>
+                <div class="card-body">
+                    <NoDataComponent
+                        [data]="AgeDistributionAndAgeDependecyRatio"
+                    ></NoDataComponent>
+                    <Spinner></Spinner>
+                    <table
+                        *ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+                        class="table table-striped"
+                        [ngClass]="{'table-responsive': innerWidth < 1139}"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="ppbm border">0-14</th>
+                                <th class="ppbm border">%</th>
+                                <th class="ppbm border">15-64</th>
+                                <th class="ppbm border">%</th>
+                                <th class="ppbm border">54 & Over</th>
+                                <th class="ppbm border">%</th>
+                                <th class="ppbm border">Total HH Population</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="
+                                    let item of AgeDistributionAndAgeDependecyRatio
+                                "
+                            >
+                                <td lass="ppbm border">
+                                    {{ item['0-14'] | number }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{
+                                        getPercentage(
+                                            item['0-14'],
+                                            item.hh_population
+                                        ) | number: '1.2-2'
+                                    }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{ item['15-64'] | number }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{
+                                        getPercentage(
+                                            item['15-64'],
+                                            item.hh_population
+                                        ) | number: '1.2-2'
+                                    }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{ item['65_and_over'] | number }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{
+                                        getPercentage(
+                                            item['65_and_over'],
+                                            item.hh_population
+                                        ) | number: '1.2-2'
+                                    }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{ item.hh_population | number }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-6 mt-3">
-			<div class="card">
-				<div class="card-header bgc-blue-900 d-flex aic">
-					<div
-						class="card-title text-white mr-auto mt-2 h4"
-						style="margin-top: 1rem"
-					>
-						Age Dependency Ratio (PROVINCE OF ILOILO)
-					</div>
-				</div>
-				<div class="card-body">
-					<NoDataComponent
-						[data]="AgeDistributionAndAgeDependecyRatio"
-					></NoDataComponent>
-					<Spinner></Spinner>
-					<table
-						*ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
-						class="table table-striped"
-						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
-					>
-						<thead>
-							<tr>
-								<th class="ppbm border">Young Dependency</th>
-								<th class="ppbm border">Old Dependency</th>
-								<th class="ppbm border">Dependency</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								*ngFor="
-									let item of AgeDistributionAndAgeDependecyRatio
-								"
-							>
-								<td class="ppbm border">
-									{{ item['young_dependency'] }}
-								</td>
-								<td class="ppbm border">
-									{{ item.old_dependency }}
-								</td>
-								<td class="ppbm border">
-									{{ item.dependency }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+        <div class="col-md-6 mt-3">
+            <div class="card">
+                <div class="card-header bgc-blue-900 d-flex aic">
+                    <div
+                        class="card-title text-white mr-auto mt-2 h4"
+                        style="margin-top: 1rem"
+                    >
+                        Age Dependency Ratio (PROVINCE OF ILOILO)
+                    </div>
+                </div>
+                <div class="card-body">
+                    <NoDataComponent
+                        [data]="AgeDistributionAndAgeDependecyRatio"
+                    ></NoDataComponent>
+                    <Spinner></Spinner>
+                    <table
+                        *ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+                        class="table table-striped"
+                        [ngClass]="{'table-responsive': innerWidth < 1139}"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="ppbm border">Young Dependency</th>
+                                <th class="ppbm border">Old Dependency</th>
+                                <th class="ppbm border">Dependency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="
+                                    let item of AgeDistributionAndAgeDependecyRatio
+                                "
+                            >
+                                <td class="ppbm border">
+                                    {{ item['young_dependency'] }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{ item.old_dependency }}
+                                </td>
+                                <td class="ppbm border">
+                                    {{ item.dependency }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-3">
-			<div class="card-body d-flex aic jcc">
-				<img
-					class="w-50"
-					src="/assets/ipop/population/dependency.png"
-					alt=""
-				/>
-			</div>
-		</div>
+        <div class="col-md-12 mt-3">
+            <div class="card-body d-flex aic jcc">
+                <img
+                    class="w-50"
+                    src="/assets/ipop/population/dependency.png"
+                    alt=""
+                />
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bgc-blue-900 text-white d-flex aic">
-					<div
-						class="card-title mr-auto mt-2 h4"
-						style="margin-top: 1rem"
-					>
-						Age Distribution and Age Dependency Ratio by
-						Municipality
-					</div>
-				</div>
-				<div class="card-body">
-					<NoDataComponent
-						[data]="
-							AgeDistributionAndAgeDependecyRatioByMunicipality
-						"
-					></NoDataComponent>
-					<Spinner></Spinner>
-					<table
-						*ngIf="
-							AgeDistributionAndAgeDependecyRatioByMunicipality.length !==
-							0
-						"
-						class="table table-striped"
-						[ngClass]="{ 'table-responsive': innerWidth < 1139 }"
-					>
-						<thead>
-							<tr>
-								<th class="ppbm border text-left" rowspan="2">
-									Muncipality
-								</th>
-								<th class="ppbm border" rowspan="2">
-									HH Population
-								</th>
-								<th colspan="3" class="text-center border">
-									Age Distribution
-								</th>
-								<th colspan="3" class="text-center border">
-									Dependency Ratio
-								</th>
-								<th></th>
-							</tr>
-							<tr>
-								<th class="border ppbm">0-14</th>
-								<th class="border ppbm">15-64</th>
-								<th class="border ppbm">65 and Over</th>
-								<th class="border ppbm">Young Dependecy</th>
-								<th class="border ppbm">Old Dependecy</th>
-								<th class="border ppbm">Dependecy</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr
-								*ngFor="
-									let item of AgeDistributionAndAgeDependecyRatioByMunicipality
-								"
-							>
-								<td class="border ppbm">
-									{{ item.municipality }}
-								</td>
-								<td class="border ppbm">
-									{{ item.hh_population }}
-								</td>
-								<td class="border ppbm">
-									{{ item['0-14'] }}
-								</td>
-								<td class="border ppbm">
-									{{ item['15-64'] }}
-								</td>
-								<td class="border ppbm">
-									{{ item['65_and_over'] }}
-								</td>
-								<td class="border ppbm">
-									{{ item.young_dependency }}
-								</td>
-								<td class="border ppbm">
-									{{ item.old_dependency }}
-								</td>
-								<td class="border ppbm">
-									{{ item.dependency }}
-								</td>
-								<td>
-									<DropDown [buttons]="aadrDD"></DropDown>
-									<ng-template #aadrDD>
-										<button
-											(click)="removeDependency(item.id)"
-											class="dropdown-item"
-										>
-											Remove
-										</button>
-									</ng-template>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header bgc-blue-900 text-white d-flex aic">
+                    <div
+                        class="card-title mr-auto mt-2 h4"
+                        style="margin-top: 1rem"
+                    >
+                        Age Distribution and Age Dependency Ratio by
+                        Municipality
+                    </div>
+                </div>
+                <div class="card-body">
+                    <NoDataComponent
+                        [data]="
+                            AgeDistributionAndAgeDependecyRatioByMunicipality
+                        "
+                    ></NoDataComponent>
+                    <Spinner></Spinner>
+                    <table
+                        *ngIf="
+                            AgeDistributionAndAgeDependecyRatioByMunicipality.length !==
+                            0
+                        "
+                        class="table table-striped"
+                        [ngClass]="{'table-responsive': innerWidth < 1139}"
+                    >
+                        <thead>
+                            <tr>
+                                <th class="ppbm border text-left" rowspan="2">
+                                    Muncipality
+                                </th>
+                                <th class="ppbm border" rowspan="2">
+                                    HH Population
+                                </th>
+                                <th colspan="3" class="text-center border">
+                                    Age Distribution
+                                </th>
+                                <th colspan="3" class="text-center border">
+                                    Dependency Ratio
+                                </th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th class="border ppbm">0-14</th>
+                                <th class="border ppbm">15-64</th>
+                                <th class="border ppbm">65 and Over</th>
+                                <th class="border ppbm">Young Dependecy</th>
+                                <th class="border ppbm">Old Dependecy</th>
+                                <th class="border ppbm">Dependecy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="
+                                    let item of AgeDistributionAndAgeDependecyRatioByMunicipality
+                                "
+                            >
+                                <td class="border ppbm">
+                                    {{ item.municipality }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item.hh_population }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item['0-14'] }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item['15-64'] }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item['65_and_over'] }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item.young_dependency }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item.old_dependency }}
+                                </td>
+                                <td class="border ppbm">
+                                    {{ item.dependency }}
+                                </td>
+                                <td>
+                                    <DropDown [buttons]="aadrDD"></DropDown>
+                                    <ng-template #aadrDD>
+                                        <button
+                                            (click)="removeDependency(item.id)"
+                                            class="dropdown-item"
+                                        >
+                                            Remove
+                                        </button>
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div
-		style="margin-bottom: 2rem; margin-top: 2rem; padding: 2rem 0"
-		class="card"
-		[ngClass]="{ 'mt-3': innerWidth < 1139 }"
-	>
-		<div class="col-md-12">
-			<div class="text-dark mb-4 h4">Top 10 Populated Municipalities</div>
-		</div>
+    <div
+        style="margin-bottom: 2rem; margin-top: 2rem; padding: 2rem 0"
+        class="card"
+        [ngClass]="{'mt-3': innerWidth < 1139}"
+    >
+        <div class="col-md-12">
+            <div class="text-dark mb-4 h4">Top 10 Populated Municipalities</div>
+        </div>
 
-		<div *ngIf="topPopulated.length === 0" class="col-md-12 mb-4">
-			<NoDataComponent [data]="topPopulated"></NoDataComponent>
-		</div>
+        <div *ngIf="topPopulated.length === 0" class="col-md-12 mb-4">
+            <NoDataComponent [data]="topPopulated"></NoDataComponent>
+        </div>
 
-		<top-populated
-			class="row m-0"
-			(onDelete)="deleteTopPopulated($event)"
-			[topPopulated]="topPopulated"
-		></top-populated>
-	</div>
+        <top-populated
+            class="row m-0"
+            (onDelete)="deleteTopPopulated($event)"
+            [topPopulated]="topPopulated"
+        ></top-populated>
+    </div>
 
-	<div class="card">
-		<div class="card-header bg-white d-flex aic">
-			<div class="card-title mr-auto mt-2 h4">Technical Notes</div>
-			<Modal
-				*ngIf="!isUser"
-				size="lg"
-				title="Customize Technical Notes"
-				btnTitle="Customize technical notes"
-				btnClass="btn btn-sm btn-dark"
-				[template]="customizeTechnicalNotes"
-				icon="ti-notepad"
-			></Modal>
-		</div>
-		<div class="card-body">
-			<TechnicalNotes type="Population"></TechnicalNotes>
-		</div>
-	</div>
+    <div class="card">
+        <div class="card-header bg-white d-flex aic">
+            <div class="card-title mr-auto mt-2 h4">Technical Notes</div>
+            <Modal
+                *ngIf="!isUser"
+                size="lg"
+                title="Customize Technical Notes"
+                btnTitle="Customize technical notes"
+                btnClass="btn btn-sm btn-dark"
+                [template]="customizeTechnicalNotes"
+                icon="ti-notepad"
+            ></Modal>
+        </div>
+        <div class="card-body">
+            <TechnicalNotes type="Population"></TechnicalNotes>
+        </div>
+    </div>
 </div>

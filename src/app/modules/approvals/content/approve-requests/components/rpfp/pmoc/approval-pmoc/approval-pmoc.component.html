@@ -1,17 +1,20 @@
 <span>{{ data.title }}</span>
 <span class="fw-400 c-blue-900 h4">
-	<span class="mr-2" *ngIf="data.barangay !== null">
-		{{ data.barangay }}
-	</span>
-<span class="mr-2" *ngIf="data.municipality !== null">
-		{{ data.municipality }}
-	</span>
-<span class="mr-2" *ngIf="data.barangay === null && data.municipality === null">
-		Province
-	</span>
-<span class="mr-2">
-		{{ data.year }}
-	</span>
+    <span class="mr-2" *ngIf="data.barangay !== null">
+        {{ data.barangay }}
+    </span>
+    <span class="mr-2" *ngIf="data.municipality !== null">
+        {{ data.municipality }}
+    </span>
+    <span
+        class="mr-2"
+        *ngIf="data.barangay === null && data.municipality === null"
+    >
+        Province
+    </span>
+    <span class="mr-2">
+        {{ data.year }}
+    </span>
 </span>
 <br />
 <div class="card" style="width: 500px">
@@ -24,24 +27,23 @@
                 <i class="ti-user mr-2"></i>{{ data?.sessions || 0 }}
             </h5>
             <small class="fw-600 c-grey-700">
-				Number of Sessions Conducted
-			</small>
+                Number of Sessions Conducted
+            </small>
         </div>
         <div class="layer w-100 mT-15">
             <h5 class="text-success">
                 <i class="ti-user mr-2"></i>{{ data?.oriented_couples || 0 }}
             </h5>
-            <small class="fw-600 c-grey-700">Number of Couples Orriented
-			</small>
+            <small class="fw-600 c-grey-700">Number of Couples Oriented </small>
         </div>
         <div class="layer w-100 mT-15">
             <h5 class="text-warning">
                 <i class="ti-user mr-2"></i
-				>{{ data?.individuals_interviewed || 0 }}
-			</h5>
-			<small class="fw-600 c-grey-700"
-				>Number of Individual Interviewed
-			</small>
-		</div>
-	</div>
+                >{{ data?.individuals_interviewed || 0 }}
+            </h5>
+            <small class="fw-600 c-grey-700"
+                >Number of Individual Interviewed
+            </small>
+        </div>
+    </div>
 </div>

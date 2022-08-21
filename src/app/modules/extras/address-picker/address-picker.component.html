@@ -1,92 +1,76 @@
 <ul class="nav nav-tabs">
-	<li class="nav-item">
-		<a
-			(click)="changeTab('province')"
-			role="button"
-			class="nav-link text-muted"
-			[class.active]="tabs.province === true"
-		>
-			<i class="ti-direction-alt"></i> Province
-		</a>
-	</li>
-	<li class="nav-item">
-		<a
-			(click)="changeTab('municipality')"
-			role="button"
-			class="nav-link text-muted"
-			[class.active]="tabs.municipality === true"
-		>
-			<i class="ti-direction-alt"></i> Municipality
-		</a>
-	</li>
-	<li *ngIf="showBarangay" class="nav-item">
-		<a
-			(click)="changeTab('barangay')"
-			role="button"
-			class="nav-link text-muted"
-			[class.active]="tabs.barangay === true"
-		>
-			<i class="ti-direction-alt"></i> Barangay
-		</a>
-	</li>
+    <li *ngFor="let tab of tabItems" class="nav-item">
+        <button
+            (click)="changeTab(tab)"
+            class="nav-link text-muted"
+            [ngClass]="{
+                't-bg-bg-brand ': tabs[tab],
+                't-hidden': tab === 'barangay' && !showBarangayTab
+            }"
+        >
+            <div [ngClass]="{'t-text-white t-font-bold': tabs[tab]}">
+                {{ tab | titlecase }}
+            </div>
+        </button>
+    </li>
 </ul>
 
 <div class="row mt-3">
-	<div *ngIf="!tabs.province" class="col-md-3 mb-3">
-		<label for="municipality">Municipality </label>
-		<select
-			(input)="getBarangays($event)"
-			class="custom-select"
-			id="municipality"
-			required
-		>
-			<option>Choose...</option>
-			<option
-				*ngFor="let municipality of municipalities"
-				[value]="municipality.code"
-			>
-				{{ municipality.name | titlecase }}
-			</option>
-		</select>
-	</div>
+    <div *ngIf="!tabs.province" class="col-md-3 mb-3">
+        <label for="municipality">Municipality </label>
+        <select
+            (input)="getBarangays($event)"
+            class="custom-select"
+            id="municipality"
+            required
+        >
+            <option>Choose...</option>
+            <option
+                *ngFor="let municipality of municipalities"
+                [value]="municipality.code"
+            >
+                {{ municipality.name | titlecase }}
+            </option>
+        </select>
+    </div>
 
-	<div *ngIf="tabs.barangay" class="col-md-3 mb-3">
-		<label for="barangay"> Barangay </label>
-		<select
-			(input)="setBarangay($event)"
-			class="custom-select"
-			id="barangay"
-			required
-		>
-			<option value="">Choose ...</option>
-			<option *ngFor="let barangay of barangays">
-				{{ barangay.name }}
-			</option>
-		</select>
-	</div>
+    <div *ngIf="tabs.barangay" class="col-md-3 mb-3">
+        <label for="barangay"> Barangay </label>
+        <select
+            (input)="setBarangay($event)"
+            class="custom-select"
+            id="barangay"
+            required
+        >
+            <option value="">Choose ...</option>
+            <option *ngFor="let barangay of barangays">
+                {{ barangay.name }}
+            </option>
+        </select>
+    </div>
 
-	<div class="col-md-3 mb-3">
-		<label for="barangay"> Year </label>
-		<select
-			[(ngModel)]="currentData.year"
-			(input)="setYear($event)"
-			class="custom-select"
-			id="barangay"
-			required
-		>
-			<option [value]="year" *ngFor="let year of years">
-				{{ year }}
-			</option>
-		</select>
-	</div>
-	<div class="col-md-3 mb-3" style="align-self: flex-end">
-		<button
-			[disabled]="currentData.year === ''"
-			(click)="emit()"
-			class="btn bgc-blue-900 text-white pl-3 pr-3"
-		>
-			Select Location
-		</button>
-	</div>
+    <div class="col-md-3 mb-3">
+        <label for="barangay"> Year </label>
+        <select
+            [(ngModel)]="currentData.year"
+            (input)="setYear($event)"
+            class="custom-select"
+            id="barangay"
+            required
+        >
+            <option [value]="year" *ngFor="let year of years">
+                {{ year }}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-3 mb-3" style="align-self: flex-end">
+        <button
+            [disabled]="currentData.year === ''"
+            (click)="emit()"
+            class="btn bgc-blue-900 text-white pl-3 pr-3"
+        >
+            Select Location
+        </button>
+    </div>
 </div>
 <br />

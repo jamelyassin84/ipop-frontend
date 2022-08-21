@@ -2,17 +2,29 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="col-md-4 mt-4">
+        <div class="col-md-6 mt-4">
             <label for="">Number of Sessions Conducted</label>
-            <input [(ngModel)]="data.sessions" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.sessions"
+                type="text"
+                class="form-control"
+            />
         </div>
-        <div class="col-md-4 mt-4">
-            <label for="">Number of Couples Orriented</label>
-            <input [(ngModel)]="data.oriented_couples" type="text" class="form-control" />
+        <div class="col-md-6 mt-4">
+            <label for="">Number of Couples Oriented</label>
+            <input
+                [(ngModel)]="data.oriented_couples"
+                type="text"
+                class="form-control"
+            />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="col-md-6 mt-4">
             <label for="">Number of Individuals Interviewed</label>
-            <input [(ngModel)]="data.individuals_interviewed" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.individuals_interviewed"
+                type="text"
+                class="form-control"
+            />
         </div>
     </div>
 </div>
@@ -20,9 +32,9 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i> Add this PMOC Data</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="ti-check mr-1"></i> Add this PMOC Data</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

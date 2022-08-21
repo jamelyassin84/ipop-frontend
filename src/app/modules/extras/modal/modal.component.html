@@ -1,9 +1,14 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="h4 text-center">{{ title }}</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-			<span aria-hidden="true"><i class="ti-close"></i></span>
-		</button>
+        <h4 class="h4 text-center">{{ title | titlecase }}</h4>
+        <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+        >
+            <span aria-hidden="true"><i class="ti-close"></i></span>
+        </button>
     </div>
     <div class="modal-body">
         <ng-template #name [ngTemplateOutlet]="template"> </ng-template>
@@ -11,6 +16,6 @@
 </ng-template>
 
 <button [class]="btnClass" (click)="open(content)">
-	<i [class]="icon"></i>
-	{{ btnTitle }}
+    <i [class]="icon"></i>
+    {{ btnTitle | titlecase }}
 </button>

@@ -1,173 +1,173 @@
 <div class="row">
-	<div *ngIf="showPyramid" class="col-md-6">
-		<div class="card">
-			<div class="card-header bg-white">
-				<div class="card-title d-flex aic">
-					<span class="h4">{{ pyramidtitle }}</span>
-					<div *ngIf="!isUser" class="ml-auto">
-						<DropDown [buttons]="Pyramid"></DropDown>
-						<ng-template #Pyramid>
-							<Modal
-								size="lg"
-								title="Customize a Population Pyramid"
-								btnTitle="Customize a population pyramid"
-								btnClass="dropdown-item"
-								[template]="customizePyramid"
-							></Modal>
-						</ng-template>
-					</div>
-				</div>
-				<hr />
-				<div class="card-body">
-					<Spinner></Spinner>
-					<NoDataComponent [data]="ageDistribution"></NoDataComponent>
-					<div
-						*ngIf="ageDistribution.length !== 0"
-						id="population-pyramid"
-						class="w-100"
-						style="height: 50vh"
-					></div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div *ngIf="showPyramid" class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-white">
+                <div class="card-title d-flex aic">
+                    <span class="h4">{{ pyramidtitle }}</span>
+                    <div *ngIf="!isUser" class="ml-auto">
+                        <DropDown [buttons]="Pyramid"></DropDown>
+                        <ng-template #Pyramid>
+                            <Modal
+                                size="lg"
+                                title="Customize a Population Pyramid"
+                                btnTitle="Customize a population pyramid"
+                                btnClass="dropdown-item"
+                                [template]="customizePyramid"
+                            ></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <Spinner></Spinner>
+                    <NoDataComponent [data]="ageDistribution"></NoDataComponent>
+                    <div
+                        *ngIf="ageDistribution.length !== 0"
+                        id="population-pyramid"
+                        class="w-100"
+                        style="height: 50vh"
+                    ></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div [ngClass]="{ 'col-md-6': showPyramid, 'col-md-12': !showPyramid }">
-		<div class="card">
-			<div class="card-header bg-white d-flex aic">
-				<div class="card-title d-flex aic">
-					<span class="h4 mr-auto">{{ ageGroupTitle }}</span>
-					<div *ngIf="!isUser" class="ml-auto">
-						<DropDown [buttons]="Pyramid"></DropDown>
-						<ng-template #Pyramid>
-							<Modal
-								size="lg"
-								title="Customize a Population Pyramid"
-								[btnTitle]="'Customize' + ageGroupTitle"
-								btnClass="dropdown-item"
-								[template]="customizePyramid"
-							></Modal>
-						</ng-template>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<NoDataComponent
-					[data]="populationByAgeGroupAndSex"
-				></NoDataComponent>
+    <div [ngClass]="{'col-md-6': showPyramid, 'col-md-12': !showPyramid}">
+        <div class="card">
+            <div class="card-header bg-white d-flex aic">
+                <div class="card-title d-flex aic">
+                    <span class="h4 mr-auto">{{ ageGroupTitle }}</span>
+                    <div *ngIf="!isUser" class="ml-auto">
+                        <DropDown [buttons]="Pyramid"></DropDown>
+                        <ng-template #Pyramid>
+                            <Modal
+                                size="lg"
+                                title="Customize a Population Pyramid"
+                                [btnTitle]="'Customize' + ageGroupTitle"
+                                btnClass="dropdown-item"
+                                [template]="customizePyramid"
+                            ></Modal>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <NoDataComponent
+                    [data]="populationByAgeGroupAndSex"
+                ></NoDataComponent>
 
-				<table
-					*ngIf="populationByAgeGroupAndSex.length !== 0"
-					class="table table-striped"
-					responsiveTable
-				>
-					<thead
-						class="text-white"
-						[style.background]="ageGroupColor"
-					>
-						<tr>
-							<th
-								class="ppbm border"
-								style="
-									text-align: left !important;
-									padding-left: 0.5rem;
-								"
-							>
-								Age Group
-							</th>
-							<th class="ppbm border">Male</th>
-							<th class="ppbm border">%</th>
-							<th class="ppbm border">Female</th>
-							<th class="ppbm border">%</th>
-							<th class="ppbm border">Total</th>
-							<th class="ppbm border">%</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let item of populationByAgeGroupAndSex">
-							<td
-								class="ppbm border"
-								style="
-									text-align: left !important;
-									padding-left: 0.5rem;
-								"
-							>
-								{{ item.ageGroup }}
-							</td>
-							<td class="ppbm border">
-								{{ item.male | number }}
-							</td>
-							<td class="ppbm border">
-								{{ item.percent_male | number: '1.2-2' }}
-							</td>
-							<td class="ppbm border">
-								{{ item.female | number }}
-							</td>
-							<td class="ppbm border">
-								{{ item.percent_female | number: '1.2-2' }}
-							</td>
-							<td class="border ppbm">
-								{{ item.total | number }}
-							</td>
-							<td class="ppbm border">
-								{{ item.percent_total | number: '1.2-2' }}
-							</td>
-						</tr>
-						<tr>
-							<td
-								class="ppbm border fw-900"
-								style="
-									text-align: left !important;
-									padding-left: 0.5rem;
-								"
-							>
-								{{ populationByAgeGroupAndSexTotal.ageGroup }}
-							</td>
-							<td class="ppbm border fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.male
-										| number
-								}}
-							</td>
-							<td class="ppbm border fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.percent_male
-										| number: '1.2-2'
-								}}
-							</td>
-							<td class="ppbm border fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.female
-										| number
-								}}
-							</td>
-							<td class="ppbm border fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.percent_female
-										| number: '1.2-2'
-								}}
-							</td>
-							<td class="border ppbm fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.total
-										| number
-								}}
-							</td>
-							<td class="ppbm border fw-900">
-								{{
-									populationByAgeGroupAndSexTotal.percent_total
-										| number: '1.2-2'
-								}}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<Spinner></Spinner>
-			</div>
-		</div>
-	</div>
+                <table
+                    *ngIf="populationByAgeGroupAndSex.length !== 0"
+                    class="table table-striped"
+                    responsiveTable
+                >
+                    <thead
+                        class="text-white"
+                        [style.background]="ageGroupColor"
+                    >
+                        <tr>
+                            <th
+                                class="ppbm border"
+                                style="
+                                    text-align: left !important;
+                                    padding-left: 0.5rem;
+                                "
+                            >
+                                Age Group
+                            </th>
+                            <th class="ppbm border">Male</th>
+                            <th class="ppbm border">%</th>
+                            <th class="ppbm border">Female</th>
+                            <th class="ppbm border">%</th>
+                            <th class="ppbm border">Total</th>
+                            <th class="ppbm border">%</th>
+                        </tr>
+                    </thead>
+                    <tbody [@listAnimation]="populationByAgeGroupAndSex.length">
+                        <tr *ngFor="let item of populationByAgeGroupAndSex">
+                            <td
+                                class="ppbm border"
+                                style="
+                                    text-align: left !important;
+                                    padding-left: 0.5rem;
+                                "
+                            >
+                                {{ item.ageGroup }}
+                            </td>
+                            <td class="ppbm border">
+                                {{ item.male | number }}
+                            </td>
+                            <td class="ppbm border">
+                                {{ item.percent_male | number: '1.2-2' }}
+                            </td>
+                            <td class="ppbm border">
+                                {{ item.female | number }}
+                            </td>
+                            <td class="ppbm border">
+                                {{ item.percent_female | number: '1.2-2' }}
+                            </td>
+                            <td class="border ppbm">
+                                {{ item.total | number }}
+                            </td>
+                            <td class="ppbm border">
+                                {{ item.percent_total | number: '1.2-2' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="ppbm border fw-900"
+                                style="
+                                    text-align: left !important;
+                                    padding-left: 0.5rem;
+                                "
+                            >
+                                {{ populationByAgeGroupAndSexTotal.ageGroup }}
+                            </td>
+                            <td class="ppbm border fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.male
+                                        | number
+                                }}
+                            </td>
+                            <td class="ppbm border fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.percent_male
+                                        | number: '1.2-2'
+                                }}
+                            </td>
+                            <td class="ppbm border fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.female
+                                        | number
+                                }}
+                            </td>
+                            <td class="ppbm border fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.percent_female
+                                        | number: '1.2-2'
+                                }}
+                            </td>
+                            <td class="border ppbm fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.total
+                                        | number
+                                }}
+                            </td>
+                            <td class="ppbm border fw-900">
+                                {{
+                                    populationByAgeGroupAndSexTotal.percent_total
+                                        | number: '1.2-2'
+                                }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <Spinner></Spinner>
+            </div>
+        </div>
+    </div>
 </div>
 
 <ng-template #customizePyramid>
-	<CustomizePyramid [type]="type"></CustomizePyramid>
+    <CustomizePyramid [type]="type"></CustomizePyramid>
 </ng-template>
