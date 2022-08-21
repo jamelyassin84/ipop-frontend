@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html id="html" theme="light" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Iloilo Provincial Population Office</title>
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link
-			rel="icon"
-			type="image/jpeg"
-			href="./assets/ipop/logos/logo.png"
-		/>
-		<script src="https://www.gstatic.com/charts/loader.js"></script>
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-	  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Iloilo Provincial Population Office</title>
+        <base href="/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="icon"
+            type="image/jpeg"
+            href="./assets/ipop/logos/logo.png"
+        />
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+    </head>
 
-	<body onscroll="onScroll()" class="mat-typography">
-		<app-root></app-root>
+    <body onscroll="onScroll()" class="mat-typography">
+        <app-root></app-root>
 
-		<div>
-			<button
-				onclick="scrollToTop()"
-				style="position: fixed; bottom: 20px; z-index: 1; right: 20px"
-				class="btn btn-lg c-blue-900 bgc-blue-50 shadow"
-			>
-				<i class="ti-arrow-up"></i>
-			</button>
-		</div>
+        <div>
+            <button
+                onclick="scrollToTop()"
+                style="position: fixed; bottom: 20px; z-index: 1; right: 20px"
+                class="btn btn-lg c-blue-900 bgc-blue-50 shadow"
+            >
+                <i class="ti-arrow-up"></i>
+            </button>
+        </div>
 
-		<script type="text/javascript">
-			var scrollTop = 0
+        <script type="text/javascript">
+            var scrollTop = 0
 
-			function scrollToTop() {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth',
-				})
-			}
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                })
+            }
 
-			function onScroll() {
-				localStorage.setItem('hideNav', scrollTop >= 15)
-				this.scrollTop = window.scrollY
-			}
+            function onScroll() {
+                localStorage.setItem('hideNav', scrollTop >= 15)
+                this.scrollTop = window.scrollY
+            }
 
-			function setTheme() {
-				if (
-					window.matchMedia &&
-					window.matchMedia('(prefers-color-scheme: dark)').matches &&
-					localStorage.getItem('user') === null
-				) {
-					document
-						.getElementById('html')
-						.setAttribute('theme', 'dark')
-					return
-				}
-				if (localStorage.getItem('theme') === undefined) {
-					document
-						.getElementById('html')
-						.setAttribute('theme', 'light')
-				} else {
-					document
-						.getElementById('html')
-						.setAttribute('theme', localStorage.getItem('theme'))
-				}
-			}
-			setInterval(() => {
-				setTheme()
-			}, 100)
-		</script>
-	</body>
+            function setTheme() {
+                if (
+                    window.matchMedia &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches &&
+                    localStorage.getItem('user') === null
+                ) {
+                    document
+                        .getElementById('html')
+                        .setAttribute('theme', 'dark')
+                    return
+                }
+                if (localStorage.getItem('theme') === undefined) {
+                    document
+                        .getElementById('html')
+                        .setAttribute('theme', 'light')
+                } else {
+                    document
+                        .getElementById('html')
+                        .setAttribute('theme', localStorage.getItem('theme'))
+                }
+            }
+            setInterval(() => {
+                setTheme()
+            }, 100)
+        </script>
+    </body>
 </html>
