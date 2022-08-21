@@ -1,94 +1,98 @@
 <div class="sidebar">
-	<div class="sidebar-inner">
-		<!-- ### $Sidebar Header ### -->
-		<div class="sidebar-logo">
-			<div class="peers ai-c fxw-nw">
-				<div class="peer peer-greed">
-					<a class="sidebar-link td-n" href="index.html">
-						<div class="peers ai-c fxw-nw">
-							<div class="peer">
-								<div class="logo pY-20 pX-5">
-									<img
-										height="30"
-										src="/assets/ipop/logos/logo.png"
-										alt=""
-									/>
-								</div>
-							</div>
-							<div class="peer peer-greed">
-								<h3 class="lh-1 mB-0 logo-text">
-									Iloilo Provincial Population Office
-								</h3>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="peer">
-					<div class="mobile-toggle sidebar-toggle">
-						<a href="" class="td-n">
-							<i class="ti-arrow-circle-left"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="sidebar-inner">
+        <!-- ### $Sidebar Header ### -->
+        <div class="sidebar-logo">
+            <div class="peers ai-c fxw-nw">
+                <div class="peer peer-greed">
+                    <a class="sidebar-link td-n" href="index.html">
+                        <div class="peers ai-c fxw-nw">
+                            <div class="peer t-py-3">
+                                <div
+                                    class="logo t-border t-border-gray-200 t-rounded-full t-h-14 t-w-14 t-mr-3 t-flex t-items-center t-justify-center t-bg-bg-brand"
+                                >
+                                    <img
+                                        height="30"
+                                        src="/assets/new-assets/ipop-seal.png"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="peer peer-greed">
+                                <div
+                                    class="t-text-text-brand t-font-semibold t-leading-tight"
+                                >
+                                    Iloilo Provincial Population Office
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="peer">
+                    <div class="mobile-toggle sidebar-toggle">
+                        <a href="" class="td-n">
+                            <i class="ti-arrow-circle-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<!-- actived -->
-		<ul class="sidebar-menu scrollable pos-r">
-			<li
-				*ngFor="let item of sidebar; let i = index"
-				class="nav-item"
-				[ngClass]="{ 'mT-30': i === 0 }"
-				[class.active]="url.includes(item.route)"
-			>
-				<a
-					(click)="handleChangeTab()"
-					role="button"
-					class="sidebar-link"
-					[routerLink]="item.route"
-				>
-					<span class="icon-holder">
-						<i [class]="item.icon + ' ' + item.color"></i>
-					</span>
-					<span class="title">{{ item.name }}</span>
-				</a>
-			</li>
-			<li class="nav-item mt-5">
-				<a
-					[routerLink]="'account/' + username"
-					role="button"
-					class="sidebar-link"
-				>
-					<span class="icon-holder">
-						<img
-							class="avatar"
-							[src]="
-								avatar === 'null'
-									? '/assets/avatars/face-7.jpg'
-									: avatar
-							"
-							alt=""
-						/>
-					</span>
-					<span class="title">{{ name }}</span>
-				</a>
-			</li>
-			<li class="nav-item">
+        <!-- actived -->
+        <ul class="sidebar-menu scrollable pos-r">
+            <li
+                *ngFor="let item of sidebar; let i = index"
+                class="nav-item"
+                [ngClass]="{'mT-30': i === 0}"
+                [class.active]="url.includes(item.route)"
+            >
+                <a
+                    (click)="handleChangeTab()"
+                    role="button"
+                    class="sidebar-link"
+                    [routerLink]="item.route"
+                >
+                    <span class="icon-holder">
+                        <i [class]="item.icon + ' ' + item.color"></i>
+                    </span>
+                    <span class="title">{{ item.name }}</span>
+                </a>
+            </li>
+            <li class="nav-item mt-5">
+                <a
+                    [routerLink]="'account/' + username"
+                    role="button"
+                    class="sidebar-link"
+                >
+                    <span class="icon-holder">
+                        <img
+                            class="avatar"
+                            [src]="
+                                avatar === 'null'
+                                    ? '/assets/avatars/face-7.jpg'
+                                    : avatar
+                            "
+                            alt=""
+                        />
+                    </span>
+                    <span class="title">{{ name }}</span>
+                </a>
+            </li>
+            <!-- <li class="nav-item">
 				<a (click)="setMode()" role="button" class="sidebar-link">
 					<span class="icon-holder">
 						<i class="ti-paint-bucket"></i>
 					</span>
 					<span class="title">Change to {{ mode }} Mode</span>
 				</a>
-			</li>
-			<li class="nav-item">
-				<a (click)="logout()" role="button" class="sidebar-link">
-					<span class="icon-holder">
-						<i class="ti-back-left text-danger"></i>
-					</span>
-					<span class="title">Sign-Out</span>
-				</a>
-			</li>
-		</ul>
-	</div>
+			</li> -->
+            <li class="nav-item">
+                <a (click)="logout()" role="button" class="sidebar-link">
+                    <span class="icon-holder">
+                        <i class="ti-back-left text-danger"></i>
+                    </span>
+                    <span class="title">Sign-Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

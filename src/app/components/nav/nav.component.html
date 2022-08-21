@@ -1,11 +1,31 @@
-<div *ngIf="innerWidth > 1139" class="header nav-header" [class.fix]="!hideNav" [ngClass]="{ 'w-100': isUser }">
-    <div class="d-flex p-20 aic card-body header-item" [class.hideNav]="!hideNav" style="transition: 0.3s ease-in-out">
-        <img src="/assets/ipop/logos/iloilo-seal.png" class="province-logo" style="margin-right: 20px" />
-        <img style="width: 70px; height: 70px; margin-top: 30px" class="small" src="/assets/ipop/logos/ipo-logo.png" />
+<div
+    *ngIf="innerWidth > 1139"
+    class="header nav-header"
+    [class.fix]="!hideNav"
+    [ngClass]="{'w-100': isUser}"
+>
+    <div
+        class="d-flex p-20 aic card-body header-item"
+        [class.hideNav]="!hideNav"
+        style="transition: 0.3s ease-in-out"
+    >
+        <img
+            src="/assets/new-assets/iloilo-seal.png"
+            class="province-logo"
+            style="margin-right: 20px"
+        />
+        <img
+            style="width: 70px; height: 70px; margin-top: 30px"
+            class="small"
+            src="/assets/ipop/logos/ipo-logo.png"
+        />
         <div class="p-10">
             <P class="m-0">Republic of the Philippines </P>
             <p class="m-0">Province of Iloilo</p>
-            <h1 class="m-0 h1 c-blue-900" style="font-size: 2rem; font-weight: 900">
+            <h1
+                class="m-0 h1 c-blue-900"
+                style="font-size: 2rem; font-weight: 900"
+            >
                 PROVINCIAL POPULATION OFFICE
             </h1>
         </div>
@@ -13,49 +33,77 @@
 
     <div class="nav navbar">
         <div class="nav-list">
-            <div *ngFor="let nav of navs" class="Item" [ngClass]="{ active: icludesUrl(nav.id) }">
+            <div
+                *ngFor="let nav of navs"
+                class="Item"
+                [ngClass]="{active: icludesUrl(nav.id)}"
+            >
                 <span *ngIf="nav.name !== 'Iloilo.gov'"> {{ nav.name }}</span>
-                <a *ngIf="nav.name === 'Iloilo.gov'" href="https://www.iloilo.gov.ph/" target="_blank">
-					{{ nav.name }}</a
-				>
-				<div
-					*ngIf="nav.name !== 'Iloilo.gov'"
-					class="drop-down-container shadow"
-					style="position: relative"
-				>
-					<div class="drop-down bg-white">
-						<a
-							(click)="setTitle(child.name)"
-							*ngFor="let child of nav.children"
-							class="drop-down-container animated fadeIn fast"
-							[routerLink]="
-								'/home/index/' + nav.route + child.route
-							"
-							class="drop-down-item"
-						>
-							<i class="ti-folder c-orange-500"></i>
-							<p style="flex: 3">{{ child.name }}</p>
-							<i class="bi bi-chevron-right"></i>
-						</a>
+                <a
+                    *ngIf="nav.name === 'Iloilo.gov'"
+                    href="https://www.iloilo.gov.ph/"
+                    target="_blank"
+                >
+                    {{ nav.name }}</a
+                >
+                <div
+                    *ngIf="nav.name !== 'Iloilo.gov'"
+                    class="drop-down-container shadow"
+                    style="position: relative"
+                >
+                    <div class="drop-down bg-white">
+                        <a
+                            (click)="setTitle(child.name)"
+                            *ngFor="let child of nav.children"
+                            class="drop-down-container animated fadeIn fast"
+                            [routerLink]="
+                                '/home/index/' + nav.route + child.route
+                            "
+                            class="drop-down-item"
+                        >
+                            <i class="ti-folder c-orange-500"></i>
+                            <p style="flex: 3">{{ child.name }}</p>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-<ProgressLoader></ProgressLoader>
+    <ProgressLoader></ProgressLoader>
 </div>
 
 <div *ngIf="innerWidth < 1139">
     <nav class="nav navbar fixed-top bg-white p-0">
         <div class="d-flex">
-            <a routerLink="/home/index/news" class="navbar-brand d-flex aic c-blue-900" style="padding: 20px; justify-content: flex-start !important">
-				Iloilo Population Office
-			</a>
-            <i (click)="setShowSmallNav()" *ngIf="!showSmallNav" role="button" style="font-size: 2rem" class="ti-menu mr-4 mt-2 pt-1"></i>
-            <i (click)="setShowSmallNav()" *ngIf="showSmallNav" role="button" style="font-size: 2rem" class="ti-close mr-4 mt-2 pt-1"></i>
+            <a
+                routerLink="/home/index/news"
+                class="navbar-brand d-flex aic c-blue-900"
+                style="padding: 20px; justify-content: flex-start !important"
+            >
+                Iloilo Population Office
+            </a>
+            <i
+                (click)="setShowSmallNav()"
+                *ngIf="!showSmallNav"
+                role="button"
+                style="font-size: 2rem"
+                class="ti-menu mr-4 mt-2 pt-1"
+            ></i>
+            <i
+                (click)="setShowSmallNav()"
+                *ngIf="showSmallNav"
+                role="button"
+                style="font-size: 2rem"
+                class="ti-close mr-4 mt-2 pt-1"
+            ></i>
         </div>
         <ProgressLoader></ProgressLoader>
     </nav>
 
-    <SmallScreenNav (onClose)="onClose()" [data]="showSmallNav" *ngIf="showSmallNav"></SmallScreenNav>
+    <SmallScreenNav
+        (onClose)="onClose()"
+        [data]="showSmallNav"
+        *ngIf="showSmallNav"
+    ></SmallScreenNav>
 </div>

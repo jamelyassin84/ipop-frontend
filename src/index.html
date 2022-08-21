@@ -25,6 +25,13 @@
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
         />
+
+        <head>
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+            />
+        </head>
     </head>
 
     <body onscroll="onScroll()" class="mat-typography">
@@ -56,25 +63,26 @@
             }
 
             function setTheme() {
-                if (
-                    window.matchMedia &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches &&
-                    localStorage.getItem('user') === null
-                ) {
-                    document
-                        .getElementById('html')
-                        .setAttribute('theme', 'dark')
-                    return
-                }
-                if (localStorage.getItem('theme') === undefined) {
-                    document
-                        .getElementById('html')
-                        .setAttribute('theme', 'light')
-                } else {
-                    document
-                        .getElementById('html')
-                        .setAttribute('theme', localStorage.getItem('theme'))
-                }
+                // if (
+                //     window.matchMedia &&
+                //     window.matchMedia('(prefers-color-scheme: dark)').matches &&
+                //     localStorage.getItem('user') === null
+                // ) {
+                //     document
+                //         .getElementById('html')
+                //         .setAttribute('theme', 'dark')
+                //     return
+                // }
+                // if (localStorage.getItem('theme') === undefined) {
+                //     document
+                //         .getElementById('html')
+                //         .setAttribute('theme', 'light')
+                // } else {
+                //     document
+                //         .getElementById('html')
+                //         .setAttribute('theme', localStorage.getItem('theme'))
+                // }
+                document.getElementById('html').setAttribute('theme', 'light')
             }
             setInterval(() => {
                 setTheme()

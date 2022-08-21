@@ -1,73 +1,98 @@
 <div class="peers ai-s fxw-nw h-100vh">
     <div
-        class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv"
-        style="background-image: url('/assets/ipop/home/2.jpg')"
+        class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv t-px-5"
+        style="background-image: url('../../../assets/new-assets/capitol.jpg')"
     >
         <img
-            class="pos-a centerXY t-h-36 t-w-3t-h-36"
-            src="../../../assets/new-assets/iloilo-seal.png"
+            class="pos-a centerXY t-h-36 t-w-3t-h-36 animate__zoomIn"
+            src="/assets/new-assets/iloilo-seal.png"
             alt=""
         />
     </div>
 
     <div
-        class="col-12 col-md-4 peer pX-50 pY-100 h-100 bgc-white scrollable pos-r text-center t-flex t-flex-col"
+        @slideInLeft
         style="min-width: 320px"
+        class="col-12 col-md-3 peer t-px-5 pY-100 h-100 bgc-white scrollable pos-r text-center t-flex t-flex-col"
     >
         <img
-            class="t-h-40 t-w-3t-h-40 t-mx-auto"
-            src="../../../assets/new-assets/ipop-seal.png"
+            animateCSS
+            class="t-h-40 t-w-3t-h-40 t-mx-auto animate__flip"
+            src="/assets/new-assets/ipop-seal.png"
             alt=""
         />
 
-        <div class="md:t-text-5xl t-text-2xl t-font-black t-my-5">
-            Sign in to IPOP
+        <div
+            class="md:t-text-5xl t-text-2xl t-font-black t-text-text-brand t-my-5"
+        >
+            Log In
         </div>
 
-        <div>
-            Sign-in with your username and password given by the administrator
+        <div class="t-px-5 t-text-sm">
+            Log In with the credentials given by the administrator.
         </div>
 
-        <form class="t-mt-8">
-            <div class="input-group mb-3">
+        <form [formGroup]="signInForm" class="t-mt-8">
+            <div class="t-w-full">
                 <input
-                    autocomplete="false"
-                    [ngModelOptions]="{standalone: true}"
-                    [(ngModel)]="data.username"
-                    type="email"
-                    class="form-control form-control-lg"
+                    autofocus
+                    id="username"
+                    type="username"
                     placeholder="Username"
+                    autocomplete="username"
+                    formControlName="username"
+                    [ngClass]="{
+                        't-bg-red-500 t-border-red-500/30':
+                            signInForm.get('username')?.touched &&
+                            !signInForm.get('username')?.valid
+                    }"
+                    class="t-px-5 t-py-4 t-border t-border-gray-200 t-w-full focus:t-border-bg-brand"
                 />
             </div>
 
-            <div class="input-group mb-3">
+            <div class="t-mb-3 t-w-full">
                 <input
-                    autocomplete="false"
-                    [ngModelOptions]="{standalone: true}"
-                    [(ngModel)]="data.password"
+                    id="password"
                     type="password"
-                    class="form-control form-control-lg"
                     placeholder="Password"
+                    autocomplete="password"
+                    formControlName="password"
+                    [ngClass]="{
+                        't-bg-red-500 t-border-red-500/30':
+                            signInForm.get('password')?.touched &&
+                            !signInForm.get('password')?.valid
+                    }"
+                    class="t-px-5 t-py-4 t-border t-border-gray-200 t-w-full focus:t-border-bg-brand"
                 />
             </div>
 
             <button
+                mat-flat-button
                 (click)="login()"
-                class="t-bg-bg-brand t-text-white flex t-py-3 t-w-full t-mt-8"
-                [disabled]="isLoading"
+                [ngClass]="{
+                    't-bg-gray-400 t-pointer-events-none ':
+                        !signInForm.valid || signInForm.disabled,
+                    't-bg-bg-brand': signInForm.valid && !signInForm.disabled
+                }"
+                class="t-text-white flex t-py-3 t-w-full t-mt-8 t-font-black t-text-xl focus:t-border-bg-brand t-flex t-items-center t-justify-center"
             >
-                <span *ngIf="!isLoading">Sign-in</span>
+                <span *ngIf="!signInForm.disabled">Log In</span>
 
-                <Loader *ngIf="isLoading"></Loader>
+                <mat-progress-spinner
+                    [diameter]="24"
+                    *ngIf="signInForm.disabled"
+                    class="t-mx-auto"
+                    [mode]="'indeterminate'"
+                ></mat-progress-spinner>
             </button>
 
-            <p>or</p>
+            <div class="t-mt-8">or</div>
 
             <a
                 class="btn btn-link w-100 text-secondary"
                 routerLink="/home/index/news"
             >
-                Visit as IPOP Guest
+                Visit as Guest
             </a>
         </form>
     </div>
