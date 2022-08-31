@@ -5,10 +5,10 @@ import {stringify} from 'src/app/constants/Shortcuts'
 import {AuthService} from 'src/app/Services/Independent/auth.service'
 import {UserType} from 'src/app/Types/User.types'
 import {
-    FormControl,
-    FormGroup,
     NonNullableFormBuilder,
     Validators,
+    FormGroup,
+    FormControl,
 } from '@angular/forms'
 import {tap} from 'rxjs/operators'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'

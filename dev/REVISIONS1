@@ -10,3 +10,10 @@ Top population Problem sobra na sa 10 kag deletable
 RPFP Province and Municipality Only
 RPFP Barotac nuevo data =estancia displayed always
 total of Male and Female same with total
+
+
+ng update @angular/cdk --allow-dirty --force
+ng update @angular/cli --allow-dirty --force
+ng update @angular/core --allow-dirty --force
+ng update @angular/material --allow-dirty --force
+ng update @ngrx/store --allow-dirty --force
