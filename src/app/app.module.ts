@@ -138,11 +138,11 @@ import {AuthGuard} from './guards/auth.guard'
 import {BulkDataGuardGuard} from './guards/bulk-data-guard.guard'
 import {EditTcServicesComponent} from './home-components/ahyd/teen-centers/edit-tc-services/edit-tc-services.component'
 import {EditProgramComponent} from './home-components/program/edit-program/edit-program.component'
-import {SharedModule} from './shared/shared.module';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store'
+import {SharedModule} from './shared/shared.module'
+import {StoreModule} from '@ngrx/store'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
+import {environment} from '../environments/environment'
+import {StoreRouterConnectingModule} from '@ngrx/router-store'
 
 @NgModule({
     declarations: [
@@ -268,8 +268,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store'
         ExtrasModule,
         SharedModule,
         StoreModule.forRoot({}, {}),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+        }),
         StoreRouterConnectingModule.forRoot(),
+        SharedModule,
     ],
     providers: [
         {

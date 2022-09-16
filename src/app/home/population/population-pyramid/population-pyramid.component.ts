@@ -6,9 +6,9 @@ import {getPercent} from 'src/app/constants/Shortcuts'
 import {UserService} from 'src/app/Services/Independent/user.service'
 import {ReloadService} from 'src/app/Services/reload.service'
 import {Subscription} from 'rxjs'
-import {Location} from 'src/app/home-components/population/customize-pyramid/customize-pyramid.component'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
+import {PyramidData} from 'src/app/app-core/models/population-pyramid'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -50,17 +50,31 @@ export class PopulationPyramidComponent implements OnInit {
     @Input()
     colors: string[] = []
 
+    readonly LAST = '80 and above'
+
     readonly isUser = !this.user.isSuperAdmin()
 
     subscriptions = new Subscription()
 
     populationByAgeGroupAndSexTotal: any = {}
 
+    ageDistribution: any = []
+
+    populationByAgeGroupAndSex: {
+        ageGroup: string
+        male: number
+        percent_male: number
+        female: number
+        percent_female: number
+        total: number
+        percent_total: number
+    }[] = []
+
+    isProvincial: boolean = false
+
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()
     }
-
-    isProvincial: boolean = false
 
     ngOnInit(): void {}
 
@@ -82,7 +96,7 @@ export class PopulationPyramidComponent implements OnInit {
         )
 
         service.index().subscribe((data: any) => {
-            let ageDistribution: any = [['Age', 'Male', 'Female']]
+            let ageDistribution: any[] = [['Age', 'Male', 'Female']]
 
             if (data.length !== 0) {
                 this.processPopulationByAgeGroupAndSex(data)
@@ -129,21 +143,17 @@ export class PopulationPyramidComponent implements OnInit {
             } else {
                 ageDistribution = []
             }
+
+            console.log(ageDistribution)
+
             drawChart('population-pyramid', ageDistribution, this.colors)
-            this.ageDistribution = ageDistribution
+
+            this.ageDistribution =
+                ageDistribution[1][0] === this.LAST
+                    ? ageDistribution
+                    : ageDistribution.reverse()
         })
     }
-    ageDistribution: any = []
-
-    populationByAgeGroupAndSex: {
-        ageGroup: string
-        male: number
-        percent_male: number
-        female: number
-        percent_female: number
-        total: number
-        percent_total: number
-    }[] = []
 
     processPopulationByAgeGroupAndSex(data: Array<any>) {
         let temp: any = []

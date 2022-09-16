@@ -10,7 +10,7 @@ import {ChartsModule} from 'ng2-charts'
 import {appPipes, globalPipes} from './global.pipe'
 import {appDirectives, globalDirectives} from './global.directive'
 import {matModules} from './mat.modules'
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {appStates} from './app.state'
 
 const components = [
     TopPopulatedListComponent,
@@ -27,6 +27,7 @@ const modules = [
     HttpClientModule,
 
     ...matModules,
+    ...appStates,
 ]
 
 const pipes = [...globalPipes, ...appPipes]

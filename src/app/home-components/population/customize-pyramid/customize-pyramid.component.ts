@@ -1,97 +1,147 @@
-import { HttpClient } from '@angular/common/http'
-import { ChangeDetectorRef, Input } from '@angular/core'
-import { Component, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
-import { BaseService } from 'src/app/Services/base.service'
-import { PopulationPyramidService } from 'src/app/Services/home/population/population-pyramid.service'
+import {HttpClient} from '@angular/common/http'
+import {Input} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
+import {
+    FormBuilder,
+    FormGroup,
+    NonNullableFormBuilder,
+    Validators,
+} from '@angular/forms'
+import {select, Store} from '@ngrx/store'
+import {map, tap} from 'rxjs/operators'
+import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
+import {PopulationPyramidPayLoad} from 'src/app/app-core/http/payloads/pyramid.payload'
+import {AppState} from 'src/app/app-core/store/core/app.state'
+import {StateEnum} from 'src/app/app-core/store/core/state.enum'
+import {Fire, HasApprovals} from 'src/app/modules/extras/Alert'
+import {BaseService} from 'src/app/Services/base.service'
+import {PopulationPyramidService} from 'src/app/Services/home/population/population-pyramid.service'
 
 @Component({
-	selector: 'CustomizePyramid',
-	templateUrl: './customize-pyramid.component.html',
-	styleUrls: ['./customize-pyramid.component.scss'],
+    selector: 'CustomizePyramid',
+    templateUrl: './customize-pyramid.component.html',
+    styleUrls: ['./customize-pyramid.component.scss'],
 })
 export class CustomizePyramidComponent implements OnInit {
-	constructor(
-		private _http: HttpClient,
-		private service: PopulationPyramidService
-	) {}
+    constructor(
+        private _http: HttpClient,
+        private _store: Store<AppState>,
+        private service: PopulationPyramidService,
+        private _formBuilder: NonNullableFormBuilder,
+    ) {}
 
-	@Input() type: string = ''
+    @Input()
+    type: string = ''
 
-	@Input('location') set setLocation(location: Location) {
-		console.log(location)
-	}
+    @Input()
+    types = ['Provincial', 'Muncipality', 'Barangay']
 
-	@Input() types = ['Provincial', 'Muncipality', 'Barangay']
+    location$ = this._store.pipe(
+        select(StateEnum.LOCATION_FILTERS),
+        map((x) => new TransformEntity(x).toObject()),
+        tap((location: any) => {
+            for (let key in location) {
+                this.populationPyramid[key] = location[key]
+            }
+        }),
+    )
 
-	ngOnInit(): void {
-		console.log('tae')
-	}
+    tabs: any = {
+        males: true,
+        famales: false,
+    }
 
-	tabs: any = {
-		males: true,
-		famales: false,
-	}
+    isLoading: boolean = false
 
-	changeTab(tab: any) {
-		for (let key in this.tabs) {
-			this.tabs[key] = false
-		}
-		this.tabs[tab] = true
-	}
+    populationPyramid: any = {
+        barangay: null,
+        municipality: null,
+        year: null,
+        data: {
+            male: {},
+            female: {},
+        },
+    }
+    populationPyramidFormFemales: FormGroup<PopulationPyramidPayLoad> =
+        this._formBuilder.group({
+            eighty_and_above: ['', Validators.required],
+            '75-79': ['', Validators.required],
+            '70-74': ['', Validators.required],
+            '65-69': ['', Validators.required],
+            '60-64': ['', Validators.required],
+            '55-59': ['', Validators.required],
+            '50-54': ['', Validators.required],
+            '45-49': ['', Validators.required],
+            '40-44': ['', Validators.required],
+            '35-39': ['', Validators.required],
+            '30-34': ['', Validators.required],
+            '25-29': ['', Validators.required],
+            '20-24': ['', Validators.required],
+            '15-19': ['', Validators.required],
+            '10-14': ['', Validators.required],
+            '5-9': ['', Validators.required],
+        })
 
-	populationPyramid: any = {
-		barangay: null,
-		municipality: null,
-		year: null,
-		data: {
-			male: {},
-			female: {},
-		},
-	}
+    populationPyramidFormMales: FormGroup<PopulationPyramidPayLoad> =
+        this._formBuilder.group({
+            eighty_and_above: ['', Validators.required],
+            '75-79': ['', Validators.required],
+            '70-74': ['', Validators.required],
+            '65-69': ['', Validators.required],
+            '60-64': ['', Validators.required],
+            '55-59': ['', Validators.required],
+            '50-54': ['', Validators.required],
+            '45-49': ['', Validators.required],
+            '40-44': ['', Validators.required],
+            '35-39': ['', Validators.required],
+            '30-34': ['', Validators.required],
+            '25-29': ['', Validators.required],
+            '20-24': ['', Validators.required],
+            '15-19': ['', Validators.required],
+            '10-14': ['', Validators.required],
+            '5-9': ['', Validators.required],
+        })
 
-	fetch(event: any) {
-		const { barangay, municipality, year } = event
+    ngOnInit(): void {}
 
-		this.populationPyramid.barangay = barangay
+    changeTab(tab: any) {
+        for (let key in this.tabs) {
+            this.tabs[key] = false
+        }
+        this.tabs[tab] = true
+    }
 
-		this.populationPyramid.municipality = municipality
+    fetch(event: any) {
+        const {barangay, municipality, year} = event
+        this.populationPyramid.barangay = barangay
+        this.populationPyramid.municipality = municipality
+        this.populationPyramid.year = year
 
-		this.populationPyramid.year = year
+        const service = new BaseService(
+            this._http,
+            'population-pyramid',
+            `municipality=${municipality}&barangay=${barangay}&year=${year}&type=${this.type}`,
+        )
 
-		const service = new BaseService(
-			this._http,
-			'population-pyramid',
-			`municipality=${municipality}&barangay=${barangay}&year=${year}&type=${this.type}`
-		)
+        service.index().subscribe((response: any) => {
+            this.populationPyramid.data.male = response[0].data.male
+            this.populationPyramid.data.female = response[0].data.female
+        })
+    }
 
-		service.index().subscribe((response: any) => {
-			this.populationPyramid.data.male = response[0].data.male
-
-			this.populationPyramid.data.female = response[0].data.female
-		})
-	}
-
-	isLoading: boolean = false
-	save() {
-		Fire(
-			'Save Changes?',
-			'Are you sure you want to add this data?',
-			'info',
-			() => {
-				this.isLoading = true
-				this.populationPyramid.type = this.type
-				this.service.create(this.populationPyramid).subscribe(() => {
-					HasApprovals('Created')
-					this.isLoading = false
-				})
-			}
-		)
-	}
-}
-
-export interface Location {
-	barangay: string
-	municipality: string
-	year: string
+    save() {
+        Fire(
+            'Save Changes?',
+            'Are you sure you want to add this data?',
+            'info',
+            () => {
+                this.isLoading = true
+                this.populationPyramid.type = this.type
+                this.service.create(this.populationPyramid).subscribe(() => {
+                    HasApprovals('Created')
+                    this.isLoading = false
+                })
+            },
+        )
+    }
 }

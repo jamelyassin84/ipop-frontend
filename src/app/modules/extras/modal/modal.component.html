@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="h4 text-center">{{ title | titlecase }}</h4>
+        <h4 class="text-center h4">{{ title | titlecase }}</h4>
         <button
             type="button"
             class="close"
@@ -15,7 +15,12 @@
     </div>
 </ng-template>
 
-<button [class]="btnClass" (click)="open(content)">
+<button
+    matRipple
+    [class]="btnClass"
+    (click)="open(content)"
+    matRippleColor="rgba(150, 150, 150,.05)"
+>
     <i [class]="icon"></i>
     {{ btnTitle | titlecase }}
 </button>

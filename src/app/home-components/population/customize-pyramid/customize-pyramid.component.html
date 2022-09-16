@@ -1,32 +1,42 @@
-<div class="card-body">
+<div *ngIf="location$ | async as location" class="card-body">
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a
-                role="button"
+            <button
+                matRipple
+                class="nav-link"
                 (click)="changeTab('males')"
-                class="nav-link text-muted"
-                [class.active]="tabs.males"
+                matRippleColor="rgba(150, 150, 150,.05)"
+                [ngClass]="{
+                    't-bg-bg-brand t-text-white t-pointer-events-none t-from-black':
+                        tabs.males,
+                    'text-muted': !tabs.males
+                }"
             >
                 <i class="ti-user"></i> Male
-            </a>
+            </button>
         </li>
         <li class="nav-item">
-            <a
-                role="button"
+            <button
+                matRipple
+                class="nav-link"
                 (click)="changeTab('females')"
-                class="nav-link text-muted"
-                [class.active]="tabs.females"
+                matRippleColor="rgba(150, 150, 150,.05)"
+                [ngClass]="{
+                    't-bg-bg-brand t-text-white t-pointer-events-none t-from-black':
+                        tabs.females,
+                    'text-muted': !tabs.females
+                }"
             >
                 <i class="ti-user"></i> Female
-            </a>
+            </button>
         </li>
-        <li class="nav-item"></li>
     </ul>
+
     <br />
     <div class="row" *ngIf="tabs.males">
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="80 Up">80 Up</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['eighty_and_above']"
@@ -36,7 +46,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="75-79">75-79</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['75-79']"
@@ -46,7 +56,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="70-74">70-74</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['70-74']"
@@ -56,7 +66,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="65-69">65-69</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['65-69']"
@@ -66,7 +76,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="60-64">60-64</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['60-64']"
@@ -76,7 +86,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="55-59">55-59</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['55-59']"
@@ -86,7 +96,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="50-54">50-54</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['50-54']"
@@ -96,7 +106,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="45-49">45-49</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['45-49']"
@@ -106,7 +116,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="40-44">40-44</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['40-44']"
@@ -116,7 +126,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="35-39">35-39</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['35-39']"
@@ -126,7 +136,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="30-34">30-34</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['30-34']"
@@ -136,7 +146,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="25-29">25-29</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['25-29']"
@@ -146,7 +156,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="20-24">20-24</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['20-24']"
@@ -156,7 +166,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="15-19">15-19</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['15-19']"
@@ -166,7 +176,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="10-14">10-14</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['10-14']"
@@ -176,7 +186,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="5-9">5-9</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['5-9']"
@@ -185,7 +195,7 @@
                 id="5-9"
             />
         </div>
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="5-9">1-4</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['1-4']"
@@ -194,7 +204,7 @@
                 id="5-9"
             />
         </div>
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="Below 1 year old">Below 1 year</label>
             <input
                 [(ngModel)]="populationPyramid.data.male.below_1_year_old"
@@ -205,7 +215,7 @@
         </div>
     </div>
     <div class="row" *ngIf="tabs.females">
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="80 Up">80 Up</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['eighty_and_above']"
@@ -215,7 +225,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="75-79">75-79</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['75-79']"
@@ -225,7 +235,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="70-74">70-74</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['70-74']"
@@ -235,7 +245,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="65-69">65-69</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['65-69']"
@@ -245,7 +255,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="60-64">60-64</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['60-64']"
@@ -255,7 +265,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="55-59">55-59</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['55-59']"
@@ -265,7 +275,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="50-54">50-54</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['50-54']"
@@ -275,7 +285,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="45-49">45-49</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['45-49']"
@@ -285,7 +295,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="40-44">40-44</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['40-44']"
@@ -295,7 +305,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="35-39">35-39</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['35-39']"
@@ -305,7 +315,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="30-34">30-34</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['30-34']"
@@ -315,7 +325,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="25-29">25-29</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['25-29']"
@@ -325,7 +335,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="20-24">20-24</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['20-24']"
@@ -335,7 +345,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="15-19">15-19</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['15-19']"
@@ -345,7 +355,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="10-14">10-14</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['10-14']"
@@ -355,7 +365,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="5-9">5-9</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['5-9']"
@@ -365,7 +375,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="5-9">1-4</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['1-4']"
@@ -375,7 +385,7 @@
             />
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="mb-3 col-md-2">
             <label for="Below 1 year old">Below 1 year</label>
             <input
                 [(ngModel)]="populationPyramid.data.female.below_1_year_old"
@@ -388,10 +398,10 @@
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
         <span *ngIf="!isLoading"
-            ><i class="ti-check mr-1"></i> Save Pyramid</span
+            ><i class="mr-1 ti-check"></i> Save Pyramid</span
         >
         <Loader *ngIf="isLoading"></Loader>
     </button>
