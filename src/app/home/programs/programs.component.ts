@@ -6,11 +6,13 @@ import { ReloadService } from 'src/app/Services/reload.service'
 import { ActivityService } from 'src/app/Services/home/program-areas/activity.service'
 import { Subscription } from 'rxjs'
 import { UserService } from 'src/app/Services/Independent/user.service'
+import { dbwAnimations } from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
 	selector: 'app-programs',
 	templateUrl: './programs.component.html',
 	styleUrls: ['./programs.component.scss'],
+	animations:[...dbwAnimations]
 })
 export class ProgramsComponent implements OnInit {
 	constructor(

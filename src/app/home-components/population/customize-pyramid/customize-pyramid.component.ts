@@ -13,6 +13,7 @@ import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 import {PopulationPyramidPayLoad} from 'src/app/app-core/http/payloads/pyramid.payload'
 import {AppState} from 'src/app/app-core/store/core/app.state'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
+import {LocationFIlter} from 'src/app/app-core/store/ngrx/locatition-filter/location-filter.model'
 import {Fire, HasApprovals} from 'src/app/modules/extras/Alert'
 import {BaseService} from 'src/app/Services/base.service'
 import {PopulationPyramidService} from 'src/app/Services/home/population/population-pyramid.service'
@@ -43,6 +44,8 @@ export class CustomizePyramidComponent implements OnInit {
             for (let key in location) {
                 this.populationPyramid[key] = location[key]
             }
+
+            this.fetch(location)
         }),
     )
 
@@ -111,7 +114,7 @@ export class CustomizePyramidComponent implements OnInit {
         this.tabs[tab] = true
     }
 
-    fetch(event: any) {
+    fetch(event: LocationFIlter) {
         const {barangay, municipality, year} = event
         this.populationPyramid.barangay = barangay
         this.populationPyramid.municipality = municipality
@@ -136,8 +139,12 @@ export class CustomizePyramidComponent implements OnInit {
             'info',
             () => {
                 this.isLoading = true
-                this.populationPyramid.type = this.type
-                this.service.create(this.populationPyramid).subscribe(() => {
+
+                let data = {...this.populationPyramid}
+
+                data.type = this.type
+
+                this.service.create(data).subscribe(() => {
                     HasApprovals('Created')
                     this.isLoading = false
                 })

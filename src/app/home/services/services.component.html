@@ -3,48 +3,52 @@
 </ng-template>
 
 <div class="card">
-    <div class="card-header bg-white">
-        <h5 class="m-0 card-title text-center d-flex">
+    <div class="bg-white card-header">
+        <h5 class="m-0 text-center card-title d-flex">
             <span style="align-self: center">{{ serviceOffered.title }}</span>
             <span *ngIf="!isUser" class="ml-auto">
-				<DropDown [buttons]="dropdown"></DropDown>
-				<ng-template #dropdown>
-					<Modal
-						size="lg"
-						[title]="'Add a service for ' + serviceOffered.title"
-						btnTitle="Add services"
-						btnClass="dropdown-item"
-						[template]="addServices"
-					></Modal>
-				</ng-template>
-			</span>
+                <DropDown [buttons]="dropdown"></DropDown>
+                <ng-template #dropdown>
+                    <Modal
+                        size="lg"
+                        [title]="'Add a service for ' + serviceOffered.title"
+                        btnTitle="Add services"
+                        btnClass="dropdown-item"
+                        [template]="addServices"
+                    ></Modal>
+                </ng-template>
+            </span>
         </h5>
     </div>
-    <div class="card-body">
-        <div class="bl br card mb-2" *ngFor="let service of serviceOffered.offers">
-            <div class="card-body bg-white d-flex aic">
+    <div [@listAnimation]="serviceOffered.offers.length" class="card-body">
+        <div
+            class="mb-2 bl br card"
+            *ngFor="let service of serviceOffered.offers"
+        >
+            <div class="bg-white card-body d-flex aic">
                 <div>
-                    <div class="h5 m-0 card-title c-blue-300 dw">
+                    <div class="m-0 h5 card-title c-blue-300 dw">
                         <i class="ti-microphone"></i> {{ service.title }}
                     </div>
-                    <span class="m-0 text-muted pl-4">Created :
-						{{
-							service.created_at | date: 'MMMM dd, yyy - hh:mm a'
-						}}</span
-					>
-				</div>
-				<div *ngIf="!isUser && isSuperAdmin" class="ml-auto">
-					<DropDown [buttons]="dropdown"></DropDown>
-					<ng-template #dropdown>
-						<button
-							(click)="removeService(service.id)"
-							class="dropdown-item"
-						>
-							Remove services
-						</button>
-					</ng-template>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <span class="pl-4 m-0 text-muted"
+                        >Created :
+                        {{
+                            service.created_at | date: 'MMMM dd, yyy - hh:mm a'
+                        }}</span
+                    >
+                </div>
+                <div *ngIf="!isUser && isSuperAdmin" class="ml-auto">
+                    <DropDown [buttons]="dropdown"></DropDown>
+                    <ng-template #dropdown>
+                        <button
+                            (click)="removeService(service.id)"
+                            class="dropdown-item"
+                        >
+                            Remove services
+                        </button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
