@@ -3,67 +3,123 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="h5">Males</div>
+            <div class="h5">Male</div>
         </div>
         <div class="col-md-4 mt-4">
             <label for="">15-19 </label>
-            <input [(ngModel)]="data['15_to_19_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['15_to_19_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">20-24 </label>
-            <input [(ngModel)]="data['20_to_24_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['20_to_24_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">25-29 </label>
-            <input [(ngModel)]="data['25_to_29_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['25_to_29_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">30-34 </label>
-            <input [(ngModel)]="data['30_to_34_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['30_to_34_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">35-39 </label>
-            <input [(ngModel)]="data['35_to_39_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['35_to_39_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">40-44 </label>
-            <input [(ngModel)]="data['40_to_44_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['40_to_44_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">45 & UP </label>
-            <input [(ngModel)]="data['45_and_above_male']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['45_and_above_male']"
+                type="number"
+                class="form-control"
+            />
         </div>
 
         <div class="col-md-12 mt-5">
-            <div class="h5">Females</div>
+            <div class="h5">Female</div>
         </div>
         <div class="col-md-4 mt-4">
             <label for="">15-19 </label>
-            <input [(ngModel)]="data['15_to_19_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['15_to_19_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">20-24 </label>
-            <input [(ngModel)]="data['20_to_24_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['20_to_24_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">25-29 </label>
-            <input [(ngModel)]="data['25_to_29_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['25_to_29_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">30-34 </label>
-            <input [(ngModel)]="data['30_to_34_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['30_to_34_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">35-39 </label>
-            <input [(ngModel)]="data['35_to_39_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['35_to_39_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">40-44 </label>
-            <input [(ngModel)]="data['40_to_44_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['40_to_44_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
         <div class="col-md-4 mt-4">
             <label for="">45 & UP </label>
-            <input [(ngModel)]="data['45_and_above_female']" type="number" class="form-control" />
+            <input
+                [(ngModel)]="data['45_and_above_female']"
+                type="number"
+                class="form-control"
+            />
         </div>
     </div>
 </div>
@@ -71,10 +127,10 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i>Update this PMC Couple Applicants by
-			Age Group</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="ti-check mr-1"></i>Update this PMC Couple Applicants by
+            Age Group</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

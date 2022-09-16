@@ -132,7 +132,7 @@ export const homeNavs = [
 		id: 'rpfp',
 		children: [
 			{
-				name: 'Pre-Marriage Orrientation and Counseling',
+				name: 'Pre-Marriage Orientation and Counseling',
 				route: 'pmoc',
 			},
 			{

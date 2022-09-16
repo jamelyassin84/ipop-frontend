@@ -1,19 +1,26 @@
+Population Pyramid 0-4 missing
 
-demographics data, live birth global data (Backend)
+Top 10 populated only 10
+Top 10 populated per year
 
+Chart Labels
+Total Marriages
+Church Data
+Weddings to Marriages
+Bar Graph or Marriages
+marriage population data should equal to the data visualization
+wrong spelling in local marriage data
+
+knowledge on family planning put dummy
+
+Number of couple graph is not moving
+
+Pavia and lemery no data
+San miguel baliskad
+Binagawan no males
 
 # Resolved
-corrections: spelling of divorce in rpfp tab
-Remove S from females and 'Males'
-correct the spelling of oriented Number of Couple
-Top population Problem sobra na sa 10 kag deletable
-RPFP Province and Municipality Only
-RPFP Barotac nuevo data =estancia displayed always
-total of Male and Female same with total
 
-
-ng update @angular/cdk --allow-dirty --force
-ng update @angular/cli --allow-dirty --force
-ng update @angular/core --allow-dirty --force
-ng update @angular/material --allow-dirty --force
-ng update @ngrx/store --allow-dirty --force
+Change Logo
+Orientation wrong spelling
+Females to Female

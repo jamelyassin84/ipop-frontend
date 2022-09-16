@@ -1,31 +1,34 @@
 <span>Type: {{ data.type }} Statistical Data</span><br />
 
 <span class="fw-400 text-danger h4">
-	<span class="mr-2" *ngIf="data.barangay !== null">
-		{{ data.barangay }}
-	</span>
-<span class="mr-2" *ngIf="data.municipality !== null">
-		{{ data.municipality }}
-	</span>
-<span class="mr-2" *ngIf="data.barangay === null && data.municipality === null">
-		Province
-	</span>
-<span class="mr-2">
-		{{ data.year }}
-	</span>
+    <span class="mr-2" *ngIf="data.barangay !== null">
+        {{ data.barangay }}
+    </span>
+    <span class="mr-2" *ngIf="data.municipality !== null">
+        {{ data.municipality }}
+    </span>
+    <span
+        class="mr-2"
+        *ngIf="data.barangay === null && data.municipality === null"
+    >
+        Province
+    </span>
+    <span class="mr-2">
+        {{ data.year }}
+    </span>
 </span>
 <br />
 
 <span>Month: {{ data.month }}</span
 ><br />
 
-<span>Males: {{ data.females }}</span
+<span>Male: {{ data.females }}</span
 ><br />
 
-<span>Females: {{ data.females }}</span
+<span>Female: {{ data.females }}</span
 ><br />
 
-<span>Males: {{ data.females }}</span
+<span>Male: {{ data.females }}</span
 ><br />
 
 <span>Total: {{ data.total }}</span
