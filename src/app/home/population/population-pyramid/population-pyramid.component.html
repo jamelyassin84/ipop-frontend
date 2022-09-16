@@ -1,9 +1,9 @@
 <div class="row">
     <div *ngIf="showPyramid" class="col-md-6">
         <div class="card">
-            <div class="card-header bg-white">
+            <div class="bg-white card-header">
                 <div class="card-title d-flex aic">
-                    <span class="h4">{{ pyramidtitle }}</span>
+                    <span class="h4">{{ pyramidTitle }}</span>
                     <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Pyramid"></DropDown>
                         <ng-template #Pyramid>
@@ -34,9 +34,9 @@
 
     <div [ngClass]="{'col-md-6': showPyramid, 'col-md-12': !showPyramid}">
         <div class="card">
-            <div class="card-header bg-white d-flex aic">
+            <div class="bg-white card-header d-flex aic">
                 <div class="card-title d-flex aic">
-                    <span class="h4 mr-auto">{{ ageGroupTitle }}</span>
+                    <span class="mr-auto h4">{{ ageGroupTitle }}</span>
                     <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Pyramid"></DropDown>
                         <ng-template #Pyramid>
@@ -67,7 +67,7 @@
                     >
                         <tr>
                             <th
-                                class="ppbm border"
+                                class="border ppbm"
                                 style="
                                     text-align: left !important;
                                     padding-left: 0.5rem;
@@ -75,18 +75,18 @@
                             >
                                 Age Group
                             </th>
-                            <th class="ppbm border">Male</th>
-                            <th class="ppbm border">%</th>
-                            <th class="ppbm border">Female</th>
-                            <th class="ppbm border">%</th>
-                            <th class="ppbm border">Total</th>
-                            <th class="ppbm border">%</th>
+                            <th class="border ppbm">Male</th>
+                            <th class="border ppbm">%</th>
+                            <th class="border ppbm">Female</th>
+                            <th class="border ppbm">%</th>
+                            <th class="border ppbm">Total</th>
+                            <th class="border ppbm">%</th>
                         </tr>
                     </thead>
                     <tbody [@listAnimation]="populationByAgeGroupAndSex.length">
                         <tr *ngFor="let item of populationByAgeGroupAndSex">
                             <td
-                                class="ppbm border"
+                                class="border ppbm"
                                 style="
                                     text-align: left !important;
                                     padding-left: 0.5rem;
@@ -94,28 +94,28 @@
                             >
                                 {{ item.ageGroup }}
                             </td>
-                            <td class="ppbm border">
+                            <td class="border ppbm">
                                 {{ item.male | number }}
                             </td>
-                            <td class="ppbm border">
+                            <td class="border ppbm">
                                 {{ item.percent_male | number: '1.2-2' }}
                             </td>
-                            <td class="ppbm border">
+                            <td class="border ppbm">
                                 {{ item.female | number }}
                             </td>
-                            <td class="ppbm border">
+                            <td class="border ppbm">
                                 {{ item.percent_female | number: '1.2-2' }}
                             </td>
                             <td class="border ppbm">
                                 {{ item.total | number }}
                             </td>
-                            <td class="ppbm border">
+                            <td class="border ppbm">
                                 {{ item.percent_total | number: '1.2-2' }}
                             </td>
                         </tr>
                         <tr>
                             <td
-                                class="ppbm border fw-900"
+                                class="border ppbm fw-900"
                                 style="
                                     text-align: left !important;
                                     padding-left: 0.5rem;
@@ -123,25 +123,25 @@
                             >
                                 {{ populationByAgeGroupAndSexTotal.ageGroup }}
                             </td>
-                            <td class="ppbm border fw-900">
+                            <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.male
                                         | number
                                 }}
                             </td>
-                            <td class="ppbm border fw-900">
+                            <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_male
                                         | number: '1.2-2'
                                 }}
                             </td>
-                            <td class="ppbm border fw-900">
+                            <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.female
                                         | number
                                 }}
                             </td>
-                            <td class="ppbm border fw-900">
+                            <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_female
                                         | number: '1.2-2'
@@ -153,7 +153,7 @@
                                         | number
                                 }}
                             </td>
-                            <td class="ppbm border fw-900">
+                            <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_total
                                         | number: '1.2-2'

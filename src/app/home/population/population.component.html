@@ -80,16 +80,16 @@
     <PyramidChart-and-AgeGroup
         [location]="location"
         type="Population"
-        pyramidtitle="Population Pyramid"
+        pyramidTitle="Population Pyramid"
         ageGroupTitle="Population by Age Group and Sex"
         [colors]="['#0039A9', '#CD1125']"
         ageGroupColor="#0039A9"
     ></PyramidChart-and-AgeGroup>
 
     <div class="row">
-        <div class="col-md-12 mt-3">
+        <div class="mt-3 col-md-12">
             <div class="card">
-                <div class="card-header bg-white">
+                <div class="bg-white card-header">
                     <div class="card-title d-flex aic">
                         <span class="h4" style="margin-top: 1rem"
                             >Population Profile
@@ -123,8 +123,8 @@
                             *ngIf="populationProfile.barangays !== undefined"
                             class="w-100 row"
                         >
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h5 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h5 fw-300">
                                     Coverage
                                 </h5>
                                 <div class="fw-600 h6 c-red-700">
@@ -161,8 +161,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Total No. of
                                     {{
                                         location.barangay === null &&
@@ -175,8 +175,8 @@
                                     {{ populationProfile.barangays || 0 }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Total Land Area
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -184,8 +184,8 @@
                                     <small>sq.km</small>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Total Household Population
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -195,24 +195,24 @@
                                     }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Male
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
                                     {{ populationProfile.males || 0 }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Female
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
                                     {{ populationProfile.females || 0 }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Sex Ratio (males:females)
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -220,16 +220,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     No. of Households
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
                                     {{ populationProfile.households || 0 }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Average Household Size
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -239,16 +239,16 @@
                                     }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Population Density
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
                                     {{ populationProfile.density || 0 }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Age Dependency Ratio
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -258,8 +258,8 @@
                                     }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Child Dependency Ratio
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -269,8 +269,8 @@
                                     }}
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-2 bb pt-1">
-                                <h5 class="text-secondary mb-2 h6 fw-300">
+                            <div class="pt-1 mb-2 col-md-6 bb">
+                                <h5 class="mb-2 text-secondary h6 fw-300">
                                     Old-Age Dependency Ratio
                                 </h5>
                                 <div class="fw-600 h4 c-blue-900">
@@ -284,12 +284,12 @@
                                 *ngIf="
                                     populationProfile.dowloadable_link !== null
                                 "
-                                class="col-md-12 mt-2"
+                                class="mt-2 col-md-12"
                             >
                                 <label for=""
                                     >Download this data Population Profile on
-                                    this link</label
-                                >
+                                    this link
+                                </label>
                                 <a
                                     target="_blank"
                                     [href]="populationProfile.dowloadable_link"
@@ -302,11 +302,11 @@
             </div>
         </div>
 
-        <div class="col-md-12 mt-3">
+        <div class="mt-3 col-md-12">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
+                <div class="bg-white card-header d-flex aic">
                     <div
-                        class="card-title mr-auto mt-2 h4"
+                        class="mt-2 mr-auto card-title h4"
                         style="margin-top: 1rem"
                     >
                         Population Profile By Municipality
@@ -325,35 +325,35 @@
                         <thead>
                             <tr>
                                 <th rowspan="2">#</th>
-                                <th class="ppbm border text-left" rowspan="2">
+                                <th class="text-left border ppbm" rowspan="2">
                                     Municipality
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     No of Barangays
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     Land Area (sq.km)
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     Population Density (person/sq.km)
                                 </th>
                                 <th colspan="3" class="text-center border">
                                     Population
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     Sex Ratio
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     No. of HHs
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     Ave HH Size
                                 </th>
                             </tr>
                             <tr>
-                                <th class="ppbm border">Male</th>
-                                <th class="ppbm border">Female</th>
-                                <th class="ppbm border">Total</th>
+                                <th class="border ppbm">Male</th>
+                                <th class="border ppbm">Female</th>
+                                <th class="border ppbm">Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -401,11 +401,11 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-3">
+        <div class="mt-3 col-md-6">
             <div class="card">
                 <div class="card-header bgc-blue-900 d-flex aic">
                     <div
-                        class="card-title text-white mr-auto mt-2 h4"
+                        class="mt-2 mr-auto text-white card-title h4"
                         style="margin-top: 1rem"
                     >
                         Age Distribution (PROVINCE OF ILOILO)
@@ -425,13 +425,13 @@
                     >
                         <thead>
                             <tr>
-                                <th class="ppbm border">0-14</th>
-                                <th class="ppbm border">%</th>
-                                <th class="ppbm border">15-64</th>
-                                <th class="ppbm border">%</th>
-                                <th class="ppbm border">54 & Over</th>
-                                <th class="ppbm border">%</th>
-                                <th class="ppbm border">Total HH Population</th>
+                                <th class="border ppbm">0-14</th>
+                                <th class="border ppbm">%</th>
+                                <th class="border ppbm">15-64</th>
+                                <th class="border ppbm">%</th>
+                                <th class="border ppbm">54 & Over</th>
+                                <th class="border ppbm">%</th>
+                                <th class="border ppbm">Total HH Population</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -443,7 +443,7 @@
                                 <td lass="ppbm border">
                                     {{ item['0-14'] | number }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{
                                         getPercentage(
                                             item['0-14'],
@@ -451,10 +451,10 @@
                                         ) | number: '1.2-2'
                                     }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item['15-64'] | number }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{
                                         getPercentage(
                                             item['15-64'],
@@ -462,10 +462,10 @@
                                         ) | number: '1.2-2'
                                     }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item['65_and_over'] | number }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{
                                         getPercentage(
                                             item['65_and_over'],
@@ -473,7 +473,7 @@
                                         ) | number: '1.2-2'
                                     }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item.hh_population | number }}
                                 </td>
                             </tr>
@@ -483,11 +483,11 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-3">
+        <div class="mt-3 col-md-6">
             <div class="card">
                 <div class="card-header bgc-blue-900 d-flex aic">
                     <div
-                        class="card-title text-white mr-auto mt-2 h4"
+                        class="mt-2 mr-auto text-white card-title h4"
                         style="margin-top: 1rem"
                     >
                         Age Dependency Ratio (PROVINCE OF ILOILO)
@@ -507,9 +507,9 @@
                     >
                         <thead>
                             <tr>
-                                <th class="ppbm border">Young Dependency</th>
-                                <th class="ppbm border">Old Dependency</th>
-                                <th class="ppbm border">Dependency</th>
+                                <th class="border ppbm">Young Dependency</th>
+                                <th class="border ppbm">Old Dependency</th>
+                                <th class="border ppbm">Dependency</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -518,13 +518,13 @@
                                     let item of ageDistributionAndAgeDependencyRatio
                                 "
                             >
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item['young_dependency'] }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item.old_dependency }}
                                 </td>
-                                <td class="ppbm border">
+                                <td class="border ppbm">
                                     {{ item.dependency }}
                                 </td>
                             </tr>
@@ -534,7 +534,7 @@
             </div>
         </div>
 
-        <div class="col-md-12 mt-3">
+        <div class="mt-3 col-md-12">
             <div class="card-body d-flex aic jcc">
                 <img
                     class="w-50"
@@ -544,11 +544,11 @@
             </div>
         </div>
 
-        <div class="col-md-12 mt-3">
+        <div class="mt-3 col-md-12">
             <div class="card">
-                <div class="card-header bgc-blue-900 text-white d-flex aic">
+                <div class="text-white card-header bgc-blue-900 d-flex aic">
                     <div
-                        class="card-title mr-auto mt-2 h4"
+                        class="mt-2 mr-auto card-title h4"
                         style="margin-top: 1rem"
                     >
                         Age Distribution and Age Dependency Ratio by
@@ -569,10 +569,10 @@
                     >
                         <thead>
                             <tr>
-                                <th class="ppbm border text-left" rowspan="2">
+                                <th class="text-left border ppbm" rowspan="2">
                                     Municipality
                                 </th>
-                                <th class="ppbm border" rowspan="2">
+                                <th class="border ppbm" rowspan="2">
                                     HH Population
                                 </th>
                                 <th colspan="3" class="text-center border">
@@ -647,23 +647,23 @@
         [ngClass]="{'mt-3': innerWidth < 1139}"
     >
         <div class="col-md-12">
-            <div class="text-dark mb-4 h4">Top 10 Populated Municipalities</div>
+            <div class="mb-4 text-dark h4">Top 10 Populated Municipalities</div>
         </div>
 
-        <div *ngIf="topPopulated.length === 0" class="col-md-12 mb-4">
+        <div *ngIf="topPopulated.length === 0" class="mb-4 col-md-12">
             <NoDataComponent [data]="topPopulated"></NoDataComponent>
         </div>
 
         <top-populated
-            class="row m-0"
+            class="m-0 row"
             (onDelete)="deleteTopPopulated($event)"
             [topPopulated]="topPopulated"
         ></top-populated>
     </div>
 
     <div class="card">
-        <div class="card-header bg-white d-flex aic">
-            <div class="card-title mr-auto mt-2 h4">Technical Notes</div>
+        <div class="bg-white card-header d-flex aic">
+            <div class="mt-2 mr-auto card-title h4">Technical Notes</div>
             <Modal
                 *ngIf="!isUser"
                 size="lg"

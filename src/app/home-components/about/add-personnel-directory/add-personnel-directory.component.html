@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="">Choose Type of Official</label>
         <select [(ngModel)]="data.type" type="text" class="form-control">
-			<option *ngFor="let type of types">{{ type }}</option>
+			<option [value]="type" *ngFor="let type of types">{{ type  | titlecase }}</option>
 		</select>
     </div>
     <div class="form-group">

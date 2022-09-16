@@ -29,27 +29,36 @@ export class PopulationPyramidComponent implements OnInit {
         )
     }
 
-    isUser = !this.user.isSuperAdmin()
+    @Input()
+    showPyramid: boolean = true
 
-    private subscriptions = new Subscription()
+    @Input()
+    location?: LocationFIlter
+
+    @Input()
+    type: string = ''
+
+    @Input()
+    ageGroupColor: string = ''
+
+    @Input()
+    pyramidTitle: string = 'Pyramid'
+
+    @Input()
+    ageGroupTitle: string = 'Age Group and Sex'
+
+    @Input()
+    colors: string[] = []
+
+    readonly isUser = !this.user.isSuperAdmin()
+
+    subscriptions = new Subscription()
+
+    populationByAgeGroupAndSexTotal: any = {}
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()
     }
-
-    @Input() showPyramid: boolean = true
-
-    @Input() location?: LocationFIlter
-
-    @Input() type: string = ''
-
-    @Input() ageGroupColor: string = ''
-
-    @Input() pyramidtitle: string = 'Pyramid'
-
-    @Input() ageGroupTitle: string = 'Age Group and Sex'
-
-    @Input() colors: string[] = []
 
     isProvincial: boolean = false
 
@@ -170,7 +179,6 @@ export class PopulationPyramidComponent implements OnInit {
         this.sumOfRows(this.populationByAgeGroupAndSex, data)
     }
 
-    populationByAgeGroupAndSexTotal: any = {}
     sumOfRows(data: any, originalData: any) {
         let object: any = {
             ageGroup: 'Total',

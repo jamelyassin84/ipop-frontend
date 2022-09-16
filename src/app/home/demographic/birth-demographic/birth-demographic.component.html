@@ -68,8 +68,8 @@
 		></Modal> -->
     </div>
 
-    <div class="row mt-1 mb-4">
-        <div class="col-md-2 col-md-offset-1 mt-3 p-1">
+    <div class="mt-1 mb-4 row">
+        <div class="p-1 mt-3 col-md-2 col-md-offset-1">
             <SummaryComponent
                 title="Total Population"
                 icon="ti-user"
@@ -77,7 +77,7 @@
                 [value]="summaries?.summary?.total"
             ></SummaryComponent>
         </div>
-        <div class="col-md-2 mt-3 p-1">
+        <div class="p-1 mt-3 col-md-2">
             <SummaryComponent
                 title="Total Live Births"
                 icon="ti-pulse"
@@ -86,7 +86,7 @@
             ></SummaryComponent>
         </div>
 
-        <div class="col-md-2 mt-3 p-1">
+        <div class="p-1 mt-3 col-md-2">
             <SummaryComponent
                 title="Crude Birth Rate"
                 icon="ti-pulse"
@@ -95,7 +95,7 @@
             ></SummaryComponent>
         </div>
 
-        <div class="col-md-3 mt-3 p-1">
+        <div class="p-1 mt-3 col-md-3">
             <SummaryWithPercent
                 title="Teenage Births"
                 icon="ti-pulse"
@@ -111,7 +111,7 @@
             ></SummaryWithPercent>
         </div>
 
-        <div class="col-md-3 mt-3 p-1">
+        <div class="p-1 mt-3 col-md-3">
             <SummaryWithPercent
                 title="Illegitimate Births"
                 icon="ti-pulse"
@@ -134,20 +134,20 @@
 		[showPyramid]="false"
 		[location]="location"
 		type="Birth"
-		pyramidtitle="Birth Pyramid"
+		pyramidTitle="Birth Pyramid"
 		ageGroupTitle="Births by Age Group and Sex"
 		[colors]="['#3DB98D', '#73B436']"
 		ageGroupColor="#73B436"
 	></PyramidChart-and-AgeGroup> -->
 
-    <div class="row mt-3">
+    <div class="mt-3 row">
         <div
-            class="col-md-8 m-0"
+            class="m-0 col-md-8"
             [ngClass]="{'col-md-12': location.municipality === null}"
         >
             <div class="card">
-                <div class="card-header bg-white d-flex">
-                    <div class="0 mr-auto h4">Birth Statistics</div>
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto 0 h4">Birth Statistics</div>
                     <Modal
                         *ngIf="!isSuperAdmin"
                         size="lg"
@@ -175,11 +175,11 @@
             </div>
         </div>
 
-        <div class="layers col-md-4 m-0" *ngIf="location.municipality != null">
+        <div class="m-0 layers col-md-4" *ngIf="location.municipality != null">
             <div class="layer w-100">
                 <div class="card">
-                    <div class="card-header bg-white d-flex">
-                        <div class="0 mr-auto">Local Birth Data</div>
+                    <div class="bg-white card-header d-flex">
+                        <div class="mr-auto 0">Local Birth Data</div>
                         <div *ngIf="!isSuperAdmin" class="ml-auto">
                             <DropDown [buttons]="Illegitimate"></DropDown>
                             <ng-template #Illegitimate>
@@ -230,8 +230,8 @@
     <div class="row mT-50">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex">
-                    <div class="0 mr-auto h4">Incidence of Teenage Births</div>
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto 0 h4">Incidence of Teenage Births</div>
                     <div *ngIf="!isUser" class="ml-auto">
                         <DropDown [buttons]="Teenage"></DropDown>
                         <ng-template #Teenage>
@@ -262,8 +262,8 @@
 
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex">
-                    <div class="0 mr-auto h4">
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto 0 h4">
                         Incidence of Illegitimate Births
                     </div>
                     <div *ngIf="!isUser" class="ml-auto">
@@ -293,14 +293,14 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="!isUser" class="col-md-12 mt-1">
+        <div *ngIf="!isUser" class="mt-1 col-md-12">
             <div class="alert alert-primary">
                 Note: All Data inputted here will reflect on the summary at the
                 top depending on the year chosen
             </div>
         </div>
 
-        <div class="col-md-12 mt-4">
+        <div class="mt-4 col-md-12">
             <ByMunicipalityTable
                 title="Births by Municipality"
                 headerClass="#0BA551"
@@ -311,10 +311,10 @@
             ></ByMunicipalityTable>
         </div>
 
-        <div class="col-md-12 mt-2">
+        <div class="mt-2 col-md-12">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title 0 mr-auto mt-2 h4">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mt-2 mr-auto card-title 0 h4">
                         Technical Notes
                     </div>
 
