@@ -1,46 +1,46 @@
 <div class="bg-light">
-	<ng-template #addMarriageData>
-		<AddMarriageData></AddMarriageData>
-	</ng-template>
-	<ng-template #localDataForm>
-		<CustomizeMarriageLocalData></CustomizeMarriageLocalData>
-	</ng-template>
+    <ng-template #addMarriageData>
+        <AddMarriageData></AddMarriageData>
+    </ng-template>
+    <ng-template #localDataForm>
+        <CustomizeMarriageLocalData></CustomizeMarriageLocalData>
+    </ng-template>
 
-	<ng-template #customizeMonthChart>
-		<CustomizeMonthChart
-			[single]="true"
-			type="Marriage"
-			[location]="location"
-		></CustomizeMonthChart>
-	</ng-template>
+    <ng-template #customizeMonthChart>
+        <CustomizeMonthChart
+            [single]="true"
+            type="Marriage"
+            [location]="location"
+        ></CustomizeMonthChart>
+    </ng-template>
 
-	<ng-template #customizeTechnicalNotes>
-		<CustomizeTechnicalNotes type="Marriages"></CustomizeTechnicalNotes>
-	</ng-template>
+    <ng-template #customizeTechnicalNotes>
+        <CustomizeTechnicalNotes type="Marriages"></CustomizeTechnicalNotes>
+    </ng-template>
 
-	<ng-template #viewOfficials>
-		<ViewOfficials></ViewOfficials>
-	</ng-template>
+    <ng-template #viewOfficials>
+        <ViewOfficials></ViewOfficials>
+    </ng-template>
 
-	<ng-template #addOfficials>
-		<AddOfficials></AddOfficials>
-	</ng-template>
+    <ng-template #addOfficials>
+        <AddOfficials></AddOfficials>
+    </ng-template>
 
-	<div
-		class="d-flex"
-		style="justify-content: flex-end; position: relative; z-index: 1"
-	>
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add a Marriage Data"
-			btnTitle="Add marriage data"
-			btnClass="btn btn-sm btn-dark mr-2"
-			[template]="addMarriageData"
-			icon="ti-plus"
-		></Modal>
+    <div
+        class="d-flex"
+        style="justify-content: flex-end; position: relative; z-index: 1"
+    >
+        <Modal
+            *ngIf="!isUser"
+            size="lg"
+            title="Add a Marriage Data"
+            btnTitle="Add marriage data"
+            btnClass="btn btn-sm btn-dark mr-2"
+            [template]="addMarriageData"
+            icon="ti-plus"
+        ></Modal>
 
-		<!-- <Modal
+        <!-- <Modal
 			*ngIf="!isUser"
 			size="lg"
 			title="Add Officials"
@@ -58,252 +58,252 @@
 			[template]="viewOfficials"
 			icon="ti-pin"
 		></Modal> -->
-	</div>
+    </div>
 
-	<div class="row mt-3 mb-4">
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Total Population"
-				icon="ti-user"
-				spanClass="bgc-blue-50 c-blue-500"
-				[value]="summaries?.summary?.population"
-			></SummaryComponent>
-		</div>
+    <div class="row mt-3 mb-4">
+        <div class="col-md-3 p-1">
+            <SummaryComponent
+                title="Total Population"
+                icon="ti-user"
+                spanClass="bgc-blue-50 c-blue-500"
+                [value]="summaries?.summary?.population"
+            ></SummaryComponent>
+        </div>
 
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Total Marriages"
-				icon="ti-infinite"
-				spanClass="bgc-pink-50 c-pink-500"
-				[value]="summaries?.summary?.total_marriages"
-			></SummaryComponent>
-		</div>
+        <div class="col-md-3 p-1">
+            <SummaryComponent
+                title="Total Marriages"
+                icon="ti-infinite"
+                spanClass="bgc-pink-50 c-pink-500"
+                [value]="summaries?.summary?.total_marriages"
+            ></SummaryComponent>
+        </div>
 
-		<div class="col-md-2 p-1">
-			<SummaryWithPercent
-				title="Church"
-				icon="ti-infinite"
-				spanClass="bgc-green-50 c-green-500"
-				progressClass="bgc-red-500 "
-				[value]="summaries?.summary?.church"
-				[percentValue]="
-					getPercentage(
-						summaries?.summary?.church || 0,
-						summaries?.summary?.total_marriages || 0
-					)
-				"
-			></SummaryWithPercent>
-		</div>
+        <div class="col-md-2 p-1">
+            <SummaryWithPercent
+                title="Church"
+                icon="ti-infinite"
+                spanClass="bgc-green-50 c-green-500"
+                progressClass="bgc-red-500 "
+                [value]="summaries?.summary?.church"
+                [percentValue]="
+                    getPercentage(
+                        summaries?.summary?.church || 0,
+                        summaries?.summary?.total_marriages || 0
+                    )
+                "
+            ></SummaryWithPercent>
+        </div>
 
-		<div class="col-md-2 p-1">
-			<SummaryWithPercent
-				title="Civil"
-				icon="ti-infinite"
-				spanClass="bgc-purple-50 c-purple-500"
-				progressClass="bgc-red-500 "
-				[value]="summaries?.summary?.civil"
-				[percentValue]="
-					getPercentage(
-						summaries?.summary?.civil || 0,
-						summaries?.summary?.total_marriages || 0
-					)
-				"
-			></SummaryWithPercent>
-		</div>
+        <div class="col-md-2 p-1">
+            <SummaryWithPercent
+                title="Civil"
+                icon="ti-infinite"
+                spanClass="bgc-purple-50 c-purple-500"
+                progressClass="bgc-red-500 "
+                [value]="summaries?.summary?.civil"
+                [percentValue]="
+                    getPercentage(
+                        summaries?.summary?.civil || 0,
+                        summaries?.summary?.total_marriages || 0
+                    )
+                "
+            ></SummaryWithPercent>
+        </div>
 
-		<div class="col-md-2 p-1">
-			<SummaryWithPercent
-				title="Others"
-				icon="ti-infinite"
-				spanClass="bgc-orange-50 c-orange-500"
-				progressClass="bgc-red-500 "
-				[value]="summaries?.summary?.others"
-				[percentValue]="
-					getPercentage(
-						summaries?.summary?.others || 0,
-						summaries?.summary?.total_marriages || 0
-					)
-				"
-			></SummaryWithPercent>
-		</div>
-	</div>
+        <div class="col-md-2 p-1">
+            <SummaryWithPercent
+                title="Others"
+                icon="ti-infinite"
+                spanClass="bgc-orange-50 c-orange-500"
+                progressClass="bgc-red-500 "
+                [value]="summaries?.summary?.others"
+                [percentValue]="
+                    getPercentage(
+                        summaries?.summary?.others || 0,
+                        summaries?.summary?.total_marriages || 0
+                    )
+                "
+            ></SummaryWithPercent>
+        </div>
+    </div>
 
-	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-	<PyramidChart-and-AgeGroup
-		[showPyramid]="false"
-		[location]="location"
-		type="Marriage"
-		pyramidtitle="Marriage Pyramid"
-		ageGroupTitle="Marriages by Age Group and Sex"
-		[colors]="['#D4A77D', '#D7A405']"
-		ageGroupColor="#D7A405"
-	></PyramidChart-and-AgeGroup>
+    <PyramidChart-and-AgeGroup
+        [showPyramid]="false"
+        [location]="location"
+        type="Marriage"
+        pyramidtitle="Marriage Pyramid"
+        ageGroupTitle="Marriages by Age Group and Sex"
+        [colors]="['#D4A77D', '#D7A405']"
+        ageGroupColor="#D7A405"
+    ></PyramidChart-and-AgeGroup>
 
-	<div class="row mt-3">
-		<div
-			class="col-md-8 m-0"
-			[ngClass]="{ 'col-md-12': location.municipality === null }"
-		>
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="mr-auto">Marriage by Month of Wedding</div>
-					<Modal
-						*ngIf="!isSuperAdmin"
-						size="lg"
-						title="Customize Statistical Wedding Data"
-						btnTitle="Customize statistical data"
-						btnClass="btn btn-sm btn-dark mr-2"
-						[template]="customizeMonthChart"
-						icon="ti-pencil-alt"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<div class="chart">
-						<canvas
-							baseChart
-							[colors]="Colors"
-							[datasets]="statisticalChart.datasets"
-							[labels]="statisticalChart.labels"
-							[options]="statisticalChart.options"
-							[legend]="statisticalChart.legend"
-							chartType="line"
-						>
-						</canvas>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="row mt-3">
+        <div
+            class="col-md-8 m-0"
+            [ngClass]="{'col-md-12': location.municipality === null}"
+        >
+            <div class="card">
+                <div class="card-header bg-white d-flex">
+                    <div class="mr-auto">Marriage by Month of Marriage</div>
+                    <Modal
+                        *ngIf="!isSuperAdmin"
+                        size="lg"
+                        title="Customize Statistical Marriage Data"
+                        btnTitle="Customize statistical data"
+                        btnClass="btn btn-sm btn-dark mr-2"
+                        [template]="customizeMonthChart"
+                        icon="ti-pencil-alt"
+                    ></Modal>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas
+                            baseChart
+                            [colors]="Colors"
+                            [datasets]="statisticalChart.datasets"
+                            [labels]="statisticalChart.labels"
+                            [options]="statisticalChart.options"
+                            [legend]="statisticalChart.legend"
+                            chartType="line"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-4" *ngIf="location.municipality != null">
-			<div class="layer w-100">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<span>Local Marriage Data</span>
-						<div class="ml-auto" *ngIf="localData.id != null">
-							<DropDown [buttons]="LocalMarriageData"></DropDown>
-							<ng-template #LocalMarriageData>
-								<Modal
-									size="lg"
-									title="Customize Local Marriage Data"
-									btnTitle="Customize local marriage data"
-									btnClass="dropdown-item"
-									[template]="localDataForm"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
+        <div class="col-md-4" *ngIf="location.municipality != null">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="card-header bg-white d-flex">
+                        <span>Local Marriage Data</span>
+                        <div class="ml-auto" *ngIf="localData.id != null">
+                            <DropDown [buttons]="LocalMarriageData"></DropDown>
+                            <ng-template #LocalMarriageData>
+                                <Modal
+                                    size="lg"
+                                    title="Customize Local Marriage Data"
+                                    btnTitle="Customize local marriage data"
+                                    btnClass="dropdown-item"
+                                    [template]="localDataForm"
+                                ></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
 
-					<div class="layer w-100 card-body">
-						<TitleWithIcon
-							title="Population"
-							icon="ti-user mr-2"
-							color="mB-5 text-primary"
-							[value]="localData?.population"
-						></TitleWithIcon>
+                    <div class="layer w-100 card-body">
+                        <TitleWithIcon
+                            title="Population"
+                            icon="ti-user mr-2"
+                            color="mB-5 text-primary"
+                            [value]="localData?.population"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="Total Marriages"
-							icon="ti-infinite mr-2"
-							color="mB-5 c-purple-500"
-							[value]="localData?.total_marriages"
-						></TitleWithIcon>
+                        <TitleWithIcon
+                            title="Total Marriages"
+                            icon="ti-infinite mr-2"
+                            color="mB-5 c-purple-500"
+                            [value]="localData?.total_marriages"
+                        ></TitleWithIcon>
 
-						<TitleWithPercent
-							title="Church"
-							icon="ti-infinite mr-2"
-							color="mB-5  c-green-500"
-							[value]="localData?.church"
-							[percentValue]="
-								getPercentage(
-									localData?.church || 0,
-									localData?.total_marriages || 0
-								)
-							"
-							progressColor="bgc-green-500"
-						></TitleWithPercent>
+                        <TitleWithPercent
+                            title="Church"
+                            icon="ti-infinite mr-2"
+                            color="mB-5  c-green-500"
+                            [value]="localData?.church"
+                            [percentValue]="
+                                getPercentage(
+                                    localData?.church || 0,
+                                    localData?.total_marriages || 0
+                                )
+                            "
+                            progressColor="bgc-green-500"
+                        ></TitleWithPercent>
 
-						<TitleWithPercent
-							title="Civil"
-							icon="ti-infinite mr-2"
-							color="mB-5  c-purple-500"
-							[value]="localData?.civil"
-							[percentValue]="
-								getPercentage(
-									localData?.civil || 0,
-									localData?.total_marriages || 0
-								)
-							"
-							progressColor="bgc-purple-500"
-						></TitleWithPercent>
+                        <TitleWithPercent
+                            title="Civil"
+                            icon="ti-infinite mr-2"
+                            color="mB-5  c-purple-500"
+                            [value]="localData?.civil"
+                            [percentValue]="
+                                getPercentage(
+                                    localData?.civil || 0,
+                                    localData?.total_marriages || 0
+                                )
+                            "
+                            progressColor="bgc-purple-500"
+                        ></TitleWithPercent>
 
-						<TitleWithPercent
-							title="Others"
-							icon="ti-infinite mr-2"
-							color="mB-5 c-orange-500"
-							[value]="localData?.others"
-							[percentValue]="
-								getPercentage(
-									localData?.others || 0,
-									localData?.total_marriages || 0
-								)
-							"
-							progressColor="bgc-orange-500"
-						></TitleWithPercent>
-					</div>
-				</div>
-			</div>
-		</div>
+                        <TitleWithPercent
+                            title="Others"
+                            icon="ti-infinite mr-2"
+                            color="mB-5 c-orange-500"
+                            [value]="localData?.others"
+                            [percentValue]="
+                                getPercentage(
+                                    localData?.others || 0,
+                                    localData?.total_marriages || 0
+                                )
+                            "
+                            progressColor="bgc-orange-500"
+                        ></TitleWithPercent>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-6 mt-4">
-			<ByMunicipalityTable
-				title="Marriages by Municipality"
-				headerClass="#D7A405"
-				[headers]="marriagesByMuncipalityHeaders"
-				[body]="marriagesByMuncipality"
-				[keys]="marriagesByMuncipalityKeys"
-				type="Marriage"
-			></ByMunicipalityTable>
-		</div>
+        <div class="col-md-6 mt-4">
+            <ByMunicipalityTable
+                title="Marriages by Municipality"
+                headerClass="#D7A405"
+                [headers]="marriagesByMunicipalityHeaders"
+                [body]="marriagesByMunicipality"
+                [keys]="marriagesByMunicipalityKeys"
+                type="Marriage"
+            ></ByMunicipalityTable>
+        </div>
 
-		<div class="col-md-6 mt-4">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title mr-auto mt-2">Type of Weddings</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						baseChart
-						[colors]="Colors"
-						[datasets]="marriageConfig.datasets"
-						[labels]="marriageConfig.labels"
-						[options]="marriageConfig.options"
-						[legend]="marriageConfig.legend"
-						chartType="bar"
-					>
-					</canvas>
-				</div>
-			</div>
-		</div>
+        <div class="col-md-6 mt-4">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title mr-auto mt-2">Type of Marriages</div>
+                </div>
+                <div class="card-body">
+                    <canvas
+                        baseChart
+                        [colors]="Colors"
+                        [datasets]="marriageConfig.datasets"
+                        [labels]="marriageConfig.labels"
+                        [options]="marriageConfig.options"
+                        [legend]="marriageConfig.legend"
+                        chartType="bar"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title mr-auto mt-2">Technical Notes</div>
-					<Modal
-						*ngIf="!isUser"
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes type="Marriage"></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-md-12 mt-3">
+            <div class="card">
+                <div class="card-header bg-white d-flex aic">
+                    <div class="card-title mr-auto mt-2">Technical Notes</div>
+                    <Modal
+                        *ngIf="!isUser"
+                        size="lg"
+                        title="Customize Technical Notes"
+                        btnTitle="Customize technical notes"
+                        btnClass="btn btn-sm btn-dark"
+                        [template]="customizeTechnicalNotes"
+                        icon="ti-notepad"
+                    ></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes type="Marriage"></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

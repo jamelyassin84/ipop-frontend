@@ -1,215 +1,216 @@
-import { LocalBirthDataService } from './../../../Services/home/demographic/births/local-birth-data.service'
-import { Component, OnInit, ViewChild } from '@angular/core'
-import { ReloadService } from 'src/app/Services/reload.service'
-import { MonthChartConfig } from '../MonthChart'
-import { groupBy } from 'src/app/constants/helpers'
-import { IllegitimateIncidenceChartConfig } from '../illegitamate'
-import { TeenageIncidenceChartConfig } from '../Incidence.Chart'
-import { BaseService } from 'src/app/Services/base.service'
-import { Subscription } from 'rxjs'
-import { PopulationPyramidComponent } from '../../population/population-pyramid/population-pyramid.component'
-import { UserService } from 'src/app/Services/Independent/user.service'
-import { Color } from 'ng2-charts'
+import {LocalBirthDataService} from './../../../Services/home/demographic/births/local-birth-data.service'
+import {Component, OnInit, ViewChild} from '@angular/core'
+import {ReloadService} from 'src/app/Services/reload.service'
+import {MonthChartConfig} from '../MonthChart'
+import {groupBy} from 'src/app/constants/helpers'
+import {IllegitimateIncidenceChartConfig} from '../illegitamate'
+import {TeenageIncidenceChartConfig} from '../Incidence.Chart'
+import {BaseService} from 'src/app/Services/base.service'
+import {Subscription} from 'rxjs'
+import {PopulationPyramidComponent} from '../../population/population-pyramid/population-pyramid.component'
+import {UserService} from 'src/app/Services/Independent/user.service'
+import {Color} from 'ng2-charts'
+import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
+import {illegitimateIncidenceChartConfig} from 'src/app/app-core/configs/illegitimate-chart.config'
+import {teenageIncidenceChartConfig} from 'src/app/app-core/configs/teenage-chart.config'
+import {
+    birthsByMunicipalityHeaders,
+    birthsByMunicipalityKeys,
+} from 'src/app/app-core/constants/births/births.table'
+import {monthChartConfig} from 'src/app/app-core/configs/month-chart.config'
 
 @Component({
-	selector: 'app-birth-demographic',
-	templateUrl: './birth-demographic.component.html',
-	styleUrls: ['./birth-demographic.component.scss'],
+    selector: 'app-birth-demographic',
+    templateUrl: './birth-demographic.component.html',
+    styleUrls: ['./birth-demographic.component.scss'],
 })
 export class BirthDemographicComponent implements OnInit {
-	@ViewChild(PopulationPyramidComponent) pyramid?: any
+    @ViewChild(PopulationPyramidComponent) pyramid?: any
 
-	constructor(
-		private component: ReloadService,
-		private service: LocalBirthDataService,
-		private user: UserService
-	) {
-		this.subscriptions.add(
-			this.component.shouldReload().subscribe(() => {
-				this.fetch(this.location)
-			})
-		)
-	}
+    constructor(
+        private user: UserService,
+        private component: ReloadService,
+        private service: LocalBirthDataService,
+    ) {
+        this.subscriptions.add(
+            this.component.shouldReload().subscribe(() => {
+                this.fetch(this.location)
+            }),
+        )
+    }
 
-	Colors: Color[] = [
-		{ backgroundColor: '#73B436' },
-		{ backgroundColor: '#3DB98D' },
-		{ backgroundColor: '#2CA763' },
-	]
+    readonly Colors: Color[] = [
+        {backgroundColor: '#73B436'},
+        {backgroundColor: '#3DB98D'},
+        {backgroundColor: '#2CA763'},
+    ]
 
-	isUser = !this.user.isAdmin()
-	isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isAdmin()
+    readonly isSuperAdmin = !this.user.isSuperAdmin()
+    readonly birthsByMunicipalityKeys = birthsByMunicipalityKeys
+    readonly birthsByMunicipalityHeaders = birthsByMunicipalityHeaders
 
-	private subscriptions = new Subscription()
+    subscriptions = new Subscription()
 
-	ngOnDestroy(): void {
-		this.subscriptions.unsubscribe()
-	}
+    incidenceChart = {...illegitimateIncidenceChartConfig}
+    teenageChart = {...teenageIncidenceChartConfig}
+    statisticalChart = {...monthChartConfig}
 
-	incidenceChart: any = IllegitimateIncidenceChartConfig
-	teenageChart: any = TeenageIncidenceChartConfig
-	distribute(incidences: any) {
-		this.clearChart()
-		let illegitimateBirth = incidences[0]
-		let teenageBirth = incidences[1]
-		if (
-			incidences.length !== 0 &&
-			incidences[0][0].title !== 'Incidence of Illegitimate Birth'
-		) {
-			teenageBirth = incidences[0]
-			illegitimateBirth = incidences[1]
-		}
-		for (let index in teenageBirth) {
-			if (!this.teenageChart.labels.includes(teenageBirth[index].year)) {
-				this.teenageChart.labels.push(teenageBirth[index].year)
-			}
-			this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
+    illegitimateBirths: number = 0
 
-			if (teenageBirth[index].year === this.location.year) {
-				this.teenageBirths += teenageBirth[index].value
-			}
-		}
+    teenageBirths: number = 0
 
-		this.illegitimateBirths = 0
-		for (let index in illegitimateBirth) {
-			if (
-				!this.incidenceChart.labels.includes(
-					illegitimateBirth[index].year
-				)
-			) {
-				this.incidenceChart.labels.push(illegitimateBirth[index].year)
-			}
-			this.incidenceChart.datasets[0].data.push(
-				illegitimateBirth[index].value
-			)
+    location: LocationFIlter = {
+        barangay: null,
+        municipality: null,
+        year: null,
+    }
 
-			if (illegitimateBirth[index].year === this.location.year) {
-				this.illegitimateBirths += illegitimateBirth[index].value
-			}
-		}
-	}
+    summaries: any = {}
 
-	illegitimateBirths: number = 0
-	teenageBirths: number = 0
+    localData: any = {}
 
-	location: any = {
-		barangay: null,
-		municipality: null,
-		year: null,
-	}
+    birthsByMunicipality: any = []
 
-	fetch(event: any) {
-		this.location = event
-		this.getSummary()
-		this.getLocalData()
-		this.getBIrthsByMunicipality()
-	}
+    ngOnInit(): void {
+        this.location.year = new Date().getFullYear()
+    }
 
-	summaries: any = {}
-	getSummary() {
-		new BaseService(
-			this.service.http,
-			'birth-statistics/summary',
-			`year=${this.location['year']}`
-		)
-			.index()
-			.subscribe((data) => {
-				this.summaries = data
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe()
+    }
 
-				if (this.pyramid) {
-					this.pyramid.fetch()
-				}
-			})
-	}
+    fetch(event: any) {
+        this.location = event
+        this.getSummary()
+        this.getLocalData()
+        this.getBIrthsByMunicipality()
+    }
 
-	localData: any = {}
-	getLocalData() {
-		this.localData = {}
-		const service = new BaseService(
-			this.service.http,
-			this.service.url,
-			`municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`
-		)
-		service.index().subscribe((summaries: any) => {
-			this.distribute(groupBy(summaries.incidence, 'title'))
-			this.localData = summaries?.data || {}
-			this.processStatisticalChart(summaries.month)
-		})
-	}
+    distribute(incidences: any) {
+        this.clearChart()
+        let illegitimateBirth = incidences[0]
+        let teenageBirth = incidences[1]
+        if (
+            incidences.length !== 0 &&
+            incidences[0][0].title !== 'Incidence of Illegitimate Birth'
+        ) {
+            teenageBirth = incidences[0]
+            illegitimateBirth = incidences[1]
+        }
+        for (let index in teenageBirth) {
+            if (!this.teenageChart.labels.includes(teenageBirth[index].year)) {
+                this.teenageChart.labels.push(teenageBirth[index].year)
+            }
+            this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
 
-	processStatisticalChart(months: Array<Statistic>) {
-		this.statisticalChart.labels = []
-		this.statisticalChart.datasets[0].data = []
-		this.statisticalChart.datasets[1].data = []
-		this.statisticalChart.datasets[2].data = []
-		if (months.length === 0) {
-			return
-		}
-		let labels: any = []
-		let males: any = []
-		let females: any = []
-		let total: any = []
-		months.forEach((data: Statistic) => {
-			if (!labels.includes(data.month)) {
-				labels.push(data.month)
-			}
-			males.push(data.males)
-			females.push(data.females)
-			total.push(data.total)
-		})
-		this.statisticalChart.labels = labels
-		this.statisticalChart.datasets[0].data = females
-		this.statisticalChart.datasets[1].data = males
-		this.statisticalChart.datasets[2].data = total
-	}
+            if (teenageBirth[index].year === this.location.year) {
+                this.teenageBirths += teenageBirth[index].value
+            }
+        }
 
-	birthsByMunicipality: any = []
-	birthsByMunicipalityKeys: any = [
-		'municipality',
-		'crude_birth_rate',
-		'teenage_births',
-		'illegitimate_births',
-		'general_fertility_rate',
-	]
-	birthsByMunicipalityHeaders = [
-		'Municipality',
-		'Crude Birth Rate',
-		'Teenage Births',
-		'Illegitimate Births',
-		'General Fertility Rate',
-	]
-	getBIrthsByMunicipality() {
-		new BaseService(
-			this.service.http,
-			'birth-statistics-by-municipality',
-			`year=${this.location['year']}`
-		)
-			.index()
-			.subscribe((data) => {
-				this.birthsByMunicipality = data
-			})
-	}
+        this.illegitimateBirths = 0
+        for (let index in illegitimateBirth) {
+            if (
+                !this.incidenceChart.labels.includes(
+                    illegitimateBirth[index].year,
+                )
+            ) {
+                this.incidenceChart.labels.push(illegitimateBirth[index].year)
+            }
+            this.incidenceChart.datasets[0].data.push(
+                illegitimateBirth[index].value,
+            )
 
-	statisticalChart: any = MonthChartConfig
-	clearChart() {
-		this.teenageChart.labels = []
-		this.incidenceChart.labels = []
-		this.teenageChart.datasets[0].data = []
-		this.incidenceChart.datasets[0].data = []
-	}
+            if (illegitimateBirth[index].year === this.location.year) {
+                this.illegitimateBirths += illegitimateBirth[index].value
+            }
+        }
+    }
 
-	ngOnInit(): void {
-		this.location.year = new Date().getFullYear()
-	}
+    getSummary() {
+        new BaseService(
+            this.service.http,
+            'birth-statistics/summary',
+            `year=${this.location['year']}`,
+        )
+            .index()
+            .subscribe((data) => {
+                this.summaries = data
 
-	getPercentage(value: number, basis: number) {
-		return (value * 100) / basis
-	}
+                if (this.pyramid) {
+                    this.pyramid.fetch()
+                }
+            })
+    }
+
+    getLocalData() {
+        this.localData = {}
+        const service = new BaseService(
+            this.service.http,
+            this.service.url,
+            `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`,
+        )
+        service.index().subscribe((summaries: any) => {
+            this.distribute(groupBy(summaries.incidence, 'title'))
+            this.localData = summaries?.data || {}
+            this.processStatisticalChart(summaries.month)
+        })
+    }
+
+    processStatisticalChart(months: Array<Statistic>) {
+        this.statisticalChart.labels = []
+        this.statisticalChart.datasets[0].data = []
+        this.statisticalChart.datasets[1].data = []
+        this.statisticalChart.datasets[2].data = []
+        if (months.length === 0) {
+            return
+        }
+        let labels: any = []
+        let males: any = []
+        let females: any = []
+        let total: any = []
+        months.forEach((data: Statistic) => {
+            if (!labels.includes(data.month)) {
+                labels.push(data.month)
+            }
+            males.push(data.males)
+            females.push(data.females)
+            total.push(data.total)
+        })
+        this.statisticalChart.labels = labels
+        this.statisticalChart.datasets[0].data = females
+        this.statisticalChart.datasets[1].data = males
+        this.statisticalChart.datasets[2].data = total
+    }
+
+    getBIrthsByMunicipality() {
+        new BaseService(
+            this.service.http,
+            'birth-statistics-by-municipality',
+            `year=${this.location['year']}`,
+        )
+            .index()
+            .subscribe((data) => {
+                this.birthsByMunicipality = data
+            })
+    }
+
+    clearChart() {
+        this.teenageChart.labels = []
+        this.incidenceChart.labels = []
+        this.teenageChart.datasets[0].data = []
+        this.incidenceChart.datasets[0].data = []
+    }
+
+    getPercentage(value: number, basis: number) {
+        return (value * 100) / basis
+    }
 }
 
 type Statistic = {
-	males: number
-	females: number
-	total: number
-	month: number
+    males: number
+    females: number
+    total: number
+    month: number
 }

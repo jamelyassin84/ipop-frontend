@@ -1,0 +1,55 @@
+export const teenageIncidenceChartConfig = {
+    options: {
+        scaleShowVerticalLines: false,
+        responsive: true,
+    },
+    labels: [
+        '2021',
+        '2022',
+        '2023',
+        '2024',
+        '2025',
+        '2026',
+        '2027',
+        '2028',
+        '2029',
+        '2030',
+        '2031',
+        '2032',
+    ],
+    legend: false,
+    datasets: [
+        {
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            label: 'Female',
+        },
+    ],
+}
+
+export const IncidenceChartConfig = {
+    options: {
+        scaleShowVerticalLines: false,
+        responsive: true,
+    },
+    labels: [
+        '2021',
+        '2022',
+        '2023',
+        '2024',
+        '2025',
+        '2026',
+        '2027',
+        '2028',
+        '2029',
+        '2030',
+        '2031',
+        '2032',
+    ],
+    legend: false,
+    datasets: [
+        {
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            label: 'Count',
+        },
+    ],
+}

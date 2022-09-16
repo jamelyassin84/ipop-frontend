@@ -8,6 +8,7 @@ import {ReloadService} from 'src/app/Services/reload.service'
 import {Subscription} from 'rxjs'
 import {Location} from 'src/app/home-components/population/customize-pyramid/customize-pyramid.component'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
+import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -38,7 +39,7 @@ export class PopulationPyramidComponent implements OnInit {
 
     @Input() showPyramid: boolean = true
 
-    @Input() location?: Location
+    @Input() location?: LocationFIlter
 
     @Input() type: string = ''
 

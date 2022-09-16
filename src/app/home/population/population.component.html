@@ -48,7 +48,7 @@
             *ngIf="!isUser"
             class="md:t-mx-1"
             icon="ti-plus mr-2"
-            [template]="ageDistributionAndDependecyRatio"
+            [template]="ageDistributionAndAgeDependencyRatio"
             btnTitle="Age Distribution & Age Dependency"
             title="Add Age Distribution and Age Dependency ratio"
             btnClass="t-px-3 t-bg-blue-800 t-text-white  mb-2 w-100 t-py-2 md:t-mr-5"
@@ -314,11 +314,11 @@
                 </div>
                 <div class="card-body">
                     <NoDataComponent
-                        [data]="populationByMuncipality"
+                        [data]="populationByMunicipality"
                     ></NoDataComponent>
                     <Spinner></Spinner>
                     <table
-                        *ngIf="populationByMuncipality.length !== 0"
+                        *ngIf="populationByMunicipality.length !== 0"
                         class="table table-striped"
                         [ngClass]="{'table-responsive': innerWidth < 1139}"
                     >
@@ -326,7 +326,7 @@
                             <tr>
                                 <th rowspan="2">#</th>
                                 <th class="ppbm border text-left" rowspan="2">
-                                    Muncipality
+                                    Municipality
                                 </th>
                                 <th class="ppbm border" rowspan="2">
                                     No of Barangays
@@ -359,7 +359,7 @@
                         <tbody>
                             <tr
                                 *ngFor="
-                                    let data of populationByMuncipality;
+                                    let data of populationByMunicipality;
                                     let i = index
                                 "
                             >
@@ -413,11 +413,13 @@
                 </div>
                 <div class="card-body">
                     <NoDataComponent
-                        [data]="AgeDistributionAndAgeDependecyRatio"
+                        [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
                     <Spinner></Spinner>
                     <table
-                        *ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+                        *ngIf="
+                            ageDistributionAndAgeDependencyRatio.length !== 0
+                        "
                         class="table table-striped"
                         [ngClass]="{'table-responsive': innerWidth < 1139}"
                     >
@@ -435,7 +437,7 @@
                         <tbody>
                             <tr
                                 *ngFor="
-                                    let item of AgeDistributionAndAgeDependecyRatio
+                                    let item of ageDistributionAndAgeDependencyRatio
                                 "
                             >
                                 <td lass="ppbm border">
@@ -493,11 +495,13 @@
                 </div>
                 <div class="card-body">
                     <NoDataComponent
-                        [data]="AgeDistributionAndAgeDependecyRatio"
+                        [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
                     <Spinner></Spinner>
                     <table
-                        *ngIf="AgeDistributionAndAgeDependecyRatio.length !== 0"
+                        *ngIf="
+                            ageDistributionAndAgeDependencyRatio.length !== 0
+                        "
                         class="table table-striped"
                         [ngClass]="{'table-responsive': innerWidth < 1139}"
                     >
@@ -511,7 +515,7 @@
                         <tbody>
                             <tr
                                 *ngFor="
-                                    let item of AgeDistributionAndAgeDependecyRatio
+                                    let item of ageDistributionAndAgeDependencyRatio
                                 "
                             >
                                 <td class="ppbm border">
@@ -553,15 +557,12 @@
                 </div>
                 <div class="card-body">
                     <NoDataComponent
-                        [data]="
-                            AgeDistributionAndAgeDependecyRatioByMunicipality
-                        "
+                        [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
                     <Spinner></Spinner>
                     <table
                         *ngIf="
-                            AgeDistributionAndAgeDependecyRatioByMunicipality.length !==
-                            0
+                            ageDistributionAndAgeDependencyRatio.length !== 0
                         "
                         class="table table-striped"
                         [ngClass]="{'table-responsive': innerWidth < 1139}"
@@ -569,7 +570,7 @@
                         <thead>
                             <tr>
                                 <th class="ppbm border text-left" rowspan="2">
-                                    Muncipality
+                                    Municipality
                                 </th>
                                 <th class="ppbm border" rowspan="2">
                                     HH Population
@@ -594,7 +595,7 @@
                         <tbody>
                             <tr
                                 *ngFor="
-                                    let item of AgeDistributionAndAgeDependecyRatioByMunicipality
+                                    let item of ageDistributionAndAgeDependencyRatio
                                 "
                             >
                                 <td class="border ppbm">
