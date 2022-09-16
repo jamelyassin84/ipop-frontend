@@ -1,8 +1,15 @@
-<carousel *ngIf="images.length !== 0" [height]="500" [cellsToShow]="1" [dots]="true" [margin]="0">
-    <div *ngFor="let image of images" class="carousel-cell" style="background: black">
+<carousel
+    [margin]="0"
+    [height]="500"
+    [cellsToShow]="1"
+    [dots]="true"
+    *ngIf="images.length !== 0"
+>
+    <div *ngFor="let image of images" class="carousel-cell">
         <img [src]="image" />
     </div>
 </carousel>
+
 <p class="text-center text-info" *ngIf="images.length === 0">
     There are no images
 </p>
