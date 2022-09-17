@@ -1,63 +1,122 @@
-<div class="card-body">
-    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+<div *ngIf="location$ | async" @expandCollapse class="card-body">
     <div class="row">
         <div class="form-group col-md-3">
             <label for="January">January</label>
-            <input [(ngModel)]="data['males'].January" type="number" class="form-control" id="January" />
+            <input
+                [(ngModel)]="data['males'].January"
+                type="number"
+                class="form-control"
+                id="January"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="February">February</label>
-            <input [(ngModel)]="data['males'].February" type="number" class="form-control" id="February" />
+            <input
+                [(ngModel)]="data['males'].February"
+                type="number"
+                class="form-control"
+                id="February"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="March">March</label>
-            <input [(ngModel)]="data['males'].March" type="number" class="form-control" id="March" />
+            <input
+                [(ngModel)]="data['males'].March"
+                type="number"
+                class="form-control"
+                id="March"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="April">April</label>
-            <input [(ngModel)]="data['males'].April" type="number" class="form-control" id="April" />
+            <input
+                [(ngModel)]="data['males'].April"
+                type="number"
+                class="form-control"
+                id="April"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="May">May</label>
-            <input [(ngModel)]="data['males'].May" type="number" class="form-control" id="May" />
+            <input
+                [(ngModel)]="data['males'].May"
+                type="number"
+                class="form-control"
+                id="May"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="June">June</label>
-            <input [(ngModel)]="data['males'].June" type="number" class="form-control" id="June" />
+            <input
+                [(ngModel)]="data['males'].June"
+                type="number"
+                class="form-control"
+                id="June"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="July">July</label>
-            <input [(ngModel)]="data['males'].July" type="number" class="form-control" id="July" />
+            <input
+                [(ngModel)]="data['males'].July"
+                type="number"
+                class="form-control"
+                id="July"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="August">August</label>
-            <input [(ngModel)]="data['males'].August" type="number" class="form-control" id="August" />
+            <input
+                [(ngModel)]="data['males'].August"
+                type="number"
+                class="form-control"
+                id="August"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="September">September</label>
-            <input [(ngModel)]="data['males'].September" type="number" class="form-control" id="September" />
+            <input
+                [(ngModel)]="data['males'].September"
+                type="number"
+                class="form-control"
+                id="September"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="October">October</label>
-            <input [(ngModel)]="data['males'].October" type="number" class="form-control" id="October" />
+            <input
+                [(ngModel)]="data['males'].October"
+                type="number"
+                class="form-control"
+                id="October"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="November">November</label>
-            <input [(ngModel)]="data['males'].November" type="number" class="form-control" id="November" />
+            <input
+                [(ngModel)]="data['males'].November"
+                type="number"
+                class="form-control"
+                id="November"
+            />
         </div>
         <div class="form-group col-md-3">
             <label for="December">December</label>
-            <input [(ngModel)]="data['males'].December" type="number" class="form-control" id="December" />
+            <input
+                [(ngModel)]="data['males'].December"
+                type="number"
+                class="form-control"
+                id="December"
+            />
         </div>
     </div>
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i>Save this Statistical Data</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i>Save this Statistical Data</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

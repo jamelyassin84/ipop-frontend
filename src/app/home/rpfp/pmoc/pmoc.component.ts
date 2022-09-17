@@ -105,12 +105,14 @@ export class PmocComponent implements OnInit {
     renderNumberOfCouplesChart(data: any) {
         this.numberOfCouplesData = data
 
-        console.log(data)
-
         this.numberOfCouplesChart.datasets = [{data: [0], label: 'Couples'}]
 
+        this.numberOfCouplesChart.datasets[0].data = []
+
         for (let index in data) {
-            this.numberOfCouplesChart.datasets[0].data.push(data[index].males)
+            const males = data[index].males
+
+            this.numberOfCouplesChart.datasets[0].data.push(males)
         }
     }
 
