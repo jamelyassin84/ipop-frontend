@@ -9,6 +9,7 @@ import {Subscription} from 'rxjs'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 import {PyramidData} from 'src/app/app-core/models/population-pyramid'
+import {PopulationPyramidChartService} from './population-pyramid.service'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -21,6 +22,7 @@ export class PopulationPyramidComponent implements OnInit {
         private _http: HttpClient,
         private user: UserService,
         private component: ReloadService,
+        private _populationPyramidChartService: PopulationPyramidChartService,
     ) {
         this.subscriptions.add(
             this.component.shouldReload().subscribe(() => {
@@ -50,8 +52,6 @@ export class PopulationPyramidComponent implements OnInit {
     @Input()
     colors: string[] = []
 
-    readonly LAST = '80 and above'
-
     readonly isUser = !this.user.isSuperAdmin()
 
     subscriptions = new Subscription()
@@ -79,80 +79,29 @@ export class PopulationPyramidComponent implements OnInit {
     ngOnInit(): void {}
 
     fetch() {
-        this.getPopulationPyramid()
-
-        if (
-            this.location?.barangay === null &&
-            this.location?.municipality === null
-        ) {
-        }
-    }
-
-    getPopulationPyramid() {
-        const service = new BaseService(
+        new BaseService(
             this._http,
             'population-pyramid',
-            `municipality=${this.location?.municipality}&barangay=${this.location?.barangay}&year=${this.location?.year}&type=${this.type}`,
+            `${new URLSearchParams({
+                type: this.type,
+                year: this.location!.year!.toString(),
+                barangay: this.location?.barangay ?? 'null',
+                municipality: this.location?.municipality ?? 'null',
+            })}`,
         )
-
-        service.index().subscribe((data: any) => {
-            let ageDistribution: any[] = [['Age', 'Male', 'Female']]
-
-            if (data.length !== 0) {
+            .index()
+            .subscribe((data: any) => {
                 this.processPopulationByAgeGroupAndSex(data)
 
-                data = data.reverse()
+                this.ageDistribution =
+                    this._populationPyramidChartService.process(data)
 
-                const male = data[0]['data']['male']
-
-                const female = data[0]['data']['female']
-
-                for (let key in female) {
-                    if (key !== 'below_1_year_old') {
-                        if (key !== '1-4') {
-                            let newText = ''
-
-                            if (key === 'eighty_and_above') {
-                                newText = '80 and above'
-                            }
-
-                            if (key === '1-4') {
-                                ageDistribution.push([
-                                    key === key,
-                                    -Math.abs(parseFloat(male[key])) +
-                                        parseFloat(male['below_1_year_old']),
-                                    parseFloat(female[key]) +
-                                        parseFloat(female['below_1_year_old']),
-                                ])
-                            } else {
-                                ageDistribution.push([
-                                    key === 'eighty_and_above' ? newText : key,
-                                    -Math.abs(parseFloat(male[key])),
-                                    parseFloat(female[key]),
-                                ])
-                            }
-                        }
-                    }
-                }
-
-                // ageDistribution.push([
-                // 	'Below 1 Year Old',
-                // 	-Math.abs(parseFloat(male['below_1_year_old'])),
-                // 	female['below_1_year_old'],
-                // ])
-            } else {
-                ageDistribution = []
-            }
-
-            console.log(ageDistribution)
-
-            drawChart('population-pyramid', ageDistribution, this.colors)
-
-            this.ageDistribution =
-                ageDistribution[1][0] === this.LAST
-                    ? ageDistribution
-                    : ageDistribution.reverse()
-        })
+                drawChart(
+                    'population-pyramid',
+                    this.ageDistribution,
+                    this.colors,
+                )
+            })
     }
 
     processPopulationByAgeGroupAndSex(data: Array<any>) {
