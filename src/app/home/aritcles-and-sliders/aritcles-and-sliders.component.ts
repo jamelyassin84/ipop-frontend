@@ -31,10 +31,12 @@ export class AritclesAndSlidersComponent implements OnInit {
             }),
         )
     }
-    isUser = !this.user.isAdmin()
-    isSuperAdmin = this.user.isSuperAdmin()
+    readonly isUser = !this.user.isAdmin()
+    readonly isSuperAdmin = this.user.isSuperAdmin()
 
-    private subscriptions = new Subscription()
+    readonly filterList = ['all', 'today', 'week', 'month']
+
+    subscriptions = new Subscription()
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()

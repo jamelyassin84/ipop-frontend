@@ -38,67 +38,41 @@
 
 <div style="position: relative; z-index: 0" *ngIf="images.length !== 0">
     <carousel
-        [height]="500"
-        [cellsToShow]="innerWidth > 1139 ? 2.3 : 1"
-        [dots]="true"
-        [autoplay]="true"
-        [autoplayInterval]="2000"
-        [borderRadius]="5"
         [margin]="0"
+        [height]="500"
+        [dots]="true"
+        [autoplay]="images.length < 2 ? false : true"
+        [borderRadius]="5"
+        [autoplayInterval]="2000"
+        [cellsToShow]="innerWidth > 1139 ? (images.length === 1 ? 1 : 2.3) : 1"
     >
         <div
-            *ngFor="let image of images"
             class="carousel-cell"
-            style="background: rgba(0, 0, 0, 0.1)"
+            *ngFor="let image of images"
+            style="min-height: 50vh; background-color: rgba(0, 0, 0, 0.1)"
         >
-            <img style="object-fit: cover" [src]="image" />
+            <img [src]="image" />
         </div>
     </carousel>
 </div>
 
-<div class="row d-flex jcc bg-light">
-    <div class="col-md-8">
-        <ul class="bg-white nav nav-tabs mT-50 d-flex">
-            <li class="nav-item">
+<div class="t-grid t-grid-cols-1 md:t-grid-cols-3 bg-light t-gap-10 mT-40">
+    <div [@listAnimation]="articles.length" class="md:t-col-span-2 t-bg-white">
+        <ul class="bg-white nav nav-tabs d-flex">
+            <li *ngFor="let tab of filterList" class="nav-item">
                 <a
                     role="button"
-                    class="nav-link text-muted"
-                    (click)="setTab('all')"
-                    [class.active]="tabs.all === true"
+                    (click)="setTab(tab)"
+                    class="nav-link"
+                    [ngClass]="{
+                        't-bg-bg-brand t-text-white ': tabs[tab],
+                        'text-muted': !tabs[tab]
+                    }"
                 >
-                    <i class="ti-timer"></i> All
+                    <i class="ti-timer"></i> {{ tab | titlecase }}
                 </a>
             </li>
-            <li class="nav-item">
-                <a
-                    role="button"
-                    class="nav-link text-muted"
-                    (click)="setTab('today')"
-                    [class.active]="tabs.today === true"
-                >
-                    <i class="ti-timer"></i> Today
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    role="button"
-                    class="nav-link text-muted"
-                    (click)="setTab('week')"
-                    [class.active]="tabs.week === true"
-                >
-                    <i class="ti-timer"></i> This Week
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    role="button"
-                    class="nav-link text-muted"
-                    (click)="setTab('month')"
-                    [class.active]="tabs.month === true"
-                >
-                    <i class="ti-timer"></i> This Month
-                </a>
-            </li>
+
             <li *ngIf="!isUser" class="ml-auto mr-2">
                 <DropDown [buttons]="nav"></DropDown>
                 <ng-template #nav>
@@ -113,6 +87,7 @@
                 </ng-template>
             </li>
         </ul>
+
         <NoDataComponent [data]="articles"></NoDataComponent>
 
         <div class="m-0 bl br" *ngFor="let article of articles">
@@ -154,12 +129,13 @@
                             [src]="article.photos[0].file.uri"
                             alt=""
                         />
+
                         <Modal
                             size="xl"
                             [title]="'Images of ' + article.title"
                             btnTitle="View Images"
                             [template]="imageViewer"
-                            btnClass="btn btn-link w-100 text-center"
+                            btnClass="md:hover:t-underline t-text-blue-500 t-text-center t-mt-3 t-w-full"
                             (click)="transformImages(article.photos)"
                         >
                         </Modal>
@@ -168,8 +144,9 @@
             </div>
         </div>
     </div>
-    <div class="p-0 m-0 col-md-3 w-100">
-        <div class="bg-white mT-90 card">
+
+    <div @slideInRight class="p-0 m-0 w-100">
+        <div class="bg-white card">
             <div class="card-header bgc-blue-900 d-flex h4 aic">
                 <div class="mr-auto text-white">Quick links</div>
                 <Modal
