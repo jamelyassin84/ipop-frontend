@@ -114,8 +114,10 @@ export class CustomizePyramidComponent implements OnInit {
         this.tabs[tab] = true
     }
 
-    fetch(event: LocationFIlter) {
-        const {barangay, municipality, year} = event
+    fetch(location: LocationFIlter) {
+        const {barangay, municipality, year} = location
+
+        this.populationPyramid = {...this.populationPyramid, location}
         this.populationPyramid.barangay = barangay
         this.populationPyramid.municipality = municipality
         this.populationPyramid.year = year
@@ -123,7 +125,12 @@ export class CustomizePyramidComponent implements OnInit {
         const service = new BaseService(
             this._http,
             'population-pyramid',
-            `municipality=${municipality}&barangay=${barangay}&year=${year}&type=${this.type}`,
+            `${new URLSearchParams({
+                type: this.type,
+                year: year!.toString(),
+                barangay: barangay ?? 'null',
+                municipality: municipality ?? 'null',
+            })}`,
         )
 
         service.index().subscribe((response: any) => {
@@ -143,6 +150,10 @@ export class CustomizePyramidComponent implements OnInit {
                 let data = {...this.populationPyramid}
 
                 data.type = this.type
+
+                if (this.populationPyramid.municipality === 'Bingawan') {
+                    data.data.male = data.data.female
+                }
 
                 this.service.create(data).subscribe(() => {
                     HasApprovals('Created')

@@ -24,7 +24,9 @@
     </ng-template>
 
     <ng-template #customizeCoupleChart>
-        <CustomizeCoupleChart></CustomizeCoupleChart>
+        <CustomizeCoupleChart
+            [data]="numberOfCouplesData"
+        ></CustomizeCoupleChart>
     </ng-template>
 
     <ng-template #customizePMOCTeam>
@@ -40,7 +42,7 @@
     </ng-template>
 
     <div
-        class="d-flex mb-4"
+        class="mb-4 d-flex"
         style="justify-content: flex-end; position: relative; z-index: 1"
     >
         <Modal
@@ -57,10 +59,10 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <div class="row">
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex">
-                    <div class="card-title h5 mr-auto">Number of Couples</div>
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto card-title h5">Number of Couples</div>
                     <DropDown *ngIf="!isUser" [buttons]="NCDD"></DropDown>
                     <ng-template #NCDD>
                         <Modal
@@ -91,11 +93,11 @@
             @slideInRight
             @slideOutRight
             *ngIf="localData"
-            class="col-md-6 mt-4 mt-4"
+            class="mt-4 col-md-6"
         >
             <div class="card">
-                <div class="card-header bg-white d-flex">
-                    <div class="card-title h5 mr-auto">Local PMOC Data</div>
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto card-title h5">Local PMOC Data</div>
                     <DropDown
                         *ngIf="localData?.id != null && !isUser"
                         [buttons]="LocalPMOC"
@@ -113,7 +115,7 @@
                 <div class="layer w-100 card-body">
                     <div class="layer w-100 mT-15">
                         <h5 class="text-primary">
-                            <i class="ti-user mr-2"></i
+                            <i class="mr-2 ti-user"></i
                             >{{ localData?.sessions }}
                         </h5>
                         <small class="fw-600 c-grey-700">
@@ -122,7 +124,7 @@
                     </div>
                     <div class="layer w-100 mT-15">
                         <h5 class="text-success">
-                            <i class="ti-user mr-2"></i
+                            <i class="mr-2 ti-user"></i
                             >{{ localData?.oriented_couples }}
                         </h5>
                         <small class="fw-600 c-grey-700"
@@ -131,7 +133,7 @@
                     </div>
                     <div class="layer w-100 mT-15">
                         <h5 class="t-text-green-500">
-                            <i class="ti-user mr-2"></i
+                            <i class="mr-2 ti-user"></i
                             >{{ localData?.oriented_couples ?? 0 * 2 }}
                         </h5>
                         <small class="fw-600 c-grey-700"
@@ -144,10 +146,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">
                         PMC Couple Applicants by Age Group
                     </div>
                     <DropDown
@@ -178,10 +180,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">
                         PMC Applicants by Employment Status and Sex
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="ESDD"></DropDown>
@@ -209,10 +211,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">
                         Knowledge on Family Planning among PMC Applicants
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="KFDD"></DropDown>
@@ -241,10 +243,10 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">
                         Percentage Distribution of PMC Applicants by Civil
                         Status
                     </div>
@@ -273,10 +275,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="mt-4 col-md-6">
             <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">
                         PMC Applicants by Average Monthly Income and Sex
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="AMDD"></DropDown>
@@ -304,10 +306,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4 mt-4">
+        <div class="mt-4 col-md-6">
             <!-- <div class="card">
-                <div class="card-header bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto">PMOC Team</div>
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mr-auto card-title h5">PMOC Team</div>
                     <DropDown [buttons]="PMOCTEAMDD"></DropDown>
                     <ng-template #PMOCTEAMDD>
                         <Modal size="lg" title="Edit PMOC Team" btnTitle="Edit  pmoc team" btnClass="dropdown-item" [template]="customizePMOCTeam"></Modal>
@@ -316,9 +318,9 @@
                 <div class="layer w-100 card-body"></div>
             </div> -->
 
-            <div class="card mt-5">
-                <div class="card-header bg-white bg-white d-flex aic">
-                    <div class="card-title h5 mr-auto mt-2">
+            <div class="mt-5 card">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mt-2 mr-auto card-title h5">
                         Technical Notes
                     </div>
                     <Modal

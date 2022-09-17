@@ -71,6 +71,8 @@ export class PmocComponent implements OnInit {
     ByKnowledgeOnFP = {...ByKnowledgeOnFPConfig}
     byMonthlyIncome = {...byMonthlyIncomeConfig}
 
+    numberOfCouplesData?: any
+
     ngOnInit(): void {}
 
     fetch(event: any) {
@@ -101,7 +103,12 @@ export class PmocComponent implements OnInit {
     }
 
     renderNumberOfCouplesChart(data: any) {
+        this.numberOfCouplesData = data
+
+        console.log(data)
+
         this.numberOfCouplesChart.datasets = [{data: [0], label: 'Couples'}]
+
         for (let index in data) {
             this.numberOfCouplesChart.datasets[0].data.push(data[index].males)
         }
