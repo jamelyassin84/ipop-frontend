@@ -48,8 +48,6 @@ export class CustomizeCoupleChartComponent implements OnInit {
             if (location) {
                 this.data = {...this.data, ...location}
 
-                console.log(location)
-
                 this.fetch(location)
             }
         }),

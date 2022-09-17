@@ -1,3 +1,4 @@
+import {map, tap} from 'rxjs/operators'
 import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
 import {HttpClient} from '@angular/common/http'
 import {Component, Input, OnInit} from '@angular/core'
@@ -12,6 +13,10 @@ import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 import {PyramidData} from 'src/app/app-core/models/population-pyramid'
 import {PopulationPyramidChartService} from './population-pyramid.service'
 import {PopulationByAgeGroupTableService} from './population-by-age-group-and-sex.service'
+import {AppState} from 'src/app/app-core/store/core/app.state'
+import {select, Store} from '@ngrx/store'
+import {StateEnum} from 'src/app/app-core/store/core/state.enum'
+import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -23,6 +28,7 @@ export class PopulationPyramidComponent implements OnInit {
     constructor(
         private _http: HttpClient,
         private user: UserService,
+        private _store: Store<AppState>,
         private component: ReloadService,
         private _populationPyramidChartService: PopulationPyramidChartService,
         private _populationByAgeGroupTableService: PopulationByAgeGroupTableService,
@@ -37,7 +43,10 @@ export class PopulationPyramidComponent implements OnInit {
     @Input()
     showPyramid: boolean = true
 
-    @Input()
+    @Input('location')
+    set setLocation(location: LocationFIlter) {
+        this.location = location
+    }
     location?: LocationFIlter
 
     @Input()
@@ -54,6 +63,16 @@ export class PopulationPyramidComponent implements OnInit {
 
     @Input()
     colors: string[] = []
+
+    location$ = this._store.pipe(
+        select(StateEnum.LOCATION_FILTERS),
+        map((x) => new TransformEntity(x).toObject()),
+        tap((location) => {
+            if (location) {
+                this.location = {...location}
+            }
+        }),
+    )
 
     readonly isUser = !this.user.isSuperAdmin()
 
@@ -77,11 +96,11 @@ export class PopulationPyramidComponent implements OnInit {
 
     hasPyramid: boolean = false
 
+    ngOnInit(): void {}
+
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()
     }
-
-    ngOnInit(): void {}
 
     fetch() {
         new BaseService(
@@ -103,11 +122,13 @@ export class PopulationPyramidComponent implements OnInit {
 
                     this.hasPyramid = false
 
-                    drawChart(
-                        'population-pyramid',
-                        this.ageDistribution,
-                        this.colors,
-                    )
+                    setTimeout(() => {
+                        drawChart(
+                            'population-pyramid',
+                            this.ageDistribution,
+                            this.colors,
+                        )
+                    }, 500)
 
                     return
                 }
@@ -117,13 +138,15 @@ export class PopulationPyramidComponent implements OnInit {
                 this.ageDistribution =
                     this._populationPyramidChartService.process(data)
 
-                drawChart(
-                    'population-pyramid',
-                    this.ageDistribution,
-                    this.colors,
-                )
-
                 this.hasPyramid = true
+
+                setTimeout(() => {
+                    drawChart(
+                        'population-pyramid',
+                        this.ageDistribution,
+                        this.colors,
+                    )
+                }, 500)
             })
     }
 

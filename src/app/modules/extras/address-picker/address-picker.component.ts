@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {NavigationEnd, Router} from '@angular/router'
 import {Store} from '@ngrx/store'
 import {map, take, tap} from 'rxjs/operators'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {AddressPickerEnum} from 'src/app/app-core/enums/address-picker.enum'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 import {StoreAction} from 'src/app/app-core/store/core/action.enum'
@@ -15,6 +16,7 @@ import {BarangayOfficialType} from 'src/app/Types/officials/BarangayOfficials.ty
     selector: 'AddressPicker',
     templateUrl: './address-picker.component.html',
     styleUrls: ['./address-picker.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class AddressPickerComponent implements OnInit {
     constructor(

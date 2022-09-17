@@ -1,0 +1,125 @@
+<div
+    @expandCollapse
+    *ngIf="populationProfile.barangays && location"
+    class="w-100 row"
+>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h5 fw-300">Coverage</h5>
+        <div class="fw-600 h6 c-red-700">
+            <span class="fw-600 h6">
+                <span class="" *ngIf="location.barangay !== null">
+                    {{ location.barangay | titlecase }}
+                </span>
+                <span class="" *ngIf="location.municipality !== null">
+                    {{ location.municipality | titlecase }}
+                </span>
+                <span
+                    class=""
+                    *ngIf="
+                        location.barangay === null &&
+                        location.municipality === null
+                    "
+                >
+                    42 Municipalities + 1 Component City
+                </span>
+                <span class="">
+                    {{ location.year }}
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">
+            Total No. of
+            {{
+                location.barangay === null && location.municipality === null
+                    ? 'Barangays'
+                    : 'Puroks'
+            }}
+        </h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.barangays || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Total Land Area</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.land_area || 0 }}
+            <small>sq.km</small>
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">
+            Total Household Population
+        </h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.household_population || 0 | number }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Male</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.males || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Female</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.females || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Sex Ratio (males:females)</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.sex_ratio }}
+        </div>
+    </div>
+
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">No. of Households</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.households || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Average Household Size</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.average_household_size || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Population Density</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.density || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Age Dependency Ratio</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.age_dependency_ratio || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Child Dependency Ratio</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.child_dependency_ratio || 0 }}
+        </div>
+    </div>
+    <div class="pt-1 mb-2 col-md-6 bb">
+        <h5 class="mb-2 text-secondary h6 fw-300">Old-Age Dependency Ratio</h5>
+        <div class="fw-600 h4 c-blue-900">
+            {{ populationProfile.old_age_dependency_ratio || 0 }}
+        </div>
+    </div>
+    <div
+        *ngIf="populationProfile.dowloadable_link !== null"
+        class="mt-2 col-md-12"
+    >
+        <label for=""
+            >Download this data Population Profile on this link
+        </label>
+        <a target="_blank" [href]="populationProfile.dowloadable_link">{{
+            populationProfile.dowloadable_link
+        }}</a>
+    </div>
+</div>

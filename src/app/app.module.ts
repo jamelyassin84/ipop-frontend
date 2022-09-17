@@ -142,7 +142,12 @@ import {SharedModule} from './shared/shared.module'
 import {StoreModule} from '@ngrx/store'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
-import {StoreRouterConnectingModule} from '@ngrx/router-store'
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import { PopulationProfileComponent } from './home/population/population-profile/population-profile.component';
+import { PopulationByMunicipalityComponent } from './home/population/population-by-municipality/population-by-municipality.component';
+import { AgeDistributionDependencyComponent } from './home/population/age-distribution-dependency/age-distribution-dependency.component';
+import { AgeDistributionComponent } from './home/population/age-distribution/age-distribution.component';
+import { AgeDistributionDependencyByMunicipalityComponent } from './home/population/age-distribution-dependency-by-municipality/age-distribution-dependency-by-municipality.component'
 
 @NgModule({
     declarations: [
@@ -245,6 +250,11 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store'
         ResponsiveTableDirective,
         EditTcServicesComponent,
         EditProgramComponent,
+        PopulationProfileComponent,
+        PopulationByMunicipalityComponent,
+        AgeDistributionDependencyComponent,
+        AgeDistributionComponent,
+        AgeDistributionDependencyByMunicipalityComponent,
     ],
     imports: [
         BrowserModule,

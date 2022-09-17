@@ -1,0 +1,61 @@
+<table
+    *ngIf="populationByMunicipality.length !== 0 && innerWidth"
+    class="table table-striped"
+    [ngClass]="{'table-responsive': innerWidth < 1139}"
+>
+    <thead>
+        <tr>
+            <th rowspan="2">#</th>
+            <th class="text-left border ppbm" rowspan="2">Municipality</th>
+            <th class="border ppbm" rowspan="2">No of Barangays</th>
+            <th class="border ppbm" rowspan="2">Land Area (sq.km)</th>
+            <th class="border ppbm" rowspan="2">
+                Population Density (person/sq.km)
+            </th>
+            <th colspan="3" class="text-center border">Population</th>
+            <th class="border ppbm" rowspan="2">Sex Ratio</th>
+            <th class="border ppbm" rowspan="2">No. of HHs</th>
+            <th class="border ppbm" rowspan="2">Ave HH Size</th>
+        </tr>
+        <tr>
+            <th class="border ppbm">Male</th>
+            <th class="border ppbm">Female</th>
+            <th class="border ppbm">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of populationByMunicipality; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td class="border">
+                {{ data.municipality | titlecase }}
+            </td>
+            <td class="text-center border">
+                {{ data.barangays }}
+            </td>
+            <td class="text-center border">
+                {{ data.land_area }}
+            </td>
+            <td class="text-center border">
+                {{ data.density }}
+            </td>
+            <td class="text-center border">
+                {{ data.males }}
+            </td>
+            <td class="text-center border">
+                {{ data.females }}
+            </td>
+            <td class="text-center border">
+                {{ total(data.males, data.females) }}
+            </td>
+            <td class="text-center border">
+                {{ data.sex_ratio }}
+            </td>
+            <td class="text-center border">
+                {{ data.household_population }}
+            </td>
+            <td class="text-center border">
+                {{ data.average_household_size }}
+            </td>
+        </tr>
+    </tbody>
+</table>

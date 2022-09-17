@@ -1,0 +1,55 @@
+<table
+    *ngIf="
+        innerWidth &&
+        ageDistributionAndAgeDependencyRatio &&
+        ageDistributionAndAgeDependencyRatio.length !== 0
+    "
+    class="table table-striped"
+    [ngClass]="{'table-responsive': innerWidth < 1139}"
+>
+    <thead>
+        <tr>
+            <th class="border ppbm">0-14</th>
+            <th class="border ppbm">%</th>
+            <th class="border ppbm">15-64</th>
+            <th class="border ppbm">%</th>
+            <th class="border ppbm">54 & Over</th>
+            <th class="border ppbm">%</th>
+            <th class="border ppbm">Total HH Population</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of ageDistributionAndAgeDependencyRatio">
+            <td lass="ppbm border">
+                {{ item['0-14'] | number }}
+            </td>
+            <td class="border ppbm">
+                {{
+                    getPercentage(item['0-14'], item.hh_population)
+                        | number: '1.2-2'
+                }}
+            </td>
+            <td class="border ppbm">
+                {{ item['15-64'] | number }}
+            </td>
+            <td class="border ppbm">
+                {{
+                    getPercentage(item['15-64'], item.hh_population)
+                        | number: '1.2-2'
+                }}
+            </td>
+            <td class="border ppbm">
+                {{ item['65_and_over'] | number }}
+            </td>
+            <td class="border ppbm">
+                {{
+                    getPercentage(item['65_and_over'], item.hh_population)
+                        | number: '1.2-2'
+                }}
+            </td>
+            <td class="border ppbm">
+                {{ item.hh_population | number }}
+            </td>
+        </tr>
+    </tbody>
+</table>

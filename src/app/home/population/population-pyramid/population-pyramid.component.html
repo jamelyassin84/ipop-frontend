@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="location$ | async" class="row">
     <div *ngIf="showPyramid" class="col-md-6">
         <div class="card">
             <div class="bg-white card-header">
