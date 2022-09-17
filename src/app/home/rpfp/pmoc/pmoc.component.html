@@ -86,7 +86,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4 mt-4">
+
+        <div
+            @slideInRight
+            @slideOutRight
+            *ngIf="localData"
+            class="col-md-6 mt-4 mt-4"
+        >
             <div class="card">
                 <div class="card-header bg-white d-flex">
                     <div class="card-title h5 mr-auto">Local PMOC Data</div>
@@ -108,7 +114,7 @@
                     <div class="layer w-100 mT-15">
                         <h5 class="text-primary">
                             <i class="ti-user mr-2"></i
-                            >{{ localData?.sessions || 0 }}
+                            >{{ localData?.sessions }}
                         </h5>
                         <small class="fw-600 c-grey-700">
                             Number of Sessions Conducted
@@ -117,16 +123,16 @@
                     <div class="layer w-100 mT-15">
                         <h5 class="text-success">
                             <i class="ti-user mr-2"></i
-                            >{{ localData?.oriented_couples || 0 }}
+                            >{{ localData?.oriented_couples }}
                         </h5>
                         <small class="fw-600 c-grey-700"
                             >Number of Couples Oriented
                         </small>
                     </div>
                     <div class="layer w-100 mT-15">
-                        <h5 class="text-warning">
+                        <h5 class="t-text-green-500">
                             <i class="ti-user mr-2"></i
-                            >{{ localData?.individuals_interviewed || 0 }}
+                            >{{ localData?.oriented_couples ?? 0 * 2 }}
                         </h5>
                         <small class="fw-600 c-grey-700"
                             >Number of Individual Interviewed

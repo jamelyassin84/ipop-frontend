@@ -1,9 +1,7 @@
 import {PmocDataService} from './../../../Services/home/rpfp/pmoc/pmoc-data.service'
-import {PMOCType} from './../../../Types/rpfp/pmoc/PMOC.types'
 import {KnowledgeOnFpService} from './../../../Services/home/rpfp/pmoc/knowledge-on-fp.service'
 import {AverageMonthlyIncomeService} from './../../../Services/home/rpfp/pmoc/average-monthly-income.service'
 import {CivilStatusService} from './../../../Services/home/rpfp/pmoc/civil-status.service'
-import {NumberOfCouplesService} from './../../../Services/home/rpfp/pmoc/number-of-couples.service'
 import {Component, OnInit} from '@angular/core'
 import {ByAgeGroupConfig} from './ByAgeGroup'
 import {ByCIvilStatusConfig} from './ByCIvilStatus'
@@ -19,11 +17,13 @@ import {Subscription} from 'rxjs'
 import {UserService} from 'src/app/Services/Independent/user.service'
 import {Color} from 'ng2-charts'
 import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'app-pmoc',
     templateUrl: './pmoc.component.html',
     styleUrls: ['./pmoc.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class PmocComponent implements OnInit {
     constructor(
@@ -43,24 +43,36 @@ export class PmocComponent implements OnInit {
         )
     }
 
-    private subscriptions = new Subscription()
+    subscriptions = new Subscription()
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()
     }
 
-    isUser = !this.user.isAdmin()
+    readonly isUser = !this.user.isAdmin()
 
-    Colors: Color[] = [
+    readonly Colors: Color[] = [
         {backgroundColor: '#CD1125'},
         {backgroundColor: '#0039A9'},
         {backgroundColor: '#D7A405'},
     ]
 
-    location: any = {
+    readonly location: any = {
         municipality: null,
         year: null,
     }
+
+    localData: any = undefined
+
+    numberOfCouplesChart = {...PMOCMonthChartConfig}
+    ByAgeGroup = {...ByAgeGroupConfig}
+    ByCIvilStatus = {...ByCIvilStatusConfig}
+    ByEmploymentStatus = {...ByEmploymentStatusConfig}
+    ByKnowledgeOnFP = {...ByKnowledgeOnFPConfig}
+    byMonthlyIncome = {...byMonthlyIncomeConfig}
+
+    ngOnInit(): void {}
+
     fetch(event: any) {
         this.location.municipality = event.municipality
         this.location.year = event.year
@@ -72,11 +84,8 @@ export class PmocComponent implements OnInit {
         this.getbyMonthlyIncome()
     }
 
-    localData: any = {}
     getLocalData() {
-        for (let key in this.localData) {
-            this.localData[key] = 0
-        }
+        this.localData = undefined
         const service = new BaseService(
             this.service.http,
             this.service.url,
@@ -227,6 +236,7 @@ export class PmocComponent implements OnInit {
             this.ByKnowledgeOnFP.datasets[2].data = [
                 parseFloat(data.males) + parseFloat(data.females),
             ]
+            this.ByKnowledgeOnFP.datasets[3].data = [0]
         })
     }
 
@@ -277,12 +287,4 @@ export class PmocComponent implements OnInit {
             ]
         })
     }
-
-    numberOfCouplesChart = PMOCMonthChartConfig
-    ByAgeGroup = ByAgeGroupConfig
-    ByCIvilStatus = ByCIvilStatusConfig
-    ByEmploymentStatus = ByEmploymentStatusConfig
-    ByKnowledgeOnFP = ByKnowledgeOnFPConfig
-    byMonthlyIncome = byMonthlyIncomeConfig
-    ngOnInit(): void {}
 }
