@@ -1,13 +1,18 @@
-<div *ngIf="topPopulated" class="row">
-	<top-populated-list
-		class="row w-100 m-0"
-		[topPopulated]="topPopulated"
-	></top-populated-list>
-</div>
+<div
+    *ngIf="location$ | async as location"
+    class="grid w-full t-grid-cols-1 md:t-grid-cols-2"
+>
+    <div class="w-full" *ngIf="topPopulated">
+        <top-populated-list
+            [location]="location"
+            [topPopulated]="topPopulated | sort_by_municipality: location"
+        ></top-populated-list>
+    </div>
 
-<div *ngIf="topPopulated" class="row w-100 m-0">
-	<top-populated-graph
-		class="row w-100 m-0"
-		[topPopulated]="topPopulated"
-	></top-populated-graph>
+    <div class="w-full" *ngIf="topPopulated">
+        <top-populated-graph
+            [location]="location"
+            [topPopulated]="topPopulated | sort_by_municipality: location"
+        ></top-populated-graph>
+    </div>
 </div>

@@ -1,19 +1,20 @@
-<div *ngIf="topPopulated" class="row m-0">
-    <div
-        class="col-md-6 mb-3"
-        *ngFor="let municipality of topPopulated | sort_by_municipality"
-    >
+<div
+    [@listAnimation]="10"
+    *ngIf="topPopulated && location"
+    class="m-0 row t-w-full"
+>
+    <div class="mb-3 col-md-6" *ngFor="let municipality of topPopulated">
         <div class="p-20 bg-white card-shadow">
             <div class="layer w-100 mB-10">
                 <h4 class="lh-1 d-flex">
                     {{ municipality.data.name }}
-                    <span
-                        role="button"
+                    <button
+                        matTooltip="Remove Municipality"
                         (click)="deleteTopPopulated(municipality.id)"
                         class="ml-auto"
                     >
                         <i class="ti-minus"></i>
-                    </span>
+                    </button>
                 </h4>
             </div>
 
@@ -24,7 +25,7 @@
                             style="
                                 background: rgba(150, 150, 150, 0.3) !important;
                             "
-                            class="progress mt-1 w-75"
+                            class="mt-1 progress w-75"
                         >
                             <div
                                 class="progress-bar bgc-blue-500"
@@ -40,7 +41,7 @@
                             ></div>
                         </div>
                         <span style="font-size: 1rem"
-                            ><i class="ti-user mr-3"></i
+                            ><i class="mr-3 ti-user"></i
                             >{{ municipality.data.total | number }}</span
                         >
                     </div>

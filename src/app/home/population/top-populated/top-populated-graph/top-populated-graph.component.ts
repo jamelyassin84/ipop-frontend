@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {Color} from 'ng2-charts'
+import {LocationFIlter} from 'src/app/app-core/store/ngrx/locatition-filter/location-filter.model'
 import {MigrationChartConfig} from 'src/app/home/demographic/MigrationChart'
 import {TopPopulated} from '../top-populated.component'
 
@@ -16,23 +17,23 @@ export class TopPopulatedGraphComponent implements OnInit {
 
         let datasets: number[] = []
 
-        let index = 0
-
         for (let municipality of topPopulated) {
-            if (index <= 10) {
-                labels.push(municipality.data.name)
+            labels.push(municipality.data.name)
 
-                datasets.push(municipality.data.total)
-            }
-            index++
+            datasets.push(municipality.data.total)
         }
 
         this.migrationChart.labels = labels
 
+        this.migrationChart.legend = false
+
         this.migrationChart.datasets[0].data = datasets
     }
 
-    migrationChart = MigrationChartConfig
+    @Input()
+    location?: LocationFIlter
+
+    migrationChart = {...MigrationChartConfig}
 
     Colors: Color[] = [{backgroundColor: '#2196F3'}]
 

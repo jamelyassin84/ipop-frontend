@@ -1,32 +1,43 @@
-<div class="card-body">
+<div *ngIf="location$ | async as location" class="card-body">
+    <div class="t-mb-8 t-text-2xl">
+        Year
+        <span class="t-font-black t-text-bg-brand">{{ location.year }}</span>
+    </div>
+
     <div class="form-group">
         <label for="">Choose a Municipality</label>
-        <select (change)="changeHandler($event)" type="text" class="form-control">
-			<option value="">Choose..</option>
-			<option
-				*ngFor="let municipality of municipalities"
-				[value]="municipality.code"
-			>
-				{{ municipality.name | titlecase }}
-			</option>
-		</select>
+        <select
+            (change)="changeHandler($event)"
+            type="text"
+            class="form-control"
+        >
+            <option value="">Choose..</option>
+
+            <option
+                *ngFor="let municipality of municipalities"
+                [value]="municipality.code"
+            >
+                {{ municipality.name | titlecase }}
+            </option>
+        </select>
     </div>
+
     <div class="form-group">
         <label for="">Total Population</label>
-        <input [(ngModel)]="topPopulated.data.total" type="number" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="">Percentage in total</label>
-        <input [(ngModel)]="topPopulated.data.percent" type="number" class="form-control" />
+        <input
+            [(ngModel)]="topPopulated.data.total"
+            type="number"
+            class="form-control"
+        />
     </div>
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i> Add this Muncipality</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i> Add this Muncipality</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

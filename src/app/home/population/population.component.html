@@ -111,14 +111,8 @@
                     <hr />
                     <div class="card-body">
                         <NoDataComponent
-                            [data]="
-                                populationProfile.barangays === undefined
-                                    ? []
-                                    : [1]
-                            "
+                            [data]="populationProfile.barangays"
                         ></NoDataComponent>
-
-                        <Spinner></Spinner>
 
                         <population-profile
                             [location]="location"
@@ -144,11 +138,9 @@
                         [data]="populationByMunicipality"
                     ></NoDataComponent>
 
-                    <Spinner></Spinner>
-
                     <population-by-municipality
-                        [populationByMunicipality]="populationByMunicipality"
                         [innerWidth]="innerWidth"
+                        [populationByMunicipality]="populationByMunicipality"
                     ></population-by-municipality>
                 </div>
             </div>
@@ -164,12 +156,11 @@
                         Age Distribution (PROVINCE OF ILOILO)
                     </div>
                 </div>
+
                 <div class="card-body">
                     <NoDataComponent
                         [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
-
-                    <Spinner></Spinner>
 
                     Insert ageDistributionAndAgeDependencyRatio
 
@@ -193,12 +184,11 @@
                         Age Dependency Ratio (PROVINCE OF ILOILO)
                     </div>
                 </div>
+
                 <div class="card-body">
                     <NoDataComponent
                         [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
-
-                    <Spinner></Spinner>
 
                     <age-distribution-dependency
                         [innerWidth]="innerWidth"
@@ -231,12 +221,11 @@
                         Municipality
                     </div>
                 </div>
+
                 <div class="card-body">
                     <NoDataComponent
                         [data]="ageDistributionAndAgeDependencyRatio"
                     ></NoDataComponent>
-
-                    <Spinner></Spinner>
 
                     Insert ageDistributionAndAgeDependencyRatio
 
@@ -253,9 +242,9 @@
     </div>
 
     <div
-        style="margin-bottom: 2rem; margin-top: 2rem; padding: 2rem 0"
         class="card"
         [ngClass]="{'mt-3': innerWidth < 1139}"
+        style="margin-bottom: 2rem; margin-top: 2rem; padding: 2rem 0"
     >
         <div class="col-md-12">
             <div class="mb-4 text-dark h4">Top 10 Populated Municipalities</div>
@@ -266,7 +255,7 @@
         </div>
 
         <top-populated
-            class="m-0 row"
+            class="t-w-full"
             (onDelete)="deleteTopPopulated($event)"
             [topPopulated]="topPopulated"
         ></top-populated>
@@ -285,6 +274,7 @@
                 icon="ti-notepad"
             ></Modal>
         </div>
+
         <div class="card-body">
             <TechnicalNotes type="Population"></TechnicalNotes>
         </div>
