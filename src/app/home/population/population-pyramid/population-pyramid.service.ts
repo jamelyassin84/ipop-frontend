@@ -1,3 +1,4 @@
+import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
 import {Injectable} from '@angular/core'
 
 @Injectable({providedIn: 'root'})
@@ -10,8 +11,7 @@ export class PopulationPyramidChartService {
         if (data.length !== 0) {
             data = data.reverse()
 
-            const male = data[0]['data']['male']
-            const female = data[0]['data']['female']
+            const {male, female} = data[0]?.data
 
             for (let key in female) {
                 if (key !== 'below_1_year_old') {

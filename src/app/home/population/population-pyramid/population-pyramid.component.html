@@ -19,13 +19,14 @@
                 </div>
                 <hr />
                 <div class="card-body">
-                    <Spinner></Spinner>
                     <NoDataComponent [data]="ageDistribution"></NoDataComponent>
                     <div
-                        *ngIf="ageDistribution.length !== 0"
-                        id="population-pyramid"
+                        @fadeOut
                         class="w-100"
-                        style="height: 50vh"
+                        @slideInRight
+                        style="height: 60vh"
+                        id="population-pyramid"
+                        *ngIf="ageDistribution.length !== 0 && hasPyramid"
                     ></div>
                 </div>
             </div>
@@ -57,7 +58,9 @@
                 ></NoDataComponent>
 
                 <table
-                    *ngIf="populationByAgeGroupAndSex.length !== 0"
+                    *ngIf="
+                        populationByAgeGroupAndSex.length !== 0 && hasPyramid
+                    "
                     class="table table-striped"
                     responsiveTable
                 >

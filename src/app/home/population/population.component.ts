@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http'
 import {HostListener} from '@angular/core'
 import {Component, OnInit, ViewChild} from '@angular/core'
 import {Subscription} from 'rxjs'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 import {Deleted, Fire, pop} from 'src/app/modules/extras/Alert'
 import {BaseService} from 'src/app/Services/base.service'
@@ -15,6 +16,7 @@ import {PopulationPyramidComponent} from './population-pyramid/population-pyrami
     selector: 'app-population',
     templateUrl: './population.component.html',
     styleUrls: ['./population.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class PopulationComponent implements OnInit {
     @ViewChild(PopulationPyramidComponent) pyramid: any
