@@ -72,6 +72,8 @@ export class BirthDemographicComponent implements OnInit {
 
     birthsByMunicipality: any = []
 
+    monthChartData: Statistic[] = []
+
     ngOnInit(): void {
         this.location.year = new Date().getFullYear()
     }
@@ -159,6 +161,7 @@ export class BirthDemographicComponent implements OnInit {
     }
 
     processStatisticalChart(months: Array<Statistic>) {
+        this.monthChartData = months
         this.statisticalChart.labels = []
         this.statisticalChart.datasets[0].data = []
         this.statisticalChart.datasets[1].data = []

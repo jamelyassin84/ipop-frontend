@@ -43,8 +43,12 @@
                         <ng-template #Pyramid>
                             <Modal
                                 size="lg"
-                                title="Customize a Population Pyramid"
-                                [btnTitle]="'Customize' + ageGroupTitle"
+                                [title]="
+                                    'Customize ' + ageGroupTitle | titlecase
+                                "
+                                [btnTitle]="
+                                    'Customize ' + ageGroupTitle | titlecase
+                                "
                                 btnClass="dropdown-item"
                                 [template]="customizePyramid"
                             ></Modal>

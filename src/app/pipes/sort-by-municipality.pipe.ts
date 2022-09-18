@@ -5,10 +5,7 @@ import {LocationFIlter} from '../app-core/models/location-filter.model'
 export class SortByMunicipalityPipe implements PipeTransform {
     transform(municipalities: any[], location: LocationFIlter): any[] {
         return municipalities
-            .filter((municipality) => {
-                console.log(municipality.data.year === location.year)
-                return municipality.data.year === location.year
-            })
+            .filter((municipality) => municipality.data.year === location.year)
             .sort((a: any, b: any) => {
                 return b.data.total - a.data.total
             })

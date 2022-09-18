@@ -11,6 +11,7 @@
         <CustomizeMonthChart
             type="Death"
             [location]="location"
+            [chartData]="monthChartData"
         ></CustomizeMonthChart>
     </ng-template>
 
@@ -43,25 +44,6 @@
             [template]="addDeathData"
             icon="ti-plus"
         ></Modal>
-
-        <!-- <Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add Officials"
-			btnTitle="Add an official"
-			btnClass="btn btn-sm btn-danger mr-2"
-			[template]="addOfficials"
-			icon="ti-plus"
-		></Modal>
-
-		<Modal
-			size="lg"
-			title="View  Officials"
-			btnTitle="View officials"
-			btnClass="btn btn-sm btn-outline-danger"
-			[template]="viewOfficials"
-			icon="ti-pin"
-		></Modal> -->
     </div>
     <div class="mt-3 mb-4 row">
         <div class="p-1 col-md-4">

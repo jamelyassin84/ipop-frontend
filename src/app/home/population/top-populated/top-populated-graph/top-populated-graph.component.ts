@@ -35,7 +35,7 @@ export class TopPopulatedGraphComponent implements OnInit {
 
     migrationChart = {...MigrationChartConfig}
 
-    Colors: Color[] = [{backgroundColor: '#2196F3'}]
+    Colors: Color[] = [{backgroundColor: '#1757AE'}]
 
     ngOnInit(): void {}
 }

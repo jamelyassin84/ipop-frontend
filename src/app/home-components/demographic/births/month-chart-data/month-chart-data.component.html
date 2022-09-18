@@ -7,9 +7,11 @@
                 class="nav-link text-muted"
                 [class.active]="tabs.males"
             >
-                <i class="ti-user"></i> {{ !single ? 'Male' : 'Data' }}
+                <i class="ti-user"></i>
+                {{ !single ? 'Male' : 'Statistics' }}
             </a>
         </li>
+
         <li *ngIf="!single" class="nav-item">
             <a
                 role="button"
@@ -22,12 +24,13 @@
         </li>
         <li class="nav-item"></li>
     </ul>
+
     <br />
     <div class="row" *ngIf="tabs.males">
         <div class="form-group col-md-3">
             <label for="January">January</label>
             <input
-                [(ngModel)]="data['males'].January"
+                [(ngModel)]="monthChartData['males'].January"
                 type="number"
                 class="form-control"
                 id="January"
@@ -36,7 +39,7 @@
         <div class="form-group col-md-3">
             <label for="February">February</label>
             <input
-                [(ngModel)]="data['males'].February"
+                [(ngModel)]="monthChartData['males'].February"
                 type="number"
                 class="form-control"
                 id="February"
@@ -45,7 +48,7 @@
         <div class="form-group col-md-3">
             <label for="March">March</label>
             <input
-                [(ngModel)]="data['males'].March"
+                [(ngModel)]="monthChartData['males'].March"
                 type="number"
                 class="form-control"
                 id="March"
@@ -54,7 +57,7 @@
         <div class="form-group col-md-3">
             <label for="April">April</label>
             <input
-                [(ngModel)]="data['males'].April"
+                [(ngModel)]="monthChartData['males'].April"
                 type="number"
                 class="form-control"
                 id="April"
@@ -63,7 +66,7 @@
         <div class="form-group col-md-3">
             <label for="May">May</label>
             <input
-                [(ngModel)]="data['males'].May"
+                [(ngModel)]="monthChartData['males'].May"
                 type="number"
                 class="form-control"
                 id="May"
@@ -72,7 +75,7 @@
         <div class="form-group col-md-3">
             <label for="June">June</label>
             <input
-                [(ngModel)]="data['males'].June"
+                [(ngModel)]="monthChartData['males'].June"
                 type="number"
                 class="form-control"
                 id="June"
@@ -81,7 +84,7 @@
         <div class="form-group col-md-3">
             <label for="July">July</label>
             <input
-                [(ngModel)]="data['males'].July"
+                [(ngModel)]="monthChartData['males'].July"
                 type="number"
                 class="form-control"
                 id="July"
@@ -90,7 +93,7 @@
         <div class="form-group col-md-3">
             <label for="August">August</label>
             <input
-                [(ngModel)]="data['males'].August"
+                [(ngModel)]="monthChartData['males'].August"
                 type="number"
                 class="form-control"
                 id="August"
@@ -99,7 +102,7 @@
         <div class="form-group col-md-3">
             <label for="September">September</label>
             <input
-                [(ngModel)]="data['males'].September"
+                [(ngModel)]="monthChartData['males'].September"
                 type="number"
                 class="form-control"
                 id="September"
@@ -108,7 +111,7 @@
         <div class="form-group col-md-3">
             <label for="October">October</label>
             <input
-                [(ngModel)]="data['males'].October"
+                [(ngModel)]="monthChartData['males'].October"
                 type="number"
                 class="form-control"
                 id="October"
@@ -117,7 +120,7 @@
         <div class="form-group col-md-3">
             <label for="November">November</label>
             <input
-                [(ngModel)]="data['males'].November"
+                [(ngModel)]="monthChartData['males'].November"
                 type="number"
                 class="form-control"
                 id="November"
@@ -126,7 +129,7 @@
         <div class="form-group col-md-3">
             <label for="December">December</label>
             <input
-                [(ngModel)]="data['males'].December"
+                [(ngModel)]="monthChartData['males'].December"
                 type="number"
                 class="form-control"
                 id="December"
@@ -137,7 +140,7 @@
         <div class="form-group col-md-3">
             <label for="January">January</label>
             <input
-                [(ngModel)]="data['females'].January"
+                [(ngModel)]="monthChartData['females'].January"
                 type="number"
                 class="form-control"
                 id="January"
@@ -146,7 +149,7 @@
         <div class="form-group col-md-3">
             <label for="February">February</label>
             <input
-                [(ngModel)]="data['females'].February"
+                [(ngModel)]="monthChartData['females'].February"
                 type="number"
                 class="form-control"
                 id="February"
@@ -155,7 +158,7 @@
         <div class="form-group col-md-3">
             <label for="March">March</label>
             <input
-                [(ngModel)]="data['females'].March"
+                [(ngModel)]="monthChartData['females'].March"
                 type="number"
                 class="form-control"
                 id="March"
@@ -164,7 +167,7 @@
         <div class="form-group col-md-3">
             <label for="April">April</label>
             <input
-                [(ngModel)]="data['females'].April"
+                [(ngModel)]="monthChartData['females'].April"
                 type="number"
                 class="form-control"
                 id="April"
@@ -173,7 +176,7 @@
         <div class="form-group col-md-3">
             <label for="May">May</label>
             <input
-                [(ngModel)]="data['females'].May"
+                [(ngModel)]="monthChartData['females'].May"
                 type="number"
                 class="form-control"
                 id="May"
@@ -182,7 +185,7 @@
         <div class="form-group col-md-3">
             <label for="June">June</label>
             <input
-                [(ngModel)]="data['females'].June"
+                [(ngModel)]="monthChartData['females'].June"
                 type="number"
                 class="form-control"
                 id="June"
@@ -191,7 +194,7 @@
         <div class="form-group col-md-3">
             <label for="July">July</label>
             <input
-                [(ngModel)]="data['females'].July"
+                [(ngModel)]="monthChartData['females'].July"
                 type="number"
                 class="form-control"
                 id="July"
@@ -200,7 +203,7 @@
         <div class="form-group col-md-3">
             <label for="August">August</label>
             <input
-                [(ngModel)]="data['females'].August"
+                [(ngModel)]="monthChartData['females'].August"
                 type="number"
                 class="form-control"
                 id="August"
@@ -209,7 +212,7 @@
         <div class="form-group col-md-3">
             <label for="September">September</label>
             <input
-                [(ngModel)]="data['females'].September"
+                [(ngModel)]="monthChartData['females'].September"
                 type="number"
                 class="form-control"
                 id="September"
@@ -218,7 +221,7 @@
         <div class="form-group col-md-3">
             <label for="October">October</label>
             <input
-                [(ngModel)]="data['females'].October"
+                [(ngModel)]="monthChartData['females'].October"
                 type="number"
                 class="form-control"
                 id="October"
@@ -227,7 +230,7 @@
         <div class="form-group col-md-3">
             <label for="November">November</label>
             <input
-                [(ngModel)]="data['females'].November"
+                [(ngModel)]="monthChartData['females'].November"
                 type="number"
                 class="form-control"
                 id="November"
@@ -236,7 +239,7 @@
         <div class="form-group col-md-3">
             <label for="December">December</label>
             <input
-                [(ngModel)]="data['females'].December"
+                [(ngModel)]="monthChartData['females'].December"
                 type="number"
                 class="form-control"
                 id="December"
@@ -246,9 +249,9 @@
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-        <span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save</span>
+        <span *ngIf="!isLoading"><i class="mr-1 ti-check"></i>Save</span>
         <Loader *ngIf="isLoading"></Loader>
     </button>
 </div>

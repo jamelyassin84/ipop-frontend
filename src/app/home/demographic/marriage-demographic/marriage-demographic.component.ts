@@ -40,10 +40,10 @@ export class MarriageDemographicComponent implements OnInit {
     readonly isSuperAdmin = !this.user.isSuperAdmin()
 
     readonly Colors: Color[] = [
-        {backgroundColor: '#FDEADB'},
-        {backgroundColor: '#D4A77D'},
-        {backgroundColor: '#D7A405'},
-        {backgroundColor: '#B4833A'},
+        {backgroundColor: '#F7138E'},
+        {backgroundColor: '#BE006A'},
+        {backgroundColor: '#A6005B'},
+        {backgroundColor: '#88004A'},
     ]
 
     readonly marriagesByMunicipalityKeys = marriagesByMunicipalityKeys
@@ -67,6 +67,8 @@ export class MarriageDemographicComponent implements OnInit {
     statisticalChart = {...monthChartConfig}
 
     marriageConfig = {...marriageChartConfig}
+
+    monthChartData: Statistic[] = []
 
     ngOnInit(): void {}
 
@@ -139,6 +141,7 @@ export class MarriageDemographicComponent implements OnInit {
     }
 
     processStatisticalChart(months: Array<Statistic>) {
+        this.monthChartData = months
         this.statisticalChart.labels = []
         this.statisticalChart.datasets = [{data: [0], label: 'Marriages'}]
         if (months.length === 0) {

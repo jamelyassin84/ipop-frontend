@@ -1,229 +1,228 @@
 <div class="bg-light">
-	<ng-template #addMigrationData>
-		<AddMigrationData></AddMigrationData>
-	</ng-template>
+    <ng-template #addMigrationData>
+        <AddMigrationData></AddMigrationData>
+    </ng-template>
 
-	<ng-template #addLocalMigrationData>
-		<AddLocalMigrationData [data]="localData"></AddLocalMigrationData>
-	</ng-template>
+    <ng-template #addLocalMigrationData>
+        <AddLocalMigrationData [data]="localData"></AddLocalMigrationData>
+    </ng-template>
 
-	<ng-template #customizeMonthChart>
-		<CustomizeMonthChart
-			type="Migration"
-			[location]="location"
-		></CustomizeMonthChart>
-	</ng-template>
+    <ng-template #customizeMonthChart>
+        <CustomizeMonthChart
+            type="Migration"
+            [location]="location"
+            [chartData]="monthChartData"
+        ></CustomizeMonthChart>
+    </ng-template>
 
-	<ng-template #customizeMigrationChart>
-		<CustomizeMigrationChart></CustomizeMigrationChart>
-	</ng-template>
+    <ng-template #customizeMigrationChart>
+        <CustomizeMigrationChart></CustomizeMigrationChart>
+    </ng-template>
 
-	<ng-template #customizeTechnicalNotes>
-		<CustomizeTechnicalNotes type="Migration"></CustomizeTechnicalNotes>
-	</ng-template>
+    <ng-template #customizeTechnicalNotes>
+        <CustomizeTechnicalNotes type="Migration"></CustomizeTechnicalNotes>
+    </ng-template>
 
-	<ng-template #viewOfficials>
-		<ViewOfficials></ViewOfficials>
-	</ng-template>
+    <ng-template #viewOfficials>
+        <ViewOfficials></ViewOfficials>
+    </ng-template>
 
-	<ng-template #addOfficials>
-		<AddOfficials></AddOfficials>
-	</ng-template>
+    <ng-template #addOfficials>
+        <AddOfficials></AddOfficials>
+    </ng-template>
 
-	<div
-		class="d-flex"
-		style="justify-content: flex-end; position: relative; z-index: 1"
-	>
-		<Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add a Migration Data"
-			btnTitle="Add Migration data"
-			btnClass="btn btn-sm btn-dark mr-2"
-			[template]="addMigrationData"
-			icon="ti-plus"
-		></Modal>
+    <div
+        class="d-flex"
+        style="justify-content: flex-end; position: relative; z-index: 1"
+    >
+        <Modal
+            *ngIf="!isUser"
+            size="lg"
+            title="Add a Migration Data"
+            btnTitle="Add Migration data"
+            btnClass="btn btn-sm btn-dark mr-2"
+            [template]="addMigrationData"
+            icon="ti-plus"
+        ></Modal>
+    </div>
 
-		<!-- <Modal *ngIf="!isUser" size="lg" title="Add Officials" btnTitle="Add an official" btnClass="btn btn-sm btn-danger mr-2" [template]="addOfficials" icon="ti-plus"></Modal>
+    <div class="mt-3 mb-4 row">
+        <div class="p-1 col-md-3">
+            <SummaryComponent
+                title="Total Population"
+                icon="ti-user"
+                spanClass="bgc-blue-50 c-blue-500"
+                [value]="summaries?.summary?.total_population"
+            ></SummaryComponent>
+        </div>
+        <div class="p-1 col-md-3">
+            <SummaryComponent
+                title="Total In Migration"
+                icon="ti-map-alt"
+                spanClass="bgc-blue-50 c-blue-900"
+                [value]="summaries?.summary?.total_in_migrations"
+            ></SummaryComponent>
+        </div>
+        <div class="p-1 col-md-3">
+            <SummaryComponent
+                title="Total Out Migration"
+                icon="ti-map-alt"
+                spanClass="bgc-orange-50 c-orange-800"
+                [value]="summaries?.summary?.total_out_migrations"
+            ></SummaryComponent>
+        </div>
 
-        <Modal size="lg" title="View  Officials" btnTitle="View officials" btnClass="btn btn-sm btn-outline-danger" [template]="viewOfficials" icon="ti-pin"></Modal> -->
-	</div>
+        <div class="p-1 col-md-3">
+            <SummaryComponent
+                title="Net Migration"
+                icon="ti-map-alt"
+                spanClass="bgc-yellow-50 c-yellow-800"
+                [value]="summaries?.summary?.net_migrations"
+            ></SummaryComponent>
+        </div>
+    </div>
 
-	<div class="row mt-3 mb-4">
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Total Population"
-				icon="ti-user"
-				spanClass="bgc-blue-50 c-blue-500"
-				[value]="summaries?.summary?.total_population"
-			></SummaryComponent>
-		</div>
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Total In Migration"
-				icon="ti-map-alt"
-				spanClass="bgc-blue-50 c-blue-900"
-				[value]="summaries?.summary?.total_in_migrations"
-			></SummaryComponent>
-		</div>
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Total Out Migration"
-				icon="ti-map-alt"
-				spanClass="bgc-orange-50 c-orange-800"
-				[value]="summaries?.summary?.total_out_migrations"
-			></SummaryComponent>
-		</div>
+    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
-		<div class="col-md-3 p-1">
-			<SummaryComponent
-				title="Net Migration"
-				icon="ti-map-alt"
-				spanClass="bgc-yellow-50 c-yellow-800"
-				[value]="summaries?.summary?.net_migrations"
-			></SummaryComponent>
-		</div>
-	</div>
+    <div class="row">
+        <div
+            class="m-0 col-md-8"
+            [ngClass]="{'col-md-12': location.municipality === null}"
+        >
+            <div class="card">
+                <div class="bg-white card-header d-flex">
+                    <div class="mr-auto">Migration Statistics</div>
 
-	<AddressPicker (onEmit)="fetch($event)"></AddressPicker>
+                    <DropDown
+                        *ngIf="!isSuperAdmin"
+                        [buttons]="migrationDropdown"
+                    ></DropDown>
 
-	<div class="row">
-		<div
-			class="col-md-8 m-0"
-			[ngClass]="{ 'col-md-12': location.municipality === null }"
-		>
-			<div class="card">
-				<div class="card-header bg-white d-flex">
-					<div class="mr-auto">Migration Statistics</div>
-					<DropDown
-						*ngIf="!isSuperAdmin"
-						[buttons]="DeathStatistics"
-					></DropDown>
-					<ng-template #DeathStatistics>
-						<Modal
-							size="lg"
-							title="Customize Migration  Data"
-							btnTitle="Customize statistical data"
-							btnClass="dropdown-item"
-							[template]="customizeMonthChart"
-						></Modal>
-					</ng-template>
-				</div>
-				<div class="card-body">
-					<div class="chart">
-						<canvas
-							baseChart
-							[colors]="Colors"
-							[datasets]="statisticalChart.datasets"
-							[labels]="statisticalChart.labels"
-							[options]="statisticalChart.options"
-							[legend]="statisticalChart.legend"
-							chartType="bar"
-						>
-						</canvas>
-					</div>
-				</div>
-			</div>
-		</div>
+                    <ng-template #migrationDropdown>
+                        <Modal
+                            size="lg"
+                            title="Customize Migration  Data"
+                            btnTitle="Customize statistical data"
+                            btnClass="dropdown-item"
+                            [template]="customizeMonthChart"
+                        ></Modal>
+                    </ng-template>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas
+                            baseChart
+                            chartType="bar"
+                            [colors]="Colors"
+                            [legend]="statisticalChart.legend"
+                            [labels]="statisticalChart.labels"
+                            [options]="statisticalChart.options"
+                            [datasets]="statisticalChart.datasets"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="layers col-md-4" *ngIf="location.municipality != null">
-			<div class="layer w-100">
-				<div class="card">
-					<div class="card-header bg-white d-flex">
-						<div class="mr-auto">Local Migration Data</div>
-						<div
-							class="ml-auto"
-							*ngIf="localData.id != null && !isSuperAdmin"
-						>
-							<DropDown [buttons]="MigrationData"></DropDown>
-							<ng-template #MigrationData>
-								<Modal
-									size="lg"
-									title="Customize Local Migration  Data"
-									btnTitle="Customize local migration data"
-									btnClass="dropdown-item"
-									[template]="addLocalMigrationData"
-								></Modal>
-							</ng-template>
-						</div>
-					</div>
-					<div class="layer w-100 card-body">
-						<TitleWithIcon
-							title="In Migrations"
-							icon="ti-map-alt mr-2"
-							color="mB-5 c-blue-900"
-							[value]="localData?.total_in_migrations"
-						></TitleWithIcon>
+        <div class="layers col-md-4" *ngIf="location.municipality != null">
+            <div class="layer w-100">
+                <div class="card">
+                    <div class="bg-white card-header d-flex">
+                        <div class="mr-auto">Local Migration Data</div>
+                        <div
+                            class="ml-auto"
+                            *ngIf="localData.id != null && !isSuperAdmin"
+                        >
+                            <DropDown [buttons]="MigrationData"></DropDown>
+                            <ng-template #MigrationData>
+                                <Modal
+                                    size="lg"
+                                    title="Customize Local Migration  Data"
+                                    btnTitle="Customize local migration data"
+                                    btnClass="dropdown-item"
+                                    [template]="addLocalMigrationData"
+                                ></Modal>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="layer w-100 card-body">
+                        <TitleWithIcon
+                            title="In Migrations"
+                            icon="ti-map-alt mr-2"
+                            color="mB-5 c-blue-900"
+                            [value]="localData?.total_in_migrations"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="Out Migrations"
-							icon="ti-map-alt mr-2"
-							color="mB-5 c-orange-800"
-							[value]="localData?.total_out_migrations"
-						></TitleWithIcon>
+                        <TitleWithIcon
+                            title="Out Migrations"
+                            icon="ti-map-alt mr-2"
+                            color="mB-5 c-orange-800"
+                            [value]="localData?.total_out_migrations"
+                        ></TitleWithIcon>
 
-						<TitleWithIcon
-							title="Net Migrations"
-							icon="ti-map-alt mr-2"
-							color="mB-5 c-orange-500"
-							[value]="localData?.net_migrations"
-						></TitleWithIcon>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <TitleWithIcon
+                            title="Net Migrations"
+                            icon="ti-map-alt mr-2"
+                            color="mB-5 c-orange-500"
+                            [value]="localData?.net_migrations"
+                        ></TitleWithIcon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="row mT-50">
-		<div class="col-md-8">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title mr-auto mt-2">Migration Chart</div>
-				</div>
-				<div class="card-body">
-					<canvas
-						baseChart
-						[colors]="Colors"
-						[datasets]="migrationChart.datasets"
-						[labels]="migrationChart.labels"
-						[options]="migrationChart.options"
-						[legend]="migrationChart.legend"
-						chartType="bar"
-					>
-					</canvas>
-				</div>
-			</div>
-		</div>
+    <div class="row mT-50">
+        <div class="mb-3 col-md-12">
+            <ByMunicipalityTable
+                title="Migration by Municipality"
+                headerClass="#EF6C00"
+                [headers]="migrationByMunicipalityHeaders"
+                [body]="migrationByMunicipality"
+                type="Migration"
+                [keys]="migrationByMunicipalityKeys"
+            ></ByMunicipalityTable>
+        </div>
 
-		<div class="col-md-4 mb-3">
-			<ByMunicipalityTable
-				title="Migration by Municipality"
-				headerClass="#EF6C00"
-				[headers]="migrationByMunicipalityHeaders"
-				[body]="migrationByMunicipality"
-				type="Migration"
-				[keys]="migrationByMunicipalityKeys"
-			></ByMunicipalityTable>
-		</div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mt-2 mr-auto card-title">Migration Chart</div>
+                </div>
+                <div class="card-body">
+                    <canvas
+                        baseChart
+                        [colors]="Colors"
+                        [datasets]="migrationChart.datasets"
+                        [labels]="migrationChart.labels"
+                        [options]="migrationChart.options"
+                        [legend]="migrationChart.legend"
+                        chartType="bar"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-12 mt-3">
-			<div class="card">
-				<div class="card-header bg-white d-flex aic">
-					<div class="card-title mr-auto mt-2">Technical Notes</div>
-					<Modal
-						*ngIf="!isUser"
-						size="lg"
-						title="Customize Technical Notes"
-						btnTitle="Customize technical notes"
-						btnClass="btn btn-sm btn-dark"
-						[template]="customizeTechnicalNotes"
-						icon="ti-notepad"
-					></Modal>
-				</div>
-				<div class="card-body">
-					<TechnicalNotes type="MIgration"></TechnicalNotes>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="mt-3 col-md-12">
+            <div class="card">
+                <div class="bg-white card-header d-flex aic">
+                    <div class="mt-2 mr-auto card-title">Technical Notes</div>
+                    <Modal
+                        *ngIf="!isUser"
+                        size="lg"
+                        title="Customize Technical Notes"
+                        btnTitle="Customize technical notes"
+                        btnClass="btn btn-sm btn-dark"
+                        [template]="customizeTechnicalNotes"
+                        icon="ti-notepad"
+                    ></Modal>
+                </div>
+                <div class="card-body">
+                    <TechnicalNotes type="MIgration"></TechnicalNotes>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,6 +11,7 @@
             [single]="true"
             type="Marriage"
             [location]="location"
+            [chartData]="monthChartData"
         ></CustomizeMonthChart>
     </ng-template>
 
@@ -148,15 +149,18 @@
             <div class="card">
                 <div class="bg-white card-header d-flex">
                     <div class="mr-auto">Marriage by Month of Marriage</div>
-                    <Modal
-                        *ngIf="!isSuperAdmin"
-                        size="lg"
-                        title="Customize Statistical Marriage Data"
-                        btnTitle="Customize statistical data"
-                        btnClass="btn btn-sm btn-dark mr-2"
-                        [template]="customizeMonthChart"
-                        icon="ti-pencil-alt"
-                    ></Modal>
+
+                    <DropDown [buttons]="marriageStatisticDropdown"></DropDown>
+
+                    <ng-template #marriageStatisticDropdown>
+                        <Modal
+                            size="lg"
+                            title="Customize Statistical Death Data"
+                            btnTitle="Customize statistical data"
+                            btnClass="dropdown-item"
+                            [template]="customizeMonthChart"
+                        ></Modal>
+                    </ng-template>
                 </div>
                 <div class="card-body">
                     <div class="chart">
@@ -257,12 +261,12 @@
 
         <div class="mt-4 col-md-6">
             <ByMunicipalityTable
+                type="Marriage"
+                headerClass="#F7138E"
                 title="Marriages by Municipality"
-                headerClass="#D7A405"
-                [headers]="marriagesByMunicipalityHeaders"
                 [body]="marriagesByMunicipality"
                 [keys]="marriagesByMunicipalityKeys"
-                type="Marriage"
+                [headers]="marriagesByMunicipalityHeaders"
             ></ByMunicipalityTable>
         </div>
 

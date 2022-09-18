@@ -68,6 +68,8 @@ export class DeathDemographicComponent implements OnInit {
 
     localData: any = {}
 
+    monthChartData: Statistic[] = []
+
     ngOnInit(): void {}
 
     ngOnDestroy(): void {
@@ -131,6 +133,7 @@ export class DeathDemographicComponent implements OnInit {
     }
 
     processStatisticalChart(months: Array<Statistic>) {
+        this.monthChartData = months
         this.statisticalChart.labels = []
         this.statisticalChart.datasets[0].data = []
         this.statisticalChart.datasets[1].data = []
