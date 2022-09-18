@@ -84,3 +84,12 @@ body {
     stroke: white !important;
     opacity: 0.8;
 }
+
+.modal-dialog {
+    height: 90vh !important;
+    display: flex !important;
+}
+
+.modal-content {
+    margin: auto !important;
+}

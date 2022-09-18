@@ -1,22 +1,38 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'Modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class ModalComponent implements OnInit {
     constructor(private modalService: NgbModal) {}
 
     closeResult = ''
-    @Input() size: any = 'lg'
-    @Input() title: string = ''
-    @Input() btnSize: string = ''
-    @Input() btnTitle: string = ''
-    @Input() btnClass: string = ''
-    @Input() icon: string = ''
-    @Input() template: any
+
+    @Input()
+    size: any = 'lg'
+
+    @Input()
+    title: string = ''
+
+    @Input()
+    btnSize: string = ''
+
+    @Input()
+    btnTitle: string = ''
+
+    @Input()
+    btnClass: string = ''
+
+    @Input()
+    icon: string = ''
+
+    @Input()
+    template: any
 
     ngOnInit(): void {}
 

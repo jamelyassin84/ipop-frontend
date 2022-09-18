@@ -27,6 +27,7 @@ import {TwentyFourToTwelveHoursPipe} from 'src/@digital_brand_work/pipes/twenty-
 import {AgePipe} from 'src/@digital_brand_work/pipes/age.pipe'
 import {SortByMunicipalityPipe} from '../pipes/sort-by-municipality.pipe'
 import {GetPercentagePipe} from '../pipes/get-percentage.pipe'
+import {ResolveBarangayPurokPipe} from '../pipes/resolve-barangay-purok.pipe'
 
 export const globalPipes = [
     AgePipe,
@@ -58,4 +59,8 @@ export const globalPipes = [
     TwentyFourToTwelveHoursPipe,
 ]
 
-export const appPipes = [GetPercentagePipe, SortByMunicipalityPipe]
+export const appPipes = [
+    GetPercentagePipe,
+    SortByMunicipalityPipe,
+    ResolveBarangayPurokPipe,
+]

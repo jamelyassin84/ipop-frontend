@@ -1,7 +1,7 @@
 <div
     @zoomIn
     style="flex-direction: column"
-    *ngIf="!isLoading && data.length === 0"
+    *ngIf="!isLoading && data && data.length === 0"
     class="text-center t-p-5 d-flex aic jcc t-text-gray-300 t-py-10"
 >
     <i class="mb-2 mr-2 ti-folder" style="font-size: 4rem"></i> It's empty in

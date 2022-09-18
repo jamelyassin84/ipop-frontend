@@ -1,54 +1,75 @@
 <div class="card-body">
     <div class="form-group">
         <label for="">Choose Type of Official</label>
-        <select (change)="reset()" [(ngModel)]="type" type="text" class="form-control">
-			<option *ngFor="let type of types">{{ type }}</option>
-		</select>
+        <select
+            (change)="reset()"
+            [(ngModel)]="type"
+            type="text"
+            class="form-control"
+        >
+            <option *ngFor="let type of types">{{ type }}</option>
+        </select>
     </div>
-    <div *ngIf="type === 'Municipal Official' || type === 'Barangay Official'" class="form-group">
+    <div
+        *ngIf="type === 'Municipal Official' || type === 'Barangay Official'"
+        class="form-group"
+    >
         <label for="">Choose a Municipality</label>
-        <select (change)="getBarangays($event)" class="custom-select" id="municipality" required>
-			<option>Choose...</option>
-			<option
-				*ngFor="let municipality of municipalities"
-				[value]="municipality.code"
-			>
-				{{ municipality.name | titlecase }}
-			</option>
-		</select>
+        <select
+            (change)="getBarangays($event)"
+            class="custom-select"
+            id="municipality"
+            required
+        >
+            <option>Choose...</option>
+            <option
+                *ngFor="let municipality of municipalities"
+                [value]="municipality.code"
+            >
+                {{ municipality.name | titlecase }}
+            </option>
+        </select>
     </div>
     <div *ngIf="type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Barangay</label>
-        <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" required>
-			<option value="">Choose...</option>
-			<option *ngFor="let barangay of barangays">
-				{{ barangay.name }}
-			</option>
-		</select>
+        <select
+            [(ngModel)]="data.barangay"
+            class="custom-select"
+            id="barangay"
+            required
+        >
+            <option value="">Choose...</option>
+            <option *ngFor="let barangay of barangays">
+                {{ barangay.name }}
+            </option>
+        </select>
     </div>
     <button (click)="fetch()" class="w-100 btn btn-sm btn-dark">
-		See Officials
-	</button>
+        See Officials
+    </button>
     <table class="table mt-5">
         <thead class="table-white">
             <tr>
                 <th scope="col"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Position</th>
+                <th class="text-left" scope="col">Name</th>
+                <th class="text-left" scope="col">Position</th>
                 <th *ngIf="!isUser"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody [@listAnimation]="officials.length">
             <tr *ngFor="let official of officials">
                 <td><i class="ti-user"></i></td>
-                <td>{{ official.name }}</td>
-                <td>
+                <td class="text-left">{{ official.name }}</td>
+                <td class="text-left">
                     {{ official.position || 'Sanguniang Panlalawigan Member' }}
                 </td>
                 <td *ngIf="!isUser">
-                    <button (click)="removeOfficial(official.id)" class="btn btn-sm btn-danger">
-						Remove
-					</button>
+                    <button
+                        (click)="removeOfficial(official.id)"
+                        class="btn btn-sm btn-danger"
+                    >
+                        Remove
+                    </button>
                 </td>
             </tr>
         </tbody>
