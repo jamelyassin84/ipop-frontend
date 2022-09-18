@@ -1,6 +1,6 @@
 export const byMonthlyIncomeConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [

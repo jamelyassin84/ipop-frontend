@@ -1,6 +1,6 @@
 export const illegitimateIncidenceChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [

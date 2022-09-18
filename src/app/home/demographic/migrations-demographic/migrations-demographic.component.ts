@@ -189,23 +189,15 @@ export class MigrationsDemographicComponent implements OnInit {
                     },
                 ]
 
-                let minimum: number[] = []
+                for (let migration of data) {
+                    if (migration.year != 2100) {
+                        labels.push(`Yr ${migration.year}`)
 
-                for (let index of data) {
-                    for (let key in index) {
-                        if (index[key] < 0) {
-                            minimum.push(index[key])
-                        }
+                        datasets[2].data.push(migration.net_migrations)
+                        datasets[0].data.push(migration.total_in_migrations)
+                        datasets[1].data.push(migration.total_out_migrations)
                     }
-                    labels.push(index.year)
-
-                    datasets[2].data.push(index.net_migrations)
-                    datasets[0].data.push(index.total_in_migrations)
-                    datasets[1].data.push(index.total_out_migrations)
                 }
-
-                this.migrationChart.options.scales.yAxes[0].ticks.min =
-                    minimum.sort()[0]
 
                 this.migrationChart.labels = labels
                 this.migrationChart.datasets = datasets

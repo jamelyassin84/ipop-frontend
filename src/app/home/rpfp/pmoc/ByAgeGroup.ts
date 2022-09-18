@@ -1,6 +1,6 @@
 export const ByAgeGroupConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: ['15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45 & Up'],

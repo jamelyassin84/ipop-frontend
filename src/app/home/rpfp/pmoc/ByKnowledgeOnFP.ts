@@ -1,6 +1,6 @@
 export const ByKnowledgeOnFPConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [''],

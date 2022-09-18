@@ -1,6 +1,6 @@
 export const marriageChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: ['', '', ''],

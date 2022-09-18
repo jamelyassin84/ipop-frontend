@@ -176,12 +176,12 @@
     <div class="row mT-50">
         <div class="mb-3 col-md-12">
             <ByMunicipalityTable
-                title="Migration by Municipality"
-                headerClass="#EF6C00"
-                [headers]="migrationByMunicipalityHeaders"
-                [body]="migrationByMunicipality"
                 type="Migration"
+                headerClass="#EF6C00"
+                title="Migration by Municipality"
+                [body]="migrationByMunicipality"
                 [keys]="migrationByMunicipalityKeys"
+                [headers]="migrationByMunicipalityHeaders"
             ></ByMunicipalityTable>
         </div>
 
@@ -194,10 +194,10 @@
                     <canvas
                         baseChart
                         [colors]="Colors"
-                        [datasets]="migrationChart.datasets"
                         [labels]="migrationChart.labels"
-                        [options]="migrationChart.options"
                         [legend]="migrationChart.legend"
+                        [options]="migrationChart.options"
+                        [datasets]="migrationChart.datasets"
                         chartType="bar"
                     >
                     </canvas>

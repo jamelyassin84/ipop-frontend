@@ -1,6 +1,6 @@
 export const MonthChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [

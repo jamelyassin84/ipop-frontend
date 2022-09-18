@@ -1,6 +1,6 @@
 export const crudeDeathRateIncidenceChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [

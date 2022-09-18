@@ -1,6 +1,6 @@
 export const ByCIvilStatusConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: ['Single', 'Co-Habiting/Live-in', 'Widow/er', 'Divorced/Separated'],

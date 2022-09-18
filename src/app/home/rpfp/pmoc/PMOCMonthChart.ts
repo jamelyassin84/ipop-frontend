@@ -1,6 +1,6 @@
 export const PMOCMonthChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [

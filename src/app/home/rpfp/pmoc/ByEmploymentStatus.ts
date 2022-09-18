@@ -1,6 +1,6 @@
 export const ByEmploymentStatusConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: ['Students', 'Employed', 'Unemployed'],

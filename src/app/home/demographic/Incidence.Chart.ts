@@ -1,6 +1,6 @@
 export const TeenageIncidenceChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [
@@ -28,7 +28,7 @@ export const TeenageIncidenceChartConfig = {
 
 export const IncidenceChartConfig = {
     options: {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true,
     },
     labels: [
