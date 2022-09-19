@@ -13,11 +13,13 @@ import {
     marriagesByMunicipalityKeys,
 } from 'src/app/app-core/constants/marriages/marriage.table'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'app-marriage-demographic',
     templateUrl: './marriage-demographic.component.html',
     styleUrls: ['./marriage-demographic.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class MarriageDemographicComponent implements OnInit {
     @ViewChild(PopulationPyramidComponent) pyramid: any
@@ -58,7 +60,7 @@ export class MarriageDemographicComponent implements OnInit {
         year: null,
     }
 
-    summaries: any = {}
+    summaries?: any
 
     localData: any = {}
 
