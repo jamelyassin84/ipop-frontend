@@ -1,6 +1,6 @@
 <div class="bg-light">
     <ng-template #addMarriageData>
-        <AddMarriageData></AddMarriageData>
+        <AddMarriageData [marriageData]="localData"></AddMarriageData>
     </ng-template>
     <ng-template #localDataForm>
         <CustomizeMarriageLocalData></CustomizeMarriageLocalData>
@@ -42,13 +42,13 @@
         ></Modal>
     </div>
 
-    <div class="mt-3 mb-4 row">
+    <div *ngIf="summaries" class="mt-3 mb-4 row">
         <div class="p-1 col-md-3">
             <SummaryComponent
                 title="Total Population"
                 icon="ti-user"
                 spanClass="bgc-blue-50 c-blue-500"
-                [value]="summaries?.summary?.population"
+                [value]="summaries?.population"
             ></SummaryComponent>
         </div>
 
@@ -57,7 +57,7 @@
                 title="Total Marriages"
                 icon="ti-infinite"
                 spanClass="bgc-pink-50 c-pink-500"
-                [value]="summaries?.summary?.total_marriages"
+                [value]="summaries?.total_marriages"
             ></SummaryComponent>
         </div>
 
@@ -67,12 +67,10 @@
                 icon="ti-infinite"
                 spanClass="bgc-green-50 c-green-500"
                 progressClass="bgc-red-500 "
-                [value]="summaries?.summary?.church"
+                [value]="summaries?.church"
                 [percentValue]="
-                    getPercentage(
-                        summaries?.summary?.church || 0,
-                        summaries?.summary?.total_marriages || 0
-                    )
+                    summaries.church || 0
+                        | to_percent: summaries?.total_marriages
                 "
             ></SummaryWithPercent>
         </div>
@@ -83,12 +81,10 @@
                 icon="ti-infinite"
                 spanClass="bgc-purple-50 c-purple-500"
                 progressClass="bgc-red-500 "
-                [value]="summaries?.summary?.civil"
+                [value]="summaries?.civil"
                 [percentValue]="
-                    getPercentage(
-                        summaries?.summary?.civil || 0,
-                        summaries?.summary?.total_marriages || 0
-                    )
+                    summaries.civil || 0
+                        | to_percent: summaries?.total_marriages
                 "
             ></SummaryWithPercent>
         </div>
@@ -101,10 +97,8 @@
                 progressClass="bgc-red-500 "
                 [value]="summaries?.summary?.others"
                 [percentValue]="
-                    getPercentage(
-                        summaries?.summary?.others || 0,
-                        summaries?.summary?.total_marriages || 0
-                    )
+                    summaries.others || 0
+                        | to_percent: summaries?.total_marriages
                 "
             ></SummaryWithPercent>
         </div>
@@ -113,9 +107,9 @@
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
 
     <PyramidChart-and-AgeGroup
+        type="Marriage"
         [showPyramid]="false"
         [location]="location"
-        type="Marriage"
         pyramidTitle="Marriage Pyramid"
         ageGroupTitle="Marriages by Age Group and Sex"
         [colors]="['#D4A77D', '#D7A405']"
@@ -166,7 +160,7 @@
                     <div class="bg-white card-header d-flex">
                         <span>Local Marriage Data</span>
                         <div class="ml-auto" *ngIf="localData.id != null">
-                            <DropDown [buttons]="LocalMarriageData"></DropDown>
+                            <!-- <DropDown [buttons]="LocalMarriageData"></DropDown>
                             <ng-template #LocalMarriageData>
                                 <Modal
                                     size="lg"
@@ -175,7 +169,7 @@
                                     btnClass="dropdown-item"
                                     [template]="localDataForm"
                                 ></Modal>
-                            </ng-template>
+                            </ng-template> -->
                         </div>
                     </div>
 

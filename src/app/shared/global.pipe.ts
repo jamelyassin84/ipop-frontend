@@ -28,6 +28,7 @@ import {AgePipe} from 'src/@digital_brand_work/pipes/age.pipe'
 import {SortByMunicipalityPipe} from '../pipes/sort-by-municipality.pipe'
 import {GetPercentagePipe} from '../pipes/get-percentage.pipe'
 import {ResolveBarangayPurokPipe} from '../pipes/resolve-barangay-purok.pipe'
+import {ToPercentPipe} from '../pipes/to-percent-pipe'
 
 export const globalPipes = [
     AgePipe,
@@ -63,4 +64,5 @@ export const appPipes = [
     GetPercentagePipe,
     SortByMunicipalityPipe,
     ResolveBarangayPurokPipe,
+    ToPercentPipe,
 ]

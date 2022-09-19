@@ -91,7 +91,26 @@ export class MarriageDemographicComponent implements OnInit {
         )
             .index()
             .subscribe((data) => {
-                this.summaries = data
+                let summary = {
+                    total_marriages: 0,
+                    population: 0,
+                    church: 0,
+                    civil: 0,
+                    others: 0,
+                }
+
+                for (let stat of data.summary) {
+                    summary.total_marriages += stat.total_marriages
+                    summary.population += stat.population
+                    summary.church += stat.church
+                    summary.civil += stat.civil
+                    summary.others += stat.others
+                }
+
+                this.summaries = summary
+
+                console.log(this.summaries)
+
                 this.pyramid.fetch()
                 let labels: any = []
                 let datasets: any = [
@@ -113,11 +132,13 @@ export class MarriageDemographicComponent implements OnInit {
                     },
                 ]
                 for (let index of data.month) {
-                    labels.push(index.year)
-                    datasets[0].data.push(index.church)
-                    datasets[1].data.push(index.civil)
-                    datasets[2].data.push(index.others)
-                    datasets[3].data.push(index.total_marriages)
+                    if (index.year !== 2100) {
+                        labels.push(index.year)
+                        datasets[0].data.push(index.church)
+                        datasets[1].data.push(index.civil)
+                        datasets[2].data.push(index.others)
+                        datasets[3].data.push(index.total_marriages)
+                    }
                 }
                 this.marriageConfig.labels = labels
                 this.marriageConfig.datasets = datasets
