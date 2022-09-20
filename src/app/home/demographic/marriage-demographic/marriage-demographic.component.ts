@@ -111,8 +111,6 @@ export class MarriageDemographicComponent implements OnInit {
 
                 this.summaries = summary
 
-                console.log(this.summaries)
-
                 this.pyramid.fetch()
                 let labels: any = []
                 let datasets: any = [
@@ -142,8 +140,11 @@ export class MarriageDemographicComponent implements OnInit {
                         datasets[3].data.push(index.total_marriages)
                     }
                 }
+
                 this.marriageConfig.labels = labels
+
                 this.marriageConfig.datasets = datasets
+                console.log(labels)
             })
     }
 

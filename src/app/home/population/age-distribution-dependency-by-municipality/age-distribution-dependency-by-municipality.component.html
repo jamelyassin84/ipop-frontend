@@ -30,16 +30,16 @@
                 {{ item.municipality }}
             </td>
             <td class="border ppbm">
-                {{ item.hh_population }}
+                {{ item.hh_population | number }}
             </td>
             <td class="border ppbm">
-                {{ item['0-14'] }}
+                {{ item['0-14'] | number }}
             </td>
             <td class="border ppbm">
-                {{ item['15-64'] }}
+                {{ item['15-64'] | number }}
             </td>
             <td class="border ppbm">
-                {{ item['65_and_over'] }}
+                {{ item['65_and_over'] | number }}
             </td>
             <td class="border ppbm">
                 {{ item.young_dependency }}

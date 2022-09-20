@@ -1,42 +1,65 @@
 <div class="card-body">
-    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-    <div class="row mt-3">
+    <div class="mt-3 row">
         <div *ngIf="data.municipality === null" class="form-group col-md-6">
             <label for="">Total Population</label>
-            <input [(ngModel)]="data.total_population" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.total_population"
+                type="text"
+                class="form-control"
+            />
         </div>
         <div *ngIf="data.municipality === null" class="form-group col-md-6">
             <label for="">Total Live Births</label>
-            <input [(ngModel)]="data.total_live_births" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.total_live_births"
+                type="text"
+                class="form-control"
+            />
         </div>
         <div class="form-group col-md-6">
             <label for="">Crude Birth Rate</label>
-            <input [(ngModel)]="data.crude_birth_rate" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.crude_birth_rate"
+                type="text"
+                class="form-control"
+            />
         </div>
 
         <div *ngIf="data.municipality !== null" class="form-group col-md-6">
             <label for="">Teenage Births (per 100 Births)</label>
-            <input [(ngModel)]="data.teenage_births" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.teenage_births"
+                type="text"
+                class="form-control"
+            />
         </div>
 
         <div *ngIf="data.municipality !== null" class="form-group col-md-6">
             <label for="">Illgetimate Births (per 100 Births)</label>
-            <input [(ngModel)]="data.illegitimate_births" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.illegitimate_births"
+                type="text"
+                class="form-control"
+            />
         </div>
 
         <div *ngIf="data.municipality !== null" class="form-group col-md-6">
             <label for="">General Fertility Rate (per 1000 WRA*)</label>
-            <input [(ngModel)]="data.general_fertility_rate" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.general_fertility_rate"
+                type="text"
+                class="form-control"
+            />
         </div>
     </div>
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i> Add this Birth Data</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i> Add this Birth Data</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

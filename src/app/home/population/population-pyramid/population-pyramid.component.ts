@@ -40,6 +40,8 @@ export class PopulationPyramidComponent implements OnInit {
         )
     }
 
+    readonly LAST = '80 and above'
+
     @Input()
     showPyramid: boolean = true
 
@@ -151,7 +153,10 @@ export class PopulationPyramidComponent implements OnInit {
     }
 
     processPopulationByAgeGroupAndSex(data: any[]) {
-        const temp = this._populationByAgeGroupTableService.process(data)
+        const temp = this._populationByAgeGroupTableService.process(
+            data,
+            this.type,
+        )
 
         this.populationByAgeGroupAndSex = temp.reverse()
 
@@ -195,11 +200,18 @@ export class PopulationPyramidComponent implements OnInit {
             if (key === 'below_1_year_old') {
                 newText = 'Below 1 Year Old'
             }
+            if (this.type === 'Marriage' && key === '20-24') {
+                console.log('ari')
+
+                newText = '18-24'
+            }
             let total = parseFloat(male[key]) + parseFloat(female[key])
 
             let data = {
                 ageGroup:
-                    key === 'eighty_and_above' || key === 'below_1_year_old'
+                    key === 'eighty_and_above' ||
+                    key === 'below_1_year_old' ||
+                    (this.type === 'Marriage' && key === '20-24')
                         ? newText
                         : key,
                 male: male[key],
@@ -217,6 +229,7 @@ export class PopulationPyramidComponent implements OnInit {
         this.populationByAgeGroupAndSexTotal.percent_male = 0
         this.populationByAgeGroupAndSexTotal.percent_female = 0
         this.populationByAgeGroupAndSexTotal.percent_total = 0
+
         const disregards = ['ageGroup', 'male', 'female', 'total']
         for (let index of temp) {
             for (let key in index) {
@@ -225,6 +238,8 @@ export class PopulationPyramidComponent implements OnInit {
                 }
             }
         }
-        this.populationByAgeGroupAndSex = temp.reverse()
+
+        this.populationByAgeGroupAndSex =
+            temp[0].ageGroup === this.LAST ? temp.reverse() : temp
     }
 }

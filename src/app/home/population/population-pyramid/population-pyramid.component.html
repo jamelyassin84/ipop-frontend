@@ -99,7 +99,12 @@
                                     padding-left: 0.5rem;
                                 "
                             >
-                                {{ item.ageGroup }}
+                                {{
+                                    item.ageGroup === '20-24' &&
+                                    type === 'Marriage'
+                                        ? '18-24'
+                                        : item.ageGroup
+                                }}
                             </td>
                             <td class="border ppbm">
                                 {{ item.male | number }}

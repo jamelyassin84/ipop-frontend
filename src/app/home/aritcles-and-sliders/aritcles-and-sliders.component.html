@@ -49,9 +49,9 @@
         <div
             class="carousel-cell"
             *ngFor="let image of images"
-            style="min-height: 50vh; background-color: rgba(0, 0, 0, 0.1)"
+            style="height: 50vh"
         >
-            <img [src]="image" />
+            <img class="t-w-full t-h-full t-object-contain" [src]="image" />
         </div>
     </carousel>
 </div>

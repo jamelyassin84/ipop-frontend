@@ -1,0 +1,54 @@
+# Resolved
+
+Population Pyramid
+Bingawan - data on brgy level
+San Miguel - reverse pyramid
+Population Profile
+Total number of Puroks - change to Brgy if view on Municipality
+
+Age Distribution and Age Dependency Ratio by Municipality
+Insert ageDistributionAndAgeDependencyRatio ?
+Not showing the data from Municipality even on Municipality
+
+add request:
+Population Profile
+Male and Female Population figures add some comma
+
+Births
+Local Birth Data
+Encoding would return "error : The crude birth rate must be a string"
+\*suggestion of encoding first in the Local Birth Data before Add Birth Data
+
+IN Migration
+Migration by Municipality
+"in-Migration Rate (per 100 population) - its not rate slash "Rate (per 100 population)" \*This one is not clear. Give sample
+same with out-Migration
+
+Net Migration
+Difference between In Migration and Out Migration not the total
+
+Marriages
+Marriages by Age Group and Sex Table
+slash below 1 to 10-14 data box - marriage age is 18 and above
+
+Total Population figures source?
+
+# Encoder
+
+Population Profile By Municipality
+No. of HHs - same with Total Population - Sex Ratio has different formats (104, 101:42, 104:100, 102/100) - Some Total Population has only 2 figures (ex Badiangan 28 instead of 29,306)
+
+# Additional Feature
+
+Cannot change (Some of the features that were requested could not be added since backend's data structure was already planned, implemented and it is somehow irreversible when there is data on it.):
+
+Type of Marriages Graph
+Graph is in 2022? (This only accept provincial Data)
+
+Death
+Crude Death Rate Chart fetch data from Local Death Data (This only accept provincial Data)
+
+Incidence of Teenage Births Graph
+Seems static - i tried encoding leganes 2021 incidence of teenage births of 13, the graph still unchanged (This only accept provincial Data)
+
+Incidence of Illegitimate, Teenage and Crude death rate are just provincial data, no feature for municipal or barangay as per last year's review. (This only accept provincial Data)

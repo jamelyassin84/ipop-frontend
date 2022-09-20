@@ -31,11 +31,7 @@
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">
             Total No. of
-            {{
-                location.barangay === null && location.municipality === null
-                    ? 'Barangays'
-                    : 'Puroks'
-            }}
+            {{ location | resolve_barangay_purok }}
         </h5>
         <div class="fw-600 h4 c-blue-900">
             {{ populationProfile.barangays || 0 }}
@@ -59,13 +55,13 @@
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">Male</h5>
         <div class="fw-600 h4 c-blue-900">
-            {{ populationProfile.males || 0 }}
+            {{ populationProfile.males || 0 | number }}
         </div>
     </div>
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">Female</h5>
         <div class="fw-600 h4 c-blue-900">
-            {{ populationProfile.females || 0 }}
+            {{ populationProfile.females || 0 | number }}
         </div>
     </div>
     <div class="pt-1 mb-2 col-md-6 bb">
@@ -78,19 +74,19 @@
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">No. of Households</h5>
         <div class="fw-600 h4 c-blue-900">
-            {{ populationProfile.households || 0 }}
+            {{ populationProfile.households || 0 | number }}
         </div>
     </div>
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">Average Household Size</h5>
         <div class="fw-600 h4 c-blue-900">
-            {{ populationProfile.average_household_size || 0 }}
+            {{ populationProfile.average_household_size || 0 | number }}
         </div>
     </div>
     <div class="pt-1 mb-2 col-md-6 bb">
         <h5 class="mb-2 text-secondary h6 fw-300">Population Density</h5>
         <div class="fw-600 h4 c-blue-900">
-            {{ populationProfile.density || 0 }}
+            {{ populationProfile.density || 0 | number }}
         </div>
     </div>
     <div class="pt-1 mb-2 col-md-6 bb">
@@ -116,7 +112,7 @@
         class="mt-2 col-md-12"
     >
         <label for=""
-            >Download this data Population Profile on this link
+            >Download this data Population Profile on this link &nbsp;
         </label>
         <a target="_blank" [href]="populationProfile.dowloadable_link">{{
             populationProfile.dowloadable_link

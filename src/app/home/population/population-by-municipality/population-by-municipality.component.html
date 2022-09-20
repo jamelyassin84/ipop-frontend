@@ -39,19 +39,19 @@
                 {{ data.density }}
             </td>
             <td class="text-center border">
-                {{ data.males }}
+                {{ data.males | number }}
             </td>
             <td class="text-center border">
-                {{ data.females }}
+                {{ data.females | number }}
             </td>
             <td class="text-center border">
-                {{ total(data.males, data.females) }}
+                {{ total(data.males, data.females) | number }}
             </td>
             <td class="text-center border">
                 {{ data.sex_ratio }}
             </td>
             <td class="text-center border">
-                {{ data.household_population }}
+                {{ data.household_population | number }}
             </td>
             <td class="text-center border">
                 {{ data.average_household_size }}

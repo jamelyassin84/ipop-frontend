@@ -155,7 +155,9 @@
         </div>
 
         <div class="mb-3 col-md-2">
-            <label for="20-24">20-24</label>
+            <label for="20-24">{{
+                type !== 'Marriage' ? '20-24' : '18-24'
+            }}</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['20-24']"
                 type="number"
@@ -164,7 +166,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="15-19">15-19</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['15-19']"
@@ -174,7 +176,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="10-14">10-14</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['10-14']"
@@ -184,7 +186,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="5-9">5-9</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['5-9']"
@@ -193,7 +195,8 @@
                 id="5-9"
             />
         </div>
-        <div class="mb-3 col-md-2">
+
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="5-9">1-4</label>
             <input
                 [(ngModel)]="populationPyramid.data.male['1-4']"
@@ -202,7 +205,8 @@
                 id="5-9"
             />
         </div>
-        <div class="mb-3 col-md-2">
+
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="Below 1 year old">Below 1 year</label>
             <input
                 [(ngModel)]="populationPyramid.data.male.below_1_year_old"
@@ -334,7 +338,9 @@
         </div>
 
         <div class="mb-3 col-md-2">
-            <label for="20-24">20-24</label>
+            <label for="20-24">{{
+                type !== 'Marriage' ? '20-24' : '18-24'
+            }}</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['20-24']"
                 type="number"
@@ -343,7 +349,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="15-19">15-19</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['15-19']"
@@ -353,7 +359,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="10-14">10-14</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['10-14']"
@@ -363,7 +369,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="5-9">5-9</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['5-9']"
@@ -373,7 +379,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="5-9">1-4</label>
             <input
                 [(ngModel)]="populationPyramid.data.female['1-4']"
@@ -383,7 +389,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-2">
+        <div *ngIf="type !== 'Marriage'" class="mb-3 col-md-2">
             <label for="Below 1 year old">Below 1 year</label>
             <input
                 [(ngModel)]="populationPyramid.data.female.below_1_year_old"

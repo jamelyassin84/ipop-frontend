@@ -24,8 +24,6 @@ export class AddPopulationProfileComponent implements OnInit {
 
     @Input('profile')
     set populationProfile(profile: any) {
-        console.log(profile)
-
         if (profile) {
             this.data = {...this.data, ...profile}
         }

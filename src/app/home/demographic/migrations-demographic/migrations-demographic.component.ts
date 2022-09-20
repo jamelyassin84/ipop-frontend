@@ -81,9 +81,9 @@ export class MigrationsDemographicComponent implements OnInit {
 
     migrationByMunicipalityHeaders = [
         'Municipality',
-        'In-Migration Rate (per 100 population)',
-        'Out-Migration Rate(per 100 population)',
-        'Net Migration Rate(per 100 population)',
+        'In-Migration Rate/100 population',
+        'Out-Migration Rate/100 population',
+        'Net Migration Rate/100 population',
     ]
 
     monthChartData: Statistic[] = []
@@ -193,7 +193,10 @@ export class MigrationsDemographicComponent implements OnInit {
                     if (migration.year != 2100) {
                         labels.push(`Yr ${migration.year}`)
 
-                        datasets[2].data.push(migration.net_migrations)
+                        datasets[2].data.push(
+                            migration.total_in_migrations -
+                                migration.total_out_migrations,
+                        )
                         datasets[0].data.push(migration.total_in_migrations)
                         datasets[1].data.push(migration.total_out_migrations)
                     }

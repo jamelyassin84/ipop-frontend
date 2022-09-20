@@ -4,8 +4,10 @@ import {getPercent} from 'src/app/constants/Shortcuts'
 
 @Injectable({providedIn: 'root'})
 export class PopulationByAgeGroupTableService {
-    process(data: any) {
-        let temp: any = []
+    readonly LAST = '80 and above'
+
+    process(data: any, type: string) {
+        let temp: any[] = []
 
         const {male, female} = data[0]?.data
 
@@ -17,10 +19,17 @@ export class PopulationByAgeGroupTableService {
             if (key === 'below_1_year_old') {
                 newText = 'Below 1 Year Old'
             }
+            if (type === 'Marriage' && key === '20-24') {
+                console.log('ari')
+
+                newText = '18-24'
+            }
             let total = parseFloat(male[key]) + parseFloat(female[key])
             temp.push({
                 ageGroup:
-                    key === 'eighty_and_above' || key === 'below_1_year_old'
+                    key === 'eighty_and_above' ||
+                    key === 'below_1_year_old' ||
+                    (type === 'Marriage' && key === '20-24')
                         ? newText
                         : key,
                 male: male[key],
@@ -33,6 +42,10 @@ export class PopulationByAgeGroupTableService {
                     getPercent(male[key], total),
             })
         }
-        return temp
+
+        if (temp.length === 0 || empty(temp[0].ageGroup)) {
+            return temp
+        }
+        return temp[0].ageGroup === this.LAST ? temp.reverse() : temp
     }
 }
