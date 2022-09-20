@@ -1,9 +1,14 @@
 <p *ngFor="let note of TechnicalNotes">
-    <span *ngIf="!isUser" (click)="removeNote(note.id)" role="button" placement="left" ngbTooltip="Click to Remove Technical Note" class="h6 text-primary">{{ note.title }}</span
-	>
-	- {{ note.body }}
-
-	<span *ngIf="isUser" class="h6 text-primary">{{ note.title }}</span> - {{ note.body }}
+    <span
+        role="button"
+        placement="left"
+        class="h6 text-primary"
+        (click)="removeNote(note.id)"
+        [ngClass]="{'t-pointer-events-none': isUser}"
+        ngbTooltip="Click to Remove Technical Note"
+        >{{ note.title }}</span
+    >
+    - {{ note.body }}
 </p>
 
 <NoDataComponent [data]="TechnicalNotes"></NoDataComponent>
