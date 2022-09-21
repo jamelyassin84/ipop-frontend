@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core'
+import {UserService} from 'src/app/Services/Independent/user.service'
 
 @Component({
     selector: 'age-distribution-dependency-by-municipality',
@@ -8,7 +9,9 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core'
 export class AgeDistributionDependencyByMunicipalityComponent
     implements OnInit
 {
-    constructor() {}
+    constructor(private user: UserService) {}
+
+    readonly isUser = !this.user.isAdmin()
 
     @Output()
     onRemove = new EventEmitter<string>()

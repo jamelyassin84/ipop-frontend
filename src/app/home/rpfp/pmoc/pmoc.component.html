@@ -1,6 +1,6 @@
 <div class="bg-light">
     <ng-template #addPMOCData>
-        <AddPMOCData></AddPMOCData>
+        <AddPMOCData [pmocData]="pmocData"></AddPMOCData>
     </ng-template>
 
     <ng-template #customizeByEmploymentStatusChart>
@@ -67,8 +67,8 @@
                     <ng-template #NCDD>
                         <Modal
                             size="lg"
-                            title="Customize Number of Couple Chart"
-                            btnTitle="Customize number of couple chart"
+                            title="Number of Couples"
+                            btnTitle="Edit Number of Couples"
                             btnClass="dropdown-item"
                             [template]="customizeCoupleChart"
                         ></Modal>
@@ -134,7 +134,7 @@
                     <div class="layer w-100 mT-15">
                         <h5 class="t-text-green-500">
                             <i class="mr-2 ti-user"></i
-                            >{{ localData?.oriented_couples ?? 0 * 2 }}
+                            >{{ localData?.oriented_couples * 2 || 0 }}
                         </h5>
                         <small class="fw-600 c-grey-700"
                             >Number of Individual Interviewed
@@ -150,7 +150,7 @@
             <div class="card">
                 <div class="bg-white card-header d-flex aic">
                     <div class="mr-auto card-title h5">
-                        PMC Couple Applicants by Age Group
+                        PMOC Couple Applicants by Age Group
                     </div>
                     <DropDown
                         *ngIf="!isUser"
@@ -159,8 +159,8 @@
                     <ng-template #ApplicantsByAgeGroupDD>
                         <Modal
                             size="lg"
-                            title="Edit PMC Couple Applicants by Age Group"
-                            btnTitle="Customize chart"
+                            title="PMOC Couple Applicants by Age Group"
+                            btnTitle="Edit PMOC Couple Applicants by Age Group"
                             btnClass="dropdown-item"
                             [template]="customizeByAgeGroupChart"
                         ></Modal>
@@ -184,14 +184,14 @@
             <div class="card">
                 <div class="bg-white card-header d-flex aic">
                     <div class="mr-auto card-title h5">
-                        PMC Applicants by Employment Status and Sex
+                        PMOC Applicants by Employment Status and Sex
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="ESDD"></DropDown>
                     <ng-template #ESDD>
                         <Modal
                             size="lg"
-                            title="Edit PMC Applicants by Employment Status and Sex"
-                            btnTitle="Customize chart"
+                            title="PMOC Applicants by Employment Status and Sex"
+                            btnTitle="Edit PMOC Applicants by Employment Status and Sex"
                             btnClass="dropdown-item"
                             [template]="customizeByEmploymentStatusChart"
                         ></Modal>
@@ -215,14 +215,14 @@
             <div class="card">
                 <div class="bg-white card-header d-flex aic">
                     <div class="mr-auto card-title h5">
-                        Knowledge on Family Planning among PMC Applicants
+                        Knowledge on Family Planning among PMOC Applicants
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="KFDD"></DropDown>
                     <ng-template #KFDD>
                         <Modal
                             size="lg"
-                            title="Edit Knowledge on Family Planning among PMC Applicants"
-                            btnTitle="Customize chart"
+                            title="Knowledge on Family Planning among PMOC Applicants"
+                            btnTitle="Edit Knowledge on Family Planning among PMOC Applicants"
                             btnClass="dropdown-item"
                             [template]="customizeByKnowledgeOnFPChart"
                         ></Modal>
@@ -247,15 +247,15 @@
             <div class="card">
                 <div class="bg-white card-header d-flex aic">
                     <div class="mr-auto card-title h5">
-                        Percentage Distribution of PMC Applicants by Civil
+                        Percentage Distribution of PMOC Applicants by Civil
                         Status
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="CSDD"></DropDown>
                     <ng-template #CSDD>
                         <Modal
                             size="lg"
-                            title="Edit Percentage Distribution of PMC Applicants by Civil Status"
-                            btnTitle="Customize chart"
+                            title="Percentage Distribution of PMOC Applicants by Civil Status"
+                            btnTitle="Edit Percentage Distribution of PMOC Applicants by Civil Status"
                             btnClass="dropdown-item"
                             [template]="customizeByCivilStatusChart"
                         ></Modal>
@@ -279,14 +279,14 @@
             <div class="card">
                 <div class="bg-white card-header d-flex aic">
                     <div class="mr-auto card-title h5">
-                        PMC Applicants by Average Monthly Income and Sex
+                        PMOC Applicants by Average Monthly Income and Sex
                     </div>
                     <DropDown *ngIf="!isUser" [buttons]="AMDD"></DropDown>
                     <ng-template #AMDD>
                         <Modal
                             size="lg"
-                            title="Edit PMC Applicants by Average Monthly Income and Sex"
-                            btnTitle="Customize chart"
+                            title="PMOC Applicants by Average Monthly Income and Sex"
+                            btnTitle="Edit PMOC Applicants by Average Monthly Income and Sex"
                             btnClass="dropdown-item"
                             [template]="customizeByMonthlyIncomeChart"
                         ></Modal>

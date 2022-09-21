@@ -73,6 +73,8 @@ export class PmocComponent implements OnInit {
 
     numberOfCouplesData?: any
 
+    pmocData?: any
+
     ngOnInit(): void {}
 
     fetch(event: any) {
@@ -94,6 +96,8 @@ export class PmocComponent implements OnInit {
             `municipality=${this.location['municipality']}&year=${this.location['year']}`,
         )
         service.index().subscribe((pmc: any) => {
+            this.pmocData = pmc.data
+
             if (empty(pmc) || empty(pmc.data) || empty(pmc.data.id)) {
                 this.localData = {id: null}
             }
@@ -270,7 +274,7 @@ export class PmocComponent implements OnInit {
                 parseFloat(data['above_25k_female']),
             ]
             this.byMonthlyIncome.datasets[1].data = [
-                parseFloat(data.no_income_male),
+                parseFloat(data.no_income_female),
                 parseFloat(data.under_5k_male),
                 parseFloat(data['5k_to_10k_male']),
                 parseFloat(data['10k_to_15k_male']),
@@ -278,6 +282,7 @@ export class PmocComponent implements OnInit {
                 parseFloat(data['20k_to_25k_male']),
                 parseFloat(data['above_25k_male']),
             ]
+
             this.byMonthlyIncome.datasets[2].data = [
                 parseFloat(data.no_income_male) +
                     parseFloat(data.no_income_female),

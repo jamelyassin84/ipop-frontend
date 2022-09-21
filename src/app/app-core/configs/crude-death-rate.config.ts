@@ -21,7 +21,7 @@ export const crudeDeathRateIncidenceChartConfig = {
     datasets: [
         {
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            label: 'Female',
+            label: 'Crude Death Rate',
         },
     ],
 }

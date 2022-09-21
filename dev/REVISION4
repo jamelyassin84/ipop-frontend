@@ -1,0 +1,43 @@
+All PMOC Graph data
+sample: Popup with title "Edit Knowledge On Family Planning Among PMC Applicants" slash "Edit" same with other PMOC Graph
+
+---
+
+#Resoleved
+
+On Guest Mode:
+Technical Notes is Editable
+
+Death
+
+Crude Death Rate Chart Graph
+graph has "Female" - please slash the "Female"
+
+PMC
+Marriages
+Local PMOC Data
+number of Individual Interview is same with Number of Couples Oriented
+
+PMC Applicants by Average Monthly Income and Sex Graph
+Wrong Total in No Income Bracket
+
+In Guest Mode:
+Marriages
+Marriages by Month of Marriage is editable
+
+request:
+change the labels on each graph of "PMC" to "PMOC"
+Editing data in input box, data should be fetch from database
+
+Top 10 Populated Municipalities and Age Distribution and Age Dependency Ratio by Municipality
+Remove dots are are seen although not executable - but better totally cannot be seen
+
+Population Profile By Municipality
+No. of HHs is same with Population Total
+No. of HHs is different with Population HHs
+
+# Will not recommend
+
+request:
+graph and data shall be blank until municipality and/or year selected
+on start of website, there are municipal data displayed i think not from encoders

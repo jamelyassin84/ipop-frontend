@@ -51,7 +51,7 @@
                 {{ item.dependency }}
             </td>
             <td>
-                <DropDown [buttons]="aadrDD"></DropDown>
+                <DropDown *ngIf="!isUser" [buttons]="aadrDD"></DropDown>
                 <ng-template #aadrDD>
                     <button
                         (click)="onRemove.emit(item.id)"

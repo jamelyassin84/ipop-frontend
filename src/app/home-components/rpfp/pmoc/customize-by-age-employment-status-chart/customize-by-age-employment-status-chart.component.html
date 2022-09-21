@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="h5">Male</div>
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Student </label>
             <input
                 [(ngModel)]="data.student_male"
@@ -13,7 +13,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Employed </label>
             <input
                 [(ngModel)]="data.employed_male"
@@ -21,7 +21,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Unemployed </label>
             <input
                 [(ngModel)]="data.not_employed_male"
@@ -29,10 +29,10 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-12 mt-5">
+        <div class="mt-5 col-md-12">
             <div class="h5">Female</div>
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Student </label>
             <input
                 [(ngModel)]="data.student_female"
@@ -40,7 +40,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Employed </label>
             <input
                 [(ngModel)]="data.employed_female"
@@ -48,7 +48,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Unemployed </label>
             <input
                 [(ngModel)]="data.not_employed_female"
@@ -59,10 +59,10 @@
     </div>
 
     <hr />
-    <div class="d-flex aic jcc mr-5">
+    <div class="mr-5 d-flex aic jcc">
         <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
             <span *ngIf="!isLoading"
-                ><i class="ti-check mr-1"></i> Add this PMC Applicants by
+                ><i class="mr-1 ti-check"></i> Add this PMOC Applicants by
                 Employment Status and Sex</span
             >
             <Loader *ngIf="isLoading"></Loader>

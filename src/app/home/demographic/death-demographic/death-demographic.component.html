@@ -232,11 +232,12 @@
                 <div class="mt-2 mr-auto card-title h4">Technical Notes</div>
                 <Modal
                     size="lg"
+                    *ngIf="!isUser"
+                    icon="ti-notepad"
+                    btnClass="btn btn-sm btn-dark"
                     title="Customize Technical Notes"
                     btnTitle="Customize technical notes"
-                    btnClass="btn btn-sm btn-dark"
                     [template]="customizeTechnicalNotes"
-                    icon="ti-notepad"
                 ></Modal>
             </div>
             <div class="card-body">

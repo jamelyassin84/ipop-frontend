@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="h5">Male</div>
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">No Income </label>
             <input
                 [(ngModel)]="data.no_income_male"
@@ -13,7 +13,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Under ₱5,000 </label>
             <input
                 [(ngModel)]="data.under_5k_male"
@@ -21,7 +21,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱5,000-₱9,999 </label>
             <input
                 [(ngModel)]="data['5k_to_10k_male']"
@@ -29,7 +29,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱10,000-₱14,999 </label>
             <input
                 [(ngModel)]="data['10k_to_15k_male']"
@@ -37,7 +37,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱15,000-₱19,999 </label>
             <input
                 [(ngModel)]="data['15k_to_20k_male']"
@@ -45,7 +45,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱20,000-₱24,999 </label>
             <input
                 [(ngModel)]="data['20k_to_25k_male']"
@@ -53,7 +53,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱25,000 Up </label>
             <input
                 [(ngModel)]="data['above_25k_male']"
@@ -62,10 +62,10 @@
             />
         </div>
 
-        <div class="col-md-12 mt-5">
+        <div class="mt-5 col-md-12">
             <div class="h5">Female</div>
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">No Income </label>
             <input
                 [(ngModel)]="data.no_income_female"
@@ -73,7 +73,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Under ₱5,000 </label>
             <input
                 [(ngModel)]="data.under_5k_female"
@@ -81,7 +81,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱5,000-₱9,999 </label>
             <input
                 [(ngModel)]="data['5k_to_10k_female']"
@@ -89,7 +89,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱10,000-₱14,999 </label>
             <input
                 [(ngModel)]="data['10k_to_15k_female']"
@@ -97,7 +97,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱15,000-₱19,999 </label>
             <input
                 [(ngModel)]="data['15k_to_20k_female']"
@@ -105,7 +105,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱20,000-₱24,999 </label>
             <input
                 [(ngModel)]="data['20k_to_25k_female']"
@@ -113,7 +113,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">₱25,000 Up </label>
             <input
                 [(ngModel)]="data['above_25k_female']"
@@ -124,10 +124,10 @@
     </div>
 
     <hr />
-    <div class="d-flex aic jcc mr-5">
+    <div class="mr-5 d-flex aic jcc">
         <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
             <span *ngIf="!isLoading"
-                ><i class="ti-check mr-1"></i>Update this PMC Applicants by
+                ><i class="mr-1 ti-check"></i>Update this PMOC Applicants by
                 Average Monthly Income and Sex</span
             >
             <Loader *ngIf="isLoading"></Loader>

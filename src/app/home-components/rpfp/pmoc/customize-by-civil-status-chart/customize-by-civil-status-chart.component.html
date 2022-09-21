@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="h5">Male</div>
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Single </label>
             <input
                 [(ngModel)]="data.single_male"
@@ -13,7 +13,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Co-Habiting/Live-in </label>
             <input
                 [(ngModel)]="data.live_in_male"
@@ -21,7 +21,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Widow/er </label>
             <input
                 [(ngModel)]="data.widow_male"
@@ -29,7 +29,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Divorced/Separated </label>
             <input
                 [(ngModel)]="data.separated_male"
@@ -38,10 +38,10 @@
             />
         </div>
 
-        <div class="col-md-12 mt-5">
+        <div class="mt-5 col-md-12">
             <div class="h5">Female</div>
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Single </label>
             <input
                 [(ngModel)]="data.single_female"
@@ -49,7 +49,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Co-Habiting/Live-in </label>
             <input
                 [(ngModel)]="data.live_in_female"
@@ -57,7 +57,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Widow/er </label>
             <input
                 [(ngModel)]="data.widow_female"
@@ -65,7 +65,7 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="mt-4 col-md-3">
             <label for="">Divorced/Separated </label>
             <input
                 [(ngModel)]="data.separated_female"
@@ -76,11 +76,11 @@
     </div>
 
     <hr />
-    <div class="d-flex aic jcc mr-5">
+    <div class="mr-5 d-flex aic jcc">
         <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
             <span *ngIf="!isLoading"
-                ><i class="ti-check mr-1"></i>Update this Percentage
-                Distribution of PMC Applicants by Civil Status</span
+                ><i class="mr-1 ti-check"></i>Update this Percentage
+                Distribution of PMOC Applicants by Civil Status</span
             >
             <Loader *ngIf="isLoading"></Loader>
         </button>

@@ -125,7 +125,10 @@
                 <div class="bg-white card-header d-flex">
                     <div class="mr-auto">Marriage by Month of Marriage</div>
 
-                    <DropDown [buttons]="marriageStatisticDropdown"></DropDown>
+                    <DropDown
+                        *ngIf="!isUser"
+                        [buttons]="marriageStatisticDropdown"
+                    ></DropDown>
 
                     <ng-template #marriageStatisticDropdown>
                         <Modal
