@@ -72,7 +72,11 @@ export class PmocComponent implements OnInit {
     byMonthlyIncome = {...byMonthlyIncomeConfig}
 
     numberOfCouplesData?: any
-
+    ageGroupeData?: any
+    employmentStatusData?: any
+    KnowledgeOnFP?: any
+    civilStatusData?: any
+    monthlyIncomeData?: any
     pmocData?: any
 
     ngOnInit(): void {}
@@ -128,9 +132,12 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
+                this.ByAgeGroup = {...ByAgeGroupConfig}
                 return
             }
             data = data[0]
+            this.ageGroupeData = data
+
             this.ByAgeGroup.datasets[0].data = [
                 parseFloat(data['15_to_19_female']),
                 parseFloat(data['20_to_24_female']),
@@ -176,9 +183,12 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
+                this.ByCIvilStatus = {...ByCIvilStatusConfig}
+
                 return
             }
             data = data[0]
+            this.civilStatusData = data
             this.ByCIvilStatus.datasets[0].data = [
                 parseFloat(data.single_female),
                 parseFloat(data.live_in_female),
@@ -210,9 +220,12 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
+                this.ByEmploymentStatus = {...ByEmploymentStatusConfig}
+
                 return
             }
             data = data[0]
+            this.employmentStatusData = data
             this.ByEmploymentStatus.datasets[0].data = [
                 data.student_female,
                 data.employed_female,
@@ -241,9 +254,12 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
+                this.ByKnowledgeOnFP = {...ByKnowledgeOnFPConfig}
+
                 return
             }
             data = data[0]
+            this.KnowledgeOnFP = data
             this.ByKnowledgeOnFP.datasets[0].data = [data.females]
             this.ByKnowledgeOnFP.datasets[1].data = [data.males]
             this.ByKnowledgeOnFP.datasets[2].data = [
@@ -261,9 +277,11 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
+                this.byMonthlyIncome = {...byMonthlyIncomeConfig}
                 return
             }
             data = data[0]
+            this.monthlyIncomeData = data
             this.byMonthlyIncome.datasets[0].data = [
                 parseFloat(data.no_income_male),
                 parseFloat(data.under_5k_male),

@@ -4,23 +4,32 @@
     </ng-template>
 
     <ng-template #customizeByEmploymentStatusChart>
-        <CustomizeByEmploymentStatusChart></CustomizeByEmploymentStatusChart>
+        <CustomizeByEmploymentStatusChart
+            [data]="employmentStatusData"
+        ></CustomizeByEmploymentStatusChart>
     </ng-template>
 
     <ng-template #customizeByAgeGroupChart>
-        <CustomizeByAgeGroupChart></CustomizeByAgeGroupChart>
+        <CustomizeByAgeGroupChart
+            [data]="ageGroupeData"
+        ></CustomizeByAgeGroupChart>
     </ng-template>
 
     <ng-template #customizeByCivilStatusChart>
-        <CustomizeByCivilStatusChart> </CustomizeByCivilStatusChart>
+        <CustomizeByCivilStatusChart [data]="civilStatusData">
+        </CustomizeByCivilStatusChart>
     </ng-template>
 
     <ng-template #customizeByKnowledgeOnFPChart>
-        <CustomizeByKnowledgeOnFPChart></CustomizeByKnowledgeOnFPChart>
+        <CustomizeByKnowledgeOnFPChart
+            [data]="KnowledgeOnFP"
+        ></CustomizeByKnowledgeOnFPChart>
     </ng-template>
 
     <ng-template #customizeByMonthlyIncomeChart>
-        <CustomizeByMonthlyIncomeChart></CustomizeByMonthlyIncomeChart>
+        <CustomizeByMonthlyIncomeChart
+            [data]="monthlyIncomeData"
+        ></CustomizeByMonthlyIncomeChart>
     </ng-template>
 
     <ng-template #customizeCoupleChart>

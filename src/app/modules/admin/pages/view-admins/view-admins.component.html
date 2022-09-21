@@ -30,7 +30,13 @@
                         />
                     </td>
                     <td>{{ admin.fullname }}</td>
-                    <td>{{ admin.roles[0].name || 'N/A' }}</td>
+                    <td>
+                        {{
+                            admin.roles.length !== 0
+                                ? admin.roles[0].name
+                                : 'N/A'
+                        }}
+                    </td>
                     <td *ngIf="admin.iterations === 5">
                         <span
                             class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500"

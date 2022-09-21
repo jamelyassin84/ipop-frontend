@@ -1,6 +1,6 @@
 <div class="card-body">
     <div class="row">
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for=""> Number of Sessions Conducted</label>
             <input
                 [(ngModel)]="data.sessions"
@@ -8,18 +8,10 @@
                 class="form-control"
             />
         </div>
-        <div class="col-md-4 mt-4">
+        <div class="mt-4 col-md-4">
             <label for="">Number of Couples Oriented</label>
             <input
                 [(ngModel)]="data.oriented_couples"
-                type="number"
-                class="form-control"
-            />
-        </div>
-        <div class="col-md-4 mt-4">
-            <label for="">Number of Individual Interviewed</label>
-            <input
-                [(ngModel)]="data.individuals_interviewed"
                 type="number"
                 class="form-control"
             />
@@ -28,10 +20,10 @@
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
         <span *ngIf="!isLoading"
-            ><i class="ti-check mr-1"></i> Update this local PMOC data</span
+            ><i class="mr-1 ti-check"></i> Update this local PMOC data</span
         >
         <Loader *ngIf="isLoading"></Loader>
     </button>
