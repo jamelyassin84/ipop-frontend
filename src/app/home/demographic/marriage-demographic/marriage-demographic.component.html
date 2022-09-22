@@ -46,8 +46,7 @@
         <div class="p-1 col-md-3">
             <SummaryComponent
                 title="Total Population"
-                icon="ti-user"
-                spanClass="bgc-blue-50 c-blue-500"
+                spanClass="bgc-grey-50  "
                 [value]="summaries?.population"
             ></SummaryComponent>
         </div>
@@ -55,7 +54,6 @@
         <div class="p-1 col-md-3">
             <SummaryComponent
                 title="Total Marriages"
-                icon="ti-infinite"
                 spanClass="bgc-pink-50 c-pink-500"
                 [value]="summaries?.total_marriages"
             ></SummaryComponent>
@@ -64,9 +62,8 @@
         <div class="p-1 col-md-2">
             <SummaryWithPercent
                 title="Church"
-                icon="ti-infinite"
-                spanClass="bgc-green-50 c-green-500"
-                progressClass="bgc-red-500 "
+                spanClass="bgc-pink-50 c-pink-400"
+                progressClass="bgc-pink-400 "
                 [value]="summaries?.church"
                 [percentValue]="
                     summaries.church || 0
@@ -78,9 +75,8 @@
         <div class="p-1 col-md-2">
             <SummaryWithPercent
                 title="Civil"
-                icon="ti-infinite"
                 spanClass="bgc-purple-50 c-purple-500"
-                progressClass="bgc-red-500 "
+                progressClass="bgc-purple-500 "
                 [value]="summaries?.civil"
                 [percentValue]="
                     summaries.civil || 0
@@ -92,9 +88,8 @@
         <div class="p-1 col-md-2">
             <SummaryWithPercent
                 title="Others"
-                icon="ti-infinite"
-                spanClass="bgc-orange-50 c-orange-500"
-                progressClass="bgc-red-500 "
+                spanClass="bgc-pink-50 c-pink-600"
+                progressClass="bgc-pink-600 "
                 [value]="summaries.others"
                 [percentValue]="
                     summaries.others || 0

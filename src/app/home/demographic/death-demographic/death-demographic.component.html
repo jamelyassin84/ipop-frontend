@@ -45,12 +45,12 @@
             icon="ti-plus"
         ></Modal>
     </div>
-    <div class="mt-3 mb-4 row">
+
+    <div *ngIf="summaries" @expandCollapse class="mt-3 mb-4 row">
         <div class="p-1 col-md-4">
             <SummaryComponent
                 title="Total Population"
-                icon="ti-user"
-                spanClass="bgc-blue-50 c-blue-500"
+                spanClass="bgc-grey-50  "
                 [value]="summaries?.summary?.population"
             ></SummaryComponent>
         </div>
@@ -58,7 +58,6 @@
         <div class="p-1 col-md-4">
             <SummaryComponent
                 title="Total Deaths"
-                icon="ti-power-off"
                 spanClass="bgc-red-50 c-red-500"
                 [value]="summaries?.summary?.total"
             ></SummaryComponent>
@@ -67,7 +66,6 @@
         <div class="p-1 col-md-4">
             <SummaryWithPercent
                 title="Crude Death Rate"
-                icon="ti-power-off"
                 spanClass="bgc-red-50 c-red-500"
                 progressClass="bgc-red-500 "
                 [value]="summaries?.summary?.crude_death_rate"

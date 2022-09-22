@@ -4,6 +4,7 @@ import {Component, OnInit, ViewChild} from '@angular/core'
 import {Subscription} from 'rxjs'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
+import {NavService} from 'src/app/components/nav/nav.service'
 import {Deleted, Fire, pop} from 'src/app/modules/extras/Alert'
 import {BaseService} from 'src/app/Services/base.service'
 import {AgeDistributionAndAgeDependecyRatioService} from 'src/app/Services/home/population/age-distribution-and-age-dependecy-ratio.service'
@@ -19,14 +20,13 @@ import {PopulationPyramidComponent} from './population-pyramid/population-pyrami
     animations: [...dbwAnimations],
 })
 export class PopulationComponent implements OnInit {
-    @ViewChild(PopulationPyramidComponent) pyramid: any
-
     constructor(
-        private topPopulatedService: TopPopulatedService,
-        private component: ReloadService,
         private _http: HttpClient,
-        private adaadr: AgeDistributionAndAgeDependecyRatioService,
         private user: UserService,
+        private _navService: NavService,
+        private component: ReloadService,
+        private topPopulatedService: TopPopulatedService,
+        private adaadr: AgeDistributionAndAgeDependecyRatioService,
     ) {
         this.subscriptions.add(
             this.component.shouldReload().subscribe(() => {
@@ -35,12 +35,17 @@ export class PopulationComponent implements OnInit {
         )
     }
 
+    @ViewChild(PopulationPyramidComponent)
+    pyramid: any
+
     @HostListener('window:resize', ['$event'])
     onResize() {
         this.innerWidth = window.innerWidth
     }
 
     readonly isUser = !this.user.isAdmin()
+
+    headerNotShown$ = this._navService.hide$
 
     innerWidth: number = 0
 

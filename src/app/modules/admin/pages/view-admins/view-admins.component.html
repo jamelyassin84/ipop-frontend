@@ -1,10 +1,9 @@
 <ng-template #viewAdmin>
     <ViewAdmin [admin]="currentAdmin"></ViewAdmin>
 </ng-template>
-
 <div class="card">
     <div class="card-body">
-        <table class="table mT-30">
+        <table class="table mT-30 table-striped">
             <thead class="table-dark bgc-blue-900">
                 <tr>
                     <th><i class="ti-user"></i></th>
@@ -18,17 +17,24 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody [@listAnimation]="admins.length">
                 <tr *ngFor="let admin of admins">
                     <td>
                         <img
-                            [src]="
-                                admin.profile_picture?.uri ||
-                                '/assets/avatars/face-7.jpg'
-                            "
+                            *ngIf="admin.profile_picture"
+                            [src]="admin.profile_picture.uri"
                             alt=""
+                            class="border t-object-contain t-border-gray-200 t-bg-gray-300"
                         />
+
+                        <div
+                            *ngIf="!admin.profile_picture"
+                            class="avatar t-bg-gray-300 t-text-white t-font-bold t-text-2xl t-flex t-items-center t-justify-center"
+                        >
+                            {{ admin.fullname | initials }}
+                        </div>
                     </td>
+
                     <td>{{ admin.fullname }}</td>
                     <td>
                         {{
@@ -59,11 +65,10 @@
                         <Modal
                             (click)="currentAdmin = admin"
                             size="xl"
-                            title="View Admin"
+                            title="View"
                             btnTitle="View admin"
-                            btnClass="btn btn-sm btn-outline-info mr-2"
+                            btnClass="btn btn-sm btn-outline-info mr-2 t-text-xl"
                             [template]="viewAdmin"
-                            icon="ti-eye"
                         ></Modal>
                     </td>
                 </tr>

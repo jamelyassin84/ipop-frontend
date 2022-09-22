@@ -5,7 +5,9 @@
 <div class="card">
     <div class="bg-white card-header">
         <h5 class="m-0 text-center card-title d-flex">
-            <span style="align-self: center">{{ serviceOffered.title }}</span>
+            <span class="t-text-3xl" style="align-self: center">{{
+                serviceOffered.title
+            }}</span>
             <span *ngIf="!isUser" class="ml-auto">
                 <DropDown [buttons]="dropdown"></DropDown>
                 <ng-template #dropdown>

@@ -1,10 +1,19 @@
-<div class="layers bd bgc-white mt-5 pt-5">
-    <ul class="nav nav-tabs mt-5 pt-5">
+<div class="pt-5 -mb-120 layers bd bgc-white">
+    <ul class="pt-5 mt-5 nav nav-tabs">
         <li *ngFor="let nav of navs" class="nav-item">
-            <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
+            <a
+                (click)="handleChangeTab(nav.name)"
+                [routerLink]="nav.route"
+                [ngClass]="{
+                    't-bg-bg-brand t-text-white ': url.includes(nav.route),
+                    'text-muted ': !url.includes(nav.route)
+                }"
+                class="t-py-3 nav-link t-text-xl"
+            >
                 <i [class]="nav.icon"></i> {{ nav.name }}
             </a>
         </li>
     </ul>
 </div>
+
 <router-outlet></router-outlet>

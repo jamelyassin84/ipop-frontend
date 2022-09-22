@@ -31,8 +31,8 @@ module.exports = {
                 'spin-slow': 'spin 3s linear infinite',
             },
             colors: {
-                'bg-brand': '#1757AE',
-                'text-brand': '#1757AE',
+                'bg-brand': '#1049A2',
+                'text-brand': '#1049A2',
             },
             flex: {
                 0: '0 0 auto',

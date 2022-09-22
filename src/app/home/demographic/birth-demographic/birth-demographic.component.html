@@ -48,40 +48,19 @@
             [template]="addBirthData"
             icon="ti-plus"
         ></Modal>
-
-        <!-- <Modal
-			*ngIf="!isUser"
-			size="lg"
-			title="Add Officials"
-			btnTitle="Add an official"
-			btnClass="btn btn-sm btn-danger mr-2"
-			[template]="addOfficials"
-			icon="ti-plus"
-		></Modal>
-
-		<Modal
-			size="lg"
-			title="View  Officials"
-			btnTitle="View officials"
-			btnClass="btn btn-sm btn-outline-danger"
-			[template]="viewOfficials"
-			icon="ti-pin"
-		></Modal> -->
     </div>
 
-    <div class="mt-1 mb-4 row">
+    <div *ngIf="summaries" @expandCollapse class="mt-1 mb-4 row">
         <div class="p-1 mt-3 col-md-2 col-md-offset-1">
             <SummaryComponent
                 title="Total Population"
-                icon="ti-user"
-                spanClass="bgc-blue-50 c-blue-500"
+                spanClass="bgc-grey-50  "
                 [value]="summaries?.summary?.total"
             ></SummaryComponent>
         </div>
         <div class="p-1 mt-3 col-md-2">
             <SummaryComponent
                 title="Total Live Births"
-                icon="ti-pulse"
                 spanClass="bgc-green-50 c-green-500"
                 [value]="summaries?.summary?.total_live_births"
             ></SummaryComponent>
@@ -90,7 +69,6 @@
         <div class="p-1 mt-3 col-md-2">
             <SummaryComponent
                 title="Crude Birth Rate"
-                icon="ti-pulse"
                 spanClass="bgc-green-50 c-green-500"
                 [value]="summaries?.summary?.crude_birth_rate"
             ></SummaryComponent>
@@ -99,7 +77,6 @@
         <div class="p-1 mt-3 col-md-3">
             <SummaryWithPercent
                 title="Teenage Births"
-                icon="ti-pulse"
                 spanClass="bgc-orange-50 c-orange-500"
                 progressClass="bgc-orange-500 "
                 [value]="illegitimateBirths"
@@ -115,7 +92,6 @@
         <div class="p-1 mt-3 col-md-3">
             <SummaryWithPercent
                 title="Illegitimate Births"
-                icon="ti-pulse"
                 spanClass="bgc-red-50 c-red-500"
                 progressClass="bgc-red-500 "
                 [value]="teenageBirths"
@@ -130,16 +106,6 @@
     </div>
 
     <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-
-    <!-- <PyramidChart-and-AgeGroup
-		[showPyramid]="false"
-		[location]="location"
-		type="Birth"
-		pyramidTitle="Birth Pyramid"
-		ageGroupTitle="Births by Age Group and Sex"
-		[colors]="['#3DB98D', '#73B436']"
-		ageGroupColor="#73B436"
-	></PyramidChart-and-AgeGroup> -->
 
     <div class="mt-3 row">
         <div

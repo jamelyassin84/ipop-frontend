@@ -1,58 +1,78 @@
-import { HostListener } from '@angular/core'
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
-import { homeNavs } from 'src/app/home/homeNav'
-import { UserService } from 'src/app/Services/Independent/user.service'
+import {BehaviorSubject, Subscription} from 'rxjs'
+import {HostListener} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
+import {homeNavs} from 'src/app/home/homeNav'
+import {UserService} from 'src/app/Services/Independent/user.service'
+import {NavService} from './nav.service'
 
 @Component({
-	selector: 'Navbar',
-	templateUrl: './nav.component.html',
-	styleUrls: ['./nav.component.scss'],
+    selector: 'Navbar',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class NavComponent implements OnInit {
-	constructor(private user: UserService, private router: Router) {}
-	public isMenuCollapsed = true
-	public innerWidth: any
-	ngOnInit(): void {
-		this.innerWidth = window.innerWidth
-		setInterval(() => {
-			if (localStorage.getItem('hideNav') !== 'true') {
-				this.hideNav = true
-			} else {
-				this.hideNav = false
-			}
-		}, 50)
-	}
+    constructor(
+        private _router: Router,
+        private _user: UserService,
+        private _navService: NavService,
+    ) {}
 
-	@HostListener('window:resize', ['$event'])
-	onResize() {
-		this.innerWidth = window.innerWidth
-		// 1140
-	}
+    @HostListener('window:resize', ['$event'])
+    onResize() {
+        this.innerWidth = window.innerWidth
+    }
 
-	isUser = !this.user.isAdmin()
+    readonly isUser = !this._user.isAdmin()
 
-	navs = homeNavs
-	title: String = 'News'
-	hideNav = false
+    readonly navs = homeNavs
 
-	setTitle(title: String) {
-		this.title = title
-	}
+    hideNav$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-	showSmallNav = false
-	setShowSmallNav() {
-		this.showSmallNav = this.showSmallNav === false ? true : false
-	}
+    subscription?: Subscription
 
-	onClose() {
-		this.showSmallNav = false
-	}
+    title: string = 'News'
 
-	icludesUrl(urL: any) {
-		if (this.router.url.indexOf(urL) > -1) {
-			return true
-		}
-		return false
-	}
+    showSmallNav = false
+
+    isMenuCollapsed = true
+
+    innerWidth: any
+
+    ngOnInit(): void {
+        this.innerWidth = window.innerWidth
+
+        this.hideNav$.subscribe((value) => {
+            this._navService.hide$.next(value)
+        })
+
+        setInterval(() => {
+            if (localStorage.getItem('hideNav') !== 'true') {
+                this.hideNav$.next(true)
+            } else {
+                this.hideNav$.next(false)
+            }
+        }, 50)
+    }
+
+    setTitle(title: string) {
+        this.title = title
+    }
+
+    setShowSmallNav() {
+        this.showSmallNav = this.showSmallNav === false ? true : false
+    }
+
+    onClose() {
+        this.showSmallNav = false
+    }
+
+    icludesUrl(urL: any) {
+        if (this._router.url.indexOf(urL) > -1) {
+            return true
+        }
+        return false
+    }
 }

@@ -2,14 +2,14 @@
     *ngIf="location$ | async as location"
     class="grid w-full t-grid-cols-1 md:t-grid-cols-2"
 >
-    <div class="w-full" *ngIf="topPopulated">
+    <div class="w-full" *ngIf="topPopulated && topPopulated.length !== 0">
         <top-populated-list
             [location]="location"
             [topPopulated]="topPopulated | sort_by_municipality: location"
         ></top-populated-list>
     </div>
 
-    <div class="w-full" *ngIf="topPopulated">
+    <div class="w-full" *ngIf="topPopulated && topPopulated.length !== 0">
         <top-populated-graph
             [location]="location"
             [topPopulated]="topPopulated | sort_by_municipality: location"

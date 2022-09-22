@@ -13,11 +13,13 @@ import {AppState} from 'src/app/app-core/store/core/app.state'
 import {select, Store} from '@ngrx/store'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'app-migrations-demographic',
     templateUrl: './migrations-demographic.component.html',
     styleUrls: ['./migrations-demographic.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class MigrationsDemographicComponent implements OnInit {
     constructor(
@@ -62,7 +64,7 @@ export class MigrationsDemographicComponent implements OnInit {
 
     localData: any = {}
 
-    summaries: any = {}
+    summaries: any = undefined
 
     location: any = {
         barangay: null,

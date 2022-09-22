@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div @slideInLeft class="sidebar">
     <div class="sidebar-inner">
         <!-- ### $Sidebar Header ### -->
         <div class="sidebar-logo">
@@ -19,7 +19,7 @@
                             </div>
                             <div class="peer peer-greed">
                                 <div
-                                    class="t-text-text-brand t-font-semibold t-leading-tight"
+                                    class="t-text-text-brand t-font-medium t-leading-tight"
                                 >
                                     Iloilo Provincial Population Office
                                 </div>
@@ -41,27 +41,28 @@
         <ul class="sidebar-menu scrollable pos-r">
             <li
                 *ngFor="let item of sidebar; let i = index"
-                class="nav-item"
                 [ngClass]="{'mT-30': i === 0}"
                 [class.active]="url.includes(item.route)"
             >
                 <a
-                    (click)="handleChangeTab()"
                     role="button"
-                    class="sidebar-link"
+                    class="sidebar-link hover:t-bg-bg-brand hover:t-text-white"
                     [routerLink]="item.route"
+                    (click)="handleChangeTab()"
                 >
                     <span class="icon-holder">
-                        <i [class]="item.icon + ' ' + item.color"></i>
+                        <i [class]="item.icon"></i>
                     </span>
+
                     <span class="title">{{ item.name }}</span>
                 </a>
             </li>
-            <li class="nav-item mt-5">
+
+            <li class="mt-5 nav-item t-flex t-items-center">
                 <a
                     [routerLink]="'account/' + username"
                     role="button"
-                    class="sidebar-link"
+                    class="sidebar-link t-flex t-items-center"
                 >
                     <span class="icon-holder">
                         <img
@@ -74,6 +75,7 @@
                             alt=""
                         />
                     </span>
+
                     <span class="title">{{ name }}</span>
                 </a>
             </li>

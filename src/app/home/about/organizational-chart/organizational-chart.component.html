@@ -1,15 +1,21 @@
 <div class="card">
-    <div class="card-header bg-white">
-        <h5 class="m-0 card-title text-center d-flex">
-            <span style="align-self: center">Organizational Structure</span>
-            <span *ngIf="(!isUser && img !== null) || isSuperAdmin" class="ml-auto">
-				<DropDown [buttons]="dropdown"></DropDown>
-				<ng-template #dropdown>
-					<button (click)="triggerInputTypeFile()" ngbDropdownItem>
-						Customize Organizational Structure
-					</button>
-				</ng-template>
-			</span>
+    <div class="bg-white card-header">
+        <h5 class="m-0 text-center card-title d-flex">
+            <span class="t-text-3xl" style="align-self: center"
+                >Organizational Structure</span
+            >
+
+            <span
+                *ngIf="(!isUser && img !== null) || isSuperAdmin"
+                class="ml-auto"
+            >
+                <DropDown [buttons]="dropdown"></DropDown>
+                <ng-template #dropdown>
+                    <button (click)="triggerInputTypeFile()" ngbDropdownItem>
+                        Customize Organizational Structure
+                    </button>
+                </ng-template>
+            </span>
         </h5>
     </div>
     <div class="card-body">
@@ -19,4 +25,10 @@
         <img *ngIf="img !== null" style="width: 100%" [src]="img" alt="" />
     </div>
 </div>
-<input type="file" (change)="readUrl($event)" accept="image/*" style="display: none" id="input-type-file" />
+<input
+    type="file"
+    (change)="readUrl($event)"
+    accept="image/*"
+    style="display: none"
+    id="input-type-file"
+/>

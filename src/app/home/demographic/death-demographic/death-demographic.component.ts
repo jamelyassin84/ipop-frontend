@@ -14,11 +14,13 @@ import {
 } from 'src/app/app-core/constants/deaths/deaths.table'
 import {monthChartConfig} from 'src/app/app-core/configs/month-chart.config'
 import {crudeDeathRateIncidenceChartConfig} from 'src/app/app-core/configs/crude-death-rate.config'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'app-death-demographic',
     templateUrl: './death-demographic.component.html',
     styleUrls: ['./death-demographic.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class DeathDemographicComponent implements OnInit {
     @ViewChild(PopulationPyramidComponent) pyramid: any
@@ -64,7 +66,7 @@ export class DeathDemographicComponent implements OnInit {
         year: null,
     }
 
-    summaries: any = {}
+    summaries: any = undefined
 
     localData: any = {}
 

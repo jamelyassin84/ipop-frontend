@@ -1,32 +1,35 @@
-import { Component, OnInit } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
-import { fader } from 'src/app/route-animation'
+import {Component, OnInit} from '@angular/core'
+import {RouterOutlet} from '@angular/router'
+import {NavService} from 'src/app/components/nav/nav.service'
+import {fader} from 'src/app/route-animation'
 
 @Component({
-	selector: 'app-home-page',
-	templateUrl: './home-page.component.html',
-	styleUrls: ['./home-page.component.scss'],
-	animations: [fader],
+    selector: 'app-home-page',
+    templateUrl: './home-page.component.html',
+    styleUrls: ['./home-page.component.scss'],
+    animations: [fader],
 })
 export class HomePageComponent implements OnInit {
-	public innerWidth: any
+    constructor(private _navService: NavService) {}
 
-	constructor() {}
+    headerNotShown$ = this._navService.hide$
 
-	ngOnInit(): void {
-		this.innerWidth = window.innerWidth
-	}
+    public innerWidth: number = 0
 
-	prepareRoute(outlet: RouterOutlet) {
-		return (
-			outlet &&
-			outlet.activatedRouteData &&
-			outlet.activatedRouteData.animation
-		)
-	}
+    ngOnInit(): void {
+        this.innerWidth = window.innerWidth
+    }
 
-	onResize() {
-		this.innerWidth = window.innerWidth
-		// 1140
-	}
+    prepareRoute(outlet: RouterOutlet) {
+        return (
+            outlet &&
+            outlet.activatedRouteData &&
+            outlet.activatedRouteData.animation
+        )
+    }
+
+    onResize() {
+        this.innerWidth = window.innerWidth
+        // 1140
+    }
 }

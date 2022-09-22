@@ -60,17 +60,17 @@
     <div [@listAnimation]="articles.length" class="md:t-col-span-2 t-bg-white">
         <ul class="bg-white nav nav-tabs d-flex">
             <li *ngFor="let tab of filterList" class="nav-item">
-                <a
+                <button
                     role="button"
                     (click)="setTab(tab)"
-                    class="nav-link"
+                    class="t-px-5 nav-link t-text-2xl hover:t-bg-gray-50"
                     [ngClass]="{
                         't-bg-bg-brand t-text-white ': tabs[tab],
                         'text-muted': !tabs[tab]
                     }"
                 >
-                    <i class="ti-timer"></i> {{ tab | titlecase }}
-                </a>
+                    {{ tab | titlecase }}
+                </button>
             </li>
 
             <li *ngIf="!isUser" class="ml-auto mr-2">

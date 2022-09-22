@@ -1,5 +1,5 @@
-<div class="bg-light pt-5" [@routeAnimations]="prepareRoute(outlet)">
-    <div class="card-body mt-5" [ngClass]="{ 'pt-5': innerWidth > 1139 }">
+<div [ngClass]="{'-t-mt-10': !(headerNotShown$ | async)}" class="pt-5 bg-light">
+    <div class="mt-5 card-body" [ngClass]="{'pt-5': innerWidth > 1139}">
         <router-outlet #outlet="outlet"></router-outlet>
     </div>
 </div>

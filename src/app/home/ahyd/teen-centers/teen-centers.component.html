@@ -11,7 +11,9 @@
 </ng-template>
 
 <ng-template #addTCPersonnelIncharge>
-    <AddTCPersonnelIncharge [teen_center_id]="teen_center_id"></AddTCPersonnelIncharge>
+    <AddTCPersonnelIncharge
+        [teen_center_id]="teen_center_id"
+    ></AddTCPersonnelIncharge>
 </ng-template>
 
 <ng-template #addTeenCenter>
@@ -31,7 +33,9 @@
 </ng-template>
 
 <ng-template #viewPersonnelIncharge>
-    <ViewPersonnelIncharge [teen_center_id]="teen_center_id"></ViewPersonnelIncharge>
+    <ViewPersonnelIncharge
+        [teen_center_id]="teen_center_id"
+    ></ViewPersonnelIncharge>
 </ng-template>
 
 <ng-template #customizeTechnicalNotes>
@@ -42,59 +46,92 @@
     <app-edit-tc-services [id]="teen_center_id"></app-edit-tc-services>
 </ng-template>
 
-<div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-    <Modal *ngIf="!isUser" size="lg" title="Add a Teen Center" btnTitle="Add teen center" btnClass="btn btn-sm btn-dark mr-1" [template]="addTeenCenter" icon="ti-plus"></Modal>
+<div
+    class="d-flex"
+    style="justify-content: flex-end; position: relative; z-index: 1"
+>
+    <Modal
+        *ngIf="!isUser"
+        size="lg"
+        title="Add a Teen Center"
+        btnTitle="Add teen center"
+        btnClass="btn btn-sm btn-dark mr-1"
+        [template]="addTeenCenter"
+        icon="ti-plus"
+    ></Modal>
 
-    <Modal *ngIf="!isUser" size="lg" title="Add Focal Persons" btnTitle="Add focal persons" btnClass="btn btn-sm btn-primary mr-1" [template]="addFocalPersons" icon="ti-plus"></Modal>
+    <Modal
+        *ngIf="!isUser"
+        size="lg"
+        title="Add Focal Persons"
+        btnTitle="Add focal persons"
+        btnClass="btn btn-sm btn-primary mr-1"
+        [template]="addFocalPersons"
+        icon="ti-plus"
+    ></Modal>
 
-    <Modal size="lg" title="View Focal Persons" btnTitle="View focal persons" btnClass="btn btn-sm btn-outline-primary mr-1" [template]="viewFocalPersons" icon="ti-eye"></Modal>
+    <Modal
+        size="lg"
+        title="View Focal Persons"
+        btnTitle="View focal persons"
+        btnClass="btn btn-sm btn-outline-primary mr-1"
+        [template]="viewFocalPersons"
+        icon="ti-eye"
+    ></Modal>
 
-    <Modal *ngIf="!isUser" size="lg" title="Add AHYD Team" btnTitle="Add AHYD team" btnClass="btn btn-sm btn-danger mr-1" [template]="addAHYDTeam" icon="ti-plus"></Modal>
+    <Modal
+        *ngIf="!isUser"
+        size="lg"
+        title="Add AHYD Team"
+        btnTitle="Add AHYD team"
+        btnClass="btn btn-sm btn-danger mr-1"
+        [template]="addAHYDTeam"
+        icon="ti-plus"
+    ></Modal>
 
-    <Modal size="lg" title="View  AHYD Team" btnTitle="View  AHYD team" btnClass="btn btn-sm btn-outline-danger mr-1" [template]="viewHAYDTeam" icon="ti-eye"></Modal>
+    <Modal
+        size="lg"
+        title="View  AHYD Team"
+        btnTitle="View  AHYD team"
+        btnClass="btn btn-sm btn-outline-danger mr-1"
+        [template]="viewHAYDTeam"
+        icon="ti-eye"
+    ></Modal>
 </div>
 
-<ul class="nav nav-tabs mT-50">
-    <li (click)="setTab('district1')" class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district1">
-            <i class="ti-direction-alt"></i> District 1
-        </a>
-    </li>
-    <li (click)="setTab('district2')" class="nav-item">
-        <a role="button " class="nav-link text-muted" [class.active]="tabs.district2">
-            <i class="ti-direction-alt"></i> District 2
-        </a>
-    </li>
-    <li (click)="setTab('district3')" class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district3">
-            <i class="ti-direction-alt"></i> District 3
-        </a>
-    </li>
-    <li (click)="setTab('district4')" class="nav-item">
-        <a role="button " class="nav-link text-muted" [class.active]="tabs.district4">
-            <i class="ti-direction-alt"></i> District 4
-        </a>
-    </li>
-    <li (click)="setTab('district5')" class="nav-item">
-        <a role="button" class="nav-link text-muted" [class.active]="tabs.district5">
-            <i class="ti-direction-alt"></i> District 5
-        </a>
+<ul class="nav nav-tabs mT-50 t--mb-5">
+    <li
+        *ngFor="let tab of districtTabs"
+        (click)="setTab(tab.id)"
+        class="nav-item"
+    >
+        <button
+            class="nav-link t-text-xl t-pb-4"
+            [ngClass]="{
+                't-bg-bg-brand t-text-white t-font-bold': tabs[tab.id],
+                'text-gray-400': !tabs[tab.id]
+            }"
+        >
+            {{ tab.name }}
+        </button>
     </li>
 </ul>
 
 <br />
 
-<div class="row">
+<div class="row t--mt-1">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header bgc-blue-900 d-flex aic">
-                <div class="card-title text-white mr-auto mt-2">
-                    Teen Centers
-                </div>
+            <div class="card-header t-bg-bg-brand d-flex aic">
+                <div class="mr-auto text-white card-title">Teen Centers</div>
             </div>
             <div class="card-body">
                 <NoDataComponent [data]="teenCenters"></NoDataComponent>
-                <table *ngIf="teenCenters.length !== 0" class="table" [ngClass]="{ 'table-responsive': innerWidth < 1139 }">
+                <table
+                    *ngIf="teenCenters.length !== 0"
+                    class="table"
+                    [ngClass]="{'table-responsive': innerWidth < 1139}"
+                >
                     <thead>
                         <tr>
                             <th></th>
@@ -105,8 +142,8 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let tc of teenCenters">
+                    <tbody [@listAnimation]="teenCenters.length">
+                        <tr *ngFor="let tc of teenCenters; trackBy: trackByFn">
                             <th><i class="ti-map-alt c-pink-500 h4"></i></th>
                             <td>{{ tc.municipality }}</td>
                             <td>{{ tc.name }}</td>
@@ -114,20 +151,64 @@
                             <td>{{ tc.services || 'N/A' }}</td>
                             <td>
                                 <DropDown [buttons]="dropdown"></DropDown>
+
                                 <ng-template #dropdown>
-                                    <Modal (click)="currenData = tc" size="lg " title="Add Teen Center New Images " btnTitle="Customize Images " *ngIf="!isSuperAdmin" btnClass="dropdown-item" [template]="addTCImages"></Modal>
+                                    <Modal
+                                        (click)="currenData = tc"
+                                        size="lg "
+                                        title="Add Teen Center New Images "
+                                        btnTitle="Customize Images "
+                                        *ngIf="!isSuperAdmin"
+                                        btnClass="dropdown-item"
+                                        [template]="addTCImages"
+                                        class="t-py-3 hover:t-bg-bg-brand hover:t-text-white"
+                                    ></Modal>
 
-                                    <Modal (click)="teen_center_id = tc.id" size="lg " title="Edit Services " btnTitle="Edit Services" *ngIf="!isSuperAdmin" btnClass="dropdown-item" [template]="editServices"></Modal>
+                                    <Modal
+                                        (click)="teen_center_id = tc.id"
+                                        size="lg "
+                                        title="Edit Services "
+                                        btnTitle="Edit Services"
+                                        *ngIf="!isSuperAdmin"
+                                        btnClass="dropdown-item"
+                                        [template]="editServices"
+                                    ></Modal>
 
-                                    <Modal (click)="transformImages(tc.photos)" size="lg" title="Teen Center Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
+                                    <Modal
+                                        (click)="transformImages(tc.photos)"
+                                        size="lg"
+                                        title="Teen Center Images"
+                                        btnTitle="View Images"
+                                        btnClass="dropdown-item"
+                                        [template]="imageViewer"
+                                    ></Modal>
 
-                                    <Modal (click)="teen_center_id = tc.id" size="lg " title="View Personnel Incharge " btnTitle="View personnel incharge " btnClass="dropdown-item" [template]="viewPersonnelIncharge"></Modal>
+                                    <Modal
+                                        (click)="teen_center_id = tc.id"
+                                        size="lg "
+                                        title="View Personnel Incharge "
+                                        btnTitle="View personnel incharge "
+                                        btnClass="dropdown-item"
+                                        [template]="viewPersonnelIncharge"
+                                    ></Modal>
 
-                                    <Modal *ngIf="!isSuperAdmin" (click)="teen_center_id = tc.id" size="lg " title="Add Personnel Incharge " btnTitle="Add personnel incharge " btnClass="dropdown-item" [template]="addTCPersonnelIncharge"></Modal>
+                                    <Modal
+                                        *ngIf="!isSuperAdmin"
+                                        (click)="teen_center_id = tc.id"
+                                        size="lg "
+                                        title="Add Personnel Incharge "
+                                        btnTitle="Add personnel incharge "
+                                        btnClass="dropdown-item"
+                                        [template]="addTCPersonnelIncharge"
+                                    ></Modal>
 
-                                    <button *ngIf="!isSuperAdmin" (click)="remove(tc.id)" class="dropdown-item">
-										Remove
-									</button>
+                                    <button
+                                        *ngIf="!isSuperAdmin"
+                                        (click)="remove(tc.id)"
+                                        class="dropdown-item"
+                                    >
+                                        Remove
+                                    </button>
                                 </ng-template>
                             </td>
                         </tr>
@@ -136,11 +217,20 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 mt-3">
+    <div class="mt-3 col-md-12">
         <div class="card">
-            <div class="card-header bg-white d-flex aic">
-                <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-                <Modal size="lg " title="Customize Technical Notes " btnTitle="Customize technical notes " btnClass="btn btn-sm btn-dark " [template]="customizeTechnicalNotes" icon="ti-notepad "></Modal>
+            <div class="bg-white card-header d-flex aic">
+                <div class="mt-2 mr-auto card-title h5">Technical Notes</div>
+
+                <Modal
+                    *ngIf="!isUser"
+                    size="lg "
+                    title="Customize Technical Notes "
+                    btnTitle="Customize technical notes "
+                    btnClass="btn btn-sm btn-dark "
+                    [template]="customizeTechnicalNotes"
+                    icon="ti-notepad "
+                ></Modal>
             </div>
             <div class="card-body">
                 <TechnicalNotes type="TeenCenter "></TechnicalNotes>
