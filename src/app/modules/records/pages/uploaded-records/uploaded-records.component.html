@@ -1,6 +1,10 @@
 <ul class="nav nav-tabs">
     <li *ngFor="let nav of navs" class="nav-item">
-        <a (click)="setType(nav.type)" [class.active]="nav.type === type" class="nav-link text-muted">
+        <a
+            (click)="setType(nav.type)"
+            [class.active]="nav.type === type"
+            class="nav-link text-muted"
+        >
             <i [class]="nav.icon"></i> {{ nav.name }}
         </a>
     </li>
@@ -17,57 +21,42 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let file of files">
+        <tr *ngFor="let file of files; trackBy: trackByFn">
             <td>
                 <div class="d-flex">
-                    <img class="mr-2 avatar-sm circle" [src]="
-							file.user.profile_picture?.uri ||
-							'/assets/avatars/face-7.jpg'
-						" alt="" />
+                    <img
+                        class="mr-2 avatar-sm circle"
+                        [src]="
+                            file.user.profile_picture?.uri ||
+                            '/assets/avatars/face-7.jpg'
+                        "
+                        alt=""
+                    />
                     <h5>{{ file.user.fullname }}</h5>
                 </div>
             </td>
             <td>
                 <span>
-					{{ 'District ' + file.user.district }}
-				</span>
+                    {{ 'District ' + file.user.district }}
+                </span>
 
                 <span>
-					{{ ', Muncipaplity of ' + file.user.municipality }}
-				</span>
+                    {{ ', Muncipaplity of ' + file.user.municipality }}
+                </span>
             </td>
             <td>
-                <span *ngIf="file.approved === true" class="
-						small
-						d-ib
-						lh-0
-						va-m
-						fw-600
-						bdrs-10em
-						pX-10
-						pY-10
-						bgc-green-50
-						c-green-500
-					">Approved</span
-				>
-				<span
-					*ngIf="file.approved === false"
-					class="
-						small
-						d-ib
-						lh-0
-						va-m
-						fw-600
-						bdrs-10em
-						pX-10
-						pY-10
-						bgc-red-50
-						c-red-500
-					"
-					>Pending</span
-				>
-			</td>
-			<td>{{ file.created_at | date: 'MMMM dd,yyyy - hh:mm a' }}</td>
-		</tr>
-	</tbody>
+                <span
+                    *ngIf="file.approved === true"
+                    class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-green-50 c-green-500"
+                    >Approved</span
+                >
+                <span
+                    *ngIf="file.approved === false"
+                    class="small d-ib lh-0 va-m fw-600 bdrs-10em pX-10 pY-10 bgc-red-50 c-red-500"
+                    >Pending</span
+                >
+            </td>
+            <td>{{ file.created_at | date: 'MMMM dd,yyyy - hh:mm a' }}</td>
+        </tr>
+    </tbody>
 </table>

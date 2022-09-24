@@ -35,4 +35,8 @@ export class TopPopulatedListComponent implements OnInit {
             },
         )
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

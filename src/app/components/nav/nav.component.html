@@ -35,7 +35,7 @@
         <div class="nav-list">
             <div
                 class="Item t-rounded-t-2xl"
-                *ngFor="let nav of navs"
+                *ngFor="let nav of navs; trackBy: trackByFn"
                 [ngClass]="{
                     'active  t-font-bold  t-py-3': icludesUrl(nav.id)
                 }"
@@ -60,7 +60,10 @@
                         <div
                             role="button"
                             (click)="setTitle(child.name)"
-                            *ngFor="let child of nav.children"
+                            *ngFor="
+                                let child of nav.children;
+                                trackBy: trackByFn
+                            "
                             class="drop-down-container t-text-left"
                             [routerLink]="
                                 '/home/index/' + nav.route + child.route

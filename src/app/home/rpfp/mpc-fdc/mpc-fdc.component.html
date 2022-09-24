@@ -11,7 +11,9 @@
 </ng-template>
 
 <ng-template #addMPCFDCPersonnelIncharge>
-    <AddMPCFDCPersonnelIncharge [mpcfdc_id]="mpcfdc_id"></AddMPCFDCPersonnelIncharge>
+    <AddMPCFDCPersonnelIncharge
+        [mpcfdc_id]="mpcfdc_id"
+    ></AddMPCFDCPersonnelIncharge>
 </ng-template>
 
 <ng-template #viewMPCFDCImages>
@@ -23,56 +25,93 @@
 </ng-template>
 
 <ng-template #viewMPCFDCPersonnelIncharge>
-    <ViewMPCFDCPersonnelIncharge [mpcfdc_id]="mpcfdc_id"></ViewMPCFDCPersonnelIncharge>
+    <ViewMPCFDCPersonnelIncharge
+        [mpcfdc_id]="mpcfdc_id"
+    ></ViewMPCFDCPersonnelIncharge>
 </ng-template>
 
 <ng-template #customizeTechnicalNotes>
     <CustomizeTechnicalNotes type="MPCFDC"></CustomizeTechnicalNotes>
 </ng-template>
 
-<div class="d-flex" style="justify-content: flex-end; position: relative; z-index: 1">
-    <Modal *ngIf="!isUser" size="lg" title="Add MPC-FDC Data" btnTitle="Add MPC-FDC Data" btnClass="btn btn-sm btn-dark mr-2" [template]="addMPCFDCData" icon="ti-plus"></Modal>
+<div
+    class="d-flex"
+    style="justify-content: flex-end; position: relative; z-index: 1"
+>
+    <Modal
+        *ngIf="!isUser"
+        size="lg"
+        title="Add MPC-FDC Data"
+        btnTitle="Add MPC-FDC Data"
+        btnClass="btn btn-sm btn-dark mr-2"
+        [template]="addMPCFDCData"
+        icon="ti-plus"
+    ></Modal>
 
-    <Modal *ngIf="!isUser" size="lg" title="Add MPC FDC Team" btnTitle="Add MPC FDC Team" btnClass="btn btn-sm btn-primary mr-2" [template]="addMPCFDCTeam"></Modal>
-    <Modal size="lg" title="View MPC FDC Team" btnTitle="View MPC FDC Team" btnClass="btn btn-sm btn-outline-primary mr-2" [template]="viewMPCFDCTeam"></Modal>
+    <Modal
+        *ngIf="!isUser"
+        size="lg"
+        title="Add MPC FDC Team"
+        btnTitle="Add MPC FDC Team"
+        btnClass="btn btn-sm btn-primary mr-2"
+        [template]="addMPCFDCTeam"
+    ></Modal>
+    <Modal
+        size="lg"
+        title="View MPC FDC Team"
+        btnTitle="View MPC FDC Team"
+        btnClass="btn btn-sm btn-outline-primary mr-2"
+        [template]="viewMPCFDCTeam"
+    ></Modal>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-4 mb-3">
+<div class="mt-4 row">
+    <div class="mb-3 col-md-4">
         <label TeenCenter>District</label>
         <select [(ngModel)]="locations.district" class="form-control">
-			<option>Choose...</option>
-			<option *ngFor="let district of districts">{{ district }}</option>
-		</select>
+            <option>Choose...</option>
+            <option *ngFor="let district of districts; trackBy: trackByFn">
+                {{ district }}
+            </option>
+        </select>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="mb-3 col-md-4">
         <label>Municipality </label>
         <select [(ngModel)]="locations.municipality" class="form-control">
-			<option>Choose...</option>
-			<option *ngFor="let municipality of municipalities">
-				{{ municipality.name | titlecase }}
-			</option>
-		</select>
+            <option>Choose...</option>
+            <option
+                *ngFor="let municipality of municipalities; trackBy: trackByFn"
+            >
+                {{ municipality.name | titlecase }}
+            </option>
+        </select>
     </div>
-    <div class="col-md-3 mb-3" style="align-self: flex-end">
-        <button (click)="getMPCFDC()" class="btn bgc-blue-900 text-white pl-3 pr-3">
-			<i class="ti-filter mr-2"></i> Select Location
-		</button>
+    <div class="mb-3 col-md-3" style="align-self: flex-end">
+        <button
+            (click)="getMPCFDC()"
+            class="pl-3 pr-3 text-white btn bgc-blue-900"
+        >
+            <i class="mr-2 ti-filter"></i> Select Location
+        </button>
     </div>
 </div>
 
-<div class="row mt-5">
+<div class="mt-5 row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bgc-blue-900 d-flex aic">
-                <div class="card-title text-white mr-auto mt-2">
+                <div class="mt-2 mr-auto text-white card-title">
                     Multi-purpose Counseling and Family Development Center
                 </div>
             </div>
             <div class="card-body">
                 <Spinner></Spinner>
                 <NoDataComponent [data]="MPCFDCs"></NoDataComponent>
-                <table *ngIf="MPCFDCs.length !== 0" class="table" responsiveTable>
+                <table
+                    *ngIf="MPCFDCs.length !== 0"
+                    class="table"
+                    responsiveTable
+                >
                     <thead>
                         <tr>
                             <th></th>
@@ -82,7 +121,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let unit of MPCFDCs">
+                        <tr *ngFor="let unit of MPCFDCs; trackBy: trackByFn">
                             <td>
                                 <h1 class="ti-home text-danger h5"></h1>
                             </td>
@@ -91,17 +130,51 @@
                             <td>
                                 <DropDown [buttons]="dropdown"></DropDown>
                                 <ng-template #dropdown>
-                                    <Modal *ngIf="!isSuperAdmin" (click)="currenData = unit" size="lg" title="New Images" btnTitle="New Images" btnClass="dropdown-item" [template]="addMPCFDCImages"></Modal>
+                                    <Modal
+                                        *ngIf="!isSuperAdmin"
+                                        (click)="currenData = unit"
+                                        size="lg"
+                                        title="New Images"
+                                        btnTitle="New Images"
+                                        btnClass="dropdown-item"
+                                        [template]="addMPCFDCImages"
+                                    ></Modal>
 
-                                    <Modal (click)="transformImages(unit.files)" size="lg" title="View Images" btnTitle="View Images" btnClass="dropdown-item" [template]="imageViewer"></Modal>
+                                    <Modal
+                                        (click)="transformImages(unit.files)"
+                                        size="lg"
+                                        title="View Images"
+                                        btnTitle="View Images"
+                                        btnClass="dropdown-item"
+                                        [template]="imageViewer"
+                                    ></Modal>
 
-                                    <Modal *ngIf="!isSuperAdmin" (click)="mpcfdc_id = unit.id" size="lg" title="Add Personnel Incharge" btnTitle="Add Personnel Incharge" btnClass="dropdown-item" [template]="addMPCFDCPersonnelIncharge"></Modal>
+                                    <Modal
+                                        *ngIf="!isSuperAdmin"
+                                        (click)="mpcfdc_id = unit.id"
+                                        size="lg"
+                                        title="Add Personnel Incharge"
+                                        btnTitle="Add Personnel Incharge"
+                                        btnClass="dropdown-item"
+                                        [template]="addMPCFDCPersonnelIncharge"
+                                    ></Modal>
 
-                                    <Modal (click)="mpcfdc_id = unit.id" size="lg" title="View Personnel Incharge" btnTitle="View Personnel Incharge" btnClass="dropdown-item" [template]="viewMPCFDCPersonnelIncharge"></Modal>
+                                    <Modal
+                                        (click)="mpcfdc_id = unit.id"
+                                        size="lg"
+                                        title="View Personnel Incharge"
+                                        btnTitle="View Personnel Incharge"
+                                        btnClass="dropdown-item"
+                                        [template]="viewMPCFDCPersonnelIncharge"
+                                    ></Modal>
 
-                                    <button *ngIf="!isSuperAdmin" (click)="remove(unit.id)" class="dropdown-item">
-										Remove
-									</button>
+                                    <button
+                                        *ngIf="!isSuperAdmin"
+                                        (click)="remove(unit.id)"
+                                        class="dropdown-item"
+                                    >
+                                        Remove
+                                    </button>
                                 </ng-template>
                             </td>
                         </tr>
@@ -113,9 +186,17 @@
 
     <div class="col-md-12 mT-50">
         <div class="card">
-            <div class="card-header bg-white d-flex aic">
-                <div class="card-title h5 mr-auto mt-2">Technical Notes</div>
-                <Modal *ngIf="!isUser" size="lg" title="Customize Technical Notes" btnTitle="Customize technical notes" btnClass="btn btn-sm btn-dark" [template]="customizeTechnicalNotes" icon="ti-notepad"></Modal>
+            <div class="bg-white card-header d-flex aic">
+                <div class="mt-2 mr-auto card-title h5">Technical Notes</div>
+                <Modal
+                    *ngIf="!isUser"
+                    size="lg"
+                    title="Customize Technical Notes"
+                    btnTitle="Customize technical notes"
+                    btnClass="btn btn-sm btn-dark"
+                    [template]="customizeTechnicalNotes"
+                    icon="ti-notepad"
+                ></Modal>
             </div>
             <div class="card-body">
                 <TechnicalNotes type="MPCFDC"></TechnicalNotes>

@@ -1,4 +1,4 @@
-<p *ngFor="let note of TechnicalNotes">
+<p *ngFor="let note of TechnicalNotes; trackBy: trackByFn">
     <span
         role="button"
         placement="left"

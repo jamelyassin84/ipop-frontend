@@ -1,25 +1,29 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 
 @Component({
-	selector: 'FileDropZone',
-	templateUrl: './file-dropzone.component.html',
+    selector: 'FileDropZone',
+    templateUrl: './file-dropzone.component.html',
 })
 export class FileDropzoneComponent implements OnInit {
-	@Output() onEmit = new EventEmitter()
+    @Output() onEmit = new EventEmitter()
 
-	constructor() {}
+    constructor() {}
 
-	ngOnInit(): void {}
+    ngOnInit(): void {}
 
-	files: any = []
+    files: any = []
 
-	onSelect(event: any) {
-		this.files.push(...event.addedFiles)
-		this.onEmit.emit(this.files)
-	}
+    onSelect(event: any) {
+        this.files.push(...event.addedFiles)
+        this.onEmit.emit(this.files)
+    }
 
-	onRemove(event: any) {
-		this.files.splice(this.files.indexOf(event), 1)
-		this.onEmit.emit(this.files)
-	}
+    onRemove(event: any) {
+        this.files.splice(this.files.indexOf(event), 1)
+        this.onEmit.emit(this.files)
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

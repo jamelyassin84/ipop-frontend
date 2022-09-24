@@ -8,16 +8,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let personnel of teams">
+        <tr *ngFor="let personnel of teams; trackBy: trackByFn">
             <td>
                 <img [src]="personnel.photo.uri" alt="" />
             </td>
             <td>{{ personnel.name }}</td>
             <td>{{ personnel.position }}</td>
             <td>
-                <button *ngIf="!isSuperAdmin" (click)="remove(personnel.id)" class="btn btn-sm btn-outline-danger">
-					Remove
-				</button>
+                <button
+                    *ngIf="!isSuperAdmin"
+                    (click)="remove(personnel.id)"
+                    class="btn btn-sm btn-outline-danger"
+                >
+                    Remove
+                </button>
             </td>
         </tr>
     </tbody>

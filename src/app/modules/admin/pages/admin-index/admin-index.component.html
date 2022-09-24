@@ -1,6 +1,6 @@
 <div class="pt-5 -mb-120 layers bd bgc-white">
     <ul class="pt-5 mt-5 nav nav-tabs">
-        <li *ngFor="let nav of navs" class="nav-item">
+        <li *ngFor="let nav of navs; trackBy: trackByFn" class="nav-item">
             <a
                 (click)="handleChangeTab(nav.name)"
                 [routerLink]="nav.route"

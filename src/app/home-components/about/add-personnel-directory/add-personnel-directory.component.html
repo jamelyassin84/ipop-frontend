@@ -2,8 +2,13 @@
     <div class="form-group">
         <label for="">Choose Type of Official</label>
         <select [(ngModel)]="data.type" type="text" class="form-control">
-			<option [value]="type" *ngFor="let type of types">{{ type  | titlecase }}</option>
-		</select>
+            <option
+                [value]="type"
+                *ngFor="let type of types; trackBy: trackByFn"
+            >
+                {{ type | titlecase }}
+            </option>
+        </select>
     </div>
     <div class="form-group">
         <label for="">Name </label>
@@ -24,11 +29,11 @@
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i> Add this Personnel</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i> Add this Personnel</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

@@ -1,6 +1,6 @@
 <div class="card t-p-3 t-my-8">
     <ul [@listAnimation]="3" class="nav nav-tabs">
-        <li *ngFor="let tab of tabItems" class="nav-item">
+        <li *ngFor="let tab of tabItems; trackBy: trackByFn" class="nav-item">
             <button
                 (click)="changeTab(tab)"
                 class="nav-link text-muted"
@@ -44,7 +44,7 @@
                 required
             >
                 <option value="">Choose ...</option>
-                <option *ngFor="let barangay of barangays">
+                <option *ngFor="let barangay of barangays; trackBy: trackByFn">
                     {{ barangay.name }}
                 </option>
             </select>
@@ -59,7 +59,10 @@
                 id="barangay"
                 required
             >
-                <option [value]="year" *ngFor="let year of years">
+                <option
+                    [value]="year"
+                    *ngFor="let year of years; trackBy: trackByFn"
+                >
                     {{ year }}
                 </option>
             </select>

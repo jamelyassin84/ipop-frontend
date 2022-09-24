@@ -1,81 +1,112 @@
-<div class="main-content bgc-grey-100 mt-p pt-5">
+<div class="pt-5 main-content bgc-grey-100 mt-p">
     <Spinner></Spinner>
     <NoDataComponent [data]="approvals"></NoDataComponent>
     <div *ngIf="approvals.length !== 0" id="mainContent mt-p pt-5">
-        <div class="full-container mt-p pt-5">
-            <div class="peers fxw-nw pos-r mt-p pt-5">
+        <div class="pt-5 full-container mt-p">
+            <div class="pt-5 peers fxw-nw pos-r mt-p">
                 <div class="peer bdR" id="chat-sidebar">
                     <div class="layers h-100">
                         <div class="layer w-100 fxg-1 scrollable pos-r">
-                            <div (click)="
-									type = approval.approvable_type;
-									data = approval.approvable;
-									id = approval.id
-								" *ngFor="
-									let approval of approvals;
-									let i = index
-								" class="
-									peers
-									fxw-nw
-									jcc
-									aic
-									p-20
-									bdB
-									bg-white
-									bgcH-grey-50
-									cur-p
-									border
-									d-flex
-								" [class.active]="id === approval.id">
-                                <div class="form-check mb-3 mr-4">
-                                    <input [id]="'check' + i" (change)="
-											onCheck(approval.id, $event, i)
-										" class="form-check-input" type="checkbox" value="" />
+                            <div
+                                (click)="
+                                    type = approval.approvable_type;
+                                    data = approval.approvable;
+                                    id = approval.id
+                                "
+                                *ngFor="
+                                    let approval of approvals;
+                                    let i = index;
+                                    trackBy: trackByFn
+                                "
+                                class="p-20 bg-white border peers fxw-nw jcc aic bdB bgcH-grey-50 cur-p d-flex"
+                                [class.active]="id === approval.id"
+                            >
+                                <div class="mb-3 mr-4 form-check">
+                                    <input
+                                        [id]="'check' + i"
+                                        (change)="
+                                            onCheck(approval.id, $event, i)
+                                        "
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                    />
                                 </div>
                                 <div class="peer">
-                                    <img [src]="
-											approval.requester.profile_picture
-												?.uri ||
-											'/assets/avatars/face-7.jpg'
-										" alt="" />
+                                    <img
+                                        [src]="
+                                            approval.requester.profile_picture
+                                                ?.uri ||
+                                            '/assets/avatars/face-7.jpg'
+                                        "
+                                        alt=""
+                                    />
                                 </div>
                                 <div class="peer peer-greed pL-20">
-                                    <h3 class="c-blue-900 m-0">
+                                    <h3 class="m-0 c-blue-900">
                                         {{ approval.requester.fullname }}
                                     </h3>
-                                    <small class="lh-1 text-muted m-0">{{
-										approval.message
-									}}</small>
+                                    <small class="m-0 lh-1 text-muted">{{
+                                        approval.message
+                                    }}</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div *ngIf="data.id !== undefined" class="peer peer-greed bg-white" id="chat-box" style="flex-direction: column">
+                <div
+                    *ngIf="data.id !== undefined"
+                    class="bg-white peer peer-greed"
+                    id="chat-box"
+                    style="flex-direction: column"
+                >
                     <div class="card-header bgc-blue-900">
                         <div style="align-self: flex-end">
-                            <button *ngIf="storedApprovalID.length === 0" [disabled]="isLoading" (click)="approve(false)" class="btn btn-lg btn-outline-light mr-1">
-								<i class="ti-na"></i>
-								Discard
-							</button>
-                            <button *ngIf="storedApprovalID.length === 0" [disabled]="isLoading" (click)="approve(true)" class="btn btn-lg btn-success mr-1">
-								<i class="ti-check"></i>
-								Approve
-							</button>
+                            <button
+                                *ngIf="storedApprovalID.length === 0"
+                                [disabled]="isLoading"
+                                (click)="approve(false)"
+                                class="mr-1 btn btn-lg btn-outline-light"
+                            >
+                                <i class="ti-na"></i>
+                                Discard
+                            </button>
+                            <button
+                                *ngIf="storedApprovalID.length === 0"
+                                [disabled]="isLoading"
+                                (click)="approve(true)"
+                                class="mr-1 btn btn-lg btn-success"
+                            >
+                                <i class="ti-check"></i>
+                                Approve
+                            </button>
 
-                            <button *ngIf="storedApprovalID.length !== 0" [disabled]="isLoading" (click)="updateApprovals(false)" class="btn btn-lg btn-outline-light mr-1">
-								<i class="ti-na"></i>
-								Discard All
-							</button>
-                            <button *ngIf="storedApprovalID.length !== 0" [disabled]="isLoading" (click)="updateApprovals(true)" class="btn btn-lg btn-success mr-1">
-								<i class="ti-check"></i>
-								Approve All
-							</button>
+                            <button
+                                *ngIf="storedApprovalID.length !== 0"
+                                [disabled]="isLoading"
+                                (click)="updateApprovals(false)"
+                                class="mr-1 btn btn-lg btn-outline-light"
+                            >
+                                <i class="ti-na"></i>
+                                Discard All
+                            </button>
+                            <button
+                                *ngIf="storedApprovalID.length !== 0"
+                                [disabled]="isLoading"
+                                (click)="updateApprovals(true)"
+                                class="mr-1 btn btn-lg btn-success"
+                            >
+                                <i class="ti-check"></i>
+                                Approve All
+                            </button>
                         </div>
                     </div>
                     <div class="border d-flex aic w-100">
-                        <ApprovalIndex [type]="type" [data]="data"></ApprovalIndex>
+                        <ApprovalIndex
+                            [type]="type"
+                            [data]="data"
+                        ></ApprovalIndex>
                     </div>
                 </div>
             </div>

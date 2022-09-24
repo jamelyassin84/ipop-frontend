@@ -129,4 +129,8 @@ export class AddressPickerComponent implements OnInit {
         this.ngOnInit()
         this.tabs[tab] = true
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

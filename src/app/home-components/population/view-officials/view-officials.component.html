@@ -7,7 +7,9 @@
             type="text"
             class="form-control"
         >
-            <option *ngFor="let type of types">{{ type }}</option>
+            <option *ngFor="let type of types; trackBy: trackByFn">
+                {{ type }}
+            </option>
         </select>
     </div>
     <div
@@ -23,7 +25,7 @@
         >
             <option>Choose...</option>
             <option
-                *ngFor="let municipality of municipalities"
+                *ngFor="let municipality of municipalities; trackBy: trackByFn"
                 [value]="municipality.code"
             >
                 {{ municipality.name | titlecase }}
@@ -57,7 +59,7 @@
             </tr>
         </thead>
         <tbody [@listAnimation]="officials.length">
-            <tr *ngFor="let official of officials">
+            <tr *ngFor="let official of officials; trackBy: trackByFn">
                 <td><i class="ti-user"></i></td>
                 <td class="text-left">{{ official.name }}</td>
                 <td class="text-left">

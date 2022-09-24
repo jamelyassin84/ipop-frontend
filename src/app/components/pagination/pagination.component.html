@@ -1,8 +1,15 @@
 <nav aria-label="...">
     <ul class="pagination">
-        <li (click)="paginate(page.url)" *ngFor="let page of data.links" class="page-item" [class.disabled]="page.url === null" [ngClass]="{ active: page.active === true }">
-            <a role="button" class="page-link">{{ page.label | paginationPipe }}
-			</a>
+        <li
+            (click)="paginate(page.url)"
+            *ngFor="let page of data.links; trackBy: trackByFn"
+            class="page-item"
+            [class.disabled]="page.url === null"
+            [ngClass]="{active: page.active === true}"
+        >
+            <a role="button" class="page-link"
+                >{{ page.label | paginationPipe }}
+            </a>
         </li>
     </ul>
 </nav>

@@ -1,60 +1,65 @@
-import { Component, OnInit } from '@angular/core'
-import { Alert, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
-import { AwardsService } from 'src/app/Services/home/about/awards.service'
+import {Component, OnInit} from '@angular/core'
+import {Alert, Fire, HasApprovals} from 'src/app/modules/extras/Alert'
+import {AwardsService} from 'src/app/Services/home/about/awards.service'
 
 @Component({
-	selector: 'AddAwards',
-	templateUrl: './add-awards.component.html',
-	styleUrls: ['./add-awards.component.scss'],
+    selector: 'AddAwards',
+    templateUrl: './add-awards.component.html',
+    styleUrls: ['./add-awards.component.scss'],
 })
 export class AddAwardsComponent implements OnInit {
-	constructor(private service: AwardsService) {}
+    constructor(private service: AwardsService) {}
 
-	ngOnInit(): void {}
+    photos: any[] = []
 
-	photos: any[] = []
+    award: any = {
+        url: '',
+        title: '',
+        files: [],
+    }
 
-	award: any = {
-		url: '',
-		title: '',
-		files: [],
-	}
+    isLoading: boolean = false
 
-	trigger() {
-		document.getElementById('file')?.click()
-	}
+    ngOnInit(): void {}
 
-	readURL(event: any) {
-		if (event.target.files && event.target.files[0]) {
-			this.photos = []
-			Object.keys(event.target.files).forEach((i: any) => {
-				const reader = new FileReader()
-				reader.readAsDataURL(event.target.files[i])
-				reader.onload = (event: any) => {
-					this.photos.push((<FileReader>event.target).result)
-				}
-			})
-		}
-	}
+    trigger() {
+        document.getElementById('file')?.click()
+    }
 
-	deleteTemporaryImage(index: number) {
-		this.photos.splice(index, 1)
-	}
+    readURL(event: any) {
+        if (event.target.files && event.target.files[0]) {
+            this.photos = []
+            Object.keys(event.target.files).forEach((i: any) => {
+                const reader = new FileReader()
+                reader.readAsDataURL(event.target.files[i])
+                reader.onload = (event: any) => {
+                    this.photos.push((<FileReader>event.target).result)
+                }
+            })
+        }
+    }
 
-	isLoading: boolean = false
-	save() {
-		this.award.files = this.photos
-		Fire(
-			'Save Changes?',
-			'Are you sure you want to add this article?',
-			'info',
-			() => {
-				this.isLoading = true
-				this.service.create(this.award).subscribe(() => {
-					HasApprovals('Created')
-					this.isLoading = false
-				})
-			}
-		)
-	}
+    deleteTemporaryImage(index: number) {
+        this.photos.splice(index, 1)
+    }
+
+    save() {
+        this.award.files = this.photos
+        Fire(
+            'Save Changes?',
+            'Are you sure you want to add this article?',
+            'info',
+            () => {
+                this.isLoading = true
+                this.service.create(this.award).subscribe(() => {
+                    HasApprovals('Created')
+                    this.isLoading = false
+                })
+            },
+        )
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

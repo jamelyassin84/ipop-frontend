@@ -21,4 +21,8 @@ export class PopulationByMunicipalityComponent implements OnInit {
     total(x: string | any, y: string | any) {
         return parseFloat(x) + parseFloat(y)
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

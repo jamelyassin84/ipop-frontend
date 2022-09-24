@@ -1,54 +1,59 @@
-import { Component, OnInit } from '@angular/core'
-import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/modules/extras/Alert'
-import { FocalPersonsService } from 'src/app/Services/home/ahyd/teen-center/focal-persons.service'
-import { UserService } from 'src/app/Services/Independent/user.service'
-import { ReloadService } from 'src/app/Services/reload.service'
+import {Component, OnInit} from '@angular/core'
+import {Subscription} from 'rxjs'
+import {Deleted, Fire} from 'src/app/modules/extras/Alert'
+import {FocalPersonsService} from 'src/app/Services/home/ahyd/teen-center/focal-persons.service'
+import {UserService} from 'src/app/Services/Independent/user.service'
+import {ReloadService} from 'src/app/Services/reload.service'
 
 @Component({
-	selector: 'ViewFocalPersons',
-	templateUrl: './view-focal-persons.component.html',
-	styleUrls: ['./view-focal-persons.component.scss'],
+    selector: 'ViewFocalPersons',
+    templateUrl: './view-focal-persons.component.html',
+    styleUrls: ['./view-focal-persons.component.scss'],
 })
 export class ViewFocalPersonsComponent implements OnInit {
-	constructor(
-		private service: FocalPersonsService,
-		private component: ReloadService,
-		private user: UserService
-	) {
-		this.subscriptions.add(
-			this.component.shouldReload().subscribe(() => {
-				this.ngOnInit()
-			})
-		)
-	}
+    constructor(
+        private service: FocalPersonsService,
+        private component: ReloadService,
+        private user: UserService,
+    ) {
+        this.subscriptions.add(
+            this.component.shouldReload().subscribe(() => {
+                this.ngOnInit()
+            }),
+        )
+    }
 
-	isUser = !this.user.isAdmin()
-	isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isAdmin()
+    readonly isSuperAdmin = !this.user.isSuperAdmin()
 
-	private subscriptions = new Subscription()
+    focaPersons: any = []
 
-	ngOnDestroy(): void {
-		this.subscriptions.unsubscribe()
-	}
+    subscriptions = new Subscription()
 
-	focaPersons: any = []
-	ngOnInit(): void {
-		this.service.index().subscribe((data: any) => {
-			this.focaPersons = data
-		})
-	}
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe()
+    }
 
-	remove(id: number) {
-		Fire(
-			'Remove Data?',
-			'Are you sure you want to remove this data?',
-			'info',
-			() => {
-				this.service.destroy(id).subscribe(() => {
-					Deleted()
-				})
-			}
-		)
-	}
+    ngOnInit(): void {
+        this.service.index().subscribe((data: any) => {
+            this.focaPersons = data
+        })
+    }
+
+    remove(id: number) {
+        Fire(
+            'Remove Data?',
+            'Are you sure you want to remove this data?',
+            'info',
+            () => {
+                this.service.destroy(id).subscribe(() => {
+                    Deleted()
+                })
+            },
+        )
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

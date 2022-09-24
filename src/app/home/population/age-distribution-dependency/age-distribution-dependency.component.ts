@@ -15,4 +15,8 @@ export class AgeDistributionDependencyComponent implements OnInit {
     innerWidth?: number
 
     ngOnInit(): void {}
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

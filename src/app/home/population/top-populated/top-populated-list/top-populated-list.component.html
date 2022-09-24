@@ -3,7 +3,10 @@
     *ngIf="topPopulated && location"
     class="m-0 row t-w-full"
 >
-    <div class="mb-3 col-md-6" *ngFor="let municipality of topPopulated">
+    <div
+        class="mb-3 col-md-6"
+        *ngFor="let municipality of topPopulated; trackBy: trackByFn"
+    >
         <div class="p-20 bg-white card-shadow">
             <div class="layer w-100 mB-10">
                 <h4 class="lh-1 d-flex">

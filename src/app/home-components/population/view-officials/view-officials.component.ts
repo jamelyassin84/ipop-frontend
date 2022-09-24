@@ -31,15 +31,25 @@ export class ViewOfficialsComponent implements OnInit {
             this.fetch()
         })
     }
-    isUser = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isSuperAdmin()
 
-    types = [
+    readonly types = [
         'Provincial Official',
         'Sanguniang Panlalawigan Member',
         'Municipal Official',
         'Barangay Official',
     ]
+
     type: string = 'Provincial Official'
+    data: any = {}
+    officials: any[] = []
+    currentOfficial: any = {}
+    municipalities: MunicipalityType[] = []
+    barangays: BarangayOfficialType[] = []
+
+    ngOnInit(): void {
+        this.getMuncipalities()
+    }
 
     reset() {
         this.data = {
@@ -64,8 +74,6 @@ export class ViewOfficialsComponent implements OnInit {
         this.currentOfficial = this.type
     }
 
-    data: any = {}
-    officials: any[] = []
     viewProvincialOfficial() {
         this.provincialOfficial.index().subscribe((officials: any) => {
             this.officials = officials.data
@@ -94,7 +102,6 @@ export class ViewOfficialsComponent implements OnInit {
             })
     }
 
-    currentOfficial: any = {}
     removeOfficial(id: number) {
         Fire(
             'Remove Official?',
@@ -141,23 +148,21 @@ export class ViewOfficialsComponent implements OnInit {
         })
     }
 
-    ngOnInit(): void {
-        this.getMuncipalities()
-    }
-
-    municipalities: MunicipalityType[] = []
     getMuncipalities() {
         this.location.municipalities().subscribe((data: any) => {
             this.municipalities = data
         })
     }
 
-    barangays: BarangayOfficialType[] = []
     getBarangays(event: any) {
         this.data.municipality =
             event.target.options[event.target.options.selectedIndex].text
         this.location.barangays(event.target.value).subscribe((data: any) => {
             this.barangays = data
         })
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }

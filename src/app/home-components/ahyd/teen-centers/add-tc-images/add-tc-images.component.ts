@@ -1,58 +1,65 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { Created, Fire, HasApprovals } from 'src/app/modules/extras/Alert'
-import { TeenCenterDataService } from 'src/app/Services/home/ahyd/teen-center/teen-center-data.service'
+import {Component, Input, OnInit} from '@angular/core'
+import {Created, Fire, HasApprovals} from 'src/app/modules/extras/Alert'
+import {TeenCenterDataService} from 'src/app/Services/home/ahyd/teen-center/teen-center-data.service'
 
 @Component({
-	selector: 'AddTCImages',
-	templateUrl: './add-tc-images.component.html',
-	styleUrls: ['./add-tc-images.component.scss'],
+    selector: 'AddTCImages',
+    templateUrl: './add-tc-images.component.html',
+    styleUrls: ['./add-tc-images.component.scss'],
 })
 export class AddTcImagesComponent implements OnInit {
-	constructor(private service: TeenCenterDataService) {}
+    constructor(private service: TeenCenterDataService) {}
 
-	@Input() data: any = {}
+    @Input()
+    data: any = {}
 
-	sliders: any[] = []
-	photos: any[] = []
+    sliders: any[] = []
 
-	ngOnInit(): void {}
+    photos: any[] = []
 
-	trigger() {
-		document.getElementById('file')?.click()
-	}
+    isLoading: boolean = false
 
-	readURL(event: any) {
-		if (event.target.files && event.target.files[0]) {
-			this.photos = []
-			Object.keys(event.target.files).forEach((i: any) => {
-				const reader = new FileReader()
-				reader.readAsDataURL(event.target.files[i])
-				reader.onload = (event: any) => {
-					this.photos.push((<FileReader>event.target).result)
-				}
-			})
-		}
-	}
+    ngOnInit(): void {}
 
-	deleteTemporaryImage(index: number) {
-		this.photos.splice(index, 1)
-	}
+    trigger() {
+        document.getElementById('file')?.click()
+    }
 
-	isLoading: boolean = false
-	saveImages() {
-		Fire(
-			'Save Changes?',
-			'This will save all added images. Continue?',
-			'info',
-			() => {
-				this.isLoading = true
-				this.service
-					.update(this.data.id, { photos: this.photos })
-					.subscribe(() => {
-						HasApprovals('Created')
-						this.isLoading = false
-					})
-			}
-		)
-	}
+    readURL(event: any) {
+        if (event.target.files && event.target.files[0]) {
+            this.photos = []
+            Object.keys(event.target.files).forEach((i: any) => {
+                const reader = new FileReader()
+                reader.readAsDataURL(event.target.files[i])
+                reader.onload = (event: any) => {
+                    this.photos.push((<FileReader>event.target).result)
+                }
+            })
+        }
+    }
+
+    deleteTemporaryImage(index: number) {
+        this.photos.splice(index, 1)
+    }
+
+    saveImages() {
+        Fire(
+            'Save Changes?',
+            'This will save all added images. Continue?',
+            'info',
+            () => {
+                this.isLoading = true
+                this.service
+                    .update(this.data.id, {photos: this.photos})
+                    .subscribe(() => {
+                        HasApprovals('Created')
+                        this.isLoading = false
+                    })
+            },
+        )
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

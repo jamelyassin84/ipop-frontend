@@ -38,7 +38,10 @@
             <NoDataComponent [data]="programArea.activities"></NoDataComponent>
             <div
                 class="bl br card"
-                *ngFor="let activity of programArea.activities"
+                *ngFor="
+                    let activity of programArea.activities;
+                    trackBy: trackByFn
+                "
             >
                 <div class="bg-white card-header d-flex aic">
                     <div>

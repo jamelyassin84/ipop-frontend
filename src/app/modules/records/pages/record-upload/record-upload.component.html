@@ -2,15 +2,22 @@
     <div class="col-md-4">
         <label for="type">Select a target path for your file upload</label>
         <select (change)="setType($event)" id="type" class="form-control">
-			<option value="">Choose..</option>
-			<option *ngFor="let type of types">{{ type }}</option>
-		</select>
+            <option value="">Choose..</option>
+            <option *ngFor="let type of types; trackBy: trackByFn">
+                {{ type }}
+            </option>
+        </select>
     </div>
 </div>
 <br />
-<div class="card p-40">
-    <ngx-dropzone [multiple]="false" (change)="onSelect($event)" class="upload-container d-flex aic jcc text-center" style="flex-direction: column">
-        <i class="ti-upload p-20 text-info" style="font-size: 2rem"></i>
+<div class="p-40 card">
+    <ngx-dropzone
+        [multiple]="false"
+        (change)="onSelect($event)"
+        class="text-center upload-container d-flex aic jcc"
+        style="flex-direction: column"
+    >
+        <i class="p-20 ti-upload text-info" style="font-size: 2rem"></i>
         <h1>Drag & Drop</h1>
         <span> your .xls/.xlx file here or click to upload</span>
     </ngx-dropzone>
@@ -33,8 +40,8 @@
                 <td>{{ file.size | number }} KB</td>
                 <td>
                     <button (click)="remove()" class="btn btn-sm btn-danger">
-						Remove
-					</button>
+                        Remove
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -43,7 +50,7 @@
 <br />
 <div class="d-flex aic jcc">
     <button [disabled]="isLoading" (click)="save()" class="btn btn-dark w-25">
-		<span *ngIf="!isLoading">Upload to database</span>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading">Upload to database</span>
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody [@listAnimation]="admins.length">
-                <tr *ngFor="let admin of admins">
+                <tr *ngFor="let admin of admins; trackBy: trackByFn">
                     <td>
                         <img
                             *ngIf="admin.profile_picture"

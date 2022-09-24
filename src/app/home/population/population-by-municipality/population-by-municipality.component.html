@@ -24,7 +24,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of populationByMunicipality; let i = index">
+        <tr
+            *ngFor="
+                let data of populationByMunicipality;
+                let i = index;
+                trackBy: trackByFn
+            "
+        >
             <td>{{ i + 1 }}</td>
             <td class="border">
                 {{ data.municipality | titlecase }}

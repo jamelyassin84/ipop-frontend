@@ -40,7 +40,7 @@
         <!-- actived -->
         <ul class="sidebar-menu scrollable pos-r">
             <li
-                *ngFor="let item of sidebar; let i = index"
+                *ngFor="let item of sidebar; let i = index; trackBy: trackByFn"
                 [ngClass]="{'mT-30': i === 0}"
                 [class.active]="url.includes(item.route)"
             >

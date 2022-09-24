@@ -15,19 +15,21 @@ import {ADMIN, normal} from './Sidebar'
 export class SidebarComponent implements OnInit {
     constructor(private router: Router, private user: UserService) {}
 
-    name = this.user.name()
-    username = this.usernamify(this.user.name())
-    avatar = localStorage.getItem('avatar')
+    readonly name = this.user.name()
+    readonly username = this.usernamify(this.user.name())
+    readonly avatar = localStorage.getItem('avatar')
+
     url = this.router.url
+
+    sidebar: SidebarType[] =
+        localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
+
     mode = ''
 
     ngOnInit(): void {
         this.setMode()
         this.setMode()
     }
-
-    sidebar: SidebarType[] =
-        localStorage.getItem('role') !== 'Super Admin' ? normal : ADMIN
 
     usernamify(name: string) {
         let temp = name.split(' ')
@@ -59,5 +61,9 @@ export class SidebarComponent implements OnInit {
                 'success',
             )
         })
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }

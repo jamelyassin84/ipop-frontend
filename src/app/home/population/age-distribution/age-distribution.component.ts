@@ -19,4 +19,8 @@ export class AgeDistributionComponent implements OnInit {
     getPercentage(value: number, basis: number) {
         return (value * 100) / basis
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

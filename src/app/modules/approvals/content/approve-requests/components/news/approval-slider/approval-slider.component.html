@@ -1,3 +1,3 @@
-<div *ngFor="let image of images">
+<div *ngFor="let image of images; trackBy: trackByFn">
     <img [src]="image" />
 </div>

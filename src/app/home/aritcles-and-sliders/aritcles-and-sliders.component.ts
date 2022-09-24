@@ -155,6 +155,9 @@ export class AritclesAndSlidersComponent implements OnInit {
 
     onResize() {
         this.innerWidth = window.innerWidth
-        // 1140
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }

@@ -23,7 +23,10 @@
     <div class="card-body">
         <NoDataComponent [data]="awards"></NoDataComponent>
 
-        <div class="m-0 mb-5 bl br card" *ngFor="let award of awards">
+        <div
+            class="m-0 mb-5 bl br card"
+            *ngFor="let award of awards; trackBy: trackByFn"
+        >
             <div class="bg-white card-header d-flex aic">
                 <div>
                     <div class="m-0 h3 card-title text-danger dw">

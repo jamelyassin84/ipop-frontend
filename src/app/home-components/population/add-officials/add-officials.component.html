@@ -1,30 +1,50 @@
 <div class="card-body">
     <div class="form-group">
         <label for="">Choose Type of Official</label>
-        <select (change)="reset()" [(ngModel)]="type" type="text" class="form-control">
-			<option *ngFor="let type of types">{{ type }}</option>
-		</select>
+        <select
+            (change)="reset()"
+            [(ngModel)]="type"
+            type="text"
+            class="form-control"
+        >
+            <option *ngFor="let type of types; trackBy: trackByFn">
+                {{ type }}
+            </option>
+        </select>
     </div>
-    <div *ngIf="type === 'Municipal Official' || type === 'Barangay Official'" class="form-group">
+    <div
+        *ngIf="type === 'Municipal Official' || type === 'Barangay Official'"
+        class="form-group"
+    >
         <label for="">Choose a Municipality</label>
-        <select (change)="getBarangays($event)" class="custom-select" id="municipality" required>
-			<option>Choose...</option>
-			<option
-				*ngFor="let municipality of municipalities"
-				[value]="municipality.code"
-			>
-				{{ municipality.name | titlecase }}
-			</option>
-		</select>
+        <select
+            (change)="getBarangays($event)"
+            class="custom-select"
+            id="municipality"
+            required
+        >
+            <option>Choose...</option>
+            <option
+                *ngFor="let municipality of municipalities; trackBy: trackByFn"
+                [value]="municipality.code"
+            >
+                {{ municipality.name | titlecase }}
+            </option>
+        </select>
     </div>
     <div *ngIf="type === 'Barangay Official'" class="form-group">
         <label for="">Choose a Barangay</label>
-        <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" required>
-			<option value="">Choose...</option>
-			<option *ngFor="let barangay of barangays">
-				{{ barangay.name }}
-			</option>
-		</select>
+        <select
+            [(ngModel)]="data.barangay"
+            class="custom-select"
+            id="barangay"
+            required
+        >
+            <option value="">Choose...</option>
+            <option *ngFor="let barangay of barangays; trackBy: trackByFn">
+                {{ barangay.name }}
+            </option>
+        </select>
     </div>
     <div class="form-group">
         <label for="">Name of the Official</label>
@@ -38,11 +58,11 @@
 
 <hr />
 
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i> Add this Official</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i> Add this Official</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

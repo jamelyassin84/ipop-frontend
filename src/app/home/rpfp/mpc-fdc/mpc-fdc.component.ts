@@ -1,96 +1,99 @@
-import { Component, OnInit } from '@angular/core'
-import { Subscription } from 'rxjs'
-import { Deleted, Fire } from 'src/app/modules/extras/Alert'
-import { BaseService } from 'src/app/Services/base.service'
-import { MpcFdcDataService } from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
-import { UserService } from 'src/app/Services/Independent/user.service'
-import { LocationService } from 'src/app/Services/locations/province.service'
-import { ReloadService } from 'src/app/Services/reload.service'
-import { MunicipalityType } from 'src/app/Types/locations/Municipality.types'
+import {Component, OnInit} from '@angular/core'
+import {Subscription} from 'rxjs'
+import {Deleted, Fire} from 'src/app/modules/extras/Alert'
+import {BaseService} from 'src/app/Services/base.service'
+import {MpcFdcDataService} from 'src/app/Services/home/rpfp/mpc-fdc/mpc-fdc-data.service'
+import {UserService} from 'src/app/Services/Independent/user.service'
+import {LocationService} from 'src/app/Services/locations/province.service'
+import {ReloadService} from 'src/app/Services/reload.service'
+import {MunicipalityType} from 'src/app/Types/locations/Municipality.types'
 
 @Component({
-	selector: 'app-mpc-fdc',
-	templateUrl: './mpc-fdc.component.html',
-	styleUrls: ['./mpc-fdc.component.scss'],
+    selector: 'app-mpc-fdc',
+    templateUrl: './mpc-fdc.component.html',
+    styleUrls: ['./mpc-fdc.component.scss'],
 })
 export class MpcFdcComponent implements OnInit {
-	constructor(
-		private location: LocationService,
-		private service: MpcFdcDataService,
-		private component: ReloadService,
-		private user: UserService
-	) {
-		this.subscriptions.add(
-			this.component.shouldReload().subscribe(() => {
-				this.ngOnInit()
-				this.getMPCFDC
-			})
-		)
-	}
+    constructor(
+        private location: LocationService,
+        private service: MpcFdcDataService,
+        private component: ReloadService,
+        private user: UserService,
+    ) {
+        this.subscriptions.add(
+            this.component.shouldReload().subscribe(() => {
+                this.ngOnInit()
+                this.getMPCFDC
+            }),
+        )
+    }
 
-	isUser = !this.user.isAdmin()
-	isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isAdmin()
+    readonly isSuperAdmin = !this.user.isSuperAdmin()
 
-	private subscriptions = new Subscription()
+    subscriptions = new Subscription()
 
-	ngOnDestroy(): void {
-		this.subscriptions.unsubscribe()
-	}
+    districts = ['I', 'II', 'III', 'IV', 'V']
 
-	districts = ['I', 'II', 'III', 'IV', 'V']
+    municipalities: MunicipalityType[] = []
+    MPCFDCs: any = []
+    currenData: any = {}
+    currentImages: any = []
+    mpcfdc_id = 0
 
-	ngOnInit(): void {
-		this.getMuncipalities()
-	}
+    locations: any = {
+        municipality: '',
+        district: '',
+    }
 
-	locations: any = {
-		municipality: '',
-		district: '',
-	}
+    ngOnInit(): void {
+        this.getMuncipalities()
+    }
 
-	municipalities: MunicipalityType[] = []
-	getMuncipalities() {
-		this.location
-			.municipalities()
-			.subscribe((municipalities: MunicipalityType[]) => {
-				this.municipalities = municipalities
-			})
-	}
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe()
+    }
 
-	MPCFDCs: any = []
-	getMPCFDC() {
-		const service = new BaseService(
-			this.service.http,
-			this.service.url,
-			`municipality=${this.locations.municipality}&district=${this.locations.district}`
-		)
-		service.index().subscribe((data: any) => {
-			this.MPCFDCs = data
-		})
-	}
+    getMuncipalities() {
+        this.location
+            .municipalities()
+            .subscribe((municipalities: MunicipalityType[]) => {
+                this.municipalities = municipalities
+            })
+    }
 
-	currenData: any = {}
+    getMPCFDC() {
+        const service = new BaseService(
+            this.service.http,
+            this.service.url,
+            `municipality=${this.locations.municipality}&district=${this.locations.district}`,
+        )
+        service.index().subscribe((data: any) => {
+            this.MPCFDCs = data
+        })
+    }
 
-	remove(id: number) {
-		Fire(
-			'Remove Data?',
-			'Are you sure you want to remove this data?',
-			'info',
-			() => {
-				this.service.destroy(id).subscribe(() => {
-					Deleted()
-				})
-			}
-		)
-	}
+    remove(id: number) {
+        Fire(
+            'Remove Data?',
+            'Are you sure you want to remove this data?',
+            'info',
+            () => {
+                this.service.destroy(id).subscribe(() => {
+                    Deleted()
+                })
+            },
+        )
+    }
 
-	currentImages: any = []
-	transformImages(photos: any) {
-		this.currentImages = []
-		photos.forEach((photo: any) => {
-			this.currentImages.push(photo.file.uri)
-		})
-	}
+    transformImages(photos: any) {
+        this.currentImages = []
+        photos.forEach((photo: any) => {
+            this.currentImages.push(photo.file.uri)
+        })
+    }
 
-	mpcfdc_id = 0
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

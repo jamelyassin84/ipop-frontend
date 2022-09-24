@@ -29,8 +29,10 @@ export class ServicesComponent implements OnInit {
         )
     }
 
-    isUser = !this.user.isAdmin()
-    isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isAdmin()
+    readonly isSuperAdmin = !this.user.isSuperAdmin()
+
+    serviceOffered: any = {}
 
     private subscriptions = new Subscription()
 
@@ -41,7 +43,6 @@ export class ServicesComponent implements OnInit {
         this.servicesOffered()
     }
 
-    serviceOffered: any = {}
     servicesOffered() {
         this.route.params.subscribe((params) => {
             pop()
@@ -62,5 +63,9 @@ export class ServicesComponent implements OnInit {
                 })
             },
         )
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }

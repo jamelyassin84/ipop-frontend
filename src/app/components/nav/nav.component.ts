@@ -75,4 +75,8 @@ export class NavComponent implements OnInit {
         }
         return false
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

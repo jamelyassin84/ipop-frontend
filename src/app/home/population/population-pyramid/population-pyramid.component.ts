@@ -242,4 +242,8 @@ export class PopulationPyramidComponent implements OnInit {
         this.populationByAgeGroupAndSex =
             temp[0].ageGroup === this.LAST ? temp.reverse() : temp
     }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

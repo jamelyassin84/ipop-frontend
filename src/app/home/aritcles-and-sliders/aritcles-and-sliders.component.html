@@ -59,7 +59,10 @@
 <div class="t-grid t-grid-cols-1 md:t-grid-cols-3 bg-light t-gap-10 mT-40">
     <div [@listAnimation]="articles.length" class="md:t-col-span-2 t-bg-white">
         <ul class="bg-white nav nav-tabs d-flex">
-            <li *ngFor="let tab of filterList" class="nav-item">
+            <li
+                *ngFor="let tab of filterList; trackBy: trackByFn"
+                class="nav-item"
+            >
                 <button
                     role="button"
                     (click)="setTab(tab)"
@@ -90,7 +93,10 @@
 
         <NoDataComponent [data]="articles"></NoDataComponent>
 
-        <div class="m-0 bl br" *ngFor="let article of articles">
+        <div
+            class="m-0 bl br"
+            *ngFor="let article of articles; trackBy: trackByFn"
+        >
             <div class="bg-white card-header d-flex aic">
                 <div>
                     <div class="m-0 h3 card-title dw">{{ article.title }}</div>
@@ -165,7 +171,7 @@
 
                 <div
                     class="card-body d-flex aic"
-                    *ngFor="let link of quickLinks"
+                    *ngFor="let link of quickLinks; trackBy: trackByFn"
                 >
                     <span class="p-10">
                         <i

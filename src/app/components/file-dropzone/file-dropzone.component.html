@@ -1,7 +1,12 @@
 <ngx-dropzone (change)="onSelect($event)" [expandable]="true">
-    <ngx-dropzone-label>Click or Drag & Drop your files here
+    <ngx-dropzone-label
+        >Click or Drag & Drop your files here
     </ngx-dropzone-label>
-    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+    <ngx-dropzone-preview
+        *ngFor="let f of files; trackBy: trackByFn"
+        [removable]="true"
+        (removed)="onRemove(f)"
+    >
         <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
     </ngx-dropzone-preview>
 </ngx-dropzone>

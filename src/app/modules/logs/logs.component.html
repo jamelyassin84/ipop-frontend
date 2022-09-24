@@ -1,5 +1,5 @@
-<div class="card mt-5 pt-5">
-    <div class="card-body mt-5 pt-5">
+<div class="pt-5 mt-5 card">
+    <div class="pt-5 mt-5 card-body">
         <table class="table mT-30">
             <thead class="table-dark bgc-blue-900">
                 <tr>
@@ -16,12 +16,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let log of logs">
+                <tr *ngFor="let log of logs; trackBy: trackByFn">
                     <td>
-                        <img [src]="
-								log.user?.profile_picture?.uri ||
-								'/assets/avatars/face-7.jpg'
-							" alt="" />
+                        <img
+                            [src]="
+                                log.user?.profile_picture?.uri ||
+                                '/assets/avatars/face-7.jpg'
+                            "
+                            alt=""
+                        />
                     </td>
                     <td>{{ log.user?.fullname || 'Visitor' }}</td>
                     <td>{{ log.info.city }}, {{ log.info.country }}</td>
@@ -36,22 +39,26 @@
                     <td>
                         <DropDown [buttons]="dropdown"></DropDown>
                         <ng-template #dropdown>
-                            <a target="_blank" [href]="
-									'https://www.google.com/maps/place' +
-									'/@' +
-									log.info.lat +
-									',' +
-									log.info.lon
-								" class="dropdown-item">View coordinates in google maps</a
-							>
-						</ng-template>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<Pagination
-			(onPageChange)="onPageChange($event)"
-			[data]="data"
-		></Pagination>
-	</div>
+                            <a
+                                target="_blank"
+                                [href]="
+                                    'https://www.google.com/maps/place' +
+                                    '/@' +
+                                    log.info.lat +
+                                    ',' +
+                                    log.info.lon
+                                "
+                                class="dropdown-item"
+                                >View coordinates in google maps</a
+                            >
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <Pagination
+            (onPageChange)="onPageChange($event)"
+            [data]="data"
+        ></Pagination>
+    </div>
 </div>

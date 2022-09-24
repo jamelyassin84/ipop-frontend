@@ -23,4 +23,8 @@ export class AgeDistributionDependencyByMunicipalityComponent
     innerWidth?: number
 
     ngOnInit(): void {}
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
+    }
 }

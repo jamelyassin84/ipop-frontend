@@ -6,9 +6,14 @@
     <br />
     <br />
     <br />
-    <ul class="nav nav-tabs mt-5">
-        <li *ngFor="let nav of navs" class="nav-item">
-            <a (click)="handleChangeTab(nav.name)" [routerLink]="nav.route" [class.active]="url.includes(nav.route)" class="nav-link text-muted">
+    <ul class="mt-5 nav nav-tabs">
+        <li *ngFor="let nav of navs; trackBy: trackByFn" class="nav-item">
+            <a
+                (click)="handleChangeTab(nav.name)"
+                [routerLink]="nav.route"
+                [class.active]="url.includes(nav.route)"
+                class="nav-link text-muted"
+            >
                 <i [class]="nav.icon"></i> {{ nav.name }}
             </a>
         </li>

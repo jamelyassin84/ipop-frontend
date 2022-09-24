@@ -3,42 +3,54 @@
         <div class="col-md-6">
             <label TeenCenter>District</label>
             <select [(ngModel)]="data.district" class="form-control">
-				<option>Choose...</option>
-				<option *ngFor="let district of districts">
-					{{ district }}
-				</option>
-			</select>
+                <option>Choose...</option>
+                <option *ngFor="let district of districts; trackBy: trackByFn">
+                    {{ district }}
+                </option>
+            </select>
         </div>
         <div class="col-md-6">
             <label>Municipality </label>
             <select [(ngModel)]="data.municipality" class="form-control">
-				<option>Choose...</option>
-				<option *ngFor="let municipality of municipalities">
-					{{ municipality.name | titlecase }}
-				</option>
-			</select>
+                <option>Choose...</option>
+                <option
+                    *ngFor="
+                        let municipality of municipalities;
+                        trackBy: trackByFn
+                    "
+                >
+                    {{ municipality.name | titlecase }}
+                </option>
+            </select>
         </div>
-        <div class="col-md-12 mt-4">
+        <div class="mt-4 col-md-12">
             <label TeenCenter>Name</label>
             <input [(ngModel)]="data.name" type="text" class="form-control" />
         </div>
-        <div class="col-md-12 mt-4">
+        <div class="mt-4 col-md-12">
             <label TeenCenter>Location</label>
-            <input [(ngModel)]="data.location" type="text" class="form-control" />
+            <input
+                [(ngModel)]="data.location"
+                type="text"
+                class="form-control"
+            />
         </div>
-        <div class="col-md-12 mt-4">
+        <div class="mt-4 col-md-12">
             <label TeenCenter>Services Offered</label>
-            <textarea [(ngModel)]="data.services" class="form-control"></textarea>
+            <textarea
+                [(ngModel)]="data.services"
+                class="form-control"
+            ></textarea>
         </div>
     </div>
 </div>
 
 <hr />
-<div class="d-flex aic jcc mr-5">
+<div class="mr-5 d-flex aic jcc">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"
-			><i class="ti-check mr-1"></i>Add this Teen Center Data</span
-		>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"
+            ><i class="mr-1 ti-check"></i>Add this Teen Center Data</span
+        >
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

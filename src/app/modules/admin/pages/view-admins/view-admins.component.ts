@@ -20,11 +20,7 @@ export class ViewAdminsComponent implements OnInit {
         )
     }
 
-    private subscriptions = new Subscription()
-
-    ngOnDestroy(): void {
-        this.subscriptions.unsubscribe()
-    }
+    subscriptions = new Subscription()
 
     admins: UserType[] = []
     currentAdmin: UserType | any = {}
@@ -33,9 +29,17 @@ export class ViewAdminsComponent implements OnInit {
         this.getAdmins()
     }
 
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe()
+    }
+
     getAdmins() {
         this.user.index().subscribe((pages: any) => {
             this.admins = pages.data
         })
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }

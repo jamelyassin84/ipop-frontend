@@ -2,123 +2,219 @@
     <br />
     <div class="inputs">
         <div class="row">
-            <div class="col-md-4 mb-3" style="position: relative">
+            <div class="mb-3 col-md-4" style="position: relative">
                 <img [src]="image" alt="" style="max-width: 20vh" />
-                <input (change)="readURL($event)" accept="image/*" type="file" class="hidden" id="profile-picture" />
+                <input
+                    (change)="readURL($event)"
+                    accept="image/*"
+                    type="file"
+                    class="hidden"
+                    id="profile-picture"
+                />
             </div>
         </div>
         <br /><br />
         <div class="inputs">
             <div class="row">
-                <div class="col-md-4 mb-3">
+                <div class="mb-3 col-md-4">
                     <label for="username">Username</label>
-                    <input [(ngModel)]="data.username" type="text" class="form-control" id="username" [class.is-invalid]="invalidData.username" required />
+                    <input
+                        [(ngModel)]="data.username"
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        [class.is-invalid]="invalidData.username"
+                        required
+                    />
                     <div class="invalid-feedback">Username is required</div>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="mb-3 col-md-4">
                     <label for="password">Password </label>
-                    <input [(ngModel)]="data.password" type="password" class="form-control" id="password" [class.is-invalid]="invalidData.password" required />
+                    <input
+                        [(ngModel)]="data.password"
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        [class.is-invalid]="invalidData.password"
+                        required
+                    />
                     <div class="invalid-feedback">Password is requred</div>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="mb-3 col-md-4">
                     <label for="confrim-password">Confirm Password</label>
-                    <input [(ngModel)]="data.confirmPassword" type="password" class="form-control" id="confrim-password" [class.is-invalid]="
-							data.confirmPassword != data.password ||
-							invalidData.confirmPassword
-						" required />
-                    <div class="invalid-feedback" *ngIf="data.confirmPassword != data.password">
+                    <input
+                        [(ngModel)]="data.confirmPassword"
+                        type="password"
+                        class="form-control"
+                        id="confrim-password"
+                        [class.is-invalid]="
+                            data.confirmPassword != data.password ||
+                            invalidData.confirmPassword
+                        "
+                        required
+                    />
+                    <div
+                        class="invalid-feedback"
+                        *ngIf="data.confirmPassword != data.password"
+                    >
                         Password should match
                     </div>
-                    <div *ngIf="invalidData.confirmPassword" class="invalid-feedback">
+                    <div
+                        *ngIf="invalidData.confirmPassword"
+                        class="invalid-feedback"
+                    >
                         Password is required
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="mb-3 col-md-6">
                     <label for="fullname">Fullname </label>
-                    <input [(ngModel)]="data.fullname" type="text" class="form-control" id="fullname" [class.is-invalid]="invalidData.fullname" required />
+                    <input
+                        [(ngModel)]="data.fullname"
+                        type="text"
+                        class="form-control"
+                        id="fullname"
+                        [class.is-invalid]="invalidData.fullname"
+                        required
+                    />
                     <div class="invalid-feedback">Fullname is required</div>
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <div class="mb-3 col-md-6">
                     <label for="role">Role</label>
-                    <select (change)="handleRoleChange()" [(ngModel)]="data.role" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option value="">Choose...</option>
-						<option>PPOI</option>
-						<option>PPOII</option>
-						<option>FOD</option>
-						<option>TRD</option>
-						<option>Super Admin</option>
-					</select>
+                    <select
+                        (change)="handleRoleChange()"
+                        [(ngModel)]="data.role"
+                        class="custom-select"
+                        id="role"
+                        [class.is-invalid]="invalidData.role"
+                        required
+                    >
+                        <option value="">Choose...</option>
+                        <option>PPOI</option>
+                        <option>PPOII</option>
+                        <option>FOD</option>
+                        <option>TRD</option>
+                        <option>Super Admin</option>
+                    </select>
                     <div class="invalid-feedback">Role is required</div>
                 </div>
 
                 <div class="col-md-4">
                     <label for="district">District</label>
-                    <select [(ngModel)]="data.district" class="custom-select" id="district" [class.is-invalid]="invalidData.district" required>
-						<option value="">Choose...</option>
-						<option *ngFor="let number of districts">
-							{{ number }}
-						</option>
-					</select>
+                    <select
+                        [(ngModel)]="data.district"
+                        class="custom-select"
+                        id="district"
+                        [class.is-invalid]="invalidData.district"
+                        required
+                    >
+                        <option value="">Choose...</option>
+                        <option
+                            *ngFor="let number of districts; trackBy: trackByFn"
+                        >
+                            {{ number }}
+                        </option>
+                    </select>
                     <div class="invalid-feedback">District is required</div>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="mb-3 col-md-4">
                     <label for="municipality">Municipality </label>
-                    <select (change)="getBarangays($event)" class="custom-select" id="municipality" [class.is-invalid]="invalidData.municipality" required>
-						<option>Choose...</option>
-						<option
-							*ngFor="let municipality of municipalities"
-							[value]="municipality.code"
-						>
-							{{ municipality.name | titlecase }}
-						</option>
-					</select>
+                    <select
+                        (change)="getBarangays($event)"
+                        class="custom-select"
+                        id="municipality"
+                        [class.is-invalid]="invalidData.municipality"
+                        required
+                    >
+                        <option>Choose...</option>
+                        <option
+                            *ngFor="
+                                let municipality of municipalities;
+                                trackBy: trackByFn
+                            "
+                            [value]="municipality.code"
+                        >
+                            {{ municipality.name | titlecase }}
+                        </option>
+                    </select>
                     <div class="invalid-feedback">Municipality is required</div>
                 </div>
 
-                <div class="col-md-4 mb-3">
+                <div class="mb-3 col-md-4">
                     <label for="barangay"> Barangay </label>
-                    <select [(ngModel)]="data.barangay" class="custom-select" id="barangay" [class.is-invalid]="invalidData.barangay" required>
-						<option value="">Choose...</option>
-						<option *ngFor="let barangay of barangays">
-							{{ barangay.name }}
-						</option>
-					</select>
+                    <select
+                        [(ngModel)]="data.barangay"
+                        class="custom-select"
+                        id="barangay"
+                        [class.is-invalid]="invalidData.barangay"
+                        required
+                    >
+                        <option value="">Choose...</option>
+                        <option
+                            *ngFor="
+                                let barangay of barangays;
+                                trackBy: trackByFn
+                            "
+                        >
+                            {{ barangay.name }}
+                        </option>
+                    </select>
                     <div class="invalid-feedback">Barangay is required</div>
                 </div>
 
-                <div *ngIf="data.role === 'PPOII'" class="col-md-6 mb-3">
+                <div *ngIf="data.role === 'PPOII'" class="mb-3 col-md-6">
                     <label for="role">Municipality Assigned</label>
-                    <select multiple [(ngModel)]="data.assigned_municipality" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option
-							*ngFor="let municipality of municipalities"
-							[value]="municipality.code"
-						>
-							{{ municipality.name | titlecase }}
-						</option>
-					</select>
+                    <select
+                        multiple
+                        [(ngModel)]="data.assigned_municipality"
+                        class="custom-select"
+                        id="role"
+                        [class.is-invalid]="invalidData.role"
+                        required
+                    >
+                        <option
+                            *ngFor="let municipality of municipalities"
+                            [value]="municipality.code"
+                        >
+                            {{ municipality.name | titlecase }}
+                        </option>
+                    </select>
                     <div class="invalid-feedback">Role is required</div>
                 </div>
 
-                <div *ngIf="data.role === 'PPOI' && data.barangay !== undefined" class="col-md-6 mb-3">
+                <div
+                    *ngIf="data.role === 'PPOI' && data.barangay !== undefined"
+                    class="mb-3 col-md-6"
+                >
                     <label for="role">Barangay Assigned</label>
-                    <select multiple [(ngModel)]="data.assigned_barangay" class="custom-select" id="role" [class.is-invalid]="invalidData.role" required>
-						<option *ngFor="let barangay of barangays">
-							{{ barangay.name }}
-						</option>
-					</select>
+                    <select
+                        multiple
+                        [(ngModel)]="data.assigned_barangay"
+                        class="custom-select"
+                        id="role"
+                        [class.is-invalid]="invalidData.role"
+                        required
+                    >
+                        <option *ngFor="let barangay of barangays">
+                            {{ barangay.name }}
+                        </option>
+                    </select>
                     <div class="invalid-feedback">Role is required</div>
                 </div>
             </div>
 
             <div class="d-flex aic jcc mT-50">
-                <button [disabled]="isLoading" (click)="register()" class="btn btn-dark w-25">
-					<span *ngIf="!isLoading">Create Admin</span>
-					<Loader *ngIf="isLoading"></Loader>
-				</button>
+                <button
+                    [disabled]="isLoading"
+                    (click)="register()"
+                    class="btn btn-dark w-25"
+                >
+                    <span *ngIf="!isLoading">Create Admin</span>
+                    <Loader *ngIf="isLoading"></Loader>
+                </button>
             </div>
         </div>
     </div>
