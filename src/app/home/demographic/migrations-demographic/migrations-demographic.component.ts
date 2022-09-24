@@ -14,6 +14,7 @@ import {select, Store} from '@ngrx/store'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
+import {LocationFIlter} from 'src/app/app-core/store/ngrx/locatition-filter/location-filter.model'
 
 @Component({
     selector: 'app-migrations-demographic',
@@ -44,6 +45,7 @@ export class MigrationsDemographicComponent implements OnInit {
         {backgroundColor: '#EF6C00'},
         {backgroundColor: '#0D47AA'},
         {backgroundColor: '#FBBB25'},
+        {backgroundColor: 'white'},
     ]
 
     location$ = this._store.pipe(
@@ -56,6 +58,20 @@ export class MigrationsDemographicComponent implements OnInit {
         }),
     )
 
+    readonly migrationByMunicipalityKeys: any = [
+        'municipality',
+        'total_in_migrations',
+        'total_out_migrations',
+        'net_migrations',
+    ]
+
+    readonly migrationByMunicipalityHeaders = [
+        'Municipality',
+        'Total In-Migration',
+        ' Total Out-Migration',
+        'Net Migration Rate/100 population',
+    ]
+
     subscriptions = new Subscription()
 
     statisticalChart = {...monthChartConfig}
@@ -66,27 +82,13 @@ export class MigrationsDemographicComponent implements OnInit {
 
     summaries: any = undefined
 
-    location: any = {
+    location: LocationFIlter = {
+        year: null,
         barangay: null,
         municipality: null,
-        year: null,
     }
 
     migrationByMunicipality: any = []
-
-    migrationByMunicipalityKeys: any = [
-        'municipality',
-        'total_in_migrations',
-        'total_out_migrations',
-        'net_migrations',
-    ]
-
-    migrationByMunicipalityHeaders = [
-        'Municipality',
-        'In-Migration Rate/100 population',
-        'Out-Migration Rate/100 population',
-        'Net Migration Rate/100 population',
-    ]
 
     monthChartData: Statistic[] = []
 
@@ -96,11 +98,12 @@ export class MigrationsDemographicComponent implements OnInit {
         this.subscriptions.unsubscribe()
     }
 
-    fetch(event: any) {
-        this.location = event
+    fetch(location: LocationFIlter) {
+        this.location = {...this.location, ...location}
+
+        this.getSummary()
         this.getLocalData()
         this.getMigrationChart()
-        this.getSummary()
         this.getMigrationByMunicipality()
     }
 
@@ -145,6 +148,7 @@ export class MigrationsDemographicComponent implements OnInit {
         this.statisticalChart.datasets[0].data = []
         this.statisticalChart.datasets[1].data = []
         this.statisticalChart.datasets[2].data = []
+
         if (months.length === 0) {
             return
         }

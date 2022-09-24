@@ -24,7 +24,7 @@ export const ADMIN = [
         name: 'Approvals',
         route: 'approvals',
         color: 'c-red-500',
-        icon: 'ti-key',
+        icon: 'ti-slice',
     },
     {
         name: 'Bulk Records',
@@ -42,6 +42,6 @@ export const ADMIN = [
         name: 'Logs',
         route: 'logs',
         color: 'c-orange-900',
-        icon: 'ti-thought',
+        icon: 'ti-layers-alt',
     },
 ]

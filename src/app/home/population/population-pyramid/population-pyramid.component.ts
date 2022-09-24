@@ -17,6 +17,7 @@ import {AppState} from 'src/app/app-core/store/core/app.state'
 import {select, Store} from '@ngrx/store'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
+import {AgeGroupAndSex} from 'src/app/app-core/models/age-group-and-sex.model'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -84,15 +85,7 @@ export class PopulationPyramidComponent implements OnInit {
 
     ageDistribution: any = []
 
-    populationByAgeGroupAndSex: {
-        ageGroup: string
-        male: number
-        percent_male: number
-        female: number
-        percent_female: number
-        total: number
-        percent_total: number
-    }[] = []
+    populationByAgeGroupAndSex: AgeGroupAndSex[] = []
 
     isProvincial: boolean = false
 
@@ -201,8 +194,6 @@ export class PopulationPyramidComponent implements OnInit {
                 newText = 'Below 1 Year Old'
             }
             if (this.type === 'Marriage' && key === '20-24') {
-                console.log('ari')
-
                 newText = '18-24'
             }
             let total = parseFloat(male[key]) + parseFloat(female[key])

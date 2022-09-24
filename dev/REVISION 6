@@ -1,0 +1,39 @@
+# Resolved
+
+Population
+Population by Age Group and Sex
+Barotac Nuevo age bracket - rearrange
+San Miguel and San Joaquin Pyramid is the same?
+
+Demographic
+
+Births
+Births by Municipality Table
+request: can we put numbers before the name of the Municipality for easy counting
+
+Death
+Deaths by Municipality Table
+request: can we put numbers before the name of the Municipality for easy counting
+can we rearrange the table like in the Births and Migration for consistency
+
+Migration
+Migration Statistics Graph
+Can we have a dummy value of 0?
+
+Migration by Municipality Table
+In-Migration Rate/100 population > Total In-Migration
+Out-Migration Rate/100 population > Total Out-Migration
+request: can we put numbers before the name of the Municipality for easy counting
+
+Marriage by Municipality Table
+request: can we put numbers before the name of the Municipality for easy counting
+can we rearrange the table like in the Births and Migration for consistency
+
+Marriages
+Type of Marriages Graph
+Regardless of change in Municipality or Year, it still sticks to graph with 2022 and doest reflect the 2022 data
+
+RPFP
+
+Local PMOC Data
+some municipality doest show a Local PMOC Data

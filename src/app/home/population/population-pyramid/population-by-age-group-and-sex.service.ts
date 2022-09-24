@@ -20,8 +20,6 @@ export class PopulationByAgeGroupTableService {
                 newText = 'Below 1 Year Old'
             }
             if (type === 'Marriage' && key === '20-24') {
-                console.log('ari')
-
                 newText = '18-24'
             }
             let total = parseFloat(male[key]) + parseFloat(female[key])

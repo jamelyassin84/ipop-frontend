@@ -32,5 +32,9 @@ export const monthChartConfig = {
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             label: 'Total',
         },
+        {
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            label: ' ',
+        },
     ],
 }

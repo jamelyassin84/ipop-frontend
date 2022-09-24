@@ -39,9 +39,9 @@ export class BirthDemographicComponent implements OnInit {
     }
 
     readonly Colors: Color[] = [
-        {backgroundColor: '#73B436'},
-        {backgroundColor: '#3DB98D'},
-        {backgroundColor: '#2CA763'},
+        {backgroundColor: '#34D399'},
+        {backgroundColor: '#059669'},
+        {backgroundColor: '#059669'},
     ]
 
     readonly isUser = !this.user.isAdmin()

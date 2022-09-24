@@ -14,6 +14,7 @@ import {
 } from 'src/app/app-core/constants/marriages/marriage.table'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
+import {TypeofMarriageService} from './type-of-marriages.service'
 
 @Component({
     selector: 'app-marriage-demographic',
@@ -25,9 +26,10 @@ export class MarriageDemographicComponent implements OnInit {
     @ViewChild(PopulationPyramidComponent) pyramid: any
 
     constructor(
+        private user: UserService,
         private component: ReloadService,
         private service: MarraigesService,
-        private user: UserService,
+        private _typeOfMarriageService: TypeofMarriageService,
     ) {
         this.subscriptions.add(
             this.component.shouldReload().subscribe(() => {
@@ -42,10 +44,10 @@ export class MarriageDemographicComponent implements OnInit {
     readonly isSuperAdmin = !this.user.isSuperAdmin()
 
     readonly Colors: Color[] = [
-        {backgroundColor: '#F7138E'},
-        {backgroundColor: '#BE006A'},
-        {backgroundColor: '#A6005B'},
-        {backgroundColor: '#88004A'},
+        {backgroundColor: '#F472B6'},
+        {backgroundColor: '#EC4899'},
+        {backgroundColor: '#DB2777'},
+        {backgroundColor: '#BE185D'},
     ]
 
     readonly marriagesByMunicipalityKeys = marriagesByMunicipalityKeys
@@ -93,58 +95,19 @@ export class MarriageDemographicComponent implements OnInit {
         )
             .index()
             .subscribe((data) => {
-                let summary = {
-                    total_marriages: 0,
-                    population: 0,
-                    church: 0,
-                    civil: 0,
-                    others: 0,
+                this.pyramid.fetch()
+
+                if (data.summary.length === 0) {
+                    this.marriageConfig = {...marriageChartConfig}
+                    return
                 }
 
-                for (let stat of data.summary) {
-                    summary.total_marriages += stat.total_marriages
-                    summary.population += stat.population
-                    summary.church += stat.church
-                    summary.civil += stat.civil
-                    summary.others += stat.others
-                }
+                const {labels, datasets, summary} =
+                    this._typeOfMarriageService.convertToChart(data)
 
                 this.summaries = summary
-
-                this.pyramid.fetch()
-                let labels: any = []
-                let datasets: any = [
-                    {
-                        data: [],
-                        label: 'Church',
-                    },
-                    {
-                        data: [],
-                        label: 'Civil',
-                    },
-                    {
-                        data: [],
-                        label: 'Others',
-                    },
-                    {
-                        data: [],
-                        label: 'Total Marriagess',
-                    },
-                ]
-                for (let index of data.month) {
-                    if (index.year !== 2100) {
-                        labels.push(index.year)
-                        datasets[0].data.push(index.church)
-                        datasets[1].data.push(index.civil)
-                        datasets[2].data.push(index.others)
-                        datasets[3].data.push(index.total_marriages)
-                    }
-                }
-
                 this.marriageConfig.labels = labels
-
                 this.marriageConfig.datasets = datasets
-                console.log(labels)
             })
     }
 
