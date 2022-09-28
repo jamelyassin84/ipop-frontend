@@ -14,18 +14,10 @@ export const byMonthlyIncomeConfig = {
     ],
     legend: true,
     colors: [],
-    datasets: [
-        {
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            label: 'Female',
-        },
-        {
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            label: 'Male',
-        },
-        {
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            label: 'Total',
-        },
-    ],
+    datasets: ['Female', 'Male', 'Total'].map((label) => {
+        return {
+            label: label,
+            data: '12'.split('').map(() => 0),
+        }
+    }),
 }

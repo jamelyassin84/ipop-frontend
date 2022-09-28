@@ -220,7 +220,17 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
-                this.ByEmploymentStatus = {...ByEmploymentStatusConfig}
+                this.ByEmploymentStatus = {
+                    ...ByEmploymentStatusConfig,
+                    datasets: [
+                        ...['Female', 'Male', 'Total'].map((label) => {
+                            return {
+                                label: label,
+                                data: '12'.split('').map(() => 0),
+                            }
+                        }),
+                    ],
+                }
 
                 return
             }
@@ -254,7 +264,17 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
-                this.ByKnowledgeOnFP = {...ByKnowledgeOnFPConfig}
+                this.ByKnowledgeOnFP = {
+                    ...ByKnowledgeOnFPConfig,
+                    datasets: [
+                        ...['Female', 'Male', 'Total', ''].map((label) => {
+                            return {
+                                label: label,
+                                data: '12'.split('').map(() => 0),
+                            }
+                        }),
+                    ],
+                }
 
                 return
             }

@@ -29,7 +29,7 @@
                 <tr
                     *ngFor="let item of body; trackBy: trackByFn; let i = index"
                 >
-                    <td>{{ i | number }}</td>
+                    <td>{{ i + 1 | number }}</td>
 
                     <td *ngFor="let key of keys; trackBy: trackByFn">
                         {{ item | arrayToValues: key }}

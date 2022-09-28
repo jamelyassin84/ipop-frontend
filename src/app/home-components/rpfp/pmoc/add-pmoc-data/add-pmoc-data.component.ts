@@ -49,6 +49,8 @@ export class AddPmocDataComponent implements OnInit {
     )
 
     fetch(location: LocationFIlter) {
+        console.log(location)
+
         this.data = {...this.data, ...location}
     }
 
