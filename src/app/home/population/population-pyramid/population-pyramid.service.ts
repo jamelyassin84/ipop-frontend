@@ -1,5 +1,6 @@
 import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
 import {Injectable} from '@angular/core'
+import {sortPyramid} from 'src/app/pipes/sort-population-pyramid.pipe'
 
 @Injectable({providedIn: 'root'})
 export class PopulationPyramidChartService {
@@ -46,8 +47,14 @@ export class PopulationPyramidChartService {
             ageDistribution = []
         }
 
-        return ageDistribution[1][0] === this.LAST
-            ? ageDistribution
-            : ageDistribution.reverse()
+        if (ageDistribution[1][0] !== this.LAST) {
+            ageDistribution = ageDistribution.reverse()
+        }
+
+        if (ageDistribution[0][0] === '0-4') {
+            ageDistribution.push(ageDistribution.shift())
+        }
+
+        return sortPyramid(ageDistribution)
     }
 }

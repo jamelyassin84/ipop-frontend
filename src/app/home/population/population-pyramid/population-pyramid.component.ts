@@ -18,6 +18,7 @@ import {select, Store} from '@ngrx/store'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 import {AgeGroupAndSex} from 'src/app/app-core/models/age-group-and-sex.model'
+import {sortPyramid} from 'src/app/pipes/sort-population-pyramid.pipe'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -130,10 +131,9 @@ export class PopulationPyramidComponent implements OnInit {
 
                 this.processPopulationByAgeGroupAndSex(data)
 
-                this.ageDistribution =
-                    this._populationPyramidChartService.process(data)
-
-                this.hasPyramid = true
+                ;(this.ageDistribution =
+                    this._populationPyramidChartService.process(data)),
+                    (this.hasPyramid = true)
 
                 setTimeout(() => {
                     drawChart(
