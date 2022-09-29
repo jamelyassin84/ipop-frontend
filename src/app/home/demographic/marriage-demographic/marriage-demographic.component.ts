@@ -102,11 +102,11 @@ export class MarriageDemographicComponent implements OnInit {
                     return
                 }
 
-                const {labels, datasets, summary} =
+                const {datasets, summary} =
                     this._typeOfMarriageService.convertToChart(data)
 
                 this.summaries = summary
-                this.marriageConfig.labels = labels
+                this.marriageConfig.labels = [this.location!.year!.toString()]
                 this.marriageConfig.datasets = datasets
             })
     }

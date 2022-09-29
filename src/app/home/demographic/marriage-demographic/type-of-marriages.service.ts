@@ -38,15 +38,10 @@ export class TypeofMarriageService {
             }
         })
 
-        for (let index of data.month) {
-            if (index.year !== 2100) {
-                labels.push(index.year)
-                datasets[0].data.push(index.church)
-                datasets[1].data.push(index.civil)
-                datasets[2].data.push(index.others)
-                datasets[3].data.push(index.total_marriages)
-            }
-        }
+        datasets[0].data.push(summary.church)
+        datasets[1].data.push(summary.civil)
+        datasets[2].data.push(summary.others)
+        datasets[3].data.push(summary.total_marriages)
 
         return {
             labels: labels,

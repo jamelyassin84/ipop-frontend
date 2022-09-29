@@ -24,7 +24,5 @@ export function sortPyramid(ageGroup: any[]) {
         return recommendedSort.indexOf(a[0]) - recommendedSort.indexOf(b[0])
     })
 
-    console.log(sorted)
-
     return sorted
 }
