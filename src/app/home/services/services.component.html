@@ -28,19 +28,24 @@
             *ngFor="let service of serviceOffered.offers; trackBy: trackByFn"
         >
             <div class="bg-white card-body d-flex aic">
-                <div>
-                    <div class="m-0 h5 card-title c-blue-300 dw">
-                        <i class="ti-microphone"></i> {{ service.title }}
+                <div class="flex t-flex-col t-items-center t-justify-center">
+                    <div
+                        class="m-0 h5 card-title t-text-text-brand t-flex t-items-center"
+                    >
+                        <i class="ti-check t-mr-3"></i> {{ service.title }}
                     </div>
-                    <span class="pl-4 m-0 text-muted"
-                        >Created :
+
+                    <div class="pl-4 m-0 t-ml-3 text-muted t-translate-x-1">
+                        Created :
                         {{
                             service.created_at | date: 'MMMM dd, yyy - hh:mm a'
-                        }}</span
-                    >
+                        }}
+                    </div>
                 </div>
-                <div *ngIf="!isUser && isSuperAdmin" class="ml-auto">
+
+                <div *ngIf="isSuperAdmin" class="ml-auto">
                     <DropDown [buttons]="dropdown"></DropDown>
+
                     <ng-template #dropdown>
                         <button
                             (click)="removeService(service.id)"
