@@ -73,7 +73,10 @@
             <SummaryComponent
                 title="Net Migration"
                 spanClass="bgc-yellow-50 c-yellow-800"
-                [value]="summaries?.summary?.net_migrations"
+                [value]="
+                    summaries?.summary?.total_in_migrations -
+                    summaries?.summary?.total_out_migrations
+                "
             ></SummaryComponent>
         </div>
     </div>

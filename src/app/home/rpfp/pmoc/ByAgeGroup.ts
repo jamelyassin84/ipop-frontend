@@ -13,7 +13,7 @@ export const ByAgeGroupConfig = {
         },
         {
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            label: 'Males',
+            label: 'Male',
         },
         {
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

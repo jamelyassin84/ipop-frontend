@@ -125,19 +125,30 @@ export class PmocComponent implements OnInit {
     }
 
     getByAgeGroup() {
+        this.ageGroupeData = undefined
         const service = new BaseService(
             this.ByAgeGroupService.http,
             this.ByAgeGroupService.url,
             `municipality=${this.location['municipality']}&year=${this.location['year']}`,
         )
         service.index().subscribe((data: any[] | any) => {
+            this.ageGroupeData = undefined
             if (data.length === 0) {
-                this.ByAgeGroup = {...ByAgeGroupConfig}
+                this.ByAgeGroup = {
+                    ...ByAgeGroupConfig,
+                    datasets: [
+                        ...['Female', 'Male', 'Total', ''].map((label) => {
+                            return {
+                                label: label,
+                                data: '12'.split('').map(() => 0),
+                            }
+                        }),
+                    ],
+                }
                 return
             }
             data = data[0]
             this.ageGroupeData = data
-
             this.ByAgeGroup.datasets[0].data = [
                 parseFloat(data['15_to_19_female']),
                 parseFloat(data['20_to_24_female']),
@@ -176,6 +187,7 @@ export class PmocComponent implements OnInit {
     }
 
     getByCIvilStatus() {
+        this.civilStatusData = undefined
         const service = new BaseService(
             this.ByCIvilStatusService.http,
             this.ByCIvilStatusService.url,
@@ -183,7 +195,17 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
-                this.ByCIvilStatus = {...ByCIvilStatusConfig}
+                this.ByCIvilStatus = {
+                    ...ByCIvilStatusConfig,
+                    datasets: [
+                        ...['Female', 'Male', 'Total', ''].map((label) => {
+                            return {
+                                label: label,
+                                data: '12'.split('').map(() => 0),
+                            }
+                        }),
+                    ],
+                }
 
                 return
             }
@@ -219,6 +241,7 @@ export class PmocComponent implements OnInit {
             `municipality=${this.location['municipality']}&year=${this.location['year']}`,
         )
         service.index().subscribe((data: any[] | any) => {
+            this.employmentStatusData = undefined
             if (data.length === 0) {
                 this.ByEmploymentStatus = {
                     ...ByEmploymentStatusConfig,
@@ -263,6 +286,8 @@ export class PmocComponent implements OnInit {
             `municipality=${this.location['municipality']}&year=${this.location['year']}`,
         )
         service.index().subscribe((data: any[] | any) => {
+            this.KnowledgeOnFP = undefined
+
             if (data.length === 0) {
                 this.ByKnowledgeOnFP = {
                     ...ByKnowledgeOnFPConfig,
@@ -290,6 +315,7 @@ export class PmocComponent implements OnInit {
     }
 
     getbyMonthlyIncome() {
+        this.monthlyIncomeData = undefined
         const service = new BaseService(
             this.byMonthlyIncomeService.http,
             this.byMonthlyIncomeService.url,
@@ -297,7 +323,17 @@ export class PmocComponent implements OnInit {
         )
         service.index().subscribe((data: any[] | any) => {
             if (data.length === 0) {
-                this.byMonthlyIncome = {...byMonthlyIncomeConfig}
+                this.byMonthlyIncome = {
+                    ...byMonthlyIncomeConfig,
+                    datasets: [
+                        ...['Female', 'Male', 'Total', ''].map((label) => {
+                            return {
+                                label: label,
+                                data: '12'.split('').map(() => 0),
+                            }
+                        }),
+                    ],
+                }
                 return
             }
             data = data[0]
