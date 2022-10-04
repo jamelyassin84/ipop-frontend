@@ -36,28 +36,28 @@
                 {{ data.municipality | titlecase }}
             </td>
             <td class="text-center border">
-                {{ data.barangays }}
+                {{ data.barangays | number }}
             </td>
             <td class="text-center border">
-                {{ data.land_area }}
+                {{ data.land_area | number }}
             </td>
             <td class="text-center border">
-                {{ data.density }}
+                {{ data.density | number }}
             </td>
             <td class="text-center border">
-                {{ data.males }}
+                {{ data.males | number }}
             </td>
             <td class="text-center border">
-                {{ data.females }}
+                {{ data.females | number }}
             </td>
             <td class="text-center border">
-                {{ total(data.males, data.females) }}
+                {{ total(data.males, data.females) | number }}
             </td>
             <td class="text-center border">
                 {{ data.sex_ratio }}
             </td>
             <td class="text-center border">
-                {{ data.households }}
+                {{ data.households | number }}
             </td>
             <td class="text-center border">
                 {{ data.average_household_size }}

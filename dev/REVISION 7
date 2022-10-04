@@ -10,10 +10,6 @@ not saving
 Incidence of Teenage Births and Incidence of illegitimate Births
 source of Data? Provincial? > must be municipal
 
-Death
-Crude Death Rate Chart
-Wrong Spelling "Customize Crude Date Ratie Chart"
-
 Migration
 Migration Head
 Net Migration = In Migration - Out Migration
@@ -24,9 +20,6 @@ should be shown as Municipal data
 Marriages
 Type of Marriages
 should be shown as Municipal data
-
-Local Marriage Data
-disable "%"
 
 "Marriage by Month of Marriage" Graph > "Marriage by Month"
 
@@ -105,3 +98,10 @@ rearrange age bracket (25-29, 30-34, 40-44)
 
 Services
 request: add remove button
+
+Local Marriage Data
+disable "%"
+
+Death
+Crude Death Rate Chart
+Wrong Spelling "Customize Crude Date Ratie Chart"
