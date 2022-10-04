@@ -1,15 +1,3 @@
-Demographics
-
-Births
-+Add Birth Data
-not saving
-
-Local Birth Data
-not saving
-
-Incidence of Teenage Births and Incidence of illegitimate Births
-source of Data? Provincial? > must be municipal
-
 Migration
 Migration Head
 Net Migration = In Migration - Out Migration
@@ -95,6 +83,15 @@ rearrange age bracket (25-29, 30-34, 40-44)
 Services
 request: add remove button
 
+Demographics
+
+Births
++Add Birth Data
+not saving
+
+Local Birth Data
+not saving
+
 Local Marriage Data
 disable "%"
 
@@ -106,3 +103,6 @@ RPFP
 "+Pre-Marriage Orientation and counselling data" > "+Pre-Marriage Orientation and Counselling Data"
 
 "Marriage by Month of Marriage" Graph > "Marriage by Month"
+
+Incidence of Teenage Births and Incidence of illegitimate Births
+source of Data? Provincial? > must be municipal

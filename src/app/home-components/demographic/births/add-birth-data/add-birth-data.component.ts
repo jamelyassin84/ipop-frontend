@@ -48,7 +48,9 @@ export class AddBirthDataComponent implements OnInit {
         const data = {...this.data}
 
         for (let key in data) {
-            data[key] = data[key].toString()
+            if (data[key] !== null) {
+                data[key] = data[key] + ''
+            }
         }
 
         Fire(
