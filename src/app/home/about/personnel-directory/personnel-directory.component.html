@@ -22,12 +22,22 @@
             </span>
         </h5>
     </div>
+
     <div class="card-body">
-        <div class="mt-3">
+        <div>
             <table
                 class="table responsive"
                 [ngClass]="{'table-responsive': innerWidth < 1139}"
             >
+                <thead>
+                    <th>Name</th>
+                    <th>Division</th>
+                    <th>Position</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th></th>
+                </thead>
+
                 <tbody>
                     <tr *ngFor="let user of ppo; trackBy: trackByFn">
                         <td>{{ user.name }}</td>
@@ -84,7 +94,9 @@
                                 class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-400"
                             >
                                 <i class="mr-2 ti-user"></i
-                                >{{ user.type }}</span
+                                >{{
+                                    user.type | to_trd_substitute | uppercase
+                                }}</span
                             >
                         </td>
                         <td>{{ user.position }}</td>

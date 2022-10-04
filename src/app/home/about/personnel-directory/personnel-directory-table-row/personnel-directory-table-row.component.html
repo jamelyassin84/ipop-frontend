@@ -1,0 +1,20 @@
+<td>{{ user?.name }}</td>
+<td>
+    <span
+        class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-900"
+    >
+        <i class="mr-2 ti-user"></i>{{ user?.type }}</span
+    >
+</td>
+<td>{{ user?.position }}</td>
+<td>{{ user?.phone }}</td>
+<td>{{ user?.email }}</td>
+<td>
+    <button
+        (click)="onRemove.emit(user?.id)"
+        *ngIf="!isUser"
+        class="btn btn-sm btn-danger"
+    >
+        Remove
+    </button>
+</td>

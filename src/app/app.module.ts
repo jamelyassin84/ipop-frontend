@@ -147,7 +147,8 @@ import { PopulationProfileComponent } from './home/population/population-profile
 import { PopulationByMunicipalityComponent } from './home/population/population-by-municipality/population-by-municipality.component';
 import { AgeDistributionDependencyComponent } from './home/population/age-distribution-dependency/age-distribution-dependency.component';
 import { AgeDistributionComponent } from './home/population/age-distribution/age-distribution.component';
-import { AgeDistributionDependencyByMunicipalityComponent } from './home/population/age-distribution-dependency-by-municipality/age-distribution-dependency-by-municipality.component'
+import { AgeDistributionDependencyByMunicipalityComponent } from './home/population/age-distribution-dependency-by-municipality/age-distribution-dependency-by-municipality.component';
+import { PersonnelDirectoryTableRowComponent } from './home/about/personnel-directory/personnel-directory-table-row/personnel-directory-table-row.component'
 
 @NgModule({
     declarations: [
@@ -255,6 +256,7 @@ import { AgeDistributionDependencyByMunicipalityComponent } from './home/populat
         AgeDistributionDependencyComponent,
         AgeDistributionComponent,
         AgeDistributionDependencyByMunicipalityComponent,
+        PersonnelDirectoryTableRowComponent,
     ],
     imports: [
         BrowserModule,

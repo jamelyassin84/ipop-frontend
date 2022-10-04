@@ -22,8 +22,11 @@ export class ViewAdminsComponent implements OnInit {
 
     subscriptions = new Subscription()
 
-    admins: UserType[] = []
     currentAdmin: UserType | any = {}
+
+    admins: UserType[] = []
+
+    paginationMeta: any = {links: []}
 
     ngOnInit(): void {
         this.getAdmins()
@@ -33,9 +36,15 @@ export class ViewAdminsComponent implements OnInit {
         this.subscriptions.unsubscribe()
     }
 
+    onPageChange(event: any) {
+        this.paginationMeta = event
+        this.admins = event.data
+    }
+
     getAdmins() {
         this.user.index().subscribe((pages: any) => {
             this.admins = pages.data
+            this.paginationMeta = pages
         })
     }
 

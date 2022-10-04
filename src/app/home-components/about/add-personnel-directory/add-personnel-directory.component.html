@@ -6,7 +6,7 @@
                 [value]="type"
                 *ngFor="let type of types; trackBy: trackByFn"
             >
-                {{ type | titlecase }}
+                {{ type | to_trd_substitute | titlecase }}
             </option>
         </select>
     </div>

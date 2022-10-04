@@ -30,6 +30,7 @@ import {GetPercentagePipe} from '../pipes/get-percentage.pipe'
 import {ResolveBarangayPurokPipe} from '../pipes/resolve-barangay-purok.pipe'
 import {ToPercentPipe} from '../pipes/to-percent-pipe'
 import {SortAgeGroupPipe} from '../pipes/sort-age-group.pipe'
+import {ToTRDSubstitutePipe} from '../pipes/trd.pipe'
 
 export const globalPipes = [
     AgePipe,
@@ -67,4 +68,5 @@ export const appPipes = [
     ResolveBarangayPurokPipe,
     ToPercentPipe,
     SortAgeGroupPipe,
+    ToTRDSubstitutePipe,
 ]

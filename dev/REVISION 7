@@ -1,145 +1,107 @@
-
-
-
-
-Super Admin
-	in Admin Tab - no scrolling.....
-
-About
-PPO Mandate
-	uneditable
-Mission, Vision & Goals
-	uneditable
-Core Values
-	uneditable
-
-
-
-Add Personnel Directory
-Add a Personnel in the Directory
-	Choose Type of Official - "Training and Research Division" > "Development Management Division"
-
-Personnel Directory Table
-	add labels like "Name" "Designation" "Position" "Contact Number" "Email Address"
-
-
-
 Population
 Population by Age Group and Sex
-	rearrange age bracket (25-29, 30-34, 40-44)
-
-
+rearrange age bracket (25-29, 30-34, 40-44)
 
 Services
-		request: add remove button
-
+request: add remove button
 
 Demographics
 
 Births
 +Add Birth Data
-	not saving 
-
+not saving
 
 Local Birth Data
-	not saving
-
-
+not saving
 
 Incidence of Teenage Births and Incidence of illegitimate Births
-	source of Data? Provincial? > must be municipal
-
-
-
-
+source of Data? Provincial? > must be municipal
 
 Death
 Crude Death Rate Chart
-	Wrong Spelling "Customize Crude Date Ratie Chart"
-
-
-
-
+Wrong Spelling "Customize Crude Date Ratie Chart"
 
 Migration
 Migration Head
-	Net Migration = In Migration - Out Migration
-
+Net Migration = In Migration - Out Migration
 
 Migration Chart
-	should be shown as Municipal data
-
-
-
+should be shown as Municipal data
 
 Marriages
 Type of Marriages
-	should be shown as Municipal data
+should be shown as Municipal data
 
 Local Marriage Data
-	disable "%"
+disable "%"
 
 "Marriage by Month of Marriage" Graph > "Marriage by Month"
 
-
-
-
 RPFP
-	"+Pre-Marriage Orientation and counselling data" > "+Pre-Marriage Orientation and Counselling Data" 
-
+"+Pre-Marriage Orientation and counselling data" > "+Pre-Marriage Orientation and Counselling Data"
 
 PMOC
-	Various Municipality doesnt reflect the data encoded in the Graphs
+Various Municipality doesnt reflect the data encoded in the Graphs
 
-	Ajuy
-	Alimodian
-	Anilao
-	Badiangan
-	Balasan
-	Banate
-	Btac. viejo
-	Batad
-	Bingawan
-	Cabatuan
-	Calinog
-	Carles
-	Concepcion
-	Dingle
-	Guimbal
-	Igbaras
-	Janiuay
-	Lambunao
-	Lemery
-	Leon
-	Maasin
-	Miagao
-	Mina
-	New Lucena
-	Oton
-	Passi City
-	Pavia
-	Pototan
-	San Dionisio
-	San Miguel
-	San Rafael
-	Santa Barbara
-	Sara
-	Tigbauan
-	Tubungan
-	Zarraga
-
-
-
-
-
+    Ajuy
+    Alimodian
+    Anilao
+    Badiangan
+    Balasan
+    Banate
+    Btac. viejo
+    Batad
+    Bingawan
+    Cabatuan
+    Calinog
+    Carles
+    Concepcion
+    Dingle
+    Guimbal
+    Igbaras
+    Janiuay
+    Lambunao
+    Lemery
+    Leon
+    Maasin
+    Miagao
+    Mina
+    New Lucena
+    Oton
+    Passi City
+    Pavia
+    Pototan
+    San Dionisio
+    San Miguel
+    San Rafael
+    Santa Barbara
+    Sara
+    Tigbauan
+    Tubungan
+    Zarraga
 
 AHYD
 View AHYD Team
-		request: sort alphabetical order based on Position Variable or put a sort button
-		
-		
-		
-#Resolved 
+request: sort alphabetical order based on Position Variable or put a sort button
+#Resolved
 
 Opening "ipop-app.com" leads to constant loading
 request opening "ipop-app.com" will redirect to "ipop-app.com/#/home/index/news
+
+About
+PPO Mandate
+uneditable
+Mission, Vision & Goals
+uneditable
+Core Values
+uneditable
+
+Super Admin
+in Admin Tab - no scrolling.....
+
+Add Personnel Directory
+Add a Personnel in the Directory
+Choose Type of Official - "Training and Research Division" > "Development Management Division"
+
+Personnel Directory Table
+add labels like "Name" "Designation" "Position" "Contact Number" "Email Address"

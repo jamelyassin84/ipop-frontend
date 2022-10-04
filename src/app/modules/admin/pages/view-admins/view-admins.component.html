@@ -74,5 +74,10 @@
                 </tr>
             </tbody>
         </table>
+
+        <Pagination
+            (onPageChange)="onPageChange($event)"
+            [data]="paginationMeta"
+        ></Pagination>
     </div>
 </div>
