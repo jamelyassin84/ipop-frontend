@@ -8,9 +8,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let personnel of teams; trackBy: trackByFn">
+        <tr
+            *ngFor="
+                let personnel of teams | sort_by: 'position';
+                trackBy: trackByFn
+            "
+        >
             <td>
-                <img [src]="personnel.photo.uri" alt="" />
+                <img
+                    [src]="personnel.photo.uri"
+                    alt=""
+                    class="border t-object-contain t-border-gray-200 t-bg-gray-300"
+                />
             </td>
             <td>{{ personnel.name }}</td>
             <td>{{ personnel.position }}</td>

@@ -8,7 +8,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let person of AHYDTeam; trackBy: trackByFn">
+        <tr
+            *ngFor="
+                let person of AHYDTeam | sort_by: 'position';
+                trackBy: trackByFn
+            "
+        >
             <th><i class="ti-user h4"></i></th>
             <td>{{ person.name }}</td>
             <td>{{ person.position }}</td>

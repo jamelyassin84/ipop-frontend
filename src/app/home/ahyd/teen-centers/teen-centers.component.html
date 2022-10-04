@@ -144,7 +144,11 @@
                     </thead>
                     <tbody [@listAnimation]="teenCenters.length">
                         <tr *ngFor="let tc of teenCenters; trackBy: trackByFn">
-                            <th><i class="ti-map-alt c-pink-500 h4"></i></th>
+                            <th>
+                                <i
+                                    class="bi bi-building t-text-bg-brand t-text-3xl"
+                                ></i>
+                            </th>
                             <td>{{ tc.municipality }}</td>
                             <td>{{ tc.name }}</td>
                             <td>{{ tc.location }}</td>
