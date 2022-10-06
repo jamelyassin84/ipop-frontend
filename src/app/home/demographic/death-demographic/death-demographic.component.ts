@@ -50,6 +50,7 @@ export class DeathDemographicComponent implements OnInit {
         {backgroundColor: '#CD1125'},
         {backgroundColor: '#000000'},
         {backgroundColor: '#A90E1E'},
+        {backgroundColor: 'white'},
     ]
 
     subscriptions = new Subscription()
@@ -71,6 +72,8 @@ export class DeathDemographicComponent implements OnInit {
     localData: any = {}
 
     monthChartData: Statistic[] = []
+
+    crudeDeathRateValue: number = 0
 
     ngOnInit(): void {}
 
@@ -130,7 +133,13 @@ export class DeathDemographicComponent implements OnInit {
                     summaries.incidence[index].value,
                 )
             }
+
+            this.crudeDeathRate.labels.push('')
+
+            this.crudeDeathRate.datasets[0].data.push(0)
             this.processStatisticalChart(summaries.month)
+
+            this.findCrudeDeathRate()
         })
     }
 
@@ -159,6 +168,22 @@ export class DeathDemographicComponent implements OnInit {
         this.statisticalChart.datasets[0].data = females
         this.statisticalChart.datasets[1].data = males
         this.statisticalChart.datasets[2].data = total
+    }
+
+    findCrudeDeathRate(): void {
+        const index = this.crudeDeathRate.labels.findIndex(
+            (year: string) =>
+                year.toString() === this.location.year?.toString(),
+        )
+
+        if (index) {
+            this.crudeDeathRateValue =
+                this.crudeDeathRate.datasets[0].data[index]
+
+            return
+        }
+
+        this.crudeDeathRateValue = 0
     }
 
     getdeathsByMunicipality() {

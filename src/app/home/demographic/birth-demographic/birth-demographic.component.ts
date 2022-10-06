@@ -96,10 +96,6 @@ export class BirthDemographicComponent implements OnInit {
     distribute(incidences: any) {
         this.clearChart()
 
-        this.teenageData = 0
-
-        this.illegitimateData = 0
-
         let illegitimateBirth = incidences[0]
         let teenageBirth = incidences[1]
 
@@ -114,10 +110,6 @@ export class BirthDemographicComponent implements OnInit {
         for (let index in teenageBirth) {
             if (!this.teenageChart.labels.includes(teenageBirth[index].year)) {
                 this.teenageChart.labels.push(teenageBirth[index].year)
-            }
-
-            if (teenageBirth[index].year === this.location.year) {
-                this.teenageData += teenageBirth[index].value
             }
 
             this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
@@ -137,10 +129,6 @@ export class BirthDemographicComponent implements OnInit {
                 this.incidenceChart.labels.push(illegitimateBirth[index].year)
             }
 
-            if (illegitimateBirth[index].year === this.location.year) {
-                this.illegitimateData += illegitimateBirth[index].value
-            }
-
             this.incidenceChart.datasets[0].data.push(
                 illegitimateBirth[index].value,
             )
@@ -149,38 +137,39 @@ export class BirthDemographicComponent implements OnInit {
                 this.illegitimateBirths += illegitimateBirth[index].value
             }
         }
+
+        this.findTeenage()
+        this.findIllegitimate()
     }
 
-    filterTeenageChart(incidences: any) {
-        let total = 0
-
-        const data = incidences.filter(
-            (incidence: any) =>
-                incidence.title === IncidenceEnum.TEENAGE &&
-                incidence.year === this.location.year,
+    findTeenage(): void {
+        const index = this.teenageChart.labels.findIndex(
+            (year: string) =>
+                year.toString() === this.location.year?.toString(),
         )
 
-        for (let incidence of data) {
-            total += incidence.value
+        if (index) {
+            this.teenageData = this.teenageChart.datasets[0].data[index]
+
+            return
         }
 
-        this.teenageData = total
+        this.teenageData = 0
     }
 
-    filterIncidenceChart(incidences: any) {
-        let total = 0
-
-        const data = incidences.filter(
-            (incidence: any) =>
-                incidence.title === IncidenceEnum.ILLEGITIMATE &&
-                incidence.year === this.location.year,
+    findIllegitimate(): void {
+        const index = this.incidenceChart.labels.findIndex(
+            (year: string) =>
+                year.toString() === this.location.year?.toString(),
         )
 
-        for (let incidence of data) {
-            total += incidence.value
+        if (index) {
+            this.illegitimateData = this.incidenceChart.datasets[0].data[index]
+
+            return
         }
 
-        this.illegitimateData = total
+        this.illegitimateData = 0
     }
 
     getSummary() {

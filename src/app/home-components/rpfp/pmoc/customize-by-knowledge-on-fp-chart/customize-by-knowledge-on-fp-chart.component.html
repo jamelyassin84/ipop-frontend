@@ -1,4 +1,4 @@
-<div class="card-body">
+<div *ngIf="location$ | async as location" class="card-body">
     <div class="row">
         <div class="col-md-6">
             <label for="">Male </label>
