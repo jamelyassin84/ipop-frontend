@@ -1,6 +1,6 @@
 <div class="bg-light">
     <ng-template #addMigrationData>
-        <AddMigrationData></AddMigrationData>
+        <AddMigrationData [data]="localData"></AddMigrationData>
     </ng-template>
 
     <ng-template #addLocalMigrationData>
@@ -39,7 +39,7 @@
             *ngIf="!isUser"
             size="lg"
             title="Add a Migration Data"
-            btnTitle="Add Migration data"
+            btnTitle="Add Migration Data"
             btnClass="btn btn-sm btn-dark mr-2"
             [template]="addMigrationData"
             icon="ti-plus"

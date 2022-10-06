@@ -1,6 +1,6 @@
 <div class="bg-light">
     <ng-template #addBirthData>
-        <AddBirthData></AddBirthData>
+        <AddBirthData [data]="localData"></AddBirthData>
     </ng-template>
 
     <ng-template #customizeBirthData>
@@ -8,11 +8,13 @@
     </ng-template>
 
     <ng-template #customizeIllegitimate>
-        <CustomizeIllegitimate></CustomizeIllegitimate>
+        <CustomizeIllegitimate
+            [data]="illegitimateData"
+        ></CustomizeIllegitimate>
     </ng-template>
 
     <ng-template #customizeTeenage>
-        <CustomizeTeenage></CustomizeTeenage>
+        <CustomizeTeenage [data]="teenageData"></CustomizeTeenage>
     </ng-template>
 
     <ng-template #customizeMonthChart>
@@ -43,7 +45,7 @@
             *ngIf="!isUser"
             size="lg"
             title="Add a Birth Data"
-            btnTitle="Add birth data"
+            btnTitle="Add Birth Data"
             btnClass="btn btn-sm btn-dark mr-2"
             [template]="addBirthData"
             icon="ti-plus"
@@ -238,8 +240,8 @@
                         <ng-template #Illegitimate>
                             <Modal
                                 size="lg"
-                                title="Customize Incidence of Illigetimate Birth Chart"
-                                btnTitle="Customize incidence of Illigetimate birth chart"
+                                title="Customize Incidence of Illegitimate Chart"
+                                btnTitle="Customize incidence of Illegitimate Birth chart"
                                 btnClass="dropdown-item"
                                 [template]="customizeIllegitimate"
                             ></Modal>

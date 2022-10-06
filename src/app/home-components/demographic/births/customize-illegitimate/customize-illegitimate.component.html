@@ -1,6 +1,4 @@
-<div class="card-body">
-    <AddressPicker (onEmit)="fetch($event)"></AddressPicker>
-
+<div *ngIf="location$ | async as location" class="card-body">
     <div class="row">
         <div class="form-group col-md-12">
             <label for="">Value</label>
@@ -12,7 +10,7 @@
 <hr />
 <div class="d-flex aic jcc mr-5">
     <button (click)="save()" [disabled]="isLoading" class="btn btn-success">
-		<span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save</span>
-		<Loader *ngIf="isLoading"></Loader>
-	</button>
+        <span *ngIf="!isLoading"><i class="ti-check mr-1"></i>Save</span>
+        <Loader *ngIf="isLoading"></Loader>
+    </button>
 </div>

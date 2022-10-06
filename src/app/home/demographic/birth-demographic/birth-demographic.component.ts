@@ -16,6 +16,7 @@ import {
 } from 'src/app/app-core/constants/births/births.table'
 import {monthChartConfig} from 'src/app/app-core/configs/month-chart.config'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
+import {IncidenceEnum} from 'src/app/app-core/enums/incidence.enum'
 
 @Component({
     selector: 'app-birth-demographic',
@@ -73,6 +74,10 @@ export class BirthDemographicComponent implements OnInit {
 
     monthChartData: Statistic[] = []
 
+    teenageData: number = 0
+
+    illegitimateData: number = 0
+
     ngOnInit(): void {
         this.location.year = new Date().getFullYear()
     }
@@ -90,19 +95,31 @@ export class BirthDemographicComponent implements OnInit {
 
     distribute(incidences: any) {
         this.clearChart()
+
+        this.teenageData = 0
+
+        this.illegitimateData = 0
+
         let illegitimateBirth = incidences[0]
         let teenageBirth = incidences[1]
+
         if (
             incidences.length !== 0 &&
-            incidences[0][0].title !== 'Incidence of Illegitimate Birth'
+            incidences[0][0].title !== IncidenceEnum.ILLEGITIMATE
         ) {
             teenageBirth = incidences[0]
             illegitimateBirth = incidences[1]
         }
+
         for (let index in teenageBirth) {
             if (!this.teenageChart.labels.includes(teenageBirth[index].year)) {
                 this.teenageChart.labels.push(teenageBirth[index].year)
             }
+
+            if (teenageBirth[index].year === this.location.year) {
+                this.teenageData += teenageBirth[index].value
+            }
+
             this.teenageChart.datasets[0].data.push(teenageBirth[index].value)
 
             if (teenageBirth[index].year === this.location.year) {
@@ -119,6 +136,11 @@ export class BirthDemographicComponent implements OnInit {
             ) {
                 this.incidenceChart.labels.push(illegitimateBirth[index].year)
             }
+
+            if (illegitimateBirth[index].year === this.location.year) {
+                this.illegitimateData += illegitimateBirth[index].value
+            }
+
             this.incidenceChart.datasets[0].data.push(
                 illegitimateBirth[index].value,
             )
@@ -127,6 +149,38 @@ export class BirthDemographicComponent implements OnInit {
                 this.illegitimateBirths += illegitimateBirth[index].value
             }
         }
+    }
+
+    filterTeenageChart(incidences: any) {
+        let total = 0
+
+        const data = incidences.filter(
+            (incidence: any) =>
+                incidence.title === IncidenceEnum.TEENAGE &&
+                incidence.year === this.location.year,
+        )
+
+        for (let incidence of data) {
+            total += incidence.value
+        }
+
+        this.teenageData = total
+    }
+
+    filterIncidenceChart(incidences: any) {
+        let total = 0
+
+        const data = incidences.filter(
+            (incidence: any) =>
+                incidence.title === IncidenceEnum.ILLEGITIMATE &&
+                incidence.year === this.location.year,
+        )
+
+        for (let incidence of data) {
+            total += incidence.value
+        }
+
+        this.illegitimateData = total
     }
 
     getSummary() {
@@ -153,6 +207,8 @@ export class BirthDemographicComponent implements OnInit {
             `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`,
         )
         service.index().subscribe((summaries: any) => {
+            console.log(summaries)
+
             this.distribute(groupBy(summaries.incidence, 'title'))
             this.localData = summaries?.data || {}
             this.processStatisticalChart(summaries.month)

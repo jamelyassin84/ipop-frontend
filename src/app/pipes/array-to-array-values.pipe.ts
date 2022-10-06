@@ -1,10 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core'
+import {Pipe, PipeTransform} from '@angular/core'
 
 @Pipe({
-	name: 'arrayToValues',
+    name: 'arrayToValues',
 })
 export class ArrayToArrayValuesPipe implements PipeTransform {
-	transform(value: any, ...key: any): unknown {
-		return value[key]
-	}
+    transform(value: any, ...key: any): string | number {
+        return value[key]
+    }
 }

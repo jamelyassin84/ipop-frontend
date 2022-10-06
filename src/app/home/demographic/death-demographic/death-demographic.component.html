@@ -1,6 +1,6 @@
 <div class="bg-light">
     <ng-template #addDeathData>
-        <AddDeathData></AddDeathData>
+        <AddDeathData [data]="localData"></AddDeathData>
     </ng-template>
 
     <ng-template #addLocalDeathData>
@@ -39,7 +39,7 @@
             *ngIf="!isUser"
             size="lg"
             title="Add a Death Data"
-            btnTitle="Add death data"
+            btnTitle="Add Death Data"
             btnClass="btn btn-sm btn-dark mr-2"
             [template]="addDeathData"
             icon="ti-plus"

@@ -1,6 +1,6 @@
 import {map, tap} from 'rxjs/operators'
 import {LocalBirthDataService} from './../../../../Services/home/demographic/births/local-birth-data.service'
-import {Component, OnInit} from '@angular/core'
+import {Component, Input, OnInit} from '@angular/core'
 import {Created, Fire, HasApprovals} from 'src/app/modules/extras/Alert'
 import {AppState} from 'src/app/app-core/store/core/app.state'
 import {select, Store} from '@ngrx/store'
@@ -20,6 +20,11 @@ export class AddBirthDataComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {}
+
+    @Input('data')
+    set setData(data: any) {
+        this.data = {...this.data, ...data}
+    }
 
     location$ = this._store.pipe(
         select(StateEnum.LOCATION_FILTERS),

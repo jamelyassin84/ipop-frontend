@@ -32,7 +32,11 @@
                     <td>{{ i + 1 | number }}</td>
 
                     <td *ngFor="let key of keys; trackBy: trackByFn">
-                        {{ item | arrayToValues: key }}
+                        {{
+                            (item | arrayToValues: key | is_number)
+                                ? (item | arrayToValues: key | number)
+                                : (item | arrayToValues: key)
+                        }}
                     </td>
 
                     <td *ngIf="!isUser && isSuperAdmin">

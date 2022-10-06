@@ -1,0 +1,117 @@
+-   can we add an Out Migration Graph?
+
+PMOC
+Various Municipality doesnt reflect the data encoded in the Graphs
+
+    Ajuy -
+    Alimodian -
+    Anilao -
+    Badiangan -
+    Balasan -
+    Banate -
+    Btac. viejo -
+    Batad -
+    Bingawan -
+    Cabatuan -
+    Calinog -
+    Carles -
+    Concepcion -
+    Dingle -
+    Guimbal -
+    Igbaras -
+    Janiuay -
+    Lambunao -
+    Lemery -
+    Leon -
+    Maasin -
+    Miagao -
+    Mina -
+    New Lucena -
+    Oton -
+    Passi City -
+    Pavia -
+    Pototan -
+    San Dionisio -
+    San Miguel -
+    San Rafael -*
+    Santa Barbara -
+    Sara -
+    Tigbauan -
+    Tubungan -
+    Zarraga -
+
+---
+
+AHYD
+Add AHYD team
+change name "Add AHYD team" to "Add MTCT"
+View AHYD team
+change name "View AHYD team" to "View Municipal Teen Center Team"
+
+Key File is downloadable
+
+#RESOLVED
+
+Administrators
+even after re activited accounts, user still can log in.
+deactivated account cant be deleted also
+
+---
+
+Population
+
+Add Age Distribution and Age Dependency ratio
+change name "Add Age Distribution and Age Dependency ratio" to "Add Age Distribution and Age Dependency Ratio" \*make ratio to Ratio
+after choosing Municipality and Year, fetch encoded data
+Age Distribution and Age Dependency Ratio by Municipality Table
+request add number
+
+Demographics
+
+Births
+Add Birth Data
+change name "Add birth data" to "Add Birth Data"
+fetch encoded data (after choosing Municipality from main window)
+
+Incidence of Illegitimate Births Graph
+change name "Customize Incidence of Illigetimate Birth Chart" to "Customize Incidence of Illegitimate Birth Chart" \*Illigetimate ot Illegitimate"
+
+Local Birth Data
+not saving
+
+Death
+Add Death Data
+change name "Add death data" to " Add Death Data"
+after choosing Municipality and Year, fetch encoded data
+
+Crude Death Rate Chart
+add dummy 0
+change "value" to "Crude Death Rate"
+
+Death by Municipality Table
+auto comma on population figures
+
+---
+
+Incidence of Teenage Births Graph
+after choosing Municipality and Year, fetch encoded data
+
+Migration
+Add Migration
+change name "Add Migration data" to "Add Migration Data" \*data to Data
+fetch encoded data (after choosing Municipality from main window)
+
+Local Migration Data
+change name "Total Net Migration" to "Net Migration Rate"
+
+Migration by Municipality Table
+auto comma on Total In-Migration and Total Out-Migration figures
+
+Marriage
+Marriage by Month
+change "Customize Statistics Death Data" to Customize Statistics Marriage Data"
+
+Marriage by Municipality Table
+auto comma on Population figures
+
+---

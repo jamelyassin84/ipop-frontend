@@ -1,6 +1,6 @@
 import {map, tap} from 'rxjs/operators'
 import {LocalMigrationDataService} from './../../../../Services/home/demographic/migrations/local-migration-data.service'
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Input} from '@angular/core'
 import {Fire, HasApprovals} from 'src/app/modules/extras/Alert'
 import {AppState} from 'src/app/app-core/store/core/app.state'
 import {select, Store} from '@ngrx/store'
@@ -22,6 +22,11 @@ export class AddMigrationDataComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {}
+
+    @Input('data')
+    set setData(data: any) {
+        this.data = {...this.data, ...data}
+    }
 
     data: any = {
         barangay: null,
