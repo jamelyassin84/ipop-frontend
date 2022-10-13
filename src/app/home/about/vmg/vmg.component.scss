@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+    p {
+        @apply t-text-2xl;
+    }
+}
