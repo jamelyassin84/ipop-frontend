@@ -174,10 +174,7 @@
                     *ngFor="let link of quickLinks; trackBy: trackByFn"
                 >
                     <span class="p-10">
-                        <i
-                            class="ti-control-shuffle c-blue-900"
-                            style="font-size: 2rem"
-                        ></i>
+                        <i class="bi bi-link t-text-2xl t-text-text-brand"></i>
                     </span>
                     <a
                         role="button"
@@ -185,7 +182,9 @@
                         target="_blank"
                         class="p-10"
                     >
-                        {{ link.title }}
+                        <span class="hover:t-underline t-text-black">
+                            {{ link.title }}
+                        </span>
                     </a>
                     <span *ngIf="!isUser && isSuperAdmin" class="ml-auto">
                         <button

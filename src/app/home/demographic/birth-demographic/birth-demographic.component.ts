@@ -17,6 +17,7 @@ import {
 import {monthChartConfig} from 'src/app/app-core/configs/month-chart.config'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {IncidenceEnum} from 'src/app/app-core/enums/incidence.enum'
+import {BirthDemographicService} from './birth-demographic.service'
 
 @Component({
     selector: 'app-birth-demographic',
@@ -31,6 +32,7 @@ export class BirthDemographicComponent implements OnInit {
         private user: UserService,
         private component: ReloadService,
         private service: LocalBirthDataService,
+        private _birthDemographicService: BirthDemographicService,
     ) {
         this.subscriptions.add(
             this.component.shouldReload().subscribe(() => {
@@ -240,6 +242,8 @@ export class BirthDemographicComponent implements OnInit {
             .index()
             .subscribe((data) => {
                 this.birthsByMunicipality = data
+
+                console.log(data)
             })
     }
 
