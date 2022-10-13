@@ -8,8 +8,15 @@ import {Component, OnInit, Input} from '@angular/core'
 export class AgeDistributionComponent implements OnInit {
     constructor() {}
 
-    @Input()
-    ageDistributionAndAgeDependencyRatio?: any
+    @Input('ageDistributionAndAgeDependencyRatio')
+    set setData(ageDistributionAndAgeDependencyRatio: any) {
+        if (ageDistributionAndAgeDependencyRatio.length !== 0) {
+            this.ageDistributionAndAgeDependencyRatio = [
+                ageDistributionAndAgeDependencyRatio[0],
+            ]
+        }
+    }
+    ageDistributionAndAgeDependencyRatio: any
 
     @Input()
     innerWidth?: number

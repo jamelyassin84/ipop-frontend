@@ -9,13 +9,17 @@
 >
     <thead>
         <tr>
-            <th class="text-left border ppbm" rowspan="2">Municipality</th>
+            <th class="border ppbm" rowspan="2">#</th>
+            <th class="text-left border ppbm t-text-left" rowspan="2">
+                Municipality
+            </th>
             <th class="border ppbm" rowspan="2">HH Population</th>
             <th colspan="3" class="text-center border">Age Distribution</th>
             <th colspan="3" class="text-center border">Dependency Ratio</th>
             <th></th>
         </tr>
         <tr>
+            <th></th>
             <th class="border ppbm">0-14</th>
             <th class="border ppbm">15-64</th>
             <th class="border ppbm">65 and Over</th>
@@ -28,10 +32,15 @@
         <tr
             *ngFor="
                 let item of ageDistributionAndAgeDependencyRatio;
-                trackBy: trackByFn
+                trackBy: trackByFn;
+                let i = index
             "
         >
             <td class="border ppbm">
+                {{ i + 1 }}
+            </td>
+
+            <td class="border ppbm t-text-left">
                 {{ item.municipality }}
             </td>
             <td class="border ppbm">
