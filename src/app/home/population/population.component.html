@@ -27,7 +27,7 @@
 
     <ng-template #ageDistributionAndAgeDependencyRatioModal>
         <AgeDistributionAndDependecyRatio
-            [data]="ageDistributionAndAgeDependencyRatio"
+            [data]="ageDistributionAndAgeDependencyRatioByMunicipality"
         ></AgeDistributionAndDependecyRatio>
     </ng-template>
 
@@ -226,7 +226,9 @@
 
                 <div class="card-body">
                     <NoDataComponent
-                        [data]="ageDistributionAndAgeDependencyRatio"
+                        [data]="
+                            ageDistributionAndAgeDependencyRatioByMunicipality
+                        "
                     ></NoDataComponent>
 
                     <age-distribution-dependency-by-municipality

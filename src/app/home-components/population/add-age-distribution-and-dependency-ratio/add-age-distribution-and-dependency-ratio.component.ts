@@ -7,11 +7,13 @@ import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {Fire, HasApprovals} from 'src/app/modules/extras/Alert'
 import {AgeDistributionAndAgeDependecyRatioService} from 'src/app/Services/home/population/age-distribution-and-age-dependecy-ratio.service'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 
 @Component({
     selector: 'AgeDistributionAndDependecyRatio',
     templateUrl: './add-age-distribution-and-dependency-ratio.component.html',
     styleUrls: ['./add-age-distribution-and-dependency-ratio.component.scss'],
+    animations: [...dbwAnimations],
 })
 export class AddAgeDistributionAndDependencyRatioComponent implements OnInit {
     constructor(
@@ -22,17 +24,31 @@ export class AddAgeDistributionAndDependencyRatioComponent implements OnInit {
     ngOnInit(): void {}
 
     @Input('data')
-    set setAgeDistributionAndAgeDependencyRatio(data: any) {
-        const ageDistributionAndAgeDependencyRatio = data[0]
+    set setAgeDistributionAndAgeDependencyRatio(data: any[]) {
+        setTimeout(() => {
+            const ageDistributionAndAgeDependencyRatio = data.find(
+                (distribution) => {
+                    return (
+                        distribution.barangay === this.data.barangay &&
+                        distribution.municipality === this.data.municipality
+                    )
+                },
+            )
 
-        if (ageDistributionAndAgeDependencyRatio) {
-            console.log(ageDistributionAndAgeDependencyRatio)
+            if (ageDistributionAndAgeDependencyRatio) {
+                this.data = {
+                    ...this.data,
+                    ...ageDistributionAndAgeDependencyRatio,
+                }
+                return
+            }
 
             this.data = {
-                ...this.data,
-                ...ageDistributionAndAgeDependencyRatio,
+                barangay: null,
+                municipality: null,
+                year: null,
             }
-        }
+        }, 1000)
     }
 
     data: any = {
@@ -47,6 +63,7 @@ export class AddAgeDistributionAndDependencyRatioComponent implements OnInit {
         select(StateEnum.LOCATION_FILTERS),
         map((x) => new TransformEntity(x).toObject()),
         tap((location: any) => {
+            console.log(location)
             if (location) {
                 this.fetch(location)
             }

@@ -198,8 +198,6 @@ export class BirthDemographicComponent implements OnInit {
             `municipality=${this.location['municipality']}&barangay=${this.location['barangay']}&year=${this.location['year']}`,
         )
         service.index().subscribe((summaries: any) => {
-            console.log(summaries)
-
             this.distribute(groupBy(summaries.incidence, 'title'))
             this.localData = summaries?.data || {}
             this.processStatisticalChart(summaries.month)
@@ -242,8 +240,6 @@ export class BirthDemographicComponent implements OnInit {
             .index()
             .subscribe((data) => {
                 this.birthsByMunicipality = data
-
-                console.log(data)
             })
     }
 
