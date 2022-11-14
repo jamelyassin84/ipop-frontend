@@ -16,16 +16,16 @@
             <th class="border ppbm" rowspan="2">HH Population</th>
             <th colspan="3" class="text-center border">Age Distribution</th>
             <th colspan="3" class="text-center border">Dependency Ratio</th>
-            <th></th>
+            <th *ngIf="!isUser"></th>
         </tr>
         <tr>
-            <th></th>
             <th class="border ppbm">0-14</th>
             <th class="border ppbm">15-64</th>
             <th class="border ppbm">65 and Over</th>
             <th class="border ppbm">Young Dependency</th>
             <th class="border ppbm">Old Dependency</th>
             <th class="border ppbm">Dependency</th>
+            <th *ngIf="!isUser"></th>
         </tr>
     </thead>
     <tbody>
@@ -64,8 +64,8 @@
             <td class="border ppbm">
                 {{ item.dependency }}
             </td>
-            <td>
-                <DropDown *ngIf="!isUser" [buttons]="aadrDD"></DropDown>
+            <td *ngIf="!isUser">
+                <DropDown [buttons]="aadrDD"></DropDown>
                 <ng-template #aadrDD>
                     <button
                         (click)="onRemove.emit(item.id)"

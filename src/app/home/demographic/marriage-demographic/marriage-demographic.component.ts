@@ -1,3 +1,4 @@
+import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
 import {monthChartConfig} from './../../../app-core/configs/month-chart.config'
 import {MarraigesService} from './../../../Services/home/demographic/marraiges/marraiges.service'
 import {Component, OnInit, ViewChild} from '@angular/core'
@@ -96,18 +97,6 @@ export class MarriageDemographicComponent implements OnInit {
             .index()
             .subscribe((data) => {
                 this.pyramid.fetch()
-
-                if (data.summary.length === 0) {
-                    this.marriageConfig = {...marriageChartConfig}
-                    return
-                }
-
-                const {datasets, summary} =
-                    this._typeOfMarriageService.convertToChart(data)
-
-                this.summaries = summary
-                this.marriageConfig.labels = [this.location!.year!.toString()]
-                this.marriageConfig.datasets = datasets
             })
     }
 
@@ -123,7 +112,22 @@ export class MarriageDemographicComponent implements OnInit {
         )
         service.index().subscribe((summaries: any) => {
             this.localData = summaries?.data || {}
+
             this.processStatisticalChart(summaries.month)
+
+            if (empty(summaries.data.church)) {
+                this.marriageConfig = {...marriageChartConfig}
+                return
+            }
+
+            const {datasets} = this._typeOfMarriageService.toChart(
+                summaries?.data,
+            )
+
+            this.summaries = summaries?.data
+
+            this.marriageConfig.labels = [this.location!.year!.toString()]
+            this.marriageConfig.datasets = datasets
         })
     }
 

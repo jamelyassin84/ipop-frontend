@@ -49,6 +49,35 @@ export class TypeofMarriageService {
             datasets: datasets,
         }
     }
+
+    toChart(data: any): {
+        labels: string[]
+        datasets: ChartDataset[]
+    } {
+        let labels: any = []
+
+        let datasets: ChartDataset[] = [
+            'Church',
+            'Civil',
+            'Others',
+            'Total Marriages',
+        ].map((label) => {
+            return {
+                data: [],
+                label: label,
+            }
+        })
+
+        datasets[0].data.push(data.church)
+        datasets[1].data.push(data.civil)
+        datasets[2].data.push(data.others)
+        datasets[3].data.push(data.total_marriages)
+
+        return {
+            labels: labels,
+            datasets: datasets,
+        }
+    }
 }
 
 interface Summary {
