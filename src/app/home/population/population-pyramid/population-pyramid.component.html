@@ -94,7 +94,8 @@
                         <tr
                             *ngFor="
                                 let item of populationByAgeGroupAndSex
-                                    | sort_age_group;
+                                    | sort_age_group
+                                    | check_if_marriage: type;
                                 trackBy: trackByFn
                             "
                         >
