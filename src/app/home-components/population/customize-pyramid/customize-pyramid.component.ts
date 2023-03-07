@@ -151,10 +151,6 @@ export class CustomizePyramidComponent implements OnInit {
 
                 data.type = this.type
 
-                if (this.populationPyramid.municipality === 'Bingawan') {
-                    data.data.male = data.data.female
-                }
-
                 this.service.create(data).subscribe(() => {
                     HasApprovals('Created')
                     this.isLoading = false
