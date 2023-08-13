@@ -68,7 +68,7 @@ export class PopulationPyramidComponent implements OnInit {
     @Input()
     colors: string[] = []
 
-    location$ = this._store.pipe(
+    readonly location$ = this._store.pipe(
         select(StateEnum.LOCATION_FILTERS),
         map((x) => new TransformEntity(x).toObject()),
         tap((location) => {
@@ -78,7 +78,7 @@ export class PopulationPyramidComponent implements OnInit {
         }),
     )
 
-    readonly isUser = !this.user.isSuperAdmin()
+    readonly isUser = !this.user.isStaff()
 
     subscriptions = new Subscription()
 
@@ -113,7 +113,7 @@ export class PopulationPyramidComponent implements OnInit {
             .subscribe((data: any) => {
                 const {male, female} = data[0]?.data || {}
 
-                if (empty(male) || empty(female)) {
+                if (empty(male) && empty(female)) {
                     this.ageDistribution = []
 
                     this.hasPyramid = false
@@ -130,7 +130,6 @@ export class PopulationPyramidComponent implements OnInit {
                 }
 
                 this.processPopulationByAgeGroupAndSex(data)
-
                 ;(this.ageDistribution =
                     this._populationPyramidChartService.process(data)),
                     (this.hasPyramid = true)
@@ -181,9 +180,16 @@ export class PopulationPyramidComponent implements OnInit {
         this.populationByAgeGroupAndSex = []
         const totalPopulation = this.populationByAgeGroupAndSexTotal.total
         let temp: any = []
-        const male = data[0]['data']['male']
 
-        const female = data[0]['data']['female']
+        let {male, female} = data[0]?.data
+
+        if (Object.keys(male).length === 0) {
+            male = this._populationByAgeGroupTableService.getInitialData()
+        }
+
+        if (Object.keys(female).length === 0) {
+            female = this._populationByAgeGroupTableService.getInitialData()
+        }
 
         for (let key in female) {
             let newText: string = ''

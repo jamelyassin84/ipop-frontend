@@ -39,7 +39,7 @@ export class MigrationsDemographicComponent implements OnInit {
 
     readonly isUser = !this.user.isAdmin()
 
-    readonly isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isSuperAdmin = !this.user.isStaff()
 
     readonly Colors: Color[] = [
         {backgroundColor: '#EF6C00'},

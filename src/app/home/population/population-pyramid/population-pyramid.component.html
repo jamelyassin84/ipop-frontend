@@ -95,7 +95,7 @@
                             *ngFor="
                                 let item of populationByAgeGroupAndSex
                                     | sort_age_group
-                                    | check_if_marriage: type;
+                                    | check_if_marriage : type;
                                 trackBy: trackByFn
                             "
                         >
@@ -117,19 +117,19 @@
                                 {{ item.male | number }}
                             </td>
                             <td class="border ppbm">
-                                {{ item.percent_male | number: '1.2-2' }}
+                                {{ item.percent_male | number : '1.2-2' }}
                             </td>
                             <td class="border ppbm">
                                 {{ item.female | number }}
                             </td>
                             <td class="border ppbm">
-                                {{ item.percent_female | number: '1.2-2' }}
+                                {{ item.percent_female | number : '1.2-2' }}
                             </td>
                             <td class="border ppbm">
                                 {{ item.total | number }}
                             </td>
                             <td class="border ppbm">
-                                {{ item.percent_total | number: '1.2-2' }}
+                                {{ item.percent_total | number : '1.2-2' }}
                             </td>
                         </tr>
                         <tr>
@@ -151,7 +151,7 @@
                             <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_male
-                                        | number: '1.2-2'
+                                        | number : '1.2-2'
                                 }}
                             </td>
                             <td class="border ppbm fw-900">
@@ -163,7 +163,7 @@
                             <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_female
-                                        | number: '1.2-2'
+                                        | number : '1.2-2'
                                 }}
                             </td>
                             <td class="border ppbm fw-900">
@@ -175,7 +175,7 @@
                             <td class="border ppbm fw-900">
                                 {{
                                     populationByAgeGroupAndSexTotal.percent_total
-                                        | number: '1.2-2'
+                                        | number : '1.2-2'
                                 }}
                             </td>
                         </tr>

@@ -5,7 +5,7 @@ enum AuthMode {
 
 export const environment = {
     production: true,
-    api: 'iloilopop.com/api/',
+    api: 'https://iloilo-pop.com/api/',
     pin: {'x-auth-mode': AuthMode.PIN},
     password: {'x-auth-mode': AuthMode.PASSWORD},
 }

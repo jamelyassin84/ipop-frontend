@@ -40,7 +40,7 @@ export class DeathDemographicComponent implements OnInit {
 
     readonly isUser = !this.user.isAdmin()
 
-    readonly isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isSuperAdmin = !this.user.isStaff()
 
     readonly deathsByMunicipalityKeys = [...deathsByMunicipalityKeys]
 

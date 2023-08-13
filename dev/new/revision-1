@@ -1,0 +1,28 @@
+Cannot Encode Age - Sex Distribution on Barangay Level
+Cannot Encode Age - Sex Distribution on Barangay Level
+IT can now be encoded (Please note data will consolidate on municipality Level [Age Distribution and Age Dependency Ratio by Municipality])
+
+Population Data, encoded Female Data in Population Pyramid reflects in Male Data, male data deleted after encoding on Municipal and Barangay Level ( Bingawan Only)
+Fixed (Needs re-encoding)
+
+Births Data Cannot be encoded on both Municipal and Barangay level
+Births Data Cannot be encoded on both Municipal and Barangay level
+Working no error (Please specify municipality, barangay or year)
+
+Error in encoding of Age Distribution and Dependency ratio on All Level
+(Fixed)
+
+Encoded Female Data in Population Pyramid reflects in Male Data, male data deleted after encoding on Municipal and Barangay Level
+Pyramid on PPO1 level cannot be encoded on all level
+(Fixed)
+
+2021 Data in Female tab encoded not saving & No chart in Death by Age Group and Sex in Barangay Level (Only in Brgy Agcuyawan Calsada)
+(Fixed)
+
+Migration Statistics not segregated by In or Out
+
+Lost Data 2020Population Profile Barangay Level (from Barangay Salihid to Tubungan)
+(Fixed)
+
+Type of Marriage Chart will not appear if there is no or 0 data in church type of wedding
+(Fixed)

@@ -1,4 +1,3 @@
-
 kung ya route static indi mag load
 form validation
 
@@ -19,6 +18,13 @@ natapakan ya approval kung super admin nag create
 population pyramid sa approval change to pyramid data with type
 amo man sa statistics himoun nga demographic with a type of type
 
-ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks    --vendor-chunk --stats-json --source-map=false --prod
+ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --preserve-symlinks --vendor-chunk --stats-json --source-map=false --prod
 
 FTP Password $PQ$B58e
+
+SAdmin
+Pass: admin12345
+
+Hostinger Webhosting
+username: iloilopop.ap@gmail.com
+password: @Ppoiloilo2023

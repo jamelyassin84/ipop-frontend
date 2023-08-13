@@ -1,6 +1,12 @@
 <ng-container *ngIf="location$ | async as location">
     <div @expandCollapse class="card-body">
         <div class="row">
+            <div
+                class="t-text-blue-900 t-font-bold t-text-2xl col-md-12 t-mb-10"
+            >
+                {{ location.year }}
+            </div>
+
             <div class="form-group col-md-4">
                 <label for="">HH Population</label>
                 <input

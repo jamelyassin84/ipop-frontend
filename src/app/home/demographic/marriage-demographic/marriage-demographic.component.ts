@@ -42,7 +42,7 @@ export class MarriageDemographicComponent implements OnInit {
 
     readonly isUser = !this.user.isAdmin()
 
-    readonly isSuperAdmin = !this.user.isSuperAdmin()
+    readonly isSuperAdmin = !this.user.isStaff()
 
     readonly Colors: Color[] = [
         {backgroundColor: '#F472B6'},
@@ -115,10 +115,10 @@ export class MarriageDemographicComponent implements OnInit {
 
             this.processStatisticalChart(summaries.month)
 
-            if (empty(summaries.data.church)) {
-                this.marriageConfig = {...marriageChartConfig}
-                return
-            }
+            // if (empty(summaries.data.church)) {
+            //     this.marriageConfig = {...marriageChartConfig}
+            //     return
+            // }
 
             const {datasets} = this._typeOfMarriageService.toChart(
                 summaries?.data,

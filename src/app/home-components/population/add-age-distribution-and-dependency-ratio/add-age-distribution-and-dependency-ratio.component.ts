@@ -1,4 +1,4 @@
-import {map, tap} from 'rxjs/operators'
+import {map, take, tap} from 'rxjs/operators'
 import {Component, OnInit, Input} from '@angular/core'
 import {select, Store} from '@ngrx/store'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
@@ -63,7 +63,6 @@ export class AddAgeDistributionAndDependencyRatioComponent implements OnInit {
         select(StateEnum.LOCATION_FILTERS),
         map((x) => new TransformEntity(x).toObject()),
         tap((location: any) => {
-            console.log(location)
             if (location) {
                 this.fetch(location)
             }
@@ -80,10 +79,14 @@ export class AddAgeDistributionAndDependencyRatioComponent implements OnInit {
             'Are you sure you want to add this data?',
             'info',
             () => {
-                this.isLoading = true
-                this.service.create(this.data).subscribe(() => {
-                    HasApprovals('Created')
-                    this.isLoading = false
+                this.location$.pipe(take(1)).subscribe((location) => {
+                    this.isLoading = true
+                    this.service
+                        .create({...this.data, ...location})
+                        .subscribe(() => {
+                            HasApprovals('Created')
+                            this.isLoading = false
+                        })
                 })
             },
         )
