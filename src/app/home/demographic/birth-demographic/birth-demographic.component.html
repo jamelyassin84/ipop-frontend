@@ -81,10 +81,10 @@
                 title="Teenage Births"
                 spanClass="bgc-orange-50 c-orange-500"
                 progressClass="bgc-orange-500 "
-                [value]="illegitimateBirths"
+                [value]="teenageChart | get_dataset_by_year : location.year"
                 [percentValue]="
                     getPercentage(
-                        illegitimateBirths,
+                        teenageChart | get_dataset_by_year : location.year,
                         summaries?.summary?.total_population
                     )
                 "
@@ -96,10 +96,10 @@
                 title="Illegitimate Births"
                 spanClass="bgc-red-50 c-red-500"
                 progressClass="bgc-red-500 "
-                [value]="teenageBirths"
+                [value]="incidenceChart | get_dataset_by_year : location.year"
                 [percentValue]="
                     getPercentage(
-                        teenageBirths,
+                        incidenceChart | get_dataset_by_year : location.year,
                         summaries?.summary?.total_population
                     )
                 "

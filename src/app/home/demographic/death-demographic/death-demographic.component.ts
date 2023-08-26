@@ -23,7 +23,8 @@ import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
     animations: [...dbwAnimations],
 })
 export class DeathDemographicComponent implements OnInit {
-    @ViewChild(PopulationPyramidComponent) pyramid: any
+    @ViewChild(PopulationPyramidComponent)
+    pyramid: any
 
     constructor(
         private component: ReloadService,

@@ -33,6 +33,7 @@ import {SortAgeGroupPipe} from '../pipes/sort-age-group.pipe'
 import {ToTRDSubstitutePipe} from '../pipes/trd.pipe'
 import {isNumberPipe} from '../pipes/to-number-or-string.pipe'
 import {CheckIfMarriagePipe} from '../pipes/check-if-marriage.pipe'
+import {GetDataSetByPipe} from '../app-core/pipe/get-dataset-by-year.pipe'
 
 export const globalPipes = [
     AgePipe,
@@ -73,4 +74,5 @@ export const appPipes = [
     ToTRDSubstitutePipe,
     isNumberPipe,
     CheckIfMarriagePipe,
+    GetDataSetByPipe,
 ]

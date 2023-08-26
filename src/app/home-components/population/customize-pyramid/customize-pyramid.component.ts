@@ -151,6 +151,33 @@ export class CustomizePyramidComponent implements OnInit {
 
                 data.type = this.type
 
+                const genders = ['male', 'female']
+
+                genders.forEach((g) => {
+                    if (typeof data.data[g] !== 'object') {
+                        data.data.female = {
+                            eighty_and_above: 1,
+                            '75-79': 0,
+                            '70-74': 0,
+                            '65-69': 1,
+                            '60-64': 0,
+                            '55-59': 0,
+                            '50-54': 1,
+                            '45-49': 0,
+                            '40-44': 2,
+                            '35-39': 1,
+                            '30-34': 0,
+                            '25-29': 0,
+                            '20-24': 0,
+                            '15-19': 1,
+                            '10-14': 0,
+                            '5-9': 0,
+                            '1-4': 0,
+                            below_1_year_old: 1,
+                        }
+                    }
+                })
+
                 this.service.create(data).subscribe(() => {
                     HasApprovals('Created')
                     this.isLoading = false

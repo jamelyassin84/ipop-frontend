@@ -1,7 +1,7 @@
 import {map, tap} from 'rxjs/operators'
 import {empty} from 'src/@digital_brand_work/pipes/is-empty.pipe'
 import {HttpClient} from '@angular/common/http'
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input} from '@angular/core'
 import {drawChart} from '../Config'
 import {BaseService} from 'src/app/Services/base.service'
 import {getPercent} from 'src/app/constants/Shortcuts'
@@ -10,7 +10,6 @@ import {ReloadService} from 'src/app/Services/reload.service'
 import {Subscription} from 'rxjs'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {LocationFIlter} from 'src/app/app-core/models/location-filter.model'
-import {PyramidData} from 'src/app/app-core/models/population-pyramid'
 import {PopulationPyramidChartService} from './population-pyramid.service'
 import {PopulationByAgeGroupTableService} from './population-by-age-group-and-sex.service'
 import {AppState} from 'src/app/app-core/store/core/app.state'
@@ -18,7 +17,6 @@ import {select, Store} from '@ngrx/store'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 import {AgeGroupAndSex} from 'src/app/app-core/models/age-group-and-sex.model'
-import {sortPyramid} from 'src/app/pipes/sort-population-pyramid.pipe'
 
 @Component({
     selector: 'PyramidChart-and-AgeGroup',
@@ -26,7 +24,7 @@ import {sortPyramid} from 'src/app/pipes/sort-population-pyramid.pipe'
     styleUrls: ['./population-pyramid.component.scss'],
     animations: [...dbwAnimations],
 })
-export class PopulationPyramidComponent implements OnInit {
+export class PopulationPyramidComponent {
     constructor(
         private _http: HttpClient,
         private user: UserService,
@@ -79,20 +77,12 @@ export class PopulationPyramidComponent implements OnInit {
     )
 
     readonly isUser = !this.user.isStaff()
-
     subscriptions = new Subscription()
-
     populationByAgeGroupAndSexTotal: any = {}
-
     ageDistribution: any = []
-
     populationByAgeGroupAndSex: AgeGroupAndSex[] = []
-
     isProvincial: boolean = false
-
     hasPyramid: boolean = false
-
-    ngOnInit(): void {}
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe()
@@ -115,33 +105,31 @@ export class PopulationPyramidComponent implements OnInit {
 
                 if (empty(male) && empty(female)) {
                     this.ageDistribution = []
-
                     this.hasPyramid = false
-
-                    setTimeout(() => {
-                        drawChart(
-                            'population-pyramid',
-                            this.ageDistribution,
-                            this.colors,
-                        )
-                    }, 500)
-
+                    this.drawPyramidChart()
                     return
                 }
 
                 this.processPopulationByAgeGroupAndSex(data)
-                ;(this.ageDistribution =
-                    this._populationPyramidChartService.process(data)),
-                    (this.hasPyramid = true)
-
-                setTimeout(() => {
-                    drawChart(
-                        'population-pyramid',
-                        this.ageDistribution,
-                        this.colors,
-                    )
-                }, 500)
+                this.ageDistribution =
+                    this._populationPyramidChartService.process(data)
+                this.hasPyramid = true
+                this.drawPyramidChart()
             })
+    }
+
+    drawPyramidChart(): void {
+        const pyramidChart = document.getElementById('population-pyramid')
+
+        if (pyramidChart) {
+            setTimeout(() => {
+                drawChart(
+                    'population-pyramid',
+                    this.ageDistribution,
+                    this.colors,
+                )
+            }, 500)
+        }
     }
 
     processPopulationByAgeGroupAndSex(data: any[]) {
@@ -151,7 +139,6 @@ export class PopulationPyramidComponent implements OnInit {
         )
 
         this.populationByAgeGroupAndSex = temp.reverse()
-
         this.sumOfRows(this.populationByAgeGroupAndSex, data)
     }
 
@@ -193,18 +180,22 @@ export class PopulationPyramidComponent implements OnInit {
 
         for (let key in female) {
             let newText: string = ''
+
             if (key === 'eighty_and_above') {
                 newText = '80 and above'
             }
+
             if (key === 'below_1_year_old') {
                 newText = 'Below 1 Year Old'
             }
+
             if (this.type === 'Marriage' && key === '20-24') {
                 newText = '18-24'
             }
+
             let total = parseFloat(male[key]) + parseFloat(female[key])
 
-            let data = {
+            temp.push({
                 ageGroup:
                     key === 'eighty_and_above' ||
                     key === 'below_1_year_old' ||
@@ -219,15 +210,15 @@ export class PopulationPyramidComponent implements OnInit {
                 percent_total:
                     getPercent(female[key], totalPopulation) +
                     getPercent(male[key], totalPopulation),
-            }
-
-            temp.push(data)
+            })
         }
+
         this.populationByAgeGroupAndSexTotal.percent_male = 0
         this.populationByAgeGroupAndSexTotal.percent_female = 0
         this.populationByAgeGroupAndSexTotal.percent_total = 0
 
         const disregards = ['ageGroup', 'male', 'female', 'total']
+
         for (let index of temp) {
             for (let key in index) {
                 if (!disregards.includes(key)) {

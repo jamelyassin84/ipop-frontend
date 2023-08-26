@@ -22,7 +22,6 @@ import {BirthDemographicService} from './birth-demographic.service'
 @Component({
     selector: 'app-birth-demographic',
     templateUrl: './birth-demographic.component.html',
-    styleUrls: ['./birth-demographic.component.scss'],
     animations: [...dbwAnimations],
 })
 export class BirthDemographicComponent implements OnInit {
