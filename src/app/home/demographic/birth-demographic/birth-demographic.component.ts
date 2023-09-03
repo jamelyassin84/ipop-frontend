@@ -47,7 +47,9 @@ export class BirthDemographicComponent implements OnInit {
     ]
 
     readonly isUser = !this.user.isAdmin()
-    readonly isSuperAdmin = !this.user.isStaff()
+    readonly isStaff = this.user.isStaff()
+    readonly isSuperAdmin = this.user.isSuperAdmin()
+
     readonly birthsByMunicipalityKeys = birthsByMunicipalityKeys
     readonly birthsByMunicipalityHeaders = birthsByMunicipalityHeaders
 

@@ -201,8 +201,9 @@
             <div class="card">
                 <div class="bg-white card-header d-flex">
                     <div class="mr-auto 0 h4">Incidence of Teenage Births</div>
-                    <div *ngIf="!isUser" class="ml-auto">
+                    <div *ngIf="isSuperAdmin" class="ml-auto">
                         <DropDown [buttons]="Teenage"></DropDown>
+
                         <ng-template #Teenage>
                             <Modal
                                 size="lg"
@@ -235,8 +236,9 @@
                     <div class="mr-auto 0 h4">
                         Incidence of Illegitimate Births
                     </div>
-                    <div *ngIf="!isUser" class="ml-auto">
+                    <div *ngIf="isSuperAdmin" class="ml-auto">
                         <DropDown [buttons]="Illegitimate"></DropDown>
+
                         <ng-template #Illegitimate>
                             <Modal
                                 size="lg"
@@ -262,7 +264,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="!isUser" class="mt-1 col-md-12">
+        <div *ngIf="isSuperAdmin" class="mt-1 col-md-12">
             <div class="alert alert-primary">
                 Note: All Data inputted here will reflect on the summary at the
                 top depending on the year chosen
@@ -288,7 +290,7 @@
                     </div>
 
                     <Modal
-                        *ngIf="!isUser"
+                        *ngIf="isStaff"
                         size="lg"
                         title="Customize Technical Notes"
                         btnTitle="Customize technical notes"

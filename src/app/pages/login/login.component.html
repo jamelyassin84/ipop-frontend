@@ -1,69 +1,58 @@
 <div class="peers ai-s fxw-nw h-100vh">
     <div
-        class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv t-px-5"
-        style="background-image: url('../../../assets/new-assets/capitol.jpg')"
-    >
-        <img
-            class="pos-a centerXY t-h-36 t-w-3t-h-36 animate__zoomIn"
-            src="/assets/new-assets/iloilo-seal.png"
-            alt=""
-        />
-    </div>
-
-    <div
         @slideInLeft
-        style="min-width: 320px"
-        class="col-12 col-md-3 peer t-px-5 pY-100 h-100 bgc-white scrollable pos-r text-center t-flex t-flex-col"
+        style="min-width: 420px"
+        class="text-center col-12 col-md-3 peer t-px-5 pY-100 h-100 bgc-white scrollable pos-r t-flex t-flex-col md:t-px-6"
     >
         <img
             animateCSS
-            class="t-h-40 t-w-3t-h-40 t-mx-auto animate__flip"
+            class="t-h-40 t-w-3t-h-40 t-mx-auto animate__flipInY"
             src="/assets/logo.png"
             alt=""
         />
 
         <div
-            class="md:t-text-5xl t-text-2xl t-font-black t-text-text-brand t-my-5"
+            class="md:t-text-3xl t-text-2xl t-font-black t-mt-5 t-text-left t-leading-tight"
         >
-            Log In
+            Iloilo Province's Smartest Platform
         </div>
 
-        <div class="t-px-5 t-text-sm">
-            Log In with the credentials given by the administrator.
+        <div class="t-text-sm t-text-left">
+            Log In with Administrator-Provided Credentials to Begin Your Journey
         </div>
 
         <form [formGroup]="signInForm" class="t-mt-8">
-            <div class="t-w-full">
-                <input
-                    autofocus
-                    id="username"
-                    type="username"
-                    placeholder="Username"
-                    autocomplete="username"
-                    formControlName="username"
-                    [ngClass]="{
-                        't-bg-red-500 t-border-red-500/30':
-                            signInForm.get('username')?.touched &&
-                            !signInForm.get('username')?.valid
-                    }"
-                    class="t-px-5 t-py-4 t-border t-border-gray-200 t-w-full focus:t-border-bg-brand"
-                />
-            </div>
+            <div class="overflow-hidden t-rounded-2xl">
+                <div class="t-w-full">
+                    <input
+                        autofocus
+                        id="username"
+                        type="username"
+                        placeholder="Username"
+                        formControlName="username"
+                        [ngClass]="{
+                            't-bg-red-500 t-border-red-500/30':
+                                signInForm.get('username')?.touched &&
+                                !signInForm.get('username')?.valid
+                        }"
+                        class="t-px-5 t-rounded-t-2xl t-py-4 t-border t-border-gray-400/50 t-w-full focus:t-border-bg-brand t-shadow-none"
+                    />
+                </div>
 
-            <div class="t-mb-3 t-w-full">
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    autocomplete="password"
-                    formControlName="password"
-                    [ngClass]="{
-                        't-bg-red-500 t-border-red-500/30':
-                            signInForm.get('password')?.touched &&
-                            !signInForm.get('password')?.valid
-                    }"
-                    class="t-px-5 t-py-4 t-border t-border-gray-200 t-w-full focus:t-border-bg-brand"
-                />
+                <div class="t-w-full t-items-center t-flex">
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        formControlName="password"
+                        [ngClass]="{
+                            't-bg-red-500 t-border-red-500/30':
+                                signInForm.get('password')?.touched &&
+                                !signInForm.get('password')?.valid
+                        }"
+                        class="t-px-5 t-py-4 t-border t-border-gray-400/50 t-w-full focus:t-border-bg-brand t-rounded-b-2xl t-shadow-none"
+                    />
+                </div>
             </div>
 
             <button
@@ -72,9 +61,10 @@
                 [ngClass]="{
                     't-bg-gray-400 t-pointer-events-none ':
                         !signInForm.valid || signInForm.disabled,
-                    't-bg-bg-brand': signInForm.valid && !signInForm.disabled
+                    't-bg-bg-brand md:hover:t-bg-blue-900':
+                        signInForm.valid && !signInForm.disabled
                 }"
-                class="t-text-white flex t-py-3 t-w-full t-mt-8 t-font-black t-text-xl focus:t-border-bg-brand t-flex t-items-center t-justify-center"
+                class="flex t-text-white t-rounded-2xl t-py-3 t-w-full t-mt-8 t-font-black t-text-xl focus:t-border-bg-brand t-flex t-items-center t-justify-center"
             >
                 <span *ngIf="!signInForm.disabled">Log In</span>
 
@@ -86,14 +76,28 @@
                 ></mat-progress-spinner>
             </button>
 
-            <div class="t-mt-8">or</div>
-
-            <a
-                class="btn btn-link w-100 text-secondary"
+            <div
+                role="button"
                 routerLink="/home/index/news"
+                class="mt-2 t-border-2 t-border-gray-400 t-py-4 t-font-bold t-rounded-2xl t-w-full t-text-gray-500 md:hover:t-bg-gray-50"
             >
-                Visit as Guest
-            </a>
+                Explore IPOP
+            </div>
         </form>
+    </div>
+
+    <div
+        class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv t-px-5 t-relative"
+        style="background-image: url('../../../assets/new-assets/capitol.jpg')"
+    >
+        <div
+            class="z-0 t-bg-black/40 t-w-full t-h-full t-absolute t-left-0 t-top-0"
+        ></div>
+
+        <img
+            class="pos-a centerXY t-h-36 t-w-3t-h-36 animate__zoomIn t-relative z-1"
+            src="/assets/new-assets/iloilo-seal.png"
+            alt=""
+        />
     </div>
 </div>
