@@ -13,7 +13,6 @@ import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
 @Component({
     selector: 'AddTopPopulated',
     templateUrl: './top-populated.component.html',
-    styleUrls: ['./top-populated.component.scss'],
     animations: [...dbwAnimations],
 })
 export class TopPopulatedComponent implements OnInit {
@@ -47,10 +46,10 @@ export class TopPopulatedComponent implements OnInit {
     isLoading: boolean = false
 
     ngOnInit(): void {
-        this.getMuncipalities()
+        this.getMunicipalities()
     }
 
-    getMuncipalities() {
+    getMunicipalities() {
         this.location.municipalities().subscribe((data: any) => {
             this.municipalities = data
         })

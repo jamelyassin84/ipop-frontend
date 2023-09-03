@@ -1,15 +1,12 @@
+import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {HttpClient} from '@angular/common/http'
 import {Input} from '@angular/core'
-import {Component, OnInit} from '@angular/core'
-import {
-    FormBuilder,
-    FormGroup,
-    NonNullableFormBuilder,
-    Validators,
-} from '@angular/forms'
+import {Component} from '@angular/core'
+import {FormGroup, NonNullableFormBuilder, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
-import {map, tap} from 'rxjs/operators'
+import {map, take, tap} from 'rxjs/operators'
 import {TransformEntity} from 'src/@digital_brand_work/helpers/entity.helper'
+import {POPULATION_PYRAMID_AGE_GROUPS} from 'src/app/app-core/constants/population-pyramid/population-pyramid-age-group'
 import {PopulationPyramidPayLoad} from 'src/app/app-core/http/payloads/pyramid.payload'
 import {AppState} from 'src/app/app-core/store/core/app.state'
 import {StateEnum} from 'src/app/app-core/store/core/state.enum'
@@ -21,14 +18,14 @@ import {PopulationPyramidService} from 'src/app/Services/home/population/populat
 @Component({
     selector: 'CustomizePyramid',
     templateUrl: './customize-pyramid.component.html',
-    styleUrls: ['./customize-pyramid.component.scss'],
+    animations: [...dbwAnimations],
 })
-export class CustomizePyramidComponent implements OnInit {
+export class CustomizePyramidComponent {
     constructor(
         private _http: HttpClient,
         private _store: Store<AppState>,
-        private service: PopulationPyramidService,
         private _formBuilder: NonNullableFormBuilder,
+        private _populationPyramidService: PopulationPyramidService,
     ) {}
 
     @Input()
@@ -37,75 +34,28 @@ export class CustomizePyramidComponent implements OnInit {
     @Input()
     types = ['Provincial', 'Muncipality', 'Barangay']
 
-    location$ = this._store.pipe(
+    readonly location$ = this._store.pipe(
         select(StateEnum.LOCATION_FILTERS),
         map((x) => new TransformEntity(x).toObject()),
         tap((location: any) => {
-            for (let key in location) {
-                this.populationPyramid[key] = location[key]
-            }
-
-            this.fetch(location)
+            this.getPyramidData(location)
         }),
     )
 
+    readonly POPULATION_PYRAMID_AGE_GROUPS = POPULATION_PYRAMID_AGE_GROUPS
+
+    readonly NAVIGATION = ['males', 'females']
+
+    populationPyramidFormMales = this.getFormGroup()
+
+    populationPyramidFormFemales = this.getFormGroup()
+
     tabs: any = {
         males: true,
-        famales: false,
+        females: false,
     }
 
     isLoading: boolean = false
-
-    populationPyramid: any = {
-        barangay: null,
-        municipality: null,
-        year: null,
-        data: {
-            male: {},
-            female: {},
-        },
-    }
-    populationPyramidFormFemales: FormGroup<PopulationPyramidPayLoad> =
-        this._formBuilder.group({
-            eighty_and_above: ['', Validators.required],
-            '75-79': ['', Validators.required],
-            '70-74': ['', Validators.required],
-            '65-69': ['', Validators.required],
-            '60-64': ['', Validators.required],
-            '55-59': ['', Validators.required],
-            '50-54': ['', Validators.required],
-            '45-49': ['', Validators.required],
-            '40-44': ['', Validators.required],
-            '35-39': ['', Validators.required],
-            '30-34': ['', Validators.required],
-            '25-29': ['', Validators.required],
-            '20-24': ['', Validators.required],
-            '15-19': ['', Validators.required],
-            '10-14': ['', Validators.required],
-            '5-9': ['', Validators.required],
-        })
-
-    populationPyramidFormMales: FormGroup<PopulationPyramidPayLoad> =
-        this._formBuilder.group({
-            eighty_and_above: ['', Validators.required],
-            '75-79': ['', Validators.required],
-            '70-74': ['', Validators.required],
-            '65-69': ['', Validators.required],
-            '60-64': ['', Validators.required],
-            '55-59': ['', Validators.required],
-            '50-54': ['', Validators.required],
-            '45-49': ['', Validators.required],
-            '40-44': ['', Validators.required],
-            '35-39': ['', Validators.required],
-            '30-34': ['', Validators.required],
-            '25-29': ['', Validators.required],
-            '20-24': ['', Validators.required],
-            '15-19': ['', Validators.required],
-            '10-14': ['', Validators.required],
-            '5-9': ['', Validators.required],
-        })
-
-    ngOnInit(): void {}
 
     changeTab(tab: any) {
         for (let key in this.tabs) {
@@ -114,15 +64,10 @@ export class CustomizePyramidComponent implements OnInit {
         this.tabs[tab] = true
     }
 
-    fetch(location: LocationFIlter) {
+    getPyramidData(location: LocationFIlter): void {
         const {barangay, municipality, year} = location
 
-        this.populationPyramid = {...this.populationPyramid, location}
-        this.populationPyramid.barangay = barangay
-        this.populationPyramid.municipality = municipality
-        this.populationPyramid.year = year
-
-        const service = new BaseService(
+        new BaseService(
             this._http,
             'population-pyramid',
             `${new URLSearchParams({
@@ -132,11 +77,15 @@ export class CustomizePyramidComponent implements OnInit {
                 municipality: municipality ?? 'null',
             })}`,
         )
+            .index()
+            .subscribe((response: any) => {
+                const {male, female} = response[0].data
+                console.log(male)
+                console.log(female)
 
-        service.index().subscribe((response: any) => {
-            this.populationPyramid.data.male = response[0].data.male
-            this.populationPyramid.data.female = response[0].data.female
-        })
+                this.populationPyramidFormMales.setValue(male)
+                this.populationPyramidFormFemales.setValue(female)
+            })
     }
 
     save() {
@@ -147,42 +96,37 @@ export class CustomizePyramidComponent implements OnInit {
             () => {
                 this.isLoading = true
 
-                let data = {...this.populationPyramid}
-
-                data.type = this.type
-
-                const genders = ['male', 'female']
-
-                genders.forEach((g) => {
-                    if (typeof data.data[g] !== 'object') {
-                        data.data.female = {
-                            eighty_and_above: 1,
-                            '75-79': 0,
-                            '70-74': 0,
-                            '65-69': 1,
-                            '60-64': 0,
-                            '55-59': 0,
-                            '50-54': 1,
-                            '45-49': 0,
-                            '40-44': 2,
-                            '35-39': 1,
-                            '30-34': 0,
-                            '25-29': 0,
-                            '20-24': 0,
-                            '15-19': 1,
-                            '10-14': 0,
-                            '5-9': 0,
-                            '1-4': 0,
-                            below_1_year_old: 1,
-                        }
+                this.location$.pipe(take(1)).subscribe((location) => {
+                    let data = {
+                        ...location,
+                        data: {
+                            male: this.populationPyramidFormMales.value,
+                            female: this.populationPyramidFormFemales.value,
+                        },
                     }
-                })
 
-                this.service.create(data).subscribe(() => {
-                    HasApprovals('Created')
-                    this.isLoading = false
+                    data.type = this.type
+
+                    this._populationPyramidService
+                        .create(data)
+                        .subscribe(() => HasApprovals('Created'))
+                        .add(() => (this.isLoading = false))
                 })
             },
         )
+    }
+
+    private getFormGroup(): FormGroup<PopulationPyramidPayLoad> {
+        const object: any = {}
+
+        this.POPULATION_PYRAMID_AGE_GROUPS.forEach((ageGroup) => {
+            object[ageGroup.formControlName] = ['', Validators.required]
+        })
+
+        return this._formBuilder.group(object) as any
+    }
+
+    trackByFn(index: number, item: any): any {
+        return item.id || index
     }
 }
