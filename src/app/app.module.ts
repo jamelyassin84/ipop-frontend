@@ -142,13 +142,15 @@ import {SharedModule} from './shared/shared.module'
 import {StoreModule} from '@ngrx/store'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
-import {StoreRouterConnectingModule} from '@ngrx/router-store';
-import { PopulationProfileComponent } from './home/population/population-profile/population-profile.component';
-import { PopulationByMunicipalityComponent } from './home/population/population-by-municipality/population-by-municipality.component';
-import { AgeDistributionDependencyComponent } from './home/population/age-distribution-dependency/age-distribution-dependency.component';
-import { AgeDistributionComponent } from './home/population/age-distribution/age-distribution.component';
-import { AgeDistributionDependencyByMunicipalityComponent } from './home/population/age-distribution-dependency-by-municipality/age-distribution-dependency-by-municipality.component';
-import { PersonnelDirectoryTableRowComponent } from './home/about/personnel-directory/personnel-directory-table-row/personnel-directory-table-row.component'
+import {StoreRouterConnectingModule} from '@ngrx/router-store'
+import {PopulationProfileComponent} from './home/population/population-profile/population-profile.component'
+import {PopulationByMunicipalityComponent} from './home/population/population-by-municipality/population-by-municipality.component'
+import {AgeDistributionDependencyComponent} from './home/population/age-distribution-dependency/age-distribution-dependency.component'
+import {AgeDistributionComponent} from './home/population/age-distribution/age-distribution.component'
+import {AgeDistributionDependencyByMunicipalityComponent} from './home/population/age-distribution-dependency-by-municipality/age-distribution-dependency-by-municipality.component'
+import {PersonnelDirectoryTableRowComponent} from './home/about/personnel-directory/personnel-directory-table-row/personnel-directory-table-row.component'
+import {HomeArticleComponent} from './home/aritcles-and-sliders/home-article/home-article.component'
+import {HomeCarouselComponent} from './home/aritcles-and-sliders/home-carousel/home-carousel.component'
 
 @NgModule({
     declarations: [
@@ -257,6 +259,9 @@ import { PersonnelDirectoryTableRowComponent } from './home/about/personnel-dire
         AgeDistributionComponent,
         AgeDistributionDependencyByMunicipalityComponent,
         PersonnelDirectoryTableRowComponent,
+
+        HomeArticleComponent,
+        HomeCarouselComponent,
     ],
     imports: [
         BrowserModule,
@@ -301,4 +306,17 @@ import { PersonnelDirectoryTableRowComponent } from './home/about/personnel-dire
 
     exports: [],
 })
-export class AppModule {}
+export class AppModule {
+    constructor() {
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splashScreen = document.getElementById('splash_screen')!
+
+                splashScreen.classList.add('animate__bounceOutUp')
+                setTimeout(() => {
+                    splashScreen.style.display = 'none'
+                }, 100)
+            }, 1300)
+        })
+    }
+}

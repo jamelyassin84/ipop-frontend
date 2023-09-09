@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
-import {Subscription} from 'rxjs'
+import {Subject, Subscription} from 'rxjs'
+import {takeUntil} from 'rxjs/operators'
 import {dbwAnimations} from 'src/@digital_brand_work/animations/animation.api'
 import {Alert, Deleted, Fire, pop} from 'src/app/modules/extras/Alert'
 import {ArticleService} from 'src/app/Services/home/news/article.service'
@@ -24,31 +25,12 @@ export class AritclesAndSlidersComponent implements OnInit {
         private articleService: ArticleService,
         private service: QuickLinksService,
         private user: UserService,
-    ) {
-        this.subscriptions.add(
-            this.component.shouldReload().subscribe(() => {
-                this.ngOnInit()
-            }),
-        )
-    }
+    ) {}
+
     readonly isUser = !this.user.isAdmin()
     readonly isSuperAdmin = this.user.isSuperAdmin()
-
     readonly filterList = ['all', 'today', 'week', 'month']
-
-    subscriptions = new Subscription()
-
-    ngOnDestroy(): void {
-        this.subscriptions.unsubscribe()
-    }
-
-    ngOnInit(): void {
-        this.innerWidth = window.innerWidth
-
-        this.getSliders()
-        this.getArticles()
-        this.getQuickLinks()
-    }
+    readonly destroyed$ = new Subject()
 
     tabs: any = {
         all: true,
@@ -57,26 +39,48 @@ export class AritclesAndSlidersComponent implements OnInit {
         month: false,
     }
 
-    setTab(tab: string) {
+    quickLinks: any = []
+
+    images: string[] = []
+
+    articles: ArticleType[] = []
+
+    currentImages: any = []
+
+    ngOnInit(): void {
+        this.innerWidth = window.innerWidth
+
+        this.getSliders()
+        this.getArticlesByPeriod('index')
+        this.getQuickLinks()
+
+        this.component
+            .shouldReload()
+            .pipe(takeUntil(this.destroyed$))
+            .subscribe(() => {
+                this.ngOnInit()
+            })
+    }
+
+    ngOnDestroy(): void {
+        this.destroyed$.next(null)
+        this.destroyed$.complete()
+    }
+
+    setTab(tab: 'all' | 'today' | 'week' | 'month' | any) {
         for (let key in this.tabs) {
             this.tabs[key] = false
         }
         this.tabs[tab] = true
-        if (tab === 'all') {
-            this.getArticles()
-        }
-        if (tab === 'today') {
-            this.today()
-        }
-        if (tab === 'week') {
-            this.week()
-        }
-        if (tab === 'month') {
-            this.month()
-        }
+        this.getArticlesByPeriod(tab === 'all' ? 'index' : tab)
     }
 
-    images: string[] = []
+    getArticlesByPeriod(period: 'index' | 'today' | 'week' | 'month') {
+        this.articleService[period]().subscribe((articles: ArticleType[]) => {
+            this.articles = articles.reverse()
+        })
+    }
+
     getSliders() {
         this.slideService.index().subscribe((sliders: []) => {
             sliders.forEach((slide: any) => {
@@ -86,9 +90,6 @@ export class AritclesAndSlidersComponent implements OnInit {
         })
     }
 
-    articles: ArticleType[] = []
-    currentImages: any = []
-
     transformImages(photos: any) {
         this.currentImages = []
         photos.forEach((photo: any) => {
@@ -96,31 +97,7 @@ export class AritclesAndSlidersComponent implements OnInit {
         })
     }
 
-    getArticles() {
-        this.articleService.index().subscribe((articles: ArticleType[]) => {
-            this.articles = articles
-        })
-    }
-
-    today() {
-        this.articleService.today().subscribe((articles: ArticleType[]) => {
-            this.articles = articles
-        })
-    }
-
-    week() {
-        this.articleService.week().subscribe((articles: ArticleType[]) => {
-            this.articles = articles
-        })
-    }
-
-    month() {
-        this.articleService.month().subscribe((articles: ArticleType[]) => {
-            this.articles = articles
-        })
-    }
-
-    removeArticle(id: number) {
+    removeArticle(id: any) {
         Fire(
             'Delete Article?',
             'Are you sure you want to permanently delete this data?',
@@ -133,10 +110,9 @@ export class AritclesAndSlidersComponent implements OnInit {
         )
     }
 
-    quickLinks: any = []
     getQuickLinks() {
-        this.service.index().subscribe((data) => {
-            this.quickLinks = data
+        this.service.index().subscribe((quickLinks: any[]) => {
+            this.quickLinks = quickLinks.reverse()
         })
     }
 

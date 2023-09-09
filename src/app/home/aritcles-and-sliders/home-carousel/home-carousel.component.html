@@ -1,0 +1,12 @@
+<div *ngIf="!loaded">
+    <div
+        class="t-w-full t-h-[50vh] t-rounded-md t-animate-pulse t-bg-gray-200"
+    ></div>
+</div>
+
+<img
+    [src]="image"
+    (load)="loaded = true"
+    (onerror)="this.loaded = true"
+    class="t-w-full t-h-fulll t-object-contain"
+/>

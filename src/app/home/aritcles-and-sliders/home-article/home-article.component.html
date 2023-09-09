@@ -1,0 +1,83 @@
+<div class="t-my-8" *ngIf="article">
+    <div
+        [ngClass]="{
+            't-max-h-[250px] overflow-hidden': !showMore,
+            't-max-h-auto': showMore
+        }"
+        class="d-flex"
+        style="transition: 0.4s ease-in-out"
+    >
+        <div
+            *ngIf="article.photos.length !== 0"
+            class="t-mr-4 t-flex-none t-relative"
+        >
+            <!-- Display preloader if image is not loaded -->
+            <div *ngIf="!loaded">
+                <div
+                    class="t-bg-gray-200 t-w-[400px] t-h-[250px] t-rounded-md t-animate-pulse"
+                ></div>
+            </div>
+
+            <!-- Display image when loaded -->
+            <img
+                alt=""
+                @fadeIn
+                role="button"
+                (load)="loaded = true"
+                (onerror)="this.loaded = true"
+                [src]="article.photos[0]?.file?.uri"
+                *ngIf="article?.photos[0]?.file?.uri"
+                (click)="
+                    onTransformImages.emit(article.photos);
+                    viewArticleModal.open(imageViewer)
+                "
+                class="t-w-[400px] t-h-[250px] t-rounded-md t-object-cover aspect-4:2.5 active:t-opacity-50 hover:t-brightness-90"
+            />
+
+            <Modal
+                size="xl"
+                #viewArticleModal
+                [title]="'Images of ' + article.title"
+                btnTitle="View Images"
+                [template]="imageViewer"
+                btnClass="md:hover:t-underline t-text-blue-500 t-text-center t-mt-3 t-w-full t-hidden"
+                (click)="onTransformImages.emit(article.photos)"
+            >
+            </Modal>
+        </div>
+
+        <div class="t-ml-auto t-relative">
+            <button
+                class="p-2 t-text-blue-500 rounded-left active:t-bg-gray-200 t-absolute t-right-0 t-bottom-1.5 t-bg-white w-[100px]"
+                (click)="showMore = !showMore"
+            >
+                {{ showMore ? 'See Less' : 'See More' }}
+            </button>
+
+            <div class="t-text-gray-500 font-weight-bold t-flex t-items-center">
+                {{ article?.approval?.requester.fullname }} &#x2022;
+                {{ article.created_at | date : 'dd MMM yyy' }}
+
+                <div *ngIf="!isUser && isSuperAdmin" class="ml-auto t-ml-auto">
+                    <DropDown [buttons]="dropdown"></DropDown>
+                    <ng-template #dropdown>
+                        <button
+                            (click)="onRemoveArticle.emit(article.id)"
+                            class="dropdown-item"
+                        >
+                            Remove Article
+                        </button>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="t-font-bold t-text-2xl t-mb-3 t-leading-normal">
+                {{ article.title | titlecase }}
+            </div>
+
+            <p class="t-text-base">
+                {{ article.body }}
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,8 @@
 export type ArticleType = {
-	id: number
-	title: String
-	body: String
-	photos: any
-	created_at: any
+    id: any
+    title: string
+    body: string
+    photos: any
+    created_at: any
+    approval: any
 }

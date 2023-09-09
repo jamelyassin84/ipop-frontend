@@ -1,13 +1,17 @@
 <div ngbDropdown class="d-inline-block">
-    <button class="btn" ngbDropdownToggle placement="right " ngbTooltip="More">
-        <i class="ti-angle-down text-secondary"></i>
+    <button
+        class="t-rounded-full t-px-3 t-py-2.5 active:t-bg-gray-50"
+        ngbDropdownToggle
+        placement="right "
+        ngbTooltip="More"
+    >
+        <i class="bi bi-three-dots t-text-black t-text-2xl"></i>
     </button>
 
     <div
         ngbDropdownMenu
-        aria-labelledby="dropdownBasic1 "
         id="dropdown-container"
-        style="text-align: left !important"
+        class="bg-white t-rounded-2xl t-shadow-2xl t-border-none t-shadow-bg-brand/20 t=py-2"
     >
         <ng-template #name [ngTemplateOutlet]="buttons"> </ng-template>
     </div>

@@ -33,6 +33,7 @@
     *ngIf="images.length === 0"
 >
     <Spinner></Spinner>
+
     <NoDataComponent [data]="images"></NoDataComponent>
 </div>
 
@@ -41,27 +42,28 @@
         [margin]="0"
         [height]="500"
         [dots]="true"
+        [borderRadius]="0"
+        [autoplayInterval]="3000"
         [autoplay]="images.length < 2 ? false : true"
-        [borderRadius]="5"
-        [autoplayInterval]="2000"
         [cellsToShow]="innerWidth > 1139 ? (images.length === 1 ? 1 : 2.3) : 1"
     >
         <div
+            style="height: 50vh"
             class="carousel-cell"
             *ngFor="let image of images"
-            style="height: 50vh"
         >
-            <img class="t-w-full t-h-full t-object-contain" [src]="image" />
+            <home-carousel [image]="image"></home-carousel>
         </div>
     </carousel>
 </div>
 
 <div class="t-grid t-grid-cols-1 md:t-grid-cols-3 bg-light t-gap-10 mT-40">
     <div [@listAnimation]="articles.length" class="md:t-col-span-2 t-bg-white">
-        <ul class="bg-white nav nav-tabs d-flex">
+        <ul class="bg-white t-p-3 nav nav-tabs t-flex t-items-center">
             <li
-                *ngFor="let tab of filterList; trackBy: trackByFn"
+                role="button"
                 class="nav-item"
+                *ngFor="let tab of filterList; trackBy: trackByFn"
             >
                 <button
                     role="button"
@@ -76,8 +78,9 @@
                 </button>
             </li>
 
-            <li *ngIf="!isUser" class="ml-auto mr-2">
+            <li role="button" *ngIf="!isUser" class="ml-auto mr-2">
                 <DropDown [buttons]="nav"></DropDown>
+
                 <ng-template #nav>
                     <Modal
                         size="lg"
@@ -94,60 +97,17 @@
         <NoDataComponent [data]="articles"></NoDataComponent>
 
         <div
-            class="m-0 bl br"
+            class="t-px-6"
             *ngFor="let article of articles; trackBy: trackByFn"
         >
-            <div class="bg-white card-header d-flex aic">
-                <div>
-                    <div class="m-0 h3 card-title dw">{{ article.title }}</div>
-                </div>
-                <div *ngIf="!isUser && isSuperAdmin" class="ml-auto">
-                    <DropDown [buttons]="dropdown"></DropDown>
-                    <ng-template #dropdown>
-                        <button
-                            (click)="removeArticle(article.id)"
-                            class="dropdown-item"
-                        >
-                            Remove Article
-                        </button>
-                    </ng-template>
-                </div>
-            </div>
-            <div class="bg-white card-header">
-                <span class="m-0 c-blue-900"
-                    ><i class="ti-alarm-clock"></i> Created :
-                    {{
-                        article.created_at | date: 'MMMM dd, yyy - hh:mm a'
-                    }}</span
-                >
-            </div>
-            <div class="bg-white card-body">
-                <div class="d-flex row">
-                    <p class="pX-20 col-md-8">
-                        {{ article.body }}
-                    </p>
-                    <div
-                        *ngIf="article.photos.length !== 0"
-                        class="ml-auto mr-2 col-md-3"
-                    >
-                        <img
-                            class="article-image"
-                            [src]="article.photos[0].file.uri"
-                            alt=""
-                        />
-
-                        <Modal
-                            size="xl"
-                            [title]="'Images of ' + article.title"
-                            btnTitle="View Images"
-                            [template]="imageViewer"
-                            btnClass="md:hover:t-underline t-text-blue-500 t-text-center t-mt-3 t-w-full"
-                            (click)="transformImages(article.photos)"
-                        >
-                        </Modal>
-                    </div>
-                </div>
-            </div>
+            <home-article
+                [isUser]="isUser"
+                [article]="article"
+                [imageViewer]="imageViewer"
+                [isSuperAdmin]="isSuperAdmin"
+                (onRemoveArticle)="removeArticle($event)"
+                (onTransformImages)="transformImages($event)"
+            ></home-article>
         </div>
     </div>
 

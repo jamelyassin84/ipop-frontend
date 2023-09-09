@@ -30,12 +30,12 @@ export class BaseService {
         return this.http.get<any>(url, this.headers())
     }
 
-    index(overload: String = '') {
+    index(overload: string = '') {
         const url = `${environment.api}${this.url}?${this.params}${overload}`
         return this.http.get<any>(url, this.headers())
     }
 
-    show(id: Number) {
+    show(id: number) {
         const url = `${environment.api}${this.url}/${id}`
         return this.http.get<any>(url, this.headers())
     }
@@ -45,12 +45,12 @@ export class BaseService {
         return this.http.post<any>(url, data, this.headers())
     }
 
-    update(id: Number, data: Object) {
+    update(id: number, data: Object) {
         const url = `${environment.api}${this.url}/${id}`
         return this.http.patch<any>(url, data, this.headers())
     }
 
-    destroy(id: Number) {
+    destroy(id: number) {
         const url = `${environment.api}${this.url}/${id}`
         return this.http.delete<any>(url, this.headers())
     }

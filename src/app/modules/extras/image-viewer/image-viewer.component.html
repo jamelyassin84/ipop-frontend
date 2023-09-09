@@ -1,14 +1,19 @@
-<carousel
-    [margin]="0"
-    [height]="500"
-    [cellsToShow]="1"
-    [dots]="true"
-    *ngIf="images.length !== 0"
->
-    <div *ngFor="let image of images; trackBy: trackByFn" class="carousel-cell">
-        <img [src]="image" />
-    </div>
-</carousel>
+<div class="t-w-full t-bg-black">
+    <carousel
+        [margin]="0"
+        [height]="500"
+        [cellsToShow]="1"
+        [dots]="true"
+        *ngIf="images.length !== 0"
+    >
+        <div
+            *ngFor="let image of images; trackBy: trackByFn"
+            class="carousel-cell"
+        >
+            <img loading="lazy" class="t-object-contain" [src]="image" />
+        </div>
+    </carousel>
+</div>
 
 <p class="text-center text-info" *ngIf="images.length === 0">
     There are no images
